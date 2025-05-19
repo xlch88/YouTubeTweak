@@ -13,43 +13,51 @@ import manifest from "./manifest.json";
 });
 
 // https://vite.dev/config/
-export default defineConfig({
-	define: {
-		__APP_INFO__: JSON.stringify({
-			build: new Date().toISOString(),
-			version: pkg.version,
-		}),
-	},
-	build: { sourcemap: "inline", minify: false },
-	plugins: [
-		sassGlobImports(),
-		vueDevTools(),
-		vue(),
-		{
-			name: "logo-to-png",
-			buildStart: () =>
-				Promise.all(
-					[16, 32, 48, 128].map((size) =>
-						sharp("public/assets/img/logo.svg")
-							.resize(size, size)
-							.png({ compressionLevel: 9 })
-							.toFile(`public/assets/img/logo/${size}.png`),
-					),
-				),
-		},
-		webExtension({
-			manifest: () => ({
+export default defineConfig(({ mode }) => {
+	return {
+		define: {
+			__APP_INFO__: JSON.stringify({
+				build: new Date().toISOString(),
 				version: pkg.version,
-				description: pkg.description,
-				...manifest,
 			}),
-			watchFilePaths: ["src/content/**/*.*"],
-			skipManifestValidation: true,
-			webExtConfig: {
-				chromiumProfile: fs.realpathSync(".chrome-profile"),
-				keepProfileChanges: true,
-				startUrl: ["https://www.youtube.com/watch?v=ghWpp_iNkLg"],
+		},
+		build: {
+			sourcemap: mode === 'production' ? false : "inline",
+			minify: mode === 'production',
+		},
+		plugins: [
+			sassGlobImports(),
+			vueDevTools(),
+			vue(),
+			{
+				name: "logo-to-png",
+				buildStart() {
+					const wait = [];
+					for (const size of [16, 32, 48, 128]) {
+						const outputFile = `public/assets/img/logo/${size}.png`;
+						if (mode === "production" || !fs.existsSync(outputFile)) {
+							wait.push(
+								sharp("public/assets/img/logo.svg").resize(size, size).png({ compressionLevel: 9 }).toFile(outputFile),
+							);
+						}
+					}
+					return Promise.allSettled(wait);
+				},
 			},
-		}),
-	],
+			webExtension({
+				manifest: () => ({
+					version: pkg.version,
+					description: pkg.description,
+					...manifest,
+				}),
+				watchFilePaths: ["src/inject/**/*.*"],
+				skipManifestValidation: true,
+				webExtConfig: {
+					chromiumProfile: fs.realpathSync(__dirname + "/.chrome-profile"),
+					keepProfileChanges: true,
+					startUrl: ["https://www.youtube.com/watch?v=ghWpp_iNkLg"],
+				},
+			}),
+		],
+	};
 });

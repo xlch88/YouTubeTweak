@@ -1,5 +1,7 @@
 import config from "../config.js";
 import { videoPlayer } from "../index.js";
+import { createLogger } from "../../logger.js";
+const logger = createLogger("player-speedButton");
 
 export default {
 	"player.ui.enableSpeedButtons": {
@@ -19,7 +21,7 @@ export default {
 				speedButton.setAttribute("speed", `${speed}`);
 				speedButton.onclick = () => {
 					videoPlayer.videoStream.playbackRate = speed;
-					console.log("[YTTweak]", "Set playback rate:", speed);
+					logger.info("Set playback rate:", speed);
 
 					speedButtons.forEach((v) => {
 						v.classList.remove("yttweak-speed-button-active");

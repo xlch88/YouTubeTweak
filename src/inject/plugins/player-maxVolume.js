@@ -1,5 +1,7 @@
 import { videoPlayer } from "../index.js";
 import config from "../config.js";
+import { createLogger } from "../../logger.js";
+const logger = createLogger("player-maxVolume");
 
 let volumePanel = null;
 let volumeSlider = null;
@@ -37,7 +39,7 @@ export default {
 				if (parseInt(volumePanel.getAttribute("aria-valuenow")) === 100) {
 					volumeSlider.style.backgroundColor = "red";
 					if (videoPlayer.videoStream.volume !== 1) {
-						console.log(`[YTTweak] Set Player Volume ${(videoPlayer.videoStream.volume * 100).toFixed(2)} -> 100%`);
+						logger.info(`Set Player Volume ${(videoPlayer.videoStream.volume * 100).toFixed(2)} -> 100%`);
 						oldVolume = videoPlayer.videoStream.volume;
 						videoPlayer.videoStream.volume = 1;
 					}

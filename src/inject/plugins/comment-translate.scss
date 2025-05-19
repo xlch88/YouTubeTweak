@@ -1,24 +1,3 @@
-body {
-	//display: none;
-}
-
-// nickname
-.yttweak-comment-nickname {
-	color: #0f0f0f;
-}
-.yttweak-comment-username {
-	color: rgba(0, 0, 0, 0.4);
-	margin-left: 5px;
-}
-ytd-author-comment-badge-renderer[creator] .yttweak-comment-nickname {
-	color: unset;
-}
-ytd-author-comment-badge-renderer[creator] .yttweak-comment-username {
-	color: unset;
-	opacity: 0.4;
-}
-
-// translate
 .yttweak-comment-enable-translate {
 	ytd-comment-view-model ytd-tri-state-button-view-model tp-yt-paper-button {
 		display: none;

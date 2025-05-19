@@ -1,24 +1,28 @@
 import { videoPlayer } from "../index.js";
 import { bodyClass } from "../helper.js";
+import { createLogger } from "../../logger.js";
+const logger = createLogger("anti-ad");
 
-function antiAD(records) {
-	records.forEach((record) => {
-		if (record.type === "childList" && record.addedNodes.length !== 0) {
-			const { videoStream } = videoPlayer;
-			// videoStream.pause();
-			if (videoStream?.duration > 0) {
-				videoStream.currentTime = videoStream.duration;
-				videoStream.playbackRate = 16;
-			}
+let interval = null;
+
+function antiAD() {
+	if (videoPlayer.player?.querySelector(".video-ads")?.childNodes.length > 0) {
+		// videoPlayer.videoStream.pause();
+		if (!isNaN(videoPlayer.videoStream?.duration) && videoPlayer.videoStream?.duration > 0) {
+			videoPlayer.videoStream.currentTime = videoPlayer.videoStream.duration;
+			videoPlayer.videoStream.playbackRate = 16;
+			logger.info("skip ad.");
 		}
 	});
 	document.querySelectorAll("ytd-ad-slot-renderer").forEach((ad) => {
-		const rendererEl = ad?.parentElement?.parentElement;
-		if (rendererEl?.tagName === "YTD-RICH-ITEM-RENDERER") {
-			// rendererEl.style.display = "none";
-			rendererEl.remove();
+		if (ad?.parentElement?.parentElement && ad?.parentElement?.parentElement.tagName === "YTD-RICH-ITEM-RENDERER") {
+			// ad.parentElement.parentElement.style.display = "none";
+			ad.parentElement.parentElement?.remove();
+			logger.debug("remove index ad:", ad.parentElement.parentElement);
+		} else {
+			ad.remove();
+			logger.debug("remove ad:", ad.parentElement.parentElement);
 		}
-		ad.remove();
 	});
 }
 const observer = new MutationObserver(antiAD);

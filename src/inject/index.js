@@ -1,4 +1,5 @@
 import config from "./config.js";
+import logger from "../logger.js";
 
 const plugins = Object.assign({}, ...Object.values(import.meta.glob("./plugins/*.js", { eager: true }).map((m) => m.default)));
 
@@ -9,10 +10,12 @@ export const videoPlayer = {
 	videoStream: null,
 };
 
+const commentUpdateListener = {};
+
 function initVideoPlayer(player, volumePanel, volumeSlider) {
-	console.log(`[YTTweak] initVideoPlayer:`, player);
+	logger.debug(`initVideoPlayer:`, player);
 	for (const [key, func] of Object.entries(functionInit)) {
-		console.log(`[YTTweak] (video)functionInit:`, key);
+		logger.debug(`(video)functionInit:`, key);
 		func("video", { player, volumePanel, volumeSlider });
 	}
 }
@@ -22,20 +25,27 @@ function initVideoPlayer(player, volumePanel, volumeSlider) {
 
 	for (const [key, value] of Object.entries(config.get())) {
 		if (value && plugins[key]?.enable) {
-			console.log(`[YTTweak] plugin enable:`, key);
+			logger.info(`plugin enable:`, key);
 			plugins[key]?.enable();
 		}
 	}
 
 	chrome.runtime.onMessage.addListener(async () => {
-		console.log("[YTTweak] config update");
+		logger.warn("config update");
 		const oldConfig = config.get();
 		const newConfig = await config.init();
 
 		for (const [key, value] of Object.entries(newConfig)) {
 			if (oldConfig[key] !== value) {
-				plugins[key][value ? "enable" : "disable"]?.();
-				console.log(`[YTTweak] plugin status change:`, key, value);
+				if (plugins[key]?.enable || plugins[key]?.disable) {
+					plugins[key][value ? "enable" : "disable"]?.();
+					logger.log(`plugin status change:`, key, value);
+
+					if (plugins[key]?.options?.reloadOnToggle) {
+						window.location.reload();
+						return;
+					}
+				}
 			}
 		}
 
@@ -44,7 +54,7 @@ function initVideoPlayer(player, volumePanel, volumeSlider) {
 			.map((p) => {
 				if (p[1].configUpdate(oldConfig, newConfig)) {
 					p[1][newConfig[p[0]] ? "enable" : "disable"]();
-					console.log(`[YTTweak] plugin config update:`, p);
+					logger.log(`plugin config update:`, p);
 				}
 			});
 	});
@@ -54,13 +64,14 @@ setInterval(() => {
 	// catch video player
 	let player, controls, videoStream;
 	if ((player = document.querySelector("ytd-player #movie_player"))) {
-		if (player.isHookedYouTubeTweak) return;
+		if (player.getAttribute("yttweak") === "hooked") return;
 
 		if ((controls = player.querySelector(".ytp-left-controls"))) {
 			controls = controls.parentElement;
 
 			if ((videoStream = player.querySelector(".video-stream"))) {
 				player.isHookedYouTubeTweak = true;
+				player.setAttribute("yttweak", "hooked");
 
 				videoPlayer.player = player;
 				videoPlayer.controls = controls;
@@ -72,13 +83,54 @@ setInterval(() => {
 			}
 		}
 	}
+
+	// catch comments
+	let queryComments;
+	if ((queryComments = document.querySelectorAll("ytd-comments"))) {
+		for (const commentEl of queryComments) {
+			if (commentEl.getAttribute("yttweak") === "hooked") continue;
+			commentEl.setAttribute("yttweak", "hooked");
+
+			let commentUpdateListener = {};
+			const commentWatcher = new MutationObserver((mutations) => {
+				Object.values(commentUpdateListener).forEach((v) => v(mutations));
+			});
+			commentWatcher.observe(commentEl, {
+				subtree: true,
+				childList: true,
+			});
+			logger.debug("new comment:", commentEl);
+
+			const commentParentWatcher = new MutationObserver((mutations) => {
+				if (!document.body.contains(commentEl)) {
+					logger.debug("comment removed:", commentEl);
+					commentWatcher.disconnect();
+					commentParentWatcher.disconnect();
+					commentUpdateListener = {};
+				}
+			});
+			commentWatcher.observe(commentEl.parentElement, {
+				subtree: false,
+				childList: true,
+			});
+
+			Object.entries(plugins)
+				.filter((p) => p[1].initComments)
+				.map((p) =>
+					p[1].initComments(commentEl, (func) => {
+						logger.debug("comment update listener:", p[0], func);
+						commentUpdateListener[p[0]] = func;
+					}),
+				);
+		}
+	}
 }, 300);
 
 window.__YT_TWEAK__ = {
 	plugins,
 	videoPlayer,
 };
-console.log(window.__YT_TWEAK__);
+logger.debug(window.__YT_TWEAK__);
 
 //
 // setInterval(() => {
