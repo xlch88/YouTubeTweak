@@ -1,3 +1,6 @@
+.chrome-profile
+public/assets/img/logo/*.png
+
 # Logs
 logs
 *.log
@@ -12,8 +15,6 @@ dist
 dist-ssr
 *.local
 
-.chrome-profile
-
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -24,5 +25,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-/public/assets/img/logo/*.png
