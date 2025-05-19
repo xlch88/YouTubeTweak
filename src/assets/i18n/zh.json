@@ -1,0 +1,110 @@
+{
+	"tabs": {
+		"player": {
+			"title": "播放器"
+		},
+		"comment": {
+			"title": "评论"
+		},
+		"other": {
+			"title": "其他"
+		},
+		"about": {
+			"title": "关于"
+		}
+	},
+
+	"player": {
+		"speedButtons": {
+			"title": "倍速按钮",
+			"checkbox": {
+				"enable": "显示倍速按钮"
+			},
+			"tips": {
+				"enabledButtons": "启用的按钮："
+			}
+		},
+		"hidePlayerButtons": {
+			"title": "隐藏按钮",
+			"checkbox": {
+				"autoplay": "隐藏自动播放按钮",
+				"subtitles": "隐藏字幕按钮",
+				"settings": "隐藏设置按钮",
+				"miniPlayer": "隐藏迷你播放器按钮",
+				"pip": "隐藏画中画按钮",
+				"size": "隐藏宽画幅(剧场模式)按钮",
+				"remote": "隐藏远程播放(在电视上播放)按钮",
+				"fullscreen": "隐藏全屏按钮"
+			}
+		},
+		"ui": {
+			"title": "界面",
+			"checkbox": {
+				"hideCeElement": "半透明结尾的推荐视频/作者"
+			}
+		},
+		"other": {
+			"title": "其他",
+			"checkbox": {
+				"maxVolume": "最大音量时关闭音量均衡(真正100%音量)"
+			}
+		}
+	},
+	"comment": {
+		"nickname": {
+			"title": "昵称",
+			"checkbox": {
+				"showNickname": "显示评论者昵称(频道名称)"
+			}
+		},
+		"context": {
+			"title": "评论内容",
+			"checkbox": {
+				"autoShowMore": "自动展开长评论",
+				"autoTranslate": "自动翻译评论"
+			}
+		}
+	},
+	"other": {
+		"index": {
+			"title": "首页",
+			"checkbox": {
+				"videoPerRow": "锁定首页推荐视频每行数量"
+			}
+		},
+		"antiAD": {
+			"title": "广告屏蔽",
+			"checkbox": {
+				"enable": "自动跳过广告视频/屏蔽列表图文广告",
+				"enableMerch": "屏蔽频道主商品推荐"
+			},
+			"tips": {
+				"enable": "实验功能(不稳定)，部分情况下仍需在播放器点击“跳过”"
+			}
+		}
+	},
+	"about": {
+		"config": {
+			"alert": {
+				"resetConfig": "确定要重置全部设置吗？"
+			},
+			"button": {
+				"exportConfig": "导出设置",
+				"importConfig": "导入设置",
+				"resetConfig": "重置设置"
+			}
+		},
+		"link": {
+			"github": "源代码",
+			"issue": "问题反馈",
+			"changelog": "更新日志"
+		}
+	},
+
+	"installed": {
+		"title": "✅ 插件已成功安装！",
+		"line1": "感谢你安装本插件。",
+		"line2": "你可以点击浏览器右上角插件图标开始使用。",
+		"line3": "如果你在使用中遇到任何问题，欢迎在 GitHub 上反馈。"
+	}
+}

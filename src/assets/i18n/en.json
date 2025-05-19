@@ -1,0 +1,16 @@
+{
+	"tabs": {
+		"player": {
+			"title": "Player"
+		},
+		"comment": {
+			"title": "Comment"
+		},
+		"other": {
+			"title": "Other"
+		},
+		"about": {
+			"title": "About"
+		}
+	}
+}

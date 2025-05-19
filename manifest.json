@@ -1,0 +1,29 @@
+{
+	"manifest_version": 3,
+	"name": "YoutubeTweak",
+	"description": "为YouTube重度用户大幅提升使用体验。",
+	"action": {
+		"default_popup": "index.html",
+		"default_icon": {
+			"16": "assets/img/logo/16.png",
+			"48": "assets/img/logo/48.png",
+			"128": "assets/img/logo/128.png"
+		}
+	},
+	"icons": {
+		"16": "assets/img/logo/16.png",
+		"48": "assets/img/logo/48.png",
+		"128": "assets/img/logo/128.png"
+	},
+	"permissions": ["storage"],
+	"content_scripts": [
+		{
+			"matches": ["*://*.youtube.com/*"],
+			"js": ["src/inject/index.js"],
+			"css": ["src/inject/style.scss"]
+		}
+	],
+	"background": {
+		"service_worker": "src/background.js"
+	}
+}

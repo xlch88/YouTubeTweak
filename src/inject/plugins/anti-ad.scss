@@ -1,0 +1,37 @@
+body.yttweak-anti-ad {
+	ytd-ad-slot-renderer,
+	ytd-player-legacy-desktop-watch-ads-renderer {
+		display: none !important;
+	}
+
+	// player skip ad button
+	.ytp-skip-ad-button {
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		justify-content: center;
+		background: rgba(0, 0, 0, 0.8);
+	}
+	.ytp-video-interstitial-buttoned-centered-layout__timed-pie-countdown-container {
+		z-index: 9999;
+		svg.ytp-timed-pie-countdown {
+			opacity: 1;
+			width: 200px;
+			height: 200px;
+
+			circle.ytp-timed-pie-countdown__inner {
+				stroke: rgb(255, 36, 204);
+			}
+			circle.ytp-timed-pie-countdown__outer {
+				stroke: rgb(255, 36, 204);
+			}
+		}
+	}
+}
+
+body.yttweak-anti-ad-merch {
+	ytd-merch-shelf-item-renderer {
+		display: none !important;
+	}
+}

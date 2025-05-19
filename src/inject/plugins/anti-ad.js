@@ -1,0 +1,41 @@
+import { videoPlayer } from "../index.js";
+import { bodyClass } from "../helper.js";
+
+let interval = null;
+
+function antiAD() {
+	if (videoPlayer.player?.querySelector(".video-ads").childNodes.length > 0) {
+		// videoPlayer.videoStream.pause();
+		if (!isNaN(videoPlayer.videoStream?.duration) && videoPlayer.videoStream?.duration > 0) {
+			videoPlayer.videoStream.currentTime = videoPlayer.videoStream.duration;
+			videoPlayer.videoStream.playbackRate = 16;
+		}
+	}
+
+	document.querySelectorAll("ytd-ad-slot-renderer").forEach((ad) => {
+		if (ad?.parentElement?.parentElement && ad?.parentElement?.parentElement.tagName === "YTD-RICH-ITEM-RENDERER") {
+			// ad.parentElement.parentElement.style.display = "none";
+			ad.parentElement.parentElement?.remove();
+		}
+
+		ad.remove();
+	});
+}
+
+export default {
+	"other.antiAD.enable": {
+		enable() {
+			interval = setInterval(antiAD, 300);
+			antiAD();
+			document.body.classList.add("yttweak-anti-ad");
+		},
+		disable() {
+			if (interval) clearInterval(interval);
+			document.body.classList.remove("yttweak-anti-ad");
+		},
+		initPlayer() {
+			antiAD();
+		},
+	},
+	"other.antiAD.enableMerch": bodyClass("yttweak-anti-ad-merch"),
+};

@@ -1,0 +1,45 @@
+div.yttweak-speed-buttons {
+	display: none;
+	span.yttweak-speed-button {
+		width: 48px;
+		height: 48px;
+		display: none;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+		cursor: pointer;
+
+		&::before {
+			content: "";
+			background: url("data:image/svg+xml;utf8,%3C%3Fxml%20version%3D%221.0%22%20standalone%3D%22no%22%3F%3E%3C!DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd%22%3E%3Csvg%20t%3D%221737240990275%22%20class%3D%22icon%22%20viewBox%3D%220%200%201024%201024%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20p-id%3D%224235%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%22200%22%20height%3D%22200%22%3E%3Cpath%20d%3D%22M512%20512a53.44%2053.44%200%200%201-17.4%2039.413333L131.933333%20882a52.833333%2052.833333%200%200%201-35.713333%2014%2053.84%2053.84%200%200%201-21.76-4.666667A52.666667%2052.666667%200%200%201%2042.666667%20842.593333V181.406667A53.333333%2053.333333%200%200%201%20131.926667%20142l362.666666%20330.6A53.44%2053.44%200%200%201%20512%20512z%20m451.933333-39.413333L601.26%20142A53.333333%2053.333333%200%200%200%20512%20181.406667v661.186666a52.666667%2052.666667%200%200%200%2031.793333%2048.793334%2053.84%2053.84%200%200%200%2021.76%204.666666%2052.833333%2052.833333%200%200%200%2035.713334-14l362.666666-330.6a53.333333%2053.333333%200%200%200%200-78.826666z%22%20fill%3D%22%23ffffff%22%20p-id%3D%224236%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E");
+			width: 20px;
+			height: 20px;
+			background-size: contain;
+		}
+		&::after {
+			content: attr(speed) "x";
+			position: absolute;
+			top: -7px;
+			left: 28px;
+			font-size: 12px;
+			transform: scale(0.8);
+			color: white;
+			pointer-events: none;
+			text-align: left;
+		}
+		&.yttweak-speed-button-active::after {
+			color: red;
+		}
+	}
+}
+body[yttweak-enable-speed-button] {
+	div.yttweak-speed-buttons {
+		display: flex !important;
+	}
+}
+
+@each $speed in (0.25, 0.5, 1, 1.25, 1.5, 2, 3) {
+	body[yttweak-enable-speed-button~="#{$speed}"] span.yttweak-speed-button[speed="#{$speed}"] {
+		display: flex;
+	}
+}

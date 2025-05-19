@@ -1,0 +1,35 @@
+// hide player buttons
+body.yttweak-hide-button-autoplay .ytp-autonav-toggle {
+	display: none !important;
+}
+body.yttweak-hide-button-subtitles .ytp-subtitles-button {
+	display: none !important;
+}
+body.yttweak-hide-button-settings .ytp-settings-button {
+	display: none !important;
+}
+body.yttweak-hide-button-miniPlayer .ytp-miniplayer-button {
+	display: none !important;
+}
+body.yttweak-hide-button-pip .ytp-pip-button {
+	display: none !important;
+}
+body.yttweak-hide-button-size .ytp-size-button {
+	display: none !important;
+}
+body.yttweak-hide-button-remote .ytp-remote-button {
+	display: none !important;
+}
+body.yttweak-hide-button-fullscreen .ytp-fullscreen-button {
+	display: none !important;
+}
+
+// play end
+body.yttweak-hide-ce_element {
+	.ytp-ce-element {
+		opacity: 0.3 !important;
+		&.ytp-ce-element-hover {
+			opacity: 1 !important;
+		}
+	}
+}
