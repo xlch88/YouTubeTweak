@@ -1,5 +1,7 @@
 import { defineStore } from "pinia";
 import { toRaw } from "vue";
+import { createLogger } from "../logger.js";
+const logger = createLogger("config");
 
 export const STORAGE_KEY = "settings";
 
@@ -34,7 +36,7 @@ export default defineStore("config", {
 		loadStorage(init = false) {
 			chrome.storage.sync.get(STORAGE_KEY, (res) => {
 				this.$patch(res[STORAGE_KEY] || {});
-				console.log("loadStorage ->", res[STORAGE_KEY]);
+				logger.info("loadStorage ->", res[STORAGE_KEY]);
 
 				if (init) {
 					this.saveStorage();
@@ -43,12 +45,12 @@ export default defineStore("config", {
 		},
 		saveStorage() {
 			const rawData = toRaw(this.$state);
-			console.log("saveStorage ->", rawData);
+			logger.info("saveStorage ->", rawData);
 			chrome.storage.sync.set({ [STORAGE_KEY]: rawData }, () => {});
 			chrome.tabs.query({}, (tabs) => {
 				tabs.forEach((tab) => {
 					chrome.tabs.sendMessage(tab.id, { action: "reloadConfig" }).catch((e) => {
-						console.error("sendMessage error:", e);
+						logger.error("sendMessage error:", e);
 					});
 				});
 			});
@@ -63,7 +65,7 @@ export const configPlugin = ({ store }) => {
 			isInitial = false;
 			return;
 		}
-		console.log("update:", store);
+		logger.debug("update:", store);
 		store.saveStorage();
 	});
 

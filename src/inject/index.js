@@ -1,4 +1,5 @@
 import config from "./config.js";
+import logger from "../logger.js";
 
 const plugins = Object.assign({}, ...Object.values(import.meta.glob("./plugins/*.js", { eager: true }).map((m) => m.default)));
 
@@ -10,9 +11,9 @@ export const videoPlayer = {
 };
 
 function initVideoPlayer(player, volumePanel, volumeSlider) {
-	console.log(`[YTTweak] initVideoPlayer:`, player);
+	logger.debug(`initVideoPlayer:`, player);
 	for (const [key, func] of Object.entries(functionInit)) {
-		console.log(`[YTTweak] (video)functionInit:`, key);
+		logger.debug(`(video)functionInit:`, key);
 		func("video", { player, volumePanel, volumeSlider });
 	}
 }
@@ -22,13 +23,13 @@ function initVideoPlayer(player, volumePanel, volumeSlider) {
 
 	for (const [key, value] of Object.entries(config.get())) {
 		if (value && plugins[key]?.enable) {
-			console.log(`[YTTweak] plugin enable:`, key);
+			logger.info(`plugin enable:`, key);
 			plugins[key]?.enable();
 		}
 	}
 
 	chrome.runtime.onMessage.addListener(async () => {
-		console.log("[YTTweak] config update");
+		logger.warn("config update");
 		const oldConfig = config.get();
 		const newConfig = await config.init();
 
@@ -46,7 +47,7 @@ function initVideoPlayer(player, volumePanel, volumeSlider) {
 			.map((p) => {
 				if (p[1].configUpdate(oldConfig, newConfig)) {
 					p[1][newConfig[p[0]] ? "enable" : "disable"]();
-					console.log(`[YTTweak] plugin config update:`, p);
+					logger.log(`plugin config update:`, p);
 				}
 			});
 	});
@@ -80,7 +81,7 @@ window.__YT_TWEAK__ = {
 	plugins,
 	videoPlayer,
 };
-console.log(window.__YT_TWEAK__);
+logger.debug(window.__YT_TWEAK__);
 
 //
 // setInterval(() => {

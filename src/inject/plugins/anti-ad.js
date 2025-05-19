@@ -1,5 +1,7 @@
 import { videoPlayer } from "../index.js";
 import { bodyClass } from "../helper.js";
+import { createLogger } from "../../logger.js";
+const logger = createLogger("anti-ad");
 
 let interval = null;
 
@@ -9,6 +11,7 @@ function antiAD() {
 		if (!isNaN(videoPlayer.videoStream?.duration) && videoPlayer.videoStream?.duration > 0) {
 			videoPlayer.videoStream.currentTime = videoPlayer.videoStream.duration;
 			videoPlayer.videoStream.playbackRate = 16;
+			logger.info("skip ad.");
 		}
 	}
 
@@ -16,6 +19,9 @@ function antiAD() {
 		if (ad?.parentElement?.parentElement && ad?.parentElement?.parentElement.tagName === "YTD-RICH-ITEM-RENDERER") {
 			// ad.parentElement.parentElement.style.display = "none";
 			ad.parentElement.parentElement?.remove();
+			logger.debug("remove index ad:", ad.parentElement.parentElement);
+		} else {
+			logger.debug("remove ad:", ad.parentElement.parentElement);
 		}
 
 		ad.remove();
