@@ -13,7 +13,7 @@ function antiAD() {
 			videoPlayer.videoStream.playbackRate = 16;
 			logger.info("skip ad.");
 		}
-	});
+	}
 	document.querySelectorAll("ytd-ad-slot-renderer").forEach((ad) => {
 		if (ad?.parentElement?.parentElement && ad?.parentElement?.parentElement.tagName === "YTD-RICH-ITEM-RENDERER") {
 			// ad.parentElement.parentElement.style.display = "none";
