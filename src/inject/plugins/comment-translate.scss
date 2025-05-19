@@ -1,0 +1,24 @@
+.yttweak-comment-enable-translate {
+	ytd-comment-view-model ytd-tri-state-button-view-model tp-yt-paper-button {
+		display: none;
+	}
+}
+.yttweak-comment-translate {
+	margin-top: 10px;
+	display: inline;
+	white-space: pre-wrap;
+	background: linear-gradient(to right, #03a9f4 0%, #03a9f4 50%, transparent 50%, transparent 100%) repeat-x left bottom;
+	background-size: 8px 2px;
+	padding-bottom: 2px;
+}
+
+// auto more
+body.yttweak-comment-auto-more {
+	ytd-expander[should-use-number-of-lines][collapsed] > #content.ytd-expander {
+		-webkit-line-clamp: initial;
+	}
+	.more-button.ytd-comment-view-model,
+	.less-button.ytd-comment-view-model {
+		display: none;
+	}
+}
