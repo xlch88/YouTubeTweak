@@ -1,21 +1,16 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
-import webExtension, { readJsonFile } from "vite-plugin-web-extension";
+import webExtension from "vite-plugin-web-extension";
 import vueDevTools from "vite-plugin-vue-devtools";
 import sassGlobImports from "vite-plugin-sass-glob-import";
-
+import sharp from "sharp";
+import fs from "node:fs";
 import pkg from "./package.json";
 import manifest from "./manifest.json";
-import fs from "node:fs";
-import sharp from "sharp";
 
-function generateManifest() {
-	return {
-		version: pkg.version,
-		description: pkg.description,
-		...manifest,
-	};
-}
+["public/assets/img/logo", ".chrome-profile"].forEach((dirPath) => {
+	if (!fs.existsSync(dirPath)) fs.mkdirSync(dirPath);
+});
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
@@ -26,9 +21,14 @@ export default defineConfig(({ mode }) => {
 				version: pkg.version,
 			}),
 		},
+		build: {
+			sourcemap: mode === 'production' ? false : "inline",
+			minify: mode === 'production',
+		},
 		plugins: [
 			sassGlobImports(),
-			// vueDevTools(),
+			vueDevTools(),
+			vue(),
 			{
 				name: "logo-to-png",
 				buildStart() {
@@ -44,9 +44,12 @@ export default defineConfig(({ mode }) => {
 					return Promise.allSettled(wait);
 				},
 			},
-			vue(),
 			webExtension({
-				manifest: generateManifest,
+				manifest: () => ({
+					version: pkg.version,
+					description: pkg.description,
+					...manifest,
+				}),
 				watchFilePaths: ["src/inject/**/*.*"],
 				skipManifestValidation: true,
 				webExtConfig: {

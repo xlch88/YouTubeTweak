@@ -13,8 +13,7 @@ function antiAD() {
 			videoPlayer.videoStream.playbackRate = 16;
 			logger.info("skip ad.");
 		}
-	}
-
+	});
 	document.querySelectorAll("ytd-ad-slot-renderer").forEach((ad) => {
 		if (ad?.parentElement?.parentElement && ad?.parentElement?.parentElement.tagName === "YTD-RICH-ITEM-RENDERER") {
 			// ad.parentElement.parentElement.style.display = "none";
@@ -26,20 +25,21 @@ function antiAD() {
 		}
 	});
 }
+const observer = new MutationObserver(antiAD);
 
 export default {
 	"other.antiAD.enable": {
 		enable() {
-			interval = setInterval(antiAD, 300);
-			antiAD();
 			document.body.classList.add("yttweak-anti-ad");
 		},
 		disable() {
-			if (interval) clearInterval(interval);
+			antiAD(observer.takeRecords());
+			observer.disconnect();
 			document.body.classList.remove("yttweak-anti-ad");
 		},
 		initPlayer() {
-			antiAD();
+			const adsEl = videoPlayer.player.querySelector(".video-ads");
+			if (adsEl !== null) observer.observe(adsEl, { childList: true, subtree: true });
 		},
 	},
 	"other.antiAD.enableMerch": bodyClass("yttweak-anti-ad-merch"),
