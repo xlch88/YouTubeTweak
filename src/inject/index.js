@@ -34,10 +34,8 @@ function initVideoPlayer(player, volumePanel, volumeSlider) {
 
 		for (const [key, value] of Object.entries(newConfig)) {
 			if (oldConfig[key] !== value) {
-				if (plugins[key]?.enable || plugins[key]?.disable) {
-					plugins[key][value ? "enable" : "disable"]();
-					console.log(`[YTTweak] plugin status change:`, key, value);
-				}
+				plugins[key][value ? "enable" : "disable"]?.();
+				console.log(`[YTTweak] plugin status change:`, key, value);
 			}
 		}
 
