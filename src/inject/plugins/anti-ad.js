@@ -6,7 +6,7 @@ const logger = createLogger("anti-ad");
 let interval = null;
 
 function antiAD() {
-	if (videoPlayer.player?.querySelector(".video-ads").childNodes.length > 0) {
+	if (videoPlayer.player?.querySelector(".video-ads")?.childNodes.length > 0) {
 		// videoPlayer.videoStream.pause();
 		if (!isNaN(videoPlayer.videoStream?.duration) && videoPlayer.videoStream?.duration > 0) {
 			videoPlayer.videoStream.currentTime = videoPlayer.videoStream.duration;
@@ -21,10 +21,9 @@ function antiAD() {
 			ad.parentElement.parentElement?.remove();
 			logger.debug("remove index ad:", ad.parentElement.parentElement);
 		} else {
+			ad.remove();
 			logger.debug("remove ad:", ad.parentElement.parentElement);
 		}
-
-		ad.remove();
 	});
 }
 

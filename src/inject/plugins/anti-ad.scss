@@ -31,7 +31,9 @@ body.yttweak-anti-ad {
 }
 
 body.yttweak-anti-ad-merch {
-	ytd-merch-shelf-item-renderer {
+	ytd-merch-shelf-item-renderer,
+	ytd-merch-shelf-renderer {
 		display: none !important;
+		height: 0;
 	}
 }
