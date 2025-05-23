@@ -1,0 +1,117 @@
+{
+	"tabs": {
+		"player": {
+			"title": "プレイヤー"
+		},
+		"comment": {
+			"title": "コメント"
+		},
+		"other": {
+			"title": "その他"
+		},
+		"general": {
+			"title": "全般"
+		}
+	},
+
+	"player": {
+		"speedButtons": {
+			"title": "再生速度ボタン",
+			"checkbox": {
+				"enable": "再生速度ボタンを表示する"
+			},
+			"tips": {
+				"enabledButtons": "有効になったボタン"
+			}
+		},
+		"hidePlayerButtons": {
+			"title": "ボタンを非表示",
+			"checkbox": {
+				"autoplay": "「自動再生」ボタンを非表示にする",
+				"subtitles": "「字幕」ボタンを非表示にする",
+				"settings": "「設定」ボタンを非表示にする",
+				"miniPlayer": "「ミニプレーヤー」ボタンを非表示にする",
+				"pip": "「ピクチャー イン ピクチャー」ボタンを非表示にする",
+				"size": "「シアターモード」ボタンを非表示にする",
+				"remote": "「テレビで再生」ボタンを非表示にする",
+				"fullscreen": "「全画面」ボタンを非表示にする"
+			}
+		},
+		"ui": {
+			"title": "UI",
+			"checkbox": {
+				"hideCeElement": "動画の終わりに表示されるおすすめまたはチャンネルを半透明にする"
+			}
+		},
+		"other": {
+			"title": "その他",
+			"checkbox": {
+				"maxVolume": "音量最大時に音量均衡を無効化（真の100％音量）"
+			}
+		}
+	},
+	"comment": {
+		"nickname": {
+			"title": "ニックネーム",
+			"checkbox": {
+				"showNickname": "コメント投稿者のニックネーム（チャンネル名）を表示する"
+			}
+		},
+		"context": {
+			"title": "コメント内容",
+			"checkbox": {
+				"autoShowMore": "長いコメントを自動展開する",
+				"autoTranslate": "コメントを自動翻訳する"
+			}
+		}
+	},
+	"other": {
+		"index": {
+			"title": "ホーム",
+			"checkbox": {
+				"videoPerRow": "ホームのおすすめ動画の1行あたりの数を固定する"
+			}
+		},
+		"antiAD": {
+			"title": "広告ブロック",
+			"checkbox": {
+				"enable": "広告動画と右のプレイリストの広告をブロックする",
+				"enableMerch": "チャンネル主のおすすめ商品をブロックする"
+			},
+			"tips": {
+				"enable": "ラボ機能(不安定)。一部の状況ではまだ「スキップ」をクリックする必要があり、YouTubeに検出される可能性もある。"
+			}
+		}
+	},
+	"general": {
+		"about": {
+			"title": "YouTube Tweakについて",
+			"link": {
+				"github": "ソースコード",
+				"issue": "不具合報告",
+				"changelog": "更新履歴"
+			}
+		},
+		"config": {
+			"title": "拡張設定",
+			"alert": {
+				"resetConfig": "すべての設定をリセットしますか？"
+			},
+			"button": {
+				"exportConfig": "設定をエクスポート",
+				"importConfig": "設定をインポート",
+				"resetConfig": "設定をリセット"
+			}
+		},
+		"language": {
+			"title": "言語"
+		}
+	},
+
+	"installed": {
+		"title": "✅ 拡張機能が正常にインストールされました！",
+		"line1": "YouTube Tweakをご利用いただき、ありがとうございます。",
+		"line2": "ブラウザの右上の拡張機能アイコンをクリックして、利用を開始できます。",
+		"line3": "ご使用中に問題が発生した場合は、GitHubにてご報告ください。"
+	}
+}

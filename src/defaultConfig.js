@@ -1,0 +1,25 @@
+export default {
+	"player.ui.enableSpeedButtons": true,
+	"player.ui.speedButtons": [0.5, 1, 1.5, 2],
+	"player.ui.hideButton.autoplay": false,
+	"player.ui.hideButton.subtitles": false,
+	"player.ui.hideButton.settings": false,
+	"player.ui.hideButton.miniPlayer": true,
+	"player.ui.hideButton.pip": true,
+	"player.ui.hideButton.size": true,
+	"player.ui.hideButton.remote": true,
+	"player.ui.hideButton.fullscreen": false,
+	"player.ui.hideCeElement": true,
+	"player.settings.maxVolume": true,
+	"player.settings.lockQuality": false,
+	"player.settings.lockQuality.value": "hd1080",
+
+	"comment.nickname": true,
+	"comment.autoShowMore": true,
+	"comment.autoTranslate": true,
+
+	"index.videoPerRow.enable": false,
+	"index.videoPerRow.count": 4,
+	"other.antiAD.enable": true,
+	"other.antiAD.enableMerch": true,
+};

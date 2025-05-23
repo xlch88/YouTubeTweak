@@ -9,12 +9,21 @@
 		"other": {
 			"title": "其他"
 		},
-		"about": {
-			"title": "关于"
+		"general": {
+			"title": "通用"
 		}
 	},
 
 	"player": {
+		"lockQuality": {
+			"title": "锁定画质",
+			"checkbox": {
+				"enable": "在每次播放时自动将画质切换为"
+			},
+			"tips": {
+				"quality": "如果没有此画质，将会自动下降为此值以下的最高画质。"
+			}
+		},
 		"speedButtons": {
 			"title": "倍速按钮",
 			"checkbox": {
@@ -27,14 +36,14 @@
 		"hidePlayerButtons": {
 			"title": "隐藏按钮",
 			"checkbox": {
-				"autoplay": "隐藏自动播放按钮",
-				"subtitles": "隐藏字幕按钮",
-				"settings": "隐藏设置按钮",
-				"miniPlayer": "隐藏迷你播放器按钮",
-				"pip": "隐藏画中画按钮",
-				"size": "隐藏宽画幅(剧场模式)按钮",
-				"remote": "隐藏远程播放(在电视上播放)按钮",
-				"fullscreen": "隐藏全屏按钮"
+				"autoplay": "隐藏「自动播放」按钮",
+				"subtitles": "隐藏「字幕」按钮",
+				"settings": "隐藏「设置」按钮",
+				"miniPlayer": "隐藏「迷你播放器」按钮",
+				"pip": "隐藏「画中画」按钮",
+				"size": "隐藏「剧场模式」按钮",
+				"remote": "隐藏「在电视上播放」按钮",
+				"fullscreen": "隐藏「全屏」按钮"
 			}
 		},
 		"ui": {
@@ -79,12 +88,21 @@
 				"enableMerch": "屏蔽频道主商品推荐"
 			},
 			"tips": {
-				"enable": "实验功能(不稳定)，部分情况下仍需在播放器点击“跳过”"
+				"enable": "实验功能(不稳定)，部分情况下仍需在播放器点击“跳过”，并且可能会被YouTube检测。"
 			}
 		}
 	},
-	"about": {
+	"general": {
+		"about": {
+			"title": "关于",
+			"link": {
+				"github": "源代码",
+				"issue": "问题反馈",
+				"changelog": "更新日志"
+			}
+		},
 		"config": {
+			"title": "插件设置",
 			"alert": {
 				"resetConfig": "确定要重置全部设置吗？"
 			},
@@ -94,10 +112,8 @@
 				"resetConfig": "重置设置"
 			}
 		},
-		"link": {
-			"github": "源代码",
-			"issue": "问题反馈",
-			"changelog": "更新日志"
+		"language": {
+			"title": "语言"
 		}
 	},
 

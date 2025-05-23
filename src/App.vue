@@ -3,10 +3,10 @@
 		<header>
 			<div class="item logo">
 				<img src="/assets/img/logo.svg" alt="logo" />
-				<span>YouTubeTweak</span>
+				<span>YTTweak</span>
 			</div>
 			<button
-				v-for="key in ['player', 'comment', 'other', 'about']"
+				v-for="key in ['player', 'comment', 'other', 'general']"
 				:key="key"
 				class="item"
 				:class="{ active: tab === key }"
@@ -20,7 +20,7 @@
 			<player v-if="tab === 'player'"></player>
 			<comment v-else-if="tab === 'comment'"></comment>
 			<other v-else-if="tab === 'other'"></other>
-			<about v-else-if="tab === 'about'"></about>
+			<general v-else-if="tab === 'general'"></general>
 		</main>
 	</template>
 	<installed v-else-if="action === 'installed'"></installed>
@@ -30,11 +30,10 @@
 import useConfigStore from "./util/config.js";
 import { ref, provide } from "vue";
 import Other from "./pages/other.vue";
-import About from "./pages/about.vue";
 import Player from "./pages/player.vue";
 import Comment from "./pages/comment.vue";
 import Installed from "./pages/installed.vue";
-const config = useConfigStore();
+import General from "./pages/general.vue";
 
 const tab = ref("player");
 const action = ref("popup");
@@ -79,7 +78,7 @@ header {
 
 	.item {
 		appearance: none;
-		padding: 5px;
+		padding: 5px 10px;
 		height: 100%;
 		flex: 1;
 		line-height: 30px;
@@ -87,6 +86,8 @@ header {
 		border: none;
 		background: none;
 		cursor: pointer;
+		word-break: keep-all;
+		white-space: nowrap;
 
 		&.active {
 			background: rgba(#000, 0.05);
@@ -140,40 +141,8 @@ header {
 	display: flex;
 	align-items: center;
 
-	&:hover input[type="checkbox"] {
+	&:hover input[type="checkbox"]:not(:checked):not(:focus):not(:disabled) {
 		background-color: rgba(#000, 0.1);
-	}
-
-	input[type="checkbox"] {
-		appearance: none;
-		width: 18px;
-		height: 18px;
-		border: 1.5px solid #b2b2b2;
-		border-radius: 4px;
-		background-color: white;
-		cursor: pointer;
-		position: relative;
-		margin-left: 0;
-		transition:
-			background-color 0.3s,
-			border-color 0.3s;
-
-		&:checked {
-			background-color: #2196f3;
-			border-color: #2196f3;
-
-			&::after {
-				content: "";
-				position: absolute;
-				left: 5px;
-				top: 1px;
-				width: 3px;
-				height: 8px;
-				border: solid #ffffff;
-				border-width: 0 2px 2px 0;
-				transform: rotate(45deg);
-			}
-		}
 	}
 }
 .form-item-group {

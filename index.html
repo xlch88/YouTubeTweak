@@ -4,9 +4,55 @@
 		<meta charset="UTF-8" />
 		<link rel="icon" type="image/svg+xml" href="/assets/img/logo.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<style>
+			body {
+				width: 400px;
+				height: 450px;
+				background: #eef0f8;
+				margin: 0;
+				padding: 0;
+				overflow-x: hidden;
+				background: #eef0f8;
+				font-size: 13px;
+			}
+
+			body .loading {
+				width: 100vw;
+				height: 100vh;
+				position: fixed;
+				animation: breathe 2s ease-in-out infinite;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			body .loading::after {
+				content: "";
+				display: block;
+				width: 200px;
+				height: 200px;
+				filter: grayscale(100%);
+				opacity: 0.08;
+				background: url(data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22500%22%20height%3D%22500%22%20viewBox%3D%220%200%2029%2020%22%20aria-hidden%3D%22true%22%3E%0D%0A%20%20%20%20%3Cg%3E%0D%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M14.4848%2020C14.4848%2020%2023.5695%2020%2025.8229%2019.4C27.0917%2019.06%2028.0459%2018.08%2028.3808%2016.87C29%2014.65%2029%209.98%2029%209.98C29%209.98%2029%205.34%2028.3808%203.14C28.0459%201.9%2027.0917%200.94%2025.8229%200.61C23.5695%200%2014.4848%200%2014.4848%200C14.4848%200%205.42037%200%203.17711%200.61C1.9286%200.94%200.954148%201.9%200.59888%203.14C0%205.34%200%209.98%200%209.98C0%209.98%200%2014.65%200.59888%2016.87C0.954148%2018.08%201.9286%2019.06%203.17711%2019.4C5.42037%2020%2014.4848%2020%2014.4848%2020Z%22%20fill%3D%22black%22%2F%3E%0D%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M19%2010L11.5%205.75V14.25L19%2010Z%22%20fill%3D%22white%22%2F%3E%0D%0A%20%20%20%20%3C%2Fg%3E%0D%0A%3C%2Fsvg%3E)
+					no-repeat center center;
+				background-size: cover;
+			}
+
+			@keyframes breathe {
+				0%,
+				100% {
+					opacity: 0.5;
+					transform: scale(1);
+				}
+				50% {
+					opacity: 1;
+					transform: scale(1.05);
+				}
+			}
+		</style>
 		<title>YouTubeTweak</title>
 	</head>
 	<body>
+		<div class="loading"></div>
 		<script type="module" src="/src/main.js"></script>
 	</body>
 </html>

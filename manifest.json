@@ -18,9 +18,18 @@
 	"permissions": ["storage"],
 	"content_scripts": [
 		{
+			"all_frames": true,
+			"run_at": "document_start",
 			"matches": ["*://*.youtube.com/*"],
-			"js": ["src/inject/index.js"],
+			"js": ["src/inject/isolatedWorld.js"],
 			"css": ["src/inject/style.scss"]
+		},
+		{
+			"all_frames": true,
+			"run_at": "document_start",
+			"matches": ["*://*.youtube.com/*"],
+			"world": "MAIN",
+			"js": ["src/inject/mainWorld.js"]
 		}
 	],
 	"background": {

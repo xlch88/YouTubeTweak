@@ -9,8 +9,109 @@
 		"other": {
 			"title": "Other"
 		},
-		"about": {
-			"title": "About"
+		"general": {
+			"title": "General"
 		}
+	},
+
+	"player": {
+		"speedButtons": {
+			"title": "Speed buttons",
+			"checkbox": {
+				"enable": "Show speed buttons"
+			},
+			"tips": {
+				"enabledButtons": "Enabled buttons:"
+			}
+		},
+		"hidePlayerButtons": {
+			"title": "Hide buttons",
+			"checkbox": {
+				"autoplay": "Hide autoplay button",
+				"subtitles": "Hide subtitles button",
+				"settings": "Hide settings button",
+				"miniPlayer": "Hide mini player button",
+				"pip": "Hide picture-in-picture button",
+				"size": "Hide theater mode button",
+				"remote": "Hide cast to TV button",
+				"fullscreen": "Hide fullscreen button"
+			}
+		},
+		"ui": {
+			"title": "UI",
+			"checkbox": {
+				"hideCeElement": "Translucent ending of the recommended Videos/Authors"
+			}
+		},
+		"other": {
+			"title": "Other",
+			"checkbox": {
+				"maxVolume": "Disable volume leveling at max volume (true 100%)"
+			}
+		}
+	},
+	"comment": {
+		"nickname": {
+			"title": "Nickname",
+			"checkbox": {
+				"showNickname": "Show commenter nickname (channel name)"
+			}
+		},
+		"context": {
+			"title": "Comment Content",
+			"checkbox": {
+				"autoShowMore": "Auto expand long comments",
+				"autoTranslate": "Auto translate"
+			}
+		}
+	},
+	"other": {
+		"index": {
+			"title": "Homepage",
+			"checkbox": {
+				"videoPerRow": "Lock number of videos per row"
+			}
+		},
+		"antiAD": {
+			"title": "Ad Block",
+			"checkbox": {
+				"enable": "Auto skip ads / block thumbnail ads",
+				"enableMerch": "Block channel merchandise"
+			},
+			"tips": {
+				"enable": "Experimental feature (unstable). In some cases, you still need to click \"Skip\" in the player, and it may be detected by YouTube."
+			}
+		}
+	},
+	"general": {
+		"about": {
+			"title": "About",
+			"link": {
+				"github": "Github",
+				"issue": "Issues",
+				"changelog": "Changelog"
+			}
+		},
+		"config": {
+			"title": "Plugin settings",
+			"alert": {
+				"resetConfig": "Are you sure you want to reset all settings?"
+			},
+			"button": {
+				"exportConfig": "Export settings",
+				"importConfig": "Import settings",
+				"resetConfig": "Reset settings"
+			}
+		},
+		"language": {
+			"title": "Language"
+		}
+	},
+
+	"installed": {
+		"title": "✅ Extension successfully installed!",
+		"line1": "Thank you for installing this extension.",
+		"line2": "You can start using it by clicking the extension icon at the top right of your browser.",
+		"line3": "If you encounter any problems, feel free to report them on GitHub."
 	}
 }

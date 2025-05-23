@@ -4,7 +4,7 @@
 		<div class="card-body">
 			<label class="form-item">
 				<input type="checkbox" v-model="config['comment.nickname']" />
-				<span>{{ $t("checkbox.comment.nickname") }}</span>
+				<span>{{ $t("comment.nickname.checkbox.showNickname") }}</span>
 			</label>
 		</div>
 	</div>

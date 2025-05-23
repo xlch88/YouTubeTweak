@@ -1,5 +1,5 @@
 import config from "../config.js";
-import { videoPlayer } from "../index.js";
+import { videoPlayer } from "../isolatedWorld.js";
 import { createLogger } from "../../logger.js";
 const logger = createLogger("player-speedButton");
 
