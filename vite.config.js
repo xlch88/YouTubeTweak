@@ -22,12 +22,12 @@ export default defineConfig(({ mode }) => {
 			}),
 		},
 		build: {
-			sourcemap: mode === 'production' ? false : "inline",
-			minify: mode === 'production',
+			sourcemap: mode === "production" ? false : "inline",
+			minify: mode === "production",
 		},
 		plugins: [
 			sassGlobImports(),
-			vueDevTools(),
+			...[mode !== "production" ? vueDevTools() : []],
 			vue(),
 			{
 				name: "logo-to-png",
