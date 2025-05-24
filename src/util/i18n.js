@@ -1,29 +1,32 @@
 import { createI18n } from "vue-i18n";
-import en from "../assets/i18n/en.json";
+import en from "../assets/i18n/en-US.json";
 
 export let i18n;
 
 export const locales = {
-	zh: "简体中文 (Simple Chinese)",
+	"zh-CN": "简体中文 (Simple Chinese)",
 	"zh-TW": "繁体中文 (Traditional Chinese)",
-	en: "English",
-	ja: "日本語 (Japanese)",
+	"ja-JP": "日本語 (Japanese)",
+	"en-US": "English (US)",
 };
 
 export async function initI18n() {
 	let locale = localStorage.getItem("lang");
 	if (!locale) {
+		const shotKey = Object.fromEntries(Object.keys(locales).map((v) => [v.split("-")[0], v]));
+
 		for (const l of window?.navigator?.languages) {
 			if (locales[l]) {
 				locale = l;
-			} else if (locales[l.split("-")[0]]) {
-				locale = l.split("-")[0];
+			} else if (shotKey[l]) {
+				locale = shotKey[l];
 			}
 		}
 	}
 	if (!locales[locale]) {
-		locale = "en";
+		locale = "en-US";
 	}
+	localStorage.setItem("lang", locale);
 
 	i18n = createI18n({
 		locale: locale,
