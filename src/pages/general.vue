@@ -28,9 +28,31 @@
 	<div class="card">
 		<div class="card-title">{{ $t("general.config.title") }}</div>
 		<div class="card-body config">
-			<button class="btn">{{ $t("general.config.button.exportConfig") }} ⤴️</button>
-			<button class="btn">{{ $t("general.config.button.importConfig") }} ⤵️</button>
+			<button class="btn" @click="showConfigModal('export')">{{ $t("general.config.button.exportConfig") }} ⤴️</button>
+			<button class="btn" @click="showConfigModal('import')">{{ $t("general.config.button.importConfig") }} ⤵️</button>
 			<button class="btn" @click="resetConfig()">{{ $t("general.config.button.resetConfig") }} 🔄</button>
+		</div>
+	</div>
+
+	<div class="config-modal" v-if="configModalType">
+		<div class="config-modal-body">
+			<textarea
+				ref="configTextarea"
+				spellcheck="false"
+				autocorrect="off"
+				autocapitalize="off"
+				autocomplete="off"
+				v-model="configModalValue"
+				:placeholder="configModalType === 'import' ? $t('general.config.modal.importTips') : $t('general.config.modal.exportTips')"
+			></textarea>
+			<div class="buttons">
+				<button class="btn" @click="configModalType = configModalValue = ''">
+					{{ $t("general.config.button.cancel") }}
+				</button>
+				<button class="btn" @click="configModalSubmit()">
+					{{ configModalType === "import" ? $t("general.config.button.submit") : $t("general.config.button.copy") }}
+				</button>
+			</div>
 		</div>
 	</div>
 </template>
@@ -65,6 +87,39 @@ function setLocale(e) {
 		i18n.global.locale = locale.value;
 		localStorage.setItem("lang", locale.value);
 	});
+}
+
+const configModalType = ref("");
+const configModalValue = ref("");
+function showConfigModal(type) {
+	configModalType.value = type;
+	configModalValue.value = type === "import" ? "" : JSON.stringify(config.$state, null, 2);
+}
+function configModalSubmit() {
+	if (configModalType.value === "import") {
+		try {
+			const newConfig = JSON.parse(configModalValue.value);
+			config.$patch(newConfig);
+			alert(t("general.config.alert.importSuccess"));
+
+			configModalType.value = "";
+			configModalValue.value = "";
+		} catch (e) {
+			alert(t("general.config.alert.importError"));
+		}
+	} else if (configModalType.value === "export") {
+		navigator.clipboard
+			.writeText(configModalValue.value)
+			.then(() => {
+				alert(t("general.config.alert.copySuccess"));
+
+				configModalType.value = "";
+				configModalValue.value = "";
+			})
+			.catch(() => {
+				alert(t("general.config.alert.copyError"));
+			});
+	}
 }
 </script>
 
@@ -104,6 +159,42 @@ function setLocale(e) {
 	gap: 5px;
 	.btn {
 		flex: 1;
+	}
+}
+
+.config-modal {
+	position: fixed;
+	z-index: 9998;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(black, 0.7);
+
+	.config-modal-body {
+		margin: 60px 20px 20px;
+		height: calc(100% - 20px - 60px);
+		width: calc(100% - 40px);
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		gap: 10px;
+
+		textarea {
+			width: 100%;
+			height: 100%;
+			font-family: "Courier New", monospace;
+			font-size: 11px;
+			resize: none;
+		}
+		.buttons {
+			display: flex;
+			gap: 10px;
+			height: 30px;
+			button {
+				width: 100%;
+			}
+		}
 	}
 }
 </style>
