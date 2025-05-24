@@ -13,6 +13,8 @@ import i18nChecker from "./vite-plugin-i18n-checker.js";
 	if (!fs.existsSync(dirPath)) fs.mkdirSync(dirPath);
 });
 
+if (fs.existsSync("public/_locales")) fs.rmSync("public/_locales", { recursive: true, force: true });
+
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
 	return {
@@ -50,19 +52,22 @@ export default defineConfig(({ mode }) => {
 				buildStart() {
 					for (const file of fs.readdirSync("src/assets/i18n").filter((file) => file.endsWith(".json"))) {
 						const name = file.replace(/\.json$/, "");
-						const dir = `./public/_locales/${name}`;
+						const dir = `./public/_locales/${name.replace("-", "_")}`;
+						const localeData = JSON.parse(fs.readFileSync(`src/assets/i18n/${file}`, "utf-8"));
 
 						const messagesJsonFile = `${dir}/messages.json`;
+
+						if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 						if (mode === "production" || !fs.existsSync(messagesJsonFile)) {
 							fs.writeFileSync(
 								messagesJsonFile,
 								JSON.stringify(
 									{
 										manifest_name: {
-											message: manifest.name,
+											message: localeData.manifest.name,
 										},
 										manifest_description: {
-											message: manifest.description,
+											message: localeData.manifest.description,
 										},
 									},
 									null,
@@ -70,8 +75,6 @@ export default defineConfig(({ mode }) => {
 								),
 							);
 						}
-
-						if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 					}
 				},
 			},

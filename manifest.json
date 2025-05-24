@@ -3,7 +3,7 @@
 	"name": "__MSG_manifest_name__",
 	"description": "__MSG_manifest_description__",
 	"short_name": "YouTubeTweak",
-	"default_locale": "zh-CN",
+	"default_locale": "zh_CN",
 	"action": {
 		"default_popup": "index.html",
 		"default_icon": {
