@@ -1,7 +1,7 @@
 {
 	"manifest": {
-		"name": "YouTube Tweak - YouTube增强插件,极致优化YouTube使用体验",
-		"description": "YouTube Tweak 是一款专为 YouTube 设计的浏览器插件，旨在提升用户体验。它提供了多种功能，包括自动跳过广告、锁定画质、隐藏不必要的按钮等，帮助用户更流畅地浏览和观看视频。"
+		"name": "YouTube Tweak - Power-up extension for a cleaner and smarter YouTube experience",
+		"description": "Packed with all the features you want: lock video quality, speed buttons, show commenter names, auto-translate comments, hide distractions, and more."
 	},
 	"tabs": {
 		"player": {

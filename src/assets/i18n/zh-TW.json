@@ -1,4 +1,8 @@
 {
+	"manifest": {
+		"name": "YouTube Tweak - YouTube 增強插件，極致優化 YouTube 使用體驗",
+		"description": "幾乎包含你想要的所有 YouTube 增強功能：鎖定畫質、倍速按鈕、顯示留言暱稱、自動翻譯留言、隱藏干擾元素等，全面提升使用體驗。"
+	},
 	"tabs": {
 		"player": {
 			"title": "播放器"
