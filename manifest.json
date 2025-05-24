@@ -1,7 +1,9 @@
 {
 	"manifest_version": 3,
-	"name": "YoutubeTweak",
-	"description": "为YouTube重度用户大幅提升使用体验。",
+	"name": "__MSG_manifest_name__",
+	"description": "__MSG_manifest_description__",
+	"short_name": "YouTubeTweak",
+	"default_locale": "zh-CN",
 	"action": {
 		"default_popup": "index.html",
 		"default_icon": {
@@ -15,7 +17,7 @@
 		"48": "assets/img/logo/48.png",
 		"128": "assets/img/logo/128.png"
 	},
-	"permissions": ["storage"],
+	"permissions": ["storage", "tabs"],
 	"content_scripts": [
 		{
 			"all_frames": true,
@@ -39,6 +41,7 @@
 			"js": ["src/inject/mainWorldCreated.js"]
 		}
 	],
+	"host_permissions": ["*://*.youtube.com/*"],
 	"background": {
 		"service_worker": "src/background.js"
 	}

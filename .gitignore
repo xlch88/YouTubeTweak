@@ -1,5 +1,6 @@
 .chrome-profile
 public/assets/img/logo/*.png
+public/_locales
 
 # Logs
 logs

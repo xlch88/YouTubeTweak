@@ -45,6 +45,36 @@ export default defineConfig(({ mode }) => {
 					return Promise.allSettled(wait);
 				},
 			},
+			{
+				name: "manifest-i18n",
+				buildStart() {
+					for (const file of fs.readdirSync("src/assets/i18n").filter((file) => file.endsWith(".json"))) {
+						const name = file.replace(/\.json$/, "");
+						const dir = `./public/_locales/${name}`;
+
+						const messagesJsonFile = `${dir}/messages.json`;
+						if (mode === "production" || !fs.existsSync(messagesJsonFile)) {
+							fs.writeFileSync(
+								messagesJsonFile,
+								JSON.stringify(
+									{
+										manifest_name: {
+											message: manifest.name,
+										},
+										manifest_description: {
+											message: manifest.description,
+										},
+									},
+									null,
+									2,
+								),
+							);
+						}
+
+						if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+					}
+				},
+			},
 			i18nChecker(),
 			webExtension({
 				manifest: () => ({
