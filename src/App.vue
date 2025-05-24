@@ -65,6 +65,7 @@ main {
 }
 header {
 	position: fixed;
+	z-index: 9999;
 	height: 40px;
 	width: 100%;
 	top: 0;
