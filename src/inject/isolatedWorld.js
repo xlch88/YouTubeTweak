@@ -96,6 +96,35 @@ export const metadata = {
 					videoPlayer.videoStream = videoStream;
 					videoPlayer.playerApi = createPlayerAPIProxy(player);
 
+					function onVideoSrcChange(oldValue, newValue) {
+						const isAD = videoPlayer.player?.querySelector(".video-ads")?.childNodes.length > 0;
+						setTimeout(() => {
+							const isAD2 = videoPlayer.player?.querySelector(".video-ads")?.childNodes.length > 0;
+
+							Object.entries(plugins)
+								.filter((p) => p[1].videoSrcChange)
+								.forEach((p) => p[1].videoSrcChange(oldValue, newValue, isAD || isAD2));
+							logger.warn("video src changed", {
+								oldValue,
+								newValue,
+								isAD: isAD || isAD2,
+							});
+						}, 100);
+					}
+
+					let observer = new MutationObserver((mutationList) => {
+						mutationList.forEach((mutation) => {
+							if (mutation.type !== "attributes" || mutation.attributeName !== "src") return;
+
+							const handler = () => {
+								videoStream.removeEventListener("canplay", handler);
+								onVideoSrcChange(mutation.oldValue, mutation.target.getAttribute("src"));
+							};
+							videoStream.addEventListener("canplay", handler, { once: true });
+						});
+					});
+					observer.observe(videoPlayer.videoStream, { attributes: true, attributeOldValue: true, attributeFilter: ["src"] });
+
 					Object.values(plugins)
 						.filter((p) => p.initPlayer)
 						.map((p) => {
@@ -105,6 +134,7 @@ export const metadata = {
 								logger.error("plugin error:", e);
 							}
 						});
+					onVideoSrcChange(null, videoStream.src);
 				}
 			}
 		}
