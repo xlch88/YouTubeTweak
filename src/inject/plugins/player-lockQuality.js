@@ -29,20 +29,12 @@ export default {
 		initPlayer() {
 			if (!config.get("player.settings.lockQuality")) return;
 			setQuality();
-
-			let observer = new MutationObserver((mutationList) => {
-				mutationList.forEach((mutation) => {
-					if (mutation.type !== "attributes" || mutation.attributeName !== "src") return;
-
-					if (pageUrl !== window.location.href) {
-						pageUrl = window.location.href;
-						setQuality();
-					}
-
-					logger.warn("video src changed", mutation.target.src);
-				});
-			});
-			observer.observe(videoPlayer.videoStream, { attributes: true });
+		},
+		videoSrcChange(oldValue, newValue, isAD) {
+			if (!isAD && newValue && pageUrl !== window.location.href) {
+				pageUrl = window.location.href;
+				setQuality();
+			}
 		},
 		configUpdate(oldConfig, newConfig) {
 			return oldConfig["player.settings.lockQuality.value"] !== newConfig["player.settings.lockQuality.value"];
