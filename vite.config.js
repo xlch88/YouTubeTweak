@@ -7,6 +7,7 @@ import sharp from "sharp";
 import fs from "node:fs";
 import pkg from "./package.json";
 import manifest from "./manifest.json";
+import i18nChecker from "./vite-plugin-i18n-checker.js";
 
 ["public/assets/img/logo", ".chrome-profile"].forEach((dirPath) => {
 	if (!fs.existsSync(dirPath)) fs.mkdirSync(dirPath);
@@ -44,6 +45,7 @@ export default defineConfig(({ mode }) => {
 					return Promise.allSettled(wait);
 				},
 			},
+			i18nChecker(),
 			webExtension({
 				manifest: () => ({
 					version: pkg.version,
