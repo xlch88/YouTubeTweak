@@ -42,11 +42,15 @@
 					<span>{{ speed }}x</span>
 				</label>
 			</div>
-			<p>记住倍速</p>
 
-			<label class="form-item" v-for="speed in [0.25, 0.5, 1, 1.25, 1.5, 2, 3]">
-				<input type="checkbox" v-model="config['player.ui.speedButtons']" :value="speed" :key="speed" />
-				<span>{{ speed }}x</span>
+			<p>{{ $t("player.speedButtons.tips.save") }}</p>
+			<label class="form-item">
+				<input type="checkbox" v-model="config['player.settings.saveSpeed']" />
+				<span>{{ $t("player.speedButtons.checkbox.save") }}</span>
+			</label>
+			<label class="form-item">
+				<input type="checkbox" v-model="config['player.settings.saveSpeedByChannel']" />
+				<span>{{ $t("player.speedButtons.checkbox.saveByChannel") }}</span>
 			</label>
 		</div>
 	</div>
