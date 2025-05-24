@@ -27,10 +27,13 @@
 		"speedButtons": {
 			"title": "倍速按钮",
 			"checkbox": {
-				"enable": "显示倍速按钮"
+				"enable": "显示倍速按钮",
+				"save": "记住播放器速度",
+				"saveByChannel": "为每个频道分别记住播放速度"
 			},
 			"tips": {
-				"enabledButtons": "启用的按钮："
+				"enabledButtons": "启用的按钮：",
+				"save": "记住速度"
 			}
 		},
 		"hidePlayerButtons": {

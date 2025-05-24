@@ -1,0 +1,128 @@
+{
+	"tabs": {
+		"player": {
+			"title": "播放器"
+		},
+		"comment": {
+			"title": "留言"
+		},
+		"other": {
+			"title": "其他"
+		},
+		"general": {
+			"title": "通用"
+		}
+	},
+
+	"player": {
+		"lockQuality": {
+			"title": "鎖定解析度",
+			"checkbox": {
+				"enable": "在每次播放時自動將解析度切換為"
+			},
+			"tips": {
+				"quality": "如果沒有此解析度，將會自動順延至其他的最高解析度。"
+			}
+		},
+		"speedButtons": {
+			"title": "倍速按鈕",
+			"checkbox": {
+				"enable": "顯示倍速按鈕",
+				"save": "記住播放速度",
+				"saveByChannel": "為每個頻道分別記住播放速度"
+			},
+			"tips": {
+				"enabledButtons": "啟用的按鈕："
+			}
+		},
+		"hidePlayerButtons": {
+			"title": "隱藏按鈕",
+			"checkbox": {
+				"autoplay": "隱藏自動播放按鈕",
+				"subtitles": "隱藏字幕按鈕",
+				"settings": "隱藏設置按鈕",
+				"miniPlayer": "隱藏迷你播放器按鈕",
+				"pip": "隱藏畫中畫按鈕",
+				"size": "隱藏寬畫幅(劇場模式)按鈕",
+				"remote": "隱藏遠程播放(在電視上播放)按鈕",
+				"fullscreen": "隱藏全屏按鈕"
+			}
+		},
+		"ui": {
+			"title": "介面",
+			"checkbox": {
+				"hideCeElement": "半透明化結尾的推薦影片、作者"
+			}
+		},
+		"other": {
+			"title": "其他",
+			"checkbox": {
+				"maxVolume": "最大音量時關閉統一音量(真·100%音量)"
+			}
+		}
+	},
+	"comment": {
+		"nickname": {
+			"title": "暱稱",
+			"checkbox": {
+				"showNickname": "顯示留言者暱稱(頻道名稱)"
+			}
+		},
+		"context": {
+			"title": "留言內容",
+			"checkbox": {
+				"autoShowMore": "自動展開長留言",
+				"autoTranslate": "自動翻譯留言"
+			}
+		}
+	},
+	"other": {
+		"index": {
+			"title": "首頁",
+			"checkbox": {
+				"videoPerRow": "鎖定首頁上每行推薦影片的數量"
+			}
+		},
+		"antiAD": {
+			"title": "刪除廣告",
+			"checkbox": {
+				"enable": "自動跳過廣告影片、刪除列表圖文廣告",
+				"enableMerch": "刪除頻道商品推薦"
+			},
+			"tips": {
+				"enable": "實驗功能(不穩定)，部分情況下仍需點擊播放器中的“跳過”，並有可能遭到YouTube檢測。"
+			}
+		}
+	},
+	"general": {
+		"about": {
+			"title": "關於",
+			"link": {
+				"github": "源代碼",
+				"issue": "問題反饋",
+				"changelog": "更新日誌"
+			}
+		},
+		"config": {
+			"title": "擴充程式設定",
+			"alert": {
+				"resetConfig": "確定要重置此擴充程式的所有設定嗎？"
+			},
+			"button": {
+				"exportConfig": "導出設定",
+				"importConfig": "導入設定",
+				"resetConfig": "重置設定"
+			}
+		},
+		"language": {
+			"title": "語言"
+		}
+	},
+
+	"installed": {
+		"title": "✅ 擴充程式已成功安裝！",
+		"line1": "感謝您安裝本擴充程式。",
+		"line2": "您可以點擊瀏覽器右上角的擴充程式按鈕已開始使用。",
+		"line3": "如果您在使用中遇到任何的問題，歡迎在我們的 GitHub 源代碼倉庫上進行反饋。"
+	}
+}

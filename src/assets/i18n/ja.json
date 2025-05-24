@@ -15,13 +15,26 @@
 	},
 
 	"player": {
+		"lockQuality": {
+			"title": "画質を固定",
+			"checkbox": {
+				"enable": "再生時に画質を自動的に次に切り替える"
+			},
+			"tips": {
+				"quality": "指定された画質が存在しない場合は、それ以下の最高画質に自動的に切り替えます。"
+			}
+		},
 		"speedButtons": {
 			"title": "再生速度ボタン",
 			"checkbox": {
-				"enable": "再生速度ボタンを表示する"
+				"enable": "再生速度ボタンを表示する",
+				"save": "再生速度を記憶する",
+				"saveByChannel": "チャンネルごとに再生速度を記憶する"
 			},
 			"tips": {
-				"enabledButtons": "有効になったボタン"
+				"enabledButtons": "有効になったボタン",
+				"save": "再生速度を記憶する",
+				"saveByChannel": "チャンネルごとに再生速度を記憶する"
 			}
 		},
 		"hidePlayerButtons": {

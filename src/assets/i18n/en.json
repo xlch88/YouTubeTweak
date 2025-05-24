@@ -15,13 +15,25 @@
 	},
 
 	"player": {
+		"lockQuality": {
+			"title": "Lock quality",
+			"checkbox": {
+				"enable": "Automatically switch to this quality when playback starts"
+			},
+			"tips": {
+				"quality": "If the selected quality is not available, the highest lower quality will be used."
+			}
+		},
 		"speedButtons": {
 			"title": "Speed buttons",
 			"checkbox": {
-				"enable": "Show speed buttons"
+				"enable": "Show speed buttons",
+				"save": "Remember playback speed",
+				"saveByChannel": "Remember playback speed per channel"
 			},
 			"tips": {
-				"enabledButtons": "Enabled buttons:"
+				"enabledButtons": "Enabled buttons:",
+				"save": "Remember speed"
 			}
 		},
 		"hidePlayerButtons": {
