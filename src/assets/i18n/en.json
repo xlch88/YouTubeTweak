@@ -13,7 +13,6 @@
 			"title": "General"
 		}
 	},
-
 	"player": {
 		"lockQuality": {
 			"title": "Lock quality",
@@ -107,19 +106,32 @@
 		"config": {
 			"title": "Plugin settings",
 			"alert": {
-				"resetConfig": "Are you sure you want to reset all settings?"
+				"resetConfig": "Are you sure you want to reset all settings?",
+				"importSuccess": "Settings imported successfully!",
+				"importError": "Failed to import settings, please check the format.",
+				"copySuccess": "Settings copied successfully!",
+				"copyError": "Failed to copy settings, please try again or use Ctrl+C."
 			},
 			"button": {
 				"exportConfig": "Export settings",
 				"importConfig": "Import settings",
-				"resetConfig": "Reset settings"
+				"resetConfig": "Reset settings",
+				"cancel": "Cancel",
+				"submit": "Confirm",
+				"copy": "Copy"
+			},
+			"modal": {
+				"importTips": "Paste the settings you want to import here",
+				"exportTips": "Copy the settings below to import them into another browser or share them with others."
 			}
 		},
 		"language": {
-			"title": "Language"
+			"title": "Language",
+			"link": {
+				"translator": "Translator"
+			}
 		}
 	},
-
 	"installed": {
 		"title": "✅ Extension successfully installed!",
 		"line1": "Thank you for installing this extension.",

@@ -13,7 +13,6 @@
 			"title": "通用"
 		}
 	},
-
 	"player": {
 		"lockQuality": {
 			"title": "锁定画质",
@@ -107,19 +106,32 @@
 		"config": {
 			"title": "插件设置",
 			"alert": {
-				"resetConfig": "确定要重置全部设置吗？"
+				"resetConfig": "确定要重置全部设置吗？",
+				"importSuccess": "设置导入成功！",
+				"importError": "设置导入失败，请检查格式。",
+				"copySuccess": "设置复制成功！",
+				"copyError": "设置复制失败，请重试或使用 Ctrl+C。"
 			},
 			"button": {
 				"exportConfig": "导出设置",
 				"importConfig": "导入设置",
-				"resetConfig": "重置设置"
+				"resetConfig": "重置设置",
+				"cancel": "取消",
+				"submit": "确认",
+				"copy": "复制设置"
+			},
+			"modal": {
+				"importTips": "在此处粘贴要导入的设置",
+				"exportTips": "将下面的设置复制到其他浏览器或分享给他人"
 			}
 		},
 		"language": {
-			"title": "语言"
+			"title": "语言",
+			"link": {
+				"translator": "翻译贡献者"
+			}
 		}
 	},
-
 	"installed": {
 		"title": "✅ 插件已成功安装！",
 		"line1": "感谢你安装本插件。",

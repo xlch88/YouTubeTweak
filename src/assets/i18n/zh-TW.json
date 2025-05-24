@@ -13,7 +13,6 @@
 			"title": "通用"
 		}
 	},
-
 	"player": {
 		"lockQuality": {
 			"title": "鎖定解析度",
@@ -32,7 +31,8 @@
 				"saveByChannel": "為每個頻道分別記住播放速度"
 			},
 			"tips": {
-				"enabledButtons": "啟用的按鈕："
+				"enabledButtons": "啟用的按鈕：",
+				"save": "記住速度"
 			}
 		},
 		"hidePlayerButtons": {
@@ -106,19 +106,32 @@
 		"config": {
 			"title": "擴充程式設定",
 			"alert": {
-				"resetConfig": "確定要重置此擴充程式的所有設定嗎？"
+				"resetConfig": "確定要重置此擴充程式的所有設定嗎？",
+				"importSuccess": "設定導入成功！",
+				"importError": "設定導入失敗，請檢查格式。",
+				"copySuccess": "設定複製成功！",
+				"copyError": "設定複製失敗，請重試或使用 Ctrl+C。"
 			},
 			"button": {
 				"exportConfig": "導出設定",
 				"importConfig": "導入設定",
-				"resetConfig": "重置設定"
+				"resetConfig": "重置設定",
+				"cancel": "取消",
+				"submit": "確認",
+				"copy": "複製設定"
+			},
+			"modal": {
+				"importTips": "在此處粘貼要導入的設定",
+				"exportTips": "將下面的設定複製到其他瀏覽器或分享給他人"
 			}
 		},
 		"language": {
-			"title": "語言"
+			"title": "語言",
+			"link": {
+				"translator": "翻譯貢獻者"
+			}
 		}
 	},
-
 	"installed": {
 		"title": "✅ 擴充程式已成功安裝！",
 		"line1": "感謝您安裝本擴充程式。",

@@ -13,7 +13,6 @@
 			"title": "全般"
 		}
 	},
-
 	"player": {
 		"lockQuality": {
 			"title": "画質を固定",
@@ -33,8 +32,7 @@
 			},
 			"tips": {
 				"enabledButtons": "有効になったボタン",
-				"save": "再生速度を記憶する",
-				"saveByChannel": "チャンネルごとに再生速度を記憶する"
+				"save": "再生速度を記憶する"
 			}
 		},
 		"hidePlayerButtons": {
@@ -108,19 +106,32 @@
 		"config": {
 			"title": "拡張設定",
 			"alert": {
-				"resetConfig": "すべての設定をリセットしますか？"
+				"resetConfig": "すべての設定をリセットしますか？",
+				"importSuccess": "設定のインポートに成功しました！",
+				"importError": "設定のインポートに失敗しました。フォーマットを確認してください。",
+				"copySuccess": "設定のコピーに成功しました！",
+				"copyError": "設定のコピーに失敗しました。再試行するか、Ctrl+Cを使用してください。"
 			},
 			"button": {
 				"exportConfig": "設定をエクスポート",
 				"importConfig": "設定をインポート",
-				"resetConfig": "設定をリセット"
+				"resetConfig": "設定をリセット",
+				"cancel": "キャンセル",
+				"submit": "確認",
+				"copy": "設定をコピー"
+			},
+			"modal": {
+				"importTips": "インポートしたい設定をここに貼り付けてください",
+				"exportTips": "以下の設定を他のブラウザにコピーするか、他の人と共有してください"
 			}
 		},
 		"language": {
-			"title": "言語"
+			"title": "言語",
+			"link": {
+				"translator": "翻訳協力者"
+			}
 		}
 	},
-
 	"installed": {
 		"title": "✅ 拡張機能が正常にインストールされました！",
 		"line1": "YouTube Tweakをご利用いただき、ありがとうございます。",

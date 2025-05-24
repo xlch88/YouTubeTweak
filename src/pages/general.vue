@@ -18,10 +18,13 @@
 
 	<div class="card">
 		<div class="card-title">{{ $t("general.language.title") }} (Language)</div>
-		<div class="card-body config">
-			<select @change="setLocale" v-model="locale">
+		<div class="card-body">
+			<select class="w-100" @change="setLocale" v-model="locale">
 				<option v-for="(name, key) of locales" :key="key" :value="key">{{ name }}</option>
 			</select>
+			<a :href="`https://github.com/xlch88/YoutubeTweak/blob/main/TRANSLATORS.md#${locale}`" target="_blank">{{
+				$t("general.language.link.translator")
+			}}</a>
 		</div>
 	</div>
 

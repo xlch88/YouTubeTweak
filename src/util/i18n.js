@@ -11,9 +11,18 @@ export const locales = {
 };
 
 export async function initI18n() {
-	let locale = localStorage.getItem("lang") || window?.navigator?.language || "zh";
-	if (!locales[locale] && locale.includes("-") && locales[locale.split("-")[0]]) {
-		locale = locale.split("-")[0];
+	let locale = localStorage.getItem("lang");
+	if (!locale) {
+		for (const l of window?.navigator?.languages) {
+			if (locales[l]) {
+				locale = l;
+			} else if (locales[l.split("-")[0]]) {
+				locale = l.split("-")[0];
+			}
+		}
+	}
+	if (!locales[locale]) {
+		locale = "en";
 	}
 
 	i18n = createI18n({
