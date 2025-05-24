@@ -23,12 +23,12 @@ window.addEventListener("message", (event) => {
 		return;
 	}
 
-	logger.log("player:", player);
+	logger.debug("player:", player);
 
 	if (player[event.data.func] !== undefined) {
 		try {
 			const result = player[event.data.func](...event.data.args);
-			logger.info("call player api:", event.data.func, event.data.args, result);
+			logger.debug("call player api:", event.data.func, event.data.args, result);
 			reply(true, result);
 			return;
 		} catch (e) {

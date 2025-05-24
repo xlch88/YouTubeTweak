@@ -1,5 +1,6 @@
 import config from "./config.js";
 import logger from "../logger.js";
+import { createPlayerAPIProxy } from "./helper.js";
 
 const plugins = Object.assign({}, ...Object.values(import.meta.glob("./plugins/*.js", { eager: true }).map((m) => m.default)));
 
@@ -8,6 +9,8 @@ export const videoPlayer = {
 	player: null,
 	controls: null,
 	videoStream: null,
+	playerApi: null,
+};
 export const metadata = {
 	video: null,
 };
@@ -91,6 +94,7 @@ export const metadata = {
 					videoPlayer.player = player;
 					videoPlayer.controls = controls;
 					videoPlayer.videoStream = videoStream;
+					videoPlayer.playerApi = createPlayerAPIProxy(player);
 
 					Object.values(plugins)
 						.filter((p) => p.initPlayer)

@@ -22,14 +22,11 @@ const playerProxyList = {};
  * @returns {{
  *   setPlaybackQuality: (string) => Promise<undefined>,
  *   getAvailableQualityLevels: () => Promise<string[]>,
- * } | null}
+ *   setPlaybackRate: (float) => Promise<undefined>,
+ * }}
  */
-export function createPlayerAPIProxy() {
-	if (!videoPlayer?.player) {
-		return null;
-	}
-
-	let apiId = videoPlayer.player.getAttribute("yttweak-api-id");
+export function createPlayerAPIProxy(player) {
+	let apiId = player.getAttribute("yttweak-api-id");
 	if (apiId && playerProxyList[apiId]) {
 		playerApiLogger.debug("get player api proxy:", apiId);
 		return playerProxyList[apiId];
@@ -38,7 +35,7 @@ export function createPlayerAPIProxy() {
 	apiId = crypto.randomUUID();
 	const callbackMap = {};
 	let msgId = 0;
-	videoPlayer.player.setAttribute("yttweak-api-id", apiId);
+	player.setAttribute("yttweak-api-id", apiId);
 	playerApiLogger.log("create player api proxy:", apiId);
 
 	const messageCallback = (event) => {
