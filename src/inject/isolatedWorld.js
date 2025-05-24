@@ -8,6 +8,8 @@ export const videoPlayer = {
 	player: null,
 	controls: null,
 	videoStream: null,
+export const metadata = {
+	video: null,
 };
 
 (async () => {
@@ -151,6 +153,21 @@ export const videoPlayer = {
 	window.__YT_TWEAK__ = {
 		plugins,
 		videoPlayer,
+		metadata,
 	};
 	logger.debug(window.__YT_TWEAK__);
 })();
+
+window.addEventListener("message", (event) => {
+	if (event.source !== window) return;
+	if (event.data?.from === "YouTubeTweak-FetchHook") {
+		switch (event.data.type) {
+			case "player-v1":
+				if (event.data.data?.videoDetails?.videoId === new URL(window.location)?.searchParams?.get("v")) {
+					logger.debug("FetchHook - player metadata:", event.data.data);
+					metadata.video = event.data.data;
+				}
+				break;
+		}
+	}
+});

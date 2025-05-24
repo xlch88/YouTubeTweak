@@ -39,3 +39,27 @@ window.addEventListener("message", (event) => {
 	}
 	reply(false, "Function not found");
 });
+
+(function () {
+	const originalFetch = window.fetch;
+	window.fetch = async function (...args) {
+		const url = args[0]?.url || args[0];
+		if (typeof url === "string" && url.includes("/youtubei/v1/player")) {
+			const response = await originalFetch.apply(this, args);
+			const clone = response.clone();
+			clone.json().then((data) => {
+				window.postMessage(
+					{
+						from: "YouTubeTweak-FetchHook",
+						type: "player-v1",
+						url,
+						data,
+					},
+					"*",
+				);
+			});
+			return response;
+		}
+		return originalFetch.apply(this, args);
+	};
+})();
