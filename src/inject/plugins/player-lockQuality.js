@@ -1,4 +1,3 @@
-import { createPlayerAPIProxy } from "../helper.js";
 import { createLogger } from "../../logger.js";
 import config from "../config.js";
 import { videoPlayer } from "../isolatedWorld.js";
@@ -6,18 +5,17 @@ const logger = createLogger("player-lockQuality");
 
 const qualityList = ["highres", "hd2160", "hd1440", "hd1080", "hd720", "large", "medium", "small", "tiny"];
 let pageUrl = window.location.href;
-let playerApi;
 
 async function setQuality() {
-	const qualityLevels = (await playerApi.getAvailableQualityLevels()) || [];
+	const qualityLevels = (await videoPlayer.playerApi.getAvailableQualityLevels()) || [];
 	logger.info("available quality levels:", qualityLevels);
 
 	let toQuality = config.get("player.settings.lockQuality.value");
 	toQuality = qualityList.slice(qualityList.indexOf(toQuality)).find((q) => qualityLevels.includes(q)) || null;
 
 	if (toQuality) {
-		playerApi.setPlaybackQuality(toQuality);
-		playerApi.setPlaybackQualityRange(toQuality);
+		videoPlayer.playerApi.setPlaybackQuality(toQuality);
+		videoPlayer.playerApi.setPlaybackQualityRange(toQuality);
 	}
 	logger.info("set playback quality", toQuality);
 }
@@ -25,13 +23,11 @@ async function setQuality() {
 export default {
 	"player.settings.lockQuality": {
 		enable() {
-			if (!playerApi) return;
+			if (!videoPlayer.playerApi) return;
 			setQuality();
 		},
 		initPlayer() {
 			if (!config.get("player.settings.lockQuality")) return;
-
-			playerApi = createPlayerAPIProxy();
 			setQuality();
 
 			let observer = new MutationObserver((mutationList) => {
