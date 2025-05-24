@@ -11,7 +11,7 @@ export const locales = {
 };
 
 export async function initI18n() {
-	let locale = window?.navigator?.language || "zh";
+	let locale = localStorage.getItem("lang") || window?.navigator?.language || "zh";
 	if (!locales[locale] && locale.includes("-") && locales[locale.split("-")[0]]) {
 		locale = locale.split("-")[0];
 	}
