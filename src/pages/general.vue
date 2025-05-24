@@ -77,7 +77,7 @@ function setLocale(e) {
 
 	img {
 		width: 100px;
-		height: 70px;
+		height: 80px;
 	}
 
 	p {
@@ -87,6 +87,7 @@ function setLocale(e) {
 			font-size: 20px;
 			font-weight: bolder;
 			margin-top: 10px;
+			color: black;
 		}
 		&.version {
 			font-size: 15px;
