@@ -3,7 +3,7 @@
 		<header>
 			<div class="item logo">
 				<img src="/assets/img/logo.svg" alt="logo" />
-				<span>YTTweak</span>
+				<span><small>YouTube</small>Tweak</span>
 			</div>
 			<button
 				v-for="key in ['player', 'comment', 'other', 'general']"
@@ -111,8 +111,17 @@ header {
 			span {
 				font-weight: bolder;
 				font-size: 15px;
-				line-height: 14px;
+				line-height: 12px;
 				font-family: "Trebuchet MS";
+				display: flex;
+				flex-direction: column;
+				text-align: left;
+
+				small {
+					font-size: 7px;
+					line-height: 7px;
+					color: rgba(0, 0, 0, 0.5);
+				}
 			}
 		}
 	}
