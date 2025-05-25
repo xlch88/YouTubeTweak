@@ -8,12 +8,11 @@ import fs from "node:fs";
 import pkg from "./package.json";
 import manifest from "./manifest.json";
 import i18nChecker from "./vite-plugin-i18n-checker.js";
+import child_process from "node:child_process";
 
 ["public/assets/img/logo", ".chrome-profile"].forEach((dirPath) => {
 	if (!fs.existsSync(dirPath)) fs.mkdirSync(dirPath);
 });
-
-if (fs.existsSync("public/_locales")) fs.rmSync("public/_locales", { recursive: true, force: true });
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
@@ -27,6 +26,8 @@ export default defineConfig(({ mode }) => {
 		build: {
 			sourcemap: mode === "production" ? false : "inline",
 			minify: mode === "production",
+			emptyOutDir: true,
+			outDir: mode === "production" ? "dist" : "dist_dev",
 		},
 		plugins: [
 			sassGlobImports(),
@@ -90,9 +91,19 @@ export default defineConfig(({ mode }) => {
 				webExtConfig: {
 					chromiumProfile: fs.realpathSync(__dirname + "/.chrome-profile"),
 					keepProfileChanges: true,
-					startUrl: ["https://www.youtube.com/watch?v=ghWpp_iNkLg"],
+					startUrl: ["https://www.youtube.com/watch?v=zczjerfFrSI"],
+					// args: ["--mute-audio"],
 				},
 			}),
+			{
+				name: "auto-zip",
+				closeBundle() {
+					if (mode === "production") {
+						fs.existsSync("./dist.zip") && fs.unlinkSync("./dist.zip");
+						child_process.execSync("7z a -tzip ./dist.zip ./dist/*");
+					}
+				},
+			},
 		],
 	};
 });
