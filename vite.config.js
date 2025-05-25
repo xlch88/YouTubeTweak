@@ -54,14 +54,18 @@ export default defineConfig(({ mode }) => {
 					if (mode === "production") {
 						fs.rmSync("./public/_locales", { recursive: true, force: true });
 					}
+
 					for (const file of fs.readdirSync("src/assets/i18n").filter((file) => file.endsWith(".json"))) {
-						const name = file.replace(/\.json$/, "");
-						const dir = `./public/_locales/${name.replace("-", "_")}`;
-						const dir2 = `./public/_locales/${name.split("-")[0]}`;
+						let name = file.replace(/\.json$/, "").replace("-", "_");
+						// https://developer.chrome.com/docs/extensions/reference/api/i18n#locales
+						if (!["pt_BR", "pt_PT", "zh_CN", "zh_TW"].includes(name)) {
+							name = name.split("_")[0];
+						}
+
+						const dir = `./public/_locales/${name}`;
 						const localeData = JSON.parse(fs.readFileSync(`src/assets/i18n/${file}`, "utf-8"));
 
 						const messagesJsonFile = `${dir}/messages.json`;
-						const messagesJsonFile2 = `${dir2}/messages.json`;
 						const messagesContent = JSON.stringify(
 							{
 								manifest_name: {
@@ -76,12 +80,8 @@ export default defineConfig(({ mode }) => {
 						);
 
 						if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-						if (!fs.existsSync(dir2)) fs.mkdirSync(dir2, { recursive: true });
 						if (mode === "production" || !fs.existsSync(messagesJsonFile)) {
 							fs.writeFileSync(messagesJsonFile, messagesContent);
-						}
-						if (mode === "production" || !fs.existsSync(messagesJsonFile2)) {
-							fs.writeFileSync(messagesJsonFile2, messagesContent);
 						}
 					}
 				},
