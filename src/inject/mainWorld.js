@@ -1,5 +1,6 @@
 import { createLogger } from "../logger.js";
 import { youtubeiAPIv1 } from "./util/youtubei.js";
+
 const logger = createLogger("MainWorld");
 
 window.addEventListener("message", (event) => {
@@ -47,19 +48,28 @@ window.addEventListener("message", (event) => {
 		const url = args[0]?.url || args[0];
 		if (typeof url === "string" && url.includes("/youtubei/v1/player")) {
 			const response = await originalFetch.apply(this, args);
-			const clone = response.clone();
-			clone.json().then((data) => {
-				window.postMessage(
-					{
-						from: "YouTubeTweak-FetchHook",
-						type: "player-v1",
-						url,
-						data,
-					},
-					"*",
-				);
+			const data = await response.clone().json();
+
+			window.postMessage(
+				{
+					from: "YouTubeTweak-FetchHook",
+					type: "player-v1",
+					url,
+					data,
+				},
+				"*",
+			);
+
+			if (data && typeof data === "object" && "adSlots" in data) {
+				logger.info("Removing adSlots from player response", url);
+				delete data.adSlots;
+			}
+
+			return new Response(JSON.stringify(data), {
+				status: response.status,
+				statusText: response.statusText,
+				headers: new Headers(response.headers),
 			});
-			return response;
 		}
 		return originalFetch.apply(this, args);
 	};
@@ -69,3 +79,48 @@ window.__YT_TWEAK__ = {
 	WORLD: "main",
 	youtubeiAPIv1,
 };
+
+Object.defineProperty(window, "ytplayer", {
+	configurable: true,
+	enumerable: true,
+	set(v) {
+		console.log("ytplayer set:", v);
+
+		// 拦截 ytplayer.config
+		Object.defineProperty(v, "config", {
+			configurable: true,
+			enumerable: true,
+			set(cfg) {
+				console.log("ytplayer.config 被赋值:", cfg);
+				if (cfg?.args?.raw_player_response?.playerAds) {
+					cfg.args.raw_player_response.playerAds = [];
+				}
+				this._cfg = cfg;
+			},
+			get() {
+				return this._cfg;
+			},
+		});
+
+		// 拦截 ytplayer.bootstrapPlayerResponse
+		Object.defineProperty(v, "bootstrapPlayerResponse", {
+			configurable: true,
+			enumerable: true,
+			set(rsp) {
+				console.log("ytplayer.bootstrapPlayerResponse 被赋值:", rsp);
+				if (rsp?.adSlots) {
+					delete rsp.adSlots;
+				}
+				this._bpr = rsp;
+			},
+			get() {
+				return this._bpr;
+			},
+		});
+
+		this._ytp = v;
+	},
+	get() {
+		return this._ytp;
+	},
+});

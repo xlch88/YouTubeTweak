@@ -8,4 +8,5 @@ if (window.ytInitialPlayerResponse) {
 		},
 		"*",
 	);
+	delete window.ytInitialPlayerResponse.adSlots;
 }
