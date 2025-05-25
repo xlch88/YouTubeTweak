@@ -1,6 +1,11 @@
 import { createLogger } from "../../logger.js";
 const playerApiLogger = createLogger("PlayerAPI");
 
+// player = document.querySelector('ytd-player #movie_player');
+// Object.fromEntries(Object.keys(player).filter(v=>!(v in document)).filter(v=>v.startsWith('get')).map(v=>{
+// 	return [v, player[v]()];
+// }))
+
 const playerProxyList = {};
 /**
  * YouTube Player API Proxy
