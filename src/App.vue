@@ -6,7 +6,7 @@
 				<span><small>YouTube</small>Tweak</span>
 			</div>
 			<button
-				v-for="key in ['player', 'comment', 'other', 'general']"
+				v-for="key in ['player', 'comment', 'other', 'insights', 'general']"
 				:key="key"
 				class="item"
 				:class="{ active: tab === key }"
@@ -21,6 +21,7 @@
 			<comment v-else-if="tab === 'comment'"></comment>
 			<other v-else-if="tab === 'other'"></other>
 			<general v-else-if="tab === 'general'"></general>
+			<insights v-else-if="tab === 'insights'"></insights>
 		</main>
 	</template>
 	<installed v-else-if="action === 'installed'"></installed>
@@ -34,6 +35,7 @@ import Player from "./pages/player.vue";
 import Comment from "./pages/comment.vue";
 import Installed from "./pages/installed.vue";
 import General from "./pages/general.vue";
+import Insights from "./pages/insights.vue";
 
 const tab = ref("player");
 const action = ref("popup");
@@ -89,6 +91,7 @@ header {
 		cursor: pointer;
 		word-break: keep-all;
 		white-space: nowrap;
+		font-size: 12px;
 
 		&.active {
 			background: rgba(#000, 0.05);

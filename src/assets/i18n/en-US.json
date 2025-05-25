@@ -15,6 +15,9 @@
 		},
 		"general": {
 			"title": "General"
+		},
+		"insights": {
+			"title": "Insights"
 		}
 	},
 	"player": {
@@ -135,6 +138,9 @@
 				"translator": "Translator"
 			}
 		}
+	},
+	"insights": {
+		"title": "Insights"
 	},
 	"installed": {
 		"title": "✅ Extension successfully installed!",

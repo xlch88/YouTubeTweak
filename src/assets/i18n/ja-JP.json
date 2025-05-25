@@ -15,6 +15,9 @@
 		},
 		"general": {
 			"title": "全般"
+		},
+		"insights": {
+			"title": "洞察"
 		}
 	},
 	"player": {
@@ -135,6 +138,9 @@
 				"translator": "翻訳協力者"
 			}
 		}
+	},
+	"insights": {
+		"title": "洞察"
 	},
 	"installed": {
 		"title": "✅ 拡張機能が正常にインストールされました！",
