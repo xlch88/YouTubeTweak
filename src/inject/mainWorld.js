@@ -1,4 +1,5 @@
 import { createLogger } from "../logger.js";
+import { youtubeiAPIv1 } from "./util/youtubei.js";
 const logger = createLogger("MainWorld");
 
 window.addEventListener("message", (event) => {
@@ -66,4 +67,5 @@ window.addEventListener("message", (event) => {
 
 window.__YT_TWEAK__ = {
 	WORLD: "main",
+	youtubeiAPIv1,
 };

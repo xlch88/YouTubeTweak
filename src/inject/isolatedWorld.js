@@ -1,6 +1,7 @@
 import config from "./config.js";
 import logger from "../logger.js";
 import { createPlayerAPIProxy } from "./helper.js";
+import { youtubeiAPIv1 } from "./util/youtubei.js";
 
 const plugins = Object.assign({}, ...Object.values(import.meta.glob("./plugins/*.js", { eager: true }).map((m) => m.default)));
 
@@ -189,6 +190,7 @@ export const metadata = {
 		plugins,
 		videoPlayer,
 		metadata,
+		youtubeiAPIv1,
 	};
 	logger.debug(window.__YT_TWEAK__);
 })();
