@@ -32,13 +32,6 @@
 			"matches": ["*://*.youtube.com/*"],
 			"world": "MAIN",
 			"js": ["src/inject/mainWorld.js"]
-		},
-		{
-			"all_frames": true,
-			"run_at": "document_end",
-			"matches": ["*://*.youtube.com/*"],
-			"world": "MAIN",
-			"js": ["src/inject/mainWorldCreated.js"]
 		}
 	],
 	"host_permissions": ["*://*.youtube.com/*"],

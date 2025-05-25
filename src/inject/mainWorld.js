@@ -124,3 +124,22 @@ Object.defineProperty(window, "ytplayer", {
 		return this._ytp;
 	},
 });
+
+(function waitForBody() {
+	if (document.body) {
+		if (window.ytInitialPlayerResponse) {
+			window.postMessage(
+				{
+					from: "YouTubeTweak-FetchHook",
+					type: "player-v1",
+					url: "ytInitialPlayerResponse",
+					data: window.ytInitialPlayerResponse,
+				},
+				"*",
+			);
+			delete window.ytInitialPlayerResponse.adSlots;
+		}
+	} else {
+		requestAnimationFrame(waitForBody);
+	}
+})();
