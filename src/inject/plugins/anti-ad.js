@@ -21,6 +21,18 @@ export default {
 						ad.remove();
 					}
 				});
+
+				let adBlockBlocker;
+				if (
+					(adBlockBlocker = document.querySelector("ytd-enforcement-message-view-model")) &&
+					adBlockBlocker?.parentElement?.style?.display !== "none"
+				) {
+					let closeButton = adBlockBlocker?.querySelector("#dismiss-button .yt-spec-button-shape-next");
+					if (closeButton) {
+						logger.info("click adBlockBlocker close.");
+						adBlockBlocker?.querySelector("#dismiss-button .yt-spec-button-shape-next")?.click?.();
+					}
+				}
 			}, 1000);
 		},
 		disable() {
