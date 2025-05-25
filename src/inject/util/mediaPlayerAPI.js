@@ -1,17 +1,5 @@
-import { videoPlayer } from "./isolatedWorld.js";
-import { createLogger } from "../logger.js";
+import { createLogger } from "../../logger.js";
 const playerApiLogger = createLogger("PlayerAPI");
-
-export function bodyClass(className) {
-	return {
-		enable: () => {
-			document.body.classList.add(className);
-		},
-		disable: () => {
-			document.body.classList.remove(className);
-		},
-	};
-}
 
 const playerProxyList = {};
 /**
