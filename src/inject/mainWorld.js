@@ -63,3 +63,7 @@ window.addEventListener("message", (event) => {
 		return originalFetch.apply(this, args);
 	};
 })();
+
+window.__YT_TWEAK__ = {
+	WORLD: "main",
+};

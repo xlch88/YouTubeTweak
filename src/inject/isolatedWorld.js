@@ -185,6 +185,7 @@ export const metadata = {
 	}, 300);
 
 	window.__YT_TWEAK__ = {
+		WORLD: "isolated",
 		plugins,
 		videoPlayer,
 		metadata,
