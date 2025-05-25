@@ -18,8 +18,10 @@ export async function initI18n() {
 		for (const l of window?.navigator?.languages) {
 			if (locales[l]) {
 				locale = l;
+				break;
 			} else if (shotKey[l]) {
 				locale = shotKey[l];
+				break;
 			}
 		}
 	}
