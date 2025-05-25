@@ -1,4 +1,4 @@
-import { bodyClass } from "../helper.js";
+import { bodyClass } from "../util/helper.js";
 import config from "../config.js";
 import { createLogger } from "../../logger.js";
 const logger = createLogger("comment-nickname");

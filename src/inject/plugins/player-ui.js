@@ -1,4 +1,4 @@
-import { bodyClass } from "../helper.js";
+import { bodyClass } from "../util/helper.js";
 
 export default {
 	"player.ui.hideButton.autoplay": bodyClass("yttweak-hide-button-autoplay"),

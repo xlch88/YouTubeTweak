@@ -1,6 +1,7 @@
 import config from "./config.js";
 import logger from "../logger.js";
-import { createPlayerAPIProxy } from "./helper.js";
+import { checkPlayerAD } from "./util/helper.js";
+import { createPlayerAPIProxy } from "./util/mediaPlayerAPI.js";
 import { youtubeiAPIv1 } from "./util/youtubei.js";
 
 const plugins = Object.assign({}, ...Object.values(import.meta.glob("./plugins/*.js", { eager: true }).map((m) => m.default)));
@@ -79,6 +80,7 @@ export const metadata = {
 			});
 	});
 
+	const adCheckTimeouts = [];
 	setInterval(() => {
 		// catch video player
 		let player, controls, videoStream;
@@ -98,19 +100,33 @@ export const metadata = {
 					videoPlayer.playerApi = createPlayerAPIProxy(player);
 
 					function onVideoSrcChange(oldValue, newValue) {
-						const isAD = videoPlayer.player?.querySelector(".video-ads")?.childNodes.length > 0;
-						setTimeout(() => {
-							const isAD2 = videoPlayer.player?.querySelector(".video-ads")?.childNodes.length > 0;
+						adCheckTimeouts.forEach((t) => clearTimeout(t));
+						adCheckTimeouts.length = 0;
 
-							Object.entries(plugins)
-								.filter((p) => p[1].videoSrcChange)
-								.forEach((p) => p[1].videoSrcChange(oldValue, newValue, isAD || isAD2));
-							logger.warn("video src changed", {
+						function callVideoSrcChange(isAD) {
+							logger.debug("video src changed", {
 								oldValue,
 								newValue,
-								isAD: isAD || isAD2,
+								isAD: isAD,
 							});
-						}, 100);
+							Object.entries(plugins)
+								.filter((p) => p[1].videoSrcChange)
+								.forEach((p) => p[1].videoSrcChange(oldValue, newValue, isAD));
+						}
+
+						const checkCount = 10;
+						for (let i = 1; i <= checkCount; i++) {
+							adCheckTimeouts.push(
+								setTimeout(() => {
+									const isAD = checkPlayerAD();
+									if (isAD || i === checkCount) {
+										adCheckTimeouts.forEach((t) => clearTimeout(t));
+										adCheckTimeouts.length = 0;
+										callVideoSrcChange(isAD);
+									}
+								}, 100 * i),
+							);
+						}
 					}
 
 					let observer = new MutationObserver((mutationList) => {
