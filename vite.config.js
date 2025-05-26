@@ -93,7 +93,6 @@ export default defineConfig(({ mode }) => {
 					description: pkg.description,
 					...manifest,
 				}),
-				watchFilePaths: ["src/inject/**/*.*"],
 				skipManifestValidation: true,
 				webExtConfig: {
 					chromiumProfile: fs.realpathSync(__dirname + "/.chrome-profile"),
