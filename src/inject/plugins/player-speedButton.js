@@ -1,5 +1,5 @@
 import config from "../config.js";
-import { metadata, videoPlayer } from "../isolatedWorld.js";
+import { metadata, videoPlayer } from "../mainWorld.js";
 import { createLogger } from "../../logger.js";
 const logger = createLogger("player-speedButton");
 
@@ -22,7 +22,7 @@ function setMemorySpeed() {
 		if (!speed) return;
 		speed = Number(speed);
 
-		videoPlayer.playerApi.setPlaybackRate(speed);
+		videoPlayer.player.setPlaybackRate(speed);
 		videoPlayer.videoStream.playbackRate = speed;
 		speedButtons.forEach((v) => {
 			if (v.getAttribute("speed") === String(speed)) {
@@ -50,7 +50,7 @@ export default {
 				speedButton.className = `yttweak-speed-button`;
 				speedButton.setAttribute("speed", `${speed}`);
 				speedButton.onclick = () => {
-					videoPlayer.playerApi.setPlaybackRate(speed);
+					videoPlayer.player.setPlaybackRate(speed);
 					videoPlayer.videoStream.playbackRate = speed;
 					logger.info("Set playback rate:", speed);
 

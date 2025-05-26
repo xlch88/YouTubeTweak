@@ -1,20 +1,37 @@
 import DefaultConfig from "../defaultConfig.js";
 import { createLogger } from "../logger.js";
+import wirelessRedstone from "./wirelessRedstone.js";
 const logger = createLogger("config");
-
-const STORAGE_KEY = "settings";
 
 export default {
 	config: {},
 	memory: {},
+	onUpdate: null,
+	skipUpdateEvent: false,
 
 	init() {
 		return new Promise((resolve) => {
-			chrome.storage.sync.get(null, (res) => {
-				this.config = { ...DefaultConfig, ...(res[STORAGE_KEY] ?? {}) };
-				this.memory = res["memory"] ?? {};
+			wirelessRedstone.send("getConfig", ["settings", "memory"], (result) => {
+				this.config = { ...DefaultConfig, ...(result.settings ?? {}) };
+				this.memory = result.memory ?? {};
+
 				resolve(this.config);
 			});
+
+			wirelessRedstone.handlers.configUpdate = (data) => {
+				logger.log("config update:", data);
+
+				if (this.skipUpdateEvent) return (this.skipUpdateEvent = false);
+
+				if (data.settings) {
+					this.config = { ...this.config, ...data.settings.newValue };
+				}
+				if (data.memory) {
+					this.memory = { ...this.memory, ...data.memory.newValue };
+				}
+
+				if (this.onUpdate) this.onUpdate(data);
+			};
 		});
 	},
 	get(key = null, defaultValue = null, isMemory = false) {
@@ -25,6 +42,8 @@ export default {
 	set(key, value, isMemory = false) {
 		logger.log(`set ${isMemory ? "memory" : "setting"} : ${key} ->`, value);
 		if (key) this[isMemory ? "memory" : "config"][key] = value;
-		chrome.storage.sync.set(isMemory ? { memory: this.memory } : { [STORAGE_KEY]: this.config }, () => {});
+
+		this.skipUpdateEvent = true;
+		wirelessRedstone.send("setConfig", isMemory ? { memory: this.memory } : { settings: this.config });
 	},
 };

@@ -1,4 +1,4 @@
-import { videoPlayer } from "../isolatedWorld.js";
+import { videoPlayer } from "../mainWorld.js";
 import { bodyClass } from "../util/helper.js";
 import { createLogger } from "../../logger.js";
 const logger = createLogger("anti-ad");

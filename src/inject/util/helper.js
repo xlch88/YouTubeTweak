@@ -1,4 +1,4 @@
-import { videoPlayer } from "../isolatedWorld.js";
+import { videoPlayer } from "../mainWorld.js";
 
 export function bodyClass(className) {
 	return {
