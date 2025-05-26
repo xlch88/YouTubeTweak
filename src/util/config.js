@@ -29,7 +29,7 @@ export default defineStore("config", {
 			chrome.tabs.query({}, (tabs) => {
 				tabs.forEach((tab) => {
 					chrome.tabs.sendMessage(tab.id, { action: "reloadConfig" }).catch((e) => {
-						logger.error("sendMessage error:", e);
+						logger.warn("sendMessage error:", e);
 					});
 				});
 			});
