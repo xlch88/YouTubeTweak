@@ -100,6 +100,11 @@ export default defineConfig(({ mode }) => {
 					startUrl: ["https://www.youtube.com/watch?v=zczjerfFrSI"],
 					// args: ["--mute-audio"],
 				},
+				scriptViteConfig: {
+					define: {
+						__IS_DEV__: mode === "development",
+					},
+				},
 			}),
 			{
 				name: "auto-zip",

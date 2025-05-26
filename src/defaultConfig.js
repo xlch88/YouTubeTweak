@@ -24,4 +24,6 @@ export default {
 	"index.videoPerRow.count": 4,
 	"other.antiAD.enable": true,
 	"other.antiAD.enableMerch": true,
+
+	"yttweak.enableChromeApiStatusChecker": true,
 };

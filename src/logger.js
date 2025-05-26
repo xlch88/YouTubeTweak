@@ -1,3 +1,5 @@
+export const isDEV = __IS_DEV__;
+
 const colorMap = {
 	log: "#3498db",
 	info: "#2ecc71",
@@ -25,6 +27,9 @@ export function createLogger(name = "main") {
 			`font-family: sans-serif; background: #e9e9e9; color: black; border-radius: 0 4px 4px 0; padding: 2px 6px; font-weight: bold; font-size: 10px; line-height: 10px;`,
 		);
 	});
+
+	if (!isDEV) logger.debug = () => {};
+
 	return logger;
 }
 export default createLogger();
