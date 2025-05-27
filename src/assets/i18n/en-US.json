@@ -58,21 +58,21 @@
 		"ui": {
 			"title": "UI",
 			"checkbox": {
-				"hideCeElement": "Translucent ending of the recommended Videos/Authors"
+				"hideCeElement": "Translucent the recommended videos/authors at the end of videos"
 			}
 		},
 		"other": {
 			"title": "Other",
 			"checkbox": {
-				"maxVolume": "Disable volume leveling at max volume (true 100%)"
+				"maxVolume": "Disable equalizer at max volume (true 100%)"
 			}
 		}
 	},
 	"comment": {
 		"nickname": {
-			"title": "Nickname",
+			"title": "Channel name",
 			"checkbox": {
-				"showNickname": "Show commenter nickname (channel name)"
+				"showNickname": "Show commenter's channel name"
 			}
 		},
 		"context": {
@@ -93,11 +93,11 @@
 		"antiAD": {
 			"title": "Ad Block",
 			"checkbox": {
-				"enable": "Auto skip ads / block thumbnail ads",
+				"enable": "Auto skip ads and block thumbnail ads",
 				"enableMerch": "Block channel merchandise"
 			},
 			"tips": {
-				"enable": "Experimental feature (unstable). In some cases, you still need to click \"Skip\" in the player, and it may be detected by YouTube."
+				"enable": "Experimental feature (unstable). In some cases, you still need to click \"Skip\" additionally in the player, and it may be detected by YouTube."
 			}
 		},
 		"shorts": {
@@ -151,7 +151,7 @@
 			}
 		},
 		"language": {
-			"title": "Language",
+			"title": "Languages",
 			"link": {
 				"translator": "Translator"
 			}
