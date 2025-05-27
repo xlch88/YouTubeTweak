@@ -52,6 +52,11 @@ body {
 * {
 	box-sizing: border-box;
 	user-select: none;
+
+	&::selection {
+		background: #ff0;
+		color: #000;
+	}
 }
 
 input,
