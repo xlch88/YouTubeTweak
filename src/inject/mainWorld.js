@@ -226,19 +226,22 @@ const YouTubeTweakApp = {
 	},
 };
 
-wirelessRedstone.init("main");
-wirelessRedstone.send("test", { test: "data" }, (replyData) => {
-	logger.info("test ok :", replyData);
-});
-YouTubeTweakApp.init();
-
-window.__YT_TWEAK__ = {
-	WORLD: "main",
-	plugins,
-	videoPlayer,
-	metadata,
-	youtubeiAPIv1,
-};
-
-logger.debug(window.__YT_TWEAK__);
+if (["www.youtube.com", "m.youtube.com"].includes(location.host)) {
 	Object.values(pluginsDocumentStart).forEach((v) => v());
+
+	wirelessRedstone.init("main");
+	wirelessRedstone.send("test", { test: "data" }, (replyData) => {
+		logger.info("test ok :", replyData);
+	});
+	YouTubeTweakApp.init();
+
+	window.__YT_TWEAK__ = {
+		WORLD: "main",
+		plugins,
+		videoPlayer,
+		metadata,
+		youtubeiAPIv1,
+	};
+
+	logger.debug(window.__YT_TWEAK__);
+}
