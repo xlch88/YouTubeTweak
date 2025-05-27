@@ -65,7 +65,7 @@ function fillMissingTranslations(dir = i18nDir) {
 
 		if (needWriteFile) {
 			const fullPath = path.join(dir, filename);
-			fs.writeFileSync(fullPath, JSON.stringify(content, null, "\t"), "utf8");
+			fs.writeFileSync(fullPath, JSON.stringify(content, null, "\t").replace(/\n/g, "\r\n") + "\r\n", "utf8");
 		}
 	}
 
