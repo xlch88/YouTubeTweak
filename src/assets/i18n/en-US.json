@@ -99,9 +99,27 @@
 			"tips": {
 				"enable": "Experimental feature (unstable). In some cases, you still need to click \"Skip\" in the player, and it may be detected by YouTube."
 			}
+		},
+		"shorts": {
+			"title": "__NEED_TRANSLATE__",
+			"checkbox": {
+				"enableIndex": "__NEED_TRANSLATE__",
+				"enableWatch": "__NEED_TRANSLATE__",
+				"enableMenu": "__NEED_TRANSLATE__"
+			}
 		}
 	},
 	"general": {
+		"update": {
+			"tips": {
+				"0": "__NEED_TRANSLATE__",
+				"1": "__NEED_TRANSLATE__"
+			},
+			"buttons": {
+				"update": "__NEED_TRANSLATE__",
+				"log": "__NEED_TRANSLATE__"
+			}
+		},
 		"about": {
 			"title": "About",
 			"link": {

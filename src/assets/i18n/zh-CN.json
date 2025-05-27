@@ -104,7 +104,8 @@
 			"title": "Shorts (短视频)",
 			"checkbox": {
 				"enableIndex": "屏蔽首页Shorts推荐",
-				"enableWatch": "屏蔽视频播放页面Shorts推荐"
+				"enableWatch": "屏蔽视频播放页面Shorts推荐",
+				"enableMenu": "在侧边栏里屏蔽 Shorts"
 			}
 		}
 	},

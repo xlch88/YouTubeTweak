@@ -99,9 +99,27 @@
 			"tips": {
 				"enable": "實驗功能(不穩定)，部分情況下仍需點擊播放器中的“跳過”，並有可能遭到YouTube檢測。"
 			}
+		},
+		"shorts": {
+			"title": "__NEED_TRANSLATE__",
+			"checkbox": {
+				"enableIndex": "__NEED_TRANSLATE__",
+				"enableWatch": "__NEED_TRANSLATE__",
+				"enableMenu": "__NEED_TRANSLATE__"
+			}
 		}
 	},
 	"general": {
+		"update": {
+			"tips": {
+				"0": "__NEED_TRANSLATE__",
+				"1": "__NEED_TRANSLATE__"
+			},
+			"buttons": {
+				"update": "__NEED_TRANSLATE__",
+				"log": "__NEED_TRANSLATE__"
+			}
+		},
 		"about": {
 			"title": "關於",
 			"link": {
