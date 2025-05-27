@@ -1,4 +1,4 @@
-export async function youtubeiAPIv1(path, args) {
+export async function youtubeiAPIv1(path, args, hl = "en", gl = "US") {
 	return await (
 		await fetch(`https://www.youtube.com/youtubei/v1${path}?prettyPrint=false`, {
 			headers: {
@@ -10,6 +10,8 @@ export async function youtubeiAPIv1(path, args) {
 					client: {
 						clientName: "WEB",
 						clientVersion: "2.20250523.01.00",
+						gl: gl,
+						hl: hl,
 					},
 				},
 				...args,
