@@ -1,6 +1,7 @@
 import { videoPlayer } from "../mainWorld.js";
 import { bodyClass } from "../util/helper.js";
 import { createLogger } from "../../logger.js";
+import fetchHooker from "../fetchHooker.js";
 const logger = createLogger("anti-ad");
 
 let antiADSlotInterval;
@@ -9,6 +10,20 @@ export default {
 	"other.antiAD.enable": {
 		enable() {
 			document.body.classList.add("yttweak-anti-ad");
+			localStorage.setItem("YTTweak-plugin-AntiAD", "1");
+
+			fetchHooker.hooks.antiAD = {
+				match: "/youtubei/v1/player",
+				mutator: true,
+				handler(data) {
+					if (data && typeof data === "object" && "adSlots" in data) {
+						logger.info("Removing adSlots from player response");
+						delete data.adSlots;
+					}
+
+					return data;
+				},
+			};
 
 			antiADSlotInterval = setInterval(() => {
 				document.querySelectorAll("ytd-ad-slot-renderer").forEach((ad) => {
@@ -41,6 +56,7 @@ export default {
 		disable() {
 			antiADSlotInterval && clearInterval(antiADSlotInterval);
 			document.body.classList.remove("yttweak-anti-ad");
+			localStorage.removeItem("YTTweak-plugin-AntiAD");
 		},
 		videoSrcChange(oldValue, newValue, isAD) {
 			if (isAD) {

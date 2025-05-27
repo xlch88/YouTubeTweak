@@ -6,6 +6,7 @@ import wirelessRedstone from "./wirelessRedstone.js";
 import "./style.scss";
 
 const plugins = Object.assign({}, ...Object.values(import.meta.glob("./plugins/*.js", { eager: true }).map((m) => m.default)));
+const pluginsDocumentStart = Object.values(import.meta.glob("./plugins_before/*.js", { eager: true }).map((m) => m.default));
 
 export const videoPlayer = {
 	box: null,
@@ -17,6 +18,7 @@ export const videoPlayer = {
 	 *   setPlaybackQuality: (quality: string) => void,
 	 *   setPlaybackQualityRange: (quality: string) => void,
 	 *   setPlaybackRate: (playbackRate: number) => void,
+	 *   playVideo: () => void,
 	 *   [key: string]: any
 	 * }}
 	 */
@@ -239,3 +241,4 @@ window.__YT_TWEAK__ = {
 };
 
 logger.debug(window.__YT_TWEAK__);
+	Object.values(pluginsDocumentStart).forEach((v) => v());
