@@ -109,6 +109,9 @@
 			}
 		}
 	},
+	"insights": {
+		"title": "洞察"
+	},
 	"general": {
 		"update": {
 			"tips": ["已有新版本 {version} 可用", "关闭所有YouTube标签后将自动进行更新。"],
@@ -153,9 +156,6 @@
 				"translator": "翻译贡献者"
 			}
 		}
-	},
-	"insights": {
-		"title": "洞察"
 	},
 	"installed": {
 		"title": "✅ 插件已成功安装！",

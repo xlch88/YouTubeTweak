@@ -109,6 +109,9 @@
 			}
 		}
 	},
+	"insights": {
+		"title": "__NEED_TRANSLATE__"
+	},
 	"general": {
 		"about": {
 			"title": "A propos de",
@@ -162,8 +165,5 @@
 		"line1": "Merci d'avoir installé cette extension.",
 		"line2": "Vous pouvez commencer à utiliser cette extension en cliquant sur l'icône de celle-ci en haut à droite de votre navigateur.",
 		"line3": "En cas d'un problème, n'hésitez pas à nous le remonter dans GitHub."
-	},
-	"insights": {
-		"title": "__NEED_TRANSLATE__"
 	}
 }

@@ -109,6 +109,9 @@
 			}
 		}
 	},
+	"insights": {
+		"title": "洞察"
+	},
 	"general": {
 		"update": {
 			"tips": ["已經有新版本 {version} 可以用囉！", "關閉所有 YouTube 頁面後將會自動更新！"],
@@ -153,9 +156,6 @@
 				"translator": "翻譯貢獻者"
 			}
 		}
-	},
-	"insights": {
-		"title": "洞察"
 	},
 	"installed": {
 		"title": "✅ 擴充程式已經成功安裝囉！！！",

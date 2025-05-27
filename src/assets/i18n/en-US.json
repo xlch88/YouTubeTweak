@@ -109,6 +109,9 @@
 			}
 		}
 	},
+	"insights": {
+		"title": "__NEED_TRANSLATE__"
+	},
 	"general": {
 		"update": {
 			"tips": {
@@ -156,9 +159,6 @@
 				"translator": "Translator"
 			}
 		}
-	},
-	"insights": {
-		"title": "Insights"
 	},
 	"installed": {
 		"title": "✅ Extension successfully installed!",
