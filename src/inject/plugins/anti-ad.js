@@ -31,6 +31,9 @@ export default {
 					if (closeButton) {
 						logger.info("click adBlockBlocker close.");
 						adBlockBlocker?.querySelector("#dismiss-button .yt-spec-button-shape-next")?.click?.();
+						if (videoPlayer.player.playVideo) {
+							videoPlayer.player.playVideo();
+						}
 					}
 				}
 			}, 1000);
