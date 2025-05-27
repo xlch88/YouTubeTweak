@@ -1,0 +1,169 @@
+{
+	"manifest": {
+		"name": "__NEED_TRANSLATE__",
+		"description": "__NEED_TRANSLATE__"
+	},
+	"tabs": {
+		"player": {
+			"title": "Player"
+		},
+		"comment": {
+			"title": "Commentaires"
+		},
+		"other": {
+			"title": "Autres"
+		},
+		"general": {
+			"title": "Général"
+		},
+		"insights": {
+			"title": "__NEED_TRANSLATE__"
+		}
+	},
+	"player": {
+		"speedButtons": {
+			"title": "Vitesse",
+			"checkbox": {
+				"enable": "Afficher les contrôls pour la vitesse",
+				"save": "__NEED_TRANSLATE__",
+				"saveByChannel": "__NEED_TRANSLATE__"
+			},
+			"tips": {
+				"enabledButtons": "Contrôls activés:",
+				"save": "__NEED_TRANSLATE__"
+			}
+		},
+		"hidePlayerButtons": {
+			"title": "Masquer les boutons",
+			"checkbox": {
+				"autoplay": "Masquer le bouton de l'autoplay",
+				"subtitles": "Masquer le bouton des sous-titres",
+				"settings": "Masquer le bouton de configuration",
+				"miniPlayer": "Masquer le bouton de mini-player",
+				"pip": "Masquer le bouton du Picture-in-Picture",
+				"size": "Masquer le bouton du mode théâtre",
+				"remote": "Masquer le bouton du cast du télévision",
+				"fullscreen": "Masquer le bouton du plein écran"
+			}
+		},
+		"ui": {
+			"title": "Interface Graphique",
+			"checkbox": {
+				"hideCeElement": "Rendre les vidéos/auteurs recommendés à la fin du vidéo plus translucent"
+			}
+		},
+		"other": {
+			"title": "Autre",
+			"checkbox": {
+				"maxVolume": "Désactiver l'equalizer quand le son est à son niveau maximal (100% en vrai)"
+			}
+		},
+		"lockQuality": {
+			"title": "__NEED_TRANSLATE__",
+			"checkbox": {
+				"enable": "__NEED_TRANSLATE__"
+			},
+			"tips": {
+				"quality": "__NEED_TRANSLATE__"
+			}
+		}
+	},
+	"comment": {
+		"nickname": {
+			"title": "Surnom",
+			"checkbox": {
+				"showNickname": "Afficher le surnom de l'auteur de commentaire (channel name)"
+			}
+		},
+		"context": {
+			"title": "Contenu du commentaire",
+			"checkbox": {
+				"autoShowMore": "Auto-expansion des commentaires longs",
+				"autoTranslate": "Traduction automatique"
+			}
+		}
+	},
+	"other": {
+		"index": {
+			"title": "Page d'acceuil",
+			"checkbox": {
+				"videoPerRow": "Fixer le nombre des vidéos par ligne"
+			}
+		},
+		"antiAD": {
+			"title": "Ad Block",
+			"checkbox": {
+				"enable": "Sauter les pubs automatiquement et blcage des pubs en vignettes",
+				"enableMerch": "Bloquer les prospections des auteurs du canal"
+			},
+			"tips": {
+				"enable": "Fonctionnalités expérimentales (instable). Dans certains cas, vous avez besoin de cliquer le bouton \"Skip\" en plus dans le player, et cette action pourra être détectée par YouTube."
+			}
+		},
+		"shorts": {
+			"title": "__NEED_TRANSLATE__",
+			"checkbox": {
+				"enableIndex": "__NEED_TRANSLATE__",
+				"enableWatch": "__NEED_TRANSLATE__",
+				"enableMenu": "__NEED_TRANSLATE__"
+			}
+		}
+	},
+	"general": {
+		"about": {
+			"title": "A propos de",
+			"link": {
+				"github": "Github",
+				"issue": "Issues",
+				"changelog": "Changelog"
+			}
+		},
+		"config": {
+			"title": "Configuration du plugin",
+			"alert": {
+				"resetConfig": "Êtes vous sûr de voulour remettre tous les configs à zéro ?",
+				"importSuccess": "__NEED_TRANSLATE__",
+				"importError": "__NEED_TRANSLATE__",
+				"copySuccess": "__NEED_TRANSLATE__",
+				"copyError": "__NEED_TRANSLATE__"
+			},
+			"button": {
+				"exportConfig": "Exporter les configs",
+				"importConfig": "Importer les configs",
+				"resetConfig": "Remettre les configs à zéro",
+				"cancel": "__NEED_TRANSLATE__",
+				"submit": "__NEED_TRANSLATE__",
+				"copy": "__NEED_TRANSLATE__"
+			},
+			"modal": {
+				"importTips": "__NEED_TRANSLATE__",
+				"exportTips": "__NEED_TRANSLATE__"
+			}
+		},
+		"language": {
+			"title": "Langues",
+			"link": {
+				"translator": "__NEED_TRANSLATE__"
+			}
+		},
+		"update": {
+			"tips": {
+				"0": "__NEED_TRANSLATE__",
+				"1": "__NEED_TRANSLATE__"
+			},
+			"buttons": {
+				"update": "__NEED_TRANSLATE__",
+				"log": "__NEED_TRANSLATE__"
+			}
+		}
+	},
+	"installed": {
+		"title": "✅ Extension installée avec succès !",
+		"line1": "Merci d'avoir installé cette extension.",
+		"line2": "Vous pouvez commencer à utiliser cette extension en cliquant sur l'icône de celle-ci en haut à droite de votre navigateur.",
+		"line3": "En cas d'un problème, n'hésitez pas à nous le remonter dans GitHub."
+	},
+	"insights": {
+		"title": "__NEED_TRANSLATE__"
+	}
+}

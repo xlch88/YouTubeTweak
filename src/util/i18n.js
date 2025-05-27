@@ -8,6 +8,7 @@ export const locales = {
 	"zh-TW": "繁体中文 (Traditional Chinese)",
 	"ja-JP": "日本語 (Japanese)",
 	"en-US": "English (US)",
+	"fr-FR": "Français (French)",
 };
 
 export async function initI18n() {

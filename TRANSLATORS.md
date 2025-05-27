@@ -3,16 +3,20 @@
 Thanks to the following contributors for helping translate this project into multiple languages. Listed by language:
 
 ## zh-CN
-🇨🇳 Simplified Chinese (zh-CN)
+🇨🇳 Simplified Chinese
 - [@xlch88](https://github.com/xlch88)
 
 ## zh-TW
-🇹🇼 Traditional Chinese (zh-TW)
+🇹🇼 Traditional Chinese
 - [@TW527E](https://github.com/TW527E)
 
 ## ja-JP
-🇯🇵 日本語 (ja)
+🇯🇵 日本語
 - [@Heromoe](https://github.com/Heromoe)
+
+## fr-FR
+🇫🇷 Français
+- [@kokoro-aya](https://github.com/kokoro-aya)
 
 ---
 
