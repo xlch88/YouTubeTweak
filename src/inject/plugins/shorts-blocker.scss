@@ -2,6 +2,15 @@ body.yttweak-shorts-blocker-index {
 	ytd-browse[page-subtype="home"] ytd-rich-shelf-renderer[is-shorts] {
 		display: none !important;
 	}
+
+	// mobile
+	ytm-browse
+		.tab-content[tab-identifier="FEwhat_to_watch"]
+		.rich-grid-renderer-contents
+		ytm-rich-section-renderer
+		.ytGridShelfViewModelHost {
+		display: none;
+	}
 }
 
 body.yttweak-shorts-blocker-watch {
@@ -16,5 +25,8 @@ body.yttweak-shorts-blocker-menu {
 	}
 	ytd-mini-guide-renderer #items > ytd-mini-guide-entry-renderer:nth-child(2) a[title="Shorts"] {
 		display: none !important;
+	}
+	ytm-pivot-bar-renderer ytm-pivot-bar-item-renderer:nth-child(2) {
+		display: none;
 	}
 }
