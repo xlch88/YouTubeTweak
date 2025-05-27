@@ -50,8 +50,8 @@
 				"settings": "隱藏設置按鈕",
 				"miniPlayer": "隱藏迷你播放器按鈕",
 				"pip": "隱藏畫中畫按鈕",
-				"size": "隱藏寬畫幅(劇場模式)按鈕",
-				"remote": "隱藏遠程播放(在電視上播放)按鈕",
+				"size": "隱藏寬畫幅 (劇場模式) 按鈕",
+				"remote": "隱藏遠程播放 (在電視上播放) 按鈕",
 				"fullscreen": "隱藏全屏按鈕"
 			}
 		},
@@ -64,7 +64,7 @@
 		"other": {
 			"title": "其他",
 			"checkbox": {
-				"maxVolume": "最大音量時關閉統一音量(真·100%音量)"
+				"maxVolume": "最大音量時關閉統一音量 (真·100%音量)"
 			}
 		}
 	},
@@ -72,7 +72,7 @@
 		"nickname": {
 			"title": "暱稱",
 			"checkbox": {
-				"showNickname": "顯示留言者暱稱(頻道名稱)"
+				"showNickname": "顯示留言者暱稱 (頻道名稱)"
 			}
 		},
 		"context": {
@@ -97,33 +97,30 @@
 				"enableMerch": "刪除頻道商品推薦"
 			},
 			"tips": {
-				"enable": "實驗功能(不穩定)，部分情況下仍需點擊播放器中的“跳過”，並有可能遭到YouTube檢測。"
+				"enable": "實驗功能 (不穩定)，部分情況下仍需點擊播放器中的“跳過”，並有可能遭到YouTube檢測。"
 			}
 		},
 		"shorts": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "Shorts (短影音)",
 			"checkbox": {
-				"enableIndex": "__NEED_TRANSLATE__",
-				"enableWatch": "__NEED_TRANSLATE__",
-				"enableMenu": "__NEED_TRANSLATE__"
+				"enableIndex": "移除首頁 Shorts 推薦",
+				"enableWatch": "移除影片播放頁面下面推薦的 Shorts 影片",
+				"enableMenu": "移除側邊欄中的 Shorts 按鈕"
 			}
 		}
 	},
 	"general": {
 		"update": {
-			"tips": {
-				"0": "__NEED_TRANSLATE__",
-				"1": "__NEED_TRANSLATE__"
-			},
+			"tips": ["已經有新版本 {version} 可以用囉！", "關閉所有 YouTube 頁面後將會自動更新！"],
 			"buttons": {
-				"update": "__NEED_TRANSLATE__",
-				"log": "__NEED_TRANSLATE__"
+				"update": "立即更新",
+				"log": "查看更新內容..."
 			}
 		},
 		"about": {
 			"title": "關於",
 			"link": {
-				"github": "源代碼",
+				"github": "源碼倉庫",
 				"issue": "問題反饋",
 				"changelog": "更新日誌"
 			}
@@ -146,7 +143,7 @@
 				"copy": "複製設定"
 			},
 			"modal": {
-				"importTips": "在此處粘貼要導入的設定",
+				"importTips": "在此處貼上要導入的設定",
 				"exportTips": "將下面的設定複製到其他瀏覽器或分享給他人"
 			}
 		},
@@ -161,9 +158,9 @@
 		"title": "洞察"
 	},
 	"installed": {
-		"title": "✅ 擴充程式已成功安裝！",
-		"line1": "感謝您安裝本擴充程式。",
-		"line2": "您可以點擊瀏覽器右上角的擴充程式按鈕已開始使用。",
-		"line3": "如果您在使用中遇到任何的問題，歡迎在我們的 GitHub 源代碼倉庫上進行反饋。"
+		"title": "✅ 擴充程式已經成功安裝囉！！！",
+		"line1": "非常感謝您安裝本擴充程式！",
+		"line2": "您可以點擊瀏覽器右上角的擴充程式按鈕以開始使用！",
+		"line3": "如果您在使用中遇到任何的問題，歡迎在我們的 GitHub 源碼倉庫上進行反饋！"
 	}
 }
