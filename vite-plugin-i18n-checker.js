@@ -75,7 +75,7 @@ function fillMissingTranslations(dir = i18nDir) {
 			`i18n-checker: Missing translations found and filled with placeholder "${placeholder}". Please translate them before deploying.`,
 		);
 		err.stack = err.message;
-		throw err;
+		if (process.env.NODE_ENV !== "development") throw err;
 	}
 }
 

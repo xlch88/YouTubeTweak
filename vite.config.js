@@ -22,6 +22,7 @@ export default defineConfig(({ mode }) => {
 				build: new Date().toISOString(),
 				version: pkg.version,
 			}),
+			__IS_DEV__: mode === "development",
 		},
 		build: {
 			sourcemap: mode === "production" ? false : "inline",
