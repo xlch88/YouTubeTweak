@@ -22,9 +22,9 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
 		wirelessRedstone.send("configUpdate", changes);
 	}
 });
-chrome.runtime.onMessage.addListener((msg) => {
-	console.log("Received update from background:", msg.changes);
-});
+// chrome.runtime.onMessage.addListener((msg) => {
+// 	console.log("Received update from background:", msg.changes);
+// });
 
 let chromeApiStatusChecker = null;
 Object.assign(wirelessRedstone.handlers, {
