@@ -32,9 +32,9 @@ export async function initI18n() {
 
 	i18n = createI18n({
 		locale: locale,
-		fallbackLocale: "en",
+		fallbackLocale: "en-US",
 		messages: {
-			en: en,
+			"en-US": en,
 		},
 	});
 
@@ -43,6 +43,21 @@ export async function initI18n() {
 }
 
 export async function loadLocaleMessages(locale) {
-	const messages = await import(`../assets/i18n/${locale}.json`);
-	i18n.global.setLocaleMessage(locale, messages.default);
+	if (locale === "en-US") return;
+	let messages = (await import(`../assets/i18n/${locale}.json`)).default;
+
+	if (__IS_DEV__) {
+		function cleanNeedTranslate(messages) {
+			for (const [key, value] of Object.entries(messages)) {
+				if (typeof value === "string" && value.startsWith("__NEED_TRANSLATE__")) {
+					delete messages[key];
+				} else if (typeof value === "object") {
+					cleanNeedTranslate(value);
+				}
+			}
+		}
+		cleanNeedTranslate(messages);
+	}
+
+	i18n.global.setLocaleMessage(locale, messages);
 }
