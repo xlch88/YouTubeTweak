@@ -26,7 +26,7 @@ export default defineStore("config", {
 			const rawData = toRaw(this.$state);
 			logger.info("saveStorage ->", rawData);
 			chrome.storage.sync.set({ [STORAGE_KEY]: rawData }, () => {});
-			chrome.tabs.query({}, (tabs) => {
+			chrome.tabs.query({ url: "*://*.youtube.com/*" }, (tabs) => {
 				tabs.forEach((tab) => {
 					chrome.tabs.sendMessage(tab.id, { action: "reloadConfig" }).catch((e) => {
 						logger.warn("sendMessage error:", e);

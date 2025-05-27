@@ -1,4 +1,14 @@
 <template>
+	<div class="update" v-if="waitUpdate">
+		<p>
+			<b>{{ $t("general.update.tips.0", { version: waitUpdate }) }}</b>
+			<br />
+			{{ $t("general.update.tips.1") }}
+			<a href="">{{ $t("general.update.buttons.log") }}</a>
+		</p>
+		<button @click="updateNow()" class="btn btn-green">{{ $t("general.update.buttons.update") }}</button>
+	</div>
+
 	<div class="card">
 		<div class="card-title">{{ $t("general.about.title") }}</div>
 		<div class="card-body about">
@@ -124,6 +134,18 @@ function configModalSubmit() {
 			});
 	}
 }
+
+const waitUpdate = ref("");
+chrome.storage.local.get("waitUpdate", (data) => {
+	if (data.waitUpdate) {
+		waitUpdate.value = data.waitUpdate;
+	}
+});
+function updateNow() {
+	chrome.storage.local.set({ needReloadTabs: true }, () => {
+		chrome.runtime.reload();
+	});
+}
 </script>
 
 <style lang="scss" scoped>
@@ -197,6 +219,28 @@ function configModalSubmit() {
 			button {
 				width: 100%;
 			}
+		}
+	}
+}
+
+.update {
+	background: #4caf50;
+	margin: 10px;
+	border-radius: 5px;
+	padding: 15px;
+	gap: 5px;
+	display: flex;
+	flex-wrap: wrap;
+	color: white;
+
+	p {
+		margin: 0;
+		width: 100%;
+		margin-bottom: 10px;
+
+		a {
+			color: white;
+			text-decoration: underline;
 		}
 	}
 }
