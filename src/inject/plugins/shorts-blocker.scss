@@ -1,0 +1,20 @@
+body.yttweak-shorts-blocker-index {
+	ytd-browse[page-subtype="home"] ytd-rich-shelf-renderer[is-shorts] {
+		display: none !important;
+	}
+}
+
+body.yttweak-shorts-blocker-watch {
+	ytd-watch-flexy ytd-watch-next-secondary-results-renderer ytd-item-section-renderer #contents ytd-reel-shelf-renderer {
+		display: none !important;
+	}
+}
+
+body.yttweak-shorts-blocker-menu {
+	ytd-guide-section-renderer #items > ytd-guide-entry-renderer:nth-child(2) a[title="Shorts"] {
+		display: none !important;
+	}
+	ytd-mini-guide-renderer #items > ytd-mini-guide-entry-renderer:nth-child(2) a[title="Shorts"] {
+		display: none !important;
+	}
+}
