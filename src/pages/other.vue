@@ -31,6 +31,24 @@
 			</label>
 		</div>
 	</div>
+
+	<div class="card">
+		<div class="card-title">{{ $t("other.shorts.title") }}</div>
+		<div class="card-body">
+			<label class="form-item">
+				<input type="checkbox" v-model="config['shorts-blocker.enable.index']" />
+				<span> {{ $t("other.shorts.checkbox.enableIndex") }} </span>
+			</label>
+			<label class="form-item">
+				<input type="checkbox" v-model="config['shorts-blocker.enable.watch']" />
+				<span> {{ $t("other.shorts.checkbox.enableWatch") }} </span>
+			</label>
+			<label class="form-item">
+				<input type="checkbox" v-model="config['shorts-blocker.enable.menu']" />
+				<span> {{ $t("other.shorts.checkbox.enableMenu") }} </span>
+			</label>
+		</div>
+	</div>
 </template>
 
 <script setup>

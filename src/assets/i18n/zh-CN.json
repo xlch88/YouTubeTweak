@@ -99,6 +99,13 @@
 			"tips": {
 				"enable": "实验功能(不稳定)，部分情况下仍需在播放器点击“跳过”，并且可能会被YouTube检测。"
 			}
+		},
+		"shorts": {
+			"title": "Shorts (短视频)",
+			"checkbox": {
+				"enableIndex": "屏蔽首页Shorts推荐",
+				"enableWatch": "屏蔽视频播放页面Shorts推荐"
+			}
 		}
 	},
 	"general": {
