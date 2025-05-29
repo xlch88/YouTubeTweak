@@ -4,6 +4,7 @@ import { checkPlayerAD } from "./util/helper.js";
 import { youtubeiAPIv1 } from "./util/youtubei.js";
 import wirelessRedstone from "./wirelessRedstone.js";
 import "./style.scss";
+import fetchHooker from "./fetchHooker.js";
 
 const plugins = Object.assign({}, ...Object.values(import.meta.glob("./plugins/*.js", { eager: true }).map((m) => m.default)));
 const pluginsDocumentStart = Object.values(import.meta.glob("./plugins_before/*.js", { eager: true }).map((m) => m.default));
@@ -229,6 +230,7 @@ const YouTubeTweakApp = {
 if (["www.youtube.com", "m.youtube.com"].includes(location.host)) {
 	Object.values(pluginsDocumentStart).forEach((v) => v());
 
+	fetchHooker.init();
 	wirelessRedstone.init("main");
 	wirelessRedstone.send("test", { test: "data" }, (replyData) => {
 		logger.info("test ok :", replyData);
