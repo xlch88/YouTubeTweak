@@ -16,9 +16,16 @@ export default {
 				match: "/youtubei/v1/player",
 				mutator: true,
 				handler(data) {
-					if (data && typeof data === "object" && "adSlots" in data) {
+					if (data && typeof data === "object") {
+						if ("adSlots" in data) delete data.adSlots;
+						if ("playerAds" in data) data.playerAds = [];
+						if ("adPlacements" in data) data.adPlacements = [];
+						// if (data?.auxiliaryUi?.messageRenderers?.bkaEnforcementMessageViewModel) {
+						// 	logger.info("Removing adblockblock from player response");
+						// 	delete data.auxiliaryUi;
+						// }
+
 						logger.info("Removing adSlots from player response");
-						delete data.adSlots;
 					}
 
 					return data;

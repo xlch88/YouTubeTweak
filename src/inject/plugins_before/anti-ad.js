@@ -28,6 +28,12 @@ export default () => {
 					enumerable: true,
 					set(rsp) {
 						if (rsp?.adSlots) delete rsp.adSlots;
+						if ("playerAds" in rsp) rsp.playerAds = [];
+						if ("adPlacements" in rsp) rsp.adPlacements = [];
+						// if (rsp?.auxiliaryUi?.messageRenderers?.bkaEnforcementMessageViewModel) {
+						// 	logger.info("Removing adblockblock from player response");
+						// 	delete rsp.auxiliaryUi;
+						// }
 						this._bpr = rsp;
 					},
 					get() {
