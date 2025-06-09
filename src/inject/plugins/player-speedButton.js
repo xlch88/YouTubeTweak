@@ -10,28 +10,36 @@ function getChannelId() {
 }
 
 function setMemorySpeed() {
+	let speed;
+	const channelId = getChannelId();
+
+	if (!channelId) {
+		return;
+	}
+
 	if (config.get("player.settings.saveSpeed")) {
-		let speed;
-		const channelId = getChannelId();
 		if (channelId && (speed = config.get(`player.speed.${channelId}`, speed, true))) {
 			logger.info(`Set playback rate(memory ${channelId}):`, speed);
 		}
+	}
+
+	if (config.get("player.settings.saveSpeedByChannel")) {
 		if (!speed && (speed = config.get(`player.speed`, null, true))) {
 			logger.info(`Set playback rate(memory default):`, speed);
 		}
-		if (!speed) return;
-		speed = Number(speed);
-
-		videoPlayer.player.setPlaybackRate(speed);
-		videoPlayer.videoStream.playbackRate = speed;
-		speedButtons.forEach((v) => {
-			if (v.getAttribute("speed") === String(speed)) {
-				v.classList.add("yttweak-speed-button-active");
-			} else {
-				v.classList.remove("yttweak-speed-button-active");
-			}
-		});
 	}
+	if (!speed) return;
+	speed = Number(speed);
+
+	videoPlayer.player.setPlaybackRate(speed);
+	videoPlayer.videoStream.playbackRate = speed;
+	speedButtons.forEach((v) => {
+		if (v.getAttribute("speed") === String(speed)) {
+			v.classList.add("yttweak-speed-button-active");
+		} else {
+			v.classList.remove("yttweak-speed-button-active");
+		}
+	});
 }
 
 export default {
@@ -56,11 +64,11 @@ export default {
 
 					if (config.get("player.settings.saveSpeed")) {
 						config.set("player.speed", speed, true);
-						if (config.get("player.settings.saveSpeedByChannel")) {
-							const channelId = getChannelId();
-							if (channelId) {
-								config.set(`player.speed.${channelId}`, speed, true);
-							}
+					}
+					if (config.get("player.settings.saveSpeedByChannel")) {
+						const channelId = getChannelId();
+						if (channelId) {
+							config.set(`player.speed.${channelId}`, speed, true);
 						}
 					}
 
