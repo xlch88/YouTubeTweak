@@ -113,70 +113,66 @@
 		"title": "洞察",
 		"label": {
 			"metadata": {
-				"date": "__NEED_TRANSLATE__",
-				"likeCount": "__NEED_TRANSLATE__",
-				"viewCount": "__NEED_TRANSLATE__",
-				"category": "__NEED_TRANSLATE__",
-				"sec": "__NEED_TRANSLATE__",
-				"quality": "__NEED_TRANSLATE__",
-				"username": "__NEED_TRANSLATE__"
+				"date": "日期：",
+				"likeCount": "點讚數：",
+				"viewCount": "觀看次數：",
+				"category": "分類：",
+				"sec": "時長：",
+				"quality": "畫質：",
+				"username": "用戶名："
 			},
 			"flags": {
 				"global": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "無地域限制",
+					"description": "此影片在所有國家或地區均可觀看。"
 				},
 				"family": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "家庭友好",
+					"description": "此影片適合所有年齡段觀看。"
 				},
 				"kids": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "兒童內容",
+					"description": "此影片為兒童內容，無法評論、子母畫面或後台播放。"
 				},
 				"comment": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "評論功能",
+					"description": "是否允許觀眾留言。"
 				},
 				"login": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "登入限制",
+					"description": "是否僅登入後可觀看此影片。"
 				},
 				"embed": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "嵌入限制",
+					"description": "是否允許在其他網站上播放這部影片"
 				},
 				"r18": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
-				},
-				"suicide": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "年齡限制",
+					"description": "此影片僅允許成年人觀看。"
 				},
 				"blocked": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "禁止播放",
+					"description": "這部影片已無法播放。"
 				},
 				"membership": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "會員專屬",
+					"description": "只有頻道付費會員才能觀看專屬影片。"
 				},
 				"shorts": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "允許Shorts",
+					"description": "此影片允許被用於 YouTube Shorts 創作。"
 				},
 				"emergency": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "紫砂警告",
+					"description": "妳並不孤單。"
 				},
 				"crawlable": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "非公開影片",
+					"description": "此影片僅允許知道超連結者可見，既不會出現於作者頻道頁面，亦無法被搜尋引擎索引。"
 				},
 				"private": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "私人影片",
+					"description": "此影片僅創作者或創作者邀請者可見。"
 				}
 			}
 		}

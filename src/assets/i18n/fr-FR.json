@@ -17,7 +17,7 @@
 			"title": "Général"
 		},
 		"insights": {
-			"title": "__NEED_TRANSLATE__"
+			"title": "Aperçu"
 		}
 	},
 	"player": {
@@ -25,12 +25,12 @@
 			"title": "Vitesse",
 			"checkbox": {
 				"enable": "Afficher les contrôls pour la vitesse",
-				"save": "__NEED_TRANSLATE__",
-				"saveByChannel": "__NEED_TRANSLATE__"
+				"save": "Sauvegarder la vitesse du player",
+				"saveByChannel": "Sauvegarder les vitesses pour chaque channel"
 			},
 			"tips": {
 				"enabledButtons": "Contrôls activés:",
-				"save": "__NEED_TRANSLATE__"
+				"save": "Sauvegarder la vitesse"
 			}
 		},
 		"hidePlayerButtons": {
@@ -49,7 +49,7 @@
 		"ui": {
 			"title": "Interface Graphique",
 			"checkbox": {
-				"hideCeElement": "Rendre les vidéos/auteurs recommendés à la fin du vidéo plus translucent"
+				"hideCeElement": "Rendre les vidéos/auteurs recommendés à la fin de la vidéo plus translucent"
 			}
 		},
 		"other": {
@@ -59,12 +59,12 @@
 			}
 		},
 		"lockQuality": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "Verrouiller la qualité",
 			"checkbox": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "Switcher la qualité de la vidéo automatiquement au démarrage vers"
 			},
 			"tips": {
-				"quality": "__NEED_TRANSLATE__"
+				"quality": "En cas d'absence de la qualité spécifiée, la meilleure qualité en dessous de ce niveau sera appliquée"
 			}
 		}
 	},
@@ -101,82 +101,78 @@
 			}
 		},
 		"shorts": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "Shorts",
 			"checkbox": {
-				"enableIndex": "__NEED_TRANSLATE__",
-				"enableWatch": "__NEED_TRANSLATE__",
-				"enableMenu": "__NEED_TRANSLATE__"
+				"enableIndex": "Bloquer les recommendations des Shorts sur la page d'accueil",
+				"enableWatch": "Bloquer les recommendations des Shorts sur la page de vue",
+				"enableMenu": "Bloquer les recommendations des Shorts dans le panneau à côté"
 			}
 		}
 	},
 	"insights": {
-		"title": "__NEED_TRANSLATE__",
+		"title": "Aperçu",
 		"label": {
 			"metadata": {
-				"date": "__NEED_TRANSLATE__",
-				"likeCount": "__NEED_TRANSLATE__",
-				"viewCount": "__NEED_TRANSLATE__",
-				"category": "__NEED_TRANSLATE__",
-				"sec": "__NEED_TRANSLATE__",
-				"quality": "__NEED_TRANSLATE__",
-				"username": "__NEED_TRANSLATE__"
+				"date": "Date",
+				"likeCount": "Nombre des likes: ",
+				"viewCount": "Nombre des vues: ",
+				"category": "Catalogue: ",
+				"sec": "Durée (sec): ",
+				"quality": "Qualité: ",
+				"username": "Nom d'utilisateur: "
 			},
 			"flags": {
 				"global": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "Sans restriction régionale",
+					"description": "Cette vidéo peut être consultée dans n'importe quel pays/région"
 				},
 				"family": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "Adapté pour la famille",
+					"description": "Cette vidéo est adaptée aux toutes les tranches d'âge"
 				},
 				"kids": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "Contenu pour les enfants",
+					"description": "Cette vidéo est pour les enfants, vous ne pouvez donc pas commenter, regarder dans picture in picture ou en arrière plan"
 				},
 				"comment": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "Commentaires",
+					"description": "Autoriser les utilisateurs à commenter ou pas"
 				},
 				"login": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "Réservé aux utilisateurs",
+					"description": "Limiter s'il faut s'authentifier pour regarder cette vidéo"
 				},
 				"embed": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "Restriction au mode intégré",
+					"description": "Autoriser d'intégrer cette vidéo dans d'autres sites ou pas"
 				},
 				"r18": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
-				},
-				"suicide": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "Restriction d'âge",
+					"description": "Cette vidéo est pour les adultes"
 				},
 				"blocked": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "Contenu bloqué",
+					"description": "Ce contenu ne peut pas être consulté à cause d'un non-respect du règlement ou de la loi"
 				},
 				"membership": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "Réservé aux abonnés",
+					"description": "Cette vidéo est réservée aux abonnées du channel"
 				},
 				"shorts": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "Autorisation pour dérivés Shorts",
+					"description": "Autoriser les créateurs de YouTube Shorts à réutiliser cette vidéo"
 				},
 				"emergency": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "Contenus en rapport avec le suicide, l'automutilation ou les troubles alimentaires",
+					"description": "Vous n'êtes pas seul"
 				},
 				"crawlable": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "Vidéo non publié",
+					"description": "Cette vidéo est réservée uniquement aux utilisateurs qui connaissent le lien, elle ne s'affichera pas dans la page de channel de l'auteur, et elle ne sera pas indexée par les moteurs de recherche"
 				},
 				"private": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "Vidéo privé",
+					"description": "Cette vidéo n'est accessible qu'au créateur ou ceux qui sont invité par le dernier"
 				}
 			}
 		}
@@ -194,38 +190,38 @@
 			"title": "Configuration du plugin",
 			"alert": {
 				"resetConfig": "Êtes vous sûr de voulour remettre tous les configs à zéro ?",
-				"importSuccess": "__NEED_TRANSLATE__",
-				"importError": "__NEED_TRANSLATE__",
-				"copySuccess": "__NEED_TRANSLATE__",
-				"copyError": "__NEED_TRANSLATE__"
+				"importSuccess": "Configs importés avec succès !",
+				"importError": "Erreur lors de l'import, veuillez vérifier le format du config.",
+				"copySuccess": "Configs copiés avec succès !",
+				"copyError": "Erreur lors de la copie, veuillez réessayer ou utiliser Ctrl+C."
 			},
 			"button": {
 				"exportConfig": "Exporter les configs",
 				"importConfig": "Importer les configs",
 				"resetConfig": "Remettre les configs à zéro",
-				"cancel": "__NEED_TRANSLATE__",
-				"submit": "__NEED_TRANSLATE__",
-				"copy": "__NEED_TRANSLATE__"
+				"cancel": "Annuler",
+				"submit": "Valider",
+				"copy": "Copier les configs"
 			},
 			"modal": {
-				"importTips": "__NEED_TRANSLATE__",
-				"exportTips": "__NEED_TRANSLATE__"
+				"importTips": "Coller les configs à importer ici",
+				"exportTips": "Copier les configs ci-dessous dans d'autres navigateurs ou partager aux autres"
 			}
 		},
 		"language": {
 			"title": "Langues",
 			"link": {
-				"translator": "__NEED_TRANSLATE__"
+				"translator": "Contributeurs des traductions"
 			}
 		},
 		"update": {
-			"tips": {
-				"0": "__NEED_TRANSLATE__",
-				"1": "__NEED_TRANSLATE__"
-			},
+			"tips": [
+				"Une nouvelle version {version} est disponible",
+				"Une mise à jour automatique sera effectuée quand vous fermez tous les onglets de YouTube"
+			],
 			"buttons": {
-				"update": "__NEED_TRANSLATE__",
-				"log": "__NEED_TRANSLATE__"
+				"update": "Mettre à jour maintenant",
+				"log": "Consulter le journal des mises à jour..."
 			}
 		}
 	},
