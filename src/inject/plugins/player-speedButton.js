@@ -85,9 +85,7 @@ export default {
 			setMemorySpeed();
 		},
 		videoSrcChange(oldValue, newValue, isAD) {
-			if (!isAD) {
-				setMemorySpeed();
-			}
+			setMemorySpeed();
 		},
 		configUpdate(oldConfig, newConfig) {
 			return oldConfig["player.ui.speedButtons"].join(",") !== newConfig["player.ui.speedButtons"].join(",");
