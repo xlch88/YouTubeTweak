@@ -113,80 +113,73 @@
 		"title": "__NEED_TRANSLATE__",
 		"label": {
 			"metadata": {
-				"date": "__NEED_TRANSLATE__",
-				"likeCount": "__NEED_TRANSLATE__",
-				"viewCount": "__NEED_TRANSLATE__",
-				"category": "__NEED_TRANSLATE__",
-				"sec": "__NEED_TRANSLATE__",
-				"quality": "__NEED_TRANSLATE__",
-				"username": "__NEED_TRANSLATE__"
+				"date": "Date:",
+				"likeCount": "Like count:",
+				"viewCount": "View count:",
+				"category": "Category:",
+				"sec": "Second:",
+				"quality": "Quality:",
+				"username": "User:"
 			},
 			"flags": {
 				"global": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "Global",
+					"description": "This video can be viewed in all countries/regions."
 				},
 				"family": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
-				},
-				"kids": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "Family Friendly",
+					"description": "This video is suitable for all ages."
 				},
 				"comment": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "Comments",
+					"description": "Whether viewers can leave comments."
 				},
 				"login": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
-				},
-				"embed": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
-				},
-				"r18": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
-				},
-				"suicide": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
-				},
-				"blocked": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
-				},
-				"membership": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
-				},
-				"shorts": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "Login Required",
+					"description": "Whether a login is required to watch this video."
 				},
 				"emergency": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "Emergency Alert",
+					"description": "\"You are not alone.\""
+				},
+				"blocked": {
+					"name": "Blocked",
+					"description": "This video cannot be played due to issues such as copyright infringement."
+				},
+				"r18": {
+					"name": "Age Restricted",
+					"description": "This video is for adults only."
+				},
+				"kids": {
+					"name": "Kids Content",
+					"description": "This video is for children and cannot be commented on, watched in a mini player, or played in the background."
+				},
+				"membership": {
+					"name": "Members Only",
+					"description": "This video is only available to paid channel members."
+				},
+				"shorts": {
+					"name": "Allow Shorts",
+					"description": "Allows this video to be used in YouTube Shorts."
+				},
+				"embed": {
+					"name": "Embed",
+					"description": "Whether this video can be embedded on other sites."
 				},
 				"crawlable": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "Unlisted",
+					"description": "This video can only be viewed by those with the link. It will not appear on the channel page and cannot be indexed by search engines."
 				},
 				"private": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "Private",
+					"description": "This video is only visible to the uploader or those invited by the uploader."
 				}
 			}
 		}
 	},
 	"general": {
 		"update": {
-			"tips": [
-				"A new version {version} is available",
-				"The extension will automatically update after you close all YouTube tabs."
-			],
+			"tips": ["A new version {version} is available", "The extension will automatically update after you close all YouTube tabs."],
 			"buttons": {
 				"update": "Update now",
 				"log": "View changelog..."
