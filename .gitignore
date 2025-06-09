@@ -30,3 +30,4 @@ dist*.zip
 *.njsproj
 *.sln
 *.sw?
+/.reload-manager-extension/

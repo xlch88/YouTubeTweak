@@ -9,6 +9,7 @@ import pkg from "./package.json";
 import manifest from "./manifest.json";
 import i18nChecker from "./vite-plugin-i18n-checker.js";
 import child_process from "node:child_process";
+import { patchWebExt } from "./patch-web-ext.js";
 
 ["public/assets/img/logo", ".chrome-profile"].forEach((dirPath) => {
 	if (!fs.existsSync(dirPath)) fs.mkdirSync(dirPath);
@@ -16,6 +17,8 @@ import child_process from "node:child_process";
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
+	if (mode === "development") patchWebExt();
+
 	return {
 		define: {
 			__APP_INFO__: JSON.stringify({
