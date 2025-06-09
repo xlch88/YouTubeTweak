@@ -1,5 +1,6 @@
 body.yttweak-shorts-blocker-index {
-	ytd-browse[page-subtype="home"] ytd-rich-shelf-renderer[is-shorts] {
+	ytd-browse[page-subtype="home"] ytd-rich-shelf-renderer[is-shorts],
+	ytd-rich-grid-renderer #contents ytd-rich-section-renderer:has(ytd-rich-shelf-renderer) {
 		display: none !important;
 	}
 
