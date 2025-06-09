@@ -101,11 +101,11 @@
 			}
 		},
 		"shorts": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "YouTube Shorts",
 			"checkbox": {
-				"enableIndex": "__NEED_TRANSLATE__",
-				"enableWatch": "__NEED_TRANSLATE__",
-				"enableMenu": "__NEED_TRANSLATE__"
+				"enableIndex": "Block Shorts on homepage",
+				"enableWatch": "Block Shorts on video watch page",
+				"enableMenu": "Block Shorts in sidebar/menu"
 			}
 		}
 	},
@@ -183,13 +183,13 @@
 	},
 	"general": {
 		"update": {
-			"tips": {
-				"0": "__NEED_TRANSLATE__",
-				"1": "__NEED_TRANSLATE__"
-			},
+			"tips": [
+				"A new version {version} is available",
+				"The extension will automatically update after you close all YouTube tabs."
+			],
 			"buttons": {
-				"update": "__NEED_TRANSLATE__",
-				"log": "__NEED_TRANSLATE__"
+				"update": "Update now",
+				"log": "View changelog..."
 			}
 		},
 		"about": {
