@@ -17,7 +17,7 @@
 			"title": "全般"
 		},
 		"insights": {
-			"title": "洞察"
+			"title": "インサイト"
 		}
 	},
 	"player": {
@@ -27,7 +27,7 @@
 				"enable": "再生時に画質を自動的に次に切り替える"
 			},
 			"tips": {
-				"quality": "指定された画質が存在しない場合は、それ以下の最高画質に自動的に切り替えます。"
+				"quality": "指定された画質が存在しない場合は、存在する最高画質に自動的に切り替えます。"
 			}
 		},
 		"speedButtons": {
@@ -101,82 +101,78 @@
 			}
 		},
 		"shorts": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "ショート (Shorts)",
 			"checkbox": {
-				"enableIndex": "__NEED_TRANSLATE__",
-				"enableWatch": "__NEED_TRANSLATE__",
-				"enableMenu": "__NEED_TRANSLATE__"
+				"enableIndex": "ホームのおすすめショートを非表示",
+				"enableWatch": "動画再生ページのおすすめショートを非表示",
+				"enableMenu": "メニューからショートを非表示"
 			}
 		}
 	},
 	"insights": {
-		"title": "__NEED_TRANSLATE__",
+		"title": "インサイト",
 		"label": {
 			"metadata": {
-				"date": "__NEED_TRANSLATE__",
-				"likeCount": "__NEED_TRANSLATE__",
-				"viewCount": "__NEED_TRANSLATE__",
-				"category": "__NEED_TRANSLATE__",
-				"sec": "__NEED_TRANSLATE__",
-				"quality": "__NEED_TRANSLATE__",
-				"username": "__NEED_TRANSLATE__"
+				"date": "日付：",
+				"likeCount": "いいね数：",
+				"viewCount": "視聴回数：",
+				"category": "カテゴリ：",
+				"sec": "秒数：",
+				"quality": "画質：",
+				"username": "ユーザー名："
 			},
 			"flags": {
 				"global": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "地域制限なし",
+					"description": "このビデオは全ての国/地域で視聴可能。"
 				},
 				"family": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "全年齢対象",
+					"description": "このビデオは全年齢対象。"
 				},
 				"kids": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "子ども向け",
+					"description": "このビデオはコメント、ミニプレーヤー、バックグラウンド再生が制限される。"
 				},
 				"comment": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "コメント機能",
+					"description": "視聴者によるコメント投稿の可否。"
 				},
 				"login": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "ログイン制限",
+					"description": "視聴にはログインが必要かどうか。"
 				},
 				"embed": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "埋め込み制限",
+					"description": "他サイトへの動画埋め込みの可否。"
 				},
 				"r18": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
-				},
-				"suicide": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "年齢制限",
+					"description": "このビデオは未成年者が再生できない。"
 				},
 				"blocked": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "再生禁止",
+					"description": "このビデオは著作権侵害などの理由で再生できない。"
 				},
 				"membership": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "メンバー限定",
+					"description": "このビデオはチャンネルの有料メンバーのみ視聴可能。"
 				},
 				"shorts": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "ショート利用許可",
+					"description": "このビデオはショート素材としての利用が許可されている。"
 				},
 				"emergency": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "自殺防止警告",
+					"description": "「あなたは一人じゃない」"
 				},
 				"crawlable": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "非公開ビデオ",
+					"description": "このビデオはリンクを知っている人のみアクセス可能。チャンネル/検索結果に表示されない。"
 				},
 				"private": {
-					"name": "__NEED_TRANSLATE__",
-					"description": "__NEED_TRANSLATE__"
+					"name": "プライベートビデオ",
+					"description": "このビデオはアップロード者または招待者のみ視聴可能。"
 				}
 			}
 		}
@@ -184,12 +180,12 @@
 	"general": {
 		"update": {
 			"tips": {
-				"0": "__NEED_TRANSLATE__",
-				"1": "__NEED_TRANSLATE__"
+				"0": "新しいバージョン {version} が利用可能です",
+				"1": "全てのYouTubeタブを閉じると自動的にアップデートされます"
 			},
 			"buttons": {
-				"update": "__NEED_TRANSLATE__",
-				"log": "__NEED_TRANSLATE__"
+				"update": "アップデート",
+				"log": "アップデートのログを表示する..."
 			}
 		},
 		"about": {
