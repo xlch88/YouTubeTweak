@@ -29,6 +29,7 @@ body.yttweak-anti-ad {
 			}
 		}
 	}
+
 	#masthead-ad {
 		display: none !important;
 	}
@@ -39,5 +40,31 @@ body.yttweak-anti-ad-merch {
 	ytd-merch-shelf-renderer {
 		display: none !important;
 		height: 0;
+	}
+}
+
+body.yttweak-anti-ad,
+body.yttweak-lock-pre-row {
+	#primary.ytd-two-column-browse-results-renderer > ytd-rich-grid-renderer > #contents {
+		margin-left: calc(var(--ytd-rich-grid-gutter-margin) * 2);
+		> [is-in-first-column] {
+			margin-left: calc(var(--ytd-rich-grid-item-margin) / 2);
+		}
+
+		ytd-continuation-item-renderer {
+			width: 100%;
+
+			.ghost-grid.ytd-ghost-grid-renderer {
+				margin-left: 0;
+			}
+			.ghost-card {
+				width: calc(100% / var(--ytd-rich-grid-items-per-row) - var(--ytd-rich-grid-item-margin) - 0.01px - 4px);
+			}
+		}
+
+		#content.ytd-rich-section-renderer {
+			margin-right: 40px;
+			margin-left: 8px;
+		}
 	}
 }

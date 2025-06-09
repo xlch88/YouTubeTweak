@@ -17,15 +17,25 @@ export default {
 				mutator: true,
 				handler(data) {
 					if (data && typeof data === "object") {
-						if ("adSlots" in data) delete data.adSlots;
-						if ("playerAds" in data) data.playerAds = [];
-						if ("adPlacements" in data) data.adPlacements = [];
+						let isRemove = false;
+						if ("adSlots" in data) {
+							isRemove = true;
+							delete data.adSlots;
+						}
+						if ("playerAds" in data) {
+							isRemove = true;
+							data.playerAds = [];
+						}
+						if ("adPlacements" in data) {
+							isRemove = true;
+							data.adPlacements = [];
+						}
 						// if (data?.auxiliaryUi?.messageRenderers?.bkaEnforcementMessageViewModel) {
 						// 	logger.info("Removing adblockblock from player response");
 						// 	delete data.auxiliaryUi;
 						// }
 
-						logger.info("Removing adSlots from player response");
+						if (isRemove) logger.info("Removing adSlots from player response");
 					}
 
 					return data;
@@ -33,14 +43,18 @@ export default {
 			};
 
 			antiADSlotInterval = setInterval(() => {
-				document.querySelectorAll("ytd-ad-slot-renderer").forEach((ad) => {
+				document.querySelectorAll("ytd-ad-slot-renderer:not([ytt-hide])").forEach((ad) => {
+					ad.setAttribute("ytt-hide", "1");
 					if (ad?.parentElement?.parentElement && ad?.parentElement?.parentElement.tagName === "YTD-RICH-ITEM-RENDERER") {
-						// ad.parentElement.parentElement.style.display = "none";
-						logger.debug("remove index ad:", ad.parentElement.parentElement);
-						ad.parentElement.parentElement?.remove();
+						const parent = ad.parentElement.parentElement;
+						parent.style.background = "red";
+						parent.style.display = "none";
+						logger.debug("remove index ad:", parent);
+						// parent.remove();
 					} else {
 						logger.debug("remove ad:", ad);
-						ad.remove();
+						// ad.remove();
+						ad.style.display = "none";
 					}
 				});
 

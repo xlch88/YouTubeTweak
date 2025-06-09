@@ -3,6 +3,7 @@ import config from "../config.js";
 export default {
 	"index.videoPerRow.enable": {
 		enable() {
+			document.body.classList.add("yttweak-lock-pre-row");
 			let style = document.getElementById("yttweak-style-video-per-row");
 
 			if (!style) {
@@ -14,6 +15,7 @@ export default {
 			style.innerText = `ytd-rich-grid-renderer{ --ytd-rich-grid-items-per-row: ${config.get("index.videoPerRow.count")} !important }`;
 		},
 		disable() {
+			document.body.classList.remove("yttweak-lock-pre-row");
 			document.getElementById("yttweak-style-video-per-row")?.remove();
 		},
 		configUpdate(oldConfig, newConfig) {
