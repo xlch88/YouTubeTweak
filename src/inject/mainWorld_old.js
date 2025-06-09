@@ -143,3 +143,22 @@ Object.defineProperty(window, "ytplayer", {
 		requestAnimationFrame(waitForBody);
 	}
 })();
+
+Object.defineProperty(window, "PolymerFakeBaseClassWithoutHtml", {
+	configurable: true,
+	enumerable: true,
+	get() {
+		return this._PolymerFakeBaseClassWithoutHtml;
+	},
+	set(v) {
+		console.warn("[劫持] 有人试图定义 PolymerFakeBaseClassWithoutHtml");
+		console.trace("调用堆栈：");
+		this._PolymerFakeBaseClassWithoutHtml = function () {
+			if (!this?.hostElement) return;
+			if (this.hostElement?.tagName === "YTD-RICH-GRID-RENDERER") {
+				window.fuck = this;
+				console.log("aaaaaaaaaaaaaaaaaaaaaaa", arguments, this?.hostElement);
+			}
+		};
+	},
+});
