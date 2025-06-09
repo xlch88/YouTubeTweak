@@ -1,10 +1,10 @@
 <template>
 	<template v-if="action === 'popup'">
 		<header>
-			<div class="item logo">
+			<a class="item logo" target="_blank" href="https://github.com/xlch88/YouTubeTweak">
 				<img src="/assets/img/logo.svg" alt="logo" />
 				<span><small>YouTube</small>Tweak</span>
-			</div>
+			</a>
 			<button
 				v-for="key in ['player', 'comment', 'other', 'insights', 'general']"
 				:key="key"
@@ -78,12 +78,12 @@ header {
 	align-items: center;
 	box-shadow: 0 0 10px rgba(#000, 0.3);
 	background: #fff;
+	padding: 0 10px;
 
 	.item {
 		appearance: none;
-		padding: 5px 10px;
+		padding: 5px 0;
 		height: 100%;
-		flex: 1;
 		line-height: 30px;
 		text-align: center;
 		border: none;
@@ -92,20 +92,25 @@ header {
 		word-break: keep-all;
 		white-space: nowrap;
 		font-size: 12px;
+		transition: color 0.3s;
 
 		&.active {
-			background: rgba(#000, 0.05);
+			text-shadow: 0 0 10px #ed00ff;
+			color: #d739e3;
 		}
 		&:hover {
-			background: rgba(#000, 0.1);
+			color: #c15fc7;
+			&.active {
+				color: #c320d0;
+			}
 		}
 
 		&.logo {
 			display: flex;
 			align-items: center;
-			padding: 0 10px;
 			background: #fff;
-			cursor: default;
+			cursor: help;
+			color: #000;
 
 			img {
 				width: 30px;
@@ -116,7 +121,7 @@ header {
 				font-weight: bolder;
 				font-size: 15px;
 				line-height: 12px;
-				font-family: "Trebuchet MS";
+				font-family: "Trebuchet MS", serif;
 				display: flex;
 				flex-direction: column;
 				text-align: left;
@@ -127,6 +132,10 @@ header {
 					color: rgba(0, 0, 0, 0.5);
 				}
 			}
+
+			&:hover {
+				color: #8f5bff;
+			}
 		}
 	}
 }
@@ -135,12 +144,18 @@ header {
 	margin: 10px;
 	border-radius: 5px;
 	padding: 10px;
+	box-shadow:
+		0 7px 14px 0 rgba(65, 69, 88, 0.1),
+		0 3px 6px 0 rgba(0, 0, 0, 0.07);
+
 	.card-title {
-		font-size: 15px;
-		font-weight: bolder;
-		padding-bottom: 5px;
-		margin-bottom: 5px;
+		font-weight: bold;
 		border-bottom: 1px solid #eee;
+		background: rgb(249, 250, 253);
+		margin: -10px -10px 10px -10px;
+		padding: 10px;
+		font-size: 13px;
+		border-radius: 5px 5px 0 0;
 	}
 	.card-body {
 		p {
