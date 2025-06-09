@@ -110,7 +110,76 @@
 		}
 	},
 	"insights": {
-		"title": "__NEED_TRANSLATE__"
+		"title": "__NEED_TRANSLATE__",
+		"label": {
+			"metadata": {
+				"date": "__NEED_TRANSLATE__",
+				"likeCount": "__NEED_TRANSLATE__",
+				"viewCount": "__NEED_TRANSLATE__",
+				"category": "__NEED_TRANSLATE__",
+				"sec": "__NEED_TRANSLATE__",
+				"quality": "__NEED_TRANSLATE__",
+				"username": "__NEED_TRANSLATE__"
+			},
+			"flags": {
+				"global": {
+					"name": "__NEED_TRANSLATE__",
+					"description": "__NEED_TRANSLATE__"
+				},
+				"family": {
+					"name": "__NEED_TRANSLATE__",
+					"description": "__NEED_TRANSLATE__"
+				},
+				"kids": {
+					"name": "__NEED_TRANSLATE__",
+					"description": "__NEED_TRANSLATE__"
+				},
+				"comment": {
+					"name": "__NEED_TRANSLATE__",
+					"description": "__NEED_TRANSLATE__"
+				},
+				"login": {
+					"name": "__NEED_TRANSLATE__",
+					"description": "__NEED_TRANSLATE__"
+				},
+				"embed": {
+					"name": "__NEED_TRANSLATE__",
+					"description": "__NEED_TRANSLATE__"
+				},
+				"r18": {
+					"name": "__NEED_TRANSLATE__",
+					"description": "__NEED_TRANSLATE__"
+				},
+				"suicide": {
+					"name": "__NEED_TRANSLATE__",
+					"description": "__NEED_TRANSLATE__"
+				},
+				"blocked": {
+					"name": "__NEED_TRANSLATE__",
+					"description": "__NEED_TRANSLATE__"
+				},
+				"membership": {
+					"name": "__NEED_TRANSLATE__",
+					"description": "__NEED_TRANSLATE__"
+				},
+				"shorts": {
+					"name": "__NEED_TRANSLATE__",
+					"description": "__NEED_TRANSLATE__"
+				},
+				"emergency": {
+					"name": "__NEED_TRANSLATE__",
+					"description": "__NEED_TRANSLATE__"
+				},
+				"crawlable": {
+					"name": "__NEED_TRANSLATE__",
+					"description": "__NEED_TRANSLATE__"
+				},
+				"private": {
+					"name": "__NEED_TRANSLATE__",
+					"description": "__NEED_TRANSLATE__"
+				}
+			}
+		}
 	},
 	"general": {
 		"update": {

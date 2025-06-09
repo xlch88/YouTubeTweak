@@ -110,7 +110,73 @@
 		}
 	},
 	"insights": {
-		"title": "洞察"
+		"title": "洞察",
+		"tips": {},
+		"label": {
+			"metadata": {
+				"date": "日期：",
+				"likeCount": "点赞数：",
+				"viewCount": "观看次数：",
+				"category": "分类：",
+				"sec": "秒数：",
+				"quality": "画质：",
+				"username": "用户名："
+			},
+			"flags": {
+				"global": {
+					"name": "无地域限制",
+					"description": "此视频在所有国家/地区均可观看。"
+				},
+				"family": {
+					"name": "家庭友好",
+					"description": "此视频适合所有年龄段观看。"
+				},
+				"comment": {
+					"name": "评论功能",
+					"description": "是否允许观众留言。"
+				},
+				"login": {
+					"name": "登录限制",
+					"description": "是否需要登录才能观看此视频。"
+				},
+				"emergency": {
+					"name": "紫砂警告",
+					"description": "“你并不孤单。”"
+				},
+				"blocked": {
+					"name": "禁止播放",
+					"description": "此视频因侵权等问题无法被播放。"
+				},
+				"r18": {
+					"name": "年龄限制",
+					"description": "此视频仅成年人可看。"
+				},
+				"kids": {
+					"name": "儿童内容",
+					"description": "此视频为儿童内容，无法评论、小窗观看、后台播放。"
+				},
+				"membership": {
+					"name": "会员专属",
+					"description": "此视频仅限频道付费会员观看。"
+				},
+				"shorts": {
+					"name": "允许Shorts",
+					"description": "允许将此视频用于 YouTube Shorts 创作。"
+				},
+				"embed": {
+					"name": "嵌入限制",
+					"description": "是否允许将此视频嵌入到其他网站。"
+				},
+				"crawlable": {
+					"name": "不公开视频",
+					"description": "此视频仅知道链接的人才能够看到，不会出现在作者的频道页面，也无法被搜索引擎索引。"
+				},
+				"private": {
+					"name": "私享视频",
+					"description": "此视频仅发布者自己或通过发布者邀请才能看到。"
+				}
+			}
+		}
 	},
 	"general": {
 		"update": {
