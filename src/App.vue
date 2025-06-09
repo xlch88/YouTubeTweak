@@ -12,7 +12,7 @@
 				:class="{ active: tab === key }"
 				@click="tab = key"
 			>
-				{{ $t(`tabs.${key}.title`) }}
+				<span>{{ $t(`tabs.${key}.title`) }}</span>
 			</button>
 		</header>
 
@@ -94,9 +94,17 @@ header {
 		font-size: 12px;
 		transition: color 0.3s;
 
+		&:is(button) > span {
+			background: transparent;
+			padding: 3px 6px;
+			border-radius: 500px;
+		}
+
 		&.active {
-			text-shadow: 0 0 10px #ed00ff;
 			color: #d739e3;
+			> span {
+				background: rgba(215, 57, 227, 0.2);
+			}
 		}
 		&:hover {
 			color: #c15fc7;
