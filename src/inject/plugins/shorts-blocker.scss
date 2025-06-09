@@ -22,10 +22,10 @@ body.yttweak-shorts-blocker-watch {
 }
 
 body.yttweak-shorts-blocker-menu {
-	ytd-guide-section-renderer #items > ytd-guide-entry-renderer:nth-child(2) a[title="Shorts"] {
+	ytd-guide-section-renderer #items > ytd-guide-entry-renderer:has(a[title="Shorts"]) {
 		display: none !important;
 	}
-	ytd-mini-guide-renderer #items > ytd-mini-guide-entry-renderer:nth-child(2) a[title="Shorts"] {
+	ytd-mini-guide-renderer #items > ytd-mini-guide-entry-renderer:has(a[title="Shorts"]) {
 		display: none !important;
 	}
 	ytm-pivot-bar-renderer ytm-pivot-bar-item-renderer:nth-child(2) {
