@@ -6,7 +6,12 @@ export default {
 		window.fetch = async (...args) => {
 			const url = args[0]?.url || args[0];
 
-			const matchedHooks = Object.values(this.hooks).filter((v) => url.includes(v.match));
+			const matchedHooks = Object.values(this.hooks).filter((v) => {
+				if (typeof v.match === "function") {
+					return v.match(...args);
+				}
+				return url.includes(v.match);
+			});
 			if (matchedHooks.length === 0 || typeof url !== "string") return originalFetch.apply(window, args);
 
 			const response = await originalFetch.apply(window, args);
@@ -21,7 +26,11 @@ export default {
 			} else {
 				let data = await responseClone.json();
 				for (const hook of matchedHooks) {
-					data = hook.handler(data, url, responseClone);
+					if (hook.mutator) {
+						data = hook.handler(data, url, responseClone);
+					} else {
+						hook.handler(data, url, responseClone);
+					}
 				}
 
 				return new Response(JSON.stringify(data), {
