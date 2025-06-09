@@ -35,7 +35,13 @@ export default defineConfig(({ mode }) => {
 		},
 		plugins: [
 			sassGlobImports(),
-			...[mode !== "production" ? vueDevTools() : []],
+			...[
+				mode !== "production"
+					? vueDevTools({
+							launchEditor: "idea",
+						})
+					: [],
+			],
 			vue(),
 			{
 				name: "logo-to-png",
@@ -113,7 +119,7 @@ export default defineConfig(({ mode }) => {
 			{
 				name: "auto-zip",
 				closeBundle() {
-					if (mode === "production") {
+					if (mode === "production" && fs.existsSync("./dist")) {
 						fs.existsSync("./dist.zip") && fs.unlinkSync("./dist.zip");
 						child_process.execSync("7z a -tzip ./dist.zip ./dist/*");
 					}

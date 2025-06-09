@@ -18,5 +18,6 @@ app.use(pinia);
 
 initI18n().then((i18n) => {
 	app.use(i18n);
-	app.mount("body");
+	app.mount("#app");
+	document.querySelector("body > .loading").remove();
 });
