@@ -1,4 +1,5 @@
 import { createLogger } from "../../logger.js";
+import { metadata } from "../mainWorld.js";
 const logger = createLogger("anti-ad");
 
 export default () => {
@@ -7,7 +8,7 @@ export default () => {
 			configurable: true,
 			enumerable: true,
 			set(v) {
-				logger.log("window.ytplayer set:", v);
+				logger.debug("window.ytplayer set:", v);
 
 				// hook window.ytplayer.config
 				Object.defineProperty(v, "config", {
@@ -35,6 +36,11 @@ export default () => {
 						// 	delete rsp.auxiliaryUi;
 						// }
 						this._bpr = rsp;
+
+						if (rsp?.videoDetails?.videoId) {
+							metadata.video = rsp;
+							logger.debug("Get video metadata:", rsp);
+						}
 					},
 					get() {
 						return this._bpr;
@@ -45,6 +51,22 @@ export default () => {
 			},
 			get() {
 				return this._ytp;
+			},
+		});
+
+		Object.defineProperty(window, "ytInitialData", {
+			configurable: true,
+			enumerable: true,
+			set(v) {
+				this._ytInitialData = v;
+
+				if (v?.currentVideoEndpoint?.watchEndpoint?.videoId) {
+					metadata.videoNext = v;
+					logger.debug("Get video next metadata:", v);
+				}
+			},
+			get() {
+				return this._ytInitialData;
 			},
 		});
 	}

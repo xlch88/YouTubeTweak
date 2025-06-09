@@ -30,6 +30,7 @@ export const videoPlayer = {
 };
 export const metadata = {
 	video: null,
+	videoNext: null,
 };
 
 const YouTubeTweakApp = {
@@ -126,6 +127,11 @@ const YouTubeTweakApp = {
 						function onVideoSrcChange(oldValue, newValue) {
 							adCheckTimeouts.forEach((t) => clearTimeout(t));
 							adCheckTimeouts.length = 0;
+
+							if (new URL(window.location.href).pathname !== "/watch") {
+								metadata.video = null;
+								metadata.videoNext = null;
+							}
 
 							function callVideoSrcChange(isAD) {
 								logger.debug("video src changed", {
@@ -229,6 +235,33 @@ const YouTubeTweakApp = {
 
 if (["www.youtube.com", "m.youtube.com"].includes(location.host)) {
 	Object.values(pluginsDocumentStart).forEach((v) => v());
+
+	fetchHooker.hooks.playerMetadata = {
+		match: "/youtubei/v1/player",
+		mutator: false,
+		handler(data) {
+			const url = new URL(window.location.href);
+			if (url.pathname === "/watch" && typeof data?.videoDetails === "object") {
+				if (url.searchParams.get("v") === data.videoDetails.videoId) {
+					metadata.video = data;
+					logger.debug("Get video metadata:", data);
+				}
+			}
+		},
+	};
+	fetchHooker.hooks.playerMetadataNext = {
+		match: "/youtubei/v1/next",
+		mutator: false,
+		handler(data) {
+			const url = new URL(window.location.href);
+			if (url.pathname === "/watch" && typeof data?.currentVideoEndpoint === "object") {
+				if (url.searchParams.get("v") === data.currentVideoEndpoint?.watchEndpoint?.videoId) {
+					metadata.videoNext = data;
+					logger.debug("Get video next metadata:", data);
+				}
+			}
+		},
+	};
 
 	fetchHooker.init();
 	wirelessRedstone.init("main");
