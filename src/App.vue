@@ -6,7 +6,7 @@
 				<span><small>YouTube</small>Tweak</span>
 			</a>
 			<button
-				v-for="key in ['player', 'comment', 'other', 'insights', 'general']"
+				v-for="key in ['player', 'comment', 'other', /*'insights', */ 'general']"
 				:key="key"
 				class="item"
 				:class="{ active: tab === key }"
