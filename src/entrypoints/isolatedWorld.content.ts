@@ -9,7 +9,6 @@ contentScript = defineContentScript({
 	runAt: "document_start",
 	matches: ["*://*.youtube.com/*"],
 	registration: "manifest",
-	include: ["chrome"],
 	main: isolatedWorld,
 });
 
