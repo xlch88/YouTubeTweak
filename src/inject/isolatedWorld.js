@@ -9,7 +9,7 @@ export default function isolatedWorld() {
 
 	logger.log("Initializing isolated world...");
 
-	wirelessRedstone.init("isolatedWorld");
+	wirelessRedstone.init("isolated");
 
 	Object.assign(wirelessRedstone.handlers, {
 		getConfig(data, reply) {

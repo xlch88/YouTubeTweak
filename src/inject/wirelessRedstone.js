@@ -1,3 +1,5 @@
+let cloneInto;
+
 export default {
 	handlers: {},
 	world: "",
@@ -5,14 +7,14 @@ export default {
 
 	init(world) {
 		if (this.world !== "") return;
+
+		// @ts-ignore for firefox https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_scripts/cloneInto
+		cloneInto = typeof window.cloneInto === "function" ? window.cloneInto : (data) => data;
+
 		this.world = world;
-
-		window.addEventListener("message", (evt) => {
-			if (evt.source !== window) return;
-
-			const data = evt.data;
-			if (data?.from !== "YouTubeTweak-WorldPortal") return;
-			if (data.fromWorld === this.world) return;
+		window.addEventListener(`yttweak-portal-${this.world}`, (evt) => {
+			const data = evt.detail;
+			// if (data.fromWorld === this.world) return;
 
 			if (data.type === "worldPortalReply") {
 				if (this.callbackStack[data.cbId]) {
@@ -25,14 +27,17 @@ export default {
 			if (this.handlers[data.type]) {
 				this.handlers[data.type](data.data, (replyData) => {
 					if (!data.cbId) return;
-
-					window.postMessage({
-						from: "YouTubeTweak-WorldPortal",
+					const detail = {
 						fromWorld: this.world,
 						type: "worldPortalReply",
 						data: replyData,
 						cbId: data.cbId,
-					});
+					};
+					window.dispatchEvent(
+						new CustomEvent(`yttweak-portal-${this.world === "isolated" ? "main" : "isolated"}`, {
+							detail: this.world === "isolated" ? cloneInto(detail, window) : detail,
+						}),
+					);
 				});
 			}
 		});
@@ -45,12 +50,16 @@ export default {
 			cbId = crypto.randomUUID();
 			this.callbackStack[cbId] = callback;
 		}
-		window.postMessage({
-			from: "YouTubeTweak-WorldPortal",
+		const detail = {
 			fromWorld: this.world,
 			type,
 			data,
 			cbId,
-		});
+		};
+		window.dispatchEvent(
+			new CustomEvent(`yttweak-portal-${this.world === "isolated" ? "main" : "isolated"}`, {
+				detail: this.world === "isolated" ? cloneInto(detail, window) : detail,
+			}),
+		);
 	},
 };
