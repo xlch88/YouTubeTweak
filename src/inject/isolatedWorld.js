@@ -3,46 +3,50 @@ import wirelessRedstone from "./wirelessRedstone.js";
 import { youtubeiAPIv1 } from "./util/youtubei.js";
 const logger = createLogger("IsolatedWorld");
 
-wirelessRedstone.init("isolatedWorld");
+export default function isolatedWorld() {
+	logger.log("Initializing isolated world...");
 
-Object.assign(wirelessRedstone.handlers, {
-	getConfig(data, reply) {
-		chrome.storage.sync.get(data, (result) => {
-			reply(result);
-		});
-	},
-	setConfig(data, reply) {
-		chrome.storage.sync.set(data, () => {
-			reply({ success: true });
-		});
-	},
-});
-chrome.storage.onChanged.addListener((changes, areaName) => {
-	if (areaName === "sync") {
-		wirelessRedstone.send("configUpdate", changes);
-	}
-});
-// chrome.runtime.onMessage.addListener((msg) => {
-// 	console.log("Received update from background:", msg.changes);
-// });
+	wirelessRedstone.init("isolatedWorld");
 
-let chromeApiStatusChecker = null;
-Object.assign(wirelessRedstone.handlers, {
-	enableChromeApiStatusChecker(isEnable) {
-		if (!isEnable) {
-			clearInterval(chromeApiStatusChecker);
-			chromeApiStatusChecker = null;
-			return;
+	Object.assign(wirelessRedstone.handlers, {
+		getConfig(data, reply) {
+			chrome.storage.sync.get(data, (result) => {
+				reply(result);
+			});
+		},
+		setConfig(data, reply) {
+			chrome.storage.sync.set(data, () => {
+				reply({ success: true });
+			});
+		},
+	});
+	chrome.storage.onChanged.addListener((changes, areaName) => {
+		if (areaName === "sync") {
+			wirelessRedstone.send("configUpdate", changes);
 		}
+	});
+	// chrome.runtime.onMessage.addListener((msg) => {
+	// 	console.log("Received update from background:", msg.changes);
+	// });
 
-		chromeApiStatusChecker = setInterval(() => {
-			if (chrome?.runtime?.id) return;
-			wirelessRedstone.send("chromeApiOffline", true);
-			clearInterval(chromeApiStatusChecker);
-		}, 1000);
-	},
-});
+	let chromeApiStatusChecker = null;
+	Object.assign(wirelessRedstone.handlers, {
+		enableChromeApiStatusChecker(isEnable) {
+			if (!isEnable) {
+				clearInterval(chromeApiStatusChecker);
+				chromeApiStatusChecker = null;
+				return;
+			}
 
-window.__YT_TWEAK__ = {
-	WORLD: "isolated",
-};
+			chromeApiStatusChecker = setInterval(() => {
+				if (chrome?.runtime?.id) return;
+				wirelessRedstone.send("chromeApiOffline", true);
+				clearInterval(chromeApiStatusChecker);
+			}, 1000);
+		},
+	});
+
+	window.__YT_TWEAK__ = {
+		WORLD: "isolated",
+	};
+}

@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { toRaw } from "vue";
-import { createLogger } from "../logger.js";
-import defaultConfig from "../defaultConfig.js";
+import { createLogger } from "@/logger.js";
+import defaultConfig from "@/defaultConfig.js";
 const logger = createLogger("config");
 
 export const STORAGE_KEY = "settings";

@@ -1,5 +1,5 @@
 import { createI18n } from "vue-i18n";
-import en from "../assets/i18n/en-US.json";
+import en from "@/assets/i18n/en-US.json";
 
 export let i18n;
 
@@ -45,20 +45,18 @@ export async function initI18n() {
 
 export async function loadLocaleMessages(locale) {
 	if (locale === "en-US") return;
-	let messages = (await import(`../assets/i18n/${locale}.json`)).default;
+	let messages = (await import(`@/assets/i18n/${locale}.json`)).default;
 
-	if (__IS_DEV__) {
-		function cleanNeedTranslate(messages) {
-			for (const [key, value] of Object.entries(messages)) {
-				if (typeof value === "string" && value.startsWith("__NEED_TRANSLATE__")) {
-					delete messages[key];
-				} else if (typeof value === "object") {
-					cleanNeedTranslate(value);
-				}
+	function cleanNeedTranslate(messages) {
+		for (const [key, value] of Object.entries(messages)) {
+			if (typeof value === "string" && value.startsWith("__NEED_TRANSLATE__")) {
+				delete messages[key];
+			} else if (typeof value === "object") {
+				cleanNeedTranslate(value);
 			}
 		}
-		cleanNeedTranslate(messages);
 	}
+	cleanNeedTranslate(messages);
 
 	i18n.global.setLocaleMessage(locale, messages);
 }

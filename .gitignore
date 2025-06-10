@@ -1,4 +1,4 @@
-.chrome-profile
+.profile
 public/assets/img/logo/*.png
 public/_locales
 example-data
@@ -13,11 +13,14 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-dist
-dist_dev
 dist-ssr
 *.local
 dist*.zip
+.output
+stats.html
+stats-*.json
+.wxt
+web-ext.config.ts
 
 # Editor directories and files
 .vscode/*
@@ -30,4 +33,3 @@ dist*.zip
 *.njsproj
 *.sln
 *.sw?
-/.reload-manager-extension/

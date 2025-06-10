@@ -4,21 +4,26 @@
 	"version": "1.0.1",
 	"type": "module",
 	"scripts": {
-		"dev": "vite",
-		"build": "vite build",
-		"preview": "vite preview",
-		"prettier": "prettier -w ."
+		"dev": "wxt",
+		"dev:firefox": "wxt -b firefox",
+		"build": "vue-tsc --noEmit && wxt build",
+		"build:firefox": "vue-tsc --noEmit && wxt build -b firefox",
+		"zip": "wxt zip",
+		"zip:firefox": "wxt zip -b firefox",
+		"compile": "vue-tsc --noEmit",
+		"postinstall": "wxt prepare"
 	},
 	"devDependencies": {
-		"@vitejs/plugin-vue": "^5.2.4",
+		"@wxt-dev/auto-icons": "^1.0.2",
+		"@wxt-dev/module-vue": "^1.0.2",
 		"chrome-types": "^0.1.349",
 		"prettier": "^3.5.3",
 		"sass": "^1.88.0",
-		"sharp": "^0.34.1",
-		"vite": "^6.3.5",
+		"typescript": "5.6.3",
 		"vite-plugin-sass-glob-import": "^5.0.0",
 		"vite-plugin-vue-devtools": "^7.7.6",
-		"vite-plugin-web-extension": "^4.4.3"
+		"vue-tsc": "^2.2.10",
+		"wxt": "^0.20.6"
 	},
 	"dependencies": {
 		"pinia": "^3.0.2",

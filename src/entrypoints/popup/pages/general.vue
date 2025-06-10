@@ -12,7 +12,7 @@
 	<div class="card">
 		<div class="card-title">{{ $t("general.about.title") }}</div>
 		<div class="card-body about">
-			<img src="/assets/img/logo.svg" alt="logo" />
+			<img src="@/assets/img/logo.svg" alt="logo" />
 			<p class="title">YouTube Tweak</p>
 			<p class="version">
 				v{{ APP_INFO.version }}<br /><span>Build at {{ APP_INFO.build }}</span>

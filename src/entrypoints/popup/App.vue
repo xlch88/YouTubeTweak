@@ -2,7 +2,7 @@
 	<template v-if="action === 'popup'">
 		<header>
 			<a class="item logo" target="_blank" href="https://github.com/xlch88/YouTubeTweak">
-				<img src="/assets/img/logo.svg" alt="logo" />
+				<img src="@/assets/img/logo.svg" alt="logo" />
 				<span><small>YouTube</small>Tweak</span>
 			</a>
 			<button
