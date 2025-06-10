@@ -55,6 +55,16 @@ const YouTubeTweakApp = {
 		});
 	},
 	initPlugins() {
+		for (const [pluginName, plugin] of Object.entries(plugins)) {
+			if (plugin.setup) {
+				logger.info(`plugin init:`, pluginName);
+				try {
+					plugin.setup();
+				} catch (e) {
+					logger.error("plugin error:", e);
+				}
+			}
+		}
 		for (const [key, value] of Object.entries(config.get())) {
 			if (value && plugins[key]?.enable) {
 				logger.info(`plugin enable:`, key);

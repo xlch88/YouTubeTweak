@@ -2,12 +2,30 @@ import { videoPlayer } from "../mainWorld.js";
 import { bodyClass } from "../util/helper.js";
 import { createLogger } from "../../logger.js";
 import fetchHooker from "../fetchHooker.js";
+import config from "../config.js";
 const logger = createLogger("anti-ad");
 
 let antiADSlotInterval;
 
 export default {
 	"other.antiAD.enable": {
+		options: {
+			reloadOnToggle: true,
+		},
+		setup() {
+			if (
+				(!config.get("other.antiAD.enable") && localStorage.getItem("YTTweak-plugin-AntiAD")) ||
+				(config.get("other.antiAD.enable") && !localStorage.getItem("YTTweak-plugin-AntiAD"))
+			) {
+				logger.info("plugin status change. need to reload page !!!");
+				debugger;
+
+				config.get("other.antiAD.enable")
+					? localStorage.setItem("YTTweak-plugin-AntiAD", "1")
+					: localStorage.removeItem("YTTweak-plugin-AntiAD");
+				location.reload();
+			}
+		},
 		enable() {
 			document.body.classList.add("yttweak-anti-ad");
 			localStorage.setItem("YTTweak-plugin-AntiAD", "1");

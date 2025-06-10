@@ -4,7 +4,7 @@ const logger = createLogger("anti-ad");
 
 export default () => {
 	const enableAntiAD = localStorage.getItem("YTTweak-plugin-AntiAD");
-	logger.warn(enableAntiAD ? "AntiAD plugin enabled" : "AntiAD plugin disabled");
+	logger.debug(enableAntiAD ? "AntiAD plugin enabled" : "AntiAD plugin disabled");
 
 	Object.defineProperty(window, "ytplayer", {
 		configurable: true,
