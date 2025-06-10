@@ -11,12 +11,12 @@ export default function isolatedWorld() {
 
 	Object.assign(wirelessRedstone.handlers, {
 		getConfig(data, reply) {
-			browser.storage.sync.get(data, (result) => {
+			browser.storage.sync.get(data).then((result) => {
 				reply(result);
 			});
 		},
 		setConfig(data, reply) {
-			browser.storage.sync.set(data, () => {
+			browser.storage.sync.set(data).then(() => {
 				reply({ success: true });
 			});
 		},
@@ -40,7 +40,7 @@ export default function isolatedWorld() {
 			}
 
 			chromeApiStatusChecker = setInterval(() => {
-				if (chrome?.runtime?.id) return;
+				if (browser?.runtime?.id) return;
 				wirelessRedstone.send("chromeApiOffline", true);
 				clearInterval(chromeApiStatusChecker);
 			}, 1000);

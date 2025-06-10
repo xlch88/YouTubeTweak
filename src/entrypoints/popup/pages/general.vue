@@ -137,13 +137,13 @@ function configModalSubmit() {
 }
 
 const waitUpdate = ref("");
-browser.storage.local.get("waitUpdate", (data) => {
+browser.storage.local.get("waitUpdate").then((data) => {
 	if (data.waitUpdate) {
 		waitUpdate.value = data.waitUpdate;
 	}
 });
 function updateNow() {
-	browser.storage.local.set({ needReloadTabs: true }, () => {
+	browser.storage.local.set({ needReloadTabs: true }).then(() => {
 		browser.runtime.reload();
 	});
 }
