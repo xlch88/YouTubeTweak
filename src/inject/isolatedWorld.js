@@ -5,6 +5,8 @@ import { browser } from "@wxt-dev/webextension-polyfill/browser";
 const logger = createLogger("IsolatedWorld");
 
 export default function isolatedWorld() {
+	if (!["www.youtube.com", "m.youtube.com"].includes(location.host)) return;
+
 	logger.log("Initializing isolated world...");
 
 	wirelessRedstone.init("isolatedWorld");
