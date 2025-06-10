@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import { toRaw } from "vue";
 import { createLogger } from "@/logger.js";
 import defaultConfig from "@/defaultConfig.js";
+import { browser } from "@wxt-dev/webextension-polyfill/browser";
 const logger = createLogger("config");
 
 export const STORAGE_KEY = "settings";
@@ -13,7 +14,7 @@ export default defineStore("config", {
 
 	actions: {
 		loadStorage(init = false) {
-			chrome.storage.sync.get(STORAGE_KEY, (res) => {
+			browser.storage.sync.get(STORAGE_KEY, (res) => {
 				this.$patch(res[STORAGE_KEY] || {});
 				logger.info("loadStorage ->", res[STORAGE_KEY]);
 
@@ -25,10 +26,10 @@ export default defineStore("config", {
 		saveStorage() {
 			const rawData = toRaw(this.$state);
 			logger.info("saveStorage ->", rawData);
-			chrome.storage.sync.set({ [STORAGE_KEY]: rawData }, () => {});
-			chrome.tabs.query({ url: "*://*.youtube.com/*" }, (tabs) => {
+			browser.storage.sync.set({ [STORAGE_KEY]: rawData }, () => {});
+			browser.tabs.query({ url: "*://*.youtube.com/*" }, (tabs) => {
 				tabs.forEach((tab) => {
-					chrome.tabs.sendMessage(tab.id, { action: "reloadConfig" }).catch((e) => {
+					browser.tabs.sendMessage(tab.id, { action: "reloadConfig" }).catch((e) => {
 						logger.warn("sendMessage error:", e);
 					});
 				});

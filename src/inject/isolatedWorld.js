@@ -1,6 +1,7 @@
 import { createLogger } from "../logger.js";
 import wirelessRedstone from "./wirelessRedstone.js";
 import { youtubeiAPIv1 } from "./util/youtubei.js";
+import { browser } from "@wxt-dev/webextension-polyfill/browser";
 const logger = createLogger("IsolatedWorld");
 
 export default function isolatedWorld() {
@@ -10,22 +11,22 @@ export default function isolatedWorld() {
 
 	Object.assign(wirelessRedstone.handlers, {
 		getConfig(data, reply) {
-			chrome.storage.sync.get(data, (result) => {
+			browser.storage.sync.get(data, (result) => {
 				reply(result);
 			});
 		},
 		setConfig(data, reply) {
-			chrome.storage.sync.set(data, () => {
+			browser.storage.sync.set(data, () => {
 				reply({ success: true });
 			});
 		},
 	});
-	chrome.storage.onChanged.addListener((changes, areaName) => {
+	browser.storage.onChanged.addListener((changes, areaName) => {
 		if (areaName === "sync") {
 			wirelessRedstone.send("configUpdate", changes);
 		}
 	});
-	// chrome.runtime.onMessage.addListener((msg) => {
+	// browser.runtime.onMessage.addListener((msg) => {
 	// 	console.log("Received update from background:", msg.changes);
 	// });
 

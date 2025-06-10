@@ -14,15 +14,17 @@
 		"postinstall": "wxt prepare"
 	},
 	"devDependencies": {
+		"@types/webextension-polyfill": "^0.12.3",
 		"@wxt-dev/auto-icons": "^1.0.2",
 		"@wxt-dev/module-vue": "^1.0.2",
-		"chrome-types": "^0.1.349",
+		"@wxt-dev/webextension-polyfill": "^1.0.0",
 		"prettier": "^3.5.3",
 		"sass": "^1.88.0",
 		"typescript": "5.6.3",
 		"vite-plugin-sass-glob-import": "^5.0.0",
 		"vite-plugin-vue-devtools": "^7.7.6",
 		"vue-tsc": "^2.2.10",
+		"webextension-polyfill": "^0.12.0",
 		"wxt": "^0.20.6"
 	},
 	"dependencies": {

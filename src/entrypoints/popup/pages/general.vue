@@ -81,6 +81,7 @@ import { inject, ref } from "vue";
 const setTab = inject("setTab");
 
 import { locales, i18n, loadLocaleMessages } from "../util/i18n.js";
+import { browser } from "@wxt-dev/webextension-polyfill/browser";
 const language = locales;
 const locale = ref(i18n.global.locale);
 
@@ -136,14 +137,14 @@ function configModalSubmit() {
 }
 
 const waitUpdate = ref("");
-chrome.storage.local.get("waitUpdate", (data) => {
+browser.storage.local.get("waitUpdate", (data) => {
 	if (data.waitUpdate) {
 		waitUpdate.value = data.waitUpdate;
 	}
 });
 function updateNow() {
-	chrome.storage.local.set({ needReloadTabs: true }, () => {
-		chrome.runtime.reload();
+	browser.storage.local.set({ needReloadTabs: true }, () => {
+		browser.runtime.reload();
 	});
 }
 </script>
