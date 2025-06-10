@@ -111,6 +111,7 @@
 	},
 	"insights": {
 		"title": "インサイト",
+		"tips": {},
 		"label": {
 			"metadata": {
 				"date": "日付：",
@@ -130,10 +131,6 @@
 					"name": "全年齢対象",
 					"description": "このビデオは全年齢対象。"
 				},
-				"kids": {
-					"name": "子ども向け",
-					"description": "このビデオはコメント、ミニプレーヤー、バックグラウンド再生が制限される。"
-				},
 				"comment": {
 					"name": "コメント機能",
 					"description": "視聴者によるコメント投稿の可否。"
@@ -142,17 +139,21 @@
 					"name": "ログイン制限",
 					"description": "視聴にはログインが必要かどうか。"
 				},
-				"embed": {
-					"name": "埋め込み制限",
-					"description": "他サイトへの動画埋め込みの可否。"
+				"emergency": {
+					"name": "自殺防止警告",
+					"description": "「あなたは一人じゃない」"
+				},
+				"blocked": {
+					"name": "再生禁止",
+					"description": "このビデオは著作権侵害などの理由で再生できない。"
 				},
 				"r18": {
 					"name": "年齢制限",
 					"description": "このビデオは未成年者が再生できない。"
 				},
-				"blocked": {
-					"name": "再生禁止",
-					"description": "このビデオは著作権侵害などの理由で再生できない。"
+				"kids": {
+					"name": "子ども向け",
+					"description": "このビデオはコメント、ミニプレーヤー、バックグラウンド再生が制限される。"
 				},
 				"membership": {
 					"name": "メンバー限定",
@@ -162,9 +163,9 @@
 					"name": "ショート利用許可",
 					"description": "このビデオはショート素材としての利用が許可されている。"
 				},
-				"emergency": {
-					"name": "自殺防止警告",
-					"description": "「あなたは一人じゃない」"
+				"embed": {
+					"name": "埋め込み制限",
+					"description": "他サイトへの動画埋め込みの可否。"
 				},
 				"crawlable": {
 					"name": "非公開ビデオ",

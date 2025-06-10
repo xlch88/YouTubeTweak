@@ -21,6 +21,15 @@
 		}
 	},
 	"player": {
+		"lockQuality": {
+			"title": "Verrouiller la qualité",
+			"checkbox": {
+				"enable": "Switcher la qualité de la vidéo automatiquement au démarrage vers"
+			},
+			"tips": {
+				"quality": "En cas d'absence de la qualité spécifiée, la meilleure qualité en dessous de ce niveau sera appliquée"
+			}
+		},
 		"speedButtons": {
 			"title": "Vitesse",
 			"checkbox": {
@@ -56,15 +65,6 @@
 			"title": "Autre",
 			"checkbox": {
 				"maxVolume": "Désactiver l'equalizer quand le son est à son niveau maximal (100% en vrai)"
-			}
-		},
-		"lockQuality": {
-			"title": "Verrouiller la qualité",
-			"checkbox": {
-				"enable": "Switcher la qualité de la vidéo automatiquement au démarrage vers"
-			},
-			"tips": {
-				"quality": "En cas d'absence de la qualité spécifiée, la meilleure qualité en dessous de ce niveau sera appliquée"
 			}
 		}
 	},
@@ -111,6 +111,7 @@
 	},
 	"insights": {
 		"title": "Aperçu",
+		"tips": {},
 		"label": {
 			"metadata": {
 				"date": "Date",
@@ -130,10 +131,6 @@
 					"name": "Adapté pour la famille",
 					"description": "Cette vidéo est adaptée aux toutes les tranches d'âge"
 				},
-				"kids": {
-					"name": "Contenu pour les enfants",
-					"description": "Cette vidéo est pour les enfants, vous ne pouvez donc pas commenter, regarder dans picture in picture ou en arrière plan"
-				},
 				"comment": {
 					"name": "Commentaires",
 					"description": "Autoriser les utilisateurs à commenter ou pas"
@@ -142,17 +139,21 @@
 					"name": "Réservé aux utilisateurs",
 					"description": "Limiter s'il faut s'authentifier pour regarder cette vidéo"
 				},
-				"embed": {
-					"name": "Restriction au mode intégré",
-					"description": "Autoriser d'intégrer cette vidéo dans d'autres sites ou pas"
+				"emergency": {
+					"name": "Contenus en rapport avec le suicide, l'automutilation ou les troubles alimentaires",
+					"description": "Vous n'êtes pas seul"
+				},
+				"blocked": {
+					"name": "Contenu bloqué",
+					"description": "Ce contenu ne peut pas être consulté à cause d'un non-respect du règlement ou de la loi"
 				},
 				"r18": {
 					"name": "Restriction d'âge",
 					"description": "Cette vidéo est pour les adultes"
 				},
-				"blocked": {
-					"name": "Contenu bloqué",
-					"description": "Ce contenu ne peut pas être consulté à cause d'un non-respect du règlement ou de la loi"
+				"kids": {
+					"name": "Contenu pour les enfants",
+					"description": "Cette vidéo est pour les enfants, vous ne pouvez donc pas commenter, regarder dans picture in picture ou en arrière plan"
 				},
 				"membership": {
 					"name": "Réservé aux abonnés",
@@ -162,9 +163,9 @@
 					"name": "Autorisation pour dérivés Shorts",
 					"description": "Autoriser les créateurs de YouTube Shorts à réutiliser cette vidéo"
 				},
-				"emergency": {
-					"name": "Contenus en rapport avec le suicide, l'automutilation ou les troubles alimentaires",
-					"description": "Vous n'êtes pas seul"
+				"embed": {
+					"name": "Restriction au mode intégré",
+					"description": "Autoriser d'intégrer cette vidéo dans d'autres sites ou pas"
 				},
 				"crawlable": {
 					"name": "Vidéo non publié",
@@ -178,6 +179,16 @@
 		}
 	},
 	"general": {
+		"update": {
+			"tips": [
+				"Une nouvelle version {version} est disponible",
+				"Une mise à jour automatique sera effectuée quand vous fermez tous les onglets de YouTube"
+			],
+			"buttons": {
+				"update": "Mettre à jour maintenant",
+				"log": "Consulter le journal des mises à jour..."
+			}
+		},
 		"about": {
 			"title": "A propos de",
 			"link": {
@@ -212,16 +223,6 @@
 			"title": "Langues",
 			"link": {
 				"translator": "Contributeurs des traductions"
-			}
-		},
-		"update": {
-			"tips": [
-				"Une nouvelle version {version} est disponible",
-				"Une mise à jour automatique sera effectuée quand vous fermez tous les onglets de YouTube"
-			],
-			"buttons": {
-				"update": "Mettre à jour maintenant",
-				"log": "Consulter le journal des mises à jour..."
 			}
 		}
 	},

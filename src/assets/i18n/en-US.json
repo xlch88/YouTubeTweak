@@ -111,6 +111,7 @@
 	},
 	"insights": {
 		"title": "Insights",
+		"tips": {},
 		"label": {
 			"metadata": {
 				"date": "Date:",
@@ -179,7 +180,10 @@
 	},
 	"general": {
 		"update": {
-			"tips": ["A new version {version} is available", "The extension will automatically update after you close all YouTube tabs."],
+			"tips": [
+				"A new version {version} is available",
+				"The extension will automatically update after you close all YouTube tabs."
+			],
 			"buttons": {
 				"update": "Update now",
 				"log": "View changelog..."
