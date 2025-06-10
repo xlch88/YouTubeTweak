@@ -1,25 +1,24 @@
 import { defineBackground } from "wxt/utils/define-background";
-import { browser } from "@wxt-dev/webextension-polyfill/browser";
 
 export default defineBackground(() => {
-	browser.runtime.onInstalled.addListener((details) => {
+	chrome.runtime.onInstalled.addListener((details) => {
 		switch (details.reason) {
 			case "install":
-				browser.tabs.create({ url: "popup.html?action=installed" }).catch(() => {});
+				chrome.tabs.create({ url: "popup.html?action=installed" }).catch(() => {});
 				break;
 
 			case "update":
-				browser.storage.local.set({ waitUpdate: false }).catch(() => {});
+				chrome.storage.local.set({ waitUpdate: false }).catch(() => {});
 
-				browser.storage.local
+				chrome.storage.local
 					.get("needReloadTabs")
 					.then((result) => {
 						if (!result.needReloadTabs) return;
 
-						browser.storage.local.set({ needReloadTabs: false }).catch(() => {});
-						browser.tabs.query({ url: "*://*.youtube.com/*", discarded: false }).then((cb) => {
+						chrome.storage.local.set({ needReloadTabs: false }).catch(() => {});
+						chrome.tabs.query({ url: "*://*.youtube.com/*", discarded: false }).then((cb) => {
 							cb.forEach((tab) => {
-								browser.tabs.reload(tab.id).catch(() => {});
+								chrome.tabs.reload(tab.id).catch(() => {});
 							});
 						});
 					})
@@ -32,7 +31,7 @@ export default defineBackground(() => {
 		console.log(details);
 	});
 
-	browser.runtime.onUpdateAvailable.addListener((details) => {
-		browser.storage.local.set({ waitUpdate: details.version }).catch(() => {});
+	chrome.runtime.onUpdateAvailable.addListener((details) => {
+		chrome.storage.local.set({ waitUpdate: details.version }).catch(() => {});
 	});
 });

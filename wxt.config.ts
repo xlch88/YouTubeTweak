@@ -7,7 +7,7 @@ import fs from "node:fs";
 // See https://wxt.dev/api/config.html
 export default defineConfig({
 	srcDir: "src",
-	modules: ["@wxt-dev/module-vue", "@wxt-dev/auto-icons", "@wxt-dev/webextension-polyfill"],
+	modules: ["@wxt-dev/module-vue", "@wxt-dev/auto-icons"],
 
 	autoIcons: {
 		baseIconPath: "assets/img/logo.svg",
