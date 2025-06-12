@@ -5,23 +5,15 @@
 				<img src="@/assets/img/logo.svg" alt="logo" />
 				<span><small>YouTube</small>Tweak</span>
 			</a>
-			<button
-				v-for="key in ['player', 'comment', 'other', /*'insights', */ 'general']"
-				:key="key"
-				class="item"
-				:class="{ active: tab === key }"
-				@click="tab = key"
-			>
+			<button v-for="key in Object.keys(tabs)" :key="key" class="item" :class="{ active: tab === key }" @click="tab = key">
 				<span>{{ $t(`tabs.${key}.title`) }}</span>
 			</button>
 		</header>
 
 		<main>
-			<player v-if="tab === 'player'"></player>
-			<comment v-else-if="tab === 'comment'"></comment>
-			<other v-else-if="tab === 'other'"></other>
-			<general v-else-if="tab === 'general'"></general>
-			<insights v-else-if="tab === 'insights'"></insights>
+			<transition name="slide-fade" mode="out-in">
+				<component :is="tabs[tab]" />
+			</transition>
 		</main>
 	</template>
 	<installed v-else-if="action === 'installed'"></installed>
@@ -30,12 +22,15 @@
 <script setup>
 import useConfigStore from "./util/config.js";
 import { ref, provide } from "vue";
-import Other from "./pages/other.vue";
-import Player from "./pages/player.vue";
-import Comment from "./pages/comment.vue";
 import Installed from "./pages/installed.vue";
-import General from "./pages/general.vue";
-import Insights from "./pages/insights.vue";
+
+const tabs = {
+	player: defineAsyncComponent(() => import("./pages/player.vue")),
+	comment: defineAsyncComponent(() => import("./pages/comment.vue")),
+	other: defineAsyncComponent(() => import("./pages/other.vue")),
+	insights: defineAsyncComponent(() => import("./pages/insights.vue")),
+	general: defineAsyncComponent(() => import("./pages/general.vue")),
+};
 
 const tab = ref("player");
 const action = ref("popup");
@@ -61,6 +56,25 @@ main {
 	height: 100%;
 	width: 100%;
 	overflow-y: auto;
+	overflow-x: hidden;
+
+	.slide-fade-enter-active,
+	.slide-fade-leave-active {
+		transition: all 0.1s cubic-bezier(1, 0.5, 0.8, 1);
+	}
+
+	.slide-fade-enter-from,
+	.slide-fade-leave-to {
+		transform: translateY(-10px);
+		opacity: 0;
+	}
+
+	.slide-fade-enter-to,
+	.slide-fade-leave-from {
+		transform: translateY(0);
+		opacity: 1;
+	}
+
 	//background: #000;
 	//width: 100px;
 	//height: 100px;

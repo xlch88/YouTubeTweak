@@ -1,5 +1,6 @@
 <template>
-	<!--
+	<section id="page-insights">
+		<!--
 	detail:
 		img (max)
 		title
@@ -30,96 +31,97 @@
 		languageCode
 
 	-->
-	<div class="card video-detail">
-		<div class="thumbnail">
-			<img src="https://i.ytimg.com/vi/UnIhRpIT7nc/maxresdefault.jpg" crossorigin="anonymous" />
-			<span>【Inaba Cumori ft Kaai Yuki】 Lagtrain (ラグトレイン) [1 HOUR] {sub esp}</span>
-		</div>
-		<div class="card-body">
-			<div class="metadata">
-				<div class="row">
-					<div class="item">
-						<span class="label">{{ $t("insights.label.metadata.date") }}</span>
-						<span class="value">2020-07-16 04:00:13 (2020-07-16T04:00:13Z)</span>
+		<div class="card video-detail">
+			<div class="thumbnail">
+				<img src="https://i.ytimg.com/vi/UnIhRpIT7nc/maxresdefault.jpg" crossorigin="anonymous" />
+				<span>【Inaba Cumori ft Kaai Yuki】 Lagtrain (ラグトレイン) [1 HOUR] {sub esp}</span>
+			</div>
+			<div class="card-body">
+				<div class="metadata">
+					<div class="row">
+						<div class="item">
+							<span class="label">{{ $t("insights.label.metadata.date") }}</span>
+							<span class="value">2020-07-16 04:00:13 (2020-07-16T04:00:13Z)</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="item">
+							<span class="label">{{ $t("insights.label.metadata.likeCount") }}</span>
+							<span class="value">89644</span>
+						</div>
+						<div class="item">
+							<span class="label">{{ $t("insights.label.metadata.viewCount") }}</span>
+							<span class="value">76699843</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="item">
+							<span class="label">{{ $t("insights.label.metadata.category") }}</span>
+							<span class="value">Music</span>
+						</div>
+						<div class="item">
+							<span class="label">{{ $t("insights.label.metadata.sec") }}</span>
+							<span class="value">8920</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="item">
+							<span class="label">{{ $t("insights.label.metadata.quality") }}</span>
+							<span class="value">1080p</span>
+						</div>
+						<div class="item">
+							<span class="label">{{ $t("insights.label.metadata.username") }}</span>
+							<span class="value">@GranTortuga</span>
+						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="item">
-						<span class="label">{{ $t("insights.label.metadata.likeCount") }}</span>
-						<span class="value">89644</span>
-					</div>
-					<div class="item">
-						<span class="label">{{ $t("insights.label.metadata.viewCount") }}</span>
-						<span class="value">76699843</span>
-					</div>
-				</div>
-				<div class="row">
-					<div class="item">
-						<span class="label">{{ $t("insights.label.metadata.category") }}</span>
-						<span class="value">Music</span>
-					</div>
-					<div class="item">
-						<span class="label">{{ $t("insights.label.metadata.sec") }}</span>
-						<span class="value">8920</span>
-					</div>
-				</div>
-				<div class="row">
-					<div class="item">
-						<span class="label">{{ $t("insights.label.metadata.quality") }}</span>
-						<span class="value">1080p</span>
-					</div>
-					<div class="item">
-						<span class="label">{{ $t("insights.label.metadata.username") }}</span>
-						<span class="value">@GranTortuga</span>
+				<!--			<table class="flags">-->
+				<!--				<tbody>-->
+				<!--					<tr>-->
+				<!--						<td class="success" :title="$t('insights.label.flags.global.description')">-->
+				<!--							{{ $t("insights.label.flags.global.name") }} 🌍-->
+				<!--						</td>-->
+				<!--						<td class="success">Family Safe 🏠</td>-->
+				<!--						<td class="success">Kids content 🧒</td>-->
+				<!--					</tr>-->
+				<!--					<tr>-->
+				<!--						<td class="error">Comment 💬</td>-->
+				<!--						<td class="error">Login 🔑</td>-->
+				<!--						<td class="success">R18 ⛔</td>-->
+				<!--					</tr>-->
+				<!--					<tr>-->
+				<!--						<td class="success">Alt+F4 IRL 🙅</td>-->
+				<!--						<td class="success">Blocked 🚫</td>-->
+				<!--						<td class="success">Membership 💸</td>-->
+				<!--					</tr>-->
+				<!--				</tbody>-->
+				<!--			</table>-->
+				<div class="flags">
+					<div
+						class="item item-success"
+						v-for="(icon, key) of {
+							global: '🌍',
+							family: '🏠',
+							comment: '💬',
+							login: '🔑',
+							emergency: '🙅',
+							blocked: '🚫',
+							r18: '⛔',
+							crawlable: '㊙️',
+							private: '🔒',
+							membership: '💸',
+							kids: '🧒',
+							embed: '🔗',
+							shorts: '📱',
+						}"
+						:title="$t(`insights.label.flags.${key}.description`)"
+					>
+						{{ $t(`insights.label.flags.${key}.name`) }} {{ icon }}
 					</div>
 				</div>
 			</div>
-			<!--			<table class="flags">-->
-			<!--				<tbody>-->
-			<!--					<tr>-->
-			<!--						<td class="success" :title="$t('insights.label.flags.global.description')">-->
-			<!--							{{ $t("insights.label.flags.global.name") }} 🌍-->
-			<!--						</td>-->
-			<!--						<td class="success">Family Safe 🏠</td>-->
-			<!--						<td class="success">Kids content 🧒</td>-->
-			<!--					</tr>-->
-			<!--					<tr>-->
-			<!--						<td class="error">Comment 💬</td>-->
-			<!--						<td class="error">Login 🔑</td>-->
-			<!--						<td class="success">R18 ⛔</td>-->
-			<!--					</tr>-->
-			<!--					<tr>-->
-			<!--						<td class="success">Alt+F4 IRL 🙅</td>-->
-			<!--						<td class="success">Blocked 🚫</td>-->
-			<!--						<td class="success">Membership 💸</td>-->
-			<!--					</tr>-->
-			<!--				</tbody>-->
-			<!--			</table>-->
-			<div class="flags">
-				<div
-					class="item item-success"
-					v-for="(icon, key) of {
-						global: '🌍',
-						family: '🏠',
-						comment: '💬',
-						login: '🔑',
-						emergency: '🙅',
-						blocked: '🚫',
-						r18: '⛔',
-						crawlable: '㊙️',
-						private: '🔒',
-						membership: '💸',
-						kids: '🧒',
-						embed: '🔗',
-						shorts: '📱',
-					}"
-					:title="$t(`insights.label.flags.${key}.description`)"
-				>
-					{{ $t(`insights.label.flags.${key}.name`) }} {{ icon }}
-				</div>
-			</div>
 		</div>
-	</div>
+	</section>
 </template>
 
 <style lang="scss">
