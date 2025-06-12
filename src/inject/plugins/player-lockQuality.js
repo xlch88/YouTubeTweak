@@ -30,8 +30,8 @@ export default {
 			if (!config.get("player.settings.lockQuality")) return;
 			setQuality();
 		},
-		videoSrcChange(oldValue, newValue, isAD) {
-			if (!isAD && newValue && pageUrl !== window.location.href) {
+		videoSrcChange(oldValue, newValue) {
+			if (newValue && pageUrl !== window.location.href) {
 				pageUrl = window.location.href;
 				setQuality();
 			}

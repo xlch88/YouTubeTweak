@@ -6,7 +6,7 @@ const logger = createLogger("player-speedButton");
 const speedButtons = [];
 
 function getChannelId() {
-	return metadata.video?.microformat?.playerMicroformatRenderer?.ownerProfileUrl?.slice(23) || null;
+	return videoPlayer.player?.getPlayerResponse()?.microformat?.playerMicroformatRenderer?.ownerProfileUrl?.slice(23) || null;
 }
 
 function setMemorySpeed() {
@@ -84,7 +84,7 @@ export default {
 
 			setMemorySpeed();
 		},
-		videoSrcChange(oldValue, newValue, isAD) {
+		videoSrcChange(oldValue, newValue) {
 			setMemorySpeed();
 		},
 		configUpdate(oldConfig, newConfig) {

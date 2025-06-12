@@ -1,6 +1,5 @@
 import config from "./config.js";
 import logger from "../logger.js";
-import { checkPlayerAD } from "./util/helper.js";
 import { youtubeiAPIv1 } from "./util/youtubei.js";
 import wirelessRedstone from "./wirelessRedstone.js";
 import "./style.scss";
@@ -116,7 +115,6 @@ const YouTubeTweakApp = {
 		};
 	},
 	initElementCatcher() {
-		const adCheckTimeouts = [];
 		setInterval(() => {
 			// catch video player
 			let player, controls, videoStream;
@@ -135,38 +133,21 @@ const YouTubeTweakApp = {
 						videoPlayer.videoStream = videoStream;
 
 						function onVideoSrcChange(oldValue, newValue) {
-							adCheckTimeouts.forEach((t) => clearTimeout(t));
-							adCheckTimeouts.length = 0;
-
 							if (new URL(window.location.href).pathname !== "/watch") {
 								metadata.video = null;
 								metadata.videoNext = null;
+							} else {
+								metadata.video = videoPlayer.player?.getPlayerResponse() || null;
+								metadata.videoNext = videoPlayer.player?.getWatchNextResponse() || null;
 							}
 
-							function callVideoSrcChange(isAD) {
-								logger.debug("video src changed", {
-									oldValue,
-									newValue,
-									isAD: isAD,
-								});
-								Object.entries(plugins)
-									.filter((p) => p[1].videoSrcChange)
-									.forEach((p) => p[1].videoSrcChange(oldValue, newValue, isAD));
-							}
-
-							const checkCount = 10;
-							for (let i = 1; i <= checkCount; i++) {
-								adCheckTimeouts.push(
-									setTimeout(() => {
-										const isAD = checkPlayerAD();
-										if (isAD || i === checkCount) {
-											adCheckTimeouts.forEach((t) => clearTimeout(t));
-											adCheckTimeouts.length = 0;
-											callVideoSrcChange(isAD);
-										}
-									}, 100 * i),
-								);
-							}
+							logger.debug("video src changed", {
+								oldValue,
+								newValue,
+							});
+							Object.entries(plugins)
+								.filter((p) => p[1].videoSrcChange)
+								.forEach((p) => p[1].videoSrcChange(oldValue, newValue));
 						}
 
 						let observer = new MutationObserver((mutationList) => {

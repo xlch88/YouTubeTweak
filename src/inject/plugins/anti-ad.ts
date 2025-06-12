@@ -8,10 +8,14 @@ import { createLogger } from "../../logger.js";
 import fetchHooker from "../fetchHooker.js";
 // @ts-ignore
 import config from "../config.js";
+// @ts-ignore
+import { checkPlayerAD } from "../util/helper.js";
 const logger = createLogger("anti-ad");
 
 let antiADSlotInterval: null | number;
 let antiVideoADSlotInterval: null | number = null;
+
+const adVideoCheckTimeouts: number[] = [];
 
 export default {
 	"other.antiAD.enableVideo": {
@@ -90,13 +94,28 @@ export default {
 			document.body.classList.remove("yttweak-anti-ad-video");
 			localStorage.removeItem("YTTweak-plugin-AntiVideoAD");
 		},
-		videoSrcChange(oldValue: object, newValue: object, isAD: boolean) {
-			if (isAD) {
-				if (!isNaN(videoPlayer.videoStream?.duration) && videoPlayer.videoStream?.duration > 0) {
-					videoPlayer.videoStream.currentTime = videoPlayer.videoStream.duration;
-					videoPlayer.videoStream.playbackRate = 16;
-					logger.info("skip video ad.");
-				}
+		videoSrcChange(oldValue: object, newValue: object) {
+			adVideoCheckTimeouts.forEach((t) => clearTimeout(t));
+			adVideoCheckTimeouts.length = 0;
+
+			const checkCount = 50;
+			for (let i = 1; i <= checkCount; i++) {
+				adVideoCheckTimeouts.push(
+					window.setTimeout(() => {
+						const isAD = checkPlayerAD();
+						if (isAD) {
+							if (!isNaN(videoPlayer.videoStream?.duration) && videoPlayer.videoStream?.duration > 0) {
+								videoPlayer.videoStream.currentTime = videoPlayer.videoStream.duration;
+								videoPlayer.videoStream.playbackRate = 16;
+								logger.info("skip video ad.");
+							}
+						}
+						if (isAD || i === checkCount) {
+							adVideoCheckTimeouts.forEach((t) => clearTimeout(t));
+							adVideoCheckTimeouts.length = 0;
+						}
+					}, 100 * i),
+				);
 			}
 		},
 	},
