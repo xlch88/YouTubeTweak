@@ -1,16 +1,14 @@
 {
-    "editor.formatOnSave": true,
-    "i18n-ally.localesPaths": [
-        "src/assets/i18n"
-    ],
-    "i18n-ally.keystyle": "nested",
-    "i18n-ally.sourceLanguage": "zh-CN",
-    "i18n-ally.displayLanguage": "zh-CN",
-    "i18n-ally.indent": 1,
-    "i18n-ally.tabStyle": "tab",
-    "files.eol": "\r\n",
-    "[json]": {
-        "editor.insertSpaces": false,
-        "editor.tabSize":4
-    },
+	"editor.formatOnSave": true,
+	"i18n-ally.localesPaths": ["src/assets/i18n"],
+	"i18n-ally.keystyle": "nested",
+	"i18n-ally.sourceLanguage": "zh-CN",
+	"i18n-ally.displayLanguage": "zh-CN",
+	"i18n-ally.indent": 1,
+	"i18n-ally.tabStyle": "tab",
+	"files.eol": "\r\n",
+	"[json]": {
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4
+	}
 }
