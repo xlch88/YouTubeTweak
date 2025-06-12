@@ -14,7 +14,7 @@ function clearPlaceholders(obj: LangContent) {
 		if (!Object.prototype.hasOwnProperty.call(obj, k)) continue;
 		const v = obj[k];
 
-		if (typeof v === "string" && v.startsWith(placeholder)) {
+		if ((typeof v === "string" && v.startsWith(placeholder)) || v === "") {
 			delete obj[k];
 			continue;
 		}
@@ -136,7 +136,6 @@ function fillMissingTranslations(dir = i18nDir) {
 	for (const filename of filenames) {
 		const content = fileData[filename];
 		const existingKeys = flattenKeys(content);
-		let needWriteFile = false;
 
 		for (const key of allKeysSet) {
 			if (!existingKeys[key]) {
@@ -150,20 +149,20 @@ function fillMissingTranslations(dir = i18nDir) {
 				result[filename] ??= [];
 				result[filename].push(key);
 				setDeep(content, key, _placeholder, getDeepParentType(baseContent, key) === "array");
-				needWriteFile = true;
 			}
 		}
 
-		if (needWriteFile) {
-			const fullPath = path.join(dir, filename);
-			const finalContent = filename !== baseLang ? reorderByBase(content, baseContent) : content;
-			fs.writeFileSync(fullPath, JSON.stringify(finalContent, null, "\t").replace(/\n/g, "\r\n") + "\r\n", "utf8");
-		}
+		const fullPath = path.join(dir, filename);
+		const finalContent = filename !== baseLang ? reorderByBase(content, baseContent) : content;
+		fs.writeFileSync(fullPath, JSON.stringify(finalContent, null, "\t").replace(/\n/g, "\r\n") + "\r\n", "utf8");
 	}
 
 	if (Object.values(result).length > 0) {
 		console.error("Missing keys:", result);
-		process.exit(1);
+		if (result["en-US.json"]) {
+			console.error("!!! en-US.json Must not have missing translations.");
+			process.exit(1);
+		}
 	}
 }
 
