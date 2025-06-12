@@ -27,6 +27,10 @@
 					<span> {{ $t("other.antiAD.checkbox.enable") }} </span>
 				</label>
 				<label class="form-item">
+					<input type="checkbox" v-model="config['other.antiAD.enableVideo']" />
+					<span> {{ $t("other.antiAD.checkbox.enableVideo") }} </span>
+				</label>
+				<label class="form-item">
 					<input type="checkbox" v-model="config['other.antiAD.enableMerch']" />
 					<span> {{ $t("other.antiAD.checkbox.enableMerch") }} </span>
 				</label>

@@ -93,7 +93,8 @@
 		"antiAD": {
 			"title": "Ad Block",
 			"checkbox": {
-				"enable": "Sauter les pubs automatiquement et blcage des pubs en vignettes",
+				"enable": "__NEED_TRANSLATE__: 屏蔽图文广告",
+				"enableVideo": "__NEED_TRANSLATE__: 屏蔽视频广告",
 				"enableMerch": "Bloquer les prospections des auteurs du canal"
 			},
 			"tips": {
@@ -111,7 +112,6 @@
 	},
 	"insights": {
 		"title": "Aperçu",
-		"tips": {},
 		"label": {
 			"metadata": {
 				"date": "Date",

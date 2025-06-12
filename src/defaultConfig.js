@@ -24,6 +24,7 @@ export default {
 	"index.videoPerRow.count": 4,
 	"other.antiAD.enable": false,
 	"other.antiAD.enableMerch": false,
+	"other.antiAD.enableVideo": false,
 	"shorts-blocker.enable.index": false,
 	"shorts-blocker.enable.watch": false,
 	"shorts-blocker.enable.menu": false,

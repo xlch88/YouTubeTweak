@@ -93,7 +93,8 @@
 		"antiAD": {
 			"title": "Ad Block",
 			"checkbox": {
-				"enable": "Auto skip ads and block thumbnail ads",
+				"enable": "Block image-and-text native ads",
+				"enableVideo": "Block video ads",
 				"enableMerch": "Block channel merchandise"
 			},
 			"tips": {
@@ -111,7 +112,6 @@
 	},
 	"insights": {
 		"title": "Insights",
-		"tips": {},
 		"label": {
 			"metadata": {
 				"date": "Date:",

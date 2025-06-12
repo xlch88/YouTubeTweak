@@ -93,7 +93,8 @@
 		"antiAD": {
 			"title": "广告屏蔽",
 			"checkbox": {
-				"enable": "自动跳过广告视频/屏蔽列表图文广告",
+				"enable": "屏蔽图文广告",
+				"enableVideo": "屏蔽视频广告",
 				"enableMerch": "屏蔽频道主商品推荐"
 			},
 			"tips": {

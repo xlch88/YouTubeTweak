@@ -3,8 +3,8 @@ import { metadata } from "../mainWorld.js";
 const logger = createLogger("anti-ad");
 
 export default () => {
-	const enableAntiAD = localStorage.getItem("YTTweak-plugin-AntiAD");
-	logger.debug(enableAntiAD ? "AntiAD plugin enabled" : "AntiAD plugin disabled");
+	const enableAntiVideoAD = localStorage.getItem("YTTweak-plugin-AntiVideoAD");
+	logger.debug(enableAntiVideoAD ? "AntiVideoAD plugin enabled" : "AntiVideoAD plugin disabled");
 
 	Object.defineProperty(window, "ytplayer", {
 		configurable: true,
@@ -17,7 +17,7 @@ export default () => {
 				configurable: true,
 				enumerable: true,
 				set(cfg) {
-					if (enableAntiAD) {
+					if (enableAntiVideoAD) {
 						if (cfg?.args?.raw_player_response?.playerAds) cfg.args.raw_player_response.playerAds = [];
 					}
 					this._cfg = cfg;
@@ -32,7 +32,7 @@ export default () => {
 				configurable: true,
 				enumerable: true,
 				set(rsp) {
-					if (enableAntiAD) {
+					if (enableAntiVideoAD) {
 						if (rsp?.adSlots) delete rsp.adSlots;
 						if ("playerAds" in rsp) rsp.playerAds = [];
 						if ("adPlacements" in rsp) rsp.adPlacements = [];

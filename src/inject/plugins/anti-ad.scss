@@ -33,9 +33,9 @@ body.yttweak-anti-ad {
 	#masthead-ad {
 		display: none !important;
 	}
-	tp-yt-paper-dialog:has(a[href*="/premium"]) {
-		display: none !important;
-	}
+	// tp-yt-paper-dialog:has(a[href*="/premium"]) {
+	// 	display: none !important;
+	// }
 }
 
 body.yttweak-anti-ad-merch {

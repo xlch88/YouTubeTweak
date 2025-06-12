@@ -6,8 +6,8 @@ import wirelessRedstone from "./wirelessRedstone.js";
 import "./style.scss";
 import fetchHooker from "./fetchHooker.js";
 
-const plugins = Object.assign({}, ...Object.values(import.meta.glob("./plugins/*.js", { eager: true }).map((m) => m.default)));
-const pluginsDocumentStart = Object.values(import.meta.glob("./plugins_before/*.js", { eager: true }).map((m) => m.default));
+const plugins = Object.assign({}, ...Object.values(import.meta.glob("./plugins/*.{js,ts}", { eager: true }).map((m) => m.default)));
+const pluginsDocumentStart = Object.values(import.meta.glob("./plugins_before/*.{js,ts}", { eager: true }).map((m) => m.default));
 
 export const videoPlayer = {
 	box: null,

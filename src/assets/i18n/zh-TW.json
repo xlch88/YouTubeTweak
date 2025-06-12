@@ -93,7 +93,8 @@
 		"antiAD": {
 			"title": "刪除廣告",
 			"checkbox": {
-				"enable": "自動跳過廣告影片、刪除列表圖文廣告",
+				"enable": "__NEED_TRANSLATE__: 屏蔽图文广告",
+				"enableVideo": "__NEED_TRANSLATE__: 屏蔽视频广告",
 				"enableMerch": "刪除頻道商品推薦"
 			},
 			"tips": {
@@ -111,7 +112,6 @@
 	},
 	"insights": {
 		"title": "洞察",
-		"tips": {},
 		"label": {
 			"metadata": {
 				"date": "日期：",

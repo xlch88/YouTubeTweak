@@ -11,29 +11,30 @@ import config from "../config.js";
 const logger = createLogger("anti-ad");
 
 let antiADSlotInterval: null | number;
+let antiVideoADSlotInterval: null | number = null;
 
 export default {
-	"other.antiAD.enable": {
+	"other.antiAD.enableVideo": {
 		options: {
 			reloadOnToggle: true,
 		},
 		setup() {
 			if (
-				(!config.get("other.antiAD.enable") && localStorage.getItem("YTTweak-plugin-AntiAD")) ||
-				(config.get("other.antiAD.enable") && !localStorage.getItem("YTTweak-plugin-AntiAD"))
+				(!config.get("other.antiAD.enableVideo") && localStorage.getItem("YTTweak-plugin-AntiVideoAD")) ||
+				(config.get("other.antiAD.enableVideo") && !localStorage.getItem("YTTweak-plugin-AntiVideoAD"))
 			) {
 				logger.info("plugin status change. need to reload page !!!");
 				debugger;
 
-				config.get("other.antiAD.enable")
-					? localStorage.setItem("YTTweak-plugin-AntiAD", "1")
-					: localStorage.removeItem("YTTweak-plugin-AntiAD");
+				config.get("other.antiAD.enableVideo")
+					? localStorage.setItem("YTTweak-plugin-AntiVideoAD", "1")
+					: localStorage.removeItem("YTTweak-plugin-AntiVideoAD");
 				location.reload();
 			}
 		},
 		enable() {
-			document.body.classList.add("yttweak-anti-ad");
-			localStorage.setItem("YTTweak-plugin-AntiAD", "1");
+			document.body.classList.add("yttweak-anti-ad-video");
+			localStorage.setItem("YTTweak-plugin-AntiVideoAD", "1");
 
 			fetchHooker.hooks.antiAD = {
 				match: "/youtubei/v1/player",
@@ -53,6 +54,8 @@ export default {
 							isRemove = true;
 							data.adPlacements = [];
 						}
+
+						// !!! Removing this will cause the video to not play !!!
 						// if (data?.auxiliaryUi?.messageRenderers?.bkaEnforcementMessageViewModel) {
 						// 	logger.info("Removing adblockblock from player response");
 						// 	delete data.auxiliaryUi;
@@ -64,6 +67,42 @@ export default {
 					return data;
 				},
 			};
+
+			antiVideoADSlotInterval = window.setInterval(() => {
+				let adBlockBlocker;
+				if (
+					(adBlockBlocker = document.querySelector("ytd-enforcement-message-view-model")) &&
+					adBlockBlocker?.parentElement?.style?.display !== "none"
+				) {
+					let closeButton = adBlockBlocker?.querySelector("#dismiss-button .yt-spec-button-shape-next");
+					if (closeButton) {
+						logger.info("click adBlockBlocker close.");
+						//(adBlockBlocker?.querySelector("#dismiss-button .yt-spec-button-shape-next") as HTMLElement | null)?.click?.();
+						if (videoPlayer.player.playVideo) {
+							videoPlayer.player.playVideo();
+						}
+					}
+				}
+			}, 1000);
+		},
+		disable() {
+			antiVideoADSlotInterval && clearInterval(antiVideoADSlotInterval);
+			document.body.classList.remove("yttweak-anti-ad-video");
+			localStorage.removeItem("YTTweak-plugin-AntiVideoAD");
+		},
+		videoSrcChange(oldValue: object, newValue: object, isAD: boolean) {
+			if (isAD) {
+				if (!isNaN(videoPlayer.videoStream?.duration) && videoPlayer.videoStream?.duration > 0) {
+					videoPlayer.videoStream.currentTime = videoPlayer.videoStream.duration;
+					videoPlayer.videoStream.playbackRate = 16;
+					logger.info("skip video ad.");
+				}
+			}
+		},
+	},
+	"other.antiAD.enable": {
+		enable() {
+			document.body.classList.add("yttweak-anti-ad");
 
 			antiADSlotInterval = window.setInterval(() => {
 				document.querySelectorAll<HTMLElement>("ytd-ad-slot-renderer:not([ytt-hide])").forEach((ad) => {
@@ -80,36 +119,11 @@ export default {
 						ad.style.display = "none";
 					}
 				});
-
-				let adBlockBlocker;
-				if (
-					(adBlockBlocker = document.querySelector("ytd-enforcement-message-view-model")) &&
-					adBlockBlocker?.parentElement?.style?.display !== "none"
-				) {
-					let closeButton = adBlockBlocker?.querySelector("#dismiss-button .yt-spec-button-shape-next");
-					if (closeButton) {
-						logger.info("click adBlockBlocker close.");
-						(adBlockBlocker?.querySelector("#dismiss-button .yt-spec-button-shape-next") as HTMLElement | null)?.click?.();
-						if (videoPlayer.player.playVideo) {
-							videoPlayer.player.playVideo();
-						}
-					}
-				}
 			}, 1000);
 		},
 		disable() {
 			antiADSlotInterval && clearInterval(antiADSlotInterval);
 			document.body.classList.remove("yttweak-anti-ad");
-			localStorage.removeItem("YTTweak-plugin-AntiAD");
-		},
-		videoSrcChange(oldValue: object, newValue: object, isAD: boolean) {
-			if (isAD) {
-				if (!isNaN(videoPlayer.videoStream?.duration) && videoPlayer.videoStream?.duration > 0) {
-					videoPlayer.videoStream.currentTime = videoPlayer.videoStream.duration;
-					videoPlayer.videoStream.playbackRate = 16;
-					logger.info("skip video ad.");
-				}
-			}
 		},
 	},
 	"other.antiAD.enableMerch": bodyClass("yttweak-anti-ad-merch"),

@@ -93,7 +93,8 @@
 		"antiAD": {
 			"title": "広告ブロック",
 			"checkbox": {
-				"enable": "広告動画と右のプレイリストの広告をブロックする",
+				"enable": "__NEED_TRANSLATE__: 屏蔽图文广告",
+				"enableVideo": "__NEED_TRANSLATE__: 屏蔽视频广告",
 				"enableMerch": "チャンネル主のおすすめ商品をブロックする"
 			},
 			"tips": {
@@ -111,7 +112,6 @@
 	},
 	"insights": {
 		"title": "インサイト",
-		"tips": {},
 		"label": {
 			"metadata": {
 				"date": "日付：",
