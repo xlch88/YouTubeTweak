@@ -93,6 +93,7 @@ header {
 		white-space: nowrap;
 		font-size: 12px;
 		transition: color 0.3s;
+		flex: 1;
 
 		&:is(button) > span {
 			background: transparent;
