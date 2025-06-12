@@ -28,8 +28,6 @@ export function createLogger(name = "main") {
 		);
 	});
 
-	if (!isDEV) logger.debug = () => {};
-
 	return logger;
 }
 export default createLogger();
