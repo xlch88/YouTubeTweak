@@ -30,6 +30,7 @@ export async function initI18n() {
 		locale = "en-US";
 	}
 	localStorage.setItem("lang", locale);
+	document.documentElement.lang = locale;
 
 	i18n = createI18n({
 		locale: locale,
@@ -44,7 +45,10 @@ export async function initI18n() {
 }
 
 export async function loadLocaleMessages(locale) {
-	if (locale === "en-US") return;
+	if (locale === "en-US") return Promise.resolve();
+	if (i18n.global.availableLocales.includes(locale)) {
+		return Promise.resolve();
+	}
 	let messages = (await import(`@/assets/i18n/${locale}.json`)).default;
 
 	function cleanNeedTranslate(messages) {

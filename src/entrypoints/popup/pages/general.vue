@@ -103,6 +103,7 @@ function setLocale(e) {
 
 	loadLocaleMessages(locale.value).then(() => {
 		i18n.global.locale = locale.value;
+		document.documentElement.lang = locale;
 		localStorage.setItem("lang", locale.value);
 	});
 }
