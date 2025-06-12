@@ -2,6 +2,8 @@
 public/assets/img/logo/*.png
 public/_locales
 example-data
+.env.*
+.secret
 
 # Logs
 logs

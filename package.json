@@ -8,7 +8,7 @@
 		"dev:firefox": "wxt -b firefox",
 		"build": "vue-tsc --noEmit && wxt build",
 		"build:firefox": "vue-tsc --noEmit && wxt build -b firefox",
-		"zip": "vue-tsc --noEmit && wxt zip",
+		"zip": "vue-tsc --noEmit && wxt zip && crx3 -p .secret/chrome-web-store.pem -o .output/chrome.crx .output/chrome-mv3",
 		"zip:firefox": "vue-tsc --noEmit && wxt zip -b firefox",
 		"compile": "vue-tsc --noEmit",
 		"postinstall": "wxt prepare"
