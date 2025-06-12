@@ -21,7 +21,7 @@
 
 <script setup>
 import useConfigStore from "./util/config.js";
-import { ref, provide } from "vue";
+import { ref, provide, defineAsyncComponent } from "vue";
 import Installed from "./pages/installed.vue";
 
 const tabs = {
@@ -60,7 +60,9 @@ main {
 
 	.slide-fade-enter-active,
 	.slide-fade-leave-active {
-		transition: all 0.1s cubic-bezier(1, 0.5, 0.8, 1);
+		transition:
+			transform 0.1s cubic-bezier(1, 0.5, 0.8, 1),
+			opacity 0.1s cubic-bezier(1, 0.5, 0.8, 1);
 	}
 
 	.slide-fade-enter-from,
@@ -113,6 +115,7 @@ header {
 			background: transparent;
 			padding: 3px 6px;
 			border-radius: 500px;
+			transition: background 0.3s;
 		}
 
 		&.active {
