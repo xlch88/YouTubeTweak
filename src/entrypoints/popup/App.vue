@@ -5,7 +5,7 @@
 				<img src="@/assets/img/logo.svg" alt="logo" />
 				<span><small>YouTube</small>Tweak</span>
 			</a>
-			<button v-for="key in Object.keys(tabs)" :key="key" class="item" :class="{ active: tab === key }" @click="tab = key">
+			<button v-for="key in Object.keys(tabs)" :key="key" class="item" :class="{ active: tab === key }" @click="tabClick(key)">
 				<span>{{ $t(`tabs.${key}.title`) }}</span>
 			</button>
 		</header>
@@ -32,7 +32,11 @@ const tabs = {
 	general: defineAsyncComponent(() => import("./pages/general.vue")),
 };
 
-const tab = ref("player");
+const tab = ref(localStorage.getItem("tab") || "player");
+function tabClick(key) {
+	tab.value = key;
+	localStorage.setItem("tab", key);
+}
 const action = ref("popup");
 
 const params = new URLSearchParams(window.location.search);
