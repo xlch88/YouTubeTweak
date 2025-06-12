@@ -7,7 +7,6 @@ export default {
 		Object.defineProperty(window, "fetch", {
 			value: async (...args) => {
 				const url = args[0]?.url || args[0];
-				console.log(url);
 
 				const matchedHooks = Object.values(this.hooks).filter((v) => {
 					if (typeof v.match === "function") {
