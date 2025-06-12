@@ -13,8 +13,8 @@ export default {
 	"player.settings.maxVolume": true,
 	"player.settings.lockQuality": false,
 	"player.settings.lockQuality.value": "hd1080",
-	"player.settings.saveSpeed": false,
-	"player.settings.saveSpeedByChannel": false,
+	"player.settings.saveSpeed": true,
+	"player.settings.saveSpeedByChannel": true,
 
 	"comment.nickname": true,
 	"comment.autoShowMore": true,
