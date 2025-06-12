@@ -4,6 +4,7 @@ public/_locales
 example-data
 .env.*
 .secret
+.env
 
 # Logs
 logs

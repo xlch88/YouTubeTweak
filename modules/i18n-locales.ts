@@ -4,9 +4,10 @@ import fs from "fs";
 export default defineWxtModule({
 	setup(wxt) {
 		wxt.hooks.hook("build:before", () => {
-			fs.rmSync("./public/_locales", { recursive: true, force: true });
+			// fs.rmSync("./public/_locales", { recursive: true, force: true });
 
 			for (const file of fs.readdirSync("src/assets/i18n").filter((file) => file.endsWith(".json"))) {
+				console.log(`Generating locale file: ${file}`);
 				let name = file.replace(/\.json$/, "").replace("-", "_");
 
 				if (!["pt_BR", "pt_PT", "zh_CN", "zh_TW"].includes(name)) {

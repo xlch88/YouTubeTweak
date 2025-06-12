@@ -3,6 +3,7 @@ import vueDevTools from "vite-plugin-vue-devtools";
 import sassGlobImports from "vite-plugin-sass-glob-import";
 import pkg from "./package.json";
 import fs from "node:fs";
+import "dotenv/config";
 
 // See https://wxt.dev/api/config.html
 export default defineConfig({
@@ -16,8 +17,8 @@ export default defineConfig({
 
 	webExt: {
 		keepProfileChanges: true,
-		chromiumProfile: fs.realpathSync(".profile/chrome"),
-		firefoxProfile: fs.realpathSync(".profile/firefox"),
+		chromiumProfile: process.env.CHROME_PROFILE,
+		firefoxProfile: process.env.FIREFOX_PROFILE,
 		startUrls: ["https://www.youtube.com/watch?v=zczjerfFrSI"],
 	},
 
