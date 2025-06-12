@@ -41,22 +41,25 @@ export default () => {
 					// 	logger.info("Removing adblockblock from player response");
 					// 	delete rsp.auxiliaryUi;
 					// }
-					this._bpr = rsp;
 
 					if (rsp?.videoDetails?.videoId) {
 						metadata.video = rsp;
 						logger.debug("Get video metadata:", rsp);
 					}
+
+					delete window.ytplayer.bootstrapPlayerResponse;
+					window.ytplayer.bootstrapPlayerResponse = rsp;
 				},
 				get() {
-					return this._bpr;
+					return undefined;
 				},
 			});
 
-			this._ytp = v;
+			delete window.ytplayer;
+			window.ytplayer = v;
 		},
 		get() {
-			return this._ytp;
+			return undefined;
 		},
 	});
 
