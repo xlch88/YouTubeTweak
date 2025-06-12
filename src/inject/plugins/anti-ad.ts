@@ -1,11 +1,16 @@
+// @ts-ignore
 import { videoPlayer } from "../mainWorld.js";
+// @ts-ignore
 import { bodyClass } from "../util/helper.js";
+// @ts-ignore
 import { createLogger } from "../../logger.js";
+// @ts-ignore
 import fetchHooker from "../fetchHooker.js";
+// @ts-ignore
 import config from "../config.js";
 const logger = createLogger("anti-ad");
 
-let antiADSlotInterval;
+let antiADSlotInterval: null | number;
 
 export default {
 	"other.antiAD.enable": {
@@ -33,7 +38,7 @@ export default {
 			fetchHooker.hooks.antiAD = {
 				match: "/youtubei/v1/player",
 				mutator: true,
-				handler(data) {
+				handler(data: object) {
 					if (data && typeof data === "object") {
 						let isRemove = false;
 						if ("adSlots" in data) {
@@ -60,8 +65,8 @@ export default {
 				},
 			};
 
-			antiADSlotInterval = setInterval(() => {
-				document.querySelectorAll("ytd-ad-slot-renderer:not([ytt-hide])").forEach((ad) => {
+			antiADSlotInterval = window.setInterval(() => {
+				document.querySelectorAll<HTMLElement>("ytd-ad-slot-renderer:not([ytt-hide])").forEach((ad) => {
 					ad.setAttribute("ytt-hide", "1");
 					if (ad?.parentElement?.parentElement && ad?.parentElement?.parentElement.tagName === "YTD-RICH-ITEM-RENDERER") {
 						const parent = ad.parentElement.parentElement;
@@ -84,7 +89,7 @@ export default {
 					let closeButton = adBlockBlocker?.querySelector("#dismiss-button .yt-spec-button-shape-next");
 					if (closeButton) {
 						logger.info("click adBlockBlocker close.");
-						adBlockBlocker?.querySelector("#dismiss-button .yt-spec-button-shape-next")?.click?.();
+						(adBlockBlocker?.querySelector("#dismiss-button .yt-spec-button-shape-next") as HTMLElement | null)?.click?.();
 						if (videoPlayer.player.playVideo) {
 							videoPlayer.player.playVideo();
 						}
@@ -97,7 +102,7 @@ export default {
 			document.body.classList.remove("yttweak-anti-ad");
 			localStorage.removeItem("YTTweak-plugin-AntiAD");
 		},
-		videoSrcChange(oldValue, newValue, isAD) {
+		videoSrcChange(oldValue: object, newValue: object, isAD: boolean) {
 			if (isAD) {
 				if (!isNaN(videoPlayer.videoStream?.duration) && videoPlayer.videoStream?.duration > 0) {
 					videoPlayer.videoStream.currentTime = videoPlayer.videoStream.duration;
