@@ -244,6 +244,7 @@ const YouTubeTweakApp = {
 };
 
 export default function mainWorld() {
+	fetchHooker.init();
 	if (["www.youtube.com", "m.youtube.com"].includes(location.host)) {
 		Object.values(pluginsDocumentStart).forEach((v) => v());
 
@@ -274,7 +275,6 @@ export default function mainWorld() {
 			},
 		};
 
-		fetchHooker.init();
 		wirelessRedstone.init("main");
 		wirelessRedstone.send("test", { test: "data" }, (replyData) => {
 			logger.info("test ok :", replyData);
