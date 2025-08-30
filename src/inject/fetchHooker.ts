@@ -1,8 +1,11 @@
+export type Hook = {
+	match: ((...args: Parameters<typeof window.fetch>) => boolean) | string;
+	handler: (result: any, url: string, responseClone: Response) => any;
+	mutator?: boolean;
+};
+
 export default {
-	hooks: {} as Record<
-		string,
-		{ match: ((...args: Parameters<typeof window.fetch>) => boolean) | string; handler: Function; mutator?: boolean }
-	>,
+	hooks: {} as Record<string, Hook>,
 
 	init() {
 		const originalFetch = window.fetch;
