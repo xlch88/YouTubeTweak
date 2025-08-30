@@ -1,6 +1,18 @@
+enum VideoQuality {
+	highres = "8K (4320p)",
+	hd2160 = "4K (2160p)",
+	hd1440 = "1440p",
+	hd1080 = "1080p",
+	hd720 = "720p",
+	large = "480p",
+	medium = "360p",
+	small = "240p",
+	tiny = "144p",
+}
+
 export type Config = {
 	"player.ui.enableSpeedButtons": boolean;
-	"player.ui.speedButtons": number[];
+	"player.ui.speedButtons": Array<0.25 | 0.5 | 1 | 1.25 | 1.5 | 2 | 3>;
 	"player.ui.hideButton.autoplay": boolean;
 	"player.ui.hideButton.subtitles": boolean;
 	"player.ui.hideButton.settings": boolean;
@@ -12,7 +24,7 @@ export type Config = {
 	"player.ui.hideCeElement": boolean;
 	"player.settings.maxVolume": boolean;
 	"player.settings.lockQuality": boolean;
-	"player.settings.lockQuality.value": string;
+	"player.settings.lockQuality.value": keyof typeof VideoQuality;
 	"player.settings.saveSpeed": boolean;
 	"player.settings.saveSpeedByChannel": boolean;
 
@@ -21,7 +33,7 @@ export type Config = {
 	"comment.autoTranslate": boolean;
 
 	"index.videoPerRow.enable": boolean;
-	"index.videoPerRow.count": number;
+	"index.videoPerRow.count": 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 	"other.antiAD.enable": boolean;
 	"other.antiAD.enableMerch": boolean;
 	"other.antiAD.enableVideo": boolean;

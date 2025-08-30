@@ -10,10 +10,10 @@ declare global {
 	interface Window {
 		__YT_TWEAK__?: {
 			WORLD: string;
-			plugins: Record<string, Plugin>;
-			videoPlayer: typeof videoPlayer;
-			metadata: typeof metadata;
-			youtubeiAPIv1: typeof youtubeiAPIv1;
+			plugins?: Record<string, Plugin>;
+			videoPlayer?: typeof videoPlayer;
+			metadata?: typeof metadata;
+			youtubeiAPIv1?: typeof youtubeiAPIv1;
 		};
 	}
 }

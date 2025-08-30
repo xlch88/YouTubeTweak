@@ -7,7 +7,22 @@ type MemoryStorager = {
 	set: (items: { [key: string]: any }) => Promise<void>;
 };
 /**
+ * This module is designed to store information for each YouTube channel,
+ * such as playback speed, video quality, etc.
  *
+ * It implements a simple chunked storage mechanism because `chrome.storage.sync`
+ * has a limitation where each key's length cannot exceed 8192 characters.
+ *
+ * The data structure is similar to the following format:
+ * `@Channel!<lastUpdateOrder>:key1=value1,key2=value2,...;`
+ *
+ * - `@Channel!`: Indicates the channel ID.
+ * - `<lastUpdateOrder>`: Represents the order of the last update.
+ * - `key=value`: Stores key-value pairs for the channel's settings.
+ * - `;`: Marks the end of the entry.
+ *
+ * This structure ensures efficient storage and retrieval of channel-specific data
+ * while adhering to the storage limitations.
  */
 export default {
 	storage: globalThis?.browser?.storage?.sync as MemoryStorager,
