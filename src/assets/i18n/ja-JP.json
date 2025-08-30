@@ -42,6 +42,16 @@
 				"save": "再生速度を記憶する"
 			}
 		},
+		"subtitles": {
+			"title": "字幕",
+			"checkbox": {
+				"save": "字幕の有効状態を記憶する",
+				"saveByChannel": "チャンネルごとに字幕の有効状態を記憶する"
+			},
+			"tips": {
+				"save": "字幕設定を記憶する"
+			}
+		},
 		"hidePlayerButtons": {
 			"title": "ボタンを非表示",
 			"checkbox": {
@@ -233,3 +243,4 @@
 		"line3": "ご使用中に問題が発生した場合は、GitHubにてご報告ください。"
 	}
 }
+

@@ -42,6 +42,16 @@
 				"save": "記住速度"
 			}
 		},
+		"subtitles": {
+			"title": "字幕",
+			"checkbox": {
+				"save": "記住字幕啟用狀態",
+				"saveByChannel": "為每個頻道分別記住字幕啟用狀態"
+			},
+			"tips": {
+				"save": "記住字幕設定"
+			}
+		},
 		"hidePlayerButtons": {
 			"title": "隱藏按鈕",
 			"checkbox": {
@@ -233,3 +243,4 @@
 		"line3": "如果您在使用中遇到任何的問題，歡迎在我們的 GitHub 源碼倉庫上進行反饋！"
 	}
 }
+

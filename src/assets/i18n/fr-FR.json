@@ -42,6 +42,16 @@
 				"save": "Sauvegarder la vitesse"
 			}
 		},
+		"subtitles": {
+			"title": "Sous-titres",
+			"checkbox": {
+				"save": "Mémoriser l'état d'activation des sous-titres",
+				"saveByChannel": "Mémoriser l'état d'activation des sous-titres pour chaque chaîne"
+			},
+			"tips": {
+				"save": "Mémoriser les paramètres des sous-titres"
+			}
+		},
 		"hidePlayerButtons": {
 			"title": "Masquer les boutons",
 			"checkbox": {
@@ -233,3 +243,4 @@
 		"line3": "En cas d'un problème, n'hésitez pas à nous le remonter dans GitHub."
 	}
 }
+

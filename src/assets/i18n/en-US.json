@@ -42,6 +42,16 @@
 				"save": "Remember speed"
 			}
 		},
+		"subtitles": {
+			"title": "Subtitles",
+			"checkbox": {
+				"save": "Remember subtitle on/off status",
+				"saveByChannel": "Remember subtitle on/off status per channel"
+			},
+			"tips": {
+				"save": "Remember subtitle settings"
+			}
+		},
 		"hidePlayerButtons": {
 			"title": "Hide buttons",
 			"checkbox": {
@@ -233,3 +243,4 @@
 		"line3": "If you encounter any problems, feel free to report them on GitHub."
 	}
 }
+
