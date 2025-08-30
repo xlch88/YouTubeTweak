@@ -27,6 +27,7 @@ export type Config = {
 	"player.settings.lockQuality.value": keyof typeof VideoQuality;
 	"player.settings.saveSpeed": boolean;
 	"player.settings.saveSpeedByChannel": boolean;
+	"player.settings.saveSubtitleStatusByChannel": boolean;
 
 	"comment.nickname": boolean;
 	"comment.autoShowMore": boolean;
@@ -44,7 +45,7 @@ export type Config = {
 	"yttweak.enableChromeApiStatusChecker": boolean;
 };
 
-export default {
+const config: Config = {
 	"player.ui.enableSpeedButtons": true,
 	"player.ui.speedButtons": [0.5, 1, 1.5, 2],
 	"player.ui.hideButton.autoplay": false,
@@ -61,6 +62,7 @@ export default {
 	"player.settings.lockQuality.value": "hd1080",
 	"player.settings.saveSpeed": true,
 	"player.settings.saveSpeedByChannel": true,
+	"player.settings.saveSubtitleStatusByChannel": true,
 
 	"comment.nickname": true,
 	"comment.autoShowMore": true,
@@ -76,4 +78,6 @@ export default {
 	"shorts-blocker.enable.menu": false,
 
 	"yttweak.enableChromeApiStatusChecker": true,
-} as Config;
+};
+
+export default config;

@@ -39,10 +39,14 @@ export const videoPlayer = {
 		| (HTMLDivElement & {
 				isHookedYouTubeTweak?: boolean;
 				getAvailableQualityLevels: () => string[];
+				getPlaybackRate: () => number;
 				setPlaybackQuality: (quality: string) => void;
 				setPlaybackQualityRange: (quality: string) => void;
 				setPlaybackRate: (playbackRate: number) => void;
+				isSubtitlesOn: () => boolean;
 				playVideo: () => void;
+				toggleSubtitles: () => void;
+				toggleSubtitlesOn: () => void;
 				[key: string]: any;
 		  }),
 	controls: null as null | HTMLDivElement,
@@ -245,8 +249,9 @@ const YouTubeTweakApp = {
 };
 
 export default function mainWorld() {
-	fetchHooker.init();
 	if (["www.youtube.com", "m.youtube.com"].includes(location.host)) {
+		fetchHooker.init();
+
 		Object.values(pluginsDocumentStart).forEach((v) => v());
 
 		fetchHooker.hooks.playerMetadata = {
