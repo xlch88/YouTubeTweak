@@ -49,17 +49,7 @@ export default {
 
 		Object.defineProperty(HTMLIFrameElement.prototype, "contentWindow", {
 			get() {
-				return new Proxy(
-					{},
-					{
-						get(_, prop) {
-							if (prop === "fetch") {
-								return window.fetch.bind(window);
-							}
-							return undefined;
-						},
-					},
-				);
+				return window;
 			},
 		});
 	},
