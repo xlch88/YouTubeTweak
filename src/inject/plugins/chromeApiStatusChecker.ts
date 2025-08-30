@@ -1,5 +1,7 @@
-import wirelessRedstone from "../wirelessRedstone.js";
-import { isDEV } from "../../logger.js";
+import wirelessRedstone from "../wirelessRedstone";
+import { isDEV } from "../../logger";
+
+import type { Plugin } from "../types";
 
 export default {
 	"yttweak.enableChromeApiStatusChecker": {
@@ -27,4 +29,4 @@ export default {
 			wirelessRedstone.send("enableChromeApiStatusChecker", true);
 		},
 	},
-};
+} as Record<string, Plugin>;

@@ -1,36 +1,56 @@
-import config from "./config.js";
-import logger from "../logger.js";
-import { youtubeiAPIv1 } from "./util/youtubei.js";
-import wirelessRedstone from "./wirelessRedstone.js";
+import config from "./config";
+import logger from "../logger";
+import { youtubeiAPIv1 } from "./util/youtubei";
+import wirelessRedstone from "./wirelessRedstone";
 import "./style.scss";
-import fetchHooker from "./fetchHooker.js";
+import fetchHooker from "./fetchHooker";
+import type { Plugin } from "./types";
 
-const plugins = Object.assign({}, ...Object.values(import.meta.glob("./plugins/*.{js,ts}", { eager: true }).map((m) => m.default)));
-const pluginsDocumentStart = Object.values(import.meta.glob("./plugins_before/*.{js,ts}", { eager: true }).map((m) => m.default));
+declare global {
+	interface Window {
+		__YT_TWEAK__?: {
+			WORLD: string;
+			plugins: Record<string, Plugin>;
+			videoPlayer: typeof videoPlayer;
+			metadata: typeof metadata;
+			youtubeiAPIv1: typeof youtubeiAPIv1;
+		};
+	}
+}
+
+const plugins = Object.assign(
+	{},
+	...Object.values(import.meta.glob<Record<string, { default: Function }>>("./plugins/*.{js,ts}", { eager: true })).map((m) => m.default),
+) as Record<string, Plugin>;
+
+const pluginsDocumentStart = Object.values(
+	import.meta.glob("./plugins_before/*.{js,ts}", { eager: true }) as Record<string, { default: Function }>,
+).map((m) => m.default);
 globalThis.browser = globalThis.browser || globalThis.chrome;
 
 export const videoPlayer = {
 	box: null,
 	/**
 	 * YouTube player element with API
-	 *
-	 * @type {null || HTMLDivElement & {
-	 *   getAvailableQualityLevels: () => string[],
-	 *   setPlaybackQuality: (quality: string) => void,
-	 *   setPlaybackQualityRange: (quality: string) => void,
-	 *   setPlaybackRate: (playbackRate: number) => void,
-	 *   playVideo: () => void,
-	 *   [key: string]: any
-	 * }}
 	 */
-	player: null,
-	controls: null,
-	videoStream: null,
-	playerApi: null,
+	player: null as
+		| null
+		| (HTMLDivElement & {
+				isHookedYouTubeTweak?: boolean;
+				getAvailableQualityLevels: () => string[];
+				setPlaybackQuality: (quality: string) => void;
+				setPlaybackQualityRange: (quality: string) => void;
+				setPlaybackRate: (playbackRate: number) => void;
+				playVideo: () => void;
+				[key: string]: any;
+		  }),
+	controls: null as null | HTMLDivElement,
+	videoStream: null as null | HTMLVideoElement,
+	playerApi: null as null,
 };
 export const metadata = {
-	video: null,
-	videoNext: null,
+	video: null as null | Record<string, any>,
+	videoNext: null as null | Record<string, any>,
 };
 
 const YouTubeTweakApp = {
@@ -47,7 +67,7 @@ const YouTubeTweakApp = {
 			const observer = new MutationObserver(() => {
 				if (document.body) {
 					observer.disconnect();
-					resolve();
+					resolve(undefined);
 				}
 			});
 
@@ -101,29 +121,30 @@ const YouTubeTweakApp = {
 				}
 			}
 
-			Object.entries(plugins)
-				.filter((p) => p[1].configUpdate)
-				.map((p) => {
-					try {
-						if (p[1].configUpdate(oldConfig, newConfig)) {
-							p[1][newConfig[p[0]] ? "enable" : "disable"]();
-							logger.log(`plugin config update:`, p);
-						}
-					} catch (e) {
-						logger.error("plugin error:", e);
+			Object.entries(plugins).map((p) => {
+				try {
+					const pluginNewStatus = p[0];
+					const plugin = p[1];
+
+					if (plugin.configUpdate && plugin.configUpdate(oldConfig, newConfig)) {
+						pluginNewStatus ? plugin.enable?.() : plugin.disable?.();
+						logger.log(`plugin config update:`, p);
 					}
-				});
+				} catch (e) {
+					logger.error("plugin error:", e);
+				}
+			});
 		};
 	},
 	initElementCatcher() {
 		setInterval(() => {
 			// catch video player
-			let player, controls, videoStream;
+			let player: typeof videoPlayer.player, controls: typeof videoPlayer.controls, videoStream: typeof videoPlayer.videoStream;
 			if ((player = document.querySelector("ytd-player #movie_player"))) {
 				if (player.getAttribute("yttweak") === "hooked") return;
 
 				if ((controls = player.querySelector(".ytp-left-controls"))) {
-					controls = controls.parentElement;
+					controls = controls.parentElement as HTMLDivElement;
 
 					if ((videoStream = player.querySelector(".video-stream"))) {
 						player.isHookedYouTubeTweak = true;
@@ -133,7 +154,7 @@ const YouTubeTweakApp = {
 						videoPlayer.controls = controls;
 						videoPlayer.videoStream = videoStream;
 
-						function onVideoSrcChange(oldValue, newValue) {
+						function onVideoSrcChange(oldValue: string | null, newValue: string) {
 							if (new URL(window.location.href).pathname !== "/watch") {
 								metadata.video = null;
 								metadata.videoNext = null;
@@ -146,9 +167,7 @@ const YouTubeTweakApp = {
 								oldValue,
 								newValue,
 							});
-							Object.entries(plugins)
-								.filter((p) => p[1].videoSrcChange)
-								.forEach((p) => p[1].videoSrcChange(oldValue, newValue));
+							Object.entries(plugins).forEach((p) => p[1].videoSrcChange?.(oldValue, newValue));
 						}
 
 						let observer = new MutationObserver((mutationList) => {
@@ -156,23 +175,24 @@ const YouTubeTweakApp = {
 								if (mutation.type !== "attributes" || mutation.attributeName !== "src") return;
 
 								const handler = () => {
-									videoStream.removeEventListener("canplay", handler);
-									onVideoSrcChange(mutation.oldValue, mutation.target.getAttribute("src"));
+									videoStream?.removeEventListener("canplay", handler);
+									onVideoSrcChange(
+										mutation.oldValue as string,
+										(mutation.target as HTMLVideoElement).getAttribute("src") as string,
+									);
 								};
-								videoStream.addEventListener("canplay", handler, { once: true });
+								videoStream?.addEventListener("canplay", handler, { once: true });
 							});
 						});
 						observer.observe(videoPlayer.videoStream, { attributes: true, attributeOldValue: true, attributeFilter: ["src"] });
 
-						Object.values(plugins)
-							.filter((p) => p.initPlayer)
-							.map((p) => {
-								try {
-									p.initPlayer();
-								} catch (e) {
-									logger.error("plugin error:", e);
-								}
-							});
+						Object.values(plugins).map((p) => {
+							try {
+								p.initPlayer?.();
+							} catch (e) {
+								logger.error("plugin error:", e);
+							}
+						});
 						onVideoSrcChange(null, videoStream.src);
 					}
 				}
@@ -181,11 +201,11 @@ const YouTubeTweakApp = {
 			// catch comments
 			let queryComments;
 			if ((queryComments = document.querySelectorAll("ytd-comments"))) {
-				for (const commentEl of queryComments) {
+				for (const commentEl of queryComments as NodeListOf<HTMLDivElement>) {
 					if (commentEl.getAttribute("yttweak") === "hooked") continue;
 					commentEl.setAttribute("yttweak", "hooked");
 
-					let commentUpdateListener = {};
+					let commentUpdateListener: Record<string, (mutations: MutationRecord[]) => void> = {};
 					const commentWatcher = new MutationObserver((mutations) => {
 						Object.values(commentUpdateListener).forEach((v) => v(mutations));
 					});
@@ -203,22 +223,20 @@ const YouTubeTweakApp = {
 							commentUpdateListener = {};
 						}
 					});
-					commentWatcher.observe(commentEl.parentElement, {
+					commentWatcher.observe(commentEl.parentElement as Node, {
 						subtree: false,
 						childList: true,
 					});
 
-					Object.entries(plugins)
-						.filter((p) => p[1].initComments)
-						.map((p) => {
-							try {
-								p[1].initComments(commentEl, (func) => {
-									commentUpdateListener[p[0]] = func;
-								});
-							} catch (e) {
-								logger.error("plugin error:", e);
-							}
-						});
+					Object.entries(plugins).map((p) => {
+						try {
+							p[1].initComments?.(commentEl, (func) => {
+								commentUpdateListener[p[0]] = func;
+							});
+						} catch (e) {
+							logger.error("plugin error:", e);
+						}
+					});
 				}
 			}
 		}, 300);
@@ -233,7 +251,7 @@ export default function mainWorld() {
 		fetchHooker.hooks.playerMetadata = {
 			match: "/youtubei/v1/player",
 			mutator: false,
-			handler(data) {
+			handler(data: any) {
 				const url = new URL(window.location.href);
 				if (url.pathname === "/watch" && typeof data?.videoDetails === "object") {
 					if (url.searchParams.get("v") === data.videoDetails.videoId) {
@@ -246,7 +264,7 @@ export default function mainWorld() {
 		fetchHooker.hooks.playerMetadataNext = {
 			match: "/youtubei/v1/next",
 			mutator: false,
-			handler(data) {
+			handler(data: any) {
 				const url = new URL(window.location.href);
 				if (url.pathname === "/watch" && typeof data?.currentVideoEndpoint === "object") {
 					if (url.searchParams.get("v") === data.currentVideoEndpoint?.watchEndpoint?.videoId) {

@@ -1,5 +1,6 @@
-import { createLogger } from "../../logger.js";
-import { metadata } from "../mainWorld.js";
+import { createLogger } from "../../logger";
+
+import { metadata } from "../mainWorld";
 const logger = createLogger("anti-ad");
 
 export default () => {

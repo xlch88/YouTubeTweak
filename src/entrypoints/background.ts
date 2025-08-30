@@ -18,7 +18,7 @@ export default defineBackground(() => {
 						browser.storage.local.set({ needReloadTabs: false }).catch(() => {});
 						browser.tabs.query({ url: "*://*.youtube.com/*", discarded: false }).then((cb) => {
 							cb.forEach((tab) => {
-								browser.tabs.reload(tab.id).catch(() => {});
+								if (tab.id) browser.tabs.reload(tab.id).catch(() => {});
 							});
 						});
 					})

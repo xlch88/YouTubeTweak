@@ -75,19 +75,19 @@
 	</section>
 </template>
 
-<script setup>
-import useConfigStore from "../util/config.js";
+<script setup lang="ts">
+import useConfigStore from "../util/config";
 const config = useConfigStore();
 
 import { useI18n } from "vue-i18n";
 const { t } = useI18n();
 
 import { inject, ref } from "vue";
-const setTab = inject("setTab");
+const setTab = inject("setTab") as (v: string) => void;
 
-import { locales, i18n, loadLocaleMessages } from "../util/i18n.js";
+import { locales, i18n, loadLocaleMessages } from "../util/i18n";
 const language = locales;
-const locale = ref(i18n.global.locale);
+const locale = ref(i18n.global.locale as string);
 
 const APP_INFO = window.__APP_INFO__;
 
@@ -98,19 +98,19 @@ function resetConfig() {
 	setTab("player");
 }
 
-function setLocale(e) {
-	locale.value = e.target.value;
+function setLocale(e: Event) {
+	locale.value = (e.target as HTMLSelectElement).value;
 
 	loadLocaleMessages(locale.value).then(() => {
 		i18n.global.locale = locale.value;
-		document.documentElement.lang = locale;
+		document.documentElement.lang = locale.value;
 		localStorage.setItem("lang", locale.value);
 	});
 }
 
 const configModalType = ref("");
 const configModalValue = ref("");
-function showConfigModal(type) {
+function showConfigModal(type: string) {
 	configModalType.value = type;
 	configModalValue.value = type === "import" ? "" : JSON.stringify(config.$state, null, 2);
 }

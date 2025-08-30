@@ -19,12 +19,13 @@
 	<installed v-else-if="action === 'installed'"></installed>
 </template>
 
-<script setup>
-import useConfigStore from "./util/config.js";
+<script setup lang="ts">
+import useConfigStore from "./util/config";
 import { ref, provide, defineAsyncComponent } from "vue";
 import Installed from "./pages/installed.vue";
+import type { Component } from "vue";
 
-const tabs = {
+const tabs: Record<string, Component> = {
 	player: defineAsyncComponent(() => import("./pages/player.vue")),
 	comment: defineAsyncComponent(() => import("./pages/comment.vue")),
 	other: defineAsyncComponent(() => import("./pages/other.vue")),
@@ -33,15 +34,16 @@ const tabs = {
 };
 
 const tab = ref(localStorage.getItem("tab") || "player");
-function tabClick(key) {
+function tabClick(key: string) {
 	tab.value = key;
 	localStorage.setItem("tab", key);
 }
 const action = ref("popup");
 
 const params = new URLSearchParams(window.location.search);
-if (params.get("action")) {
-	action.value = params.get("action");
+let actionParam = params.get("action");
+if (actionParam) {
+	action.value = actionParam;
 }
 
 if (!(window === window.top && browser?.extension?.getViews({ type: "popup" })?.includes(window))) {
@@ -49,7 +51,7 @@ if (!(window === window.top && browser?.extension?.getViews({ type: "popup" })?.
 	document.body.style.height = "initial";
 }
 
-provide("setTab", (v) => {
+provide("setTab", (v: string) => {
 	tab.value = v;
 });
 </script>

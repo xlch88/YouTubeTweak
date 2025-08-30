@@ -25,7 +25,7 @@
 	</section>
 </template>
 
-<script setup>
-import useConfigStore from "../util/config.js";
+<script setup lang="ts">
+import useConfigStore from "../util/config";
 const config = useConfigStore();
 </script>

@@ -1,15 +1,10 @@
-// @ts-ignore
-import { videoPlayer } from "../mainWorld.js";
-// @ts-ignore
-import { bodyClass } from "../util/helper.js";
-// @ts-ignore
-import { createLogger } from "../../logger.js";
-// @ts-ignore
-import fetchHooker from "../fetchHooker.js";
-// @ts-ignore
-import config from "../config.js";
-// @ts-ignore
-import { checkPlayerAD } from "../util/helper.js";
+import { videoPlayer } from "../mainWorld";
+import { bodyClass } from "../util/helper";
+import { createLogger } from "../../logger";
+import fetchHooker from "../fetchHooker";
+import config from "../config";
+import { checkPlayerAD } from "../util/helper";
+import type { Plugin } from "../types";
 const logger = createLogger("anti-ad");
 
 let antiADSlotInterval: null | number;
@@ -82,7 +77,7 @@ export default {
 					if (closeButton) {
 						logger.info("click adBlockBlocker close.");
 						//(adBlockBlocker?.querySelector("#dismiss-button .yt-spec-button-shape-next") as HTMLElement | null)?.click?.();
-						if (videoPlayer.player.playVideo) {
+						if (videoPlayer.player?.playVideo) {
 							videoPlayer.player.playVideo();
 						}
 					}
@@ -94,7 +89,7 @@ export default {
 			document.body.classList.remove("yttweak-anti-ad-video");
 			localStorage.removeItem("YTTweak-plugin-AntiVideoAD");
 		},
-		videoSrcChange(oldValue: object, newValue: object) {
+		videoSrcChange() {
 			adVideoCheckTimeouts.forEach((t) => clearTimeout(t));
 			adVideoCheckTimeouts.length = 0;
 
@@ -104,7 +99,11 @@ export default {
 					window.setTimeout(() => {
 						const isAD = checkPlayerAD();
 						if (isAD) {
-							if (!isNaN(videoPlayer.videoStream?.duration) && videoPlayer.videoStream?.duration > 0) {
+							if (
+								videoPlayer.videoStream?.duration &&
+								!isNaN(videoPlayer.videoStream?.duration) &&
+								videoPlayer.videoStream?.duration > 0
+							) {
 								videoPlayer.videoStream.currentTime = videoPlayer.videoStream.duration;
 								videoPlayer.videoStream.playbackRate = 16;
 								logger.info("skip video ad.");
@@ -146,4 +145,4 @@ export default {
 		},
 	},
 	"other.antiAD.enableMerch": bodyClass("yttweak-anti-ad-merch"),
-};
+} as Record<string, Plugin>;

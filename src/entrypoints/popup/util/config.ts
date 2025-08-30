@@ -1,7 +1,10 @@
 import { defineStore } from "pinia";
 import { toRaw } from "vue";
-import { createLogger } from "@/logger.js";
-import defaultConfig from "@/defaultConfig.js";
+import { createLogger } from "@/logger";
+import defaultConfig from "@/defaultConfig";
+
+import type { PiniaPlugin } from "pinia";
+
 const logger = createLogger("config");
 
 export const STORAGE_KEY = "settings";
@@ -30,6 +33,8 @@ export default defineStore("config", {
 			});
 			browser.tabs.query({ url: "*://*.youtube.com/*" }).then((tabs) => {
 				tabs.forEach((tab) => {
+					if (!tab.id) return;
+
 					browser.tabs.sendMessage(tab.id, { action: "reloadConfig" }).catch((e) => {
 						logger.warn("sendMessage error:", e);
 					});
@@ -39,7 +44,7 @@ export default defineStore("config", {
 	},
 });
 
-export const configPlugin = ({ store }) => {
+export const configPlugin: PiniaPlugin = ({ store }) => {
 	let isInitial = true;
 	store.$subscribe(() => {
 		if (isInitial) {

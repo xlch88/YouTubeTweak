@@ -1,20 +1,23 @@
-import { bodyClass } from "../util/helper.js";
-import config from "../config.js";
-import { createLogger } from "../../logger.js";
+import { bodyClass } from "../util/helper";
+import config from "../config";
+import { createLogger } from "../../logger";
+
+import type { Plugin } from "../types";
+
 const logger = createLogger("comment-nickname");
 
-function handleNickname(v) {
-	let author = v.querySelector("#author-comment-badge"),
-		url,
-		username;
+function handleNickname(v: HTMLElement) {
+	let author = v.querySelector<HTMLDivElement | HTMLAnchorElement>("#author-comment-badge"),
+		url: string,
+		username: string;
 	if (author && author.childElementCount > 0) {
-		url = author.querySelector("a#name").href;
-		username = author.querySelector("yt-formatted-string").title;
+		url = author.querySelector<HTMLAnchorElement>("a#name")?.href || "";
+		username = author.querySelector<HTMLElement>("yt-formatted-string")?.title || "";
 		author = author.querySelector("yt-formatted-string");
 	} else {
-		author = v.querySelector("#author-text");
-		url = author.href;
-		username = author.querySelector("span").innerText.trim();
+		author = v.querySelector<HTMLAnchorElement>("#author-text");
+		url = author?.href || "";
+		username = author?.querySelector("span")?.innerText.trim() || "";
 	}
 
 	fetch(url)
@@ -32,7 +35,7 @@ function handleNickname(v) {
 				usernameNode.textContent = username;
 				usernameNode.className = "yttweak-comment-username";
 
-				author.replaceChildren(nicknameNode, usernameNode);
+				author?.replaceChildren(nicknameNode, usernameNode);
 				logger.log(`nickname:`, username, `->`, nicknameNode.textContent);
 			}
 		})
@@ -54,20 +57,21 @@ export default {
 			if (!config.get("comment.nickname")) return;
 
 			commentEl.querySelectorAll("ytd-comment-view-model").forEach((v) => {
-				handleNickname(v);
+				handleNickname(v as HTMLElement);
 			});
 
 			setUpdateListener((mutations) => {
 				for (const mutation of mutations) {
 					if (mutation.type === "childList") {
-						mutation.addedNodes.forEach((v) => {
-							if (v?.tagName?.toLowerCase() === "ytd-comment-view-model") {
-								handleNickname(v);
+						mutation.addedNodes.forEach((node) => {
+							const div = node as HTMLDivElement;
+							if (div?.tagName?.toLowerCase() === "ytd-comment-view-model") {
+								handleNickname(div);
 							}
 						});
 					}
 				}
 			});
 		},
-	},
+	} as Plugin,
 };

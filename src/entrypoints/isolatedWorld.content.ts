@@ -1,6 +1,6 @@
 import { defineContentScript } from "wxt/utils/define-content-script";
 // @ts-ignore
-import isolatedWorld from "../inject/isolatedWorld.js";
+import isolatedWorld from "../inject/isolatedWorld";
 
 let contentScript;
 contentScript = defineContentScript({

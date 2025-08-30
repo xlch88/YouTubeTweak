@@ -1,3 +1,7 @@
+declare global {
+	const __IS_DEV__: boolean;
+}
+
 export const isDEV = __IS_DEV__;
 
 const colorMap = {
@@ -17,8 +21,8 @@ const colorMap = {
  * @property {Function} error
  */
 export function createLogger(name = "main") {
-	const logger = {};
-	["log", "warn", "debug", "info", "error"].forEach((type) => {
+	const logger: Record<"log" | "warn" | "debug" | "info" | "error", (...args: any[]) => void> = {} as any;
+	(["log", "warn", "debug", "info", "error"] as const).forEach((type) => {
 		const bg = colorMap[type] || "#7f8c8d";
 		logger[type] = console[type].bind(
 			console,

@@ -1,4 +1,4 @@
-export async function youtubeiAPIv1(path, args, hl = "en", gl = "US") {
+export async function youtubeiAPIv1(path: string, args: Record<string, any>, hl = "en", gl = "US") {
 	return await (
 		await fetch(`https://www.youtube.com/youtubei/v1${path}?prettyPrint=false`, {
 			headers: {

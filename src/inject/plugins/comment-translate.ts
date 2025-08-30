@@ -1,21 +1,29 @@
-import config from "../config.js";
-import { createLogger } from "../../logger.js";
+import config from "../config";
+import { createLogger } from "../../logger";
+
+import type { Plugin } from "../types";
+
 const logger = createLogger("comment-translate");
 
-let needTranslate = [];
-function handleTranslate(v) {
+let needTranslate: [Element, string][] = [];
+function handleTranslate(v: Element) {
 	setTimeout(() => {
 		let commentContentDom = v.querySelector("#content yt-attributed-string>span");
 		let commentContent = "";
-		commentContentDom.childNodes.forEach((child) => {
+
+		if (!commentContentDom) return;
+
+		commentContentDom?.childNodes.forEach((child) => {
 			if (child.nodeType === Node.TEXT_NODE) {
 				commentContent += child.textContent;
 			} else if (child.nodeType === Node.ELEMENT_NODE && child.childNodes.length >= 1) {
-				if (child.childNodes[0]?.alt) {
-					commentContent += child.childNodes[0].alt; // emoji
+				// emoji
+				if ((child.childNodes[0] as HTMLImageElement)?.alt) {
+					commentContent += (child.childNodes[0] as HTMLImageElement).alt;
 				}
-				if (child.innerText) {
-					commentContent += child.innerText;
+
+				if ((child as HTMLElement).innerText) {
+					commentContent += (child as HTMLElement).innerText;
 				}
 			}
 		});
@@ -51,7 +59,7 @@ setInterval(() => {
 			return res.json();
 		})
 		.then((data) => {
-			data[0].forEach((result, i) => {
+			data[0].forEach((result: string, i: number) => {
 				const transNode = document.createElement("div");
 				transNode.className = "yttweak-comment-translate";
 				transNode.textContent =
@@ -59,7 +67,7 @@ setInterval(() => {
 					decodeHtmlEntities(result)
 						.replace(/❤/g, "❤️")
 						.replace(/<br\/>/g, "\n");
-				doing[i][0].parentElement.insertBefore(transNode, null);
+				doing[i][0].parentElement?.insertBefore(transNode, null);
 			});
 		});
 }, 500);
@@ -80,13 +88,14 @@ export default {
 			if (!config.get("comment.autoTranslate")) return;
 
 			commentEl.querySelectorAll("ytd-comment-view-model").forEach((v) => {
-				handleTranslate(v);
+				handleTranslate(v as HTMLElement);
 			});
 
 			setUpdateListener((mutations) => {
 				for (const mutation of mutations) {
 					if (mutation.type === "childList") {
-						mutation.addedNodes.forEach((v) => {
+						mutation.addedNodes.forEach((node) => {
+							const v = node as HTMLElement;
 							if (v?.tagName?.toLowerCase() === "ytd-comment-view-model") {
 								handleTranslate(v);
 							}
@@ -96,13 +105,13 @@ export default {
 			});
 		},
 	},
-};
+} as Record<string, Plugin>;
 
 // helper
-function detectLanguage(text) {
+function detectLanguage(text: string) {
 	if (!text || typeof text !== "string") return "auto";
 
-	const scores = {};
+	const scores: Record<string, number> = {};
 	const detectors = [
 		{ lang: "zh-CN", regex: /[\u4e00-\u9fa5]/g, weight: 2 }, // 简体中文字形区
 		{ lang: "zh-TW", regex: /[\u4e00-\u9fff]/g, weight: 1.5 }, // 共通中文字区，但较弱
@@ -148,8 +157,8 @@ function detectLanguage(text) {
 	return ranked.length ? ranked[0][0] : "auto";
 }
 
-function decodeHtmlEntities(str) {
-	const namedEntities = {
+function decodeHtmlEntities(str: string) {
+	const namedEntities: Record<string, string> = {
 		"&amp;": "&",
 		"&lt;": "<",
 		"&gt;": ">",

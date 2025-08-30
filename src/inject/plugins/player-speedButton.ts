@@ -1,9 +1,12 @@
-import config from "../config.js";
-import { metadata, videoPlayer } from "../mainWorld.js";
-import { createLogger } from "../../logger.js";
+import config from "../config";
+import { metadata, videoPlayer } from "../mainWorld";
+import { createLogger } from "../../logger";
+
+import type { Plugin } from "../types";
+
 const logger = createLogger("player-speedButton");
 
-const speedButtons = [];
+const speedButtons: HTMLSpanElement[] = [];
 
 function getChannelId() {
 	return videoPlayer.player?.getPlayerResponse()?.microformat?.playerMicroformatRenderer?.ownerProfileUrl?.slice(23) || null;
@@ -18,12 +21,14 @@ function setMemorySpeed() {
 	}
 
 	if (config.get("player.settings.saveSpeed")) {
+		// @ts-ignore to do: memory
 		if (channelId && (speed = config.get(`player.speed.${channelId}`, speed, true))) {
 			logger.info(`Set playback rate(memory ${channelId}):`, speed);
 		}
 	}
 
 	if (config.get("player.settings.saveSpeedByChannel")) {
+		// @ts-ignore to do: memory
 		if (!speed && (speed = config.get(`player.speed`, null, true))) {
 			logger.info(`Set playback rate(memory default):`, speed);
 		}
@@ -31,8 +36,8 @@ function setMemorySpeed() {
 	if (!speed) return;
 	speed = Number(speed);
 
-	videoPlayer.player.setPlaybackRate(speed);
-	videoPlayer.videoStream.playbackRate = speed;
+	videoPlayer.player?.setPlaybackRate(speed);
+	if (videoPlayer.videoStream) videoPlayer.videoStream.playbackRate = speed;
 	speedButtons.forEach((v) => {
 		if (v.getAttribute("speed") === String(speed)) {
 			v.classList.add("yttweak-speed-button-active");
@@ -58,16 +63,18 @@ export default {
 				speedButton.className = `yttweak-speed-button`;
 				speedButton.setAttribute("speed", `${speed}`);
 				speedButton.onclick = () => {
-					videoPlayer.player.setPlaybackRate(speed);
-					videoPlayer.videoStream.playbackRate = speed;
+					videoPlayer.player?.setPlaybackRate(speed);
+					if (videoPlayer.videoStream) videoPlayer.videoStream.playbackRate = speed;
 					logger.info("Set playback rate:", speed);
 
 					if (config.get("player.settings.saveSpeed")) {
+						// @ts-ignore to do: memory
 						config.set("player.speed", speed, true);
 					}
 					if (config.get("player.settings.saveSpeedByChannel")) {
 						const channelId = getChannelId();
 						if (channelId) {
+							// @ts-ignore to do: memory
 							config.set(`player.speed.${channelId}`, speed, true);
 						}
 					}
@@ -80,7 +87,10 @@ export default {
 				speedButtons.push(speedButton);
 				speedButtonDiv.appendChild(speedButton);
 			}
-			videoPlayer.controls.insertBefore(speedButtonDiv, videoPlayer.controls.querySelector(".ytp-left-controls").nextSibling);
+			if (videoPlayer.controls) {
+				const left = videoPlayer.controls.querySelector(".ytp-left-controls")?.nextSibling;
+				if (left) videoPlayer.controls.insertBefore(speedButtonDiv, left);
+			}
 
 			setMemorySpeed();
 		},
@@ -91,4 +101,4 @@ export default {
 			return oldConfig["player.ui.speedButtons"].join(",") !== newConfig["player.ui.speedButtons"].join(",");
 		},
 	},
-};
+} as Record<string, Plugin>;

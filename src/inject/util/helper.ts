@@ -1,6 +1,6 @@
-import { videoPlayer } from "../mainWorld.js";
+import { videoPlayer } from "../mainWorld";
 
-export function bodyClass(className) {
+export function bodyClass(className: string) {
 	return {
 		enable: () => {
 			document.body.classList.add(className);
@@ -12,5 +12,5 @@ export function bodyClass(className) {
 }
 
 export function checkPlayerAD() {
-	return videoPlayer.player?.querySelector(".video-ads")?.childNodes.length > 0;
+	return (videoPlayer.player?.querySelector(".video-ads")?.childNodes?.length ?? 0) > 0 || false;
 }

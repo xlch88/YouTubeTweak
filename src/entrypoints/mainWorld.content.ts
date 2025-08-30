@@ -1,5 +1,5 @@
 import { defineContentScript } from "wxt/utils/define-content-script";
-import mainWorld from "../inject/mainWorld.js";
+import mainWorld from "../inject/mainWorld";
 
 export default defineContentScript({
 	world: "MAIN",

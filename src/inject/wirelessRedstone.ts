@@ -1,18 +1,19 @@
-let cloneInto;
+let cloneInto: any; // window.cloneInto
 
 export default {
-	handlers: {},
+	handlers: {} as Record<string, (data: any, reply: (data: any) => void) => void>,
 	world: "",
-	callbackStack: {},
+	callbackStack: {} as Record<string, (data: any) => void>,
 
-	init(world) {
+	init(world: string) {
 		if (this.world !== "") return;
 
 		// @ts-ignore for firefox https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_scripts/cloneInto
 		cloneInto = typeof window.cloneInto === "function" ? window.cloneInto : (data) => data;
 
 		this.world = world;
-		window.addEventListener(`yttweak-portal-${this.world}`, (evt) => {
+		window.addEventListener(`yttweak-portal-${this.world}`, (event) => {
+			const evt = event as CustomEvent;
 			const data = evt.detail;
 			// if (data.fromWorld === this.world) return;
 
@@ -42,7 +43,7 @@ export default {
 			}
 		});
 	},
-	send(type = "", data, callback = null) {
+	send(type = "", data: any, callback: null | ((data: any) => void) = null) {
 		if (!this.world) return;
 
 		let cbId = null;

@@ -1,4 +1,5 @@
-import { bodyClass } from "../util/helper.js";
+import { bodyClass } from "../util/helper";
+import type { Plugin } from "../types";
 
 export default {
 	"player.ui.hideButton.autoplay": bodyClass("yttweak-hide-button-autoplay"),
@@ -10,4 +11,4 @@ export default {
 	"player.ui.hideButton.remote": bodyClass("yttweak-hide-button-remote"),
 	"player.ui.hideButton.fullscreen": bodyClass("yttweak-hide-button-fullscreen"),
 	"player.ui.hideCeElement": bodyClass("yttweak-hide-ce_element"),
-};
+} as Record<string, Plugin>;

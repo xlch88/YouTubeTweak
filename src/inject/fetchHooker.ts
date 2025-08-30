@@ -1,12 +1,15 @@
 export default {
-	hooks: {},
+	hooks: {} as Record<
+		string,
+		{ match: ((...args: Parameters<typeof window.fetch>) => boolean) | string; handler: Function; mutator?: boolean }
+	>,
 
 	init() {
 		const originalFetch = window.fetch;
 
 		Object.defineProperty(window, "fetch", {
-			value: async (...args) => {
-				const url = args[0]?.url || args[0];
+			value: async (...args: Parameters<typeof window.fetch>) => {
+				const url = typeof args[0] === "string" ? args[0] : (args[0] as Request)?.url;
 
 				const matchedHooks = Object.values(this.hooks).filter((v) => {
 					if (typeof v.match === "function") {

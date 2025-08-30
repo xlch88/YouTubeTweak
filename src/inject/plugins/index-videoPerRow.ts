@@ -1,4 +1,6 @@
-import config from "../config.js";
+import config from "../config";
+
+import type { Plugin } from "../types";
 
 export default {
 	"index.videoPerRow.enable": {
@@ -22,4 +24,4 @@ export default {
 			return oldConfig["index.videoPerRow.count"] !== newConfig["index.videoPerRow.count"];
 		},
 	},
-};
+} as Record<string, Plugin>;

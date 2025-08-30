@@ -89,7 +89,9 @@
 	</section>
 </template>
 
-<script setup>
-import useConfigStore from "../util/config.js";
-const config = useConfigStore();
+<script setup lang="ts">
+import useConfigStore from "../util/config";
+const config = useConfigStore() as {
+	[key: `player.ui.hideButton.${string}`]: boolean;
+} & ReturnType<typeof useConfigStore>;
 </script>

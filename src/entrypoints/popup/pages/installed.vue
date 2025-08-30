@@ -37,7 +37,7 @@
 	</section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const APP_INFO = window.__APP_INFO__;
 </script>
 
