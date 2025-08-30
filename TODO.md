@@ -7,17 +7,17 @@
 - [ ] 手机端适配
 - [ ] Shorts 适配
 - [ ] ADBlock 稳定性测试
-- [ ] FetchHook & window.ytplayer 注入 稳定性测试
+- [x] FetchHook & window.ytplayer 注入 稳定性测试
 - [ ] 官网？
-- [ ] 按频道记忆播放速度
+- [x] 按频道记忆播放速度
 - [ ] 中间字幕启用 (例如 有zh-TW却没zh-CN，则启用zh-TW)
-- [ ] 转TypeScript？
+- [x] 转TypeScript？
 - [ ] 禁用自动暂停播放（长时间挂后台听歌）
 - [ ] Github Actions 自动打包
 - [ ] Chrome 应用商店流程自动化
     - [ ] 自动生成多语言介绍图片？
     - [ ] 自动生成多语言描述？
-- [ ] FireFox 的适配
+- [x] FireFox 的适配
 - [ ] 洞察？
     - [ ] 视频详情
         - [x] 最大尺寸的预览图
