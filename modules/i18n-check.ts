@@ -154,7 +154,7 @@ function fillMissingTranslations(dir = i18nDir) {
 
 		const fullPath = path.join(dir, filename);
 		const finalContent = filename !== baseLang ? reorderByBase(content, baseContent) : content;
-		fs.writeFileSync(fullPath, JSON.stringify(finalContent, null, "\t").replace(/\n/g, "\r\n") + "\r\n", "utf8");
+		fs.writeFileSync(fullPath, JSON.stringify(finalContent, null, "\t") + "\n", "utf8");
 	}
 
 	if (Object.values(result).length > 0) {
