@@ -29,7 +29,7 @@ async function setMemorySpeed() {
 	}
 
 	if (!speed && config.get("player.settings.saveSpeed")) {
-		const memorySpeed = await memory.get("_DEFAULT_", "s");
+		const memorySpeed = await memory.get("", "s");
 		if (memorySpeed) {
 			speed = memorySpeed;
 			logger.info(`Set playback rate(memory default):`, speed);
@@ -74,7 +74,7 @@ export default {
 					logger.info("Set playback rate:", speed);
 
 					if (config.get("player.settings.saveSpeed")) {
-						memory.set("_DEFAULT_", "s", speed);
+						memory.set("", "s", speed);
 					}
 					if (config.get("player.settings.saveSpeedByChannel")) {
 						const channelId = getChannelId();

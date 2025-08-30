@@ -49,6 +49,12 @@ type ChannelMemoryMetadata = {
  */
 export default {
 	storage: globalThis?.browser?.storage?.sync as MemoryStorager,
+	cleanChannelId(channelId: string) {
+		if (channelId.startsWith("@")) channelId = channelId.slice(1);
+		if (channelId === "") channelId = "_DEFAULT_";
+		channelId = decodeURI(channelId);
+		return channelId;
+	},
 	/**
 	 * Sets a value in memory.
 	 *
@@ -58,7 +64,7 @@ export default {
 	 * @returns A promise that resolves to true if the value was set successfully, or false if not.
 	 */
 	async set<K extends keyof ChannelMemory>(channelId: string, key: K, value?: ChannelMemory[K]) {
-		if (channelId.startsWith("@")) channelId = channelId.slice(1);
+		channelId = this.cleanChannelId(channelId);
 
 		const s = `${channelId}${key}${value}`;
 		if (/[,@:=;]/.test(s)) throw new Error("Invalid characters in id/key/value");
@@ -131,7 +137,7 @@ export default {
 		channelId: string,
 		key: K,
 	): Promise<(ChannelMemory & ChannelMemoryMetadata)[K] | null> {
-		if (channelId.startsWith("@")) channelId = channelId.slice(1);
+		channelId = this.cleanChannelId(channelId);
 
 		const findResult = await this.find(channelId);
 		if (!findResult) {
@@ -181,6 +187,7 @@ export default {
 	 * @returns The memory entry, or null if not found.
 	 */
 	async find(channelId: string) {
+		channelId = this.cleanChannelId(channelId);
 		const tables = await this.storage.get();
 		const result = Object.entries(tables)
 			.filter(([name]) => name.startsWith(PREFIX))
@@ -199,6 +206,7 @@ export default {
 	 * @returns The encoded memory entry.
 	 */
 	encode(channelId: string, data: Record<string, any>, index: number) {
+		channelId = this.cleanChannelId(channelId);
 		return (
 			`@${channelId}!${index}:` +
 			Object.entries(data)
@@ -215,10 +223,10 @@ export default {
 	 * @param key The key of the memory entry.
 	 * @returns A promise that resolves to true if the value was deleted successfully, or false if not found.
 	 */
-	async del(id: string) {
-		if (id.startsWith("@")) id = id.slice(1);
+	async del(channelId: string) {
+		channelId = this.cleanChannelId(channelId);
 
-		const findResult = await this.get(id, "__meta__");
+		const findResult = await this.get(channelId, "__meta__");
 		if (!findResult) {
 			return false; // Entry not found
 		}
