@@ -56,6 +56,20 @@
 			</div>
 		</div>
 		<div class="card">
+			<div class="card-title">{{ $t("player.subtitles.title") }}</div>
+			<div class="card-body">
+				<p>{{ $t("player.subtitles.tips.save") }}</p>
+				<label class="form-item">
+					<input type="checkbox" v-model="config['player.settings.saveSubtitleStatus']" />
+					<span>{{ $t("player.subtitles.checkbox.save") }}</span>
+				</label>
+				<label class="form-item">
+					<input type="checkbox" v-model="config['player.settings.saveSubtitleStatusByChannel']" />
+					<span>{{ $t("player.subtitles.checkbox.saveByChannel") }}</span>
+				</label>
+			</div>
+		</div>
+		<div class="card">
 			<div class="card-title">{{ $t("player.hidePlayerButtons.title") }}</div>
 			<div class="card-body">
 				<label

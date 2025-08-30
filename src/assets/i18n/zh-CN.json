@@ -42,6 +42,16 @@
 				"save": "记住速度"
 			}
 		},
+		"subtitles": {
+			"title": "字幕",
+			"checkbox": {
+				"save": "记住字幕启用状态",
+				"saveByChannel": "为每个频道分别记住字幕启用状态"
+			},
+			"tips": {
+				"save": "记住字幕设置"
+			}
+		},
 		"hidePlayerButtons": {
 			"title": "隐藏按钮",
 			"checkbox": {
@@ -233,3 +243,4 @@
 		"line3": "如果你在使用中遇到任何问题，欢迎在 GitHub 上反馈。"
 	}
 }
+

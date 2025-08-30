@@ -1,23 +1,32 @@
 import { createLogger } from "@/logger";
+import memory from "@/memory";
+import config from "../config";
 import type { Plugin } from "../types";
 import { videoPlayer } from "../mainWorld";
-import config from "../config";
-import memory from "@/memory";
 import { getChannelId } from "../util/helper";
 
 const logger = createLogger("player-subtitle");
 
 async function setPlayerSubtitleStatus() {
-	if (!config.get("player.settings.saveSubtitleStatusByChannel")) {
+	if (!config.get("player.settings.saveSubtitleStatusByChannel") || !config.get("player.settings.saveSubtitleStatus")) {
 		return;
 	}
-	logger.info("Setting player subtitle status");
-	logger.debug(videoPlayer.player?.isSubtitlesOn());
 
 	const channelId = getChannelId() || "";
-	const memoryIsOn = (await memory.get(channelId, "c")) === "1";
-	logger.info(`Set subtitle status: ${channelId} ->`, memoryIsOn);
-	if (memoryIsOn) {
+
+	let isOn = null;
+	const memoryDefaultIsOn = !config.get("player.settings.saveSubtitleStatus") ? null : await memory.get("", "c");
+	const memoryIsOn = !config.get("player.settings.saveSubtitleStatusByChannel") ? null : await memory.get(channelId, "c");
+
+	if (memoryIsOn !== null) {
+		isOn = memoryIsOn === "1";
+		logger.info(`Set subtitle status (channel ${channelId}):`, isOn);
+	} else if (memoryDefaultIsOn !== null) {
+		isOn = memoryDefaultIsOn === "1";
+		logger.info(`Set subtitle status (default):`, isOn);
+	}
+
+	if (isOn) {
 		videoPlayer.player?.toggleSubtitlesOn();
 	} else {
 		videoPlayer.player?.toggleSubtitlesOn();
@@ -44,12 +53,16 @@ export default {
 			const subtitlesButton = videoPlayer.player?.querySelector("button.ytp-subtitles-button");
 			if (subtitlesButton) {
 				subtitlesButton.addEventListener("click", () => {
-					if (!config.get("player.settings.saveSubtitleStatusByChannel")) return;
-
 					const channelId = getChannelId() || "";
 					const isOn = !!videoPlayer.player?.isSubtitlesOn();
-					logger.info(`Memory subtitle status: ${channelId} ->`, isOn);
-					memory.set(channelId, "c", isOn ? "1" : "0");
+					if (config.get("player.settings.saveSubtitleStatusByChannel")) {
+						logger.info(`Memory subtitle status: ${channelId} ->`, isOn);
+						memory.set(channelId, "c", isOn ? "1" : "0");
+					}
+
+					if (config.get("player.settings.saveSubtitleStatus")) {
+						memory.set("", "c", isOn ? "1" : "0");
+					}
 				});
 			}
 		},
