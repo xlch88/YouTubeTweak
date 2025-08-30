@@ -16,5 +16,6 @@ export function checkPlayerAD() {
 }
 
 export function getChannelId() {
-	return videoPlayer.player?.getPlayerResponse()?.microformat?.playerMicroformatRenderer?.ownerProfileUrl?.slice(23) || null;
+	const rt = videoPlayer.player?.getPlayerResponse()?.microformat?.playerMicroformatRenderer?.ownerProfileUrl?.slice(23);
+	return rt ? decodeURI(rt) : null;
 }
