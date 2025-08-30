@@ -11,7 +11,7 @@ export const STORAGE_KEY = "settings";
 
 export default defineStore("config", {
 	state: () => {
-		return defaultConfig;
+		return JSON.parse(JSON.stringify(defaultConfig));
 	},
 
 	actions: {

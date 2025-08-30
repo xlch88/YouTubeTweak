@@ -119,6 +119,7 @@ function configModalSubmit() {
 		try {
 			const newConfig = JSON.parse(configModalValue.value);
 			config.$patch(newConfig);
+			config.saveStorage();
 			alert(t("general.config.alert.importSuccess"));
 
 			configModalType.value = "";
