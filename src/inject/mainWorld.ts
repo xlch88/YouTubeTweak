@@ -15,6 +15,7 @@ declare global {
 			videoPlayer?: typeof videoPlayer;
 			metadata?: typeof metadata;
 			youtubeiAPIv1?: typeof youtubeiAPIv1;
+			fetchHookerIsEnabled?: boolean;
 		};
 	}
 }
@@ -119,6 +120,8 @@ const YouTubeTweakApp = {
 						logger.log(`plugin status change:`, key, value);
 
 						if (plugins[key]?.options?.reloadOnToggle) {
+							logger.info("plugin status change. need to reload page !!!");
+							debugger;
 							window.location.reload();
 							return;
 						}
@@ -248,38 +251,15 @@ const YouTubeTweakApp = {
 	},
 };
 
-export default function mainWorld() {
+export default async function mainWorld() {
 	if (["www.youtube.com", "m.youtube.com"].includes(location.host)) {
-		fetchHooker.init();
-
 		Object.values(pluginsDocumentStart).forEach((v) => v());
 
-		fetchHooker.hooks.playerMetadata = {
-			match: "/youtubei/v1/player",
-			mutator: false,
-			handler(data: any) {
-				const url = new URL(window.location.href);
-				if (url.pathname === "/watch" && typeof data?.videoDetails === "object") {
-					if (url.searchParams.get("v") === data.videoDetails.videoId) {
-						metadata.video = data;
-						logger.debug("Get video metadata:", data);
-					}
-				}
-			},
-		};
-		fetchHooker.hooks.playerMetadataNext = {
-			match: "/youtubei/v1/next",
-			mutator: false,
-			handler(data: any) {
-				const url = new URL(window.location.href);
-				if (url.pathname === "/watch" && typeof data?.currentVideoEndpoint === "object") {
-					if (url.searchParams.get("v") === data.currentVideoEndpoint?.watchEndpoint?.videoId) {
-						metadata.videoNext = data;
-						logger.debug("Get video next metadata:", data);
-					}
-				}
-			},
-		};
+		let fetchHookerIsEnabled = false;
+		if (localStorage.getItem("YTTweak-EnableFetchHooker")) {
+			fetchHookerIsEnabled = true;
+			fetchHooker.init();
+		}
 
 		wirelessRedstone.init("main");
 		memory.storage = {
@@ -301,7 +281,51 @@ export default function mainWorld() {
 		wirelessRedstone.send("test", { test: "data" }, (replyData) => {
 			logger.info("test ok :", replyData);
 		});
-		YouTubeTweakApp.init();
+		await YouTubeTweakApp.init();
+
+		if (Object.keys(fetchHooker.hooks).length > 0) {
+			if (!fetchHookerIsEnabled) {
+				logger.warn("fetchHooker is not enabled, but has hooks! Enable it now.");
+				localStorage.setItem("YTTweak-EnableFetchHooker", "1");
+				debugger;
+				location.reload();
+				return;
+			}
+
+			fetchHooker.addHook("playerMetadata", {
+				match: "/youtubei/v1/player",
+				mutator: false,
+				handler(data: any) {
+					const url = new URL(window.location.href);
+					if (url.pathname === "/watch" && typeof data?.videoDetails === "object") {
+						if (url.searchParams.get("v") === data.videoDetails.videoId) {
+							metadata.video = data;
+							logger.debug("Get video metadata:", data);
+						}
+					}
+				},
+			});
+			fetchHooker.addHook("playerMetadataNext", {
+				match: "/youtubei/v1/next",
+				mutator: false,
+				handler(data: any) {
+					const url = new URL(window.location.href);
+					if (url.pathname === "/watch" && typeof data?.currentVideoEndpoint === "object") {
+						if (url.searchParams.get("v") === data.currentVideoEndpoint?.watchEndpoint?.videoId) {
+							metadata.videoNext = data;
+							logger.debug("Get video next metadata:", data);
+						}
+					}
+				},
+			});
+		} else {
+			if (fetchHookerIsEnabled) {
+				logger.warn("fetchHooker is enabled, but has no hooks!");
+				localStorage.removeItem("YTTweak-EnableFetchHooker");
+				debugger;
+				location.reload();
+			}
+		}
 
 		window.__YT_TWEAK__ = {
 			WORLD: "main",
@@ -309,6 +333,7 @@ export default function mainWorld() {
 			videoPlayer,
 			metadata,
 			youtubeiAPIv1,
+			fetchHookerIsEnabled: fetchHookerIsEnabled,
 		};
 
 		logger.debug(window.__YT_TWEAK__);

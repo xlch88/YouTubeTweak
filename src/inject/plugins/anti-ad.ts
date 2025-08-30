@@ -35,7 +35,7 @@ export default {
 			document.body.classList.add("yttweak-anti-ad-video");
 			localStorage.setItem("YTTweak-plugin-AntiVideoAD", "1");
 
-			fetchHooker.hooks.antiAD = {
+			fetchHooker.addHook("antiAD", {
 				match: "/youtubei/v1/player",
 				mutator: true,
 				handler(data: object) {
@@ -65,7 +65,7 @@ export default {
 
 					return data;
 				},
-			};
+			});
 
 			antiVideoADSlotInterval = window.setInterval(() => {
 				let adBlockBlocker;
@@ -90,6 +90,7 @@ export default {
 			localStorage.removeItem("YTTweak-plugin-AntiVideoAD");
 		},
 		videoSrcChange() {
+			if (!config.get("other.antiAD.enableVideo")) return;
 			adVideoCheckTimeouts.forEach((t) => clearTimeout(t));
 			adVideoCheckTimeouts.length = 0;
 

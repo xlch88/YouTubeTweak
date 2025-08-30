@@ -6,6 +6,10 @@ export type Hook = {
 
 export default {
 	hooks: {} as Record<string, Hook>,
+	addHook(name: string, hook: Hook) {
+		localStorage.setItem("YTTweak-EnableFetchHooker", "1");
+		this.hooks[name] = hook;
+	},
 
 	init() {
 		const originalFetch = window.fetch;
