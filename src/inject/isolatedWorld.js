@@ -3,6 +3,8 @@ import wirelessRedstone from "./wirelessRedstone.js";
 import { youtubeiAPIv1 } from "./util/youtubei.js";
 const logger = createLogger("IsolatedWorld");
 
+globalThis.browser = globalThis.browser || globalThis.chrome;
+
 export default function isolatedWorld() {
 	if (!["www.youtube.com", "m.youtube.com"].includes(location.host)) return;
 
@@ -12,22 +14,22 @@ export default function isolatedWorld() {
 
 	Object.assign(wirelessRedstone.handlers, {
 		getConfig(data, reply) {
-			chrome.storage.sync.get(data).then((result) => {
+			browser.storage.sync.get(data).then((result) => {
 				reply(result);
 			});
 		},
 		setConfig(data, reply) {
-			chrome.storage.sync.set(data).then(() => {
+			browser.storage.sync.set(data).then(() => {
 				reply({ success: true });
 			});
 		},
 	});
-	chrome.storage.onChanged.addListener((changes, areaName) => {
+	browser.storage.onChanged.addListener((changes, areaName) => {
 		if (areaName === "sync") {
 			wirelessRedstone.send("configUpdate", changes);
 		}
 	});
-	// chrome.runtime.onMessage.addListener((msg) => {
+	// browser.runtime.onMessage.addListener((msg) => {
 	// 	console.log("Received update from background:", msg.changes);
 	// });
 
@@ -41,7 +43,7 @@ export default function isolatedWorld() {
 			}
 
 			chromeApiStatusChecker = setInterval(() => {
-				if (chrome?.runtime?.id) return;
+				if (browser?.runtime?.id) return;
 				wirelessRedstone.send("chromeApiOffline", true);
 				clearInterval(chromeApiStatusChecker);
 			}, 1000);

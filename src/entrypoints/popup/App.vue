@@ -44,7 +44,7 @@ if (params.get("action")) {
 	action.value = params.get("action");
 }
 
-if (!(window === window.top && chrome?.extension?.getViews({ type: "popup" })?.includes(window))) {
+if (!(window === window.top && browser?.extension?.getViews({ type: "popup" })?.includes(window))) {
 	document.body.style.width = "initial";
 	document.body.style.height = "initial";
 }

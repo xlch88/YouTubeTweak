@@ -13,7 +13,7 @@ export default defineStore("config", {
 
 	actions: {
 		loadStorage(init = false) {
-			chrome.storage.sync.get(STORAGE_KEY).then((res) => {
+			browser.storage.sync.get(STORAGE_KEY).then((res) => {
 				this.$patch(res[STORAGE_KEY] || {});
 				logger.info("loadStorage ->", res[STORAGE_KEY]);
 
@@ -25,12 +25,12 @@ export default defineStore("config", {
 		saveStorage() {
 			const rawData = toRaw(this.$state);
 			logger.info("saveStorage ->", rawData);
-			chrome.storage.sync.set({ [STORAGE_KEY]: rawData }).catch((e) => {
+			browser.storage.sync.set({ [STORAGE_KEY]: rawData }).catch((e) => {
 				logger.warn("save config error:", e);
 			});
-			chrome.tabs.query({ url: "*://*.youtube.com/*" }).then((tabs) => {
+			browser.tabs.query({ url: "*://*.youtube.com/*" }).then((tabs) => {
 				tabs.forEach((tab) => {
-					chrome.tabs.sendMessage(tab.id, { action: "reloadConfig" }).catch((e) => {
+					browser.tabs.sendMessage(tab.id, { action: "reloadConfig" }).catch((e) => {
 						logger.warn("sendMessage error:", e);
 					});
 				});

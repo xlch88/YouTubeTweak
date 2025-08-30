@@ -142,14 +142,14 @@ function configModalSubmit() {
 }
 
 const waitUpdate = ref("");
-chrome.storage.local.get("waitUpdate").then((data) => {
+browser.storage.local.get("waitUpdate").then((data) => {
 	if (data.waitUpdate) {
 		waitUpdate.value = data.waitUpdate;
 	}
 });
 function updateNow() {
-	chrome.storage.local.set({ needReloadTabs: true }).then(() => {
-		chrome.runtime.reload();
+	browser.storage.local.set({ needReloadTabs: true }).then(() => {
+		browser.runtime.reload();
 	});
 }
 </script>

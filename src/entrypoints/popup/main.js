@@ -7,6 +7,7 @@ import { initI18n } from "./util/i18n.js";
 import { configPlugin } from "./util/config.js";
 
 window.__APP_INFO__ = __APP_INFO__;
+window.browser = window.browser || window.chrome;
 
 const app = createApp(App);
 const pinia = createPinia();

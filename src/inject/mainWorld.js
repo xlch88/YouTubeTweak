@@ -7,6 +7,7 @@ import fetchHooker from "./fetchHooker.js";
 
 const plugins = Object.assign({}, ...Object.values(import.meta.glob("./plugins/*.{js,ts}", { eager: true }).map((m) => m.default)));
 const pluginsDocumentStart = Object.values(import.meta.glob("./plugins_before/*.{js,ts}", { eager: true }).map((m) => m.default));
+globalThis.browser = globalThis.browser || globalThis.chrome;
 
 export const videoPlayer = {
 	box: null,
