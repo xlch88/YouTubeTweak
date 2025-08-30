@@ -14,3 +14,7 @@ export function bodyClass(className: string) {
 export function checkPlayerAD() {
 	return (videoPlayer.player?.querySelector(".video-ads")?.childNodes?.length ?? 0) > 0 || false;
 }
+
+export function getChannelId() {
+	return videoPlayer.player?.getPlayerResponse()?.microformat?.playerMicroformatRenderer?.ownerProfileUrl?.slice(23) || null;
+}

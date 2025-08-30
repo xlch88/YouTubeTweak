@@ -1,6 +1,7 @@
 import config from "../config";
 import { metadata, videoPlayer } from "../mainWorld";
 import { createLogger } from "../../logger";
+import { getChannelId } from "../util/helper";
 
 import type { Plugin } from "../types";
 import memory from "@/memory";
@@ -9,11 +10,6 @@ const logger = createLogger("player-speedButton");
 
 const speedButtons: HTMLSpanElement[] = [];
 
-function getChannelId() {
-	return videoPlayer.player?.getPlayerResponse()?.microformat?.playerMicroformatRenderer?.ownerProfileUrl?.slice(23) || null;
-}
-
-function setMemorySpeed() {
 async function setMemorySpeed() {
 	let speed;
 	const channelId = getChannelId();
