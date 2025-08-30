@@ -47,19 +47,17 @@ export default {
 			);
 		});
 	},
-	get<K extends keyof Config>(key: K | null = null, defaultValue = null, isMemory = false): Config[K] {
-		// @ts-ignore to do: memory
-		if (key === null) return isMemory ? this.memory : this.config;
-
-		// @ts-ignore to do: memory
-		return this[isMemory ? "memory" : "config"][key] ?? defaultValue;
+	get<K extends keyof Config>(key: K, defaultValue?: Config[K]): Config[K] {
+		return this.config[key] ?? defaultValue;
 	},
-	set<K extends keyof Config>(key: K, value: Config[K], isMemory = false) {
-		logger.log(`set ${isMemory ? "memory" : "setting"} : ${key} ->`, value);
-		// @ts-ignore to do: memory
-		if (key) this[isMemory ? "memory" : "config"][key] = value;
+	getAll() {
+		return this.config;
+	},
+	set<K extends keyof Config>(key: K, value: Config[K]) {
+		logger.log(`set setting : ${key} ->`, value);
+		if (key) this.config[key] = value;
 
 		this.skipUpdateEvent = true;
-		wirelessRedstone.send("setConfig", isMemory ? { memory: this.memory } : { settings: this.config });
+		wirelessRedstone.send("setConfig", { settings: this.config });
 	},
 };

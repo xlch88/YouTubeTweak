@@ -18,13 +18,17 @@ memory.storage = {
 
 // console.log(await memory.get("channel1", "key1"));
 for (let i = 1; i <= 10; i++) {
+	//@ts-ignore
 	console.log(await memory.set(`channel${i}`, `sss`, 1));
+	//@ts-ignore
 	console.log(await memory.set(`channel${i}`, `cccc`, 0));
+	//@ts-ignore
 	console.log(await memory.set(`channel${i}`, `qqqq`, 9));
 }
 console.log(await memory.set(`seoiufhnuishfusrg0`, `s`, 1));
+//@ts-ignore
 console.log(await memory.get("qwqwq", "keyTest399"));
-
+//@ts-ignore
 console.log(await memory.set(`channel10`, `sss`));
 console.log(await memory.del(`channel3`));
 

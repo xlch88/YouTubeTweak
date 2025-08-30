@@ -5,6 +5,7 @@ import wirelessRedstone from "./wirelessRedstone";
 import "./style.scss";
 import fetchHooker from "./fetchHooker";
 import type { Plugin } from "./types";
+import memory from "@/memory";
 
 declare global {
 	interface Window {
@@ -85,7 +86,7 @@ const YouTubeTweakApp = {
 				}
 			}
 		}
-		for (const [key, value] of Object.entries(config.get())) {
+		for (const [key, value] of Object.entries(config.getAll())) {
 			if (value && plugins[key]?.enable) {
 				logger.info(`plugin enable:`, key);
 
@@ -276,6 +277,22 @@ export default function mainWorld() {
 		};
 
 		wirelessRedstone.init("main");
+		memory.storage = {
+			get(key): Promise<any> {
+				return new Promise((resolve) => {
+					wirelessRedstone.send("getConfig", key, (data) => {
+						resolve(data);
+					});
+				});
+			},
+			set(items) {
+				return new Promise((resolve) => {
+					wirelessRedstone.send("setConfig", items, (data) => {
+						resolve(data);
+					});
+				});
+			},
+		};
 		wirelessRedstone.send("test", { test: "data" }, (replyData) => {
 			logger.info("test ok :", replyData);
 		});

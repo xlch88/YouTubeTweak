@@ -1,3 +1,4 @@
+import memory from "@/memory";
 import { createLogger } from "../logger";
 import wirelessRedstone from "./wirelessRedstone";
 
@@ -11,6 +12,7 @@ export default function isolatedWorld() {
 	logger.log("Initializing isolated world...");
 
 	wirelessRedstone.init("isolated");
+	memory.storage = browser.storage.sync;
 
 	Object.assign(wirelessRedstone.handlers, {
 		getConfig(data: Parameters<typeof browser.storage.sync.get>[0], reply: (result: Record<string, any>) => void) {
@@ -18,14 +20,19 @@ export default function isolatedWorld() {
 				reply(result);
 			});
 		},
-		setConfig(data: Parameters<typeof browser.storage.sync.set>[0], reply: (result: { success: true }) => void) {
-			browser.storage.sync.set(data).then(() => {
-				reply({ success: true });
-			});
+		setConfig(data: Parameters<typeof browser.storage.sync.set>[0], reply: (result: boolean) => void) {
+			browser.storage.sync
+				.set(data)
+				.then(() => {
+					reply(true);
+				})
+				.catch(() => {
+					reply(false);
+				});
 		},
 	});
 	browser.storage.onChanged.addListener((changes, areaName) => {
-		if (areaName === "sync") {
+		if (areaName === "sync" && typeof changes === "object" && changes.settings !== undefined) {
 			wirelessRedstone.send("configUpdate", changes);
 		}
 	});
@@ -50,7 +57,6 @@ export default function isolatedWorld() {
 		},
 	});
 
-	//@ts-ignore isolatedWorld
 	window.__YT_TWEAK__ = {
 		WORLD: "isolated",
 	};

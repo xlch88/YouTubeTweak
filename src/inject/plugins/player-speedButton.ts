@@ -3,6 +3,7 @@ import { metadata, videoPlayer } from "../mainWorld";
 import { createLogger } from "../../logger";
 
 import type { Plugin } from "../types";
+import memory from "@/memory";
 
 const logger = createLogger("player-speedButton");
 
@@ -13,6 +14,7 @@ function getChannelId() {
 }
 
 function setMemorySpeed() {
+async function setMemorySpeed() {
 	let speed;
 	const channelId = getChannelId();
 
@@ -20,21 +22,29 @@ function setMemorySpeed() {
 		return;
 	}
 
-	if (config.get("player.settings.saveSpeed")) {
-		// @ts-ignore to do: memory
-		if (channelId && (speed = config.get(`player.speed.${channelId}`, speed, true))) {
-			logger.info(`Set playback rate(memory ${channelId}):`, speed);
+	if (config.get("player.settings.saveSpeedByChannel")) {
+		if (channelId) {
+			const memorySpeed = await memory.get(channelId, "s");
+			if (memorySpeed) {
+				speed = memorySpeed;
+				logger.info(`Set playback rate(memory ${channelId}):`, speed);
+			}
 		}
 	}
 
-	if (config.get("player.settings.saveSpeedByChannel")) {
-		// @ts-ignore to do: memory
-		if (!speed && (speed = config.get(`player.speed`, null, true))) {
+	if (!speed && config.get("player.settings.saveSpeed")) {
+		const memorySpeed = await memory.get("_DEFAULT_", "s");
+		if (memorySpeed) {
+			speed = memorySpeed;
 			logger.info(`Set playback rate(memory default):`, speed);
 		}
 	}
 	if (!speed) return;
 	speed = Number(speed);
+
+	if (config.get("player.settings.saveSpeedByChannel")) {
+		memory.set(channelId, "s", speed);
+	}
 
 	videoPlayer.player?.setPlaybackRate(speed);
 	if (videoPlayer.videoStream) videoPlayer.videoStream.playbackRate = speed;
@@ -68,14 +78,12 @@ export default {
 					logger.info("Set playback rate:", speed);
 
 					if (config.get("player.settings.saveSpeed")) {
-						// @ts-ignore to do: memory
-						config.set("player.speed", speed, true);
+						memory.set("_DEFAULT_", "s", speed);
 					}
 					if (config.get("player.settings.saveSpeedByChannel")) {
 						const channelId = getChannelId();
 						if (channelId) {
-							// @ts-ignore to do: memory
-							config.set(`player.speed.${channelId}`, speed, true);
+							memory.set(channelId, "s", speed);
 						}
 					}
 

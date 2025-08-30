@@ -3,8 +3,31 @@ const MAX_TABLE_COUNT = 300;
 const PREFIX = "memory_";
 
 type MemoryStorager = {
-	get: (keys?: string | string[] | { [key: string]: any }) => any;
+	get: (keys?: string | string[]) => any;
 	set: (items: { [key: string]: any }) => Promise<void>;
+};
+type ChannelMemory = {
+	/**
+	 * Speed
+	 * range: 0.25 ~ 3 ?
+	 */
+	s: 0.25 | 0.5 | 1 | 1.25 | 1.5 | 2 | 3 | number;
+	/**
+	 * Subtitle is ON or OFF
+	 */
+	c: "0" | "1";
+};
+type ChannelMemoryMetadata = {
+	__meta__: {
+		raw: string;
+		tableIndex: string;
+		tableContent: string;
+		start: number;
+		end: number;
+		entry: string;
+		entries: ChannelMemory;
+		index: number;
+	};
 };
 /**
  * This module is designed to store information for each YouTube channel,
@@ -34,7 +57,7 @@ export default {
 	 * @param value The value of the memory entry.
 	 * @returns A promise that resolves to true if the value was set successfully, or false if not.
 	 */
-	async set(channelId: string, key: string, value?: string | number) {
+	async set<K extends keyof ChannelMemory>(channelId: string, key: K, value?: ChannelMemory[K]) {
 		if (channelId.startsWith("@")) channelId = channelId.slice(1);
 
 		const s = `${channelId}${key}${value}`;
@@ -62,7 +85,6 @@ export default {
 			}
 
 			const oldValue = raw;
-			console.log(raw);
 			const newValue = this.encode(channelId, newEntries, dataIndex);
 			if (newValue.length > SAFE_LENGTH) {
 				throw new Error("New value exceeds safe length");
@@ -105,7 +127,10 @@ export default {
 	 * @param key The key of the memory entry.
 	 * @returns The value of the memory entry, or null if not found.
 	 */
-	async get(channelId: string, key: string) {
+	async get<K extends keyof (ChannelMemory & ChannelMemoryMetadata)>(
+		channelId: string,
+		key: K,
+	): Promise<(ChannelMemory & ChannelMemoryMetadata)[K] | null> {
 		if (channelId.startsWith("@")) channelId = channelId.slice(1);
 
 		const findResult = await this.find(channelId);
@@ -143,7 +168,7 @@ export default {
 				entry,
 				entries,
 				index: Number(index),
-			};
+			} as (ChannelMemory & ChannelMemoryMetadata)[K];
 		}
 
 		return entries[key] || null;
