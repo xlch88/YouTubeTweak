@@ -65,7 +65,8 @@ export default {
 					if (mutation.type === "childList") {
 						mutation.addedNodes.forEach((node) => {
 							const div = node as HTMLDivElement;
-							if (div?.tagName?.toLowerCase() === "ytd-comment-view-model") {
+							const tagName = div?.tagName?.toLowerCase();
+							if (tagName === "ytd-comment-view-model" || tagName === "ytd-comment-thread-renderer") {
 								handleNickname(div);
 							}
 						});
