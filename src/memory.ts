@@ -103,7 +103,7 @@ export default {
 			if (tableContent.length + (newValue.length - oldValue.length) < SAFE_LENGTH) {
 				try {
 					await this.storage.set({ [tableIndex]: tableContent.replace(oldValue, newValue), memoryI: dataIndex + 1 });
-					debugger;
+					// debugger;
 					logger.debug("Updated in place for", channelId, key, value);
 					return true;
 				} catch (e) {}
