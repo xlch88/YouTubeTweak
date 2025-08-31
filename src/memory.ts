@@ -1,3 +1,6 @@
+import { createLogger } from "./logger";
+const logger = createLogger("memory");
+
 const SAFE_LENGTH = 8100;
 const MAX_TABLE_COUNT = 300;
 const PREFIX = "memory_";
@@ -79,7 +82,8 @@ export default {
 		let oldEntries = {};
 		if (findResult) {
 			const { tableIndex, tableContent, entries, raw } = findResult;
-			if (entries[key] === value) {
+			if (`${entries[key]}` === `${value}`) {
+				logger.debug("No change needed for", channelId, key, value);
 				return true; // No change needed
 			}
 
@@ -99,6 +103,8 @@ export default {
 			if (tableContent.length + (newValue.length - oldValue.length) < SAFE_LENGTH) {
 				try {
 					await this.storage.set({ [tableIndex]: tableContent.replace(oldValue, newValue), memoryI: dataIndex + 1 });
+					debugger;
+					logger.debug("Updated in place for", channelId, key, value);
 					return true;
 				} catch (e) {}
 			}
@@ -117,12 +123,14 @@ export default {
 			const [tableIndex, tableContent] = findInsertTable[0];
 			await this.storage.set({ [tableIndex]: tableContent + newValue });
 			await this.storage.set({ memoryI: dataIndex + 1 });
+			logger.debug("Inserted new value for", channelId, key, value);
 			return true;
 		}
 
 		const newTableIndex = PREFIX + (Object.keys(tables).length + 1);
 		await this.storage.set({ [newTableIndex]: newValue });
 		await this.storage.set({ memoryI: dataIndex + 1 });
+		logger.debug("Inserted new value for", channelId, key, value);
 		return true;
 	},
 
