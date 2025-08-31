@@ -39,7 +39,7 @@ async function setMemorySpeed() {
 	speed = Number(speed);
 
 	if (config.get("player.settings.saveSpeedByChannel")) {
-		memory.set(channelId, "s", speed);
+		await memory.set(channelId, "s", speed);
 	}
 
 	videoPlayer.player?.setPlaybackRate(speed);
@@ -68,18 +68,18 @@ export default {
 				const speedButton = document.createElement("span");
 				speedButton.className = `yttweak-speed-button`;
 				speedButton.setAttribute("speed", `${speed}`);
-				speedButton.onclick = () => {
+				speedButton.onclick = async () => {
 					videoPlayer.player?.setPlaybackRate(speed);
 					if (videoPlayer.videoStream) videoPlayer.videoStream.playbackRate = speed;
 					logger.info("Set playback rate:", speed);
 
 					if (config.get("player.settings.saveSpeed")) {
-						memory.set("", "s", speed);
+						await memory.set("", "s", speed);
 					}
 					if (config.get("player.settings.saveSpeedByChannel")) {
 						const channelId = getChannelId();
 						if (channelId) {
-							memory.set(channelId, "s", speed);
+							await memory.set(channelId, "s", speed);
 						}
 					}
 

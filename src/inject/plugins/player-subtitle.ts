@@ -6,6 +6,7 @@ import { videoPlayer } from "../mainWorld";
 import { getChannelId } from "../util/helper";
 
 const logger = createLogger("player-subtitle");
+let setSubtitleTimeout: null | number = null;
 
 async function setPlayerSubtitleStatus() {
 	if (!config.get("player.settings.saveSubtitleStatusByChannel") || !config.get("player.settings.saveSubtitleStatus")) {
@@ -13,6 +14,9 @@ async function setPlayerSubtitleStatus() {
 	}
 
 	const channelId = getChannelId() || "";
+	if (!channelId || !videoPlayer.player) {
+		return;
+	}
 
 	let isOn = null;
 	const memoryDefaultIsOn = !config.get("player.settings.saveSubtitleStatus") ? null : await memory.get("", "c");
@@ -27,17 +31,16 @@ async function setPlayerSubtitleStatus() {
 	}
 
 	if (isOn) {
-		videoPlayer.player?.toggleSubtitlesOn();
+		if (!videoPlayer.player.isSubtitlesOn()) videoPlayer.player.toggleSubtitlesOn();
 	} else {
-		videoPlayer.player?.toggleSubtitlesOn();
-		videoPlayer.player?.toggleSubtitles();
+		if (videoPlayer.player.isSubtitlesOn()) videoPlayer.player.toggleSubtitles();
 	}
 }
 
 export default {
 	"player.settings.saveSubtitleStatusByChannel": {
 		enable() {
-			setPlayerSubtitleStatus();
+			// setPlayerSubtitleStatus();
 			// xmlHttpRequestHooker.init();
 			// xmlHttpRequestHooker.addHook("subtitle", {
 			// 	match: "/api/timedtext",
@@ -52,22 +55,26 @@ export default {
 		initPlayer() {
 			const subtitlesButton = videoPlayer.player?.querySelector("button.ytp-subtitles-button");
 			if (subtitlesButton) {
-				subtitlesButton.addEventListener("click", () => {
+				// setPlayerSubtitleStatus();
+				subtitlesButton.addEventListener("click", async () => {
 					const channelId = getChannelId() || "";
 					const isOn = !!videoPlayer.player?.isSubtitlesOn();
 					if (config.get("player.settings.saveSubtitleStatusByChannel")) {
 						logger.info(`Memory subtitle status: ${channelId} ->`, isOn);
-						memory.set(channelId, "c", isOn ? "1" : "0");
+						await memory.set(channelId, "c", isOn ? "1" : "0");
 					}
 
 					if (config.get("player.settings.saveSubtitleStatus")) {
-						memory.set("", "c", isOn ? "1" : "0");
+						await memory.set("", "c", isOn ? "1" : "0");
 					}
 				});
 			}
 		},
 		videoSrcChange() {
-			setPlayerSubtitleStatus();
+			if (setSubtitleTimeout) clearTimeout(setSubtitleTimeout);
+			setSubtitleTimeout = window.setTimeout(() => {
+				setPlayerSubtitleStatus();
+			}, 300);
 		},
 	},
 } as Record<string, Plugin>;

@@ -266,6 +266,10 @@ export default async function mainWorld() {
 			get(key): Promise<any> {
 				return new Promise((resolve) => {
 					wirelessRedstone.send("getConfig", key, (data) => {
+						if (typeof key === "string") {
+							return resolve(data[key]);
+						}
+
 						resolve(data);
 					});
 				});
