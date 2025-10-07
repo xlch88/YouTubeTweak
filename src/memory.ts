@@ -5,6 +5,14 @@ const SAFE_LENGTH = 8100;
 const MAX_TABLE_COUNT = 300;
 const PREFIX = "memory_";
 
+function byteLen(v: any) {
+	return new TextEncoder().encode(JSON.stringify(v)).length;
+}
+
+function isSafeLength(v: any) {
+	return byteLen(v) < SAFE_LENGTH;
+}
+
 type MemoryStorager = {
 	get: (keys?: string | string[]) => any;
 	set: (items: { [key: string]: any }) => Promise<void>;
@@ -72,7 +80,7 @@ export default {
 		const s = `${channelId}${key}${value}`;
 		if (/[,@:=;]/.test(s)) throw new Error("Invalid characters in id/key/value");
 
-		if (s.length > SAFE_LENGTH) {
+		if (!isSafeLength(s)) {
 			throw new Error("Data exceeds safe length");
 		}
 
@@ -96,11 +104,11 @@ export default {
 
 			const oldValue = raw;
 			const newValue = this.encode(channelId, newEntries, dataIndex);
-			if (newValue.length > SAFE_LENGTH) {
+			if (!isSafeLength(newValue)) {
 				throw new Error("New value exceeds safe length");
 			}
 
-			if (tableContent.length + (newValue.length - oldValue.length) < SAFE_LENGTH) {
+			if (byteLen(tableContent) + (byteLen(newValue) - byteLen(oldValue)) < SAFE_LENGTH) {
 				try {
 					await this.storage.set({ [tableIndex]: tableContent.replace(oldValue, newValue), memoryI: dataIndex + 1 });
 					// debugger;
@@ -117,7 +125,7 @@ export default {
 		const tables = Object.entries(await this.storage.get()).filter(([name]) => name.startsWith(PREFIX));
 
 		const findInsertTable = tables.filter(([name, content]) => {
-			return (content as string).length + newValue.length < SAFE_LENGTH;
+			return isSafeLength(`${content}${newValue}`);
 		});
 		if (findInsertTable.length > 0) {
 			const [tableIndex, tableContent] = findInsertTable[0];

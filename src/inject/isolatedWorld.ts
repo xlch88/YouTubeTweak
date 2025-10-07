@@ -26,7 +26,8 @@ export default function isolatedWorld() {
 				.then(() => {
 					reply(true);
 				})
-				.catch(() => {
+				.catch((e) => {
+					logger.error("Failed to set config:", e);
 					reply(false);
 				});
 		},
