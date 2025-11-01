@@ -10,7 +10,7 @@ const colorMap = {
 	warn: "#f39c12",
 	error: "#e74c3c",
 	debug: "#9b59b6",
-	verbose: "#95a5a6",
+	// verbose: "#95a5a6",
 };
 
 /**
