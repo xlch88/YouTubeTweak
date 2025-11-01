@@ -41,6 +41,10 @@ export default defineConfig({
 				gecko: {
 					id: "youtubetweak@dark495.me",
 					strict_min_version: "88.0",
+					data_collection_permissions: {
+						required: ["websiteContent", "browsingActivity"],
+						optional: [],
+					},
 				},
 			},
 		};
