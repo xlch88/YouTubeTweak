@@ -24,7 +24,7 @@
 		"vite-plugin-sass-glob-import": "^5.0.0",
 		"vite-plugin-vue-devtools": "^8.0.1",
 		"vue-tsc": "^3.0.6",
-		"wxt": "^0.20.8"
+		"wxt": "^0.20.11"
 	},
 	"dependencies": {
 		"dotenv": "^17.2.1",
