@@ -14,7 +14,13 @@ export default {
 		this.world = world;
 		window.addEventListener(`yttweak-portal-${this.world}`, (event) => {
 			const evt = event as CustomEvent;
-			const data = evt.detail;
+			let data;
+			try {
+				data = JSON.parse(evt.detail);
+			} catch {
+				return;
+			}
+			// const data = evt.detail;
 			// if (data.fromWorld === this.world) return;
 
 			if (data.type === "worldPortalReply") {
@@ -36,7 +42,7 @@ export default {
 					};
 					window.dispatchEvent(
 						new CustomEvent(`yttweak-portal-${this.world === "isolated" ? "main" : "isolated"}`, {
-							detail: this.world === "isolated" ? cloneInto(detail, window) : detail,
+							detail: JSON.stringify(detail),
 						}),
 					);
 				});
@@ -59,7 +65,7 @@ export default {
 		};
 		window.dispatchEvent(
 			new CustomEvent(`yttweak-portal-${this.world === "isolated" ? "main" : "isolated"}`, {
-				detail: this.world === "isolated" ? cloneInto(detail, window) : detail,
+				detail: JSON.stringify(detail),
 			}),
 		);
 	},
