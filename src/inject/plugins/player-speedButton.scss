@@ -7,8 +7,8 @@ div.yttweak-speed-buttons {
 		align-items: center;
 		position: relative;
 		cursor: pointer;
-		border-radius: 30px;
-		height: 33px;
+		border-radius: 20px;
+		height: 100%;
 
 		&::before {
 			content: "";
@@ -20,9 +20,10 @@ div.yttweak-speed-buttons {
 
 		&::after {
 			content: attr(speed) "x";
-			position: absolute;
-			top: -20px;
-			left: 28px;
+			position: relative;
+			width: 0;
+			top: -9px;
+			left: -6px;
 			font-size: 12px;
 			transform: scale(0.8);
 			color: white;
@@ -45,12 +46,13 @@ body[yttweak-enable-speed-button] {
 		margin-top: var(--yt-delhi-pill-top-height, 12px);
 		height: var(--yt-delhi-pill-height, 48px);
 		border-radius: 28px;
-		padding: 0 16px;
 		backdrop-filter: var(--yt-frosted-glass-backdrop-filter-override, blur(16px));
 		background: var(--yt-spec-overlay-background-medium-light, rgba(0, 0, 0, 0.3));
 		align-items: center;
-		padding: 0 4px;
+		padding: 4px 4px;
 		margin-right: 10px;
+		box-sizing: border-box;
+		gap: 4px;
 	}
 }
 
