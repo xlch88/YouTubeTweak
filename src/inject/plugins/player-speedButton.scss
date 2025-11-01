@@ -2,12 +2,13 @@ div.yttweak-speed-buttons {
 	display: none;
 	span.yttweak-speed-button {
 		width: 48px;
-		height: 48px;
 		display: none;
 		justify-content: center;
 		align-items: center;
 		position: relative;
 		cursor: pointer;
+		border-radius: 30px;
+		height: 33px;
 
 		&::before {
 			content: "";
@@ -16,10 +17,11 @@ div.yttweak-speed-buttons {
 			height: 20px;
 			background-size: contain;
 		}
+
 		&::after {
 			content: attr(speed) "x";
 			position: absolute;
-			top: -7px;
+			top: -20px;
 			left: 28px;
 			font-size: 12px;
 			transform: scale(0.8);
@@ -27,14 +29,28 @@ div.yttweak-speed-buttons {
 			pointer-events: none;
 			text-align: left;
 		}
+
 		&.yttweak-speed-button-active::after {
 			color: red;
+		}
+
+		&:hover {
+			background: rgba(white, 0.1);
 		}
 	}
 }
 body[yttweak-enable-speed-button] {
 	div.yttweak-speed-buttons {
 		display: flex !important;
+		margin-top: var(--yt-delhi-pill-top-height, 12px);
+		height: var(--yt-delhi-pill-height, 48px);
+		border-radius: 28px;
+		padding: 0 16px;
+		backdrop-filter: var(--yt-frosted-glass-backdrop-filter-override, blur(16px));
+		background: var(--yt-spec-overlay-background-medium-light, rgba(0, 0, 0, 0.3));
+		align-items: center;
+		padding: 0 4px;
+		margin-right: 10px;
 	}
 }
 
