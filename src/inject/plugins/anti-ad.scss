@@ -40,7 +40,9 @@ body.yttweak-anti-ad {
 
 body.yttweak-anti-ad-merch {
 	ytd-merch-shelf-item-renderer,
-	ytd-merch-shelf-renderer {
+	ytd-merch-shelf-renderer,
+	.ytp-suggested-action:has(.ytp-suggested-action-badge-content-forward),
+	.watch-root-element #ticket-shelf {
 		display: none !important;
 		height: 0;
 	}
