@@ -12,3 +12,21 @@ ytd-author-comment-badge-renderer[creator] .yttweak-comment-username {
 	color: unset;
 	opacity: 0.4;
 }
+
+html[darker-dark-theme][dark],
+[darker-dark-theme] [dark] {
+	.yttweak-comment-nickname {
+		color: #f1f1f1;
+	}
+	.yttweak-comment-username {
+		color: #6b6b6b;
+		margin-left: 5px;
+	}
+
+	ytd-author-comment-badge-renderer[creator] .yttweak-comment-nickname {
+		color: unset;
+	}
+	ytd-author-comment-badge-renderer[creator] .yttweak-comment-username {
+		color: unset;
+	}
+}
