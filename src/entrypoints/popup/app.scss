@@ -11,6 +11,8 @@ body {
 	font-size: 13px;
 	width: 400px;
 	height: 450px;
+	min-width: 400px;
+	min-height: 450px;
 	font-family: system-ui, Roboto, Arial, sans-serif;
 
 	.loading {
