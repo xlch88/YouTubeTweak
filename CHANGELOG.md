@@ -1,0 +1,22 @@
+# Changelog
+
+[中文](/docs-i18n/CHANGELOG_CN.md) | [English](/CHANGELOG.md)
+
+All release version update records are listed in this file.
+
+If you have questions, bug reports, or feature suggestions, please go to the [GitHub Issues page](https://github.com/xlch88/YouTubeTweak/issues) to submit them.
+
+## [1.0.7] - 2025-11-12
+
+### Added
+
+- **player-speedButton:** Added more options `(2.25x, 2.5x)` and redesigned the related UI.
+- **shorts-blocker:** When “Hide Shorts on homepage” is checked, it will also hide `Shorts videos in search results`.
+- **anti-ad:** When “Block creator’s product recommendations” is checked, it will hide the `“Recommended Products” floating button` in the `player`.
+- **anti-ad:** When “Block creator’s product recommendations” is checked, it will hide the `Event Tickets section` below the video description.
+
+### Fixed
+
+- **comment-nickname:** Fixed the issue where comment usernames displayed abnormal colors in `dark mode`.
+- **shorts-blocker:** Fixed an issue where `Shorts` still appeared in the `recommended videos` on the watch page.
+- **Popup Window:** Fixed an issue where the `popup window` width was abnormal in certain browsers.
