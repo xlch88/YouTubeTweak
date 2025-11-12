@@ -21,7 +21,8 @@ body.yttweak-shorts-blocker-index {
 
 body.yttweak-shorts-blocker-watch {
 	ytd-watch-flexy ytd-watch-next-secondary-results-renderer ytd-item-section-renderer #contents ytd-reel-shelf-renderer,
-	ytd-structured-description-content-renderer ytd-reel-shelf-renderer {
+	ytd-structured-description-content-renderer ytd-reel-shelf-renderer,
+	ytd-watch-next-secondary-results-renderer ytd-reel-shelf-renderer {
 		display: none !important;
 	}
 }
