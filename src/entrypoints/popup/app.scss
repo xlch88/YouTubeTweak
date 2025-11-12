@@ -147,6 +147,8 @@ input[type="checkbox"] {
 	appearance: none;
 	width: 18px;
 	height: 18px;
+	min-width: 18px;
+	min-height: 18px;
 	border: 1.5px solid #b2b2b2;
 	border-radius: 4px;
 	background-color: white;
@@ -171,6 +173,27 @@ input[type="checkbox"] {
 			border: solid #ffffff;
 			border-width: 0 2px 2px 0;
 			transform: rotate(45deg);
+		}
+
+		&:hover {
+			background-color: #0062c4;
+			border-color: #0062c4;
+		}
+	}
+
+	&.checkbox-size-mini {
+		width: 15px;
+		height: 15px;
+		min-height: 15px;
+		min-width: 15px;
+
+		&:checked {
+			&::after {
+				left: 3.5px;
+				top: 0px;
+				width: 3px;
+				height: 8px;
+			}
 		}
 	}
 }
