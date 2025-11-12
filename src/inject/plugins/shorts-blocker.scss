@@ -12,6 +12,11 @@ body.yttweak-shorts-blocker-index {
 		.ytGridShelfViewModelHost {
 		display: none;
 	}
+
+	//search
+	ytd-search #contents grid-shelf-view-model:has(ytm-shorts-lockup-view-model) {
+		display: none !important;
+	}
 }
 
 body.yttweak-shorts-blocker-watch {
