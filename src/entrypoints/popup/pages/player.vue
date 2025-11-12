@@ -37,9 +37,15 @@
 					<span>{{ $t("player.speedButtons.checkbox.enable") }}</span>
 				</label>
 				<p>{{ $t("player.speedButtons.tips.enabledButtons") }}</p>
-				<div class="form-item-group">
-					<label class="form-item" v-for="speed in [0.25, 0.5, 1, 1.25, 1.5, 2, 3]">
-						<input type="checkbox" v-model="config['player.ui.speedButtons']" :value="speed" :key="speed" />
+				<div class="form-item-group enabled-speed-buttons">
+					<label class="form-item" v-for="speed in [0.25, 0.5, 1, 1.25, 1.5, 2, 2.25, 2.5, 3]">
+						<input
+							type="checkbox"
+							class="checkbox-size-mini"
+							v-model="config['player.ui.speedButtons']"
+							:value="speed"
+							:key="speed"
+						/>
 						<span>{{ speed }}x</span>
 					</label>
 				</div>
@@ -109,3 +115,27 @@ const config = useConfigStore() as {
 	[key: `player.ui.hideButton.${string}`]: boolean;
 } & ReturnType<typeof useConfigStore>;
 </script>
+
+<style lang="scss" scoped>
+.enabled-speed-buttons {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	gap: 5px;
+	margin-top: 5px;
+
+	label {
+		display: flex;
+		align-items: center;
+		flex-wrap: nowrap;
+		width: 66px;
+		border: 1px dashed #00000040;
+		border-radius: 13px;
+		padding: 0px 7px;
+		span {
+			width: 100%;
+			text-align: center;
+		}
+	}
+}
+</style>
