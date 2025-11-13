@@ -35,7 +35,7 @@ export type Config = {
 	"comment.autoTranslate": boolean;
 
 	"index.videoPerRow.enable": boolean;
-	"index.videoPerRow.count": 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+	"index.videoPerRow.count": 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15;
 	"other.antiAD.enable": boolean;
 	"other.antiAD.enableMerch": boolean;
 	"other.antiAD.enableVideo": boolean;

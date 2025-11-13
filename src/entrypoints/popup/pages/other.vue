@@ -11,7 +11,7 @@
 						style="width: 50px; margin-left: 5px"
 						v-model="config['index.videoPerRow.count']"
 						min="1"
-						max="10"
+						max="15"
 						@blur="check"
 					/>
 				</label>
