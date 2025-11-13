@@ -68,7 +68,9 @@
 		"ui": {
 			"title": "介面",
 			"checkbox": {
-				"hideCeElement": "半透明化結尾的推薦影片、作者"
+				"hideCeElement": "半透明化結尾的推薦影片、作者",
+				"progressEnable": "在影片下方顯示進度條",
+				"progressEnableTag": "在左下角顯示影片時間"
 			}
 		},
 		"other": {

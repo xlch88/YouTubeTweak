@@ -68,7 +68,9 @@
 		"ui": {
 			"title": "Interface Graphique",
 			"checkbox": {
-				"hideCeElement": "Rendre les vidéos/auteurs recommendés à la fin de la vidéo plus translucent"
+				"hideCeElement": "Rendre les vidéos/auteurs recommendés à la fin de la vidéo plus translucent",
+				"progressEnable": "Afficher la barre de progression sous la vidéo",
+				"progressEnableTag": "Afficher l’heure de la vidéo en bas à gauche"
 			}
 		},
 		"other": {

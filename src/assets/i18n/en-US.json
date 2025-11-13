@@ -68,7 +68,9 @@
 		"ui": {
 			"title": "UI",
 			"checkbox": {
-				"hideCeElement": "Translucent the recommended videos/authors at the end of videos"
+				"hideCeElement": "Translucent the recommended videos/authors at the end of videos",
+				"progressEnable": "Show the progress bar below the video",
+				"progressEnableTag": "Show the video time in the bottom-left corner"
 			}
 		},
 		"other": {

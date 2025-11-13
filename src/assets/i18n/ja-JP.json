@@ -68,7 +68,9 @@
 		"ui": {
 			"title": "UI",
 			"checkbox": {
-				"hideCeElement": "動画の終わりに表示されるおすすめまたはチャンネルを半透明にする"
+				"hideCeElement": "動画の終わりに表示されるおすすめまたはチャンネルを半透明にする",
+				"progressEnable": "動画の下に進行バーを表示する",
+				"progressEnableTag": "左下に動画の再生時間を表示する"
 			}
 		},
 		"other": {

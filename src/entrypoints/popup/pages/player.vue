@@ -95,6 +95,14 @@
 					<input type="checkbox" v-model="config['player.ui.hideCeElement']" />
 					<span>{{ $t("player.ui.checkbox.hideCeElement") }}</span>
 				</label>
+				<label class="form-item">
+					<input type="checkbox" v-model="config['player.ui.progress.enable']" />
+					<span>{{ $t("player.ui.checkbox.progressEnable") }}</span>
+				</label>
+				<label class="form-item">
+					<input type="checkbox" v-model="config['player.ui.progress.enableTag']" />
+					<span>{{ $t("player.ui.checkbox.progressEnableTag") }}</span>
+				</label>
 			</div>
 		</div>
 		<div class="card">

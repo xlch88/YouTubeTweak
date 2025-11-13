@@ -68,7 +68,9 @@
 		"ui": {
 			"title": "界面",
 			"checkbox": {
-				"hideCeElement": "半透明结尾的推荐视频/作者"
+				"hideCeElement": "半透明结尾的推荐视频/作者",
+				"progressEnable": "在视频下方显示进度条",
+				"progressEnableTag": "在左下角显示视频时间"
 			}
 		},
 		"other": {

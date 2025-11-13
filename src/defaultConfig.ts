@@ -22,6 +22,8 @@ export type Config = {
 	"player.ui.hideButton.remote": boolean;
 	"player.ui.hideButton.fullscreen": boolean;
 	"player.ui.hideCeElement": boolean;
+	"player.ui.progress.enable": boolean;
+	"player.ui.progress.enableTag": boolean;
 	"player.settings.maxVolume": boolean;
 	"player.settings.lockQuality": boolean;
 	"player.settings.lockQuality.value": keyof typeof VideoQuality;
@@ -58,6 +60,8 @@ const config: Config = {
 	"player.ui.hideButton.remote": true,
 	"player.ui.hideButton.fullscreen": false,
 	"player.ui.hideCeElement": true,
+	"player.ui.progress.enable": true,
+	"player.ui.progress.enableTag": true,
 	"player.settings.maxVolume": true,
 	"player.settings.lockQuality": false,
 	"player.settings.lockQuality.value": "hd1080",
