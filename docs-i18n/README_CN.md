@@ -44,11 +44,15 @@ YouTube Tweak
 
 ## 🚀 相关链接
 
-| Resource          | Link                                                                                   |
-| ----------------- | -------------------------------------------------------------------------------------- |
-| GitHub Repository | [github.com/xlch88/YouTubeTweak](https://github.com/xlch88/YouTubeTweak)               |
-| Issues            | [github.com/xlch88/YouTubeTweak/issues](https://github.com/xlch88/YouTubeTweak/issues) |
-| Telegram Group    | [t.me/YouTubeTweak](https://t.me/YouTubeTweak)                                         |
+| 内容            | 链接                                                                                   |
+| --------------- | -------------------------------------------------------------------------------------- |
+| GitHub仓库      | [github.com/xlch88/YouTubeTweak](https://github.com/xlch88/YouTubeTweak)               |
+| 问题反馈        | [github.com/xlch88/YouTubeTweak/issues](https://github.com/xlch88/YouTubeTweak/issues) |
+| 更新日志        | [CHANGELOG.md](/CHANGELOG.md)                                                          |
+| 翻译贡献者      | [TRANSLATORS.md](/TRANSLATORS.md)                                                      |
+| 预计开发内容    | [TODO.md](/TODO.md)                                                                    |
+| 网站            | [yttweak.com](https://yttweak.com)                                                     |
+| Telegram 讨论组 | [t.me/YouTubeTweak](https://t.me/YouTubeTweak)                                         |
 
 ## ⭐ Star 统计
 

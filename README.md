@@ -46,6 +46,10 @@ You can view features of this extension on the extension store — or simply ins
 | ----------------- | -------------------------------------------------------------------------------------- |
 | GitHub Repository | [github.com/xlch88/YouTubeTweak](https://github.com/xlch88/YouTubeTweak)               |
 | Issues            | [github.com/xlch88/YouTubeTweak/issues](https://github.com/xlch88/YouTubeTweak/issues) |
+| Changelog         | [CHANGELOG.md](/CHANGELOG.md)                                                          |
+| Translators       | [TRANSLATORS.md](/TRANSLATORS.md)                                                      |
+| Todo              | [TODO.md](/TODO.md)                                                                    |
+| Website           | [yttweak.com](https://yttweak.com)                                                     |
 | Telegram Group    | [t.me/YouTubeTweak](https://t.me/YouTubeTweak)                                         |
 
 ## ⭐ Star history
