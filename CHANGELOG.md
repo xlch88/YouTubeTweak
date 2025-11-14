@@ -6,6 +6,17 @@ All release version update records are listed in this file.
 
 If you have questions, bug reports, or feature suggestions, please go to the [GitHub Issues page](https://github.com/xlch88/YouTubeTweak/issues) to submit them.
 
+## [1.0.8] - 2025-11-14
+
+### Updated
+
+- **Videos per row:** Increased the maximum value of the `Videos per row` option from `10` to `15`.
+
+### Added
+
+- **Video progress bar:** Added an option to always display the progress bar below the video.
+- **Video timestamp:** Added an option to display the `current time/total duration` of the video in the bottom-left corner.
+
 ## [1.0.7] - 2025-11-12
 
 ### Added
