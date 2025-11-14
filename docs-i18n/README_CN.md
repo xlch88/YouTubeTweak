@@ -36,11 +36,12 @@ YouTube Tweak
 
 ## ✨ 获取此扩展
 
-| 浏览器            | 扩展链接                                                                                              |
-| ----------------- | ----------------------------------------------------------------------------------------------------- |
-| Firefox           | [YouTube Tweak for Firefox](https://addons.mozilla.org/firefox/addon/youtube-tweak/)                  |
-| Chrome (Chromium) | [YouTube Tweak for Chrome](https://chromewebstore.google.com/detail/malfbchbmmlhkjjbepjodfkmnbngckoi) |
-| Orion (iOS)       | Incomplete                                                                                            |
+| 浏览器            | 扩展链接                                                                                                               |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Firefox           | [YouTube Tweak for Firefox](https://addons.mozilla.org/firefox/addon/youtube-tweak/)                                   |
+| Chrome (Chromium) | [YouTube Tweak for Chrome](https://chromewebstore.google.com/detail/malfbchbmmlhkjjbepjodfkmnbngckoi)                  |
+| Microsoft Edge    | [YouTube Tweak for Microsoft Edge](https://microsoftedge.microsoft.com/addons/detail/eebgfpfoggpnfolkknkdkbjkbejdoedg) |
+| Orion (iOS)       | Incomplete                                                                                                             |
 
 ## 🚀 相关链接
 

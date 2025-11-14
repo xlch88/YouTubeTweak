@@ -34,11 +34,12 @@ You can view features of this extension on the extension store — or simply ins
 
 ## ✨ Get this extension
 
-| Browser           | Extension Link                                                                                        |
-| ----------------- | ----------------------------------------------------------------------------------------------------- |
-| Firefox           | [YouTube Tweak for Firefox](https://addons.mozilla.org/firefox/addon/youtube-tweak/)                  |
-| Chrome (Chromium) | [YouTube Tweak for Chrome](https://chromewebstore.google.com/detail/malfbchbmmlhkjjbepjodfkmnbngckoi) |
-| Orion (iOS)       | Incomplete                                                                                            |
+| Browser           | Extension Link                                                                                                         |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Firefox           | [YouTube Tweak for Firefox](https://addons.mozilla.org/firefox/addon/youtube-tweak/)                                   |
+| Chrome (Chromium) | [YouTube Tweak for Chrome](https://chromewebstore.google.com/detail/malfbchbmmlhkjjbepjodfkmnbngckoi)                  |
+| Microsoft Edge    | [YouTube Tweak for Microsoft Edge](https://microsoftedge.microsoft.com/addons/detail/eebgfpfoggpnfolkknkdkbjkbejdoedg) |
+| Orion (iOS)       | Incomplete                                                                                                             |
 
 ## 🚀 Links
 
