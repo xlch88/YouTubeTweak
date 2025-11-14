@@ -1,7 +1,8 @@
 {
 	"manifest": {
 		"name": "YouTube Tweak - Boost Your YouTube Experience",
-		"description": "Packed with all the features you want: lock video quality, speed buttons, show commenter names, auto-translate comments, hide distractions, and more."
+		"name_edge": "YouTubeTweak: Boost Your YouTube Experience",
+		"description": "Packed with all the features you want: lock quality, speed buttons, show comments name and translate, hide distractions, and more."
 	},
 	"tabs": {
 		"player": {

@@ -1,6 +1,7 @@
 {
 	"manifest": {
 		"name": "YouTube Tweak - YouTube強化拡張機能、快適な視聴体験を実現",
+		"name_edge": "YouTubeTweak: YouTube強化拡張機能",
 		"description": "画質ロック、再生速度ボタン、コメントのニックネーム表示、自動翻訳、不要な要素の非表示など、YouTubeの体験を徹底強化！"
 	},
 	"tabs": {

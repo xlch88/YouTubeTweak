@@ -1,7 +1,8 @@
 {
 	"manifest": {
 		"name": "YouTube Tweak - Améliorez votre expérience YouTube",
-		"description": "Avec toutes les fonctionnalités que vous souhaitez : verrouillage de la qualité vidéo, boutons de vitesse, affichage des noms des commentateurs, traduction automatique des commentaires, masquage des distractions, et bien plus encore."
+		"name_edge": "YouTubeTweak: Améliorez votre expérience YouTube",
+		"description": "Toutes les astuces que vous souhaitez : verrouiller la qualité, contrôler la vitesse, afficher les auteurs t traduire leurs commentaires, masquer des distractions, et bien plus encore."
 	},
 	"tabs": {
 		"player": {

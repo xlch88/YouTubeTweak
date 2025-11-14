@@ -27,16 +27,19 @@ export default defineConfig({
 			name: "__MSG_manifest_name__",
 			description: "__MSG_manifest_description__",
 			short_name: "YouTubeTweak",
-			default_locale: "zh_CN",
+			default_locale: browser === "edge" ? "en" : "zh_CN",
 			permissions: ["storage", "tabs"],
 			host_permissions: ["*://*.youtube.com/*"],
-			key: fs
-				.readFileSync("src/assets/public.pem", "utf8")
-				.trim()
-				.split("\n")
-				.slice(1, -1)
-				.map((v) => v.trim())
-				.join(""),
+			key:
+				browser === "edge"
+					? undefined
+					: fs
+							.readFileSync("src/assets/public.pem", "utf8")
+							.trim()
+							.split("\n")
+							.slice(1, -1)
+							.map((v) => v.trim())
+							.join(""),
 			browser_specific_settings: {
 				gecko: {
 					id: "youtubetweak@dark495.me",

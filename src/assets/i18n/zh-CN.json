@@ -1,6 +1,7 @@
 {
 	"manifest": {
 		"name": "YouTube Tweak - YouTube增强插件,极致优化YouTube使用体验",
+		"name_edge": "YouTubeTweak: 极致优化YouTube使用体验",
 		"description": "几乎有你想要的所有增强 YouTube 功能：锁定画质、倍速按钮、显评论昵称、自动翻译评论、隐藏干扰元素等，提升整体使用体验。"
 	},
 	"tabs": {

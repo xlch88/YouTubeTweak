@@ -18,10 +18,12 @@ export default defineWxtModule({
 				const localeData = JSON.parse(fs.readFileSync(`src/assets/i18n/${file}`, "utf-8"));
 
 				const messagesJsonFile = `${dir}/messages.json`;
+				const extName =
+					wxt.config.browser === "edge" ? localeData.manifest.name_edge || localeData.manifest.name : localeData.manifest.name;
 				const messagesContent = JSON.stringify(
 					{
 						manifest_name: {
-							message: localeData.manifest.name,
+							message: extName,
 						},
 						manifest_description: {
 							message: localeData.manifest.description,
@@ -34,6 +36,11 @@ export default defineWxtModule({
 				if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 				fs.writeFileSync(messagesJsonFile, messagesContent);
 			}
+
+			const dir = `./public/_locales/en`;
+			const dir2 = `./public/_locales/en_US`;
+			if (!fs.existsSync(dir2)) fs.mkdirSync(dir2, { recursive: true });
+			fs.copyFileSync(`${dir}/messages.json`, `${dir2}/messages.json`);
 		});
 	},
 });
