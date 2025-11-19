@@ -20,12 +20,16 @@ export function getChannelId() {
 	return rt ? decodeURI(rt) : null;
 }
 
-export function secToMMDD(time: number) {
-	const minutes = Math.floor(time / 60)
+export function secToMMDD(time: number, forceShowHours = false): string {
+	const hours = Math.floor(time / 3600)
+		.toString()
+		.padStart(2, "0");
+	const minutes = Math.floor((time % 3600) / 60)
 		.toString()
 		.padStart(2, "0");
 	const seconds = Math.floor(time % 60)
 		.toString()
 		.padStart(2, "0");
-	return `${minutes}:${seconds}`;
+
+	return hours !== "00" || forceShowHours ? `${hours}:${minutes}:${seconds}` : `${minutes}:${seconds}`;
 }

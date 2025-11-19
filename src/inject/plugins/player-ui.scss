@@ -45,6 +45,7 @@ body.yttweak-hide-ce_element {
 	left: 0;
 	z-index: 99;
 	transition: opacity 0.3s;
+	pointer-events: none;
 
 	.yttweak-player-progress-percent {
 		display: block;
@@ -59,6 +60,10 @@ body.yttweak-hide-ce_element {
 body.yttweak-player-progress-enable {
 	#movie_player.ytp-autohide .yttweak-player-progress {
 		opacity: 1 !important;
+	}
+
+	#movie_player:has(.ytp-live) .yttweak-player-progress {
+		opacity: 0 !important;
 	}
 	ytd-watch-flexy[rounded-player] #ytd-player.ytd-watch-flexy {
 		border-bottom-left-radius: 0 !important;
@@ -85,9 +90,14 @@ body.yttweak-player-progress-enable {
 	transition: opacity 0.3s;
 	border-radius: 5px;
 	text-shadow: 0 0 3px black;
+	pointer-events: none;
 }
 body.yttweak-player-progress-enable-tag {
 	#movie_player.ytp-autohide .yttweak-player-progress-tag {
 		opacity: 1 !important;
 	}
+
+	// #movie_player:has(.ytp-live) .yttweak-player-progress-tag {
+	// 	opacity: 0 !important;
+	// }
 }

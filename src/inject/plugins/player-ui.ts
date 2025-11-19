@@ -20,7 +20,9 @@ function registerVideoProgressTimer() {
 				progressPercent.style.width = `${percent}%`;
 			}
 			if (progressTag) {
-				let t = `${secToMMDD(currentTime)}/${secToMMDD(duration)}`;
+				let t = document.querySelector("#movie_player .ytp-live")
+					? `${secToMMDD(currentTime, currentTime > 3600)}`
+					: `${secToMMDD(currentTime, duration > 3600)}/${secToMMDD(duration)}`;
 				if (progressTag.innerText !== t) progressTag.innerText = t;
 			}
 		}
