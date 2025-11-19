@@ -195,11 +195,17 @@
 		"update": {
 			"tips": [
 				"Une nouvelle version {version} est disponible",
-				"Une mise à jour automatique sera effectuée quand vous fermez tous les onglets de YouTube"
+				"Une mise à jour automatique sera effectuée quand vous fermez tous les onglets de YouTube",
+				"Cliquez pour vérifier les mises à jour maintenant"
 			],
 			"buttons": {
 				"update": "Mettre à jour maintenant",
 				"log": "Consulter le journal des mises à jour..."
+			},
+			"alert": {
+				"noUpdate": "Il n'y a pas encore de nouvelle version",
+				"unsupportedUpdate": "Votre navigateur ne prend pas en charge la vérification des mises à jour, veuillez visiter la boutique d'extensions pour voir si une nouvelle version est disponible.",
+				"busy": "Vous recherchez des mises à jour trop fréquemment. Veuillez réessayer plus tard."
 			}
 		},
 		"about": {

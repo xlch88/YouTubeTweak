@@ -15,7 +15,7 @@
 			<div class="card-body about">
 				<img src="@/assets/img/logo.svg" alt="logo" />
 				<p class="title">YouTube Tweak</p>
-				<p class="version">
+				<p class="version" :title="$t('general.update.tips.2')" @click="requestUpdateCheck()">
 					v{{ APP_INFO.version }}<br /><span>Build at {{ APP_INFO.build }}</span>
 				</p>
 				<p>Copyright &copy; {{ new Date().getFullYear() }} <a href="https://dark495.me/" target="_blank">Dark495</a></p>
@@ -148,6 +148,28 @@ browser.storage.local.get("waitUpdate").then((data) => {
 		waitUpdate.value = data.waitUpdate;
 	}
 });
+async function requestUpdateCheck() {
+	if (!browser?.runtime?.requestUpdateCheck) {
+		alert(t("general.update.alert.unsupportedUpdate"));
+		return;
+	}
+
+	if (waitUpdate.value) {
+		return;
+	}
+
+	const result = (await browser.runtime.requestUpdateCheck()) as {
+		status: "throttled" | "no_update" | "update_available";
+		version?: string;
+	};
+	if (result.status === "update_available") {
+		waitUpdate.value = result.version || "";
+	} else if (result.status === "no_update") {
+		alert(t("general.update.alert.noUpdate"));
+	} else {
+		alert(t("general.update.alert.busy"));
+	}
+}
 function updateNow() {
 	browser.storage.local.set({ needReloadTabs: true }).then(() => {
 		browser.runtime.reload();
@@ -179,6 +201,7 @@ function updateNow() {
 		&.version {
 			font-size: 15px;
 			margin-bottom: 20px;
+			cursor: pointer;
 			span {
 				color: rgba(#000, 0.5);
 			}

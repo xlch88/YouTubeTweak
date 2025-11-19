@@ -195,11 +195,17 @@
 		"update": {
 			"tips": [
 				"A new version {version} is available",
-				"The extension will automatically update after you close all YouTube tabs."
+				"The extension will automatically update after you close all YouTube tabs.",
+				"Click to check for updates now"
 			],
 			"buttons": {
 				"update": "Update now",
 				"log": "View changelog..."
+			},
+			"alert": {
+				"noUpdate": "There is no new version yet",
+				"unsupportedUpdate": "Your browser does not support checking for updates, please visit the extension store to see if a new version is available.",
+				"busy": "Checking for updates too frequently, please try again later."
 			}
 		},
 		"about": {
