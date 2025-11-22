@@ -32,7 +32,7 @@ function handleTranslate(v: Element) {
 		let toLang = window?.yt?.config_?.HL || "zh_TW";
 		if (
 			srcLang === toLang ||
-			(srcLang.startsWith("zh") && toLang.startsWith("zh")) ||
+			srcLang.slice(0, 2) === toLang.slice(0, 2) ||
 			commentContent.trim() === "" ||
 			/^[\d\p{P}\p{Z}\p{C}]*$/u.test(commentContent)
 		)
