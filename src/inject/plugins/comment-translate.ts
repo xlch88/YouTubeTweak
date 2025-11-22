@@ -98,6 +98,10 @@ export default {
 							const v = node as HTMLElement;
 							const tagName = v?.tagName?.toLowerCase();
 							if (tagName === "ytd-comment-view-model" || tagName === "ytd-comment-thread-renderer") {
+								if (v.classList.contains("yttweak-processed-translate")) {
+									return;
+								}
+								v.classList.add("yttweak-processed-translate");
 								handleTranslate(v);
 							}
 						});
