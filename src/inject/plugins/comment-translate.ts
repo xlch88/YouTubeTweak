@@ -35,8 +35,18 @@ function handleTranslate(v: Element) {
 			srcLang.slice(0, 2) === toLang.slice(0, 2) ||
 			commentContent.trim() === "" ||
 			/^[\d\p{P}\p{Z}\p{C}]*$/u.test(commentContent)
-		)
+		) {
+			let commentTranslateButton = document.createElement("button");
+			commentTranslateButton.className = "yttweak-comment-translate-button";
+			v.querySelector(".ytd-comment-view-model ytd-comment-engagement-bar .ytd-comment-engagement-bar")?.appendChild(
+				commentTranslateButton,
+			);
+			commentTranslateButton.onclick = () => {
+				commentTranslateButton.remove();
+				needTranslate.push([commentContentDom, commentContent]);
+			};
 			return;
+		}
 
 		needTranslate.push([commentContentDom, commentContent]);
 	}, 100);
