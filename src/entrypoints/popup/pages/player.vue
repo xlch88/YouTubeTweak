@@ -76,6 +76,19 @@
 			</div>
 		</div>
 		<div class="card">
+			<div class="card-title">{{ $t("player.functionButtons.title") }}</div>
+			<div class="card-body">
+				<label class="form-item">
+					<input type="checkbox" v-model="config['player.ui.functionButtons.enableRotateButton']" />
+					<span>{{ $t("player.functionButtons.checkbox.enableRotateButton") }}</span>
+				</label>
+				<label class="form-item">
+					<input type="checkbox" v-model="config['player.ui.functionButtons.enableMirrorButton']" />
+					<span>{{ $t("player.functionButtons.checkbox.enableMirrorButton") }}</span>
+				</label>
+			</div>
+		</div>
+		<div class="card">
 			<div class="card-title">{{ $t("player.hidePlayerButtons.title") }}</div>
 			<div class="card-body">
 				<label

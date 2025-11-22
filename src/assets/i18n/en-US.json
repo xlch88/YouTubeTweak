@@ -79,6 +79,13 @@
 			"checkbox": {
 				"maxVolume": "Disable equalizer at max volume (true 100%)"
 			}
+		},
+		"functionButtons": {
+			"title": "Function Buttons",
+			"checkbox": {
+				"enableRotateButton": "Enable video rotation button",
+				"enableMirrorButton": "Enable video mirror button"
+			}
 		}
 	},
 	"comment": {
@@ -258,3 +265,4 @@
 		"line3": "If you encounter any problems, feel free to report them on GitHub."
 	}
 }
+

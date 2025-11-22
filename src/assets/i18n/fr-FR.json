@@ -79,6 +79,13 @@
 			"checkbox": {
 				"maxVolume": "Désactiver l'equalizer quand le son est à son niveau maximal (100% en vrai)"
 			}
+		},
+		"functionButtons": {
+			"title": "Boutons de fonction",
+			"checkbox": {
+				"enableRotateButton": "Activer le bouton de rotation de la vidéo",
+				"enableMirrorButton": "Activer le bouton de miroir de la vidéo"
+			}
 		}
 	},
 	"comment": {
@@ -258,3 +265,4 @@
 		"line3": "En cas d'un problème, n'hésitez pas à nous le remonter dans GitHub."
 	}
 }
+

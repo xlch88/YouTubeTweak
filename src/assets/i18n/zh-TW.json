@@ -79,6 +79,13 @@
 			"checkbox": {
 				"maxVolume": "最大音量時關閉統一音量 (真·100%音量)"
 			}
+		},
+		"functionButtons": {
+			"title": "功能按鈕",
+			"checkbox": {
+				"enableRotateButton": "啟用旋轉影片按鈕",
+				"enableMirrorButton": "啟用鏡像影片按鈕"
+			}
 		}
 	},
 	"comment": {
@@ -258,3 +265,4 @@
 		"line3": "如果您在使用中遇到任何的問題，歡迎在我們的 GitHub 源碼倉庫上進行反饋！"
 	}
 }
+

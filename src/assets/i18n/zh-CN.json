@@ -79,6 +79,13 @@
 			"checkbox": {
 				"maxVolume": "最大音量时关闭音量均衡(真正100%音量)"
 			}
+		},
+		"functionButtons": {
+			"title": "功能按钮",
+			"checkbox": {
+				"enableRotateButton": "启用旋转视频按钮",
+				"enableMirrorButton": "启用镜像视频按钮"
+			}
 		}
 	},
 	"comment": {
@@ -258,3 +265,4 @@
 		"line3": "如果你在使用中遇到任何问题，欢迎在 GitHub 上反馈。"
 	}
 }
+
