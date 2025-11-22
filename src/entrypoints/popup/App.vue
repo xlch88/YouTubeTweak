@@ -204,6 +204,20 @@ header {
 	&:hover input[type="checkbox"]:not(:checked):not(:focus):not(:disabled) {
 		background-color: rgba(#000, 0.1);
 	}
+
+	&.form-item-select {
+		gap: 15px;
+		justify-content: space-between;
+
+		span {
+			word-wrap: nowrap;
+			white-space: nowrap;
+		}
+
+		select {
+			width: 100%;
+		}
+	}
 }
 .form-item-group {
 	display: flex;

@@ -35,6 +35,7 @@ export type Config = {
 	"comment.nickname": boolean;
 	"comment.autoShowMore": boolean;
 	"comment.autoTranslate": boolean;
+	"comment.targetLanguage": string;
 
 	"index.videoPerRow.enable": boolean;
 	"index.videoPerRow.count": 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15;
@@ -73,6 +74,7 @@ const config: Config = {
 	"comment.nickname": true,
 	"comment.autoShowMore": true,
 	"comment.autoTranslate": true,
+	"comment.targetLanguage": "auto",
 
 	"index.videoPerRow.enable": false,
 	"index.videoPerRow.count": 4,

@@ -56,7 +56,7 @@ setInterval(() => {
 	const doing = needTranslate.map((v) => v);
 	needTranslate = [];
 
-	let toLang = window.yt?.config_?.HL || "zh_TW";
+	let toLang = config.get("comment.targetLanguage") === "auto" ? window.yt?.config_?.HL || "zh_TW" : config.get("comment.targetLanguage");
 	fetch("https://translate-pa.googleapis.com/v1/translateHtml", {
 		headers: {
 			"content-type": "application/json+protobuf",

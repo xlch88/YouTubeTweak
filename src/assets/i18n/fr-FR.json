@@ -93,6 +93,12 @@
 			"checkbox": {
 				"autoShowMore": "Auto-expansion des commentaires longs",
 				"autoTranslate": "Traduction automatique"
+			},
+			"select": {
+				"targetLanguage": "Langue cible",
+				"option": {
+					"auto": "Suivre la langue de YouTube"
+				}
 			}
 		}
 	},
@@ -252,4 +258,3 @@
 		"line3": "En cas d'un problème, n'hésitez pas à nous le remonter dans GitHub."
 	}
 }
-

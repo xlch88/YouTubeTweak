@@ -93,6 +93,12 @@
 			"checkbox": {
 				"autoShowMore": "自动展开长评论",
 				"autoTranslate": "自动翻译评论"
+			},
+			"select": {
+				"targetLanguage": "翻译目标语言",
+				"option": {
+					"auto": "跟随YouTube语言"
+				}
 			}
 		}
 	},
@@ -252,4 +258,3 @@
 		"line3": "如果你在使用中遇到任何问题，欢迎在 GitHub 上反馈。"
 	}
 }
-
