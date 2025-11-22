@@ -1,5 +1,5 @@
-.yttweak-comment-enable-translate {
-	ytd-comment-view-model ytd-tri-state-button-view-model tp-yt-paper-button {
+body.yttweak-comment-enable-translate {
+	ytd-comment-view-model ytd-tri-state-button-view-model.translate-button {
 		display: none;
 	}
 }
@@ -39,11 +39,16 @@
 
 // auto more
 body.yttweak-comment-auto-more {
+	ytd-comment-view-model {
+		tp-yt-paper-button#less {
+			display: none;
+		}
+		tp-yt-paper-button#more {
+			display: none;
+		}
+	}
+
 	ytd-expander[should-use-number-of-lines][collapsed] > #content.ytd-expander {
 		-webkit-line-clamp: initial;
-	}
-	.more-button.ytd-comment-view-model,
-	.less-button.ytd-comment-view-model {
-		display: none;
 	}
 }
