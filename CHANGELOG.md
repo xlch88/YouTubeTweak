@@ -8,7 +8,7 @@ If you have questions, bug reports, or feature suggestions, please go to the [Gi
 
 ## [1.0.9] - 2025-11-22
 
-## Fixed
+### Fixed
 
 - **player-ui**: Fixed the floating time tag issue in live mode.
 - **comment-translate**: Similar languages (e.g., en_US, en_UK) will not be translated repeatedly.
