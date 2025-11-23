@@ -99,7 +99,9 @@ body.yttweak-player-progress-enable {
 	z-index: 100;
 	transition: opacity 0.3s;
 	border-radius: 5px;
-	text-shadow: 0 0 3px black;
+	text-shadow:
+		0 0 3px black,
+		0 0 3px black;
 	pointer-events: none;
 	display: inline-flex;
 	align-items: center;
