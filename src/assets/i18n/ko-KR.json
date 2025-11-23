@@ -1,0 +1,268 @@
+{
+	"manifest": {
+		"name": "YouTube Tweak - YouTube 사용 경험 향상",
+		"name_edge": "YouTubeTweak: YouTube 사용 경험 향상",
+		"description": "원하는 기능이 모두 담겨 있습니다: 화질 고정, 속도 버튼, 댓글 이름 표시와 번역, 방해 요소 숨기기 등."
+	},
+	"tabs": {
+		"player": {
+			"title": "플레이어"
+		},
+		"comment": {
+			"title": "댓글"
+		},
+		"other": {
+			"title": "기타"
+		},
+		"general": {
+			"title": "일반"
+		},
+		"insights": {
+			"title": "인사이트"
+		}
+	},
+	"player": {
+		"lockQuality": {
+			"title": "화질 고정",
+			"checkbox": {
+				"enable": "재생 시작 시 자동으로 이 화질로 전환"
+			},
+			"tips": {
+				"quality": "선택한 화질이 없으면 가장 가까운 낮은 화질로 적용됩니다."
+			}
+		},
+		"speedButtons": {
+			"title": "재생 속도 버튼",
+			"checkbox": {
+				"enable": "재생 속도 버튼 표시",
+				"save": "재생 속도 기억",
+				"saveByChannel": "채널별 재생 속도 기억"
+			},
+			"tips": {
+				"enabledButtons": "사용 중인 버튼:",
+				"save": "속도 기억"
+			}
+		},
+		"subtitles": {
+			"title": "자막",
+			"checkbox": {
+				"save": "자막 켜짐/꺼짐 상태 기억",
+				"saveByChannel": "채널별 자막 켜짐/꺼짐 상태 기억"
+			},
+			"tips": {
+				"save": "자막 설정 기억"
+			}
+		},
+		"hidePlayerButtons": {
+			"title": "버튼 숨기기",
+			"checkbox": {
+				"autoplay": "자동재생 버튼 숨기기",
+				"subtitles": "자막 버튼 숨기기",
+				"settings": "설정 버튼 숨기기",
+				"miniPlayer": "미니 플레이어 버튼 숨기기",
+				"pip": "PIP 버튼 숨기기",
+				"size": "극장 모드 버튼 숨기기",
+				"remote": "TV로 전송 버튼 숨기기",
+				"fullscreen": "전체화면 버튼 숨기기"
+			}
+		},
+		"ui": {
+			"title": "UI",
+			"checkbox": {
+				"hideCeElement": "영상 끝의 추천 영상/작성자 반투명 처리",
+				"progressEnable": "영상 아래에 진행 막대 표시",
+				"progressEnableTag": "왼쪽 하단에 영상 시간 표시"
+			}
+		},
+		"other": {
+			"title": "기타",
+			"checkbox": {
+				"maxVolume": "최대 음량에서 이퀄라이저 끄기 (실제 100%)"
+			}
+		},
+		"functionButtons": {
+			"title": "기능 버튼",
+			"checkbox": {
+				"enableRotateButton": "회전 버튼 사용",
+				"enableMirrorButton": "좌우 반전 버튼 사용"
+			}
+		}
+	},
+	"comment": {
+		"nickname": {
+			"title": "채널 이름",
+			"checkbox": {
+				"showNickname": "댓글 작성자의 채널 이름 표시"
+			}
+		},
+		"context": {
+			"title": "댓글 내용",
+			"checkbox": {
+				"autoShowMore": "긴 댓글 자동으로 펼치기",
+				"autoTranslate": "댓글 자동 번역"
+			},
+			"select": {
+				"targetLanguage": "대상 언어",
+				"option": {
+					"auto": "YouTube 언어 따르기"
+				}
+			}
+		}
+	},
+	"other": {
+		"index": {
+			"title": "홈",
+			"checkbox": {
+				"videoPerRow": "홈 추천 영상의 행당 개수 고정"
+			}
+		},
+		"antiAD": {
+			"title": "광고 차단",
+			"checkbox": {
+				"enable": "이미지/텍스트 네이티브 광고 차단",
+				"enableVideo": "영상 광고 차단",
+				"enableMerch": "채널 상점 노출 차단"
+			},
+			"tips": {
+				"enable": "실험적 기능(불안정). 일부 상황에서는 플레이어에서 \"건너뛰기\"를 눌러야 할 수 있으며 YouTube에서 감지될 수도 있습니다."
+			}
+		},
+		"shorts": {
+			"title": "YouTube Shorts",
+			"checkbox": {
+				"enableIndex": "홈 Shorts 차단",
+				"enableWatch": "시청 페이지 Shorts 추천 차단",
+				"enableMenu": "사이드바/메뉴에서 Shorts 차단"
+			}
+		}
+	},
+	"insights": {
+		"title": "인사이트",
+		"label": {
+			"metadata": {
+				"date": "날짜:",
+				"likeCount": "좋아요 수:",
+				"viewCount": "조회수:",
+				"category": "카테고리:",
+				"sec": "초:",
+				"quality": "화질:",
+				"username": "사용자:"
+			},
+			"flags": {
+				"global": {
+					"name": "전 세계 공개",
+					"description": "이 영상은 모든 국가/지역에서 시청할 수 있습니다."
+				},
+				"family": {
+					"name": "가족 친화적",
+					"description": "모든 연령대가 시청하기에 적합합니다."
+				},
+				"comment": {
+					"name": "댓글",
+					"description": "시청자가 댓글을 남길 수 있는지 여부입니다."
+				},
+				"login": {
+					"name": "로그인 필요",
+					"description": "이 영상을 시청하려면 로그인해야 하는지 여부입니다."
+				},
+				"emergency": {
+					"name": "위기 알림",
+					"description": "\"당신은 혼자가 아닙니다.\""
+				},
+				"blocked": {
+					"name": "차단됨",
+					"description": "저작권 침해 등으로 인해 이 영상을 재생할 수 없습니다."
+				},
+				"r18": {
+					"name": "연령 제한",
+					"description": "이 영상은 성인만 시청할 수 있습니다."
+				},
+				"kids": {
+					"name": "어린이용 콘텐츠",
+					"description": "어린이용 콘텐츠로 댓글, 미니 플레이어, 백그라운드 재생이 불가합니다."
+				},
+				"membership": {
+					"name": "회원 전용",
+					"description": "유료 채널 회원만 시청할 수 있는 영상입니다."
+				},
+				"shorts": {
+					"name": "Shorts 허용",
+					"description": "이 영상을 YouTube Shorts 제작에 사용할 수 있습니다."
+				},
+				"embed": {
+					"name": "임베드",
+					"description": "이 영상을 다른 사이트에 삽입할 수 있는지 여부입니다."
+				},
+				"crawlable": {
+					"name": "미등록",
+					"description": "링크를 아는 사람만 볼 수 있습니다. 채널 페이지에 표시되지 않고 검색 엔진에 색인되지 않습니다."
+				},
+				"private": {
+					"name": "비공개",
+					"description": "업로더 본인 또는 초대한 사람만 시청할 수 있습니다."
+				}
+			}
+		}
+	},
+	"general": {
+		"update": {
+			"tips": [
+				"새 버전 {version}을(를) 사용할 수 있습니다",
+				"모든 YouTube 탭을 닫으면 확장 프로그램이 자동으로 업데이트됩니다.",
+				"지금 업데이트를 확인하려면 클릭하세요"
+			],
+			"buttons": {
+				"update": "지금 업데이트",
+				"log": "변경 로그 보기..."
+			},
+			"alert": {
+				"noUpdate": "아직 새 버전이 없습니다",
+				"unsupportedUpdate": "브라우저가 업데이트 확인을 지원하지 않습니다. 확장 프로그램 스토어에서 새 버전이 있는지 확인하세요.",
+				"busy": "업데이트 확인이 너무 잦습니다. 잠시 후 다시 시도하세요."
+			}
+		},
+		"about": {
+			"title": "정보",
+			"link": {
+				"github": "GitHub",
+				"issue": "문제 제기",
+				"changelog": "변경 로그"
+			}
+		},
+		"config": {
+			"title": "플러그인 설정",
+			"alert": {
+				"resetConfig": "모든 설정을 초기화할까요?",
+				"importSuccess": "설정을 성공적으로 가져왔습니다!",
+				"importError": "설정을 가져오지 못했습니다. 형식을 확인하세요.",
+				"copySuccess": "설정을 성공적으로 복사했습니다!",
+				"copyError": "설정을 복사하지 못했습니다. 다시 시도하거나 Ctrl+C를 사용하세요."
+			},
+			"button": {
+				"exportConfig": "설정 내보내기",
+				"importConfig": "설정 가져오기",
+				"resetConfig": "설정 초기화",
+				"cancel": "취소",
+				"submit": "확인",
+				"copy": "복사"
+			},
+			"modal": {
+				"importTips": "가져오려는 설정을 여기에 붙여넣으세요",
+				"exportTips": "아래 설정을 복사해 다른 브라우저로 옮기거나 다른 사람과 공유하세요."
+			}
+		},
+		"language": {
+			"title": "언어",
+			"link": {
+				"translator": "번역자"
+			}
+		}
+	},
+	"installed": {
+		"title": "확장 프로그램이 성공적으로 설치되었습니다!",
+		"line1": "이 확장 프로그램을 설치해 주셔서 감사합니다.",
+		"line2": "브라우저 오른쪽 상단의 확장 프로그램 아이콘을 클릭해 바로 사용할 수 있습니다.",
+		"line3": "문제가 발생하면 언제든 GitHub에 알려주세요."
+	}
+}
+

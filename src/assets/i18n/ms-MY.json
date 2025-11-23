@@ -1,0 +1,268 @@
+{
+	"manifest": {
+		"name": "YouTube Tweak - Tingkatkan Pengalaman YouTube Anda",
+		"name_edge": "YouTubeTweak: Tingkatkan Pengalaman YouTube Anda",
+		"description": "Lengkap dengan semua ciri yang anda mahukan: kunci kualiti, butang kelajuan, tunjuk dan terjemah nama komen, sembunyikan gangguan, dan banyak lagi."
+	},
+	"tabs": {
+		"player": {
+			"title": "Pemain"
+		},
+		"comment": {
+			"title": "Komen"
+		},
+		"other": {
+			"title": "Lain-lain"
+		},
+		"general": {
+			"title": "Umum"
+		},
+		"insights": {
+			"title": "Wawasan"
+		}
+	},
+	"player": {
+		"lockQuality": {
+			"title": "Kunci kualiti",
+			"checkbox": {
+				"enable": "Tukar automatik ke kualiti ini apabila main bermula"
+			},
+			"tips": {
+				"quality": "Jika kualiti dipilih tidak tersedia, kualiti tertinggi di bawahnya akan digunakan."
+			}
+		},
+		"speedButtons": {
+			"title": "Butang kelajuan",
+			"checkbox": {
+				"enable": "Tunjukkan butang kelajuan",
+				"save": "Ingat kelajuan main balik",
+				"saveByChannel": "Ingat kelajuan main balik mengikut saluran"
+			},
+			"tips": {
+				"enabledButtons": "Butang diaktifkan:",
+				"save": "Ingat kelajuan"
+			}
+		},
+		"subtitles": {
+			"title": "Sarikata",
+			"checkbox": {
+				"save": "Ingat status sarikata hidup/mati",
+				"saveByChannel": "Ingat status sarikata mengikut saluran"
+			},
+			"tips": {
+				"save": "Ingat tetapan sarikata"
+			}
+		},
+		"hidePlayerButtons": {
+			"title": "Sembunyikan butang",
+			"checkbox": {
+				"autoplay": "Sembunyikan butang main automatik",
+				"subtitles": "Sembunyikan butang sarikata",
+				"settings": "Sembunyikan butang tetapan",
+				"miniPlayer": "Sembunyikan butang pemain mini",
+				"pip": "Sembunyikan butang gambar dalam gambar",
+				"size": "Sembunyikan butang mod teater",
+				"remote": "Sembunyikan butang cast ke TV",
+				"fullscreen": "Sembunyikan butang skrin penuh"
+			}
+		},
+		"ui": {
+			"title": "Antara muka",
+			"checkbox": {
+				"hideCeElement": "Jadikan video/penulis cadangan di hujung video separa telus",
+				"progressEnable": "Tunjukkan bar kemajuan di bawah video",
+				"progressEnableTag": "Tunjukkan masa video di sudut kiri bawah"
+			}
+		},
+		"other": {
+			"title": "Lain-lain",
+			"checkbox": {
+				"maxVolume": "Nyahaktif penyama pada volum maksimum (100% sebenar)"
+			}
+		},
+		"functionButtons": {
+			"title": "Butang Fungsi",
+			"checkbox": {
+				"enableRotateButton": "Aktifkan butang putar video",
+				"enableMirrorButton": "Aktifkan butang cermin video"
+			}
+		}
+	},
+	"comment": {
+		"nickname": {
+			"title": "Nama saluran",
+			"checkbox": {
+				"showNickname": "Tunjukkan nama saluran pengulas"
+			}
+		},
+		"context": {
+			"title": "Kandungan komen",
+			"checkbox": {
+				"autoShowMore": "Kembangkan automatik komen panjang",
+				"autoTranslate": "Terjemah automatik"
+			},
+			"select": {
+				"targetLanguage": "Bahasa sasaran",
+				"option": {
+					"auto": "Ikut bahasa YouTube"
+				}
+			}
+		}
+	},
+	"other": {
+		"index": {
+			"title": "Laman utama",
+			"checkbox": {
+				"videoPerRow": "Kunci bilangan video per baris"
+			}
+		},
+		"antiAD": {
+			"title": "Blok Iklan",
+			"checkbox": {
+				"enable": "Blok iklan asli imej+teks",
+				"enableVideo": "Blok iklan video",
+				"enableMerch": "Blok barangan saluran"
+			},
+			"tips": {
+				"enable": "Ciri eksperimen (tidak stabil). Dalam beberapa kes anda masih perlu klik \"Skip\" pada pemain, dan mungkin dikesan oleh YouTube."
+			}
+		},
+		"shorts": {
+			"title": "YouTube Shorts",
+			"checkbox": {
+				"enableIndex": "Blok Shorts di halaman utama",
+				"enableWatch": "Blok Shorts di halaman tontonan",
+				"enableMenu": "Blok Shorts di bar sisi/menu"
+			}
+		}
+	},
+	"insights": {
+		"title": "Wawasan",
+		"label": {
+			"metadata": {
+				"date": "Tarikh:",
+				"likeCount": "Bilangan suka:",
+				"viewCount": "Bilangan tontonan:",
+				"category": "Kategori:",
+				"sec": "Saat:",
+				"quality": "Kualiti:",
+				"username": "Pengguna:"
+			},
+			"flags": {
+				"global": {
+					"name": "Global",
+					"description": "Video ini boleh ditonton di semua negara/rantau."
+				},
+				"family": {
+					"name": "Mesra Keluarga",
+					"description": "Video ini sesuai untuk semua peringkat umur."
+				},
+				"comment": {
+					"name": "Komen",
+					"description": "Sama ada penonton boleh tinggalkan komen."
+				},
+				"login": {
+					"name": "Perlu Log Masuk",
+					"description": "Adakah perlu log masuk untuk menonton video ini."
+				},
+				"emergency": {
+					"name": "Amaran Kecemasan",
+					"description": "\"Anda tidak keseorangan.\""
+				},
+				"blocked": {
+					"name": "Disekat",
+					"description": "Video ini tidak boleh dimainkan kerana isu seperti pelanggaran hak cipta."
+				},
+				"r18": {
+					"name": "Had Umur",
+					"description": "Video ini hanya untuk dewasa."
+				},
+				"kids": {
+					"name": "Kandungan Kanak-kanak",
+					"description": "Video ini untuk kanak-kanak dan tidak boleh dikomen, ditonton dalam pemain mini, atau dimainkan di latar."
+				},
+				"membership": {
+					"name": "Ahli Sahaja",
+					"description": "Video ini hanya tersedia untuk ahli saluran berbayar."
+				},
+				"shorts": {
+					"name": "Benarkan Shorts",
+					"description": "Benarkan video ini digunakan dalam YouTube Shorts."
+				},
+				"embed": {
+					"name": "Benam",
+					"description": "Sama ada video ini boleh dibenam pada laman lain."
+				},
+				"crawlable": {
+					"name": "Tidak Tersenarai",
+					"description": "Video ini hanya boleh dilihat oleh mereka yang mempunyai pautان. Ia tidak akan muncul di halaman saluran dan tidak boleh diindeks enjin carian."
+				},
+				"private": {
+					"name": "Peribadi",
+					"description": "Video ini hanya dapat dilihat oleh pemuat naik atau mereka yang dijemput olehnya."
+				}
+			}
+		}
+	},
+	"general": {
+		"update": {
+			"tips": [
+				"Versi baharu {version} tersedia",
+				"Sambungan akan dikemas kini secara automatik selepas anda menutup semua tab YouTube.",
+				"Klik untuk semak kemas kini sekarang"
+			],
+			"buttons": {
+				"update": "Kemas kini sekarang",
+				"log": "Lihat changelog..."
+			},
+			"alert": {
+				"noUpdate": "Belum ada versi baharu",
+				"unsupportedUpdate": "Pelayar anda tidak menyokong semakan kemas kini, sila lawati kedai sambungan untuk lihat jika ada versi baharu.",
+				"busy": "Semak kemas kini terlalu kerap, cuba lagi kemudian."
+			}
+		},
+		"about": {
+			"title": "Perihal",
+			"link": {
+				"github": "Github",
+				"issue": "Isu",
+				"changelog": "Changelog"
+			}
+		},
+		"config": {
+			"title": "Tetapan plugin",
+			"alert": {
+				"resetConfig": "Adakah anda pasti mahu menetapkan semula semua tetapan?",
+				"importSuccess": "Tetapan berjaya diimport!",
+				"importError": "Gagal mengimport tetapan, sila semak format.",
+				"copySuccess": "Tetapan berjaya disalin!",
+				"copyError": "Gagal menyalin tetapan, cuba lagi atau guna Ctrl+C."
+			},
+			"button": {
+				"exportConfig": "Eksport tetapan",
+				"importConfig": "Import tetapan",
+				"resetConfig": "Tetapkan semula tetapan",
+				"cancel": "Batal",
+				"submit": "Sahkan",
+				"copy": "Salin"
+			},
+			"modal": {
+				"importTips": "Tampal tetapan yang anda mahu import di sini",
+				"exportTips": "Salin tetapan di bawah untuk import ke pelayar lain atau kongsikan dengan orang lain."
+			}
+		},
+		"language": {
+			"title": "Bahasa",
+			"link": {
+				"translator": "Penterjemah"
+			}
+		}
+	},
+	"installed": {
+		"title": "✅ Sambungan dipasang dengan jayanya!",
+		"line1": "Terima kasih kerana memasang sambungan ini.",
+		"line2": "Anda boleh mula menggunakannya dengan klik ikon sambungan di kanan atas pelayar anda.",
+		"line3": "Jika ada masalah, sila laporkan di GitHub."
+	}
+}
+

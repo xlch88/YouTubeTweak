@@ -1,0 +1,268 @@
+{
+	"manifest": {
+		"name": "YouTube Tweak - YouTube Deneyiminizi Geliştirin",
+		"name_edge": "YouTubeTweak: YouTube Deneyiminizi Geliştirin",
+		"description": "İstediğiniz tüm özelliklerle dolu: kalite kilitleme, hız düğmeleri, yorum isimlerini göster ve çevir, dikkat dağıtıcıları gizle ve daha fazlası."
+	},
+	"tabs": {
+		"player": {
+			"title": "Oynatıcı"
+		},
+		"comment": {
+			"title": "Yorum"
+		},
+		"other": {
+			"title": "Diğer"
+		},
+		"general": {
+			"title": "Genel"
+		},
+		"insights": {
+			"title": "İçgörüler"
+		}
+	},
+	"player": {
+		"lockQuality": {
+			"title": "Kaliteyi kilitle",
+			"checkbox": {
+				"enable": "Oynatma başladığında otomatik olarak bu kaliteye geç"
+			},
+			"tips": {
+				"quality": "Seçilen kalite yoksa, bir altındaki en yüksek kalite kullanılacak."
+			}
+		},
+		"speedButtons": {
+			"title": "Hız düğmeleri",
+			"checkbox": {
+				"enable": "Hız düğmelerini göster",
+				"save": "Oynatma hızını hatırla",
+				"saveByChannel": "Kanal başına oynatma hızını hatırla"
+			},
+			"tips": {
+				"enabledButtons": "Etkin düğmeler:",
+				"save": "Hızı hatırla"
+			}
+		},
+		"subtitles": {
+			"title": "Altyazılar",
+			"checkbox": {
+				"save": "Altyazı açık/kapalı durumunu hatırla",
+				"saveByChannel": "Kanal başına altyazı durumunu hatırla"
+			},
+			"tips": {
+				"save": "Altyazı ayarlarını hatırla"
+			}
+		},
+		"hidePlayerButtons": {
+			"title": "Düğmeleri gizle",
+			"checkbox": {
+				"autoplay": "Otomatik oynat düğmesini gizle",
+				"subtitles": "Altyazı düğmesini gizle",
+				"settings": "Ayarlar düğmesini gizle",
+				"miniPlayer": "Mini oynatıcı düğmesini gizle",
+				"pip": "Resim içinde resim düğmesini gizle",
+				"size": "Tiyatro modu düğmesini gizle",
+				"remote": "TV'ye yayınla düğmesini gizle",
+				"fullscreen": "Tam ekran düğmesini gizle"
+			}
+		},
+		"ui": {
+			"title": "Arayüz",
+			"checkbox": {
+				"hideCeElement": "Videonun sonunda önerilen video/yazarları yarı saydam yap",
+				"progressEnable": "Videonun altında ilerleme çubuğunu göster",
+				"progressEnableTag": "Video süresini sol alt köşede göster"
+			}
+		},
+		"other": {
+			"title": "Diğer",
+			"checkbox": {
+				"maxVolume": "Maksimum seste ekolayzeri devre dışı bırak (gerçek 100%)"
+			}
+		},
+		"functionButtons": {
+			"title": "Fonksiyon Düğmeleri",
+			"checkbox": {
+				"enableRotateButton": "Video döndürme düğmesini etkinleştir",
+				"enableMirrorButton": "Video ayna düğmesini etkinleştir"
+			}
+		}
+	},
+	"comment": {
+		"nickname": {
+			"title": "Kanal adı",
+			"checkbox": {
+				"showNickname": "Yorum yapanın kanal adını göster"
+			}
+		},
+		"context": {
+			"title": "Yorum içeriği",
+			"checkbox": {
+				"autoShowMore": "Uzun yorumları otomatik genişlet",
+				"autoTranslate": "Otomatik çevir"
+			},
+			"select": {
+				"targetLanguage": "Hedef dil",
+				"option": {
+					"auto": "YouTube dilini takip et"
+				}
+			}
+		}
+	},
+	"other": {
+		"index": {
+			"title": "Ana sayfa",
+			"checkbox": {
+				"videoPerRow": "Her satırdaki video sayısını kilitle"
+			}
+		},
+		"antiAD": {
+			"title": "Reklam Engelleme",
+			"checkbox": {
+				"enable": "Görsel+metin yerel reklamları engelle",
+				"enableVideo": "Video reklamlarını engelle",
+				"enableMerch": "Kanal ürünlerini engelle"
+			},
+			"tips": {
+				"enable": "Deneysel özellik (kararsız). Bazı durumlarda oynatıcıda yine de \"Atla\"ya tıklamanız gerekebilir ve YouTube tarafından tespit edilebilir."
+			}
+		},
+		"shorts": {
+			"title": "YouTube Shorts",
+			"checkbox": {
+				"enableIndex": "Ana sayfada Shorts engelle",
+				"enableWatch": "Video sayfasında Shorts engelle",
+				"enableMenu": "Kenar çubuğu/menüde Shorts engelle"
+			}
+		}
+	},
+	"insights": {
+		"title": "İçgörüler",
+		"label": {
+			"metadata": {
+				"date": "Tarih:",
+				"likeCount": "Beğeni sayısı:",
+				"viewCount": "Görüntülenme sayısı:",
+				"category": "Kategori:",
+				"sec": "Saniye:",
+				"quality": "Kalite:",
+				"username": "Kullanıcı:"
+			},
+			"flags": {
+				"global": {
+					"name": "Küresel",
+					"description": "Bu video tüm ülkelerde/bölgelerde izlenebilir."
+				},
+				"family": {
+					"name": "Aile Dostu",
+					"description": "Bu video her yaşa uygundur."
+				},
+				"comment": {
+					"name": "Yorumlar",
+					"description": "İzleyiciler yorum bırakabilir mi."
+				},
+				"login": {
+					"name": "Giriş Gerekli",
+					"description": "Bu videoyu izlemek için giriş gerekip gerekmediği."
+				},
+				"emergency": {
+					"name": "Acil Uyarı",
+					"description": "\"Yalnız değilsin.\""
+				},
+				"blocked": {
+					"name": "Engellendi",
+					"description": "Bu video telif hakkı ihlali gibi sorunlardan dolayı oynatılamıyor."
+				},
+				"r18": {
+					"name": "Yaş Sınırlı",
+					"description": "Bu video yalnızca yetişkinler içindir."
+				},
+				"kids": {
+					"name": "Çocuk İçeriği",
+					"description": "Bu video çocuklar için ve yorumlanamaz, mini oynatıcıda izlenemez veya arka planda çalınamaz."
+				},
+				"membership": {
+					"name": "Yalnızca Üyeler",
+					"description": "Bu video yalnızca ücretli kanal üyelerine sunulur."
+				},
+				"shorts": {
+					"name": "Shorts'a izin ver",
+					"description": "Bu videonun YouTube Shorts'ta kullanılmasına izin verir."
+				},
+				"embed": {
+					"name": "Gömme",
+					"description": "Bu video diğer sitelere gömülebilir mi."
+				},
+				"crawlable": {
+					"name": "Liste Dışı",
+					"description": "Bu video sadece bağlantısı olanlar tarafından izlenebilir. Kanal sayfasında görünmez ve arama motorlarınca indekslenemez."
+				},
+				"private": {
+					"name": "Özel",
+					"description": "Bu video yalnızca yükleyiciye veya onun davet ettiklerine görünür."
+				}
+			}
+		}
+	},
+	"general": {
+		"update": {
+			"tips": [
+				"Yeni sürüm {version} mevcut",
+				"Tüm YouTube sekmelerini kapattıktan sonra uzantı otomatik olarak güncellenecek.",
+				"Güncellemeleri şimdi kontrol etmek için tıklayın"
+			],
+			"buttons": {
+				"update": "Şimdi güncelle",
+				"log": "Değişiklik günlüğünü görüntüle..."
+			},
+			"alert": {
+				"noUpdate": "Henüz yeni bir sürüm yok",
+				"unsupportedUpdate": "Tarayıcınız güncelleme kontrolünü desteklemiyor, lütfen yeni sürüm için eklenti mağazasını ziyaret edin.",
+				"busy": "Çok sık kontrol ediliyor, lütfen daha sonra tekrar deneyin."
+			}
+		},
+		"about": {
+			"title": "Hakkında",
+			"link": {
+				"github": "Github",
+				"issue": "Sorunlar",
+				"changelog": "Değişiklik günlüğü"
+			}
+		},
+		"config": {
+			"title": "Eklenti ayarları",
+			"alert": {
+				"resetConfig": "Tüm ayarları sıfırlamak istediğinize emin misiniz?",
+				"importSuccess": "Ayarlar başarıyla içe aktarıldı!",
+				"importError": "Ayarlar içe aktarılamadı, lütfen biçimi kontrol edin.",
+				"copySuccess": "Ayarlar başarıyla kopyalandı!",
+				"copyError": "Ayarlar kopyalanamadı, lütfen tekrar deneyin veya Ctrl+C kullanın."
+			},
+			"button": {
+				"exportConfig": "Ayarları dışa aktar",
+				"importConfig": "Ayarları içe aktar",
+				"resetConfig": "Ayarları sıfırla",
+				"cancel": "İptal",
+				"submit": "Onayla",
+				"copy": "Kopyala"
+			},
+			"modal": {
+				"importTips": "İçe aktarmak istediğiniz ayarları buraya yapıştırın",
+				"exportTips": "Aşağıdaki ayarları kopyalayarak başka bir tarayıcıya aktarabilir veya başkalarıyla paylaşabilirsiniz."
+			}
+		},
+		"language": {
+			"title": "Diller",
+			"link": {
+				"translator": "Çevirmen"
+			}
+		}
+	},
+	"installed": {
+		"title": "✅ Uzantı başarıyla yüklendi!",
+		"line1": "Bu uzantıyı yüklediğiniz için teşekkürler.",
+		"line2": "Tarayıcınızın sağ üstündeki uzantı simgesine tıklayarak kullanmaya başlayabilirsiniz.",
+		"line3": "Sorun yaşarsanız GitHub'da bildirmekten çekinmeyin."
+	}
+}
+

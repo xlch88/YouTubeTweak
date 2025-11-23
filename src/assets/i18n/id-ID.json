@@ -1,0 +1,268 @@
+{
+	"manifest": {
+		"name": "YouTube Tweak - Tingkatkan Pengalaman YouTube Anda",
+		"name_edge": "YouTubeTweak: Tingkatkan Pengalaman YouTube Anda",
+		"description": "Dilengkapi semua fitur yang Anda inginkan: kunci kualitas, tombol kecepatan, tampilkan dan terjemahkan nama komentar, sembunyikan gangguan, dan lainnya."
+	},
+	"tabs": {
+		"player": {
+			"title": "Pemutar"
+		},
+		"comment": {
+			"title": "Komentar"
+		},
+		"other": {
+			"title": "Lainnya"
+		},
+		"general": {
+			"title": "Umum"
+		},
+		"insights": {
+			"title": "Wawasan"
+		}
+	},
+	"player": {
+		"lockQuality": {
+			"title": "Kunci kualitas",
+			"checkbox": {
+				"enable": "Beralih otomatis ke kualitas ini saat pemutaran dimulai"
+			},
+			"tips": {
+				"quality": "Jika kualitas yang dipilih tidak tersedia, kualitas tertinggi di bawahnya akan digunakan."
+			}
+		},
+		"speedButtons": {
+			"title": "Tombol kecepatan",
+			"checkbox": {
+				"enable": "Tampilkan tombol kecepatan",
+				"save": "Ingat kecepatan pemutaran",
+				"saveByChannel": "Ingat kecepatan pemutaran per kanal"
+			},
+			"tips": {
+				"enabledButtons": "Tombol yang diaktifkan:",
+				"save": "Ingat kecepatan"
+			}
+		},
+		"subtitles": {
+			"title": "Subtitle",
+			"checkbox": {
+				"save": "Ingat status subtitle hidup/mati",
+				"saveByChannel": "Ingat status subtitle per kanal"
+			},
+			"tips": {
+				"save": "Ingat pengaturan subtitle"
+			}
+		},
+		"hidePlayerButtons": {
+			"title": "Sembunyikan tombol",
+			"checkbox": {
+				"autoplay": "Sembunyikan tombol putar otomatis",
+				"subtitles": "Sembunyikan tombol subtitle",
+				"settings": "Sembunyikan tombol pengaturan",
+				"miniPlayer": "Sembunyikan tombol mini player",
+				"pip": "Sembunyikan tombol picture-in-picture",
+				"size": "Sembunyikan tombol mode theater",
+				"remote": "Sembunyikan tombol cast ke TV",
+				"fullscreen": "Sembunyikan tombol layar penuh"
+			}
+		},
+		"ui": {
+			"title": "Antarmuka",
+			"checkbox": {
+				"hideCeElement": "Buat transparan video/penulis rekomendasi di akhir video",
+				"progressEnable": "Tampilkan bilah progres di bawah video",
+				"progressEnableTag": "Tampilkan waktu video di pojok kiri bawah"
+			}
+		},
+		"other": {
+			"title": "Lainnya",
+			"checkbox": {
+				"maxVolume": "Nonaktifkan equalizer di volume maksimum (benar 100%)"
+			}
+		},
+		"functionButtons": {
+			"title": "Tombol Fungsi",
+			"checkbox": {
+				"enableRotateButton": "Aktifkan tombol rotasi video",
+				"enableMirrorButton": "Aktifkan tombol mirror video"
+			}
+		}
+	},
+	"comment": {
+		"nickname": {
+			"title": "Nama kanal",
+			"checkbox": {
+				"showNickname": "Tampilkan nama kanal pengomentar"
+			}
+		},
+		"context": {
+			"title": "Konten komentar",
+			"checkbox": {
+				"autoShowMore": "Perluas otomatis komentar panjang",
+				"autoTranslate": "Terjemahkan otomatis"
+			},
+			"select": {
+				"targetLanguage": "Bahasa target",
+				"option": {
+					"auto": "Ikuti bahasa YouTube"
+				}
+			}
+		}
+	},
+	"other": {
+		"index": {
+			"title": "Beranda",
+			"checkbox": {
+				"videoPerRow": "Kunci jumlah video per baris"
+			}
+		},
+		"antiAD": {
+			"title": "Blokir Iklan",
+			"checkbox": {
+				"enable": "Blokir iklan native gambar+teks",
+				"enableVideo": "Blokir iklan video",
+				"enableMerch": "Blokir merchandise kanal"
+			},
+			"tips": {
+				"enable": "Fitur eksperimental (tidak stabil). Dalam beberapa kasus, Anda tetap perlu klik \"Lewati\" di pemutar, dan mungkin terdeteksi oleh YouTube."
+			}
+		},
+		"shorts": {
+			"title": "YouTube Shorts",
+			"checkbox": {
+				"enableIndex": "Blokir Shorts di beranda",
+				"enableWatch": "Blokir Shorts di halaman tonton",
+				"enableMenu": "Blokir Shorts di sidebar/menu"
+			}
+		}
+	},
+	"insights": {
+		"title": "Wawasan",
+		"label": {
+			"metadata": {
+				"date": "Tanggal:",
+				"likeCount": "Jumlah suka:",
+				"viewCount": "Jumlah tontonan:",
+				"category": "Kategori:",
+				"sec": "Detik:",
+				"quality": "Kualitas:",
+				"username": "Pengguna:"
+			},
+			"flags": {
+				"global": {
+					"name": "Global",
+					"description": "Video ini dapat dilihat di semua negara/wilayah."
+				},
+				"family": {
+					"name": "Ramah Keluarga",
+					"description": "Video ini cocok untuk semua usia."
+				},
+				"comment": {
+					"name": "Komentar",
+					"description": "Apakah penonton dapat meninggalkan komentar."
+				},
+				"login": {
+					"name": "Perlu Login",
+					"description": "Apakah diperlukan login untuk menonton video ini."
+				},
+				"emergency": {
+					"name": "Peringatan Darurat",
+					"description": "\"Kamu tidak sendirian.\""
+				},
+				"blocked": {
+					"name": "Diblokir",
+					"description": "Video ini tidak dapat diputar karena masalah seperti pelanggaran hak cipta."
+				},
+				"r18": {
+					"name": "Batasan Usia",
+					"description": "Video ini hanya untuk orang dewasa."
+				},
+				"kids": {
+					"name": "Konten Anak",
+					"description": "Video ini untuk anak-anak dan tidak dapat dikomentari, ditonton di mini player, atau diputar di latar belakang."
+				},
+				"membership": {
+					"name": "Khusus Member",
+					"description": "Video ini hanya tersedia untuk member kanal berbayar."
+				},
+				"shorts": {
+					"name": "Izinkan Shorts",
+					"description": "Mengizinkan video ini digunakan di YouTube Shorts."
+				},
+				"embed": {
+					"name": "Sematan",
+					"description": "Apakah video ini dapat disematkan di situs lain."
+				},
+				"crawlable": {
+					"name": "Tidak Terdaftar",
+					"description": "Video ini hanya dapat dilihat oleh mereka yang memiliki tautan. Tidak akan muncul di halaman kanal dan tidak bisa diindeks mesin pencari."
+				},
+				"private": {
+					"name": "Pribadi",
+					"description": "Video ini hanya terlihat oleh pengunggah atau orang yang diundang oleh pengunggah."
+				}
+			}
+		}
+	},
+	"general": {
+		"update": {
+			"tips": [
+				"Versi baru {version} tersedia",
+				"Ekstensi akan otomatis memperbarui setelah Anda menutup semua tab YouTube.",
+				"Klik untuk periksa pembaruan sekarang"
+			],
+			"buttons": {
+				"update": "Perbarui sekarang",
+				"log": "Lihat catatan perubahan..."
+			},
+			"alert": {
+				"noUpdate": "Belum ada versi baru",
+				"unsupportedUpdate": "Browser Anda tidak mendukung pengecekan pembaruan, silakan kunjungi toko ekstensi untuk melihat apakah ada versi baru.",
+				"busy": "Terlalu sering memeriksa pembaruan, coba lagi nanti."
+			}
+		},
+		"about": {
+			"title": "Tentang",
+			"link": {
+				"github": "Github",
+				"issue": "Issues",
+				"changelog": "Catatan perubahan"
+			}
+		},
+		"config": {
+			"title": "Pengaturan plugin",
+			"alert": {
+				"resetConfig": "Yakin ingin mereset semua pengaturan?",
+				"importSuccess": "Pengaturan berhasil diimpor!",
+				"importError": "Gagal mengimpor pengaturan, mohon periksa format.",
+				"copySuccess": "Pengaturan berhasil disalin!",
+				"copyError": "Gagal menyalin pengaturan, coba lagi atau gunakan Ctrl+C."
+			},
+			"button": {
+				"exportConfig": "Ekspor pengaturan",
+				"importConfig": "Impor pengaturan",
+				"resetConfig": "Setel ulang pengaturan",
+				"cancel": "Batal",
+				"submit": "Konfirmasi",
+				"copy": "Salin"
+			},
+			"modal": {
+				"importTips": "Tempel pengaturan yang ingin Anda impor di sini",
+				"exportTips": "Salin pengaturan di bawah ini untuk mengimpornya ke browser lain atau membagikannya kepada orang lain."
+			}
+		},
+		"language": {
+			"title": "Bahasa",
+			"link": {
+				"translator": "Penerjemah"
+			}
+		}
+	},
+	"installed": {
+		"title": "✅ Ekstensi berhasil dipasang!",
+		"line1": "Terima kasih telah memasang ekstensi ini.",
+		"line2": "Anda bisa mulai menggunakannya dengan mengklik ikon ekstensi di kanan atas browser Anda.",
+		"line3": "Jika mengalami masalah, silakan laporkan di GitHub."
+	}
+}
+

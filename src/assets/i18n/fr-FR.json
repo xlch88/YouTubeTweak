@@ -2,11 +2,11 @@
 	"manifest": {
 		"name": "YouTube Tweak - Améliorez votre expérience YouTube",
 		"name_edge": "YouTubeTweak: Améliorez votre expérience YouTube",
-		"description": "Toutes les astuces que vous souhaitez : verrouiller la qualité, contrôler la vitesse, afficher les auteurs t traduire leurs commentaires, masquer des distractions, et bien plus encore."
+		"description": "Toutes les fonctionnalités que vous souhaitez : verrouiller la qualité, boutons de vitesse, afficher et traduire les noms/commentaires, masquer les distractions et bien plus encore."
 	},
 	"tabs": {
 		"player": {
-			"title": "Player"
+			"title": "Lecteur"
 		},
 		"comment": {
 			"title": "Commentaires"
@@ -34,12 +34,12 @@
 		"speedButtons": {
 			"title": "Vitesse",
 			"checkbox": {
-				"enable": "Afficher les contrôls pour la vitesse",
+				"enable": "Afficher les boutons de vitesse",
 				"save": "Sauvegarder la vitesse du player",
-				"saveByChannel": "Sauvegarder les vitesses pour chaque channel"
+				"saveByChannel": "Sauvegarder les vitesses pour chaque chaîne"
 			},
 			"tips": {
-				"enabledButtons": "Contrôls activés:",
+				"enabledButtons": "Boutons activés :",
 				"save": "Sauvegarder la vitesse"
 			}
 		},
@@ -111,7 +111,7 @@
 	},
 	"other": {
 		"index": {
-			"title": "Page d'acceuil",
+			"title": "Page d'accueil",
 			"checkbox": {
 				"videoPerRow": "Fixer le nombre des vidéos par ligne"
 			}
@@ -119,8 +119,8 @@
 		"antiAD": {
 			"title": "Ad Block",
 			"checkbox": {
-				"enable": "__NEED_TRANSLATE__: 屏蔽图文广告",
-				"enableVideo": "__NEED_TRANSLATE__: 屏蔽视频广告",
+				"enable": "Bloquer les publicités natives (image et texte)",
+				"enableVideo": "Bloquer les publicités vidéo",
 				"enableMerch": "Bloquer les prospections des auteurs du canal"
 			},
 			"tips": {
@@ -140,13 +140,13 @@
 		"title": "Aperçu",
 		"label": {
 			"metadata": {
-				"date": "Date",
-				"likeCount": "Nombre des likes: ",
-				"viewCount": "Nombre des vues: ",
-				"category": "Catalogue: ",
-				"sec": "Durée (sec): ",
-				"quality": "Qualité: ",
-				"username": "Nom d'utilisateur: "
+				"date": "Date :",
+				"likeCount": "Nombre des likes :",
+				"viewCount": "Nombre des vues :",
+				"category": "Catalogue :",
+				"sec": "Durée (sec) :",
+				"quality": "Qualité :",
+				"username": "Nom d'utilisateur :"
 			},
 			"flags": {
 				"global": {
@@ -166,8 +166,8 @@
 					"description": "Limiter s'il faut s'authentifier pour regarder cette vidéo"
 				},
 				"emergency": {
-					"name": "Contenus en rapport avec le suicide, l'automutilation ou les troubles alimentaires",
-					"description": "Vous n'êtes pas seul"
+					"name": "Alerte d'urgence",
+					"description": "\"Vous n'êtes pas seul.\""
 				},
 				"blocked": {
 					"name": "Contenu bloqué",

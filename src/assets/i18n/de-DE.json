@@ -1,0 +1,268 @@
+{
+	"manifest": {
+		"name": "YouTube Tweak - Verbessere dein YouTube-Erlebnis",
+		"name_edge": "YouTubeTweak: Verbessere dein YouTube-Erlebnis",
+		"description": "Vollgepackt mit allen gewünschten Funktionen: Qualität sperren, Geschwindigkeits-Schaltflächen, Kommentarname und Übersetzung anzeigen, Ablenkungen ausblenden und mehr."
+	},
+	"tabs": {
+		"player": {
+			"title": "Player"
+		},
+		"comment": {
+			"title": "Kommentare"
+		},
+		"other": {
+			"title": "Sonstiges"
+		},
+		"general": {
+			"title": "Allgemein"
+		},
+		"insights": {
+			"title": "Einblicke"
+		}
+	},
+	"player": {
+		"lockQuality": {
+			"title": "Qualität sperren",
+			"checkbox": {
+				"enable": "Beim Start der Wiedergabe automatisch auf diese Qualität umschalten"
+			},
+			"tips": {
+				"quality": "Falls die gewählte Qualität nicht verfügbar ist, wird die nächst niedrigere höchste Qualität verwendet."
+			}
+		},
+		"speedButtons": {
+			"title": "Geschwindigkeits-Schaltflächen",
+			"checkbox": {
+				"enable": "Geschwindigkeits-Schaltflächen anzeigen",
+				"save": "Wiedergabegeschwindigkeit merken",
+				"saveByChannel": "Wiedergabegeschwindigkeit pro Kanal merken"
+			},
+			"tips": {
+				"enabledButtons": "Aktivierte Schaltflächen:",
+				"save": "Geschwindigkeit merken"
+			}
+		},
+		"subtitles": {
+			"title": "Untertitel",
+			"checkbox": {
+				"save": "Untertitel An/Aus merken",
+				"saveByChannel": "Untertitel-An/Aus pro Kanal merken"
+			},
+			"tips": {
+				"save": "Untertitel-Einstellungen merken"
+			}
+		},
+		"hidePlayerButtons": {
+			"title": "Schaltflächen ausblenden",
+			"checkbox": {
+				"autoplay": "Schaltfläche \"Autoplay\" ausblenden",
+				"subtitles": "Schaltfläche \"Untertitel\" ausblenden",
+				"settings": "Schaltfläche \"Einstellungen\" ausblenden",
+				"miniPlayer": "Schaltfläche \"Miniplayer\" ausblenden",
+				"pip": "Schaltfläche \"Bild-in-Bild\" ausblenden",
+				"size": "Schaltfläche \"Kinomodus\" ausblenden",
+				"remote": "Schaltfläche \"Auf Fernseher übertragen\" ausblenden",
+				"fullscreen": "Schaltfläche \"Vollbild\" ausblenden"
+			}
+		},
+		"ui": {
+			"title": "Oberfläche",
+			"checkbox": {
+				"hideCeElement": "Empfohlene Videos/Autoren am Ende von Videos halbtransparent machen",
+				"progressEnable": "Fortschrittsbalken unter dem Video anzeigen",
+				"progressEnableTag": "Videozeit unten links anzeigen"
+			}
+		},
+		"other": {
+			"title": "Sonstiges",
+			"checkbox": {
+				"maxVolume": "Equalizer bei maximaler Lautstärke deaktivieren (echte 100 %)"
+			}
+		},
+		"functionButtons": {
+			"title": "Funktionsschaltflächen",
+			"checkbox": {
+				"enableRotateButton": "Schaltfläche zum Drehen des Videos aktivieren",
+				"enableMirrorButton": "Schaltfläche zum Spiegeln des Videos aktivieren"
+			}
+		}
+	},
+	"comment": {
+		"nickname": {
+			"title": "Kanalname",
+			"checkbox": {
+				"showNickname": "Kanalnamen des Kommentators anzeigen"
+			}
+		},
+		"context": {
+			"title": "Kommentarinhalt",
+			"checkbox": {
+				"autoShowMore": "Lange Kommentare automatisch erweitern",
+				"autoTranslate": "Automatisch übersetzen"
+			},
+			"select": {
+				"targetLanguage": "Zielsprache",
+				"option": {
+					"auto": "YouTube-Sprache verwenden"
+				}
+			}
+		}
+	},
+	"other": {
+		"index": {
+			"title": "Startseite",
+			"checkbox": {
+				"videoPerRow": "Anzahl Videos pro Reihe sperren"
+			}
+		},
+		"antiAD": {
+			"title": "Werbeblocker",
+			"checkbox": {
+				"enable": "Bild- und Textanzeigen blockieren",
+				"enableVideo": "Videoanzeigen blockieren",
+				"enableMerch": "Kanal-Merchandising blockieren"
+			},
+			"tips": {
+				"enable": "Experimentelle Funktion (instabil). In einigen Fällen musst du im Player trotzdem auf \"Überspringen\" klicken, und sie könnte von YouTube erkannt werden."
+			}
+		},
+		"shorts": {
+			"title": "YouTube Shorts",
+			"checkbox": {
+				"enableIndex": "Shorts auf Startseite blockieren",
+				"enableWatch": "Shorts auf Videoseite blockieren",
+				"enableMenu": "Shorts in Seitenleiste/Menü blockieren"
+			}
+		}
+	},
+	"insights": {
+		"title": "Einblicke",
+		"label": {
+			"metadata": {
+				"date": "Datum:",
+				"likeCount": "Likes:",
+				"viewCount": "Aufrufe:",
+				"category": "Kategorie:",
+				"sec": "Sekunde:",
+				"quality": "Qualität:",
+				"username": "Nutzer:"
+			},
+			"flags": {
+				"global": {
+					"name": "Global",
+					"description": "Dieses Video kann in allen Ländern/Regionen angesehen werden."
+				},
+				"family": {
+					"name": "Familienfreundlich",
+					"description": "Dieses Video ist für alle Altersgruppen geeignet."
+				},
+				"comment": {
+					"name": "Kommentare",
+					"description": "Ob Zuschauer Kommentare hinterlassen können."
+				},
+				"login": {
+					"name": "Login erforderlich",
+					"description": "Ob zum Ansehen dieses Videos eine Anmeldung erforderlich ist."
+				},
+				"emergency": {
+					"name": "Notfallwarnung",
+					"description": "\"Du bist nicht allein.\""
+				},
+				"blocked": {
+					"name": "Gesperrt",
+					"description": "Dieses Video kann aufgrund von Problemen wie Urheberrechtsverletzungen nicht wiedergegeben werden."
+				},
+				"r18": {
+					"name": "Altersbeschränkung",
+					"description": "Dieses Video ist nur für Erwachsene."
+				},
+				"kids": {
+					"name": "Inhalte für Kinder",
+					"description": "Dieses Video ist für Kinder und kann nicht kommentiert, im Miniplayer angesehen oder im Hintergrund abgespielt werden."
+				},
+				"membership": {
+					"name": "Nur für Mitglieder",
+					"description": "Dieses Video ist nur für zahlende Kanalmitglieder verfügbar."
+				},
+				"shorts": {
+					"name": "Shorts zulassen",
+					"description": "Erlaubt, dieses Video in YouTube Shorts zu verwenden."
+				},
+				"embed": {
+					"name": "Einbetten",
+					"description": "Ob dieses Video auf anderen Seiten eingebettet werden kann."
+				},
+				"crawlable": {
+					"name": "Nicht gelistet",
+					"description": "Dieses Video kann nur von Personen mit dem Link angesehen werden. Es erscheint nicht auf der Kanalseite und kann nicht von Suchmaschinen indexiert werden."
+				},
+				"private": {
+					"name": "Privat",
+					"description": "Dieses Video ist nur für den Uploader oder von ihm eingeladene Personen sichtbar."
+				}
+			}
+		}
+	},
+	"general": {
+		"update": {
+			"tips": [
+				"Eine neue Version {version} ist verfügbar",
+				"Die Erweiterung wird automatisch aktualisiert, nachdem du alle YouTube-Tabs geschlossen hast.",
+				"Klicke, um jetzt nach Updates zu suchen"
+			],
+			"buttons": {
+				"update": "Jetzt aktualisieren",
+				"log": "Changelog ansehen..."
+			},
+			"alert": {
+				"noUpdate": "Noch keine neue Version verfügbar",
+				"unsupportedUpdate": "Dein Browser unterstützt die Update-Prüfung nicht. Besuche den Erweiterungs-Store, um zu sehen, ob eine neue Version verfügbar ist.",
+				"busy": "Zu häufige Update-Prüfung, bitte später erneut versuchen."
+			}
+		},
+		"about": {
+			"title": "Über",
+			"link": {
+				"github": "Github",
+				"issue": "Issues",
+				"changelog": "Changelog"
+			}
+		},
+		"config": {
+			"title": "Plugin-Einstellungen",
+			"alert": {
+				"resetConfig": "Bist du sicher, dass du alle Einstellungen zurücksetzen möchtest?",
+				"importSuccess": "Einstellungen erfolgreich importiert!",
+				"importError": "Import der Einstellungen fehlgeschlagen, bitte Format prüfen.",
+				"copySuccess": "Einstellungen erfolgreich kopiert!",
+				"copyError": "Kopieren der Einstellungen fehlgeschlagen, bitte erneut versuchen oder Strg+C nutzen."
+			},
+			"button": {
+				"exportConfig": "Einstellungen exportieren",
+				"importConfig": "Einstellungen importieren",
+				"resetConfig": "Einstellungen zurücksetzen",
+				"cancel": "Abbrechen",
+				"submit": "Bestätigen",
+				"copy": "Kopieren"
+			},
+			"modal": {
+				"importTips": "Füge die zu importierenden Einstellungen hier ein",
+				"exportTips": "Kopiere die folgenden Einstellungen, um sie in einem anderen Browser zu importieren oder zu teilen."
+			}
+		},
+		"language": {
+			"title": "Sprachen",
+			"link": {
+				"translator": "Übersetzer"
+			}
+		}
+	},
+	"installed": {
+		"title": "✅ Erweiterung erfolgreich installiert!",
+		"line1": "Danke, dass du diese Erweiterung installiert hast.",
+		"line2": "Du kannst sie über das Erweiterungssymbol oben rechts im Browser öffnen.",
+		"line3": "Falls du Probleme hast, melde sie gern auf GitHub."
+	}
+}
+

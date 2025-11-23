@@ -119,8 +119,8 @@
 		"antiAD": {
 			"title": "刪除廣告",
 			"checkbox": {
-				"enable": "__NEED_TRANSLATE__: 屏蔽图文广告",
-				"enableVideo": "__NEED_TRANSLATE__: 屏蔽视频广告",
+				"enable": "屏蔽圖文廣告",
+				"enableVideo": "屏蔽影片廣告",
 				"enableMerch": "刪除頻道商品推薦"
 			},
 			"tips": {

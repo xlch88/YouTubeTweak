@@ -1,0 +1,268 @@
+{
+	"manifest": {
+		"name": "YouTube Tweak - Migliora la tua esperienza su YouTube",
+		"name_edge": "YouTubeTweak: Migliora la tua esperienza su YouTube",
+		"description": "Con tutte le funzioni che desideri: blocca la qualità, pulsanti di velocità, mostra e traduci il nome dei commenti, nascondi le distrazioni e altro ancora."
+	},
+	"tabs": {
+		"player": {
+			"title": "Player"
+		},
+		"comment": {
+			"title": "Commenti"
+		},
+		"other": {
+			"title": "Altro"
+		},
+		"general": {
+			"title": "Generale"
+		},
+		"insights": {
+			"title": "Approfondimenti"
+		}
+	},
+	"player": {
+		"lockQuality": {
+			"title": "Blocca qualità",
+			"checkbox": {
+				"enable": "Passa automaticamente a questa qualità all'avvio della riproduzione"
+			},
+			"tips": {
+				"quality": "Se la qualità selezionata non è disponibile, verrà usata la migliore inferiore."
+			}
+		},
+		"speedButtons": {
+			"title": "Pulsanti velocità",
+			"checkbox": {
+				"enable": "Mostra i pulsanti di velocità",
+				"save": "Ricorda velocità di riproduzione",
+				"saveByChannel": "Ricorda velocità di riproduzione per canale"
+			},
+			"tips": {
+				"enabledButtons": "Pulsanti abilitati:",
+				"save": "Ricorda velocità"
+			}
+		},
+		"subtitles": {
+			"title": "Sottotitoli",
+			"checkbox": {
+				"save": "Ricorda stato attivazione sottotitoli",
+				"saveByChannel": "Ricorda stato sottotitoli per canale"
+			},
+			"tips": {
+				"save": "Ricorda impostazioni sottotitoli"
+			}
+		},
+		"hidePlayerButtons": {
+			"title": "Nascondi pulsanti",
+			"checkbox": {
+				"autoplay": "Nascondi pulsante autoplay",
+				"subtitles": "Nascondi pulsante sottotitoli",
+				"settings": "Nascondi pulsante impostazioni",
+				"miniPlayer": "Nascondi pulsante mini player",
+				"pip": "Nascondi pulsante picture-in-picture",
+				"size": "Nascondi pulsante modalità teatro",
+				"remote": "Nascondi pulsante trasmetti alla TV",
+				"fullscreen": "Nascondi pulsante schermo intero"
+			}
+		},
+		"ui": {
+			"title": "Interfaccia",
+			"checkbox": {
+				"hideCeElement": "Rendi traslucidi i video/autori consigliati alla fine dei video",
+				"progressEnable": "Mostra la barra di avanzamento sotto il video",
+				"progressEnableTag": "Mostra il tempo del video nell'angolo in basso a sinistra"
+			}
+		},
+		"other": {
+			"title": "Altro",
+			"checkbox": {
+				"maxVolume": "Disattiva equalizzatore al volume massimo (vero 100%)"
+			}
+		},
+		"functionButtons": {
+			"title": "Pulsanti funzione",
+			"checkbox": {
+				"enableRotateButton": "Abilita pulsante di rotazione video",
+				"enableMirrorButton": "Abilita pulsante specchia video"
+			}
+		}
+	},
+	"comment": {
+		"nickname": {
+			"title": "Nome del canale",
+			"checkbox": {
+				"showNickname": "Mostra il nome del canale di chi commenta"
+			}
+		},
+		"context": {
+			"title": "Contenuto del commento",
+			"checkbox": {
+				"autoShowMore": "Espandi automaticamente i commenti lunghi",
+				"autoTranslate": "Traduci automaticamente"
+			},
+			"select": {
+				"targetLanguage": "Lingua di destinazione",
+				"option": {
+					"auto": "Segui la lingua di YouTube"
+				}
+			}
+		}
+	},
+	"other": {
+		"index": {
+			"title": "Homepage",
+			"checkbox": {
+				"videoPerRow": "Blocca numero di video per riga"
+			}
+		},
+		"antiAD": {
+			"title": "Blocco annunci",
+			"checkbox": {
+				"enable": "Blocca annunci nativi immagine+testo",
+				"enableVideo": "Blocca annunci video",
+				"enableMerch": "Blocca merchandising del canale"
+			},
+			"tips": {
+				"enable": "Funzione sperimentale (instabile). In alcuni casi devi comunque cliccare \"Salta\" nel player, e potrebbe essere rilevata da YouTube."
+			}
+		},
+		"shorts": {
+			"title": "YouTube Shorts",
+			"checkbox": {
+				"enableIndex": "Blocca gli Shorts sulla homepage",
+				"enableWatch": "Blocca gli Shorts sulla pagina di riproduzione",
+				"enableMenu": "Blocca gli Shorts nella sidebar/menu"
+			}
+		}
+	},
+	"insights": {
+		"title": "Approfondimenti",
+		"label": {
+			"metadata": {
+				"date": "Data:",
+				"likeCount": "Numero di Mi piace:",
+				"viewCount": "Visualizzazioni:",
+				"category": "Categoria:",
+				"sec": "Secondo:",
+				"quality": "Qualità:",
+				"username": "Utente:"
+			},
+			"flags": {
+				"global": {
+					"name": "Globale",
+					"description": "Questo video può essere visto in tutti i Paesi/regioni."
+				},
+				"family": {
+					"name": "Adatto alle famiglie",
+					"description": "Questo video è adatto a tutte le età."
+				},
+				"comment": {
+					"name": "Commenti",
+					"description": "Se gli spettatori possono lasciare commenti."
+				},
+				"login": {
+					"name": "Accesso richiesto",
+					"description": "Se è necessario effettuare l'accesso per guardare questo video."
+				},
+				"emergency": {
+					"name": "Allerta emergenza",
+					"description": "\"Non sei solo.\""
+				},
+				"blocked": {
+					"name": "Bloccato",
+					"description": "Questo video non può essere riprodotto a causa di problemi come violazione di copyright."
+				},
+				"r18": {
+					"name": "Limitato ai maggiorenni",
+					"description": "Questo video è solo per adulti."
+				},
+				"kids": {
+					"name": "Contenuti per bambini",
+					"description": "Questo video è per bambini e non può essere commentato, visto in mini player o riprodotto in background."
+				},
+				"membership": {
+					"name": "Solo membri",
+					"description": "Questo video è disponibile solo per i membri a pagamento del canale."
+				},
+				"shorts": {
+					"name": "Consenti Shorts",
+					"description": "Permette l'uso di questo video in YouTube Shorts."
+				},
+				"embed": {
+					"name": "Incorpora",
+					"description": "Se questo video può essere incorporato su altri siti."
+				},
+				"crawlable": {
+					"name": "Non in elenco",
+					"description": "Questo video può essere visto solo da chi ha il link. Non apparirà sulla pagina del canale e non può essere indicizzato dai motori di ricerca."
+				},
+				"private": {
+					"name": "Privato",
+					"description": "Questo video è visibile solo al caricatore o a chi è stato invitato."
+				}
+			}
+		}
+	},
+	"general": {
+		"update": {
+			"tips": [
+				"È disponibile una nuova versione {version}",
+				"L'estensione si aggiornerà automaticamente dopo che avrai chiuso tutte le schede di YouTube.",
+				"Fai clic per verificare gli aggiornamenti ora"
+			],
+			"buttons": {
+				"update": "Aggiorna ora",
+				"log": "Vedi changelog..."
+			},
+			"alert": {
+				"noUpdate": "Non c'è ancora una nuova versione",
+				"unsupportedUpdate": "Il tuo browser non supporta il controllo degli aggiornamenti, visita lo store delle estensioni per verificare se c'è una nuova versione.",
+				"busy": "Controlli troppo frequenti, riprova più tardi."
+			}
+		},
+		"about": {
+			"title": "Informazioni",
+			"link": {
+				"github": "Github",
+				"issue": "Segnalazioni",
+				"changelog": "Changelog"
+			}
+		},
+		"config": {
+			"title": "Impostazioni plugin",
+			"alert": {
+				"resetConfig": "Sei sicuro di voler reimpostare tutte le impostazioni?",
+				"importSuccess": "Impostazioni importate con successo!",
+				"importError": "Importazione delle impostazioni non riuscita, controlla il formato.",
+				"copySuccess": "Impostazioni copiate con successo!",
+				"copyError": "Copia non riuscita, riprova o usa Ctrl+C."
+			},
+			"button": {
+				"exportConfig": "Esporta impostazioni",
+				"importConfig": "Importa impostazioni",
+				"resetConfig": "Reimposta impostazioni",
+				"cancel": "Annulla",
+				"submit": "Conferma",
+				"copy": "Copia"
+			},
+			"modal": {
+				"importTips": "Incolla qui le impostazioni che vuoi importare",
+				"exportTips": "Copia le impostazioni qui sotto per importarle in un altro browser o condividerle con altri."
+			}
+		},
+		"language": {
+			"title": "Lingue",
+			"link": {
+				"translator": "Traduttore"
+			}
+		}
+	},
+	"installed": {
+		"title": "✅ Estensione installata con successo!",
+		"line1": "Grazie per aver installato questa estensione.",
+		"line2": "Puoi iniziare a usarla facendo clic sull'icona dell'estensione in alto a destra del browser.",
+		"line3": "Se riscontri problemi, segnalali su GitHub."
+	}
+}
+

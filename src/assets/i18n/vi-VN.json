@@ -1,0 +1,268 @@
+{
+	"manifest": {
+		"name": "YouTube Tweak - Nâng cao trải nghiệm YouTube của bạn",
+		"name_edge": "YouTubeTweak: Nâng cao trải nghiệm YouTube của bạn",
+		"description": "Tích hợp đủ tính năng bạn cần: khóa chất lượng, nút tốc độ, hiển thị và dịch tên bình luận, ẩn yếu tố gây xao nhãng và nhiều hơn nữa."
+	},
+	"tabs": {
+		"player": {
+			"title": "Trình phát"
+		},
+		"comment": {
+			"title": "Bình luận"
+		},
+		"other": {
+			"title": "Khác"
+		},
+		"general": {
+			"title": "Chung"
+		},
+		"insights": {
+			"title": "Thống kê"
+		}
+	},
+	"player": {
+		"lockQuality": {
+			"title": "Khóa chất lượng",
+			"checkbox": {
+				"enable": "Tự động chuyển sang chất lượng này khi bắt đầu phát"
+			},
+			"tips": {
+				"quality": "Nếu chất lượng đã chọn không có, sẽ dùng chất lượng cao nhất thấp hơn."
+			}
+		},
+		"speedButtons": {
+			"title": "Nút tốc độ",
+			"checkbox": {
+				"enable": "Hiển thị các nút tốc độ",
+				"save": "Ghi nhớ tốc độ phát",
+				"saveByChannel": "Ghi nhớ tốc độ phát theo kênh"
+			},
+			"tips": {
+				"enabledButtons": "Các nút đang bật:",
+				"save": "Ghi nhớ tốc độ"
+			}
+		},
+		"subtitles": {
+			"title": "Phụ đề",
+			"checkbox": {
+				"save": "Ghi nhớ trạng thái bật/tắt phụ đề",
+				"saveByChannel": "Ghi nhớ trạng thái phụ đề theo kênh"
+			},
+			"tips": {
+				"save": "Ghi nhớ cài đặt phụ đề"
+			}
+		},
+		"hidePlayerButtons": {
+			"title": "Ẩn nút",
+			"checkbox": {
+				"autoplay": "Ẩn nút tự động phát",
+				"subtitles": "Ẩn nút phụ đề",
+				"settings": "Ẩn nút cài đặt",
+				"miniPlayer": "Ẩn nút trình phát mini",
+				"pip": "Ẩn nút hình trong hình",
+				"size": "Ẩn nút chế độ rạp",
+				"remote": "Ẩn nút truyền lên TV",
+				"fullscreen": "Ẩn nút toàn màn hình"
+			}
+		},
+		"ui": {
+			"title": "Giao diện",
+			"checkbox": {
+				"hideCeElement": "Làm mờ video/tác giả đề xuất ở cuối video",
+				"progressEnable": "Hiển thị thanh tiến trình dưới video",
+				"progressEnableTag": "Hiển thị thời gian video ở góc dưới bên trái"
+			}
+		},
+		"other": {
+			"title": "Khác",
+			"checkbox": {
+				"maxVolume": "Tắt bộ cân bằng ở âm lượng tối đa (đúng 100%)"
+			}
+		},
+		"functionButtons": {
+			"title": "Nút chức năng",
+			"checkbox": {
+				"enableRotateButton": "Bật nút xoay video",
+				"enableMirrorButton": "Bật nút lật gương video"
+			}
+		}
+	},
+	"comment": {
+		"nickname": {
+			"title": "Tên kênh",
+			"checkbox": {
+				"showNickname": "Hiển thị tên kênh của người bình luận"
+			}
+		},
+		"context": {
+			"title": "Nội dung bình luận",
+			"checkbox": {
+				"autoShowMore": "Tự động mở rộng bình luận dài",
+				"autoTranslate": "Tự động dịch"
+			},
+			"select": {
+				"targetLanguage": "Ngôn ngữ đích",
+				"option": {
+					"auto": "Theo ngôn ngữ của YouTube"
+				}
+			}
+		}
+	},
+	"other": {
+		"index": {
+			"title": "Trang chủ",
+			"checkbox": {
+				"videoPerRow": "Khóa số video mỗi hàng"
+			}
+		},
+		"antiAD": {
+			"title": "Chặn quảng cáo",
+			"checkbox": {
+				"enable": "Chặn quảng cáo bản địa dạng hình ảnh và văn bản",
+				"enableVideo": "Chặn quảng cáo video",
+				"enableMerch": "Chặn hàng hóa kênh"
+			},
+			"tips": {
+				"enable": "Tính năng thử nghiệm (không ổn định). Trong một số trường hợp bạn vẫn cần bấm \"Bỏ qua\" trong trình phát và có thể bị YouTube phát hiện."
+			}
+		},
+		"shorts": {
+			"title": "YouTube Shorts",
+			"checkbox": {
+				"enableIndex": "Chặn Shorts trên trang chủ",
+				"enableWatch": "Chặn Shorts trên trang xem video",
+				"enableMenu": "Chặn Shorts trong thanh bên/menu"
+			}
+		}
+	},
+	"insights": {
+		"title": "Thống kê",
+		"label": {
+			"metadata": {
+				"date": "Ngày:",
+				"likeCount": "Lượt thích:",
+				"viewCount": "Lượt xem:",
+				"category": "Danh mục:",
+				"sec": "Giây:",
+				"quality": "Chất lượng:",
+				"username": "Người dùng:"
+			},
+			"flags": {
+				"global": {
+					"name": "Toàn cầu",
+					"description": "Video này có thể xem ở tất cả quốc gia/vùng lãnh thổ."
+				},
+				"family": {
+					"name": "Thân thiện với gia đình",
+					"description": "Video này phù hợp với mọi độ tuổi."
+				},
+				"comment": {
+					"name": "Bình luận",
+					"description": "Người xem có thể để lại bình luận hay không."
+				},
+				"login": {
+					"name": "Yêu cầu đăng nhập",
+					"description": "Có cần đăng nhập để xem video này hay không."
+				},
+				"emergency": {
+					"name": "Cảnh báo khẩn cấp",
+					"description": "\"Bạn không cô đơn.\""
+				},
+				"blocked": {
+					"name": "Bị chặn",
+					"description": "Video này không thể phát do các vấn đề như vi phạm bản quyền."
+				},
+				"r18": {
+					"name": "Giới hạn độ tuổi",
+					"description": "Video này chỉ dành cho người lớn."
+				},
+				"kids": {
+					"name": "Nội dung cho trẻ em",
+					"description": "Video này dành cho trẻ em và không thể bình luận, xem bằng trình phát mini hoặc phát nền."
+				},
+				"membership": {
+					"name": "Chỉ dành cho hội viên",
+					"description": "Video này chỉ dành cho hội viên trả phí của kênh."
+				},
+				"shorts": {
+					"name": "Cho phép Shorts",
+					"description": "Cho phép video này dùng trong YouTube Shorts."
+				},
+				"embed": {
+					"name": "Nhúng",
+					"description": "Video này có thể nhúng vào trang web khác hay không."
+				},
+				"crawlable": {
+					"name": "Không công khai",
+					"description": "Video này chỉ xem được qua liên kết. Nó không xuất hiện trên trang kênh và không thể được lập chỉ mục bởi công cụ tìm kiếm."
+				},
+				"private": {
+					"name": "Riêng tư",
+					"description": "Video này chỉ hiển thị với người tải lên hoặc người được mời."
+				}
+			}
+		}
+	},
+	"general": {
+		"update": {
+			"tips": [
+				"Có phiên bản mới {version}",
+				"Tiện ích sẽ tự động cập nhật sau khi bạn đóng tất cả tab YouTube.",
+				"Nhấn để kiểm tra cập nhật ngay"
+			],
+			"buttons": {
+				"update": "Cập nhật ngay",
+				"log": "Xem changelog..."
+			},
+			"alert": {
+				"noUpdate": "Chưa có phiên bản mới",
+				"unsupportedUpdate": "Trình duyệt của bạn không hỗ trợ kiểm tra cập nhật, hãy truy cập cửa hàng tiện ích để xem có phiên bản mới không.",
+				"busy": "Đang kiểm tra quá thường xuyên, hãy thử lại sau."
+			}
+		},
+		"about": {
+			"title": "Giới thiệu",
+			"link": {
+				"github": "Github",
+				"issue": "Issues",
+				"changelog": "Changelog"
+			}
+		},
+		"config": {
+			"title": "Cài đặt plugin",
+			"alert": {
+				"resetConfig": "Bạn có chắc muốn đặt lại tất cả cài đặt?",
+				"importSuccess": "Nhập cài đặt thành công!",
+				"importError": "Nhập cài đặt thất bại, vui lòng kiểm tra định dạng.",
+				"copySuccess": "Sao chép cài đặt thành công!",
+				"copyError": "Sao chép thất bại, hãy thử lại hoặc dùng Ctrl+C."
+			},
+			"button": {
+				"exportConfig": "Xuất cài đặt",
+				"importConfig": "Nhập cài đặt",
+				"resetConfig": "Đặt lại cài đặt",
+				"cancel": "Hủy",
+				"submit": "Xác nhận",
+				"copy": "Sao chép"
+			},
+			"modal": {
+				"importTips": "Dán các cài đặt bạn muốn nhập vào đây",
+				"exportTips": "Sao chép các cài đặt bên dưới để nhập vào trình duyệt khác hoặc chia sẻ với người khác."
+			}
+		},
+		"language": {
+			"title": "Ngôn ngữ",
+			"link": {
+				"translator": "Người dịch"
+			}
+		}
+	},
+	"installed": {
+		"title": "✅ Tiện ích đã cài đặt thành công!",
+		"line1": "Cảm ơn bạn đã cài đặt tiện ích.",
+		"line2": "Bạn có thể bắt đầu sử dụng bằng cách nhấp vào biểu tượng tiện ích ở góc phải trên của trình duyệt.",
+		"line3": "Nếu gặp vấn đề, hãy báo cáo trên GitHub."
+	}
+}
+
