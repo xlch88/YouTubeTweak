@@ -38,7 +38,7 @@
 				</label>
 				<p>{{ $t("player.speedButtons.tips.enabledButtons") }}</p>
 				<div class="form-item-group enabled-speed-buttons">
-					<label class="form-item" v-for="speed in [0.25, 0.5, 1, 1.25, 1.5, 2, 2.25, 2.5, 3]">
+					<label class="form-item" v-for="speed in [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 5, 10]">
 						<input
 							type="checkbox"
 							class="checkbox-size-mini"
