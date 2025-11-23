@@ -6,7 +6,7 @@ All release version update records are listed in this file.
 
 If you have questions, bug reports, or feature suggestions, please go to the [GitHub Issues page](https://github.com/xlch88/YouTubeTweak/issues) to submit them.
 
-## [1.1.0] - Unreleased
+## [1.1.0] - 2025-11-24
 
 ### Updated
 

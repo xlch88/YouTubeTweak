@@ -6,7 +6,7 @@
 
 如果您有问题、BUG反馈或功能建议，请前往 [GitHub问题页面](https://github.com/xlch88/YouTubeTweak/issues) 提交。
 
-## [1.1.0] - 未发布
+## [1.1.0] - 2025-11-24
 
 ### 更新
 
