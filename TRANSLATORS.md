@@ -33,6 +33,10 @@ Thanks to the following contributors for helping translate this project into mul
 
 - [@kokoro-aya](https://github.com/kokoro-aya)
 
+## Other languages
+
+All translations not listed above are authored by GPT5.1-Codex-Max.
+
 ---
 
 To contribute translations, please refer to the [`/src/assets/i18n`](./src/assets/i18n) folder and submit a pull request.
