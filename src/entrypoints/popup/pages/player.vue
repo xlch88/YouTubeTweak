@@ -108,13 +108,56 @@
 					<input type="checkbox" v-model="config['player.ui.hideCeElement']" />
 					<span>{{ $t("player.ui.checkbox.hideCeElement") }}</span>
 				</label>
+				<p>{{ $t("player.ui.tips.progress") }}</p>
 				<label class="form-item">
 					<input type="checkbox" v-model="config['player.ui.progress.enable']" />
 					<span>{{ $t("player.ui.checkbox.progressEnable") }}</span>
 				</label>
+				<label class="form-item form-item-select">
+					<span>{{ $t("player.ui.checkbox.progressHeight") }}</span>
+					<input
+						type="number"
+						min="1"
+						max="20"
+						class="mt-5"
+						style="width: 70px"
+						v-model.number="config['player.ui.progress.height']"
+					/>
+				</label>
+				<p>{{ $t("player.ui.tips.timeTag") }}</p>
 				<label class="form-item">
 					<input type="checkbox" v-model="config['player.ui.progress.enableTag']" />
 					<span>{{ $t("player.ui.checkbox.progressEnableTag") }}</span>
+				</label>
+				<label class="form-item form-item-select">
+					<span>{{ $t("player.ui.checkbox.progressTagFontSize") }}</span>
+					<input
+						type="number"
+						min="8"
+						max="48"
+						class="mt-5"
+						style="width: 70px"
+						v-model.number="config['player.ui.progress.tagFontSize']"
+					/>
+				</label>
+				<label class="form-item form-item-select">
+					<span>{{ $t("player.ui.checkbox.progressTagOffset") }}</span>
+					<input
+						type="number"
+						min="0"
+						max="200"
+						class="mt-5"
+						style="width: 70px"
+						v-model.number="config['player.ui.progress.tagOffset']"
+					/>
+				</label>
+				<label class="form-item form-item-select">
+					<span>{{ $t("player.ui.checkbox.progressTagPosition") }}</span>
+					<select class="w-100 mt-5" v-model="config['player.ui.progress.tagPosition']">
+						<option v-for="option in progressTagPositions" :value="option.value" :key="option.value">
+							{{ option.arrow }} {{ $t(option.labelKey) }}
+						</option>
+					</select>
 				</label>
 			</div>
 		</div>
@@ -135,6 +178,13 @@ import useConfigStore from "../util/config";
 const config = useConfigStore() as {
 	[key: `player.ui.hideButton.${string}`]: boolean;
 } & ReturnType<typeof useConfigStore>;
+
+const progressTagPositions = [
+	{ value: "bottom-left", labelKey: "player.ui.position.bottomLeft", arrow: "↙" },
+	{ value: "bottom-right", labelKey: "player.ui.position.bottomRight", arrow: "↘" },
+	{ value: "top-left", labelKey: "player.ui.position.topLeft", arrow: "↖" },
+	{ value: "top-right", labelKey: "player.ui.position.topRight", arrow: "↗" },
+];
 </script>
 
 <style lang="scss" scoped>

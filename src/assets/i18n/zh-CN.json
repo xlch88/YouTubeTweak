@@ -71,7 +71,21 @@
 			"checkbox": {
 				"hideCeElement": "半透明结尾的推荐视频/作者",
 				"progressEnable": "在视频下方显示进度条",
-				"progressEnableTag": "在左下角显示视频时间"
+				"progressHeight": "进度条高度(px)",
+				"progressEnableTag": "在角落显示视频时间",
+				"progressTagFontSize": "视频时间字体大小",
+				"progressTagPosition": "视频时间显示位置",
+				"progressTagOffset": "距离边缘(px)"
+			},
+			"position": {
+				"bottomLeft": "左下角",
+				"bottomRight": "右下角",
+				"topLeft": "左上角",
+				"topRight": "右上角"
+			},
+			"tips": {
+				"timeTag": "悬浮视频时间",
+				"progress": "视频下方进度条"
 			}
 		},
 		"other": {

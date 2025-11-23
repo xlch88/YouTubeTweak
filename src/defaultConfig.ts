@@ -23,7 +23,11 @@ export type Config = {
 	"player.ui.hideButton.fullscreen": boolean;
 	"player.ui.hideCeElement": boolean;
 	"player.ui.progress.enable": boolean;
+	"player.ui.progress.height": number;
 	"player.ui.progress.enableTag": boolean;
+	"player.ui.progress.tagFontSize": number;
+	"player.ui.progress.tagPosition": "bottom-left" | "bottom-right" | "top-left" | "top-right";
+	"player.ui.progress.tagOffset": number;
 	"player.settings.maxVolume": boolean;
 	"player.settings.lockQuality": boolean;
 	"player.settings.lockQuality.value": keyof typeof VideoQuality;
@@ -64,7 +68,11 @@ const config: Config = {
 	"player.ui.hideButton.fullscreen": false,
 	"player.ui.hideCeElement": true,
 	"player.ui.progress.enable": true,
+	"player.ui.progress.height": 2,
 	"player.ui.progress.enableTag": true,
+	"player.ui.progress.tagFontSize": 12,
+	"player.ui.progress.tagPosition": "bottom-left",
+	"player.ui.progress.tagOffset": 5,
 	"player.settings.maxVolume": true,
 	"player.settings.lockQuality": false,
 	"player.settings.lockQuality.value": "hd1080",

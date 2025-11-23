@@ -71,7 +71,21 @@
 			"checkbox": {
 				"hideCeElement": "Translucent the recommended videos/authors at the end of videos",
 				"progressEnable": "Show the progress bar below the video",
-				"progressEnableTag": "Show the video time in the bottom-left corner"
+				"progressHeight": "Progress bar height (px)",
+				"progressEnableTag": "Show the video time in the corner",
+				"progressTagFontSize": "Video time font size",
+				"progressTagPosition": "Video time position",
+				"progressTagOffset": "Distance from edge (px)"
+			},
+			"position": {
+				"bottomLeft": "Bottom-left corner",
+				"bottomRight": "Bottom-right corner",
+				"topLeft": "Top-left corner",
+				"topRight": "Top-right corner"
+			},
+			"tips": {
+				"timeTag": "Floating video time tags",
+				"progress": "Video progress bar"
 			}
 		},
 		"other": {

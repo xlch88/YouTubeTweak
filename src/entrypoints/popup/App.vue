@@ -216,6 +216,7 @@ header {
 
 		select {
 			width: 100%;
+			max-width: 50%;
 		}
 	}
 }

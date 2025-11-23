@@ -36,10 +36,12 @@ body.yttweak-hide-ce_element {
 
 // progress
 .yttweak-player-progress {
+	--yttweak-progress-height: 2px;
+
 	opacity: 0;
 	position: absolute;
 	width: 100%;
-	height: 2px;
+	height: var(--yttweak-progress-height);
 	background: rgba(black, 0.1);
 	bottom: 0;
 	left: 0;
@@ -52,8 +54,8 @@ body.yttweak-hide-ce_element {
 		height: 100%;
 		background: linear-gradient(to right, #f03 80%, #ff2791 100%);
 		width: 0%;
-		border-top-right-radius: 2px;
-		border-bottom-right-radius: 2px;
+		border-top-right-radius: calc(var(--yttweak-progress-height) / 2);
+		border-bottom-right-radius: calc(var(--yttweak-progress-height) / 2);
 		transition: width 0.3s linear;
 	}
 }
@@ -73,24 +75,35 @@ body.yttweak-player-progress-enable {
 
 // progress tag
 .yttweak-player-progress-tag {
+	--yttweak-progress-tag-font-size: 12px;
+	--yttweak-progress-tag-offset: 5px;
+	--yttweak-progress-tag-top: auto;
+	--yttweak-progress-tag-right: auto;
+	--yttweak-progress-tag-bottom: var(--yttweak-progress-tag-offset);
+	--yttweak-progress-tag-left: var(--yttweak-progress-tag-offset);
+
 	opacity: 0;
 	min-width: 80px;
-	height: 12px;
-	font-size: 12px;
-	text-align: center;
-	line-height: 12px;
+	padding: 4px 6px;
+	font-size: var(--yttweak-progress-tag-font-size);
+	min-height: calc(var(--yttweak-progress-tag-font-size) + 4px);
+	line-height: 1.2;
 	font-family: "Courier New", "Cascadia Mono", ui-monospace, monospace;
 	position: absolute;
-	padding: 3px;
+	top: var(--yttweak-progress-tag-top);
+	right: var(--yttweak-progress-tag-right);
+	bottom: var(--yttweak-progress-tag-bottom);
+	left: var(--yttweak-progress-tag-left);
 	background: rgba(black, 0.3);
 	color: white;
-	bottom: 5px;
-	left: 5px;
 	z-index: 100;
 	transition: opacity 0.3s;
 	border-radius: 5px;
 	text-shadow: 0 0 3px black;
 	pointer-events: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 }
 body.yttweak-player-progress-enable-tag {
 	#movie_player.ytp-autohide .yttweak-player-progress-tag {
