@@ -71,7 +71,21 @@
 			"checkbox": {
 				"hideCeElement": "ویڈیو دے آخر وچ سفارش کردہ ویڈیو/مصنف نوں نیم شفاف کرو",
 				"progressEnable": "ویڈیو تھلے پیش رفت بار وکھاؤ",
-				"progressEnableTag": "کھبے ہِٹھّلے کونے وچ ویڈیو دا ویلہ وکھاؤ"
+				"progressHeight": "پیش رفت بار دی اونچائی (px)",
+				"progressEnableTag": "کھبے ہِٹھّلے کونے وچ ویڈیو دا ویلہ وکھاؤ",
+				"progressTagFontSize": "ویڈیو وقت دا فونٹ سائز",
+				"progressTagPosition": "ویڈیو وقت دا مقام",
+				"progressTagOffset": "کنارے توں فاصلہ (px)"
+			},
+			"position": {
+				"bottomLeft": "کھبّا ہِٹھّلا کونا",
+				"bottomRight": "سجّا ہِٹھّلا کونا",
+				"topLeft": "کھبّا اُپرلا کونا",
+				"topRight": "سجّا اُپرلا کونا"
+			},
+			"tips": {
+				"timeTag": "تیرتا ویڈیو ویلہ ٹیگ",
+				"progress": "ویڈیو پیش رفت بار"
 			}
 		},
 		"other": {
@@ -265,4 +279,3 @@
 		"line3": "جے کوئی مسئلہ ہوئے تے بلا جھجھک GitHub اُتے رپورٹ کرو۔"
 	}
 }
-

@@ -71,7 +71,21 @@
 			"checkbox": {
 				"hideCeElement": "Làm mờ video/tác giả đề xuất ở cuối video",
 				"progressEnable": "Hiển thị thanh tiến trình dưới video",
-				"progressEnableTag": "Hiển thị thời gian video ở góc dưới bên trái"
+				"progressHeight": "Chiều cao thanh tiến trình (px)",
+				"progressEnableTag": "Hiển thị thời gian video ở góc dưới bên trái",
+				"progressTagFontSize": "Cỡ chữ thời gian video",
+				"progressTagPosition": "Vị trí hiển thị thời gian video",
+				"progressTagOffset": "Khoảng cách tới mép (px)"
+			},
+			"position": {
+				"bottomLeft": "Góc dưới bên trái",
+				"bottomRight": "Góc dưới bên phải",
+				"topLeft": "Góc trên bên trái",
+				"topRight": "Góc trên bên phải"
+			},
+			"tips": {
+				"timeTag": "Nhãn thời gian nổi",
+				"progress": "Thanh tiến trình video"
 			}
 		},
 		"other": {
@@ -265,4 +279,3 @@
 		"line3": "Nếu gặp vấn đề, hãy báo cáo trên GitHub."
 	}
 }
-

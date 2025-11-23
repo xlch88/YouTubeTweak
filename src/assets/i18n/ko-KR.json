@@ -71,7 +71,21 @@
 			"checkbox": {
 				"hideCeElement": "영상 끝의 추천 영상/작성자 반투명 처리",
 				"progressEnable": "영상 아래에 진행 막대 표시",
-				"progressEnableTag": "왼쪽 하단에 영상 시간 표시"
+				"progressHeight": "진행 막대 높이(px)",
+				"progressEnableTag": "왼쪽 하단에 영상 시간 표시",
+				"progressTagFontSize": "영상 시간 글꼴 크기",
+				"progressTagPosition": "영상 시간 표시 위치",
+				"progressTagOffset": "가장자리와의 거리(px)"
+			},
+			"position": {
+				"bottomLeft": "왼쪽 아래 모서리",
+				"bottomRight": "오른쪽 아래 모서리",
+				"topLeft": "왼쪽 위 모서리",
+				"topRight": "오른쪽 위 모서리"
+			},
+			"tips": {
+				"timeTag": "떠 있는 영상 시간 태그",
+				"progress": "동영상 진행 막대"
 			}
 		},
 		"other": {
@@ -265,4 +279,3 @@
 		"line3": "문제가 발생하면 언제든 GitHub에 알려주세요."
 	}
 }
-

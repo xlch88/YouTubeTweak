@@ -71,7 +71,21 @@
 			"checkbox": {
 				"hideCeElement": "Buat transparan video/penulis rekomendasi di akhir video",
 				"progressEnable": "Tampilkan bilah progres di bawah video",
-				"progressEnableTag": "Tampilkan waktu video di pojok kiri bawah"
+				"progressHeight": "Tinggi bilah progres (px)",
+				"progressEnableTag": "Tampilkan waktu video di pojok kiri bawah",
+				"progressTagFontSize": "Ukuran font waktu video",
+				"progressTagPosition": "Posisi waktu video",
+				"progressTagOffset": "Jarak dari tepi (px)"
+			},
+			"position": {
+				"bottomLeft": "Sudut kiri bawah",
+				"bottomRight": "Sudut kanan bawah",
+				"topLeft": "Sudut kiri atas",
+				"topRight": "Sudut kanan atas"
+			},
+			"tips": {
+				"timeTag": "Label waktu video mengambang",
+				"progress": "Bilah progres video"
 			}
 		},
 		"other": {
@@ -265,4 +279,3 @@
 		"line3": "Jika mengalami masalah, silakan laporkan di GitHub."
 	}
 }
-

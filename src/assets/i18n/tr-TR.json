@@ -71,7 +71,21 @@
 			"checkbox": {
 				"hideCeElement": "Videonun sonunda önerilen video/yazarları yarı saydam yap",
 				"progressEnable": "Videonun altında ilerleme çubuğunu göster",
-				"progressEnableTag": "Video süresini sol alt köşede göster"
+				"progressHeight": "İlerleme çubuğu yüksekliği (px)",
+				"progressEnableTag": "Video süresini sol alt köşede göster",
+				"progressTagFontSize": "Video süresi yazı tipi boyutu",
+				"progressTagPosition": "Video süresi konumu",
+				"progressTagOffset": "Kenardan uzaklık (px)"
+			},
+			"position": {
+				"bottomLeft": "Sol alt köşe",
+				"bottomRight": "Sağ alt köşe",
+				"topLeft": "Sol üst köşe",
+				"topRight": "Sağ üst köşe"
+			},
+			"tips": {
+				"timeTag": "Yüzen video süre etiketi",
+				"progress": "Video ilerleme çubuğu"
 			}
 		},
 		"other": {
@@ -265,4 +279,3 @@
 		"line3": "Sorun yaşarsanız GitHub'da bildirmekten çekinmeyin."
 	}
 }
-

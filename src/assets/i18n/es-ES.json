@@ -71,7 +71,21 @@
 			"checkbox": {
 				"hideCeElement": "Volver translúcidos los videos/autores recomendados al final de los videos",
 				"progressEnable": "Mostrar la barra de progreso debajo del video",
-				"progressEnableTag": "Mostrar la duración del video en la esquina inferior izquierda"
+				"progressHeight": "Altura de la barra de progreso (px)",
+				"progressEnableTag": "Mostrar la duración del video en la esquina inferior izquierda",
+				"progressTagFontSize": "Tamaño de fuente del tiempo del video",
+				"progressTagPosition": "Posición del tiempo del video",
+				"progressTagOffset": "Distancia al borde (px)"
+			},
+			"position": {
+				"bottomLeft": "Esquina inferior izquierda",
+				"bottomRight": "Esquina inferior derecha",
+				"topLeft": "Esquina superior izquierda",
+				"topRight": "Esquina superior derecha"
+			},
+			"tips": {
+				"timeTag": "Etiquetas de tiempo flotantes",
+				"progress": "Barra de progreso del video"
 			}
 		},
 		"other": {
@@ -265,4 +279,3 @@
 		"line3": "Si tienes algún problema, no dudes en informarlo en GitHub."
 	}
 }
-

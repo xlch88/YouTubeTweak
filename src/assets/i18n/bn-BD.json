@@ -71,7 +71,21 @@
 			"checkbox": {
 				"hideCeElement": "ভিডিওর শেষে প্রস্তাবিত ভিডিও/চ্যানেল আধাপারদর্শী করুন",
 				"progressEnable": "ভিডিওর নিচে প্রগ্রেস বার দেখান",
-				"progressEnableTag": "বাম নিচের কোণে ভিডিওর সময় দেখান"
+				"progressHeight": "অগ্রগতি বারের উচ্চতা (px)",
+				"progressEnableTag": "বাম নিচের কোণে ভিডিওর সময় দেখান",
+				"progressTagFontSize": "ভিডিও সময়ের ফন্ট আকার",
+				"progressTagPosition": "ভিডিও সময়ের অবস্থান",
+				"progressTagOffset": "প্রান্ত থেকে দূরত্ব (px)"
+			},
+			"position": {
+				"bottomLeft": "নিচের বাম কোণা",
+				"bottomRight": "নিচের ডান কোণা",
+				"topLeft": "উপরের বাম কোণা",
+				"topRight": "উপরের ডান কোণা"
+			},
+			"tips": {
+				"timeTag": "ভাসমান ভিডিও সময় ট্যাগ",
+				"progress": "ভিডিও অগ্রগতি বার"
 			}
 		},
 		"other": {
@@ -265,4 +279,3 @@
 		"line3": "যেকোনো সমস্যা হলে GitHub-এ জানাতে দ্বিধা করবেন না।"
 	}
 }
-

@@ -71,7 +71,21 @@
 			"checkbox": {
 				"hideCeElement": "वीडियो के अंत में अनुशंसित वीडियो/लेखकों को अर्धपारदर्शी करें",
 				"progressEnable": "वीडियो के नीचे प्रगति बार दिखाएँ",
-				"progressEnableTag": "बाएँ नीचे कोने में वीडियो समय दिखाएँ"
+				"progressHeight": "प्रोग्रेस बार की ऊँचाई (px)",
+				"progressEnableTag": "बाएँ नीचे कोने में वीडियो समय दिखाएँ",
+				"progressTagFontSize": "वीडियो समय का फ़ॉन्ट आकार",
+				"progressTagPosition": "वीडियो समय का स्थान",
+				"progressTagOffset": "किनारे से दूरी (px)"
+			},
+			"position": {
+				"bottomLeft": "बायां निचला कोना",
+				"bottomRight": "दायां निचला कोना",
+				"topLeft": "बायां ऊपरी कोना",
+				"topRight": "दायां ऊपरी कोना"
+			},
+			"tips": {
+				"timeTag": "तैरते वीडियो समय टैग",
+				"progress": "वीडियो प्रोग्रेस बार"
 			}
 		},
 		"other": {
@@ -265,4 +279,3 @@
 		"line3": "यदि आपको कोई समस्या हो, तो बेझिझक GitHub पर रिपोर्ट करें।"
 	}
 }
-

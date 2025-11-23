@@ -71,7 +71,21 @@
 			"checkbox": {
 				"hideCeElement": "ทำวิดีโอ/ผู้แนะนำตอนท้ายให้กึ่งโปร่งใส",
 				"progressEnable": "แสดงแถบความคืบใต้คลิป",
-				"progressEnableTag": "แสดงเวลาวิดีโอที่มุมซ้ายล่าง"
+				"progressHeight": "ความสูงแถบความคืบหน้า (พิกเซล)",
+				"progressEnableTag": "แสดงเวลาวิดีโอที่มุมซ้ายล่าง",
+				"progressTagFontSize": "ขนาดตัวอักษรเวลาในวิดีโอ",
+				"progressTagPosition": "ตำแหน่งแสดงเวลาในวิดีโอ",
+				"progressTagOffset": "ระยะห่างจากขอบ (พิกเซล)"
+			},
+			"position": {
+				"bottomLeft": "มุมซ้ายล่าง",
+				"bottomRight": "มุมขวาล่าง",
+				"topLeft": "มุมซ้ายบน",
+				"topRight": "มุมขวาบน"
+			},
+			"tips": {
+				"timeTag": "ป้ายเวลาแบบลอย",
+				"progress": "แถบความคืบหน้าวิดีโอ"
 			}
 		},
 		"other": {
@@ -265,4 +279,3 @@
 		"line3": "หากพบปัญหา โปรดรายงานบน GitHub."
 	}
 }
-

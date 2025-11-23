@@ -71,7 +71,21 @@
 			"checkbox": {
 				"hideCeElement": "Rendre les vidéos/auteurs recommendés à la fin de la vidéo plus translucent",
 				"progressEnable": "Afficher la barre de progression sous la vidéo",
-				"progressEnableTag": "Afficher l’heure de la vidéo en bas à gauche"
+				"progressHeight": "Hauteur de la barre de progression (px)",
+				"progressEnableTag": "Afficher l’heure de la vidéo en bas à gauche",
+				"progressTagFontSize": "Taille de police du temps vidéo",
+				"progressTagPosition": "Position de l’heure de la vidéo",
+				"progressTagOffset": "Distance du bord (px)"
+			},
+			"position": {
+				"bottomLeft": "Coin inférieur gauche",
+				"bottomRight": "Coin inférieur droit",
+				"topLeft": "Coin supérieur gauche",
+				"topRight": "Coin supérieur droit"
+			},
+			"tips": {
+				"timeTag": "Étiquettes de temps vidéo flottantes",
+				"progress": "Barre de progression de la vidéo"
 			}
 		},
 		"other": {
@@ -265,4 +279,3 @@
 		"line3": "En cas d'un problème, n'hésitez pas à nous le remonter dans GitHub."
 	}
 }
-

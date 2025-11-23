@@ -71,7 +71,21 @@
 			"checkbox": {
 				"hideCeElement": "Rendi traslucidi i video/autori consigliati alla fine dei video",
 				"progressEnable": "Mostra la barra di avanzamento sotto il video",
-				"progressEnableTag": "Mostra il tempo del video nell'angolo in basso a sinistra"
+				"progressHeight": "Altezza della barra di avanzamento (px)",
+				"progressEnableTag": "Mostra il tempo del video nell'angolo in basso a sinistra",
+				"progressTagFontSize": "Dimensione carattere del tempo video",
+				"progressTagPosition": "Posizione del tempo del video",
+				"progressTagOffset": "Distanza dal bordo (px)"
+			},
+			"position": {
+				"bottomLeft": "Angolo in basso a sinistra",
+				"bottomRight": "Angolo in basso a destra",
+				"topLeft": "Angolo in alto a sinistra",
+				"topRight": "Angolo in alto a destra"
+			},
+			"tips": {
+				"timeTag": "Etichetta tempo video fluttuante",
+				"progress": "Barra di avanzamento del video"
 			}
 		},
 		"other": {
@@ -265,4 +279,3 @@
 		"line3": "Se riscontri problemi, segnalali su GitHub."
 	}
 }
-

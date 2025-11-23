@@ -71,7 +71,21 @@
 			"checkbox": {
 				"hideCeElement": "動画の終わりに表示されるおすすめまたはチャンネルを半透明にする",
 				"progressEnable": "動画の下に進行バーを表示する",
-				"progressEnableTag": "左下に動画の再生時間を表示する"
+				"progressHeight": "進行バーの高さ(px)",
+				"progressEnableTag": "左下に動画の再生時間を表示する",
+				"progressTagFontSize": "動画時間のフォントサイズ",
+				"progressTagPosition": "動画時間の表示位置",
+				"progressTagOffset": "端からの距離(px)"
+			},
+			"position": {
+				"bottomLeft": "左下隅",
+				"bottomRight": "右下隅",
+				"topLeft": "左上隅",
+				"topRight": "右上隅"
+			},
+			"tips": {
+				"timeTag": "浮動表示の動画時間",
+				"progress": "動画の進行バー"
 			}
 		},
 		"other": {
@@ -265,4 +279,3 @@
 		"line3": "ご使用中に問題が発生した場合は、GitHubにてご報告ください。"
 	}
 }
-

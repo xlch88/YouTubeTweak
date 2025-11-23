@@ -71,7 +71,21 @@
 			"checkbox": {
 				"hideCeElement": "ویدیوها/نویسندگان پیشنهادی پایان ویدیو را نیمه‌شفاف کن",
 				"progressEnable": "نوار پیشرفت را زیر ویدیو نشان بده",
-				"progressEnableTag": "زمان ویدیو را در گوشه پایین چپ نمایش بده"
+				"progressHeight": "ارتفاع نوار پیشرفت (px)",
+				"progressEnableTag": "زمان ویدیو را در گوشه پایین چپ نمایش بده",
+				"progressTagFontSize": "اندازه فونت زمان ویدیو",
+				"progressTagPosition": "موقعیت زمان ویدیو",
+				"progressTagOffset": "فاصله از لبه (px)"
+			},
+			"position": {
+				"bottomLeft": "گوشه چپ پایین",
+				"bottomRight": "گوشه راست پایین",
+				"topLeft": "گوشه چپ بالا",
+				"topRight": "گوشه راست بالا"
+			},
+			"tips": {
+				"timeTag": "برچسب زمان شناور ویدیو",
+				"progress": "نوار پیشرفت ویدیو"
 			}
 		},
 		"other": {
@@ -265,4 +279,3 @@
 		"line3": "اگر مشکلی داشتید، در GitHub گزارش دهید."
 	}
 }
-

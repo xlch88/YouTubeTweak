@@ -71,7 +71,21 @@
 			"checkbox": {
 				"hideCeElement": "వీడియోల చివర సిఫారసు వీడియోలు/రచయితలను అర్థ పారదర్శకంగా చేయి",
 				"progressEnable": "వీడియో క్రింద పురోగతి పట్టీని చూపించు",
-				"progressEnableTag": "ఎడమ క్రింది మూలలో వీడియో సమయాన్ని చూపించు"
+				"progressHeight": "పురోగతి పట్టీ ఎత్తు (px)",
+				"progressEnableTag": "ఎడమ క్రింది మూలలో వీడియో సమయాన్ని చూపించు",
+				"progressTagFontSize": "వీడియో సమయ ఫాంట్ పరిమాణం",
+				"progressTagPosition": "వీడియో సమయ స్థానము",
+				"progressTagOffset": "అంచు నుంచి దూరం (px)"
+			},
+			"position": {
+				"bottomLeft": "ఎడమ క్రింది మూల",
+				"bottomRight": "కుడి క్రింది మూల",
+				"topLeft": "ఎడమ పై మూల",
+				"topRight": "కుడి పై మూల"
+			},
+			"tips": {
+				"timeTag": "తేలియాడే వీడియో సమయ ట్యాగ్",
+				"progress": "వీడియో పురోగతి పట్టీ"
 			}
 		},
 		"other": {
@@ -265,4 +279,3 @@
 		"line3": "ఏదైనా సమస్యలు ఉంటే, దయచేసి GitHubలో నివేదించండి."
 	}
 }
-

@@ -71,7 +71,21 @@
 			"checkbox": {
 				"hideCeElement": "Empfohlene Videos/Autoren am Ende von Videos halbtransparent machen",
 				"progressEnable": "Fortschrittsbalken unter dem Video anzeigen",
-				"progressEnableTag": "Videozeit unten links anzeigen"
+				"progressHeight": "Höhe der Fortschrittsleiste (px)",
+				"progressEnableTag": "Videozeit unten links anzeigen",
+				"progressTagFontSize": "Schriftgröße der Videozeit",
+				"progressTagPosition": "Position der Videozeit",
+				"progressTagOffset": "Abstand zum Rand (px)"
+			},
+			"position": {
+				"bottomLeft": "Unten links",
+				"bottomRight": "Unten rechts",
+				"topLeft": "Oben links",
+				"topRight": "Oben rechts"
+			},
+			"tips": {
+				"timeTag": "Schwebende Videozeit",
+				"progress": "Video-Fortschrittsleiste"
 			}
 		},
 		"other": {
@@ -265,4 +279,3 @@
 		"line3": "Falls du Probleme hast, melde sie gern auf GitHub."
 	}
 }
-

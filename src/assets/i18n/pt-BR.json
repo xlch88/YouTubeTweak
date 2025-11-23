@@ -71,7 +71,21 @@
 			"checkbox": {
 				"hideCeElement": "Deixar translúcidas as recomendações de vídeos/canais ao final dos vídeos",
 				"progressEnable": "Mostrar a barra de progresso abaixo do vídeo",
-				"progressEnableTag": "Mostrar o tempo do vídeo no canto inferior esquerdo"
+				"progressHeight": "Altura da barra de progresso (px)",
+				"progressEnableTag": "Mostrar o tempo do vídeo no canto inferior esquerdo",
+				"progressTagFontSize": "Tamanho da fonte do tempo do vídeo",
+				"progressTagPosition": "Posição do tempo do vídeo",
+				"progressTagOffset": "Distância da borda (px)"
+			},
+			"position": {
+				"bottomLeft": "Canto inferior esquerdo",
+				"bottomRight": "Canto inferior direito",
+				"topLeft": "Canto superior esquerdo",
+				"topRight": "Canto superior direito"
+			},
+			"tips": {
+				"timeTag": "Tempo de vídeo flutuante",
+				"progress": "Barra de progresso do vídeo"
 			}
 		},
 		"other": {
@@ -265,4 +279,3 @@
 		"line3": "Se encontrar algum problema, sinta-se à vontade para relatar no GitHub."
 	}
 }
-

@@ -71,7 +71,21 @@
 			"checkbox": {
 				"hideCeElement": "Jadikan video/penulis cadangan di hujung video separa telus",
 				"progressEnable": "Tunjukkan bar kemajuan di bawah video",
-				"progressEnableTag": "Tunjukkan masa video di sudut kiri bawah"
+				"progressHeight": "Ketinggian bar kemajuan (px)",
+				"progressEnableTag": "Tunjukkan masa video di sudut kiri bawah",
+				"progressTagFontSize": "Saiz fon masa video",
+				"progressTagPosition": "Kedudukan masa video",
+				"progressTagOffset": "Jarak dari tepi (px)"
+			},
+			"position": {
+				"bottomLeft": "Sudut kiri bawah",
+				"bottomRight": "Sudut kanan bawah",
+				"topLeft": "Sudut kiri atas",
+				"topRight": "Sudut kanan atas"
+			},
+			"tips": {
+				"timeTag": "Tag masa video terapung",
+				"progress": "Bar kemajuan video"
 			}
 		},
 		"other": {
@@ -265,4 +279,3 @@
 		"line3": "Jika ada masalah, sila laporkan di GitHub."
 	}
 }
-
