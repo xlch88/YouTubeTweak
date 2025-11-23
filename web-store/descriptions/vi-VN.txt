@@ -1,0 +1,30 @@
+YouTube Tweak là tiện ích tăng cường YouTube dành cho người dùng nâng cao. Với các tính năng tùy chỉnh, bạn thoát khỏi giới hạn mặc định, kiểm soát từng chi tiết và hướng tới trải nghiệm xem sạch hơn, thông minh hơn và mượt mà hơn.
+
+⭐Hoàn toàn miễn phí và mã nguồn mở!
+⭐Hoan nghênh đóng góp—tính năng mới hoặc bản dịch!
+👉 https://github.com/xlch88/YoutubeTweak
+
+Các mô-đun chính:
+
+🎬 Nâng cấp trình phát
+Khóa chất lượng: Tự động chuyển sang độ phân giải bạn chọn ở mỗi lần phát (vd. 1080p/720p), nếu không có sẽ giảm xuống chất lượng thấp gần nhất.
+Nút tốc độ bổ sung: Hiển thị các nút tốc độ phát thêm (1.25x, 1.5x, 2x, v.v.).
+Nhớ tốc độ theo kênh: Lưu tùy chọn tốc độ riêng cho từng kênh.
+Ẩn nút cụ thể: Ẩn hầu hết nút trình phát theo nhu cầu để giao diện gọn gàng hơn.
+Ẩn gợi ý cuối video: Ẩn các gợi ý mờ xuất hiện khi kết thúc video (thường là video gợi ý hoặc nhắc của nhà sáng tạo).
+Tăng âm lượng: Tắt cân bằng âm lượng để đạt 100% thực sự ở mức âm lượng tối đa.
+
+💬 Bình luận
+Hiển thị biệt danh: Hiển thị biệt danh kênh của người bình luận thay vì chỉ tên người dùng.
+Cải thiện nội dung: Tự động mở rộng bình luận dài và tự động dịch nội dung bình luận.
+
+🧹 Tính năng khác
+Kiểm soát bố cục trang chủ: Khóa số video đề xuất mỗi hàng trên trang chủ để có lưới đồng nhất.
+Chặn quảng cáo (thử nghiệm): Tự động bỏ qua video quảng cáo, ẩn quảng cáo trên thumbnail và overlay; chặn quảng bá merch của creator (áo thun, merch).
+
+⚙️ Cài đặt chung
+Nhập/Xuất: Xuất, nhập hoặc đặt lại cài đặt để chuyển cấu hình chỉ với một cú nhấp.
+Hỗ trợ đa ngôn ngữ: Giao diện hỗ trợ nhiều ngôn ngữ, bản dịch được cập nhật liên tục.
+
+🔧 Trạng thái phát triển
+Tiện ích đang được phát triển tích cực. Rất mong phản hồi và yêu cầu tính năng. Nếu bạn có ý tưởng, phát hiện lỗi hoặc muốn đóng góp, hãy ghé GitHub của chúng tôi.

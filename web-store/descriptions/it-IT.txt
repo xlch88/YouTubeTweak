@@ -1,0 +1,30 @@
+YouTube Tweak è un'estensione di potenziamento per YouTube pensata per utenti esperti. Con funzioni personalizzabili ti libera dai limiti predefiniti, ti permette di controllare ogni dettaglio e punta a offrire un'esperienza di visione più pulita, intelligente e fluida.
+
+⭐Completamente gratuita e open source!
+⭐Contributi benvenuti: nuove funzioni o traduzioni!
+👉 https://github.com/xlch88/YoutubeTweak
+
+Moduli principali:
+
+🎬 Migliorie al player
+Blocco qualità: passa automaticamente alla risoluzione scelta a ogni riproduzione (es. 1080p/720p), degradando alla qualità inferiore più vicina se non disponibile.
+Pulsanti di velocità extra: mostra pulsanti aggiuntivi per la velocità di riproduzione (1.25x, 1.5x, 2x, ecc.).
+Ricorda la velocità per canale: salva le preferenze di velocità separatamente per ciascun canale.
+Nascondi pulsanti specifici: nasconde quasi tutti i pulsanti del player secondo necessità per un'interfaccia più pulita.
+Consigli di fine video trasparenti: nasconde le raccomandazioni sfocate alla fine dei video (spesso video suggeriti o inviti del creator).
+Boost del volume: disattiva la normalizzazione del volume per avere un vero 100% al massimo.
+
+💬 Commenti
+Mostra i nickname: mostra il nickname del canale dell'autore del commento invece del solo username.
+Migliorie al contenuto: espande automaticamente i commenti lunghi e traduce automaticamente il testo dei commenti.
+
+🧹 Altre funzioni
+Controllo layout home: blocca il numero di video consigliati per riga nella home per un layout uniforme.
+Blocco annunci (sperimentale): salta automaticamente i video pubblicitari, nasconde gli annunci su miniature e overlay; blocca le promo di merchandising del creator (magliette, merch).
+
+⚙️ Impostazioni generali
+Import/Export: esporta, importa o ripristina le impostazioni per migrare la configurazione con un clic.
+Supporto multilingue: interfaccia disponibile in più lingue con traduzioni in continuo aggiornamento.
+
+🔧 Stato di sviluppo
+L'estensione è in sviluppo attivo. Feedback e richieste di funzionalità sono ben accetti. Se hai idee, trovi bug o vuoi contribuire, visita il nostro GitHub.

@@ -1,0 +1,30 @@
+YouTube Tweak est une extension d'amelioration de YouTube concue pour les utilisateurs avances. Grâce a des fonctions personnalisables, elle vous libere des limites par defaut, vous permet de contrôler chaque detail et vise une experience plus epuree, plus intelligente et plus fluide.
+
+⭐Totalement gratuit et open source !
+⭐Contributions bienvenues : nouvelles fonctions ou traductions !
+👉 https://github.com/xlch88/YoutubeTweak
+
+Modules principaux :
+
+🎬 Ameliorations du lecteur
+Verrouillage de la qualite : passe automatiquement a la resolution choisie a chaque lecture (1080p/720p, etc.), puis retrograde a la qualite inferieure la plus proche si elle n'est pas disponible.
+Boutons de vitesse supplementaires : affiche des boutons de vitesse en plus (1.25x, 1.5x, 2x, etc.).
+Memoriser la vitesse par chaine : enregistre les preferences de vitesse pour chaque chaine separement.
+Masquer certains boutons : masque presque tous les boutons du lecteur selon vos besoins pour une interface plus epuree.
+Ecran de fin transparent : masque les recommandations floues en fin de video (souvent des videos suggerees ou des invites du createur).
+Boost de volume : desactive la normalisation du volume pour obtenir un vrai 100 % au volume maximum.
+
+💬 Commentaires
+Afficher les pseudos : affiche le pseudo de la chaine de l'auteur au lieu du seul nom d'utilisateur.
+Ameliorations du contenu : deplie automatiquement les longs commentaires et traduit automatiquement le texte.
+
+🧹 Autres fonctions
+Grille d'accueil controlee : verrouille le nombre de videos recommandees par ligne sur l'accueil pour un affichage uniforme.
+Blocage des pubs (experimental) : saute automatiquement les videos publicitaires, masque les publicites sur les vignettes et en surimpression ; masque les promotions de produits du createur (T-shirts, merchandising).
+
+⚙️ Reglages generaux
+Importer/Exporter : exporter, importer ou reinitialiser les reglages pour migrer la configuration en un clic.
+Multilingue : interface disponible en plusieurs langues, traductions mises a jour en continu.
+
+🔧 Etat du developpement
+L'extension est activement developpee. Les retours et demandes de fonctionnalites sont les bienvenus. Si vous avez des idees, trouvez des bugs ou voulez contribuer, rendez-vous sur GitHub.

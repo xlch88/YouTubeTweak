@@ -1,0 +1,30 @@
+YouTube Tweak es una extensión de mejora de YouTube creada para usuarios avanzados. Con funciones personalizables te libera de las limitaciones por defecto, te permite controlar cada detalle y busca ofrecer un entorno de visualización más limpio, inteligente y fluido.
+
+⭐Totalmente gratis y de código abierto.
+⭐Bienvenidas las contribuciones: nuevas funciones o traducciones.
+👉 https://github.com/xlch88/YoutubeTweak
+
+Módulos principales:
+
+🎬 Mejoras del reproductor
+Bloqueo de calidad: Cambia automáticamente a la resolución que elijas en cada reproducción (por ejemplo 1080p/720p) y, si no está disponible, baja a la calidad inferior más cercana.
+Botones de velocidad extra: Muestra botones adicionales de velocidad de reproducción (1.25x, 1.5x, 2x, etc.).
+Recordar velocidad por canal: Guarda preferencias de velocidad de forma independiente para cada canal.
+Ocultar botones concretos: Oculta casi cualquier botón del reproductor según necesites para una interfaz más limpia.
+Final transparente: Oculta las recomendaciones borrosas que aparecen al final de los vídeos (sugerencias o avisos del creador).
+Aumento de volumen: Desactiva la normalización de volumen para un 100 % real con el volumen al máximo.
+
+💬 Comentarios
+Mostrar apodos: Muestra el apodo del canal del autor del comentario en lugar del nombre de usuario.
+Mejoras de contenido: Expande automáticamente los comentarios largos y traduce el texto de los comentarios.
+
+🧹 Otras funciones
+Control de la cuadrícula de inicio: Fija el número de vídeos recomendados por fila en la página principal para un diseño uniforme.
+Bloqueo de anuncios (experimental): Omite automáticamente los vídeos de anuncios, oculta los anuncios en miniaturas y superposiciones; bloquea las promociones de productos del creador (camisetas, merchandising).
+
+⚙️ Ajustes generales
+Importar/Exportar: Exporta, importa o restablece la configuración para migrar todo con un clic.
+Multilenguaje: Interfaz disponible en varios idiomas, traducciones en actualización continua.
+
+🔧 Estado de desarrollo
+La extensión está en desarrollo activo. Se agradecen comentarios y solicitudes de funciones. Si tienes ideas, encuentras errores o quieres colaborar, visita nuestro GitHub.

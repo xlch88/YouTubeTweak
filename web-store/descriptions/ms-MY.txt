@@ -1,0 +1,30 @@
+YouTube Tweak ialah sambungan peningkatan YouTube untuk pengguna mahir. Ia menawarkan ciri boleh suai supaya anda bebas daripada batasan lalai, mengawal setiap butiran, dan menikmati pengalaman tontonan yang lebih bersih, pintar dan lancar.
+
+⭐Percuma sepenuhnya dan sumber terbuka!
+⭐Sumbangan dialu-alukan—ciri baharu atau terjemahan!
+👉 https://github.com/xlch88/YoutubeTweak
+
+Modul utama:
+
+🎬 Penambahbaikan pemain
+Kunci kualiti: Tukar automatik ke resolusi pilihan anda setiap kali main (cth. 1080p/720p) dan turun ke kualiti lebih rendah terdekat jika tiada.
+Butang kelajuan tambahan: Paparkan butang kelajuan main balik tambahan (1.25x, 1.5x, 2x, dsb.).
+Ingat kelajuan setiap saluran: Simpan pilihan kelajuan secara berasingan bagi setiap saluran.
+Sembunyikan butang tertentu: Sembunyikan hampir semua butang pemain mengikut keperluan untuk UI lebih kemas.
+Sorok cadangan di akhir: Sorok cadangan kabur di penghujung video (biasanya video disyorkan atau seruan pencipta).
+Boost volum: Nyahaktifkan penormalan bunyi untuk mendapatkan 100% sebenar pada volum maksimum.
+
+💬 Ulasan
+Tunjuk nama gelaran: Paparkan nama gelaran saluran pengulas, bukan sekadar nama pengguna.
+Penambahbaikan kandungan: Kembangkan ulasan panjang secara automatik dan terjemah teks ulasan secara automatik.
+
+🧹 Ciri lain
+Kawal susun atur utama: Kunci bilangan video disyorkan setiap baris di halaman utama untuk grid seragam.
+Penyekat iklan (eksperimen): Langkau video iklan secara automatik, sembunyikan iklan pada lakaran kecil dan overlay; sekat promo barangan pencipta (contoh T-shirt, merch).
+
+⚙️ Tetapan umum
+Import/Eksport tetapan: Eksport, import atau tetapkan semula tetapan untuk pindahkan konfigurasi dengan satu klik.
+Sokongan berbilang bahasa: Antara muka menyokong pelbagai bahasa dengan terjemahan yang sentiasa dikemas kini.
+
+🔧 Status pembangunan
+Sambungan ini sedang dibangunkan secara aktif. Maklum balas dan permintaan ciri amat dialu-alukan. Jika ada idea, jumpa pepijat atau mahu menyumbang, sila ke GitHub kami.

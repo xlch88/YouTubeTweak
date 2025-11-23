@@ -1,0 +1,30 @@
+YouTube Tweak ist eine YouTube-Erweiterung für Power-User. Mit vielen anpassbaren Funktionen befreist du dich von den Standardeinstellungen, beherrschst jedes Detail und erhältst ein saubereres, smarteres und flüssigeres Seherlebnis.
+
+⭐Komplett kostenlos und Open Source!
+⭐Beiträge willkommen – neue Features oder Übersetzungen!
+👉 https://github.com/xlch88/YoutubeTweak
+
+Hauptmodule:
+
+🎬 Player-Optimierungen
+Qualität sperren: Stellt bei jedem Start automatisch deine gewünschte Auflösung ein (z. B. 1080p/720p), fällt sonst auf die nächstniedrigere Qualität zurück.
+Zusätzliche Geschwindigkeits-Buttons: Zeigt weitere Wiedergabegeschwindigkeiten an (z. B. 1.25x, 1.5x, 2x usw.).
+Geschwindigkeit pro Kanal merken: Speichert Geschwindigkeitspräferenzen kanalweise.
+Bestimmte Buttons ausblenden: Blende fast alle Player-Buttons nach Bedarf aus für eine aufgeräumte Oberfläche.
+Transparente Endscreen-Empfehlungen ausblenden: Entfernt die verwaschenen Empfehlungen am Videoende (oft vorgeschlagene Videos oder Creator-Hinweise).
+Lautstärke-Boost: Deaktiviert Lautstärke-Normalisierung für echte 100 % bei Max-Lautstärke.
+
+💬 Kommentare
+Spitznamen anzeigen: Zeigt den Kanal-Spitznamen des Kommentators statt nur des Nutzernamens.
+Kommentar-Verbesserungen: Lange Kommentare automatisch ausklappen und Inhalte automatisch übersetzen.
+
+🧹 Weitere Funktionen
+Startseiten-Layout: Fixiert die Anzahl der empfohlenen Videos pro Reihe auf der Startseite für ein einheitliches Raster.
+Werbeblockierung (experimentell): Überspringt Werbevideos automatisch, blendet Thumbnail- und Overlay-Anzeigen aus; versteckt Produkt-Promos des Creators (z. B. Shirts, Merch).
+
+⚙️ Allgemeine Einstellungen
+Einstellungen importieren/exportieren: Einstellungen exportieren, importieren oder zurücksetzen, um Konfigurationen mit einem Klick zu übertragen.
+Mehrsprachigkeit: Oberfläche in mehreren Sprachen, Übersetzungen werden laufend ergänzt.
+
+🔧 Entwicklungsstatus
+Die Erweiterung wird aktiv weiterentwickelt. Feedback und Feature-Wünsche sind willkommen. Wenn du Ideen hast, Bugs findest oder mitmachen möchtest, schau auf GitHub vorbei.

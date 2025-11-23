@@ -1,0 +1,30 @@
+YouTube Tweak is a YouTube enhancement extension built for power users. It offers customizable features to break free from default limits, control every detail, and deliver the cleanest, smartest, and smoothest viewing experience.
+
+⭐Completely free and open source!
+⭐Contributions welcome—new features or translations!
+👉 https://github.com/xlch88/YoutubeTweak
+
+Main modules:
+
+🎬 Player enhancements
+Quality lock: Automatically switch to your chosen resolution on each playback (e.g., 1080p/720p), falling back to the closest lower quality if unavailable.
+Extra speed buttons: Show additional playback speed buttons (e.g., 1.25x, 1.5x, 2x, etc.).
+Remember speed per channel: Save speed preferences separately for each channel.
+Hide specific buttons: Hide almost any player button as needed for a cleaner UI.
+Transparent end screen: Hide blurred recommendations at the end of videos (often suggested videos or creator prompts).
+Volume boost: Disable loudness normalization for a true 100% at max volume.
+
+💬 Comments
+Show nicknames: Display commenters’ channel nicknames instead of just usernames.
+Comment enhancements: Auto-expand long comments and auto-translate comment text.
+
+🧹 Other features
+Home layout control: Lock the number of recommended videos per row on the home feed for a consistent grid.
+Ad blocking (experimental): Auto-skip ad videos, hide thumbnail and overlay ads, and hide creator product promos (e.g., T-shirts, merch).
+
+⚙️ General settings
+Import/Export: Export, import, or reset settings to migrate configurations with one click.
+Multi-language: UI available in multiple languages with ongoing translations.
+
+🔧 Development status
+The extension is under active development. Feedback and feature requests are welcome. If you have ideas, find bugs, or want to contribute, visit our GitHub.

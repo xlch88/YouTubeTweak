@@ -1,0 +1,30 @@
+YouTube Tweak é uma extensão de melhorias para o YouTube feita para usuários avançados. Com recursos personalizáveis, você se livra das limitações padrão, controla cada detalhe e busca o ambiente de visualização mais limpo, inteligente e fluido.
+
+⭐Totalmente grátis e de código aberto!
+⭐Contribuições bem-vindas — novos recursos ou traduções!
+👉 https://github.com/xlch88/YoutubeTweak
+
+Principais módulos:
+
+🎬 Melhorias do player
+Bloqueio de qualidade: alterna automaticamente para a resolução escolhida em cada reprodução (ex.: 1080p/720p) e cai para a qualidade inferior mais próxima se não estiver disponível.
+Botões extras de velocidade: exibe botões adicionais de velocidade de reprodução (1.25x, 1.5x, 2x etc.).
+Lembrar velocidade por canal: salva preferências de velocidade separadamente para cada canal.
+Ocultar botões específicos: esconda quase todos os botões do player conforme necessário para uma interface mais limpa.
+Recomendações no final transparentes: oculta as sugestões desfocadas ao fim dos vídeos (geralmente vídeos recomendados ou convites do criador).
+Reforço de volume: desativa a normalização de volume para obter 100% real no volume máximo.
+
+💬 Comentários
+Mostrar apelidos: exibe o apelido do canal do autor do comentário em vez de apenas o nome de usuário.
+Melhorias no conteúdo: expande automaticamente comentários longos e traduz automaticamente o texto dos comentários.
+
+🧹 Outros recursos
+Controle do layout da página inicial: fixa a quantidade de vídeos recomendados por linha na página inicial para manter a grade uniforme.
+Bloqueio de anúncios (experimental): pula automaticamente vídeos de anúncio, oculta anúncios em miniaturas e overlays; bloqueia promoções de produtos do criador (camisetas, merch).
+
+⚙️ Configurações gerais
+Importar/Exportar: exporte, importe ou redefina as configurações para migrar tudo com um clique.
+Suporte multilíngue: interface disponível em vários idiomas com traduções em atualização contínua.
+
+🔧 Status de desenvolvimento
+A extensão está em desenvolvimento ativo. Feedback e pedidos de recursos são bem-vindos. Se tiver ideias, encontrar bugs ou quiser contribuir, visite nosso GitHub.

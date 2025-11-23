@@ -1,0 +1,30 @@
+YouTube Tweak adalah ekstensi peningkatan YouTube untuk pengguna tingkat lanjut. Dengan rangkaian fitur yang dapat dikustomisasi, kamu bisa lepas dari batasan bawaan, mengontrol tiap detail, dan mendapatkan pengalaman menonton yang lebih bersih, cerdas, dan mulus.
+
+⭐Sepenuhnya gratis dan open source!
+⭐Kontribusi fitur baru atau terjemahan sangat diterima!
+👉 https://github.com/xlch88/YoutubeTweak
+
+Modul utama:
+
+🎬 Peningkatan pemutar
+Kunci kualitas: Otomatis beralih ke resolusi pilihanmu setiap pemutaran (mis. 1080p/720p), turun ke kualitas lebih rendah terdekat jika tidak tersedia.
+Tombol kecepatan ekstra: Tampilkan tombol kecepatan putar tambahan (1.25x, 1.5x, 2x, dll.).
+Ingat kecepatan per channel: Simpan preferensi kecepatan secara terpisah untuk tiap channel.
+Sembunyikan tombol tertentu: Sembunyikan hampir semua tombol pemutar sesuai kebutuhan agar tampilan lebih rapi.
+Sembunyikan rekomendasi di akhir: Menyembunyikan rekomendasi buram di akhir video (biasanya video yang disarankan atau ajakan kreator).
+Peningkatan volume: Nonaktifkan normalisasi volume untuk mendapatkan 100% nyata di volume maksimum.
+
+💬 Komentar
+Tampilkan nama panggilan: Menampilkan nama panggilan channel komentator, bukan hanya username.
+Peningkatan konten komentar: Otomatis membuka komentar panjang dan menerjemahkan teks komentar.
+
+🧹 Fitur lain
+Kontrol tata letak beranda: Kunci jumlah video rekomendasi per baris di beranda agar grid konsisten.
+Pemblokir iklan (eksperimental): Lewati video iklan secara otomatis, sembunyikan iklan pada thumbnail dan overlay; blokir promo merchandise kreator (mis. kaos, merch).
+
+⚙️ Pengaturan umum
+Impor/Ekspor: Ekspor, impor, atau reset pengaturan untuk migrasi konfigurasi dengan sekali klik.
+Dukungan multi-bahasa: Antarmuka mendukung banyak bahasa, terjemahan terus diperbarui.
+
+🔧 Status pengembangan
+Ekstensi ini sedang dikembangkan secara aktif. Masukan dan permintaan fitur sangat kami nantikan. Jika punya ide, menemukan bug, atau ingin berkontribusi, kunjungi GitHub kami.

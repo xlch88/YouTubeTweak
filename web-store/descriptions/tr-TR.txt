@@ -1,0 +1,30 @@
+YouTube Tweak, ileri düzey kullanıcılar için geliştirilen bir YouTube iyileştirme eklentisidir. Özelleştirilebilir özelliklerle varsayılan kısıtlamalardan kurtulmanızı, her detayı hassas şekilde kontrol etmenizi sağlar ve daha temiz, akıllı ve akıcı bir izleme deneyimi sunmayı hedefler.
+
+⭐Tamamen ücretsiz ve açık kaynak!
+⭐Yeni özellikler veya çeviriler için katkılarınızı bekliyoruz!
+👉 https://github.com/xlch88/YoutubeTweak
+
+Ana modüller:
+
+🎬 Oynatıcı iyileştirmeleri
+Kalite kilidi: Her oynatmada seçtiğiniz çözünürlüğe (örn. 1080p/720p) otomatik geçer, yoksa en yakın düşük kaliteye iner.
+Ek hız düğmeleri: Ek oynatma hız düğmeleri gösterir (1.25x, 1.5x, 2x vb.).
+Kanala göre hız hatırlama: Hız tercihlerini her kanal için ayrı ayrı kaydeder.
+Belirli düğmeleri gizleme: Daha temiz arayüz için ihtiyaç duyulan neredeyse tüm oynatıcı düğmelerini gizleyin.
+Bulanık bitiş önerilerini gizle: Videonun sonunda çıkan bulanık önerileri kaldırır (genelde önerilen videolar veya içerik üreticisi uyarıları).
+Ses güçlendirme: Ses normalizasyonunu kapatarak maksimum seste gerçek %100 elde edin.
+
+💬 Yorumlar
+Takma adı göster: Yorum yazarının kanal takma adını gösterir, sadece kullanıcı adını değil.
+Yorum içeriği iyileştirmesi: Uzun yorumları otomatik genişletir ve yorum metnini otomatik çevirir.
+
+🧹 Diğer özellikler
+Ana sayfa düzeni kontrolü: Ana sayfadaki önerilen videoların satır başına sayısını sabitleyerek tutarlı bir grid sağlar.
+Reklam engelleme (deneysel): Reklam videolarını otomatik atlar, küçük resim ve üstten reklamları gizler; içerik üreticisinin ürün tanıtımlarını (tişört, merch vb.) engeller.
+
+⚙️ Genel ayarlar
+Ayarları içe/dışa aktar: Konfigürasyonu tek tıkla taşımak için ayarları dışa aktarın, içe aktarın veya sıfırlayın.
+Çok dillilik: Arayüz birden fazla dili destekler ve çeviriler sürekli güncellenir.
+
+🔧 Geliştirme durumu
+Eklenti aktif geliştirme aşamasında. Geri bildirim ve özellik taleplerini memnuniyetle karşılıyoruz. Fikirleriniz varsa, hata bulursanız veya katkı vermek isterseniz GitHub'ımıza uğrayın.
