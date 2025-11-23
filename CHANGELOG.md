@@ -6,6 +6,37 @@ All release version update records are listed in this file.
 
 If you have questions, bug reports, or feature suggestions, please go to the [GitHub Issues page](https://github.com/xlch88/YouTubeTweak/issues) to submit them.
 
+## [1.1.0] - Unreleased
+
+### Updated
+
+- **player-speedButton:** Added more speed options.
+
+### Added
+
+- **player-time-tag:** Floating video time tag now supports custom font size, position, and offset.
+- **video-progress-bar:** Added an option to customize the progress bar height.
+- **i18n:** Added Arabic (ar-SA) translation.
+- **i18n:** Added Bengali (bn-BD) translation.
+- **i18n:** Added German (de-DE) translation.
+- **i18n:** Added Spanish (es-ES) translation.
+- **i18n:** Added Persian (fa-IR) translation.
+- **i18n:** Added Hindi (hi-IN) translation.
+- **i18n:** Added Indonesian (id-ID) translation.
+- **i18n:** Added Italian (it-IT) translation.
+- **i18n:** Added Korean (ko-KR) translation.
+- **i18n:** Added Marathi (mr-IN) translation.
+- **i18n:** Added Malay (ms-MY) translation.
+- **i18n:** Added Punjabi (pa-PK) translation.
+- **i18n:** Added Portuguese (pt-BR) translation.
+- **i18n:** Added Russian (ru-RU) translation.
+- **i18n:** Added Tamil (ta-IN) translation.
+- **i18n:** Added Telugu (te-IN) translation.
+- **i18n:** Added Thai (th-TH) translation.
+- **i18n:** Added Turkish (tr-TR) translation.
+- **i18n:** Added Ukrainian (uk-UA) translation.
+- **i18n:** Added Vietnamese (vi-VN) translation.
+
 ## [1.0.9] - 2025-11-22
 
 ### Fixed
