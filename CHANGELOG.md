@@ -6,6 +6,17 @@ All release version update records are listed in this file.
 
 If you have questions, bug reports, or feature suggestions, please go to the [GitHub Issues page](https://github.com/xlch88/YouTubeTweak/issues) to submit them.
 
+## [1.1.2] - 2025-11-26
+
+### Added
+
+- **comment-translate:** Added an option to never translate selected languages.
+
+### Fixed
+
+- **comment-translate:** Fixed an issue where the selected target language setting did not take effect.
+- **comment-translate:** Removed the extra expand/collapse button that appeared when showing translated content.
+
 ## [1.1.1] - 2025-11-25
 
 ### Fixed
