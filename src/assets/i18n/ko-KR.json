@@ -119,7 +119,8 @@
 				"targetLanguage": "대상 언어",
 				"option": {
 					"auto": "YouTube 언어 따르기"
-				}
+				},
+				"neverTranslate": "이 언어들은 번역하지 않기 (Ctrl로 다중 선택)"
 			}
 		}
 	},

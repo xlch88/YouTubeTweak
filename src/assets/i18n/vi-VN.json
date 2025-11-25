@@ -119,7 +119,8 @@
 				"targetLanguage": "Ngôn ngữ đích",
 				"option": {
 					"auto": "Theo ngôn ngữ của YouTube"
-				}
+				},
+				"neverTranslate": "Không bao giờ dịch các ngôn ngữ này (nhấn Ctrl để chọn nhiều)"
 			}
 		}
 	},

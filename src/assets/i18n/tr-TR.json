@@ -119,7 +119,8 @@
 				"targetLanguage": "Hedef dil",
 				"option": {
 					"auto": "YouTube dilini takip et"
-				}
+				},
+				"neverTranslate": "Bu dilleri asla çevirme (çoklu seçim için Ctrl)"
 			}
 		}
 	},

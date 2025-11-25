@@ -119,7 +119,8 @@
 				"targetLanguage": "翻譯目標語言",
 				"option": {
 					"auto": "跟隨YouTube語言"
-				}
+				},
+				"neverTranslate": "以下語言始終不翻譯（按Ctrl進行多選）"
 			}
 		}
 	},

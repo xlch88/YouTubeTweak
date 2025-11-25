@@ -119,7 +119,8 @@
 				"targetLanguage": "翻訳先の言語",
 				"option": {
 					"auto": "YouTube の言語に合わせる"
-				}
+				},
+				"neverTranslate": "これらの言語は常に翻訳しない（Ctrlで複数選択）"
 			}
 		}
 	},

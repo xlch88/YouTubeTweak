@@ -119,7 +119,8 @@
 				"targetLanguage": "Bahasa target",
 				"option": {
 					"auto": "Ikuti bahasa YouTube"
-				}
+				},
+				"neverTranslate": "Jangan pernah terjemahkan bahasa ini (tahan Ctrl untuk pilih banyak)"
 			}
 		}
 	},

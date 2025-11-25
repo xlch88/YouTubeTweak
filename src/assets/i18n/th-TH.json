@@ -119,7 +119,8 @@
 				"targetLanguage": "ภาษาปลายทาง",
 				"option": {
 					"auto": "ตามภาษาของ YouTube"
-				}
+				},
+				"neverTranslate": "ไม่ต้องแปลภาษานี้เลย (กด Ctrl เพื่อเลือกหลายภาษา)"
 			}
 		}
 	},

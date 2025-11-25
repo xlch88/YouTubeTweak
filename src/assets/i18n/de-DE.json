@@ -119,7 +119,8 @@
 				"targetLanguage": "Zielsprache",
 				"option": {
 					"auto": "YouTube-Sprache verwenden"
-				}
+				},
+				"neverTranslate": "Diese Sprachen niemals übersetzen (für Mehrfachauswahl Strg drücken)"
 			}
 		}
 	},

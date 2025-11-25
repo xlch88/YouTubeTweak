@@ -119,7 +119,8 @@
 				"targetLanguage": "लक्ष्य भाषा",
 				"option": {
 					"auto": "YouTube ची भाषा अनुसरा"
-				}
+				},
+				"neverTranslate": "या भाषा कधीही अनुवाद करू नका (बहु-निवडीसाठी Ctrl दाबा)"
 			}
 		}
 	},

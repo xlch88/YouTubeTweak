@@ -119,7 +119,8 @@
 				"targetLanguage": "Idioma de destino",
 				"option": {
 					"auto": "Seguir o idioma do YouTube"
-				}
+				},
+				"neverTranslate": "Nunca traduzir estes idiomas (Ctrl para seleção múltipla)"
 			}
 		}
 	},
