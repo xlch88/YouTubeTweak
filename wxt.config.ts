@@ -53,6 +53,10 @@ export default defineConfig({
 		};
 	},
 	vite: (env) => ({
+		build: {
+			sourcemap: "inline",
+			minify: false,
+		},
 		define: {
 			__APP_INFO__: JSON.stringify({
 				build: new Date().toISOString(),
