@@ -56,7 +56,7 @@ body[yttweak-enable-speed-button] {
 	}
 }
 
-@each $speed in (0.25, 0.5, 1, 1.25, 1.5, 2, 2.25, 2.5, 3) {
+@each $speed in (0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 5, 10) {
 	body[yttweak-enable-speed-button~="#{$speed}"] span.yttweak-speed-button[speed="#{$speed}"] {
 		display: flex;
 	}
