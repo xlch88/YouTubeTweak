@@ -7,7 +7,7 @@
 					<input type="checkbox" v-model="config['player.settings.lockQuality']" />
 					<span>{{ $t("player.lockQuality.checkbox.enable") }}</span>
 				</label>
-				<select class="w-100 mt-5" v-model="config['player.settings.lockQuality.value']">
+				<select class="w-100" v-model="config['player.settings.lockQuality.value']">
 					<option
 						v-for="(name, key) of {
 							highres: '8K (4320p)',
@@ -115,14 +115,7 @@
 				</label>
 				<label class="form-item form-item-select">
 					<span>{{ $t("player.ui.checkbox.progressHeight") }}</span>
-					<input
-						type="number"
-						min="1"
-						max="20"
-						class="mt-5"
-						style="width: 70px"
-						v-model.number="config['player.ui.progress.height']"
-					/>
+					<input type="number" min="1" max="20" style="width: 70px" v-model.number="config['player.ui.progress.height']" />
 				</label>
 				<p>{{ $t("player.ui.tips.timeTag") }}</p>
 				<label class="form-item">
@@ -131,29 +124,15 @@
 				</label>
 				<label class="form-item form-item-select">
 					<span>{{ $t("player.ui.checkbox.progressTagFontSize") }}</span>
-					<input
-						type="number"
-						min="8"
-						max="48"
-						class="mt-5"
-						style="width: 70px"
-						v-model.number="config['player.ui.progress.tagFontSize']"
-					/>
+					<input type="number" min="8" max="48" style="width: 70px" v-model.number="config['player.ui.progress.tagFontSize']" />
 				</label>
 				<label class="form-item form-item-select">
 					<span>{{ $t("player.ui.checkbox.progressTagOffset") }}</span>
-					<input
-						type="number"
-						min="0"
-						max="200"
-						class="mt-5"
-						style="width: 70px"
-						v-model.number="config['player.ui.progress.tagOffset']"
-					/>
+					<input type="number" min="0" max="200" style="width: 70px" v-model.number="config['player.ui.progress.tagOffset']" />
 				</label>
 				<label class="form-item form-item-select">
 					<span>{{ $t("player.ui.checkbox.progressTagPosition") }}</span>
-					<select class="w-100 mt-5" v-model="config['player.ui.progress.tagPosition']">
+					<select class="w-100" v-model="config['player.ui.progress.tagPosition']">
 						<option v-for="option in progressTagPositions" :value="option.value" :key="option.value">
 							{{ option.arrow }} {{ $t(option.labelKey) }}
 						</option>

@@ -206,6 +206,7 @@ header {
 	}
 
 	&.form-item-select {
+		padding-top: 5px;
 		gap: 15px;
 		justify-content: space-between;
 
@@ -214,7 +215,8 @@ header {
 			white-space: nowrap;
 		}
 
-		select {
+		select,
+		input {
 			width: 100%;
 			max-width: 50%;
 		}
