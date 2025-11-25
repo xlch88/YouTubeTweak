@@ -1,7 +1,7 @@
 {
 	"name": "youtube-tweak",
 	"private": true,
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"type": "module",
 	"scripts": {
 		"dev": "wxt",
@@ -9,6 +9,7 @@
 		"build": "vue-tsc --noEmit && wxt build && tsx build/chrome-crx3.ts",
 		"build:edge": "vue-tsc --noEmit && wxt zip -b edge",
 		"build:firefox": "vue-tsc --noEmit && wxt zip -b firefox",
+		"build:all": "vue-tsc --noEmit && wxt build && tsx build/chrome-crx3.ts && wxt zip -b edge && wxt zip -b firefox",
 		"compile": "vue-tsc --noEmit",
 		"postinstall": "wxt prepare"
 	},
