@@ -9,7 +9,12 @@ body.yttweak-comment-enable-translate {
 	white-space: pre-wrap;
 	background: linear-gradient(to right, #03a9f4 0%, #03a9f4 50%, transparent 50%, transparent 100%) repeat-x left bottom;
 	background-size: 8px 2px;
-	padding-bottom: 2px;
+	padding-bottom: 1px;
+
+	font-size: 1.4rem;
+	font-weight: 400;
+	line-height: 2rem;
+	font-family: "Roboto", "Arial", sans-serif;
 }
 
 .yttweak-comment-translate-button {

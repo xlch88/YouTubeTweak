@@ -77,7 +77,7 @@ setInterval(() => {
 					decodeHtmlEntities(result)
 						.replace(/❤/g, "❤️")
 						.replace(/<br\/>/g, "\n");
-				doing[i][0].parentElement?.insertBefore(transNode, null);
+				doing[i][0].parentElement?.parentElement?.appendChild(transNode);
 			});
 		});
 }, 500);
