@@ -98,12 +98,12 @@ export default {
 		enable() {
 			document.body.classList.add("yttweak-player-enable-mirror-button");
 			enableFunctionCount++;
-			yttBtnBox!.style.display = enableFunctionCount <= 0 ? "none" : "flex";
+			if (yttBtnBox) yttBtnBox.style.display = enableFunctionCount <= 0 ? "none" : "flex";
 		},
 		disable() {
 			document.body.classList.remove("yttweak-player-enable-mirror-button");
 			enableFunctionCount--;
-			yttBtnBox!.style.display = enableFunctionCount <= 0 ? "none" : "flex";
+			if (yttBtnBox) yttBtnBox.style.display = enableFunctionCount <= 0 ? "none" : "flex";
 		},
 	},
 } as Record<string, Plugin>;
