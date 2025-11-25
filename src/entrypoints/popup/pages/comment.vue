@@ -26,7 +26,13 @@
 					<select v-model="config['comment.targetLanguage']">
 						<option value="auto">{{ $t("comment.context.select.option.auto") }}</option>
 						<option v-for="(v, k) in locales" :value="k" :key="k">{{ v }}</option>
-						<!-- Add more languages as needed -->
+					</select>
+				</label>
+
+				<label class="form-item form-item-select">
+					<span style="white-space: break-spaces">{{ $t("comment.context.select.neverTranslate") }}</span>
+					<select v-model="config['comment.neverTranslateLanguages']" multiple>
+						<option v-for="(v, k) in locales" :value="k" :key="k">{{ v }}</option>
 					</select>
 				</label>
 			</div>

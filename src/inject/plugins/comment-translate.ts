@@ -5,7 +5,64 @@ import type { Plugin } from "../types";
 
 const logger = createLogger("comment-translate");
 
-let needTranslate: [Element, string, string][] = [];
+type TranslateTask = {
+	commentEl: Element;
+	contentDom: Element;
+	text: string;
+	targetLang: string;
+	mode: "auto" | "manual";
+};
+
+let translateQueue: TranslateTask[] = [];
+
+function appendTranslateButton(task: TranslateTask, translatedHtml?: string) {
+	const commentTranslateButton = document.createElement("button");
+	commentTranslateButton.className = "yttweak-comment-translate-button";
+
+	const translateBar = task.commentEl.querySelector(".ytd-comment-view-model ytd-comment-engagement-bar .ytd-comment-engagement-bar");
+	if (!translateBar) return;
+
+	translateBar.appendChild(commentTranslateButton);
+	commentTranslateButton.onclick = () => {
+		commentTranslateButton.remove();
+		if (translatedHtml !== undefined) {
+			appendTranslation(task, translatedHtml);
+		} else {
+			translateQueue.push({ ...task, mode: "manual" });
+		}
+	};
+}
+
+function appendTranslation(task: TranslateTask, translatedHtml: string) {
+	if (!translatedHtml) return;
+
+	const transNode = document.createElement("div");
+	transNode.className = "yttweak-comment-translate";
+	transNode.textContent =
+		(translatedHtml.includes("<br/><br/>") ? "\n\n" : "\n") +
+		decodeHtmlEntities(translatedHtml)
+			.replace(/❤/g, "❤️")
+			.replace(/<br\/>/g, "\n");
+	task.contentDom.parentElement?.parentElement?.appendChild(transNode);
+}
+
+function normalizeLang(lang: string) {
+	return (lang || "").toLowerCase().replace("_", "-");
+}
+
+function isSameLanguage(a: string, b: string) {
+	const na = normalizeLang(a);
+	const nb = normalizeLang(b);
+	if (!na || !nb) return false;
+
+	if (na === nb) return true;
+	return na.split("-")[0] === nb.split("-")[0];
+}
+
+function isBlockedLanguage(lang: string, blocked: string[]) {
+	return blocked.some((item) => isSameLanguage(item, lang));
+}
+
 function handleTranslate(v: Element) {
 	setTimeout(() => {
 		let commentContentDom = v.querySelector("#content yt-attributed-string>span");
@@ -28,58 +85,78 @@ function handleTranslate(v: Element) {
 			}
 		});
 
-		let srcLang = detectLanguage(commentContent);
 		let toLang =
 			config.get("comment.targetLanguage") === "auto" ? window.yt?.config_?.HL || "zh_TW" : config.get("comment.targetLanguage");
-		if (
-			srcLang === toLang ||
-			srcLang.slice(0, 2) === toLang.slice(0, 2) ||
-			commentContent.trim() === "" ||
-			/^[\d\p{P}\p{Z}\p{C}]*$/u.test(commentContent)
-		) {
-			let commentTranslateButton = document.createElement("button");
-			commentTranslateButton.className = "yttweak-comment-translate-button";
-			v.querySelector(".ytd-comment-view-model ytd-comment-engagement-bar .ytd-comment-engagement-bar")?.appendChild(
-				commentTranslateButton,
-			);
-			commentTranslateButton.onclick = () => {
-				commentTranslateButton.remove();
-				needTranslate.push([commentContentDom, commentContent, toLang]);
-			};
+		const task: TranslateTask = {
+			commentEl: v,
+			contentDom: commentContentDom,
+			text: commentContent,
+			targetLang: toLang,
+			mode: "auto",
+		};
+
+		if (commentContent.trim() === "" || /^[\d\p{P}\p{Z}\p{C}]*$/u.test(commentContent)) {
+			appendTranslateButton(task);
 			return;
 		}
 
-		needTranslate.push([commentContentDom, commentContent, toLang]);
+		translateQueue.push(task);
 	}, 100);
 }
 setInterval(() => {
-	if (needTranslate.length === 0) return;
-	const doing = needTranslate.map((v) => v);
-	needTranslate = [];
+	if (translateQueue.length === 0) return;
 
-	fetch("https://translate-pa.googleapis.com/v1/translateHtml", {
-		headers: {
-			"content-type": "application/json+protobuf",
-			"x-goog-api-key": "AIzaSyATBXajvzQLTDHEQbcpq0Ihe0vWDHmO520",
-		},
-		body: JSON.stringify([[doing.map((v) => v[1].split("\n").join("<br/>")), "auto", doing[0][2]], "te_lib"]),
-		method: "POST",
-	})
-		.then((res) => {
-			return res.json();
+	const queue = translateQueue;
+	translateQueue = [];
+
+	const batches: Record<string, TranslateTask[]> = {};
+	queue.forEach((task) => {
+		const key = task.targetLang || "auto";
+		batches[key] ??= [];
+		batches[key].push(task);
+	});
+
+	Object.values(batches).forEach((doing) => {
+		fetch("https://translate-pa.googleapis.com/v1/translateHtml", {
+			headers: {
+				"content-type": "application/json+protobuf",
+				"x-goog-api-key": "AIzaSyATBXajvzQLTDHEQbcpq0Ihe0vWDHmO520",
+			},
+			body: JSON.stringify([[doing.map((v) => v.text.split("\n").join("<br/>")), "auto", doing[0].targetLang], "te_lib"]),
+			method: "POST",
 		})
-		.then((data) => {
-			data[0].forEach((result: string, i: number) => {
-				const transNode = document.createElement("div");
-				transNode.className = "yttweak-comment-translate";
-				transNode.textContent =
-					(result.includes("<br/><br/>") ? "\n\n" : "\n") +
-					decodeHtmlEntities(result)
-						.replace(/❤/g, "❤️")
-						.replace(/<br\/>/g, "\n");
-				doing[i][0].parentElement?.parentElement?.appendChild(transNode);
+			.then((res) => {
+				return res.json();
+			})
+			.then((data) => {
+				const translations: string[] = Array.isArray(data?.[0]) ? data[0] : [];
+				const detectedLanguages: string[] = Array.isArray(data?.[1]) ? data[1] : [];
+				const neverTranslateLanguages = config.get("comment.neverTranslateLanguages", []);
+
+				doing.forEach((task, i) => {
+					const result = translations[i];
+					const detectedLang = detectedLanguages[i] || "auto";
+					if (typeof result !== "string") {
+						appendTranslateButton(task);
+						return;
+					}
+
+					const shouldSkipAuto =
+						task.mode === "auto" &&
+						(isSameLanguage(detectedLang, task.targetLang) || isBlockedLanguage(detectedLang, neverTranslateLanguages));
+
+					if (shouldSkipAuto) {
+						appendTranslateButton(task, result);
+						return;
+					}
+
+					appendTranslation(task, result);
+				});
+			})
+			.catch((error) => {
+				logger.warn("translate error:", error);
 			});
-		});
+	});
 }, 500);
 
 export default {
@@ -121,56 +198,6 @@ export default {
 		},
 	},
 } as Record<string, Plugin>;
-
-// helper
-function detectLanguage(text: string) {
-	if (!text || typeof text !== "string") return "auto";
-
-	const scores: Record<string, number> = {};
-	const detectors = [
-		{ lang: "zh-CN", regex: /[\u4e00-\u9fa5]/g, weight: 2 }, // 简体中文字形区
-		{ lang: "zh-TW", regex: /[\u4e00-\u9fff]/g, weight: 1.5 }, // 共通中文字区，但较弱
-		{ lang: "zh-TW", regex: /[\u3100-\u312f\u31a0-\u31bf]/g, weight: 3 }, // 注音
-		{ lang: "ja", regex: /[\u3040-\u30ff\u31f0-\u31ff]/g, weight: 2 },
-		{ lang: "ko", regex: /[\uac00-\ud7af]/g, weight: 2 },
-		{ lang: "ru", regex: /[а-яё]/gi, weight: 1.5 },
-		{ lang: "ar", regex: /[\u0600-\u06ff]/g, weight: 1.5 },
-		{ lang: "iw", regex: /[\u0590-\u05ff]/g, weight: 1.5 },
-		{ lang: "th", regex: /[\u0e00-\u0e7f]/g, weight: 1.5 },
-		{ lang: "hi", regex: /[\u0900-\u097f]/g, weight: 1.5 },
-		{ lang: "bn", regex: /[\u0980-\u09ff]/g, weight: 1.5 },
-		{ lang: "ta", regex: /[\u0b80-\u0bff]/g, weight: 1.5 },
-		{ lang: "el", regex: /[α-ω]/gi, weight: 1.2 },
-		{ lang: "tr", regex: /[çğıöşü]/gi, weight: 1.2 },
-		{ lang: "vi", regex: /[ăâđêôơư]/gi, weight: 1.2 },
-		{ lang: "de", regex: /[äöüß]/gi, weight: 1.2 },
-		{ lang: "fr", regex: /[éèêëàâæçùûüœ]/gi, weight: 1.2 },
-		{ lang: "es", regex: /[ñáéíóúü¿¡]/gi, weight: 1.2 },
-		{ lang: "pt", regex: /[ãõáâêéóôç]/gi, weight: 1.2 },
-		{ lang: "it", regex: /[àèéìòù]/gi, weight: 1.2 },
-		{ lang: "pl", regex: /[ąćęłńóśźż]/gi, weight: 1.2 },
-		{ lang: "sv", regex: /[åäö]/gi, weight: 1.0 },
-		{ lang: "no", regex: /[æøå]/gi, weight: 1.0 },
-		{ lang: "da", regex: /[æøå]/gi, weight: 1.0 },
-		{ lang: "cs", regex: /[čďěňřšťž]/gi, weight: 1.0 },
-		{ lang: "hu", regex: /[áéíóöőúüű]/gi, weight: 1.0 },
-		{ lang: "ro", regex: /[ăâîșț]/gi, weight: 1.0 },
-		{ lang: "nl", regex: /[éèëï]/gi, weight: 1.0 },
-		{ lang: "fi", regex: /[äö]/gi, weight: 1.0 },
-		{ lang: "en", regex: /\b(the|and|you|this|that|are|is|was|of|to|in)\b/gi, weight: 0.6 },
-		{ lang: "id", regex: /\b(saya|anda|dia|kami|mereka|tidak|itu)\b/gi, weight: 0.6 },
-	];
-
-	for (const { lang, regex, weight } of detectors) {
-		const matches = text.match(regex);
-		if (matches) {
-			scores[lang] = (scores[lang] || 0) + matches.length * weight;
-		}
-	}
-
-	const ranked = Object.entries(scores).sort((a, b) => b[1] - a[1]);
-	return ranked.length ? ranked[0][0] : "auto";
-}
 
 function decodeHtmlEntities(str: string) {
 	const namedEntities: Record<string, string> = {
