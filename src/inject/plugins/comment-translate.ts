@@ -5,7 +5,7 @@ import type { Plugin } from "../types";
 
 const logger = createLogger("comment-translate");
 
-let needTranslate: [Element, string][] = [];
+let needTranslate: [Element, string, string][] = [];
 function handleTranslate(v: Element) {
 	setTimeout(() => {
 		let commentContentDom = v.querySelector("#content yt-attributed-string>span");
@@ -29,7 +29,8 @@ function handleTranslate(v: Element) {
 		});
 
 		let srcLang = detectLanguage(commentContent);
-		let toLang = window?.yt?.config_?.HL || "zh_TW";
+		let toLang =
+			config.get("comment.targetLanguage") === "auto" ? window.yt?.config_?.HL || "zh_TW" : config.get("comment.targetLanguage");
 		if (
 			srcLang === toLang ||
 			srcLang.slice(0, 2) === toLang.slice(0, 2) ||
@@ -43,12 +44,12 @@ function handleTranslate(v: Element) {
 			);
 			commentTranslateButton.onclick = () => {
 				commentTranslateButton.remove();
-				needTranslate.push([commentContentDom, commentContent]);
+				needTranslate.push([commentContentDom, commentContent, toLang]);
 			};
 			return;
 		}
 
-		needTranslate.push([commentContentDom, commentContent]);
+		needTranslate.push([commentContentDom, commentContent, toLang]);
 	}, 100);
 }
 setInterval(() => {
@@ -56,13 +57,12 @@ setInterval(() => {
 	const doing = needTranslate.map((v) => v);
 	needTranslate = [];
 
-	let toLang = config.get("comment.targetLanguage") === "auto" ? window.yt?.config_?.HL || "zh_TW" : config.get("comment.targetLanguage");
 	fetch("https://translate-pa.googleapis.com/v1/translateHtml", {
 		headers: {
 			"content-type": "application/json+protobuf",
 			"x-goog-api-key": "AIzaSyATBXajvzQLTDHEQbcpq0Ihe0vWDHmO520",
 		},
-		body: JSON.stringify([[doing.map((v) => v[1].split("\n").join("<br/>")), "auto", toLang], "te_lib"]),
+		body: JSON.stringify([[doing.map((v) => v[1].split("\n").join("<br/>")), "auto", doing[0][2]], "te_lib"]),
 		method: "POST",
 	})
 		.then((res) => {
