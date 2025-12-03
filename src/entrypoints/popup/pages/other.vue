@@ -19,6 +19,20 @@
 		</div>
 
 		<div class="card">
+			<div class="card-title">{{ $t("other.comment.title") }}</div>
+			<div class="card-body">
+				<label class="form-item">
+					<input type="checkbox" v-model="config['comment.nickname']" />
+					<span>{{ $t("other.comment.checkbox.showNickname") }}</span>
+				</label>
+				<label class="form-item">
+					<input type="checkbox" v-model="config['comment.autoShowMore']" />
+					<span>{{ $t("comment.context.checkbox.autoShowMore") }}</span>
+				</label>
+			</div>
+		</div>
+
+		<div class="card">
 			<div class="card-title">{{ $t("other.antiAD.title") }}</div>
 			<div class="card-body">
 				<p>{{ $t("other.antiAD.tips.enable") }}</p>

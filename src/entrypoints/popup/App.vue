@@ -27,7 +27,7 @@ import type { Component } from "vue";
 
 const tabs: Record<string, Component> = {
 	player: defineAsyncComponent(() => import("./pages/player.vue")),
-	comment: defineAsyncComponent(() => import("./pages/comment.vue")),
+	translate: defineAsyncComponent(() => import("./pages/translate.vue")),
 	other: defineAsyncComponent(() => import("./pages/other.vue")),
 	// insights: defineAsyncComponent(() => import("./pages/insights.vue")),
 	general: defineAsyncComponent(() => import("./pages/general.vue")),

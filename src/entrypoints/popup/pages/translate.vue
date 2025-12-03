@@ -1,26 +1,8 @@
 <template>
-	<section id="page-comment">
+	<section id="page-translate">
 		<div class="card">
-			<div class="card-title">{{ $t("comment.nickname.title") }}</div>
+			<div class="card-title">{{ $t("translate.common.title") }}</div>
 			<div class="card-body">
-				<label class="form-item">
-					<input type="checkbox" v-model="config['comment.nickname']" />
-					<span>{{ $t("comment.nickname.checkbox.showNickname") }}</span>
-				</label>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-title">{{ $t("comment.context.title") }}</div>
-			<div class="card-body">
-				<label class="form-item">
-					<input type="checkbox" v-model="config['comment.autoShowMore']" />
-					<span>{{ $t("comment.context.checkbox.autoShowMore") }}</span>
-				</label>
-				<label class="form-item">
-					<input type="checkbox" v-model="config['comment.autoTranslate']" />
-					<span>{{ $t("comment.context.checkbox.autoTranslate") }}</span>
-				</label>
-
 				<label class="form-item form-item-select">
 					<span>{{ $t("comment.context.select.targetLanguage") }}: </span>
 					<select v-model="config['comment.targetLanguage']">
@@ -34,6 +16,19 @@
 					<select v-model="config['comment.neverTranslateLanguages']" multiple>
 						<option v-for="(v, k) in locales" :value="k" :key="k">{{ v }}</option>
 					</select>
+				</label>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-title">{{ $t("translate.enable.title") }}</div>
+			<div class="card-body">
+				<label class="form-item">
+					<input type="checkbox" v-model="config['comment.autoTranslate']" />
+					<span>{{ $t("comment.context.checkbox.autoTranslate") }}</span>
+				</label>
+				<label class="form-item">
+					<input type="checkbox" v-model="config['translate.enable.timedtext']" />
+					<span>{{ $t("translate.enable.checkbox.timedtext") }}</span>
 				</label>
 			</div>
 		</div>
