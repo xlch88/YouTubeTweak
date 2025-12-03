@@ -6,6 +6,12 @@ All release version update records are listed in this file.
 
 If you have questions, bug reports, or feature suggestions, please go to the [GitHub Issues page](https://github.com/xlch88/YouTubeTweak/issues) to submit them.
 
+## [1.1.4] - 2025-12-03
+
+### Fixed
+
+- **XMLHttpRequest Hooker:** Fixed an issue where the XMLHttpRequest Hooker would not initialize properly.
+
 ## [1.1.3] - 2025-12-03
 
 ### Updated
