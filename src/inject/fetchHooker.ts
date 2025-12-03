@@ -30,8 +30,10 @@ export default {
 				const responseClone = response.clone();
 
 				if (matchedHooks.filter((v) => v.mutator).length <= 0) {
-					responseClone.json().then((result) => {
-						matchedHooks.forEach((hook) => hook.handler(result, url, responseClone));
+					responseClone.json().then(async (result) => {
+						for (const hook of matchedHooks) {
+							await hook.handler(result, url, responseClone);
+						}
 					});
 
 					return response;
@@ -39,9 +41,9 @@ export default {
 					let data = await responseClone.json();
 					for (const hook of matchedHooks) {
 						if (hook.mutator) {
-							data = hook.handler(data, url, responseClone);
+							data = await hook.handler(data, url, responseClone);
 						} else {
-							hook.handler(data, url, responseClone);
+							await hook.handler(data, url, responseClone);
 						}
 					}
 
