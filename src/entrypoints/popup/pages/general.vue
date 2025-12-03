@@ -10,6 +10,14 @@
 			<button @click="updateNow()" class="btn btn-green">{{ $t("general.update.buttons.update") }}</button>
 		</div>
 
+		<div class="tips tips-warning" v-if="warningFetchHooker">
+			<p>
+				<b>{{ $t("general.warning.tips.title") }}</b>
+				<br />
+				{{ $t("general.warning.tips.fetchHooker") }}
+			</p>
+		</div>
+
 		<div class="card">
 			<div class="card-title">{{ $t("general.about.title") }}</div>
 			<div class="card-body about">
@@ -82,7 +90,7 @@ const config = useConfigStore();
 import { useI18n } from "vue-i18n";
 const { t } = useI18n();
 
-import { inject, ref } from "vue";
+import { inject, ref, computed } from "vue";
 const setTab = inject("setTab") as (v: string) => void;
 
 import { locales, i18n, loadLocaleMessages } from "../util/i18n";
@@ -90,6 +98,10 @@ const language = locales;
 const locale = ref(i18n.global.locale as string);
 
 const APP_INFO = window.__APP_INFO__;
+
+const warningFetchHooker = computed(() => {
+	return config["other.antiAD.enableVideo"] || config["translate.enable.timedtext"];
+});
 
 function resetConfig() {
 	if (!confirm(t("general.config.alert.resetConfig"))) return;
