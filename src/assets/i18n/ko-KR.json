@@ -11,6 +11,9 @@
 		"comment": {
 			"title": "댓글"
 		},
+		"translate": {
+			"title": "번역"
+		},
 		"other": {
 			"title": "기타"
 		},
@@ -276,6 +279,12 @@
 			"title": "언어",
 			"link": {
 				"translator": "번역자"
+			}
+		},
+		"warning": {
+			"tips": {
+				"title": "⚠ 경고",
+				"fetchHooker": "일부 기능(이중 언어 자막, 동영상 광고 차단 등)은 HTTP 요청 재작성 기능을 사용하여 페이지에 문제가 발생할 수 있습니다. 브라우징 중 문제가 생기면 이 기능을 꺼 보세요."
 			}
 		}
 	},

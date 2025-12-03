@@ -11,6 +11,9 @@
 		"comment": {
 			"title": "Bình luận"
 		},
+		"translate": {
+			"title": "Dịch"
+		},
 		"other": {
 			"title": "Khác"
 		},
@@ -276,6 +279,12 @@
 			"title": "Ngôn ngữ",
 			"link": {
 				"translator": "Người dịch"
+			}
+		},
+		"warning": {
+			"tips": {
+				"title": "⚠ Cảnh báo",
+				"fetchHooker": "Một số tính năng (như phụ đề song ngữ, chặn quảng cáo video) dùng viết lại yêu cầu HTTP và có thể gây lỗi trang. Nếu gặp vấn đề khi duyệt, hãy thử tắt tính năng này."
 			}
 		}
 	},

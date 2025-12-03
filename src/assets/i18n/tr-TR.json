@@ -11,6 +11,9 @@
 		"comment": {
 			"title": "Yorum"
 		},
+		"translate": {
+			"title": "Çeviri"
+		},
 		"other": {
 			"title": "Diğer"
 		},
@@ -276,6 +279,12 @@
 			"title": "Diller",
 			"link": {
 				"translator": "Çevirmen"
+			}
+		},
+		"warning": {
+			"tips": {
+				"title": "⚠ Uyarı",
+				"fetchHooker": "Bazı özellikler (çift dilli altyazı, video reklam engelleme vb.) HTTP isteklerini yeniden yazar ve sayfada sorunlara yol açabilir. Gezinirken sorun yaşarsan lütfen bu özelliği kapatmayı dene."
 			}
 		}
 	},

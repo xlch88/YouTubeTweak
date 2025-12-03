@@ -11,6 +11,9 @@
 		"comment": {
 			"title": "Comentários"
 		},
+		"translate": {
+			"title": "Traduzir"
+		},
 		"other": {
 			"title": "Outros"
 		},
@@ -276,6 +279,12 @@
 			"title": "Idiomas",
 			"link": {
 				"translator": "Tradutor"
+			}
+		},
+		"warning": {
+			"tips": {
+				"title": "⚠ Aviso",
+				"fetchHooker": "Alguns recursos (como legendas bilíngues e bloqueio de anúncios em vídeo) usam reescrita de requisições HTTP e podem causar problemas na página. Se tiver problemas durante a navegação, tente desativar esse recurso."
 			}
 		}
 	},

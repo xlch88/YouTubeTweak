@@ -11,6 +11,9 @@
 		"comment": {
 			"title": "留言"
 		},
+		"translate": {
+			"title": "翻譯"
+		},
 		"other": {
 			"title": "其他"
 		},
@@ -276,6 +279,12 @@
 			"title": "語言",
 			"link": {
 				"translator": "翻譯貢獻者"
+			}
+		},
+		"warning": {
+			"tips": {
+				"title": "⚠ 警告",
+				"fetchHooker": "部分功能（如雙語字幕、屏蔽影片廣告）使用了 HTTP 請求重寫功能，可能會造成頁面異常！如果瀏覽時遇到問題，請嘗試關閉此功能。"
 			}
 		}
 	},

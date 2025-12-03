@@ -11,6 +11,9 @@
 		"comment": {
 			"title": "Komen"
 		},
+		"translate": {
+			"title": "Terjemah"
+		},
 		"other": {
 			"title": "Lain-lain"
 		},
@@ -276,6 +279,12 @@
 			"title": "Bahasa",
 			"link": {
 				"translator": "Penterjemah"
+			}
+		},
+		"warning": {
+			"tips": {
+				"title": "⚠ Amaran",
+				"fetchHooker": "Beberapa ciri (seperti sari kata dwibahasa, sekat iklan video) menggunakan penulisan semula permintaan HTTP dan boleh menyebabkan masalah pada halaman. Jika menghadapi masalah semasa melayar, cuba matikan ciri ini."
 			}
 		}
 	},

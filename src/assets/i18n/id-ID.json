@@ -11,6 +11,9 @@
 		"comment": {
 			"title": "Komentar"
 		},
+		"translate": {
+			"title": "Terjemahkan"
+		},
 		"other": {
 			"title": "Lainnya"
 		},
@@ -276,6 +279,12 @@
 			"title": "Bahasa",
 			"link": {
 				"translator": "Penerjemah"
+			}
+		},
+		"warning": {
+			"tips": {
+				"title": "⚠ Peringatan",
+				"fetchHooker": "Beberapa fitur (mis. subtitle dwibahasa, blokir iklan video) memakai penulisan ulang permintaan HTTP dan bisa menyebabkan masalah pada halaman. Jika mengalami masalah saat menjelajah, coba nonaktifkan fitur ini."
 			}
 		}
 	},
