@@ -33,3 +33,28 @@ export function secToMMDD(time: number, forceShowHours = false): string {
 
 	return hours !== "00" || forceShowHours ? `${hours}:${minutes}:${seconds}` : `${minutes}:${seconds}`;
 }
+
+export function googleTranslate(text: string | string[], srcLang: string = "auto", targetLang: string): Promise<[string, string]> {
+	return new Promise((resolve, reject) => {
+		fetch("https://translate-pa.googleapis.com/v1/translateHtml", {
+			headers: {
+				"content-type": "application/json+protobuf",
+				"x-goog-api-key": "AIzaSyATBXajvzQLTDHEQbcpq0Ihe0vWDHmO520",
+			},
+			body: JSON.stringify([[typeof text === "string" ? [text] : text, srcLang, targetLang], "te_lib"]),
+			method: "POST",
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				if (typeof data[0] === "number") {
+					reject(new Error(`Translation API error (${data[0]}): ` + data[1]));
+					return;
+				}
+
+				resolve(data);
+			})
+			.catch((error) => {
+				reject(error);
+			});
+	});
+}
