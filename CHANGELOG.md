@@ -6,6 +6,21 @@ All release version update records are listed in this file.
 
 If you have questions, bug reports, or feature suggestions, please go to the [GitHub Issues page](https://github.com/xlch88/YouTubeTweak/issues) to submit them.
 
+## [1.1.3] - 2025-12-03
+
+### Updated
+
+- **Popup Window:** Added a "Translation" page; moved the previous "Comments" features to other locations.
+
+### Added
+
+- **Popup Window:** Added a warning on the "General" page to remind users some features may affect normal page behavior.
+- **bilingual-subtitles:** When enabled, automatically uses Google-translated captions and displays the translation above the original line.
+
+### Fixed
+
+- **comment-translate:** Fixed translation display glitches when switching comment sort order.
+
 ## [1.1.2] - 2025-11-26
 
 ### Added
