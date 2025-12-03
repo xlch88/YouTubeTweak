@@ -17,6 +17,7 @@ declare global {
 			metadata?: typeof metadata;
 			youtubeiAPIv1?: typeof youtubeiAPIv1;
 			fetchHookerIsEnabled?: boolean;
+			xmlHttpRequestHookerIsEnabled?: boolean;
 		};
 	}
 }
@@ -257,9 +258,13 @@ export default async function mainWorld() {
 		Object.values(pluginsDocumentStart).forEach((v) => v());
 
 		let fetchHookerIsEnabled = false;
+		let xmlHttpRequestHookerIsEnabled = false;
 		if (localStorage.getItem("YTTweak-EnableFetchHooker")) {
 			fetchHookerIsEnabled = true;
 			fetchHooker.init();
+		}
+		if (localStorage.getItem("YTTweak-EnableXMLHttpRequestHooker")) {
+			xmlHttpRequestHookerIsEnabled = true;
 			xmlHttpRequestHooker.init();
 		}
 
@@ -333,6 +338,24 @@ export default async function mainWorld() {
 			}
 		}
 
+		if (Object.keys(xmlHttpRequestHooker.hooks).length > 0) {
+			if (!xmlHttpRequestHookerIsEnabled) {
+				logger.warn("xmlHttpRequestHooker is not enabled, but has hooks! Enable it now.");
+				localStorage.setItem("YTTweak-EnableXMLHttpRequestHooker", "1");
+				debugger;
+				location.reload();
+				return;
+			}
+		} else {
+			if (xmlHttpRequestHookerIsEnabled) {
+				logger.warn("xmlHttpRequestHooker is enabled, but has no hooks!");
+				localStorage.removeItem("YTTweak-EnableXMLHttpRequestHooker");
+				debugger;
+				location.reload();
+				return;
+			}
+		}
+
 		window.__YT_TWEAK__ = {
 			WORLD: "main",
 			plugins,
@@ -340,6 +363,7 @@ export default async function mainWorld() {
 			metadata,
 			youtubeiAPIv1,
 			fetchHookerIsEnabled: fetchHookerIsEnabled,
+			xmlHttpRequestHookerIsEnabled: xmlHttpRequestHookerIsEnabled,
 		};
 
 		logger.debug(window.__YT_TWEAK__);

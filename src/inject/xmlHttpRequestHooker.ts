@@ -12,6 +12,7 @@ type Listener = {
 const xmlHttpRequestHooker = {
 	hooks: {} as Record<string, Hook>,
 	addHook(name: string, hook: Hook) {
+		localStorage.setItem("YTTweak-EnableXMLHttpRequestHooker", "1");
 		this.hooks[name] = hook;
 	},
 	init() {

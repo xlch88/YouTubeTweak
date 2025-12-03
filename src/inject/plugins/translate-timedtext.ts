@@ -19,7 +19,7 @@ type timedtextResponse = {
 export default {
 	"translate.enable.timedtext": {
 		options: {
-			// reloadOnToggle: true,
+			reloadOnToggle: true,
 		},
 		enable() {
 			logger.log("Enabling translate timedtext plugin...");
