@@ -44,6 +44,8 @@ export type Config = {
 	"comment.targetLanguage": string;
 	"comment.neverTranslateLanguages": string[];
 
+	"translate.enable.timedtext": boolean;
+
 	"index.videoPerRow.enable": boolean;
 	"index.videoPerRow.count": 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15;
 	"other.antiAD.enable": boolean;
@@ -89,6 +91,8 @@ const config: Config = {
 	"comment.autoTranslate": true,
 	"comment.targetLanguage": "auto",
 	"comment.neverTranslateLanguages": [],
+
+	"translate.enable.timedtext": true,
 
 	"index.videoPerRow.enable": false,
 	"index.videoPerRow.count": 4,
