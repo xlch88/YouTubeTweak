@@ -149,6 +149,12 @@
 				"enableWatch": "動画再生ページのおすすめショートを非表示",
 				"enableMenu": "メニューからショートを非表示"
 			}
+		},
+		"comment": {
+			"title": "コメント",
+			"checkbox": {
+				"showNickname": "コメント投稿者のニックネーム（チャンネル名）を表示する"
+			}
 		}
 	},
 	"insights": {
@@ -278,6 +284,17 @@
 		"line1": "YouTube Tweakをご利用いただき、ありがとうございます。",
 		"line2": "ブラウザの右上の拡張機能アイコンをクリックして、利用を開始できます。",
 		"line3": "ご使用中に問題が発生した場合は、GitHubにてご報告ください。"
+	},
+	"translate": {
+		"common": {
+			"title": "翻訳設定"
+		},
+		"enable": {
+			"title": "翻訳スイッチ",
+			"checkbox": {
+				"timedtext": "バイリンガル字幕"
+			}
+		}
 	}
 }
 

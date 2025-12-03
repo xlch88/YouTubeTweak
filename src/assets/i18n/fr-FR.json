@@ -149,6 +149,12 @@
 				"enableWatch": "Bloquer les recommendations des Shorts sur la page de vue",
 				"enableMenu": "Bloquer les recommendations des Shorts dans le panneau à côté"
 			}
+		},
+		"comment": {
+			"title": "Commentaires",
+			"checkbox": {
+				"showNickname": "Afficher le surnom de l'auteur de commentaire (channel name)"
+			}
 		}
 	},
 	"insights": {
@@ -278,6 +284,17 @@
 		"line1": "Merci d'avoir installé cette extension.",
 		"line2": "Vous pouvez commencer à utiliser cette extension en cliquant sur l'icône de celle-ci en haut à droite de votre navigateur.",
 		"line3": "En cas d'un problème, n'hésitez pas à nous le remonter dans GitHub."
+	},
+	"translate": {
+		"common": {
+			"title": "Paramètres de traduction"
+		},
+		"enable": {
+			"title": "Interrupteur de traduction",
+			"checkbox": {
+				"timedtext": "Sous-titres bilingues"
+			}
+		}
 	}
 }
 

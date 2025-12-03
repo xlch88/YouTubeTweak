@@ -19,6 +19,9 @@
 		},
 		"insights": {
 			"title": "Insights"
+		},
+		"translate": {
+			"title": "translate"
 		}
 	},
 	"player": {
@@ -149,6 +152,12 @@
 				"enableWatch": "Block Shorts on video watch page",
 				"enableMenu": "Block Shorts in sidebar/menu"
 			}
+		},
+		"comment": {
+			"title": "Comment",
+			"checkbox": {
+				"showNickname": "Show commenter nickname (channel name)"
+			}
 		}
 	},
 	"insights": {
@@ -278,6 +287,16 @@
 		"line1": "Thank you for installing this extension.",
 		"line2": "You can start using it by clicking the extension icon at the top right of your browser.",
 		"line3": "If you encounter any problems, feel free to report them on GitHub."
+	},
+	"translate": {
+		"common": {
+			"title": "Translation settings"
+		},
+		"enable": {
+			"title": "translation switch",
+			"checkbox": {
+				"timedtext": "bilingual subtitles"
+			}
+		}
 	}
 }
-

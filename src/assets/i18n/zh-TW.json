@@ -149,6 +149,12 @@
 				"enableWatch": "移除影片播放頁面下面推薦的 Shorts 影片",
 				"enableMenu": "移除側邊欄中的 Shorts 按鈕"
 			}
+		},
+		"comment": {
+			"title": "留言",
+			"checkbox": {
+				"showNickname": "顯示留言者暱稱 (頻道名稱)"
+			}
 		}
 	},
 	"insights": {
@@ -278,6 +284,17 @@
 		"line1": "非常感謝您安裝本擴充程式！",
 		"line2": "您可以點擊瀏覽器右上角的擴充程式按鈕以開始使用！",
 		"line3": "如果您在使用中遇到任何的問題，歡迎在我們的 GitHub 源碼倉庫上進行反饋！"
+	},
+	"translate": {
+		"common": {
+			"title": "翻譯設定"
+		},
+		"enable": {
+			"title": "翻譯開關",
+			"checkbox": {
+				"timedtext": "雙語字幕"
+			}
+		}
 	}
 }
 

@@ -149,6 +149,12 @@
 				"enableWatch": "Blokir Shorts di halaman tonton",
 				"enableMenu": "Blokir Shorts di sidebar/menu"
 			}
+		},
+		"comment": {
+			"title": "Komentar",
+			"checkbox": {
+				"showNickname": "Tampilkan nama kanal pengomentar"
+			}
 		}
 	},
 	"insights": {
@@ -278,6 +284,17 @@
 		"line1": "Terima kasih telah memasang ekstensi ini.",
 		"line2": "Anda bisa mulai menggunakannya dengan mengklik ikon ekstensi di kanan atas browser Anda.",
 		"line3": "Jika mengalami masalah, silakan laporkan di GitHub."
+	},
+	"translate": {
+		"common": {
+			"title": "Pengaturan terjemahan"
+		},
+		"enable": {
+			"title": "Sakelar terjemahan",
+			"checkbox": {
+				"timedtext": "Teks dua bahasa"
+			}
+		}
 	}
 }
 

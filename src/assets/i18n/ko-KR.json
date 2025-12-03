@@ -149,6 +149,12 @@
 				"enableWatch": "시청 페이지 Shorts 추천 차단",
 				"enableMenu": "사이드바/메뉴에서 Shorts 차단"
 			}
+		},
+		"comment": {
+			"title": "댓글",
+			"checkbox": {
+				"showNickname": "댓글 작성자의 채널 이름 표시"
+			}
 		}
 	},
 	"insights": {
@@ -278,6 +284,17 @@
 		"line1": "이 확장 프로그램을 설치해 주셔서 감사합니다.",
 		"line2": "브라우저 오른쪽 상단의 확장 프로그램 아이콘을 클릭해 바로 사용할 수 있습니다.",
 		"line3": "문제가 발생하면 언제든 GitHub에 알려주세요."
+	},
+	"translate": {
+		"common": {
+			"title": "번역 설정"
+		},
+		"enable": {
+			"title": "번역 스위치",
+			"checkbox": {
+				"timedtext": "이중언어 자막"
+			}
+		}
 	}
 }
 

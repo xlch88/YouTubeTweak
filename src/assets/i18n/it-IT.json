@@ -149,6 +149,12 @@
 				"enableWatch": "Blocca gli Shorts sulla pagina di riproduzione",
 				"enableMenu": "Blocca gli Shorts nella sidebar/menu"
 			}
+		},
+		"comment": {
+			"title": "Commenti",
+			"checkbox": {
+				"showNickname": "Mostra il nome del canale di chi commenta"
+			}
 		}
 	},
 	"insights": {
@@ -278,6 +284,17 @@
 		"line1": "Grazie per aver installato questa estensione.",
 		"line2": "Puoi iniziare a usarla facendo clic sull'icona dell'estensione in alto a destra del browser.",
 		"line3": "Se riscontri problemi, segnalali su GitHub."
+	},
+	"translate": {
+		"common": {
+			"title": "Impostazioni di traduzione"
+		},
+		"enable": {
+			"title": "Interruttore traduzione",
+			"checkbox": {
+				"timedtext": "Sottotitoli bilingue"
+			}
+		}
 	}
 }
 

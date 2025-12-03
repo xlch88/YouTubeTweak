@@ -11,6 +11,9 @@
 		"comment": {
 			"title": "评论"
 		},
+		"translate": {
+			"title": "翻译"
+		},
 		"other": {
 			"title": "其他"
 		},
@@ -113,7 +116,7 @@
 			"title": "评论内容",
 			"checkbox": {
 				"autoShowMore": "自动展开长评论",
-				"autoTranslate": "自动翻译评论"
+				"autoTranslate": "翻译评论内容"
 			},
 			"select": {
 				"targetLanguage": "翻译目标语言",
@@ -148,6 +151,12 @@
 				"enableIndex": "屏蔽首页Shorts推荐",
 				"enableWatch": "屏蔽视频播放页面Shorts推荐",
 				"enableMenu": "在侧边栏里屏蔽 Shorts"
+			}
+		},
+		"comment": {
+			"title": "评论",
+			"checkbox": {
+				"showNickname": "显示评论者昵称(频道名)"
 			}
 		}
 	},
@@ -278,6 +287,17 @@
 		"line1": "感谢你安装本插件。",
 		"line2": "你可以点击浏览器右上角插件图标开始使用。",
 		"line3": "如果你在使用中遇到任何问题，欢迎在 GitHub 上反馈。"
+	},
+	"translate": {
+		"common": {
+			"title": "翻译设定"
+		},
+		"enable": {
+			"title": "翻译开关",
+			"checkbox": {
+				"timedtext": "双语字幕"
+			}
+		}
 	}
 }
 

@@ -149,6 +149,12 @@
 				"enableWatch": "Bloquear Shorts en la página de reproducción",
 				"enableMenu": "Bloquear Shorts en la barra lateral o menú"
 			}
+		},
+		"comment": {
+			"title": "Comentarios",
+			"checkbox": {
+				"showNickname": "Mostrar el nombre del canal del autor del comentario"
+			}
 		}
 	},
 	"insights": {
@@ -278,6 +284,17 @@
 		"line1": "Gracias por instalar esta extensión.",
 		"line2": "Puedes empezar a usarla haciendo clic en el icono de la extensión en la esquina superior derecha del navegador.",
 		"line3": "Si tienes algún problema, no dudes en informarlo en GitHub."
+	},
+	"translate": {
+		"common": {
+			"title": "Configuración de traducción"
+		},
+		"enable": {
+			"title": "Interruptor de traducción",
+			"checkbox": {
+				"timedtext": "Subtítulos bilingües"
+			}
+		}
 	}
 }
 

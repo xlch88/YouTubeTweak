@@ -149,6 +149,12 @@
 				"enableWatch": "Shorts auf Videoseite blockieren",
 				"enableMenu": "Shorts in Seitenleiste/Menü blockieren"
 			}
+		},
+		"comment": {
+			"title": "Kommentare",
+			"checkbox": {
+				"showNickname": "Kanalnamen des Kommentators anzeigen"
+			}
 		}
 	},
 	"insights": {
@@ -278,6 +284,17 @@
 		"line1": "Danke, dass du diese Erweiterung installiert hast.",
 		"line2": "Du kannst sie über das Erweiterungssymbol oben rechts im Browser öffnen.",
 		"line3": "Falls du Probleme hast, melde sie gern auf GitHub."
+	},
+	"translate": {
+		"common": {
+			"title": "Übersetzungseinstellungen"
+		},
+		"enable": {
+			"title": "Übersetzungsschalter",
+			"checkbox": {
+				"timedtext": "Zweisprachige Untertitel"
+			}
+		}
 	}
 }
 

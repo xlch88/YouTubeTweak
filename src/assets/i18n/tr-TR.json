@@ -149,6 +149,12 @@
 				"enableWatch": "Video sayfasında Shorts engelle",
 				"enableMenu": "Kenar çubuğu/menüde Shorts engelle"
 			}
+		},
+		"comment": {
+			"title": "Yorum",
+			"checkbox": {
+				"showNickname": "Yorum yapanın kanal adını göster"
+			}
 		}
 	},
 	"insights": {
@@ -278,6 +284,17 @@
 		"line1": "Bu uzantıyı yüklediğiniz için teşekkürler.",
 		"line2": "Tarayıcınızın sağ üstündeki uzantı simgesine tıklayarak kullanmaya başlayabilirsiniz.",
 		"line3": "Sorun yaşarsanız GitHub'da bildirmekten çekinmeyin."
+	},
+	"translate": {
+		"common": {
+			"title": "Çeviri ayarları"
+		},
+		"enable": {
+			"title": "Çeviri düğmesi",
+			"checkbox": {
+				"timedtext": "Çift dilli altyazılar"
+			}
+		}
 	}
 }
 

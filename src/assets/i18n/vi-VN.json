@@ -149,6 +149,12 @@
 				"enableWatch": "Chặn Shorts trên trang xem video",
 				"enableMenu": "Chặn Shorts trong thanh bên/menu"
 			}
+		},
+		"comment": {
+			"title": "Bình luận",
+			"checkbox": {
+				"showNickname": "Hiển thị tên kênh của người bình luận"
+			}
 		}
 	},
 	"insights": {
@@ -278,6 +284,17 @@
 		"line1": "Cảm ơn bạn đã cài đặt tiện ích.",
 		"line2": "Bạn có thể bắt đầu sử dụng bằng cách nhấp vào biểu tượng tiện ích ở góc phải trên của trình duyệt.",
 		"line3": "Nếu gặp vấn đề, hãy báo cáo trên GitHub."
+	},
+	"translate": {
+		"common": {
+			"title": "Cài đặt dịch"
+		},
+		"enable": {
+			"title": "Công tắc dịch",
+			"checkbox": {
+				"timedtext": "Phụ đề song ngữ"
+			}
+		}
 	}
 }
 

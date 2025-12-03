@@ -149,6 +149,12 @@
 				"enableWatch": "Blok Shorts di halaman tontonan",
 				"enableMenu": "Blok Shorts di bar sisi/menu"
 			}
+		},
+		"comment": {
+			"title": "Komen",
+			"checkbox": {
+				"showNickname": "Tunjukkan nama saluran pengulas"
+			}
 		}
 	},
 	"insights": {
@@ -278,6 +284,17 @@
 		"line1": "Terima kasih kerana memasang sambungan ini.",
 		"line2": "Anda boleh mula menggunakannya dengan klik ikon sambungan di kanan atas pelayar anda.",
 		"line3": "Jika ada masalah, sila laporkan di GitHub."
+	},
+	"translate": {
+		"common": {
+			"title": "Tetapan terjemahan"
+		},
+		"enable": {
+			"title": "Suis terjemahan",
+			"checkbox": {
+				"timedtext": "Sarikata dwibahasa"
+			}
+		}
 	}
 }
 
