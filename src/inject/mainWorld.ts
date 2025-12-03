@@ -6,6 +6,7 @@ import "./style.scss";
 import fetchHooker from "./fetchHooker";
 import type { Plugin } from "./types";
 import memory from "@/memory";
+import xmlHttpRequestHooker from "./xmlHttpRequestHooker";
 
 declare global {
 	interface Window {
@@ -259,6 +260,7 @@ export default async function mainWorld() {
 		if (localStorage.getItem("YTTweak-EnableFetchHooker")) {
 			fetchHookerIsEnabled = true;
 			fetchHooker.init();
+			xmlHttpRequestHooker.init();
 		}
 
 		wirelessRedstone.init("main");
