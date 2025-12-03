@@ -2,7 +2,8 @@ import { createApp } from "vue";
 import { createPinia } from "pinia";
 
 import App from "./App.vue";
-import "./app.scss";
+import "./style/global.scss";
+import "./style/elements.scss";
 import { initI18n } from "./util/i18n";
 import { configPlugin } from "./util/config";
 

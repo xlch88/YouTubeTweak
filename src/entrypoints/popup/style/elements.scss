@@ -1,0 +1,87 @@
+.tips {
+	background: #4caf50;
+	margin: 10px;
+	border-radius: 5px;
+	padding: 15px;
+	gap: 5px;
+	display: flex;
+	flex-wrap: wrap;
+	color: white;
+
+	&.tips-warning {
+		background: #ffbb54;
+		color: black;
+		p {
+			margin: 0;
+		}
+	}
+
+	p {
+		margin: 0;
+		width: 100%;
+		margin-bottom: 10px;
+
+		a {
+			color: white;
+			text-decoration: underline;
+		}
+	}
+}
+
+.card {
+	background: #fff;
+	margin: 10px;
+	border-radius: 5px;
+	padding: 10px;
+	box-shadow:
+		0 7px 14px 0 rgba(65, 69, 88, 0.1),
+		0 3px 6px 0 rgba(0, 0, 0, 0.07);
+
+	.card-title {
+		font-weight: bold;
+		border-bottom: 1px solid #eee;
+		background: rgb(249, 250, 253);
+		margin: -10px -10px 10px -10px;
+		padding: 10px;
+		font-size: 13px;
+		border-radius: 5px 5px 0 0;
+	}
+	.card-body {
+		p {
+			color: #7e8299;
+			margin-bottom: 0;
+			margin-top: 10px;
+		}
+	}
+}
+.form-item {
+	display: flex;
+	align-items: center;
+
+	&:hover input[type="checkbox"]:not(:checked):not(:focus):not(:disabled) {
+		background-color: rgba(#000, 0.1);
+	}
+
+	&.form-item-select {
+		padding-top: 5px;
+		gap: 15px;
+		justify-content: space-between;
+
+		span {
+			word-wrap: nowrap;
+			white-space: nowrap;
+		}
+
+		select,
+		input {
+			width: 100%;
+			max-width: 50%;
+		}
+	}
+}
+.form-item-group {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+}

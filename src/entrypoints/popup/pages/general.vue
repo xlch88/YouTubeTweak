@@ -1,6 +1,6 @@
 <template>
 	<section id="page-general">
-		<div class="update" v-if="waitUpdate">
+		<div class="tips tips-success" v-if="waitUpdate">
 			<p>
 				<b>{{ $t("general.update.tips.0", { version: waitUpdate }) }}</b>
 				<br />
@@ -249,28 +249,6 @@ function updateNow() {
 			button {
 				width: 100%;
 			}
-		}
-	}
-}
-
-.update {
-	background: #4caf50;
-	margin: 10px;
-	border-radius: 5px;
-	padding: 15px;
-	gap: 5px;
-	display: flex;
-	flex-wrap: wrap;
-	color: white;
-
-	p {
-		margin: 0;
-		width: 100%;
-		margin-bottom: 10px;
-
-		a {
-			color: white;
-			text-decoration: underline;
 		}
 	}
 }
