@@ -43,7 +43,7 @@ function appendTranslation(task: TranslateTask, translatedHtml: string) {
 		decodeHtmlEntities(translatedHtml)
 			.replace(/❤/g, "❤️")
 			.replace(/<br\/>/g, "\n");
-	task.contentDom.parentElement?.parentElement?.appendChild(transNode);
+	task.contentDom.parentElement?.appendChild(transNode);
 }
 
 function normalizeLang(lang: string) {
@@ -63,7 +63,14 @@ function isBlockedLanguage(lang: string, blocked: string[]) {
 	return blocked.some((item) => isSameLanguage(item, lang));
 }
 
-function handleTranslate(v: Element) {
+function handleTranslate(v: HTMLElement) {
+	if (v.classList.contains("yttweak-processed-translate")) {
+		return;
+	}
+	v.classList.add("yttweak-processed-translate");
+	console.log(v);
+	v.querySelectorAll("button.yttweak-comment-translate-button")?.forEach((btn) => btn.remove());
+
 	setTimeout(() => {
 		let commentContentDom = v.querySelector("#content yt-attributed-string>span");
 		let commentContent = "";
@@ -101,6 +108,10 @@ function handleTranslate(v: Element) {
 		}
 
 		translateQueue.push(task);
+
+		const t = document.createElement("span");
+		t.classList.add("yttweak-comment-translate-tag");
+		commentContentDom.parentElement?.appendChild(t);
 	}, 100);
 }
 setInterval(() => {
@@ -185,13 +196,22 @@ export default {
 							const v = node as HTMLElement;
 							const tagName = v?.tagName?.toLowerCase();
 							if (tagName === "ytd-comment-view-model" || tagName === "ytd-comment-thread-renderer") {
-								if (v.classList.contains("yttweak-processed-translate")) {
-									return;
-								}
-								v.classList.add("yttweak-processed-translate");
 								handleTranslate(v);
 							}
 						});
+
+						if (mutation.removedNodes.length > 0) {
+							const node = mutation.removedNodes.values().next().value as HTMLElement;
+							if (node?.classList?.contains("yttweak-comment-translate-tag")) {
+								const parent = (mutation.target as HTMLElement)?.parentElement?.parentElement?.parentElement?.parentElement
+									?.parentElement;
+
+								if (parent && parent.tagName.toLowerCase() === "ytd-comment-view-model") {
+									console.log("Re-translate comment as its translation node is removed:", parent);
+									handleTranslate(parent);
+								}
+							}
+						}
 					}
 				}
 			});
