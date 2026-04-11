@@ -35,6 +35,7 @@ export type Config = {
 	"player.settings.saveSpeedByChannel": boolean;
 	"player.settings.saveSubtitleStatus": boolean;
 	"player.settings.saveSubtitleStatusByChannel": boolean;
+	"player.settings.nonStop": boolean;
 	"player.ui.functionButtons.enableRotateButton": boolean;
 	"player.ui.functionButtons.enableMirrorButton": boolean;
 
@@ -83,6 +84,7 @@ const config: Config = {
 	"player.settings.saveSpeedByChannel": true,
 	"player.settings.saveSubtitleStatus": true,
 	"player.settings.saveSubtitleStatusByChannel": true,
+	"player.settings.nonStop": true,
 	"player.ui.functionButtons.enableRotateButton": false,
 	"player.ui.functionButtons.enableMirrorButton": false,
 

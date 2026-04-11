@@ -147,6 +147,10 @@
 					<input type="checkbox" v-model="config['player.settings.maxVolume']" />
 					<span>{{ $t("player.other.checkbox.maxVolume") }}</span>
 				</label>
+				<label class="form-item">
+					<input type="checkbox" v-model="config['player.settings.nonStop']" />
+					<span>{{ $t("player.other.checkbox.nonStop") }}</span>
+				</label>
 			</div>
 		</div>
 	</section>
