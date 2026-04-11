@@ -94,7 +94,8 @@
 		"other": {
 			"title": "Khác",
 			"checkbox": {
-				"maxVolume": "Tắt bộ cân bằng ở âm lượng tối đa (đúng 100%)"
+				"maxVolume": "Tắt bộ cân bằng ở âm lượng tối đa (đúng 100%)",
+				"nonStop": "Tắt tự động tạm dừng video (nhắc: \"Video đã tạm dừng, tiếp tục xem?\")"
 			}
 		},
 		"functionButtons": {

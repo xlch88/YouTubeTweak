@@ -94,7 +94,8 @@
 		"other": {
 			"title": "其他",
 			"checkbox": {
-				"maxVolume": "最大音量時關閉統一音量 (真·100%音量)"
+				"maxVolume": "最大音量時關閉統一音量 (真·100%音量)",
+				"nonStop": "停用影片自動暫停（提示「影片已暫停，繼續播放？」）"
 			}
 		},
 		"functionButtons": {

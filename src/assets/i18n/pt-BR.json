@@ -94,7 +94,8 @@
 		"other": {
 			"title": "Outros",
 			"checkbox": {
-				"maxVolume": "Desativar equalizador no volume máximo (100% real)"
+				"maxVolume": "Desativar equalizador no volume máximo (100% real)",
+				"nonStop": "Desativar a pausa automática do vídeo (aviso: \"Vídeo pausado. Continuar assistindo?\")"
 			}
 		},
 		"functionButtons": {

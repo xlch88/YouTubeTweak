@@ -94,7 +94,8 @@
 		"other": {
 			"title": "Diğer",
 			"checkbox": {
-				"maxVolume": "Maksimum seste ekolayzeri devre dışı bırak (gerçek 100%)"
+				"maxVolume": "Maksimum seste ekolayzeri devre dışı bırak (gerçek 100%)",
+				"nonStop": "Videonun otomatik duraklatılmasını devre dışı bırak (istem: \"Video duraklatıldı. İzlemeye devam edilsin mi?\")"
 			}
 		},
 		"functionButtons": {

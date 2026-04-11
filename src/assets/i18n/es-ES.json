@@ -94,7 +94,8 @@
 		"other": {
 			"title": "Otros",
 			"checkbox": {
-				"maxVolume": "Desactivar el ecualizador al volumen máximo (100% real)"
+				"maxVolume": "Desactivar el ecualizador al volumen máximo (100% real)",
+				"nonStop": "Desactivar la pausa automática del video (aviso: \"Video en pausa. ¿Quieres seguir viéndolo?\")"
 			}
 		},
 		"functionButtons": {

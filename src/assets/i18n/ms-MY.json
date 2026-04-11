@@ -94,7 +94,8 @@
 		"other": {
 			"title": "Lain-lain",
 			"checkbox": {
-				"maxVolume": "Nyahaktif penyama pada volum maksimum (100% sebenar)"
+				"maxVolume": "Nyahaktif penyama pada volum maksimum (100% sebenar)",
+				"nonStop": "Lumpuhkan jeda video automatik (gesaan: \"Video dijeda. Teruskan menonton?\")"
 			}
 		},
 		"functionButtons": {

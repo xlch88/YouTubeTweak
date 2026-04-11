@@ -94,7 +94,8 @@
 		"other": {
 			"title": "Lainnya",
 			"checkbox": {
-				"maxVolume": "Nonaktifkan equalizer di volume maksimum (benar 100%)"
+				"maxVolume": "Nonaktifkan equalizer di volume maksimum (benar 100%)",
+				"nonStop": "Nonaktifkan jeda video otomatis (prompt: \"Video dijeda. Lanjut menonton?\")"
 			}
 		},
 		"functionButtons": {

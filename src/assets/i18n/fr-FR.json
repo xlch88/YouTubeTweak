@@ -94,7 +94,8 @@
 		"other": {
 			"title": "Autre",
 			"checkbox": {
-				"maxVolume": "Désactiver l'equalizer quand le son est à son niveau maximal (100% en vrai)"
+				"maxVolume": "Désactiver l'equalizer quand le son est à son niveau maximal (100% en vrai)",
+				"nonStop": "Désactiver la mise en pause automatique de la vidéo (invite : \"Vidéo mise en pause. Continuer la lecture ?\")"
 			}
 		},
 		"functionButtons": {

@@ -94,7 +94,8 @@
 		"other": {
 			"title": "Other",
 			"checkbox": {
-				"maxVolume": "Disable equalizer at max volume (true 100%)"
+				"maxVolume": "Disable equalizer at max volume (true 100%)",
+				"nonStop": "Disable automatic video pausing (prompt: \"Video paused. Continue watching?\")"
 			}
 		},
 		"functionButtons": {

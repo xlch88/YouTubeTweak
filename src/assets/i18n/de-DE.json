@@ -94,7 +94,8 @@
 		"other": {
 			"title": "Sonstiges",
 			"checkbox": {
-				"maxVolume": "Equalizer bei maximaler Lautstärke deaktivieren (echte 100 %)"
+				"maxVolume": "Equalizer bei maximaler Lautstärke deaktivieren (echte 100 %)",
+				"nonStop": "Automatisches Pausieren des Videos deaktivieren (Hinweis: \"Video pausiert. Weiter ansehen?\")"
 			}
 		},
 		"functionButtons": {
