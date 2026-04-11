@@ -6,6 +6,20 @@ All release version update records are listed in this file.
 
 If you have questions, bug reports, or feature suggestions, please go to the [GitHub Issues page](https://github.com/xlch88/YouTubeTweak/issues) to submit them.
 
+## [1.1.5] - 2026-04-11
+
+### Updated
+
+- **anti-ad:** Added two new blocking rules.
+
+### Added
+
+- **player-nonStop:** Prevents automatic pausing after playing for a while (the "Video paused. Continue watching?" prompt).
+
+### Fixed
+
+- **comment-translate:** Fixed an issue where translated content was not updated after changing the sort order.
+
 ## [1.1.4] - 2025-12-03
 
 ### Fixed
