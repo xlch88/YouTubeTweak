@@ -43,7 +43,7 @@ function appendTranslation(task: TranslateTask, translatedHtml: string) {
 		decodeHtmlEntities(translatedHtml)
 			.replace(/❤/g, "❤️")
 			.replace(/<br\/>/g, "\n");
-	task.contentDom.parentElement?.appendChild(transNode);
+	task.contentDom.appendChild(transNode);
 }
 
 function normalizeLang(lang: string) {
@@ -68,7 +68,6 @@ function handleTranslate(v: HTMLElement) {
 		return;
 	}
 	v.classList.add("yttweak-processed-translate");
-	console.log(v);
 	v.querySelectorAll("button.yttweak-comment-translate-button")?.forEach((btn) => btn.remove());
 
 	setTimeout(() => {
@@ -109,9 +108,9 @@ function handleTranslate(v: HTMLElement) {
 
 		translateQueue.push(task);
 
-		const t = document.createElement("span");
-		t.classList.add("yttweak-comment-translate-tag");
-		commentContentDom.parentElement?.appendChild(t);
+		// const t = document.createElement("span");
+		// t.classList.add("yttweak-comment-translate-tag");
+		// commentContentDom.parentElement?.appendChild(t);
 	}, 100);
 }
 setInterval(() => {
@@ -202,15 +201,18 @@ export default {
 
 						if (mutation.removedNodes.length > 0) {
 							const node = mutation.removedNodes.values().next().value as HTMLElement;
-							if (node?.classList?.contains("yttweak-comment-translate-tag")) {
-								const parent = (mutation.target as HTMLElement)?.parentElement?.parentElement?.parentElement?.parentElement
-									?.parentElement;
-
-								if (parent && parent.tagName.toLowerCase() === "ytd-comment-view-model") {
-									console.log("Re-translate comment as its translation node is removed:", parent);
-									handleTranslate(parent);
-								}
+							const target = mutation.target as HTMLElement;
+							const parent = target?.closest("ytd-comment-view-model") as HTMLElement;
+							if (
+								node.nodeType !== Node.TEXT_NODE ||
+								!parent ||
+								target.nodeName !== "SPAN" ||
+								!target.classList.contains("ytAttributedStringHost")
+							) {
+								continue;
 							}
+							parent.classList.remove("yttweak-processed-translate");
+							handleTranslate(parent);
 						}
 					}
 				}
