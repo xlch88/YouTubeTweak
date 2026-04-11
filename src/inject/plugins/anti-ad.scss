@@ -5,6 +5,14 @@ body.yttweak-anti-ad {
 		display: none !important;
 	}
 
+	ytd-watch-flexy #secondary #secondary-inner #panels:has(ad-avatar-lockup-view-model) {
+		display: none !important;
+	}
+
+	ytd-rich-grid-renderer ytd-rich-section-renderer:has(ytd-statement-banner-renderer yt-button-shape a[href*="/premium"]) {
+		display: none !important;
+	}
+
 	// player skip ad button
 	.ytp-skip-ad-button {
 		width: 100%;
