@@ -1,1 +1,8 @@
-@use "./plugins/**/*.scss";
+@use "./plugins/anti-ad.scss";
+@use "./plugins/chromeApiStatusChecker.scss";
+@use "./plugins/comment-nickname.scss";
+@use "./plugins/comment-translate.scss";
+@use "./plugins/player-function-buttons.scss";
+@use "./plugins/player-speedButton.scss";
+@use "./plugins/player-ui.scss";
+@use "./plugins/shorts-blocker.scss";

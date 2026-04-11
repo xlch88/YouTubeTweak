@@ -1,6 +1,5 @@
 import { defineConfig } from "wxt";
 import vueDevTools from "vite-plugin-vue-devtools";
-import sassGlobImports from "vite-plugin-sass-glob-import";
 import pkg from "./package.json";
 import fs from "node:fs";
 import "dotenv/config";
@@ -65,11 +64,10 @@ export default defineConfig({
 			__IS_DEV__: env.mode === "development",
 		},
 		plugins: [
-			sassGlobImports(),
 			...[
 				env.mode !== "production"
 					? vueDevTools({
-							launchEditor: "idea",
+							launchEditor: "vscode",
 							appendTo: "/src/entrypoints/popup/main.js",
 						})
 					: [],

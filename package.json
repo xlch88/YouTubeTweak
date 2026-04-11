@@ -23,7 +23,6 @@
 		"prettier": "^3.6.2",
 		"sass": "^1.91.0",
 		"typescript": "5.9.2",
-		"vite-plugin-sass-glob-import": "^5.0.0",
 		"vite-plugin-vue-devtools": "^8.0.1",
 		"vue-tsc": "^3.0.6",
 		"wxt": "^0.20.11"
