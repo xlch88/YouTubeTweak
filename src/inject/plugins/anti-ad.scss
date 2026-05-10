@@ -1,7 +1,9 @@
 body.yttweak-anti-ad {
 	ytd-ad-slot-renderer,
 	ad-slot-renderer,
-	ytd-player-legacy-desktop-watch-ads-renderer {
+	ytd-player-legacy-desktop-watch-ads-renderer,
+	#shopping-timely-shelf,
+	yt-shopping-timely-shelf-content-view-model {
 		display: none !important;
 	}
 
