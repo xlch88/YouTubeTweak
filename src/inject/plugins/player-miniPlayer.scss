@@ -1,0 +1,225 @@
+body.yttweak-mini-player-mode ytd-player,
+body.yttweak-mini-player-mode #player,
+body.yttweak-mini-player-mode #player-container,
+body.yttweak-mini-player-mode #full-bleed-container,
+body.yttweak-mini-player-mode #player-full-bleed-container {
+	overflow: visible !important;
+	z-index: auto !important;
+	background: transparent !important;
+}
+
+body.yttweak-mini-player-mode .player-container-background,
+body.yttweak-mini-player-mode .player-container-background-image {
+	opacity: 0 !important;
+	visibility: hidden !important;
+}
+
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-fullscreen) {
+	position: fixed !important;
+	z-index: 2147483000 !important;
+	left: var(--yttweak-mini-player-left, auto) !important;
+	right: var(--yttweak-mini-player-right, auto) !important;
+	top: var(--yttweak-mini-player-top, auto) !important;
+	bottom: var(--yttweak-mini-player-bottom, auto) !important;
+	width: var(--yttweak-mini-player-width) !important;
+	height: auto !important;
+	aspect-ratio: var(--yttweak-mini-player-aspect-ratio, 16 / 9) !important;
+	background: #000 !important;
+	border-radius: 18px !important;
+	box-shadow:
+		0 24px 64px rgba(0, 0, 0, 0.36),
+		0 8px 24px rgba(0, 0, 0, 0.28);
+	overflow: hidden !important;
+	isolation: isolate;
+	opacity: 1 !important;
+	filter: none !important;
+	mix-blend-mode: normal !important;
+	will-change: top, right, bottom, left, width, opacity;
+	transition:
+		opacity 120ms ease-out,
+		box-shadow 120ms ease-out,
+		border-radius 120ms ease-out;
+}
+
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-fullscreen)::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	background: #000;
+	pointer-events: none;
+}
+
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-fullscreen) .html5-video-container,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-fullscreen) .ytp-cued-thumbnail-overlay,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-fullscreen) .html5-main-video,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-fullscreen) video.html5-main-video,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-fullscreen) .ytp-iv-video-content,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-fullscreen) .ytp-cued-thumbnail-overlay-image {
+	width: 100% !important;
+	height: 100% !important;
+	left: 0 !important;
+	top: 0 !important;
+	margin-left: 0 !important;
+	opacity: 1 !important;
+	background: #000 !important;
+	filter: none !important;
+	mix-blend-mode: normal !important;
+	visibility: visible !important;
+}
+
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-fullscreen) .html5-video-player,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-fullscreen) .html5-video-container {
+	height: 100% !important;
+	opacity: 1 !important;
+	background: #000 !important;
+	filter: none !important;
+	mix-blend-mode: normal !important;
+}
+
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-fullscreen) .ytp-gradient-top,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-fullscreen) .ytp-gradient-bottom,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-fullscreen) .ytp-chrome-top,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-fullscreen) .ytp-chrome-bottom,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-fullscreen) .ytp-caption-window-container {
+	opacity: 1 !important;
+	filter: none !important;
+	mix-blend-mode: normal !important;
+}
+
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-fullscreen) .ytp-caption-window-container > .caption-window {
+	left: var(--yttweak-mini-player-caption-window-left, 10%) !important;
+	width: var(--yttweak-mini-player-caption-window-width, 80%) !important;
+}
+
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-fullscreen) .ytp-chrome-bottom {
+	width: calc(100% - 24px) !important;
+}
+
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-fullscreen) .yttweak-speed-buttons,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-fullscreen) .yttweak-volume-booster-strip,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-fullscreen) .yttweak-player-function-buttons,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-fullscreen) .yttweak-player-progress-tag {
+	display: none !important;
+}
+
+body.yttweak-mini-player-mode.yttweak-player-progress-enable #movie_player.yttweak-mini-player-active:not(.ytp-fullscreen) .yttweak-player-progress {
+	display: block !important;
+	opacity: 1 !important;
+	left: 0 !important;
+	right: 0 !important;
+	bottom: 0 !important;
+	width: 100% !important;
+	height: max(var(--yttweak-progress-height, 2px), 4px) !important;
+	z-index: 2197 !important;
+	border-radius: 0 !important;
+	background: rgba(255, 255, 255, 0.16) !important;
+	pointer-events: none !important;
+	box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.18) inset;
+}
+
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active[data-yttweak-mini-player-density="compact"] .ytp-right-controls,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active[data-yttweak-mini-player-density="cozy"] .ytp-right-controls,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active[data-yttweak-mini-player-density="compact"] .caption-window,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active[data-yttweak-mini-player-density="cozy"] .caption-window,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active[data-yttweak-mini-player-density="compact"] .videowall-endscreen,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active[data-yttweak-mini-player-density="cozy"] .videowall-endscreen,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active[data-yttweak-mini-player-density="compact"] .ytp-subtitles-button,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active[data-yttweak-mini-player-density="cozy"] .ytp-subtitles-button,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active[data-yttweak-mini-player-density="compact"] .ytp-settings-button,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active[data-yttweak-mini-player-density="cozy"] .ytp-settings-button,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active[data-yttweak-mini-player-density="compact"] .ytp-size-button,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active[data-yttweak-mini-player-density="cozy"] .ytp-size-button,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active[data-yttweak-mini-player-density="compact"] .ytp-miniplayer-button,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active[data-yttweak-mini-player-density="cozy"] .ytp-miniplayer-button,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active[data-yttweak-mini-player-density="compact"] .ytp-pip-button,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active[data-yttweak-mini-player-density="cozy"] .ytp-pip-button,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active[data-yttweak-mini-player-density="compact"] .ytp-remote-button,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active[data-yttweak-mini-player-density="cozy"] .ytp-remote-button {
+	display: none !important;
+}
+
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active[data-yttweak-mini-player-density="compact"] .ytp-left-controls .ytp-button:not(.ytp-play-button):not(.ytp-mute-button) {
+	display: none !important;
+}
+
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active .video-ads,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active .ytp-tooltip,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active .ytp-preview,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active .ytp-progress-bar-container,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active .ytp-ce-element,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active .iv-drawer {
+	display: none !important;
+}
+
+.yttweak-mini-player-placeholder {
+	display: block;
+	visibility: visible;
+	pointer-events: none;
+	max-width: 100%;
+	position: relative;
+	z-index: 0 !important;
+	box-sizing: border-box;
+	overflow: hidden;
+	background: #000 !important;
+	border-radius: 18px;
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+	transition:
+		opacity 120ms ease-out,
+		background-color 120ms ease-out;
+}
+
+.yttweak-mini-player-close {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	z-index: 2198;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	width: 30px;
+	height: 30px;
+	border: 0;
+	border-radius: 999px;
+	background: rgba(14, 14, 16, 0.72);
+	backdrop-filter: blur(12px);
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+	color: white;
+	cursor: pointer;
+	opacity: 0.92;
+	transform: translateY(0);
+	transition:
+		opacity 160ms ease,
+		transform 160ms ease,
+		background-color 160ms ease;
+	appearance: none;
+	pointer-events: auto !important;
+
+	span,
+	svg {
+		width: 17px;
+		height: 17px;
+		display: block;
+		fill: currentColor;
+	}
+
+	&:hover {
+		background: rgba(24, 24, 27, 0.9);
+		opacity: 1;
+	}
+
+	&:focus-visible {
+		outline: 2px solid rgba(255, 255, 255, 0.8);
+		outline-offset: 2px;
+		opacity: 1;
+	}
+}
+
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:hover .yttweak-mini-player-close,
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active .yttweak-mini-player-close:focus-visible {
+	opacity: 1;
+}
+
+body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-fullscreen) .yttweak-mini-player-close {
+	display: inline-flex !important;
+}

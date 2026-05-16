@@ -1,0 +1,96 @@
+.yttweak-volume-booster-strip {
+	display: none;
+	margin-top: var(--yt-delhi-pill-top-height, 12px);
+	margin-right: 10px;
+	height: var(--yt-delhi-pill-height, 48px);
+	border-radius: 28px;
+	backdrop-filter: var(--yt-frosted-glass-backdrop-filter-override, blur(16px));
+	background: var(--yt-spec-overlay-background-medium-light, rgba(0, 0, 0, 0.3));
+	padding: 4px;
+	box-sizing: border-box;
+	align-items: center;
+}
+
+.yttweak-volume-booster-strip.yttweak-volume-booster-visible {
+	display: flex !important;
+}
+
+.yttweak-volume-booster-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	width: 48px;
+	padding: 0;
+	border: 0;
+	border-radius: 20px;
+	background: transparent;
+	color: white;
+	cursor: pointer;
+	font: inherit;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+	transition:
+		background-color 180ms ease,
+		color 180ms ease,
+		transform 180ms ease,
+		box-shadow 180ms ease,
+		border-color 180ms ease;
+	position: relative;
+	border: 1px solid transparent;
+
+	&:hover {
+		background: rgba(white, 0.12);
+	}
+
+	&::after {
+		content: "";
+		position: absolute;
+		inset: 4px;
+		border-radius: 20px;
+		pointer-events: none;
+		transition: background-color 180ms ease;
+	}
+
+	&:hover::after {
+		background: rgba(255, 255, 255, 0.06);
+	}
+
+	&:focus-visible {
+		outline: 2px solid rgba(255, 255, 255, 0.75);
+		outline-offset: 2px;
+	}
+
+	&.yttweak-volume-booster-active {
+		background: rgba(255, 255, 255, 0.12);
+		border-color: rgba(255, 255, 255, 0.42);
+		box-shadow:
+			inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+			0 0 0 1px rgba(0, 0, 0, 0.12);
+	}
+}
+
+.yttweak-volume-booster-icon {
+	width: 22px;
+	height: 22px;
+	flex: 0 0 auto;
+	opacity: 0.96;
+
+	svg {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.yttweak-volume-booster-outline {
+		fill: none;
+		stroke: currentColor;
+		stroke-width: 2;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		vector-effect: non-scaling-stroke;
+	}
+}
+
+.yttweak-volume-booster-button.yttweak-volume-booster-active .yttweak-volume-booster-icon {
+	opacity: 1;
+}
