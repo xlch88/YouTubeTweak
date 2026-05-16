@@ -84,7 +84,9 @@
 				"bottomLeft": "இடது கீழ் மூலை",
 				"bottomRight": "வலது கீழ் மூலை",
 				"topLeft": "இடது மேல் மூலை",
-				"topRight": "வலது மேல் மூலை"
+				"topRight": "வலது மேல் மூலை",
+				"bottomCenter": "__NEED_TRANSLATE__",
+				"topCenter": "__NEED_TRANSLATE__"
 			},
 			"tips": {
 				"timeTag": "மிதக்கும் வீடியோ நேர குறிச்சொற்கள்",
@@ -103,6 +105,34 @@
 			"checkbox": {
 				"enableRotateButton": "வீடியோ சுழற்சி பொத்தானை இயக்கு",
 				"enableMirrorButton": "வீடியோ கண்ணாடி பொத்தானை இயக்கு"
+			}
+		},
+		"volumeBooster": {
+			"title": "__NEED_TRANSLATE__",
+			"checkbox": {
+				"showControl": "__NEED_TRANSLATE__",
+				"enableByDefault": "__NEED_TRANSLATE__"
+			},
+			"select": {
+				"multiplier": "__NEED_TRANSLATE__"
+			},
+			"tips": {
+				"control": "__NEED_TRANSLATE__"
+			}
+		},
+		"miniPlayer": {
+			"title": "__NEED_TRANSLATE__",
+			"checkbox": {
+				"enable": "__NEED_TRANSLATE__"
+			},
+			"select": {
+				"size": "__NEED_TRANSLATE__",
+				"position": "__NEED_TRANSLATE__",
+				"offset": "__NEED_TRANSLATE__",
+				"triggerOffset": "__NEED_TRANSLATE__"
+			},
+			"tips": {
+				"enable": "__NEED_TRANSLATE__"
 			}
 		}
 	},

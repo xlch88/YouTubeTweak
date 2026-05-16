@@ -84,7 +84,9 @@
 				"bottomLeft": "Coin inférieur gauche",
 				"bottomRight": "Coin inférieur droit",
 				"topLeft": "Coin supérieur gauche",
-				"topRight": "Coin supérieur droit"
+				"topRight": "Coin supérieur droit",
+				"bottomCenter": "__NEED_TRANSLATE__",
+				"topCenter": "__NEED_TRANSLATE__"
 			},
 			"tips": {
 				"timeTag": "Étiquettes de temps vidéo flottantes",
@@ -103,6 +105,34 @@
 			"checkbox": {
 				"enableRotateButton": "Activer le bouton de rotation de la vidéo",
 				"enableMirrorButton": "Activer le bouton de miroir de la vidéo"
+			}
+		},
+		"volumeBooster": {
+			"title": "__NEED_TRANSLATE__",
+			"checkbox": {
+				"showControl": "__NEED_TRANSLATE__",
+				"enableByDefault": "__NEED_TRANSLATE__"
+			},
+			"select": {
+				"multiplier": "__NEED_TRANSLATE__"
+			},
+			"tips": {
+				"control": "__NEED_TRANSLATE__"
+			}
+		},
+		"miniPlayer": {
+			"title": "__NEED_TRANSLATE__",
+			"checkbox": {
+				"enable": "__NEED_TRANSLATE__"
+			},
+			"select": {
+				"size": "__NEED_TRANSLATE__",
+				"position": "__NEED_TRANSLATE__",
+				"offset": "__NEED_TRANSLATE__",
+				"triggerOffset": "__NEED_TRANSLATE__"
+			},
+			"tips": {
+				"enable": "__NEED_TRANSLATE__"
 			}
 		}
 	},

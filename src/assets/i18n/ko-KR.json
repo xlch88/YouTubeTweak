@@ -84,7 +84,9 @@
 				"bottomLeft": "왼쪽 아래 모서리",
 				"bottomRight": "오른쪽 아래 모서리",
 				"topLeft": "왼쪽 위 모서리",
-				"topRight": "오른쪽 위 모서리"
+				"topRight": "오른쪽 위 모서리",
+				"bottomCenter": "__NEED_TRANSLATE__",
+				"topCenter": "__NEED_TRANSLATE__"
 			},
 			"tips": {
 				"timeTag": "떠 있는 영상 시간 태그",
@@ -103,6 +105,34 @@
 			"checkbox": {
 				"enableRotateButton": "회전 버튼 사용",
 				"enableMirrorButton": "좌우 반전 버튼 사용"
+			}
+		},
+		"volumeBooster": {
+			"title": "__NEED_TRANSLATE__",
+			"checkbox": {
+				"showControl": "__NEED_TRANSLATE__",
+				"enableByDefault": "__NEED_TRANSLATE__"
+			},
+			"select": {
+				"multiplier": "__NEED_TRANSLATE__"
+			},
+			"tips": {
+				"control": "__NEED_TRANSLATE__"
+			}
+		},
+		"miniPlayer": {
+			"title": "__NEED_TRANSLATE__",
+			"checkbox": {
+				"enable": "__NEED_TRANSLATE__"
+			},
+			"select": {
+				"size": "__NEED_TRANSLATE__",
+				"position": "__NEED_TRANSLATE__",
+				"offset": "__NEED_TRANSLATE__",
+				"triggerOffset": "__NEED_TRANSLATE__"
+			},
+			"tips": {
+				"enable": "__NEED_TRANSLATE__"
 			}
 		}
 	},

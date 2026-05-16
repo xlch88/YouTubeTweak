@@ -84,7 +84,9 @@
 				"bottomLeft": "Нижний левый угол",
 				"bottomRight": "Нижний правый угол",
 				"topLeft": "Верхний левый угол",
-				"topRight": "Верхний правый угол"
+				"topRight": "Верхний правый угол",
+				"bottomCenter": "__NEED_TRANSLATE__",
+				"topCenter": "__NEED_TRANSLATE__"
 			},
 			"tips": {
 				"timeTag": "Плавающие метки времени видео",
@@ -103,6 +105,34 @@
 			"checkbox": {
 				"enableRotateButton": "Включить кнопку поворота видео",
 				"enableMirrorButton": "Включить кнопку зеркального отражения видео"
+			}
+		},
+		"volumeBooster": {
+			"title": "__NEED_TRANSLATE__",
+			"checkbox": {
+				"showControl": "__NEED_TRANSLATE__",
+				"enableByDefault": "__NEED_TRANSLATE__"
+			},
+			"select": {
+				"multiplier": "__NEED_TRANSLATE__"
+			},
+			"tips": {
+				"control": "__NEED_TRANSLATE__"
+			}
+		},
+		"miniPlayer": {
+			"title": "__NEED_TRANSLATE__",
+			"checkbox": {
+				"enable": "__NEED_TRANSLATE__"
+			},
+			"select": {
+				"size": "__NEED_TRANSLATE__",
+				"position": "__NEED_TRANSLATE__",
+				"offset": "__NEED_TRANSLATE__",
+				"triggerOffset": "__NEED_TRANSLATE__"
+			},
+			"tips": {
+				"enable": "__NEED_TRANSLATE__"
 			}
 		}
 	},
