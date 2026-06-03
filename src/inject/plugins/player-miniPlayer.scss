@@ -1,11 +1,21 @@
+body.yttweak-mini-player-mode {
+	overflow-anchor: none !important;
+}
+
 body.yttweak-mini-player-mode ytd-player,
 body.yttweak-mini-player-mode #player,
 body.yttweak-mini-player-mode #player-container,
 body.yttweak-mini-player-mode #full-bleed-container,
 body.yttweak-mini-player-mode #player-full-bleed-container {
 	overflow: visible !important;
-	z-index: auto !important;
 	background: transparent !important;
+}
+
+body.yttweak-mini-player-mode .yttweak-mini-player-stack-root {
+	position: relative !important;
+	overflow: visible !important;
+	overflow-anchor: none !important;
+	z-index: 2147483646 !important;
 }
 
 body.yttweak-mini-player-mode .player-container-background,
@@ -16,7 +26,7 @@ body.yttweak-mini-player-mode .player-container-background-image {
 
 body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-fullscreen) {
 	position: fixed !important;
-	z-index: 2147483000 !important;
+	z-index: 2147483647 !important;
 	left: var(--yttweak-mini-player-left, auto) !important;
 	right: var(--yttweak-mini-player-right, auto) !important;
 	top: var(--yttweak-mini-player-top, auto) !important;
@@ -149,23 +159,6 @@ body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active .ytp-prog
 body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active .ytp-ce-element,
 body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active .iv-drawer {
 	display: none !important;
-}
-
-.yttweak-mini-player-placeholder {
-	display: block;
-	visibility: visible;
-	pointer-events: none;
-	max-width: 100%;
-	position: relative;
-	z-index: 0 !important;
-	box-sizing: border-box;
-	overflow: hidden;
-	background: #000 !important;
-	border-radius: 18px;
-	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
-	transition:
-		opacity 120ms ease-out,
-		background-color 120ms ease-out;
 }
 
 .yttweak-mini-player-close {

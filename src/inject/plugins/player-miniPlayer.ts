@@ -11,10 +11,23 @@ const DEFAULT_TRIGGER = 48;
 const DEFAULT_ASPECT_RATIO = 16 / 9;
 const BODY_MODE_CLASS = "yttweak-mini-player-mode";
 const BODY_POSITION_PREFIX = "yttweak-mini-player-position-";
+const STACK_ROOT_CLASS = "yttweak-mini-player-stack-root";
+const LAYOUT_STYLE_SELECTORS = [
+	".html5-video-player",
+	".html5-video-container",
+	".ytp-cued-thumbnail-overlay",
+	".html5-main-video",
+	"video.html5-main-video",
+	".ytp-iv-video-content",
+	".ytp-cued-thumbnail-overlay-image",
+	".ytp-chrome-bottom",
+	".ytp-caption-window-container",
+	".ytp-caption-window-container > .caption-window",
+] as const;
+const LAYOUT_STYLE_PROPERTIES = ["width", "height", "left", "right", "top", "bottom", "margin-left", "margin-top", "transform"] as const;
 
 let isMiniPlayerActive = false;
 let isMiniPlayerDismissed = false;
-let currentPlaceholder: HTMLDivElement | null = null;
 let currentPinnedPlayer: HTMLDivElement | null = null;
 let closeButton: HTMLButtonElement | null = null;
 let miniPlayerStyle: HTMLStyleElement | null = null;
@@ -22,8 +35,14 @@ let updateFrame = 0;
 let globalListenersBound = false;
 let anchorBottomScrollY: number | null = null;
 let lastLayoutSignature = "";
-let originalPlayerParent: HTMLElement | null = null;
-let originalPlayerNextSibling: ChildNode | null = null;
+let stackRootElements: HTMLElement[] = [];
+let layoutStyleSnapshots: LayoutStyleSnapshot[] = [];
+
+type LayoutStyleProperty = (typeof LAYOUT_STYLE_PROPERTIES)[number];
+type LayoutStyleSnapshot = {
+	element: HTMLElement;
+	properties: Record<LayoutStyleProperty, { value: string; priority: string }>;
+};
 
 function createSvgElement(tagName: string) {
 	return document.createElementNS("http://www.w3.org/2000/svg", tagName);
@@ -76,6 +95,43 @@ function getMiniPlayerAspectRatio() {
 	}
 
 	return DEFAULT_ASPECT_RATIO;
+}
+
+function getViewportAnchorElement() {
+	const points: Array<[number, number]> = [
+		[window.innerWidth / 2, window.innerHeight * 0.35],
+		[window.innerWidth / 2, window.innerHeight * 0.5],
+		[window.innerWidth / 2, window.innerHeight * 0.7],
+		[window.innerWidth * 0.25, window.innerHeight * 0.5],
+		[window.innerWidth * 0.75, window.innerHeight * 0.5],
+	];
+
+	for (const [x, y] of points) {
+		const element = document.elementFromPoint(Math.round(x), Math.round(y));
+		if (element instanceof HTMLElement && !element.closest("#movie_player")) {
+			return element;
+		}
+	}
+
+	return document.querySelector<HTMLElement>("ytd-watch-flexy #columns, ytd-comments, #secondary, #below");
+}
+
+function preserveViewportPosition(callback: () => void) {
+	const anchorElement = getViewportAnchorElement();
+	const anchorTop = anchorElement?.getBoundingClientRect().top ?? null;
+	const scrollLeft = window.scrollX;
+	const scrollTop = window.scrollY;
+
+	callback();
+	void document.documentElement.offsetHeight;
+
+	if (anchorElement?.isConnected && anchorTop !== null) {
+		const anchorDelta = anchorElement.getBoundingClientRect().top - anchorTop;
+		window.scrollTo(scrollLeft, window.scrollY + anchorDelta);
+		return;
+	}
+
+	window.scrollTo(scrollLeft, scrollTop);
 }
 
 function getActivationScrollY() {
@@ -156,9 +212,79 @@ function ensureMiniPlayerStyle() {
 	return miniPlayerStyle;
 }
 
-function removePlaceholder() {
-	currentPlaceholder?.remove();
-	currentPlaceholder = null;
+function clearStackRoots() {
+	for (const element of stackRootElements) {
+		element.classList.remove(STACK_ROOT_CLASS);
+	}
+	stackRootElements = [];
+}
+
+function applyStackRoots(player: HTMLElement) {
+	clearStackRoots();
+
+	let element = player.parentElement;
+	while (element && element !== document.body && element !== document.documentElement) {
+		element.classList.add(STACK_ROOT_CLASS);
+		stackRootElements.push(element);
+		element = element.parentElement;
+	}
+}
+
+function captureLayoutStyles(player: HTMLElement) {
+	layoutStyleSnapshots = [];
+
+	const elements = new Set<HTMLElement>([player]);
+	for (const selector of LAYOUT_STYLE_SELECTORS) {
+		for (const element of player.querySelectorAll<HTMLElement>(selector)) {
+			elements.add(element);
+		}
+	}
+
+	for (const element of elements) {
+		const properties = {} as LayoutStyleSnapshot["properties"];
+		for (const property of LAYOUT_STYLE_PROPERTIES) {
+			properties[property] = {
+				value: element.style.getPropertyValue(property),
+				priority: element.style.getPropertyPriority(property),
+			};
+		}
+		layoutStyleSnapshots.push({ element, properties });
+	}
+}
+
+function restoreLayoutStyles() {
+	for (const snapshot of layoutStyleSnapshots) {
+		for (const property of LAYOUT_STYLE_PROPERTIES) {
+			const { value, priority } = snapshot.properties[property];
+			if (value) {
+				snapshot.element.style.setProperty(property, value, priority);
+			} else {
+				snapshot.element.style.removeProperty(property);
+			}
+		}
+	}
+	layoutStyleSnapshots = [];
+}
+
+function notifyNativePlayerResize(player: HTMLElement | null) {
+	if (!player || player.classList.contains("yttweak-mini-player-active")) {
+		return;
+	}
+
+	preserveViewportPosition(() => {
+		window.dispatchEvent(new Event("resize"));
+		player.dispatchEvent(new Event("resize"));
+		videoPlayer.videoStream?.dispatchEvent(new Event("resize"));
+		player.closest<HTMLElement>("ytd-player")?.dispatchEvent(new Event("resize"));
+	});
+}
+
+function scheduleNativeLayoutRefresh(player: HTMLElement | null) {
+	window.requestAnimationFrame(() => {
+		notifyNativePlayerResize(player);
+		window.requestAnimationFrame(() => notifyNativePlayerResize(player));
+		window.setTimeout(() => notifyNativePlayerResize(player), 120);
+	});
 }
 
 function getLayoutSignature() {
@@ -275,43 +401,38 @@ function activateMiniPlayer() {
 
 	const playerRect = player.getBoundingClientRect();
 	anchorBottomScrollY = window.scrollY + playerRect.bottom;
-	originalPlayerParent = player.parentElement;
-	originalPlayerNextSibling = player.nextSibling;
-	currentPlaceholder = document.createElement("div");
-	currentPlaceholder.className = "yttweak-mini-player-placeholder";
-	currentPlaceholder.style.width = `${Math.round(playerRect.width)}px`;
-	currentPlaceholder.style.height = `${Math.round(playerRect.height)}px`;
-	player.parentElement.insertBefore(currentPlaceholder, player);
+	captureLayoutStyles(player);
 	currentPinnedPlayer = player;
-	document.body.appendChild(player);
-	player.classList.add("yttweak-mini-player-active");
-	applyBodyClasses(config.get("player.miniPlayer.position", "bottom-right") as MiniPlayerPosition);
 	ensureCloseButton();
 	applyMiniPlayerLayout();
+
+	preserveViewportPosition(() => {
+		applyBodyClasses(config.get("player.miniPlayer.position", "bottom-right") as MiniPlayerPosition);
+		applyStackRoots(player);
+		player.classList.add("yttweak-mini-player-active");
+	});
 	isMiniPlayerActive = true;
 }
 
 function deactivateMiniPlayer() {
 	const player = currentPinnedPlayer || videoPlayer.player;
-	if (player && originalPlayerParent) {
-		if (currentPlaceholder?.parentElement === originalPlayerParent) {
-			originalPlayerParent.insertBefore(player, currentPlaceholder);
-			removePlaceholder();
-		} else if (originalPlayerNextSibling?.parentNode === originalPlayerParent) {
-			originalPlayerParent.insertBefore(player, originalPlayerNextSibling);
-		} else {
-			originalPlayerParent.appendChild(player);
-		}
+	const wasMiniPlayerActive = isMiniPlayerActive || currentPinnedPlayer !== null || layoutStyleSnapshots.length > 0;
+
+	if (!wasMiniPlayerActive) {
+		return;
 	}
 
-	clearPlayerLayout(player);
+	preserveViewportPosition(() => {
+		clearStackRoots();
+		clearPlayerLayout(player);
+		restoreLayoutStyles();
+	});
 	clearBodyClasses();
+	scheduleNativeLayoutRefresh(player);
 	isMiniPlayerActive = false;
 	currentPinnedPlayer = null;
 	anchorBottomScrollY = null;
 	lastLayoutSignature = "";
-	originalPlayerParent = null;
-	originalPlayerNextSibling = null;
 }
 
 function updateMiniPlayerState() {
