@@ -6,7 +6,7 @@ import { videoPlayer } from "../mainWorld";
 let enableFunctionCount = 0;
 
 let playerTransformStyle: HTMLStyleElement | null = null;
-let yttBtnBox: HTMLDivElement | null = null;
+export let yttBtnBox: HTMLDivElement | null = null;
 let yttBtnRotate: HTMLSpanElement | null = null;
 let yttBtnMirror: HTMLSpanElement | null = null;
 
@@ -37,7 +37,7 @@ function updatePlayerTransformStyle() {
 	`;
 }
 
-function initPlayer() {
+export function createBox() {
 	if (!playerTransformStyle) {
 		playerTransformStyle = document.createElement("style");
 		playerTransformStyle.id = "yttweak-player-transform";
@@ -52,58 +52,66 @@ function initPlayer() {
 		yttBtnBox.className = "yttweak-player-function-buttons";
 		yttBtnBox.style.display = enableFunctionCount <= 0 ? "none" : "flex";
 		leftControls.insertBefore(yttBtnBox, leftControls.querySelector(".ytp-volume-area"));
-
-		// rotate button
-		yttBtnRotate = document.createElement("span");
-		yttBtnRotate.className = "yttweak-function-button-rotate";
-		yttBtnRotate.title = "Rotate Video";
-		yttBtnRotate.setAttribute("text", `${rotation}`);
-		yttBtnRotate.onclick = () => {
-			rotation = (rotation + 90) % 360;
-			yttBtnRotate?.setAttribute("text", `${rotation}`);
-			updatePlayerTransformStyle();
-		};
-		yttBtnBox.appendChild(yttBtnRotate);
-
-		// mirror button
-		yttBtnMirror = document.createElement("span");
-		yttBtnMirror.className = "yttweak-function-button-mirror";
-		yttBtnMirror.title = "Mirror Video";
-		yttBtnMirror.setAttribute("text", `➡`);
-		yttBtnMirror.onclick = () => {
-			isMirror = !isMirror;
-			yttBtnMirror?.setAttribute("text", isMirror ? `⬅` : `➡`);
-			updatePlayerTransformStyle();
-		};
-		yttBtnBox.appendChild(yttBtnMirror);
 	}
+}
+
+export function updateFuncBtnStatus(enable = true) {
+	enable ? enableFunctionCount++ : enableFunctionCount--;
+	if (yttBtnBox) yttBtnBox.style.display = enableFunctionCount <= 0 ? "none" : "flex";
 }
 
 export default {
 	"player.ui.functionButtons.enableRotateButton": {
-		initPlayer,
+		initPlayer() {
+			createBox();
+
+			if (!yttBtnRotate) {
+				yttBtnRotate = document.createElement("span");
+				yttBtnRotate.className = "yttweak-function-button-rotate";
+				yttBtnRotate.title = "Rotate Video";
+				yttBtnRotate.setAttribute("text", `${rotation}`);
+				yttBtnRotate.onclick = () => {
+					rotation = (rotation + 90) % 360;
+					yttBtnRotate?.setAttribute("text", `${rotation}`);
+					updatePlayerTransformStyle();
+				};
+				yttBtnBox?.appendChild(yttBtnRotate);
+			}
+		},
 		enable() {
 			document.body.classList.add("yttweak-player-enable-rotate-button");
-			enableFunctionCount++;
-			if (yttBtnBox) yttBtnBox.style.display = enableFunctionCount <= 0 ? "none" : "flex";
+			updateFuncBtnStatus(true);
 		},
 		disable() {
 			document.body.classList.remove("yttweak-player-enable-rotate-button");
-			enableFunctionCount--;
-			if (yttBtnBox) yttBtnBox.style.display = enableFunctionCount <= 0 ? "none" : "flex";
+			updateFuncBtnStatus(false);
 		},
 	},
 	"player.ui.functionButtons.enableMirrorButton": {
-		initPlayer,
+		initPlayer() {
+			createBox();
+
+			// mirror button
+			if (!yttBtnMirror) {
+				yttBtnMirror = document.createElement("span");
+				yttBtnMirror.className = "yttweak-function-button-mirror";
+				yttBtnMirror.title = "Mirror Video";
+				yttBtnMirror.setAttribute("text", `➡`);
+				yttBtnMirror.onclick = () => {
+					isMirror = !isMirror;
+					yttBtnMirror?.setAttribute("text", isMirror ? `⬅` : `➡`);
+					updatePlayerTransformStyle();
+				};
+				yttBtnBox?.appendChild(yttBtnMirror);
+			}
+		},
 		enable() {
 			document.body.classList.add("yttweak-player-enable-mirror-button");
-			enableFunctionCount++;
-			if (yttBtnBox) yttBtnBox.style.display = enableFunctionCount <= 0 ? "none" : "flex";
+			updateFuncBtnStatus(true);
 		},
 		disable() {
 			document.body.classList.remove("yttweak-player-enable-mirror-button");
-			enableFunctionCount--;
-			if (yttBtnBox) yttBtnBox.style.display = enableFunctionCount <= 0 ? "none" : "flex";
+			updateFuncBtnStatus(false);
 		},
 	},
 } as Record<string, Plugin>;

@@ -30,7 +30,6 @@ const plugins = Object.assign(
 const pluginsDocumentStart = Object.values(
 	import.meta.glob("./plugins_before/*.{js,ts}", { eager: true }) as Record<string, { default: Function }>,
 ).map((m) => m.default);
-globalThis.browser = globalThis.browser || globalThis.chrome;
 
 export const videoPlayer = {
 	box: null,

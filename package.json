@@ -14,8 +14,6 @@
 		"postinstall": "wxt prepare"
 	},
 	"devDependencies": {
-		"@types/chrome": "^0.1.4",
-		"@types/firefox-webext-browser": "^120.0.4",
 		"@wxt-dev/auto-icons": "^1.1.0",
 		"@wxt-dev/module-vue": "^1.0.2",
 		"crx3": "^1.1.3",
@@ -26,11 +24,15 @@
 		"typescript": "5.9.2",
 		"vite-plugin-vue-devtools": "^8.0.1",
 		"vue-tsc": "^3.0.6",
-		"wxt": "^0.20.11"
+		"wxt": "^0.20.26"
 	},
 	"dependencies": {
 		"pinia": "^3.0.3",
 		"vue": "^3.5",
 		"vue-i18n": "^11.1.11"
+	},
+	"overrides": {
+		"tmp": "0.2.7",
+		"uuid": "11.1.1"
 	}
 }

@@ -157,7 +157,7 @@ function configModalSubmit() {
 const waitUpdate = ref("");
 browser.storage.local.get("waitUpdate").then((data) => {
 	if (data.waitUpdate) {
-		waitUpdate.value = data.waitUpdate;
+		waitUpdate.value = data.waitUpdate as string;
 	}
 });
 async function requestUpdateCheck() {

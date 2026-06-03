@@ -59,7 +59,7 @@ type ChannelMemoryMetadata = {
  * while adhering to the storage limitations.
  */
 export default {
-	storage: globalThis?.browser?.storage?.sync as MemoryStorager,
+	storage: browser?.storage?.sync as MemoryStorager,
 	cleanChannelId(channelId: string) {
 		if (channelId.startsWith("@")) channelId = channelId.slice(1);
 		if (channelId === "") channelId = "_DEFAULT_";
