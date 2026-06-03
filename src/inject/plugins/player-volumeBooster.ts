@@ -67,7 +67,7 @@ function updateButtonState() {
 
 	const isEnabled = config.get("player.settings.volumeBooster");
 	const multiplier = getConfiguredMultiplier();
-	const buttonText = `Volume booster ${isEnabled ? "on" : "off"} (${formatMultiplier(multiplier)}x)`;
+	const buttonText = `Volume booster ${isEnabled ? "on" : "off"} (${formatMultiplier(multiplier)}x)\n\n🖱Use the mouse wheel to control:\n - Increase by 0.25x upwards\n - Decrease by 0.25x downwards`;
 
 	boosterButton.classList.toggle("yttweak-volume-booster-active", isEnabled);
 	boosterButton.setAttribute("text", `${formatMultiplier(multiplier)}x`);
