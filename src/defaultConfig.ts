@@ -12,7 +12,6 @@ enum VideoQuality {
 
 type MiniPlayerSize = "360x203" | "420x236" | "480x270" | "560x315" | "640x360" | "720x405";
 type MiniPlayerPosition = "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right";
-type VolumeBoosterMultiplier = 1.25 | 1.5 | 1.75 | 2 | 2.5 | 3 | 4 | 5;
 
 export type Config = {
 	"player.ui.enableSpeedButtons": boolean;
@@ -47,7 +46,7 @@ export type Config = {
 	"player.settings.saveSubtitleStatusByChannel": boolean;
 	"player.settings.nonStop": boolean;
 	"player.settings.volumeBooster": boolean;
-	"player.settings.volumeBoosterMultiplier": VolumeBoosterMultiplier;
+	"player.settings.volumeBoosterMultiplier": number;
 	"player.ui.functionButtons.enableRotateButton": boolean;
 	"player.ui.functionButtons.enableMirrorButton": boolean;
 

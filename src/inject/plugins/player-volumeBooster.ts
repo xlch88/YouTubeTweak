@@ -1,10 +1,16 @@
 import config from "../config";
 import { videoPlayer } from "../mainWorld";
 import { createLogger } from "../../logger";
+import { createBox, updateFuncBtnStatus, yttBtnBox } from "./player-function-buttons";
 
 import type { Plugin } from "../types";
 
 const logger = createLogger("player-volumeBooster");
+const DEFAULT_MULTIPLIER = 2;
+const MIN_MULTIPLIER = 1.25;
+const MAX_MULTIPLIER = 5;
+const MULTIPLIER_STEP = 0.25;
+const BODY_CONTROL_CLASS = "yttweak-player-enable-volume-booster";
 
 type AudioContextConstructor = typeof AudioContext;
 type AudioChain = {
@@ -20,34 +26,16 @@ let activeAudioChain: AudioChain | null = null;
 let playerBoundForBooster: HTMLVideoElement | null = null;
 let resumeListenersBound = false;
 
-let boosterStrip: HTMLDivElement | null = null;
-let boosterButton: HTMLButtonElement | null = null;
-
-function createSvgElement(tagName: string) {
-	return document.createElementNS("http://www.w3.org/2000/svg", tagName);
-}
-
-function createBoosterIcon() {
-	const svg = createSvgElement("svg");
-	svg.setAttribute("viewBox", "0 0 24 24");
-	svg.setAttribute("focusable", "false");
-
-	const outline = createSvgElement("path");
-	outline.setAttribute("class", "yttweak-volume-booster-outline");
-	outline.setAttribute(
-		"d",
-		"M15 8a5 5 0 0 1 0 8m2.7-11a9 9 0 0 1 0 14M6 15H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h2l3.5-4.5A.8.8 0 0 1 11 5v14a.8.8 0 0 1-1.5.5z",
-	);
-
-	svg.append(outline);
-	return svg;
-}
+let boosterButton: HTMLSpanElement | null = null;
+let boosterControlVisible = false;
 
 function clampMultiplier(value: number) {
-	if (!Number.isFinite(value) || value < 1) {
-		return 1;
+	if (!Number.isFinite(value)) {
+		return DEFAULT_MULTIPLIER;
 	}
-	return Math.min(value, 5);
+
+	const steppedValue = Math.round(value / MULTIPLIER_STEP) * MULTIPLIER_STEP;
+	return Math.min(Math.max(steppedValue, MIN_MULTIPLIER), MAX_MULTIPLIER);
 }
 
 function formatMultiplier(value: number) {
@@ -57,17 +45,32 @@ function formatMultiplier(value: number) {
 		.replace(/(\.\d)0$/, "$1");
 }
 
+function getConfiguredMultiplier() {
+	return clampMultiplier(Number(config.get("player.settings.volumeBoosterMultiplier", DEFAULT_MULTIPLIER)));
+}
+
+function setBoosterControlVisible(visible: boolean) {
+	document.body.classList.toggle(BODY_CONTROL_CLASS, visible);
+
+	if (boosterControlVisible === visible) {
+		return;
+	}
+
+	boosterControlVisible = visible;
+	updateFuncBtnStatus(visible);
+}
+
 function updateButtonState() {
 	if (!boosterButton) {
 		return;
 	}
 
 	const isEnabled = config.get("player.settings.volumeBooster");
-	const multiplier = clampMultiplier(Number(config.get("player.settings.volumeBoosterMultiplier")));
+	const multiplier = getConfiguredMultiplier();
 	const buttonText = `Volume booster ${isEnabled ? "on" : "off"} (${formatMultiplier(multiplier)}x)`;
 
-	boosterStrip?.classList.toggle("yttweak-volume-booster-visible", config.get("player.ui.enableVolumeBooster"));
 	boosterButton.classList.toggle("yttweak-volume-booster-active", isEnabled);
+	boosterButton.setAttribute("text", `${formatMultiplier(multiplier)}x`);
 	boosterButton.setAttribute("aria-pressed", String(isEnabled));
 	boosterButton.title = buttonText;
 }
@@ -214,8 +217,14 @@ async function syncBoosterState() {
 		return;
 	}
 
-	const multiplier = clampMultiplier(Number(config.get("player.settings.volumeBoosterMultiplier")));
+	const multiplier = getConfiguredMultiplier();
 	chain.gain.gain.setValueAtTime(multiplier, chain.context.currentTime);
+}
+
+function setBoosterMultiplier(multiplier: number) {
+	config.set("player.settings.volumeBoosterMultiplier", clampMultiplier(multiplier));
+	updateButtonState();
+	void syncBoosterState();
 }
 
 async function setBoosterEnabled(nextState: boolean) {
@@ -232,19 +241,44 @@ async function setBoosterEnabled(nextState: boolean) {
 	await syncBoosterState();
 }
 
-function mountBoosterStrip() {
-	const controls = videoPlayer.controls;
-	if (!controls) {
+function stepBoosterMultiplier(direction: 1 | -1) {
+	const isEnabled = config.get("player.settings.volumeBooster");
+
+	if (direction > 0) {
+		if (!isEnabled) {
+			config.set("player.settings.volumeBoosterMultiplier", MIN_MULTIPLIER);
+			void setBoosterEnabled(true);
+			return;
+		}
+
+		setBoosterMultiplier(getConfiguredMultiplier() + MULTIPLIER_STEP);
 		return;
 	}
 
-	if (!boosterStrip) {
-		boosterStrip = document.createElement("div");
-		boosterStrip.className = "yttweak-volume-booster-strip";
+	if (!isEnabled) {
+		return;
+	}
 
-		boosterButton = document.createElement("button");
-		boosterButton.type = "button";
-		boosterButton.className = "yttweak-volume-booster-button";
+	const currentMultiplier = getConfiguredMultiplier();
+	if (currentMultiplier <= MIN_MULTIPLIER) {
+		void setBoosterEnabled(false);
+		return;
+	}
+
+	setBoosterMultiplier(currentMultiplier - MULTIPLIER_STEP);
+}
+
+function mountBoosterButton() {
+	createBox();
+
+	if (!yttBtnBox) {
+		return;
+	}
+
+	if (!boosterButton) {
+		boosterButton = document.createElement("span");
+		boosterButton.className = "yttweak-function-button-volume-booster";
+		boosterButton.setAttribute("role", "button");
 		boosterButton.setAttribute("aria-label", "Toggle volume booster");
 		boosterButton.onclick = (event) => {
 			event.preventDefault();
@@ -253,23 +287,18 @@ function mountBoosterStrip() {
 			const nextState = !config.get("player.settings.volumeBooster");
 			void setBoosterEnabled(nextState);
 		};
-
-		const icon = document.createElement("span");
-		icon.className = "yttweak-volume-booster-icon";
-		icon.setAttribute("aria-hidden", "true");
-		icon.appendChild(createBoosterIcon());
-		boosterButton.appendChild(icon);
-		boosterStrip.appendChild(boosterButton);
+		boosterButton.onwheel = (event) => {
+			event.preventDefault();
+			event.stopPropagation();
+			if (!event.deltaY) {
+				return;
+			}
+			stepBoosterMultiplier(event.deltaY < 0 ? 1 : -1);
+		};
 	}
 
-	const rightControls = controls.querySelector(".ytp-right-controls");
-	const speedStrip = controls.querySelector(".yttweak-speed-buttons");
-	const insertBeforeNode = speedStrip?.nextSibling || rightControls || null;
-
-	if (boosterStrip.parentElement !== controls) {
-		controls.insertBefore(boosterStrip, insertBeforeNode);
-	} else if (speedStrip && boosterStrip.previousSibling !== speedStrip) {
-		controls.insertBefore(boosterStrip, speedStrip.nextSibling || rightControls || null);
+	if (boosterButton.parentElement !== yttBtnBox) {
+		yttBtnBox.appendChild(boosterButton);
 	}
 
 	updateButtonState();
@@ -283,7 +312,7 @@ function initPlayer() {
 		playerBoundForBooster = null;
 	}
 
-	mountBoosterStrip();
+	mountBoosterButton();
 	videoPlayer.videoStream?.addEventListener("play", syncBoosterState);
 	videoPlayer.videoStream?.addEventListener("loadedmetadata", syncBoosterState);
 	videoPlayer.videoStream?.addEventListener("ended", syncBoosterState);
@@ -291,7 +320,8 @@ function initPlayer() {
 }
 
 function refreshVolumeBoosterUi() {
-	mountBoosterStrip();
+	setBoosterControlVisible(config.get("player.ui.enableVolumeBooster"));
+	mountBoosterButton();
 	void syncBoosterState();
 }
 
@@ -299,10 +329,12 @@ export default {
 	"player.ui.enableVolumeBooster": {
 		initPlayer,
 		enable() {
-			mountBoosterStrip();
+			setBoosterControlVisible(true);
+			mountBoosterButton();
 			updateButtonState();
 		},
 		disable() {
+			setBoosterControlVisible(false);
 			updateButtonState();
 		},
 		configUpdate(oldConfig, newConfig) {

@@ -29,9 +29,12 @@ import useConfigStore from "../../util/config";
 
 const config = useConfigStore();
 
-const multiplierOptions = [1.25, 1.5, 1.75, 2, 2.5, 3, 4, 5];
+const multiplierOptions = Array.from({ length: 16 }, (_, index) => 1.25 + index * 0.25);
 
 function formatMultiplier(value: number) {
-	return value.toFixed(2).replace(/\.00$/, "").replace(/(\.\d)0$/, "$1");
+	return value
+		.toFixed(2)
+		.replace(/\.00$/, "")
+		.replace(/(\.\d)0$/, "$1");
 }
 </script>
