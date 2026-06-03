@@ -51,7 +51,10 @@ function clampMultiplier(value: number) {
 }
 
 function formatMultiplier(value: number) {
-	return clampMultiplier(value).toFixed(2).replace(/\.00$/, "").replace(/(\.\d)0$/, "$1");
+	return clampMultiplier(value)
+		.toFixed(2)
+		.replace(/\.00$/, "")
+		.replace(/(\.\d)0$/, "$1");
 }
 
 function updateButtonState() {
@@ -100,6 +103,48 @@ function getAudioContextConstructor(): AudioContextConstructor | null {
 	return window.AudioContext || (window as typeof window & { webkitAudioContext?: AudioContextConstructor }).webkitAudioContext || null;
 }
 
+function resetAudioChainGain(chain: AudioChain) {
+	try {
+		chain.gain.gain.setValueAtTime(1, chain.context.currentTime);
+	} catch (error) {
+		logger.warn("Failed to reset volume booster gain:", error);
+	}
+}
+
+function disposeAudioChain(chain: AudioChain | null) {
+	if (!chain) {
+		return;
+	}
+
+	resetAudioChainGain(chain);
+	audioChains.delete(chain.video);
+
+	if (activeAudioChain === chain) {
+		activeAudioChain = null;
+	}
+	if (playerBoundForBooster === chain.video) {
+		playerBoundForBooster = null;
+	}
+
+	try {
+		chain.source.disconnect();
+	} catch (error) {
+		logger.warn("Failed to disconnect volume booster source:", error);
+	}
+
+	try {
+		chain.gain.disconnect();
+	} catch (error) {
+		logger.warn("Failed to disconnect volume booster gain:", error);
+	}
+
+	if (chain.context.state !== "closed") {
+		chain.context.close().catch((error) => {
+			logger.warn("Failed to close volume booster audio context:", error);
+		});
+	}
+}
+
 async function ensureAudioChain() {
 	const video = videoPlayer.videoStream;
 	if (!video) {
@@ -114,7 +159,7 @@ async function ensureAudioChain() {
 		return activeAudioChain;
 	}
 
-	activeAudioChain?.gain.gain.setValueAtTime(1, activeAudioChain.context.currentTime);
+	disposeAudioChain(activeAudioChain);
 
 	const cachedChain = audioChains.get(video);
 	if (cachedChain) {
@@ -159,7 +204,7 @@ async function syncBoosterState() {
 
 	if (!config.get("player.settings.volumeBooster")) {
 		if (activeAudioChain) {
-			activeAudioChain.gain.gain.setValueAtTime(1, activeAudioChain.context.currentTime);
+			resetAudioChainGain(activeAudioChain);
 		}
 		return;
 	}
@@ -179,7 +224,7 @@ async function setBoosterEnabled(nextState: boolean) {
 
 	if (!nextState) {
 		if (activeAudioChain) {
-			activeAudioChain.gain.gain.setValueAtTime(1, activeAudioChain.context.currentTime);
+			resetAudioChainGain(activeAudioChain);
 		}
 		return;
 	}
@@ -231,9 +276,11 @@ function mountBoosterStrip() {
 }
 
 function initPlayer() {
-	if (playerBoundForBooster && playerBoundForBooster !== videoPlayer.videoStream) {
-		activeAudioChain?.gain.gain.setValueAtTime(1, activeAudioChain.context.currentTime);
-		activeAudioChain = null;
+	const currentVideo = videoPlayer.videoStream;
+	if (activeAudioChain && activeAudioChain.video !== currentVideo) {
+		disposeAudioChain(activeAudioChain);
+	} else if (playerBoundForBooster && playerBoundForBooster !== currentVideo) {
+		playerBoundForBooster = null;
 	}
 
 	mountBoosterStrip();
