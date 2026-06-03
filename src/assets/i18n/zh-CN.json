@@ -147,7 +147,8 @@
 			"title": "评论内容",
 			"checkbox": {
 				"autoShowMore": "自动展开长评论",
-				"autoTranslate": "翻译评论内容"
+				"autoTranslate": "翻译评论内容",
+				"lineByLineTranslate": "译文逐行显示在原文下方"
 			},
 			"select": {
 				"targetLanguage": "翻译目标语言",
@@ -337,4 +338,3 @@
 		}
 	}
 }
-

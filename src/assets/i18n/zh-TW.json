@@ -147,7 +147,8 @@
 			"title": "留言內容",
 			"checkbox": {
 				"autoShowMore": "自動展開長留言",
-				"autoTranslate": "自動翻譯留言"
+				"autoTranslate": "自動翻譯留言",
+				"lineByLineTranslate": "譯文逐行顯示在原文下方"
 			},
 			"select": {
 				"targetLanguage": "翻譯目標語言",
@@ -337,4 +338,3 @@
 		}
 	}
 }
-

@@ -27,6 +27,10 @@
 					<span>{{ $t("comment.context.checkbox.autoTranslate") }}</span>
 				</label>
 				<label class="form-item">
+					<input type="checkbox" v-model="config['comment.lineByLineTranslate']" />
+					<span>{{ $t("comment.context.checkbox.lineByLineTranslate") }}</span>
+				</label>
+				<label class="form-item">
 					<input type="checkbox" v-model="config['translate.enable.timedtext']" />
 					<span>{{ $t("translate.enable.checkbox.timedtext") }}</span>
 				</label>

@@ -8,6 +8,7 @@ const logger = createLogger("comment-translate");
 
 const DOUBLE_BREAK_RE = /<br\s*\/?>\s*<br\s*\/?>/i;
 const RESULT_HTML_TOKEN_RE = /<br\s*\/?>|<[^>]+>/gi;
+const SOURCE_LINE_BREAK_RE = /\r\n|\r|\n/;
 const TRANSLATABLE_FORMAT_TAGS = new Set(["SPAN", "B", "STRONG", "I", "EM", "U", "S", "DEL", "INS", "MARK", "SMALL", "SUB", "SUP"]);
 const NON_TEXT_SELECTOR = "a,img,picture,svg,yt-icon,button,input,textarea,select,video,audio,canvas,iframe";
 const IMAGE_MIRROR_ATTRIBUTES = ["alt", "class", "data-src", "data-srcset", "data-thumb", "height", "sizes", "src", "srcset", "style", "width"];
@@ -71,8 +72,15 @@ type TranslateTask = {
 	mode: "auto" | "manual";
 };
 
+type TranslateJob = {
+	task: TranslateTask;
+	source: string;
+	apply: (result: string) => void;
+};
+
 let translateQueue: TranslateTask[] = [];
 const imageMirrors = new Set<ImageMirror>();
+const ignoredCommentMutationTargets = new WeakSet<Node>();
 
 function appendTranslateButton(task: TranslateTask, translatedSegments?: string[]) {
 	const commentTranslateButton = document.createElement("button");
@@ -95,12 +103,158 @@ function appendTranslateButton(task: TranslateTask, translatedSegments?: string[
 function appendTranslation(task: TranslateTask, translatedSegments: string[]) {
 	if (translatedSegments.length === 0) return;
 
+	if (shouldAppendLineByLineTranslation(task)) {
+		try {
+			if (appendLineByLineTranslation(task, translatedSegments)) return;
+		} catch (error) {
+			logger.warn("line-by-line render error:", error);
+		}
+	}
+
+	appendBlockTranslation(task, translatedSegments);
+}
+
+function appendBlockTranslation(task: TranslateTask, translatedSegments: string[]) {
 	const transNode = document.createElement("div");
 	transNode.className = "yttweak-comment-translate";
 	transNode.appendChild(document.createTextNode(translatedSegments.some((text) => DOUBLE_BREAK_RE.test(text)) ? "\n\n" : "\n"));
 	transNode.appendChild(createTranslationFragment(task, translatedSegments));
 
 	task.contentDom.appendChild(transNode);
+}
+
+function shouldAppendLineByLineTranslation(task: TranslateTask) {
+	return config.get("comment.lineByLineTranslate", true) && sourceHasLineBreak(task.contentDom);
+}
+
+function appendLineByLineTranslation(task: TranslateTask, translatedSegments: string[]) {
+	const translationLines = createTranslationLineFragments(task, translatedSegments);
+	const sourceLines = splitSourceChildrenByLine(Array.from(task.contentDom.childNodes));
+	if (sourceLines.length <= 1) {
+		return false;
+	}
+
+	const markers = sourceLines.map(() => document.createComment("yttweak-comment-translate-line"));
+	const nextChildren: Node[] = [];
+	sourceLines.forEach((line, index) => {
+		nextChildren.push(...line, markers[index]);
+		if (index < sourceLines.length - 1) {
+			nextChildren.push(document.createTextNode("\n"));
+		}
+	});
+
+	ignoreOwnCommentMutation(task.contentDom, () => {
+		task.contentDom.replaceChildren(...nextChildren);
+
+		markers.forEach((marker, index) => {
+			const translationLine = translationLines[index];
+			if (translationLine && hasTranslationContent(translationLine)) {
+				marker.replaceWith(createTranslationLineElement(translationLine));
+			} else {
+				marker.remove();
+			}
+		});
+
+		appendExtraTranslationLines(task.contentDom, translationLines.slice(sourceLines.length));
+	});
+
+	return true;
+}
+
+function ignoreOwnCommentMutation(target: Node, callback: () => void) {
+	ignoredCommentMutationTargets.add(target);
+	try {
+		callback();
+	} finally {
+		setTimeout(() => {
+			ignoredCommentMutationTargets.delete(target);
+		}, 0);
+	}
+}
+
+function shouldIgnoreCommentMutation(mutation: MutationRecord) {
+	return ignoredCommentMutationTargets.has(mutation.target);
+}
+
+function appendExtraTranslationLines(contentDom: Element, translationLines: DocumentFragment[]) {
+	translationLines.forEach((translationLine) => {
+		if (!hasTranslationContent(translationLine)) return;
+
+		contentDom.appendChild(createTranslationLineElement(translationLine));
+	});
+}
+
+function createTranslationLineElement(content: DocumentFragment) {
+	const transNode = document.createElement("span");
+	transNode.className = "yttweak-comment-translate yttweak-comment-translate-line";
+	transNode.appendChild(document.createTextNode("\n"));
+	transNode.appendChild(content);
+	return transNode;
+}
+
+function hasTranslationContent(fragment: DocumentFragment) {
+	return Boolean((fragment.textContent ?? "").trim() || fragment.querySelector("a,img,picture,svg,yt-icon"));
+}
+
+function splitSourceChildrenByLine(nodes: Node[]) {
+	const lines: Node[][] = [[]];
+
+	nodes.forEach((node) => {
+		const nodeLines = splitSourceNodeByLine(node);
+		nodeLines.forEach((line, index) => {
+			if (index > 0) {
+				lines.push([]);
+			}
+			lines[lines.length - 1].push(...line);
+		});
+	});
+
+	return lines;
+}
+
+function splitSourceNodeByLine(node: Node): Node[][] {
+	if (node.nodeType === Node.TEXT_NODE) {
+		return splitSourceTextByLine(node.textContent ?? "");
+	}
+
+	if (node.nodeType !== Node.ELEMENT_NODE) return [[node]];
+
+	const element = node as HTMLElement;
+	if (element.classList.contains("yttweak-comment-translate")) return [[]];
+	if (isLineBreakElement(element)) return [[], []];
+	if (!sourceHasLineBreak(element)) return [[node]];
+
+	return splitSourceChildrenByLine(Array.from(element.childNodes)).map((line) => {
+		const clone = element.cloneNode(false);
+		line.forEach((child) => clone.appendChild(child));
+		return [clone];
+	});
+}
+
+function splitSourceTextByLine(text: string): Node[][] {
+	return text.split(SOURCE_LINE_BREAK_RE).map((line) => (line ? [document.createTextNode(line)] : []));
+}
+
+function splitTextSegmentByLine(source: string) {
+	return source.split(SOURCE_LINE_BREAK_RE).map(createTextSegment);
+}
+
+function sourceHasLineBreak(node: Node): boolean {
+	if (node.nodeType === Node.TEXT_NODE) {
+		return SOURCE_LINE_BREAK_RE.test(node.textContent ?? "");
+	}
+
+	if (node.nodeType !== Node.ELEMENT_NODE) return false;
+
+	const element = node as HTMLElement;
+	if (element.classList.contains("yttweak-comment-translate")) return false;
+	if (isLineBreakElement(element)) return true;
+
+	return Array.from(element.childNodes).some(sourceHasLineBreak);
+}
+
+function isLineBreakElement(element: Element) {
+	return element.tagName === "BR";
 }
 
 function createTranslationContent(contentDom: Element) {
@@ -209,6 +363,98 @@ function createTranslationFragment(task: TranslateTask, translatedSegments: stri
 	});
 
 	return fragment;
+}
+
+function createTranslationLineFragments(task: TranslateTask, translatedSegments: string[]) {
+	const lines: DocumentFragment[] = [document.createDocumentFragment()];
+	const openShells: number[] = [];
+	let parentStack: Node[] = [];
+	let currentParent: Node = lines[0];
+
+	const reopenShells = () => {
+		parentStack = [];
+		currentParent = lines[lines.length - 1];
+		openShells.forEach((shellIndex) => {
+			parentStack.push(currentParent);
+
+			const shell = createShellClone(task, shellIndex);
+			if (!shell) return;
+
+			currentParent.appendChild(shell);
+			currentParent = shell;
+		});
+	};
+	const startNewLine = () => {
+		lines.push(document.createDocumentFragment());
+		reopenShells();
+	};
+	const appendRawTextByLine = (text: string) => {
+		if (!text) return;
+
+		text.split(SOURCE_LINE_BREAK_RE).forEach((line, index) => {
+			if (index > 0) {
+				startNewLine();
+			}
+			appendText(currentParent, line);
+		});
+	};
+	const appendTranslatedTextByLine = (translatedHtml: string) => {
+		let lastIndex = 0;
+		let match: RegExpExecArray | null;
+
+		RESULT_HTML_TOKEN_RE.lastIndex = 0;
+		while ((match = RESULT_HTML_TOKEN_RE.exec(translatedHtml)) !== null) {
+			appendRawTextByLine(translatedHtml.slice(lastIndex, match.index));
+			if (match[0].toLowerCase().startsWith("<br")) {
+				startNewLine();
+			}
+			lastIndex = match.index + match[0].length;
+		}
+
+		appendRawTextByLine(translatedHtml.slice(lastIndex));
+	};
+	const appendSegmentByLine = (segment: TextSegment | undefined, translatedHtml: string | undefined) => {
+		if (!segment) return;
+
+		appendRawTextByLine(segment.leading);
+		appendTranslatedTextByLine(translatedHtml ?? segment.source);
+		appendRawTextByLine(segment.trailing);
+	};
+
+	task.parts.forEach((part) => {
+		if (part.type === "text") {
+			appendSegmentByLine(task.textSegments[part.index], translatedSegments[part.index]);
+			return;
+		}
+
+		if (part.type === "node") {
+			const entry = task.domNodes[part.index];
+			if (entry?.node.nodeType === Node.ELEMENT_NODE && isLineBreakElement(entry.node as Element)) {
+				startNewLine();
+				return;
+			}
+
+			appendDomClone(currentParent, task, part.index);
+			return;
+		}
+
+		if (part.type === "open") {
+			openShells.push(part.index);
+			parentStack.push(currentParent);
+
+			const shell = createShellClone(task, part.index);
+			if (!shell) return;
+
+			currentParent.appendChild(shell);
+			currentParent = shell;
+			return;
+		}
+
+		openShells.pop();
+		currentParent = parentStack.pop() ?? lines[lines.length - 1];
+	});
+
+	return lines;
 }
 
 function appendTranslatedTextSegment(parent: Node, segment: TextSegment | undefined, translatedHtml: string | undefined) {
@@ -553,6 +799,48 @@ function isBlockedLanguage(lang: string, blocked: string[]) {
 	return blocked.some((item) => isSameLanguage(item, lang));
 }
 
+function createTranslateJobs(task: TranslateTask, translatedSegments: string[]): TranslateJob[] {
+	const splitByLine = shouldAppendLineByLineTranslation(task);
+
+	return task.textSegments.flatMap((segment, segmentIndex) => {
+		if (segment.source.trim() === "") return [];
+
+		if (splitByLine && SOURCE_LINE_BREAK_RE.test(segment.source)) {
+			const lineParts = splitTextSegmentByLine(segment.source);
+			const translatedLineParts = lineParts.map((part) => part.source);
+			const writeTranslatedSegment = () => {
+				translatedSegments[segmentIndex] = lineParts
+					.map((part, linePartIndex) => `${part.leading}${translatedLineParts[linePartIndex]}${part.trailing}`)
+					.join("<br/>");
+			};
+
+			writeTranslatedSegment();
+
+			return lineParts
+				.map((part, linePartIndex) => ({ part, linePartIndex }))
+				.filter(({ part }) => part.source.trim() !== "")
+				.map(({ part, linePartIndex }) => ({
+					task,
+					source: part.source,
+					apply(result: string) {
+						translatedLineParts[linePartIndex] = result;
+						writeTranslatedSegment();
+					},
+				}));
+		}
+
+		return [
+			{
+				task,
+				source: segment.source,
+				apply(result: string) {
+					translatedSegments[segmentIndex] = result;
+				},
+			},
+		];
+	});
+}
+
 function handleTranslate(v: HTMLElement) {
 	if (v.classList.contains("yttweak-processed-translate")) {
 		return;
@@ -609,11 +897,15 @@ setInterval(() => {
 	});
 
 	Object.values(batches).forEach((doing) => {
-		const segmentJobs = doing.flatMap((task) =>
-			task.textSegments
-				.map((segment, segmentIndex) => ({ task, segment, segmentIndex }))
-				.filter((job) => job.segment.source.trim() !== ""),
-		);
+		const translatedSegmentsByTask = new Map<TranslateTask, string[]>();
+		doing.forEach((task) => {
+			translatedSegmentsByTask.set(
+				task,
+				task.textSegments.map((segment) => segment.source),
+			);
+		});
+
+		const segmentJobs = doing.flatMap((task) => createTranslateJobs(task, translatedSegmentsByTask.get(task) ?? []));
 		if (segmentJobs.length === 0) {
 			doing.forEach((task) => appendTranslateButton(task));
 			return;
@@ -625,7 +917,7 @@ setInterval(() => {
 				"x-goog-api-key": "AIzaSyATBXajvzQLTDHEQbcpq0Ihe0vWDHmO520",
 			},
 			body: JSON.stringify([
-				[segmentJobs.map((job) => escapeTextForTranslate(job.segment.source)), "auto", doing[0].targetLang],
+				[segmentJobs.map((job) => escapeTextForTranslate(job.source)), "auto", doing[0].targetLang],
 				"te_lib",
 			]),
 			method: "POST",
@@ -637,22 +929,14 @@ setInterval(() => {
 				const translations: string[] = Array.isArray(data?.[0]) ? data[0] : [];
 				const detectedLanguages: string[] = Array.isArray(data?.[1]) ? data[1] : [];
 				const neverTranslateLanguages = config.get("comment.neverTranslateLanguages", []);
-				const translatedSegmentsByTask = new Map<TranslateTask, string[]>();
 				const detectedLanguageByTask = new Map<TranslateTask, string>();
-
-				doing.forEach((task) => {
-					translatedSegmentsByTask.set(
-						task,
-						task.textSegments.map((segment) => segment.source),
-					);
-				});
 
 				segmentJobs.forEach((job, i) => {
 					const translatedSegments = translatedSegmentsByTask.get(job.task);
 					if (!translatedSegments) return;
 
 					const result = translations[i];
-					translatedSegments[job.segmentIndex] = typeof result === "string" ? result : job.segment.source;
+					job.apply(typeof result === "string" ? result : job.source);
 					if (!detectedLanguageByTask.has(job.task) && detectedLanguages[i]) {
 						detectedLanguageByTask.set(job.task, detectedLanguages[i]);
 					}
@@ -705,6 +989,8 @@ export default {
 
 			setUpdateListener((mutations) => {
 				for (const mutation of mutations) {
+					if (shouldIgnoreCommentMutation(mutation)) continue;
+
 					if (mutation.type === "childList") {
 						mutation.addedNodes.forEach((node) => {
 							const v = node as HTMLElement;
@@ -733,5 +1019,12 @@ export default {
 				}
 			});
 		},
+	},
+	"comment.lineByLineTranslate": {
+		options: {
+			reloadOnToggle: true,
+		},
+		enable() {},
+		disable() {},
 	},
 } as Record<string, Plugin>;

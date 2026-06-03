@@ -147,7 +147,8 @@
 			"title": "Comment Content",
 			"checkbox": {
 				"autoShowMore": "Auto expand long comments",
-				"autoTranslate": "Auto translate"
+				"autoTranslate": "Auto translate",
+				"lineByLineTranslate": "Place translations under each original line"
 			},
 			"select": {
 				"targetLanguage": "Target language",
@@ -337,4 +338,3 @@
 		}
 	}
 }
-

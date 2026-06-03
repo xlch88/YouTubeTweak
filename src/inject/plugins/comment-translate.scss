@@ -17,6 +17,10 @@ body.yttweak-comment-enable-translate {
 	font-family: "Roboto", "Arial", sans-serif;
 }
 
+.yttweak-comment-translate-line {
+	margin-top: 0;
+}
+
 .yttweak-comment-time-link {
 	cursor: pointer;
 	color: var(--yt-endpoint-color, var(--yt-spec-call-to-action));
