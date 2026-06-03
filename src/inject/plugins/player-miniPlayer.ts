@@ -12,6 +12,7 @@ const DEFAULT_ASPECT_RATIO = 16 / 9;
 const BODY_MODE_CLASS = "yttweak-mini-player-mode";
 const BODY_POSITION_PREFIX = "yttweak-mini-player-position-";
 const STACK_ROOT_CLASS = "yttweak-mini-player-stack-root";
+const STACK_ROOT_SELECTOR = "ytd-player, #player, #player-container, #full-bleed-container, #player-full-bleed-container";
 const LAYOUT_STYLE_SELECTORS = [
 	".html5-video-player",
 	".html5-video-container",
@@ -224,8 +225,10 @@ function applyStackRoots(player: HTMLElement) {
 
 	let element = player.parentElement;
 	while (element && element !== document.body && element !== document.documentElement) {
-		element.classList.add(STACK_ROOT_CLASS);
-		stackRootElements.push(element);
+		if (element.matches(STACK_ROOT_SELECTOR)) {
+			element.classList.add(STACK_ROOT_CLASS);
+			stackRootElements.push(element);
+		}
 		element = element.parentElement;
 	}
 }
