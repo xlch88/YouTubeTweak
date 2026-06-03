@@ -3,4 +3,4 @@
 
 set CHROME_PROFILE=I:\.profile\chrome
 
-"C:/Program Files/Google/Chrome/Application/chrome.exe" --user-data-dir="%CHROME_PROFILE%" https://www.youtube.com/watch?v=zczjerfFrSI
+start "" "C:/Program Files/Google/Chrome/Application/chrome.exe" --user-data-dir="%CHROME_PROFILE%" https://www.youtube.com/watch?v=zczjerfFrSI
