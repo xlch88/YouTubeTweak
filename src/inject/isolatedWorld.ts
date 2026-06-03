@@ -4,8 +4,6 @@ import wirelessRedstone from "./wirelessRedstone";
 
 const logger = createLogger("IsolatedWorld");
 
-globalThis.browser = globalThis.browser || globalThis.chrome;
-
 export default function isolatedWorld() {
 	if (!["www.youtube.com", "m.youtube.com"].includes(location.host)) return;
 
