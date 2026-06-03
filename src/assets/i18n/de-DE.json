@@ -84,7 +84,9 @@
 				"bottomLeft": "Unten links",
 				"bottomRight": "Unten rechts",
 				"topLeft": "Oben links",
-				"topRight": "Oben rechts"
+				"topRight": "Oben rechts",
+				"bottomCenter": "__NEED_TRANSLATE__",
+				"topCenter": "__NEED_TRANSLATE__"
 			},
 			"tips": {
 				"timeTag": "Schwebende Videozeit",
@@ -103,6 +105,34 @@
 			"checkbox": {
 				"enableRotateButton": "Schaltfläche zum Drehen des Videos aktivieren",
 				"enableMirrorButton": "Schaltfläche zum Spiegeln des Videos aktivieren"
+			}
+		},
+		"volumeBooster": {
+			"title": "__NEED_TRANSLATE__",
+			"checkbox": {
+				"showControl": "__NEED_TRANSLATE__",
+				"enableByDefault": "__NEED_TRANSLATE__"
+			},
+			"select": {
+				"multiplier": "__NEED_TRANSLATE__"
+			},
+			"tips": {
+				"control": "__NEED_TRANSLATE__"
+			}
+		},
+		"miniPlayer": {
+			"title": "__NEED_TRANSLATE__",
+			"checkbox": {
+				"enable": "__NEED_TRANSLATE__"
+			},
+			"select": {
+				"size": "__NEED_TRANSLATE__",
+				"position": "__NEED_TRANSLATE__",
+				"offset": "__NEED_TRANSLATE__",
+				"triggerOffset": "__NEED_TRANSLATE__"
+			},
+			"tips": {
+				"enable": "__NEED_TRANSLATE__"
 			}
 		}
 	},

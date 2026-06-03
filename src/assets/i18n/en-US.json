@@ -84,7 +84,9 @@
 				"bottomLeft": "Bottom-left corner",
 				"bottomRight": "Bottom-right corner",
 				"topLeft": "Top-left corner",
-				"topRight": "Top-right corner"
+				"topRight": "Top-right corner",
+				"bottomCenter": "Bottom-center",
+				"topCenter": "Top-center"
 			},
 			"tips": {
 				"timeTag": "Floating video time tags",
@@ -103,6 +105,34 @@
 			"checkbox": {
 				"enableRotateButton": "Enable video rotation button",
 				"enableMirrorButton": "Enable video mirror button"
+			}
+		},
+		"volumeBooster": {
+			"title": "Volume booster",
+			"checkbox": {
+				"showControl": "Show booster control beside the speed strip",
+				"enableByDefault": "Enable booster by default"
+			},
+			"select": {
+				"multiplier": "Boost level"
+			},
+			"tips": {
+				"control": "Adds a real gain stage above YouTube's built-in 100% volume. Use the in-player button to toggle it instantly."
+			}
+		},
+		"miniPlayer": {
+			"title": "Scroll mini-player",
+			"checkbox": {
+				"enable": "Keep playing in a floating mini-player while scrolling"
+			},
+			"select": {
+				"size": "Size",
+				"position": "Position",
+				"offset": "Screen margin (px)",
+				"triggerOffset": "Activate after scrolling past player (px)"
+			},
+			"tips": {
+				"enable": "Float the current video while you scroll. Dismiss it from the player anytime."
 			}
 		}
 	},

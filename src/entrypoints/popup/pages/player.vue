@@ -61,6 +61,7 @@
 				</label>
 			</div>
 		</div>
+		<VolumeBoosterSettingsCard />
 		<div class="card">
 			<div class="card-title">{{ $t("player.subtitles.title") }}</div>
 			<div class="card-body">
@@ -101,6 +102,7 @@
 				</label>
 			</div>
 		</div>
+		<MiniPlayerSettingsCard />
 		<div class="card">
 			<div class="card-title">{{ $t("player.ui.title") }}</div>
 			<div class="card-body">
@@ -157,6 +159,8 @@
 </template>
 
 <script setup lang="ts">
+import MiniPlayerSettingsCard from "../components/player/MiniPlayerSettingsCard.vue";
+import VolumeBoosterSettingsCard from "../components/player/VolumeBoosterSettingsCard.vue";
 import useConfigStore from "../util/config";
 const config = useConfigStore() as {
 	[key: `player.ui.hideButton.${string}`]: boolean;

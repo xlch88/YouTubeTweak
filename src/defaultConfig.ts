@@ -10,9 +10,13 @@ enum VideoQuality {
 	tiny = "144p",
 }
 
+type MiniPlayerSize = "360x203" | "420x236" | "480x270" | "560x315" | "640x360" | "720x405";
+type MiniPlayerPosition = "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right";
+
 export type Config = {
 	"player.ui.enableSpeedButtons": boolean;
 	"player.ui.speedButtons": Array<0.25 | 0.5 | 0.75 | 1 | 1.25 | 1.5 | 1.75 | 2 | 2.25 | 2.5 | 2.75 | 3 | 5 | 10>;
+	"player.ui.enableVolumeBooster": boolean;
 	"player.ui.hideButton.autoplay": boolean;
 	"player.ui.hideButton.subtitles": boolean;
 	"player.ui.hideButton.settings": boolean;
@@ -28,6 +32,11 @@ export type Config = {
 	"player.ui.progress.tagFontSize": number;
 	"player.ui.progress.tagPosition": "bottom-left" | "bottom-right" | "top-left" | "top-right";
 	"player.ui.progress.tagOffset": number;
+	"player.miniPlayer.enable": boolean;
+	"player.miniPlayer.size": MiniPlayerSize;
+	"player.miniPlayer.position": MiniPlayerPosition;
+	"player.miniPlayer.offset": number;
+	"player.miniPlayer.triggerOffset": number;
 	"player.settings.maxVolume": boolean;
 	"player.settings.lockQuality": boolean;
 	"player.settings.lockQuality.value": keyof typeof VideoQuality;
@@ -36,6 +45,8 @@ export type Config = {
 	"player.settings.saveSubtitleStatus": boolean;
 	"player.settings.saveSubtitleStatusByChannel": boolean;
 	"player.settings.nonStop": boolean;
+	"player.settings.volumeBooster": boolean;
+	"player.settings.volumeBoosterMultiplier": number;
 	"player.ui.functionButtons.enableRotateButton": boolean;
 	"player.ui.functionButtons.enableMirrorButton": boolean;
 
@@ -62,6 +73,7 @@ export type Config = {
 const config: Config = {
 	"player.ui.enableSpeedButtons": true,
 	"player.ui.speedButtons": [0.5, 1, 1.5, 2],
+	"player.ui.enableVolumeBooster": true,
 	"player.ui.hideButton.autoplay": false,
 	"player.ui.hideButton.subtitles": false,
 	"player.ui.hideButton.settings": false,
@@ -77,6 +89,11 @@ const config: Config = {
 	"player.ui.progress.tagFontSize": 12,
 	"player.ui.progress.tagPosition": "bottom-left",
 	"player.ui.progress.tagOffset": 5,
+	"player.miniPlayer.enable": false,
+	"player.miniPlayer.size": "480x270",
+	"player.miniPlayer.position": "bottom-right",
+	"player.miniPlayer.offset": 16,
+	"player.miniPlayer.triggerOffset": 48,
 	"player.settings.maxVolume": true,
 	"player.settings.lockQuality": false,
 	"player.settings.lockQuality.value": "hd1080",
@@ -85,6 +102,8 @@ const config: Config = {
 	"player.settings.saveSubtitleStatus": true,
 	"player.settings.saveSubtitleStatusByChannel": true,
 	"player.settings.nonStop": true,
+	"player.settings.volumeBooster": false,
+	"player.settings.volumeBoosterMultiplier": 2,
 	"player.ui.functionButtons.enableRotateButton": false,
 	"player.ui.functionButtons.enableMirrorButton": false,
 

@@ -1,0 +1,15 @@
+.yttweak-function-button-volume-booster {
+	&::before {
+		background-image: url("data:image/svg+xml,%3Csvg viewBox='36 18 220 220' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke='%23fff' stroke-width='18' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M42 96c0-5.5 4.5-10 10-10h32l55-44c7.2-5.8 18 .7 18 8.5v155c0 9.2-10.8 14.3-18 8.5l-55-44H52c-5.5 0-10-4.5-10-10V96Z'/%3E%3Cpath d='M222 95v56M196 123h52'/%3E%3C/g%3E%3C/svg%3E");
+	}
+
+	&.yttweak-volume-booster-active::after {
+		color: red;
+	}
+}
+
+body.yttweak-player-enable-volume-booster {
+	.yttweak-player-function-buttons span.yttweak-function-button-volume-booster {
+		display: flex;
+	}
+}

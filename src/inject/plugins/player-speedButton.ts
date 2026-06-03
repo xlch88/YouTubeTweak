@@ -9,6 +9,7 @@ import memory from "@/memory";
 const logger = createLogger("player-speedButton");
 
 const speedButtons: HTMLSpanElement[] = [];
+let speedButtonDiv: HTMLDivElement | null = null;
 
 async function setMemorySpeed() {
 	let speed;
@@ -53,6 +54,17 @@ async function setMemorySpeed() {
 	});
 }
 
+function mountSpeedButtonStrip() {
+	if (!videoPlayer.controls || !speedButtonDiv) {
+		return;
+	}
+
+	const rightControls = videoPlayer.controls.querySelector(".ytp-right-controls");
+	if (speedButtonDiv.parentElement !== videoPlayer.controls) {
+		videoPlayer.controls.insertBefore(speedButtonDiv, rightControls || null);
+	}
+}
+
 export default {
 	"player.ui.enableSpeedButtons": {
 		enable() {
@@ -62,40 +74,39 @@ export default {
 			document.body.removeAttribute("yttweak-enable-speed-button");
 		},
 		initPlayer() {
-			const speedButtonDiv = document.createElement("div");
-			speedButtonDiv.className = "yttweak-speed-buttons";
-			for (let speed of [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 5, 10]) {
-				const speedButton = document.createElement("span");
-				speedButton.className = `yttweak-speed-button`;
-				speedButton.setAttribute("speed", `${speed}`);
-				speedButton.onclick = async () => {
-					videoPlayer.player?.setPlaybackRate(speed);
-					if (videoPlayer.videoStream) videoPlayer.videoStream.playbackRate = speed;
-					logger.info("Set playback rate:", speed);
+			if (!speedButtonDiv) {
+				speedButtonDiv = document.createElement("div");
+				speedButtonDiv.className = "yttweak-speed-buttons";
+				for (let speed of [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 5, 10]) {
+					const speedButton = document.createElement("span");
+					speedButton.className = `yttweak-speed-button`;
+					speedButton.setAttribute("speed", `${speed}`);
+					speedButton.onclick = async () => {
+						videoPlayer.player?.setPlaybackRate(speed);
+						if (videoPlayer.videoStream) videoPlayer.videoStream.playbackRate = speed;
+						logger.info("Set playback rate:", speed);
 
-					if (config.get("player.settings.saveSpeed")) {
-						await memory.set("", "s", speed);
-					}
-					if (config.get("player.settings.saveSpeedByChannel")) {
-						const channelId = getChannelId();
-						if (channelId) {
-							await memory.set(channelId, "s", speed);
+						if (config.get("player.settings.saveSpeed")) {
+							await memory.set("", "s", speed);
 						}
-					}
+						if (config.get("player.settings.saveSpeedByChannel")) {
+							const channelId = getChannelId();
+							if (channelId) {
+								await memory.set(channelId, "s", speed);
+							}
+						}
 
-					speedButtons.forEach((v) => {
-						v.classList.remove("yttweak-speed-button-active");
-					});
-					speedButton.classList.add("yttweak-speed-button-active");
-				};
-				speedButtons.push(speedButton);
-				speedButtonDiv.appendChild(speedButton);
-			}
-			if (videoPlayer.controls) {
-				const left = videoPlayer.controls.querySelector(".ytp-left-controls")?.nextSibling;
-				if (left) videoPlayer.controls.insertBefore(speedButtonDiv, left);
+						speedButtons.forEach((v) => {
+							v.classList.remove("yttweak-speed-button-active");
+						});
+						speedButton.classList.add("yttweak-speed-button-active");
+					};
+					speedButtons.push(speedButton);
+					speedButtonDiv.appendChild(speedButton);
+				}
 			}
 
+			mountSpeedButtonStrip();
 			setMemorySpeed();
 		},
 		videoSrcChange(oldValue, newValue) {

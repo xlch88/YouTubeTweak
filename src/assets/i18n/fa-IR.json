@@ -84,7 +84,9 @@
 				"bottomLeft": "گوشه چپ پایین",
 				"bottomRight": "گوشه راست پایین",
 				"topLeft": "گوشه چپ بالا",
-				"topRight": "گوشه راست بالا"
+				"topRight": "گوشه راست بالا",
+				"bottomCenter": "__NEED_TRANSLATE__",
+				"topCenter": "__NEED_TRANSLATE__"
 			},
 			"tips": {
 				"timeTag": "برچسب زمان شناور ویدیو",
@@ -103,6 +105,34 @@
 			"checkbox": {
 				"enableRotateButton": "فعال کردن دکمه چرخش ویدیو",
 				"enableMirrorButton": "فعال کردن دکمه آینه کردن ویدیو"
+			}
+		},
+		"volumeBooster": {
+			"title": "__NEED_TRANSLATE__",
+			"checkbox": {
+				"showControl": "__NEED_TRANSLATE__",
+				"enableByDefault": "__NEED_TRANSLATE__"
+			},
+			"select": {
+				"multiplier": "__NEED_TRANSLATE__"
+			},
+			"tips": {
+				"control": "__NEED_TRANSLATE__"
+			}
+		},
+		"miniPlayer": {
+			"title": "__NEED_TRANSLATE__",
+			"checkbox": {
+				"enable": "__NEED_TRANSLATE__"
+			},
+			"select": {
+				"size": "__NEED_TRANSLATE__",
+				"position": "__NEED_TRANSLATE__",
+				"offset": "__NEED_TRANSLATE__",
+				"triggerOffset": "__NEED_TRANSLATE__"
+			},
+			"tips": {
+				"enable": "__NEED_TRANSLATE__"
 			}
 		}
 	},

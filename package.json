@@ -20,6 +20,7 @@
 		"dotenv": "^17.2.3",
 		"prettier": "^3.6.2",
 		"sass": "^1.91.0",
+		"tsx": "^4.20.6",
 		"typescript": "5.9.2",
 		"vite-plugin-vue-devtools": "^8.0.1",
 		"vue-tsc": "^3.0.6",

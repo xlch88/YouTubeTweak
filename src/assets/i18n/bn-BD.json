@@ -84,7 +84,9 @@
 				"bottomLeft": "নিচের বাম কোণা",
 				"bottomRight": "নিচের ডান কোণা",
 				"topLeft": "উপরের বাম কোণা",
-				"topRight": "উপরের ডান কোণা"
+				"topRight": "উপরের ডান কোণা",
+				"bottomCenter": "__NEED_TRANSLATE__",
+				"topCenter": "__NEED_TRANSLATE__"
 			},
 			"tips": {
 				"timeTag": "ভাসমান ভিডিও সময় ট্যাগ",
@@ -103,6 +105,34 @@
 			"checkbox": {
 				"enableRotateButton": "ভিডিও ঘোরানোর বোতাম সক্রিয় করুন",
 				"enableMirrorButton": "ভিডিও মিরর করার বোতাম সক্রিয় করুন"
+			}
+		},
+		"volumeBooster": {
+			"title": "__NEED_TRANSLATE__",
+			"checkbox": {
+				"showControl": "__NEED_TRANSLATE__",
+				"enableByDefault": "__NEED_TRANSLATE__"
+			},
+			"select": {
+				"multiplier": "__NEED_TRANSLATE__"
+			},
+			"tips": {
+				"control": "__NEED_TRANSLATE__"
+			}
+		},
+		"miniPlayer": {
+			"title": "__NEED_TRANSLATE__",
+			"checkbox": {
+				"enable": "__NEED_TRANSLATE__"
+			},
+			"select": {
+				"size": "__NEED_TRANSLATE__",
+				"position": "__NEED_TRANSLATE__",
+				"offset": "__NEED_TRANSLATE__",
+				"triggerOffset": "__NEED_TRANSLATE__"
+			},
+			"tips": {
+				"enable": "__NEED_TRANSLATE__"
 			}
 		}
 	},
