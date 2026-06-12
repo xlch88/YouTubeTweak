@@ -41,4 +41,16 @@ body.yttweak-rollback-player-ui-2026-06-12 {
 		flex: 1 1 0% !important;
 		min-width: 0 !important;
 	}
+
+	/* Fix YouTube non-16:9 videos rendered inside a 16:9 outer shell */
+	ytd-watch-flexy[is-two-columns_][respect-aspect-ratio]:not([full-bleed-player]):not([is-vertical-video_]) #primary.ytd-watch-flexy {
+		max-width: var(--ytd-watch-flexy-max-player-width) !important;
+		min-width: var(--ytd-watch-flexy-min-player-width) !important;
+	}
+
+	/* Keep the actual player shell aligned with the corrected primary width */
+	ytd-watch-flexy[is-two-columns_][respect-aspect-ratio]:not([full-bleed-player]):not([is-vertical-video_]) #player.ytd-watch-flexy {
+		max-width: var(--ytd-watch-flexy-max-player-width) !important;
+		min-width: var(--ytd-watch-flexy-min-player-width) !important;
+	}
 }
