@@ -12,8 +12,8 @@
 			<label class="form-item form-item-select">
 				<span>{{ $t("player.miniPlayer.select.size") }}</span>
 				<select class="w-100" v-model="config['player.miniPlayer.size']">
-					<option v-for="option in sizeOptions" :key="option.value" :value="option.value">
-						{{ option.label }}
+					<option v-for="option in sizeOptions" :key="option" :value="option">
+						{{ option.replace("x", "×") }}
 					</option>
 				</select>
 			</label>
@@ -51,14 +51,7 @@ import useConfigStore from "../../util/config";
 
 const config = useConfigStore();
 
-const sizeOptions = [
-	{ value: "360x203", label: "Compact 360×203" },
-	{ value: "420x236", label: "Balanced 420×236" },
-	{ value: "480x270", label: "Default 480×270" },
-	{ value: "560x315", label: "Large 560×315" },
-	{ value: "640x360", label: "XL 640×360" },
-	{ value: "720x405", label: "Cinema 720×405" },
-];
+const sizeOptions = ["360x203", "420x236", "480x270", "560x315", "640x360", "720x405"];
 
 const positionOptions = [
 	{ value: "bottom-right", labelKey: "player.ui.position.bottomRight", arrow: "↘" },
