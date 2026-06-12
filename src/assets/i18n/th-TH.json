@@ -85,8 +85,8 @@
 				"bottomRight": "มุมขวาล่าง",
 				"topLeft": "มุมซ้ายบน",
 				"topRight": "มุมขวาบน",
-				"bottomCenter": "__NEED_TRANSLATE__",
-				"topCenter": "__NEED_TRANSLATE__"
+				"bottomCenter": "กึ่งกลางด้านล่าง",
+				"topCenter": "กึ่งกลางด้านบน"
 			},
 			"tips": {
 				"timeTag": "ป้ายเวลาแบบลอย",
@@ -108,31 +108,31 @@
 			}
 		},
 		"volumeBooster": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "ตัวเพิ่มเสียง",
 			"checkbox": {
-				"showControl": "__NEED_TRANSLATE__",
-				"enableByDefault": "__NEED_TRANSLATE__"
+				"showControl": "แสดงตัวควบคุมการเพิ่มเสียงข้างแถบความเร็ว",
+				"enableByDefault": "เปิดใช้ตัวเพิ่มเสียงเป็นค่าเริ่มต้น"
 			},
 			"select": {
-				"multiplier": "__NEED_TRANSLATE__"
+				"multiplier": "ระดับการเพิ่มเสียง"
 			},
 			"tips": {
-				"control": "__NEED_TRANSLATE__"
+				"control": "เพิ่มขั้นเกนจริงเหนือระดับเสียง 100% ในตัวของ YouTube ใช้ปุ่มในตัวเล่นเพื่อเปิด/ปิดได้ทันที"
 			}
 		},
 		"miniPlayer": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "มินิเพลเยอร์ขณะเลื่อน",
 			"checkbox": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "เล่นต่อในมินิเพลเยอร์แบบลอยขณะเลื่อน"
 			},
 			"select": {
-				"size": "__NEED_TRANSLATE__",
-				"position": "__NEED_TRANSLATE__",
-				"offset": "__NEED_TRANSLATE__",
-				"triggerOffset": "__NEED_TRANSLATE__"
+				"size": "ขนาด",
+				"position": "ตำแหน่ง",
+				"offset": "ระยะขอบหน้าจอ (px)",
+				"triggerOffset": "เปิดใช้งานหลังจากเลื่อนผ่านตัวเล่น (px)"
 			},
 			"tips": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "ทำให้วิดีโอปัจจุบันลอยอยู่ขณะเลื่อน ปิดได้จากตัวเล่นทุกเมื่อ"
 			}
 		}
 	},
@@ -147,7 +147,8 @@
 			"title": "เนื้อหาความคิดเห็น",
 			"checkbox": {
 				"autoShowMore": "ขยายคอมเมนต์ยาวอัตโนมัติ",
-				"autoTranslate": "แปลอัตโนมัติ"
+				"autoTranslate": "แปลอัตโนมัติ",
+				"lineByLineTranslate": "วางคำแปลใต้แต่ละบรรทัดต้นฉบับ"
 			},
 			"select": {
 				"targetLanguage": "ภาษาปลายทาง",
@@ -188,6 +189,12 @@
 			"title": "ความคิดเห็น",
 			"checkbox": {
 				"showNickname": "แสดงชื่อช่องของผู้แสดงความคิดเห็น"
+			}
+		},
+		"rollback": {
+			"title": "ย้อนกลับ",
+			"checkbox": {
+				"playerUI": "คืนค่าเลย์เอาต์ตัวเล่นแบบเก่า"
 			}
 		}
 	},

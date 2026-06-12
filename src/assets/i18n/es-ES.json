@@ -85,8 +85,8 @@
 				"bottomRight": "Esquina inferior derecha",
 				"topLeft": "Esquina superior izquierda",
 				"topRight": "Esquina superior derecha",
-				"bottomCenter": "__NEED_TRANSLATE__",
-				"topCenter": "__NEED_TRANSLATE__"
+				"bottomCenter": "Centro inferior",
+				"topCenter": "Centro superior"
 			},
 			"tips": {
 				"timeTag": "Etiquetas de tiempo flotantes",
@@ -108,31 +108,31 @@
 			}
 		},
 		"volumeBooster": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "Potenciador de volumen",
 			"checkbox": {
-				"showControl": "__NEED_TRANSLATE__",
-				"enableByDefault": "__NEED_TRANSLATE__"
+				"showControl": "Mostrar control del potenciador junto a la barra de velocidad",
+				"enableByDefault": "Activar potenciador de forma predeterminada"
 			},
 			"select": {
-				"multiplier": "__NEED_TRANSLATE__"
+				"multiplier": "Nivel de potenciación"
 			},
 			"tips": {
-				"control": "__NEED_TRANSLATE__"
+				"control": "Añade una etapa de ganancia real por encima del 100 % de volumen integrado de YouTube. Usa el botón del reproductor para activarla o desactivarla al instante."
 			}
 		},
 		"miniPlayer": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "Minirreproductor al desplazarse",
 			"checkbox": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "Mantener la reproducción en un minirreproductor flotante al desplazarse"
 			},
 			"select": {
-				"size": "__NEED_TRANSLATE__",
-				"position": "__NEED_TRANSLATE__",
-				"offset": "__NEED_TRANSLATE__",
-				"triggerOffset": "__NEED_TRANSLATE__"
+				"size": "Tamaño",
+				"position": "Posición",
+				"offset": "Margen de pantalla (px)",
+				"triggerOffset": "Activar tras desplazarte más allá del reproductor (px)"
 			},
 			"tips": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "Mantén el vídeo actual flotando mientras te desplazas. Ciérralo desde el reproductor en cualquier momento."
 			}
 		}
 	},
@@ -147,7 +147,8 @@
 			"title": "Contenido del comentario",
 			"checkbox": {
 				"autoShowMore": "Expandir automáticamente comentarios largos",
-				"autoTranslate": "Traducir automáticamente"
+				"autoTranslate": "Traducir automáticamente",
+				"lineByLineTranslate": "Colocar las traducciones debajo de cada línea original"
 			},
 			"select": {
 				"targetLanguage": "Idioma de destino",
@@ -188,6 +189,12 @@
 			"title": "Comentarios",
 			"checkbox": {
 				"showNickname": "Mostrar el nombre del canal del autor del comentario"
+			}
+		},
+		"rollback": {
+			"title": "Reversión",
+			"checkbox": {
+				"playerUI": "Restaurar diseño antiguo del reproductor"
 			}
 		}
 	},

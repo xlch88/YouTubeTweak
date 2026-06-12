@@ -85,8 +85,8 @@
 				"bottomRight": "Coin inférieur droit",
 				"topLeft": "Coin supérieur gauche",
 				"topRight": "Coin supérieur droit",
-				"bottomCenter": "__NEED_TRANSLATE__",
-				"topCenter": "__NEED_TRANSLATE__"
+				"bottomCenter": "En bas au centre",
+				"topCenter": "En haut au centre"
 			},
 			"tips": {
 				"timeTag": "Étiquettes de temps vidéo flottantes",
@@ -108,31 +108,31 @@
 			}
 		},
 		"volumeBooster": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "Amplificateur de volume",
 			"checkbox": {
-				"showControl": "__NEED_TRANSLATE__",
-				"enableByDefault": "__NEED_TRANSLATE__"
+				"showControl": "Afficher le contrôle de l’amplificateur à côté de la barre de vitesse",
+				"enableByDefault": "Activer l’amplificateur par défaut"
 			},
 			"select": {
-				"multiplier": "__NEED_TRANSLATE__"
+				"multiplier": "Niveau d’amplification"
 			},
 			"tips": {
-				"control": "__NEED_TRANSLATE__"
+				"control": "Ajoute un véritable étage de gain au-delà du volume 100 % intégré de YouTube. Utilisez le bouton du lecteur pour l’activer ou le désactiver instantanément."
 			}
 		},
 		"miniPlayer": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "Mini-lecteur au défilement",
 			"checkbox": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "Continuer la lecture dans un mini-lecteur flottant pendant le défilement"
 			},
 			"select": {
-				"size": "__NEED_TRANSLATE__",
-				"position": "__NEED_TRANSLATE__",
-				"offset": "__NEED_TRANSLATE__",
-				"triggerOffset": "__NEED_TRANSLATE__"
+				"size": "Taille",
+				"position": "Position",
+				"offset": "Marge de l’écran (px)",
+				"triggerOffset": "Activer après avoir dépassé le lecteur en faisant défiler (px)"
 			},
 			"tips": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "Gardez la vidéo actuelle flottante pendant le défilement. Fermez-la depuis le lecteur à tout moment."
 			}
 		}
 	},
@@ -147,7 +147,8 @@
 			"title": "Contenu du commentaire",
 			"checkbox": {
 				"autoShowMore": "Auto-expansion des commentaires longs",
-				"autoTranslate": "Traduction automatique"
+				"autoTranslate": "Traduction automatique",
+				"lineByLineTranslate": "Placer les traductions sous chaque ligne d’origine"
 			},
 			"select": {
 				"targetLanguage": "Langue cible",
@@ -188,6 +189,12 @@
 			"title": "Commentaires",
 			"checkbox": {
 				"showNickname": "Afficher le surnom de l'auteur de commentaire (channel name)"
+			}
+		},
+		"rollback": {
+			"title": "Retour arrière",
+			"checkbox": {
+				"playerUI": "Restaurer l’ancienne mise en page du lecteur"
 			}
 		}
 	},

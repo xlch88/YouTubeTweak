@@ -85,8 +85,8 @@
 				"bottomRight": "Нижній правий кут",
 				"topLeft": "Верхній лівий кут",
 				"topRight": "Верхній правий кут",
-				"bottomCenter": "__NEED_TRANSLATE__",
-				"topCenter": "__NEED_TRANSLATE__"
+				"bottomCenter": "Унизу по центру",
+				"topCenter": "Угорі по центру"
 			},
 			"tips": {
 				"timeTag": "Спливаючі мітки часу відео",
@@ -108,31 +108,31 @@
 			}
 		},
 		"volumeBooster": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "Підсилювач гучності",
 			"checkbox": {
-				"showControl": "__NEED_TRANSLATE__",
-				"enableByDefault": "__NEED_TRANSLATE__"
+				"showControl": "Показувати керування підсилювачем поруч зі смугою швидкості",
+				"enableByDefault": "Увімкнути підсилювач за замовчуванням"
 			},
 			"select": {
-				"multiplier": "__NEED_TRANSLATE__"
+				"multiplier": "Рівень підсилення"
 			},
 			"tips": {
-				"control": "__NEED_TRANSLATE__"
+				"control": "Додає справжній каскад підсилення понад вбудовану гучність YouTube 100%. Використовуйте кнопку в програвачі, щоб миттєво перемикати його."
 			}
 		},
 		"miniPlayer": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "Мініпрогравач під час прокручування",
 			"checkbox": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "Продовжувати відтворення у плаваючому мініпрогравачі під час прокручування"
 			},
 			"select": {
-				"size": "__NEED_TRANSLATE__",
-				"position": "__NEED_TRANSLATE__",
-				"offset": "__NEED_TRANSLATE__",
-				"triggerOffset": "__NEED_TRANSLATE__"
+				"size": "Розмір",
+				"position": "Позиція",
+				"offset": "Відступ від краю екрана (px)",
+				"triggerOffset": "Активувати після прокручування за програвач (px)"
 			},
 			"tips": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "Показує поточне відео плаваючим під час прокручування. Його можна закрити з програвача будь-коли."
 			}
 		}
 	},
@@ -147,7 +147,8 @@
 			"title": "Вміст коментаря",
 			"checkbox": {
 				"autoShowMore": "Автоматично розгортати довгі коментарі",
-				"autoTranslate": "Автоматично перекладати"
+				"autoTranslate": "Автоматично перекладати",
+				"lineByLineTranslate": "Розміщувати переклади під кожним оригінальним рядком"
 			},
 			"select": {
 				"targetLanguage": "Цільова мова",
@@ -188,6 +189,12 @@
 			"title": "Коментарі",
 			"checkbox": {
 				"showNickname": "Показувати назву каналу автора коментаря"
+			}
+		},
+		"rollback": {
+			"title": "Відкат",
+			"checkbox": {
+				"playerUI": "Відновити старий макет програвача"
 			}
 		}
 	},

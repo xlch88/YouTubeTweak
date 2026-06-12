@@ -85,8 +85,8 @@
 				"bottomRight": "வலது கீழ் மூலை",
 				"topLeft": "இடது மேல் மூலை",
 				"topRight": "வலது மேல் மூலை",
-				"bottomCenter": "__NEED_TRANSLATE__",
-				"topCenter": "__NEED_TRANSLATE__"
+				"bottomCenter": "கீழ் மையம்",
+				"topCenter": "மேல் மையம்"
 			},
 			"tips": {
 				"timeTag": "மிதக்கும் வீடியோ நேர குறிச்சொற்கள்",
@@ -108,31 +108,31 @@
 			}
 		},
 		"volumeBooster": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "ஒலி பெருக்கி",
 			"checkbox": {
-				"showControl": "__NEED_TRANSLATE__",
-				"enableByDefault": "__NEED_TRANSLATE__"
+				"showControl": "வேகப் பட்டையின் அருகில் பெருக்கி கட்டுப்பாட்டைக் காட்டு",
+				"enableByDefault": "பெருக்கியை இயல்பாக இயக்கு"
 			},
 			"select": {
-				"multiplier": "__NEED_TRANSLATE__"
+				"multiplier": "பெருக்க நிலை"
 			},
 			"tips": {
-				"control": "__NEED_TRANSLATE__"
+				"control": "YouTube-ன் உள்ளமைந்த 100% ஒலி அளவைத் தாண்டி உண்மையான gain நிலையை சேர்க்கிறது. அதை உடனே மாற்ற பிளேயரில் உள்ள பொத்தானைப் பயன்படுத்தவும்."
 			}
 		},
 		"miniPlayer": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "ஸ்க்ரோல் மினி பிளேயர்",
 			"checkbox": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "ஸ்க்ரோல் செய்யும் போது மிதக்கும் மினி பிளேயரில் தொடர்ந்து இயக்கவும்"
 			},
 			"select": {
-				"size": "__NEED_TRANSLATE__",
-				"position": "__NEED_TRANSLATE__",
-				"offset": "__NEED_TRANSLATE__",
-				"triggerOffset": "__NEED_TRANSLATE__"
+				"size": "அளவு",
+				"position": "நிலை",
+				"offset": "திரை ஓரம் (px)",
+				"triggerOffset": "பிளேயரைத் தாண்டி ஸ்க்ரோல் செய்த பிறகு இயக்கு (px)"
 			},
 			"tips": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "ஸ்க்ரோல் செய்யும் போது தற்போதைய வீடியோவை மிதக்க விடு. எந்த நேரமும் பிளேயரில் இருந்து மூடலாம்."
 			}
 		}
 	},
@@ -147,7 +147,8 @@
 			"title": "கருத்து உள்ளடக்கம்",
 			"checkbox": {
 				"autoShowMore": "நீளமான கருத்துகளை தானாக விரிவாக்கு",
-				"autoTranslate": "தானியங்கி மொழிபெயர்ப்பு"
+				"autoTranslate": "தானியங்கி மொழிபெயர்ப்பு",
+				"lineByLineTranslate": "ஒவ்வொரு மூல வரியின் கீழும் மொழிபெயர்ப்பை வை"
 			},
 			"select": {
 				"targetLanguage": "இலக்கு மொழி",
@@ -188,6 +189,12 @@
 			"title": "கருத்து",
 			"checkbox": {
 				"showNickname": "கருத்துரைப்பவரின் சேனல் பெயரை காட்டு"
+			}
+		},
+		"rollback": {
+			"title": "மீளமைப்பு",
+			"checkbox": {
+				"playerUI": "பழைய பிளேயர் அமைப்பை மீட்டமை"
 			}
 		}
 	},

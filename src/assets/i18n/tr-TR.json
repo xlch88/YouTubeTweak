@@ -85,8 +85,8 @@
 				"bottomRight": "Sağ alt köşe",
 				"topLeft": "Sol üst köşe",
 				"topRight": "Sağ üst köşe",
-				"bottomCenter": "__NEED_TRANSLATE__",
-				"topCenter": "__NEED_TRANSLATE__"
+				"bottomCenter": "Alt orta",
+				"topCenter": "Üst orta"
 			},
 			"tips": {
 				"timeTag": "Yüzen video süre etiketi",
@@ -108,31 +108,31 @@
 			}
 		},
 		"volumeBooster": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "Ses yükseltici",
 			"checkbox": {
-				"showControl": "__NEED_TRANSLATE__",
-				"enableByDefault": "__NEED_TRANSLATE__"
+				"showControl": "Hız şeridinin yanında yükseltici kontrolünü göster",
+				"enableByDefault": "Yükselticiyi varsayılan olarak etkinleştir"
 			},
 			"select": {
-				"multiplier": "__NEED_TRANSLATE__"
+				"multiplier": "Yükseltme seviyesi"
 			},
 			"tips": {
-				"control": "__NEED_TRANSLATE__"
+				"control": "YouTube’un yerleşik %100 sesinin üstüne gerçek bir kazanç aşaması ekler. Anında açıp kapatmak için oynatıcıdaki düğmeyi kullanın."
 			}
 		},
 		"miniPlayer": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "Kaydırma mini oynatıcısı",
 			"checkbox": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "Kaydırırken kayan mini oynatıcıda oynatmaya devam et"
 			},
 			"select": {
-				"size": "__NEED_TRANSLATE__",
-				"position": "__NEED_TRANSLATE__",
-				"offset": "__NEED_TRANSLATE__",
-				"triggerOffset": "__NEED_TRANSLATE__"
+				"size": "Boyut",
+				"position": "Konum",
+				"offset": "Ekran kenar boşluğu (px)",
+				"triggerOffset": "Oynatıcıyı geçecek kadar kaydırınca etkinleştir (px)"
 			},
 			"tips": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "Kaydırırken geçerli videoyu yüzer halde tutar. İstediğiniz zaman oynatıcıdan kapatabilirsiniz."
 			}
 		}
 	},
@@ -147,7 +147,8 @@
 			"title": "Yorum içeriği",
 			"checkbox": {
 				"autoShowMore": "Uzun yorumları otomatik genişlet",
-				"autoTranslate": "Otomatik çevir"
+				"autoTranslate": "Otomatik çevir",
+				"lineByLineTranslate": "Çevirileri her özgün satırın altına yerleştir"
 			},
 			"select": {
 				"targetLanguage": "Hedef dil",
@@ -188,6 +189,12 @@
 			"title": "Yorum",
 			"checkbox": {
 				"showNickname": "Yorum yapanın kanal adını göster"
+			}
+		},
+		"rollback": {
+			"title": "Geri alma",
+			"checkbox": {
+				"playerUI": "Eski oynatıcı düzenini geri yükle"
 			}
 		}
 	},

@@ -85,8 +85,8 @@
 				"bottomRight": "右下角",
 				"topLeft": "左上角",
 				"topRight": "右上角",
-				"bottomCenter": "__NEED_TRANSLATE__",
-				"topCenter": "__NEED_TRANSLATE__"
+				"bottomCenter": "底部置中",
+				"topCenter": "頂部置中"
 			},
 			"tips": {
 				"timeTag": "浮動影片時間",
@@ -108,31 +108,31 @@
 			}
 		},
 		"volumeBooster": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "音量增強器",
 			"checkbox": {
-				"showControl": "__NEED_TRANSLATE__",
-				"enableByDefault": "__NEED_TRANSLATE__"
+				"showControl": "在播放速度列旁顯示增強控制",
+				"enableByDefault": "預設啟用音量增強"
 			},
 			"select": {
-				"multiplier": "__NEED_TRANSLATE__"
+				"multiplier": "增強級別"
 			},
 			"tips": {
-				"control": "__NEED_TRANSLATE__"
+				"control": "在 YouTube 內建 100% 音量之上加入真正的增益級。可用播放器內按鈕立即切換。"
 			}
 		},
 		"miniPlayer": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "捲動迷你播放器",
 			"checkbox": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "捲動時保持影片在浮動迷你播放器中播放"
 			},
 			"select": {
-				"size": "__NEED_TRANSLATE__",
-				"position": "__NEED_TRANSLATE__",
-				"offset": "__NEED_TRANSLATE__",
-				"triggerOffset": "__NEED_TRANSLATE__"
+				"size": "大小",
+				"position": "位置",
+				"offset": "螢幕邊距 (px)",
+				"triggerOffset": "捲動超過播放器後啟用 (px)"
 			},
 			"tips": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "捲動頁面時讓目前影片浮動顯示，可隨時從播放器關閉。"
 			}
 		}
 	},
@@ -189,6 +189,12 @@
 			"title": "留言",
 			"checkbox": {
 				"showNickname": "顯示留言者暱稱 (頻道名稱)"
+			}
+		},
+		"rollback": {
+			"title": "還原",
+			"checkbox": {
+				"playerUI": "還原舊版播放器版面配置"
 			}
 		}
 	},

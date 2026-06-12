@@ -85,8 +85,8 @@
 				"bottomRight": "گوشه راست پایین",
 				"topLeft": "گوشه چپ بالا",
 				"topRight": "گوشه راست بالا",
-				"bottomCenter": "__NEED_TRANSLATE__",
-				"topCenter": "__NEED_TRANSLATE__"
+				"bottomCenter": "پایین وسط",
+				"topCenter": "بالای وسط"
 			},
 			"tips": {
 				"timeTag": "برچسب زمان شناور ویدیو",
@@ -108,31 +108,31 @@
 			}
 		},
 		"volumeBooster": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "تقویت‌کننده صدا",
 			"checkbox": {
-				"showControl": "__NEED_TRANSLATE__",
-				"enableByDefault": "__NEED_TRANSLATE__"
+				"showControl": "نمایش کنترل تقویت‌کننده کنار نوار سرعت",
+				"enableByDefault": "فعال‌سازی تقویت‌کننده به‌صورت پیش‌فرض"
 			},
 			"select": {
-				"multiplier": "__NEED_TRANSLATE__"
+				"multiplier": "سطح تقویت"
 			},
 			"tips": {
-				"control": "__NEED_TRANSLATE__"
+				"control": "یک مرحله تقویت واقعی بالاتر از صدای داخلی ۱۰۰٪ YouTube اضافه می‌کند. برای تغییر فوری، از دکمه داخل پخش‌کننده استفاده کنید."
 			}
 		},
 		"miniPlayer": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "پخش‌کننده کوچک هنگام پیمایش",
 			"checkbox": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "هنگام پیمایش، پخش را در پخش‌کننده کوچک شناور نگه دار"
 			},
 			"select": {
-				"size": "__NEED_TRANSLATE__",
-				"position": "__NEED_TRANSLATE__",
-				"offset": "__NEED_TRANSLATE__",
-				"triggerOffset": "__NEED_TRANSLATE__"
+				"size": "اندازه",
+				"position": "موقعیت",
+				"offset": "حاشیه صفحه (px)",
+				"triggerOffset": "فعال‌سازی پس از پیمایش از پخش‌کننده (px)"
 			},
 			"tips": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "هنگام پیمایش، ویدیوی فعلی را شناور کن. هر زمان می‌توانی آن را از پخش‌کننده ببندی."
 			}
 		}
 	},
@@ -147,7 +147,8 @@
 			"title": "محتوای نظر",
 			"checkbox": {
 				"autoShowMore": "گسترش خودکار نظرات بلند",
-				"autoTranslate": "ترجمه خودکار"
+				"autoTranslate": "ترجمه خودکار",
+				"lineByLineTranslate": "ترجمه‌ها را زیر هر خط اصلی قرار بده"
 			},
 			"select": {
 				"targetLanguage": "زبان مقصد",
@@ -188,6 +189,12 @@
 			"title": "نظر",
 			"checkbox": {
 				"showNickname": "نام کانال نظر‌دهنده را نشان بده"
+			}
+		},
+		"rollback": {
+			"title": "بازگشت",
+			"checkbox": {
+				"playerUI": "بازیابی چیدمان قدیمی پخش‌کننده"
 			}
 		}
 	},

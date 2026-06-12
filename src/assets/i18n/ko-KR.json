@@ -85,8 +85,8 @@
 				"bottomRight": "오른쪽 아래 모서리",
 				"topLeft": "왼쪽 위 모서리",
 				"topRight": "오른쪽 위 모서리",
-				"bottomCenter": "__NEED_TRANSLATE__",
-				"topCenter": "__NEED_TRANSLATE__"
+				"bottomCenter": "하단 중앙",
+				"topCenter": "상단 중앙"
 			},
 			"tips": {
 				"timeTag": "떠 있는 영상 시간 태그",
@@ -108,31 +108,31 @@
 			}
 		},
 		"volumeBooster": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "볼륨 부스터",
 			"checkbox": {
-				"showControl": "__NEED_TRANSLATE__",
-				"enableByDefault": "__NEED_TRANSLATE__"
+				"showControl": "속도 표시줄 옆에 부스터 컨트롤 표시",
+				"enableByDefault": "기본적으로 부스터 활성화"
 			},
 			"select": {
-				"multiplier": "__NEED_TRANSLATE__"
+				"multiplier": "증폭 수준"
 			},
 			"tips": {
-				"control": "__NEED_TRANSLATE__"
+				"control": "YouTube 내장 100% 볼륨보다 높은 실제 게인 단계를 추가합니다. 플레이어 안의 버튼으로 즉시 켜거나 끌 수 있습니다."
 			}
 		},
 		"miniPlayer": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "스크롤 미니 플레이어",
 			"checkbox": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "스크롤 중 플로팅 미니 플레이어로 계속 재생"
 			},
 			"select": {
-				"size": "__NEED_TRANSLATE__",
-				"position": "__NEED_TRANSLATE__",
-				"offset": "__NEED_TRANSLATE__",
-				"triggerOffset": "__NEED_TRANSLATE__"
+				"size": "크기",
+				"position": "위치",
+				"offset": "화면 여백(px)",
+				"triggerOffset": "플레이어를 지나 스크롤한 뒤 활성화(px)"
 			},
 			"tips": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "스크롤하는 동안 현재 동영상을 띄워 둡니다. 언제든 플레이어에서 닫을 수 있습니다."
 			}
 		}
 	},
@@ -147,7 +147,8 @@
 			"title": "댓글 내용",
 			"checkbox": {
 				"autoShowMore": "긴 댓글 자동으로 펼치기",
-				"autoTranslate": "댓글 자동 번역"
+				"autoTranslate": "댓글 자동 번역",
+				"lineByLineTranslate": "각 원문 줄 아래에 번역 배치"
 			},
 			"select": {
 				"targetLanguage": "대상 언어",
@@ -188,6 +189,12 @@
 			"title": "댓글",
 			"checkbox": {
 				"showNickname": "댓글 작성자의 채널 이름 표시"
+			}
+		},
+		"rollback": {
+			"title": "롤백",
+			"checkbox": {
+				"playerUI": "이전 플레이어 레이아웃 복원"
 			}
 		}
 	},

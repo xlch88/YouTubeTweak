@@ -85,8 +85,8 @@
 				"bottomRight": "Sudut kanan bawah",
 				"topLeft": "Sudut kiri atas",
 				"topRight": "Sudut kanan atas",
-				"bottomCenter": "__NEED_TRANSLATE__",
-				"topCenter": "__NEED_TRANSLATE__"
+				"bottomCenter": "Tengah bawah",
+				"topCenter": "Tengah atas"
 			},
 			"tips": {
 				"timeTag": "Tag masa video terapung",
@@ -108,31 +108,31 @@
 			}
 		},
 		"volumeBooster": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "Penguat volum",
 			"checkbox": {
-				"showControl": "__NEED_TRANSLATE__",
-				"enableByDefault": "__NEED_TRANSLATE__"
+				"showControl": "Tunjukkan kawalan penguat di sebelah jalur kelajuan",
+				"enableByDefault": "Dayakan penguat secara lalai"
 			},
 			"select": {
-				"multiplier": "__NEED_TRANSLATE__"
+				"multiplier": "Tahap penguatan"
 			},
 			"tips": {
-				"control": "__NEED_TRANSLATE__"
+				"control": "Menambah peringkat gain sebenar melebihi volum terbina dalam YouTube 100%. Gunakan butang dalam pemain untuk menogolnya serta-merta."
 			}
 		},
 		"miniPlayer": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "Pemain mini semasa menatal",
 			"checkbox": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "Kekalkan main balik dalam pemain mini terapung semasa menatal"
 			},
 			"select": {
-				"size": "__NEED_TRANSLATE__",
-				"position": "__NEED_TRANSLATE__",
-				"offset": "__NEED_TRANSLATE__",
-				"triggerOffset": "__NEED_TRANSLATE__"
+				"size": "Saiz",
+				"position": "Kedudukan",
+				"offset": "Jidar skrin (px)",
+				"triggerOffset": "Aktifkan selepas menatal melepasi pemain (px)"
 			},
 			"tips": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "Apungkan video semasa ketika anda menatal. Tutupnya daripada pemain pada bila-bila masa."
 			}
 		}
 	},
@@ -147,7 +147,8 @@
 			"title": "Kandungan komen",
 			"checkbox": {
 				"autoShowMore": "Kembangkan automatik komen panjang",
-				"autoTranslate": "Terjemah automatik"
+				"autoTranslate": "Terjemah automatik",
+				"lineByLineTranslate": "Letakkan terjemahan di bawah setiap baris asal"
 			},
 			"select": {
 				"targetLanguage": "Bahasa sasaran",
@@ -188,6 +189,12 @@
 			"title": "Komen",
 			"checkbox": {
 				"showNickname": "Tunjukkan nama saluran pengulas"
+			}
+		},
+		"rollback": {
+			"title": "Gulung balik",
+			"checkbox": {
+				"playerUI": "Pulihkan susun atur pemain lama"
 			}
 		}
 	},

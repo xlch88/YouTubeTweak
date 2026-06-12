@@ -85,8 +85,8 @@
 				"bottomRight": "Góc dưới bên phải",
 				"topLeft": "Góc trên bên trái",
 				"topRight": "Góc trên bên phải",
-				"bottomCenter": "__NEED_TRANSLATE__",
-				"topCenter": "__NEED_TRANSLATE__"
+				"bottomCenter": "Chính giữa phía dưới",
+				"topCenter": "Chính giữa phía trên"
 			},
 			"tips": {
 				"timeTag": "Nhãn thời gian nổi",
@@ -108,31 +108,31 @@
 			}
 		},
 		"volumeBooster": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "Bộ tăng âm lượng",
 			"checkbox": {
-				"showControl": "__NEED_TRANSLATE__",
-				"enableByDefault": "__NEED_TRANSLATE__"
+				"showControl": "Hiển thị điều khiển tăng âm bên cạnh dải tốc độ",
+				"enableByDefault": "Bật bộ tăng âm theo mặc định"
 			},
 			"select": {
-				"multiplier": "__NEED_TRANSLATE__"
+				"multiplier": "Mức tăng âm"
 			},
 			"tips": {
-				"control": "__NEED_TRANSLATE__"
+				"control": "Thêm một tầng khuếch đại thật vượt trên mức âm lượng 100% tích hợp của YouTube. Dùng nút trong trình phát để bật/tắt ngay lập tức."
 			}
 		},
 		"miniPlayer": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "Trình phát mini khi cuộn",
 			"checkbox": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "Tiếp tục phát trong trình phát mini nổi khi cuộn"
 			},
 			"select": {
-				"size": "__NEED_TRANSLATE__",
-				"position": "__NEED_TRANSLATE__",
-				"offset": "__NEED_TRANSLATE__",
-				"triggerOffset": "__NEED_TRANSLATE__"
+				"size": "Kích thước",
+				"position": "Vị trí",
+				"offset": "Lề màn hình (px)",
+				"triggerOffset": "Kích hoạt sau khi cuộn qua trình phát (px)"
 			},
 			"tips": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "Giữ video hiện tại nổi khi bạn cuộn. Đóng từ trình phát bất cứ lúc nào."
 			}
 		}
 	},
@@ -147,7 +147,8 @@
 			"title": "Nội dung bình luận",
 			"checkbox": {
 				"autoShowMore": "Tự động mở rộng bình luận dài",
-				"autoTranslate": "Tự động dịch"
+				"autoTranslate": "Tự động dịch",
+				"lineByLineTranslate": "Đặt bản dịch dưới mỗi dòng gốc"
 			},
 			"select": {
 				"targetLanguage": "Ngôn ngữ đích",
@@ -188,6 +189,12 @@
 			"title": "Bình luận",
 			"checkbox": {
 				"showNickname": "Hiển thị tên kênh của người bình luận"
+			}
+		},
+		"rollback": {
+			"title": "Hoàn nguyên",
+			"checkbox": {
+				"playerUI": "Khôi phục bố cục trình phát cũ"
 			}
 		}
 	},

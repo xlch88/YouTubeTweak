@@ -85,8 +85,8 @@
 				"bottomRight": "右下角",
 				"topLeft": "左上角",
 				"topRight": "右上角",
-				"bottomCenter": "__NEED_TRANSLATE__",
-				"topCenter": "__NEED_TRANSLATE__"
+				"bottomCenter": "底部居中",
+				"topCenter": "顶部居中"
 			},
 			"tips": {
 				"timeTag": "悬浮视频时间",
@@ -108,31 +108,31 @@
 			}
 		},
 		"volumeBooster": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "音量增强器",
 			"checkbox": {
-				"showControl": "__NEED_TRANSLATE__",
-				"enableByDefault": "__NEED_TRANSLATE__"
+				"showControl": "在倍速栏旁显示增强控制",
+				"enableByDefault": "默认启用音量增强"
 			},
 			"select": {
-				"multiplier": "__NEED_TRANSLATE__"
+				"multiplier": "增强级别"
 			},
 			"tips": {
-				"control": "__NEED_TRANSLATE__"
+				"control": "在 YouTube 内置 100% 音量之上增加真实增益级。可用播放器内按钮即时开关。"
 			}
 		},
 		"miniPlayer": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "滚动迷你播放器",
 			"checkbox": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "滚动时保持视频在悬浮迷你播放器中播放"
 			},
 			"select": {
-				"size": "__NEED_TRANSLATE__",
-				"position": "__NEED_TRANSLATE__",
-				"offset": "__NEED_TRANSLATE__",
-				"triggerOffset": "__NEED_TRANSLATE__"
+				"size": "大小",
+				"position": "位置",
+				"offset": "屏幕边距 (px)",
+				"triggerOffset": "滚动超过播放器后激活 (px)"
 			},
 			"tips": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "滚动页面时让当前视频悬浮显示，可随时从播放器关闭。"
 			}
 		}
 	},

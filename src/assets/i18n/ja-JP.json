@@ -85,8 +85,8 @@
 				"bottomRight": "右下隅",
 				"topLeft": "左上隅",
 				"topRight": "右上隅",
-				"bottomCenter": "__NEED_TRANSLATE__",
-				"topCenter": "__NEED_TRANSLATE__"
+				"bottomCenter": "下部中央",
+				"topCenter": "上部中央"
 			},
 			"tips": {
 				"timeTag": "浮動表示の動画時間",
@@ -108,31 +108,31 @@
 			}
 		},
 		"volumeBooster": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "音量ブースター",
 			"checkbox": {
-				"showControl": "__NEED_TRANSLATE__",
-				"enableByDefault": "__NEED_TRANSLATE__"
+				"showControl": "速度バーの横にブースターコントロールを表示",
+				"enableByDefault": "デフォルトでブースターを有効化"
 			},
 			"select": {
-				"multiplier": "__NEED_TRANSLATE__"
+				"multiplier": "ブーストレベル"
 			},
 			"tips": {
-				"control": "__NEED_TRANSLATE__"
+				"control": "YouTube内蔵の100%音量を超える実際のゲイン段を追加します。プレーヤー内のボタンですぐに切り替えられます。"
 			}
 		},
 		"miniPlayer": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "スクロール時のミニプレーヤー",
 			"checkbox": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "スクロール中もフローティングミニプレーヤーで再生を続ける"
 			},
 			"select": {
-				"size": "__NEED_TRANSLATE__",
-				"position": "__NEED_TRANSLATE__",
-				"offset": "__NEED_TRANSLATE__",
-				"triggerOffset": "__NEED_TRANSLATE__"
+				"size": "サイズ",
+				"position": "位置",
+				"offset": "画面余白 (px)",
+				"triggerOffset": "プレーヤーを越えてスクロールした後に有効化 (px)"
 			},
 			"tips": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "スクロール中に現在の動画をフローティング表示します。いつでもプレーヤーから閉じられます。"
 			}
 		}
 	},
@@ -147,7 +147,8 @@
 			"title": "コメント内容",
 			"checkbox": {
 				"autoShowMore": "長いコメントを自動展開する",
-				"autoTranslate": "コメントを自動翻訳する"
+				"autoTranslate": "コメントを自動翻訳する",
+				"lineByLineTranslate": "各原文行の下に翻訳を配置"
 			},
 			"select": {
 				"targetLanguage": "翻訳先の言語",
@@ -188,6 +189,12 @@
 			"title": "コメント",
 			"checkbox": {
 				"showNickname": "コメント投稿者のニックネーム（チャンネル名）を表示する"
+			}
+		},
+		"rollback": {
+			"title": "ロールバック",
+			"checkbox": {
+				"playerUI": "旧プレーヤーレイアウトに戻す"
 			}
 		}
 	},

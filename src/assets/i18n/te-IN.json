@@ -85,8 +85,8 @@
 				"bottomRight": "కుడి క్రింది మూల",
 				"topLeft": "ఎడమ పై మూల",
 				"topRight": "కుడి పై మూల",
-				"bottomCenter": "__NEED_TRANSLATE__",
-				"topCenter": "__NEED_TRANSLATE__"
+				"bottomCenter": "క్రింది మధ్య",
+				"topCenter": "పై మధ్య"
 			},
 			"tips": {
 				"timeTag": "తేలియాడే వీడియో సమయ ట్యాగ్",
@@ -108,31 +108,31 @@
 			}
 		},
 		"volumeBooster": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "వాల్యూమ్ బూస్టర్",
 			"checkbox": {
-				"showControl": "__NEED_TRANSLATE__",
-				"enableByDefault": "__NEED_TRANSLATE__"
+				"showControl": "స్పీడ్ స్ట్రిప్ పక్కన బూస్టర్ నియంత్రణను చూపించు",
+				"enableByDefault": "బూస్టర్‌ను డిఫాల్ట్‌గా ప్రారంభించు"
 			},
 			"select": {
-				"multiplier": "__NEED_TRANSLATE__"
+				"multiplier": "బూస్ట్ స్థాయి"
 			},
 			"tips": {
-				"control": "__NEED_TRANSLATE__"
+				"control": "YouTubeలోని అంతర్నిర్మిత 100% వాల్యూమ్‌ కంటే పైగా నిజమైన గెయిన్ దశను జోడిస్తుంది. దాన్ని వెంటనే టోగుల్ చేయడానికి ప్లేయర్‌లోని బటన్‌ను ఉపయోగించండి."
 			}
 		},
 		"miniPlayer": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "స్క్రోల్ మినీ ప్లేయర్",
 			"checkbox": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "స్క్రోల్ చేస్తున్నప్పుడు తేలియాడే మినీ ప్లేయర్‌లో ప్లేబ్యాక్ కొనసాగించు"
 			},
 			"select": {
-				"size": "__NEED_TRANSLATE__",
-				"position": "__NEED_TRANSLATE__",
-				"offset": "__NEED_TRANSLATE__",
-				"triggerOffset": "__NEED_TRANSLATE__"
+				"size": "పరిమాణం",
+				"position": "స్థానం",
+				"offset": "స్క్రీన్ మార్జిన్ (px)",
+				"triggerOffset": "ప్లేయర్‌ను దాటి స్క్రోల్ చేసిన తర్వాత సక్రియం చేయు (px)"
 			},
 			"tips": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "స్క్రోల్ చేస్తున్నప్పుడు ప్రస్తుత వీడియోను తేలియాడేలా ఉంచు. ఎప్పుడైనా ప్లేయర్ నుంచే దాన్ని మూసివేయండి."
 			}
 		}
 	},
@@ -147,7 +147,8 @@
 			"title": "వ్యాఖ్య కంటెంట్",
 			"checkbox": {
 				"autoShowMore": "పొడవైన కామెంట్లను ఆటో విస్తరించు",
-				"autoTranslate": "ఆటో అనువాదం"
+				"autoTranslate": "ఆటో అనువాదం",
+				"lineByLineTranslate": "ప్రతి అసలు పంక్తి కింద అనువాదాలను ఉంచు"
 			},
 			"select": {
 				"targetLanguage": "లక్ష్య భాష",
@@ -188,6 +189,12 @@
 			"title": "వ్యాఖ్య",
 			"checkbox": {
 				"showNickname": "కామెంట్ చేసిన వారి చానెల్ పేరు చూపించు"
+			}
+		},
+		"rollback": {
+			"title": "రోల్‌బ్యాక్",
+			"checkbox": {
+				"playerUI": "పాత ప్లేయర్ లేఅవుట్‌ను పునరుద్ధరించు"
 			}
 		}
 	},

@@ -85,8 +85,8 @@
 				"bottomRight": "खालचा उजवा कोपरा",
 				"topLeft": "वरचा डावा कोपरा",
 				"topRight": "वरचा उजवा कोपरा",
-				"bottomCenter": "__NEED_TRANSLATE__",
-				"topCenter": "__NEED_TRANSLATE__"
+				"bottomCenter": "खालचा मध्य",
+				"topCenter": "वरचा मध्य"
 			},
 			"tips": {
 				"timeTag": "तरंगणारे व्हिडिओ वेळ टॅग",
@@ -108,31 +108,31 @@
 			}
 		},
 		"volumeBooster": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "व्हॉल्यूम बूस्टर",
 			"checkbox": {
-				"showControl": "__NEED_TRANSLATE__",
-				"enableByDefault": "__NEED_TRANSLATE__"
+				"showControl": "स्पीड स्ट्रिपजवळ बूस्टर नियंत्रण दाखवा",
+				"enableByDefault": "बूस्टर डीफॉल्टने सक्षम करा"
 			},
 			"select": {
-				"multiplier": "__NEED_TRANSLATE__"
+				"multiplier": "बूस्ट स्तर"
 			},
 			"tips": {
-				"control": "__NEED_TRANSLATE__"
+				"control": "YouTube च्या अंगभूत 100% आवाजापेक्षा वर एक खरा गेन स्टेज जोडतो. ते लगेच चालू/बंद करण्यासाठी प्लेयरमधील बटण वापरा."
 			}
 		},
 		"miniPlayer": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "स्क्रोल मिनी-प्लेयर",
 			"checkbox": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "स्क्रोल करताना तरंगत्या मिनी-प्लेयरमध्ये प्लेबॅक सुरू ठेवा"
 			},
 			"select": {
-				"size": "__NEED_TRANSLATE__",
-				"position": "__NEED_TRANSLATE__",
-				"offset": "__NEED_TRANSLATE__",
-				"triggerOffset": "__NEED_TRANSLATE__"
+				"size": "आकार",
+				"position": "स्थान",
+				"offset": "स्क्रीन मार्जिन (px)",
+				"triggerOffset": "प्लेयरच्या पुढे स्क्रोल केल्यानंतर सक्रिय करा (px)"
 			},
 			"tips": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "स्क्रोल करताना सध्याचा व्हिडिओ तरंगता ठेवा. तो कधीही प्लेयरमधून बंद करा."
 			}
 		}
 	},
@@ -147,7 +147,8 @@
 			"title": "टिप्पणी सामग्री",
 			"checkbox": {
 				"autoShowMore": "लांब टिप्पण्या आपोआप विस्तृत करा",
-				"autoTranslate": "स्वयंचलित भाषांतर"
+				"autoTranslate": "स्वयंचलित भाषांतर",
+				"lineByLineTranslate": "प्रत्येक मूळ ओळीखाली अनुवाद ठेवा"
 			},
 			"select": {
 				"targetLanguage": "लक्ष्य भाषा",
@@ -188,6 +189,12 @@
 			"title": "टिप्पणी",
 			"checkbox": {
 				"showNickname": "टिप्पणी करणाऱ्याचे चॅनेल नाव दाखवा"
+			}
+		},
+		"rollback": {
+			"title": "रोलबॅक",
+			"checkbox": {
+				"playerUI": "जुना प्लेयर लेआउट पुनर्संचयित करा"
 			}
 		}
 	},

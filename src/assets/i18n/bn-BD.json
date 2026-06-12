@@ -85,8 +85,8 @@
 				"bottomRight": "নিচের ডান কোণা",
 				"topLeft": "উপরের বাম কোণা",
 				"topRight": "উপরের ডান কোণা",
-				"bottomCenter": "__NEED_TRANSLATE__",
-				"topCenter": "__NEED_TRANSLATE__"
+				"bottomCenter": "নিচের মাঝামাঝি",
+				"topCenter": "উপরের মাঝামাঝি"
 			},
 			"tips": {
 				"timeTag": "ভাসমান ভিডিও সময় ট্যাগ",
@@ -108,31 +108,31 @@
 			}
 		},
 		"volumeBooster": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "ভলিউম বুস্টার",
 			"checkbox": {
-				"showControl": "__NEED_TRANSLATE__",
-				"enableByDefault": "__NEED_TRANSLATE__"
+				"showControl": "স্পিড স্ট্রিপের পাশে বুস্টার কন্ট্রোল দেখান",
+				"enableByDefault": "ডিফল্টভাবে বুস্টার চালু করুন"
 			},
 			"select": {
-				"multiplier": "__NEED_TRANSLATE__"
+				"multiplier": "বুস্ট লেভেল"
 			},
 			"tips": {
-				"control": "__NEED_TRANSLATE__"
+				"control": "YouTube-এর অন্তর্নির্মিত ১০০% ভলিউমের ওপরে একটি আসল গেইন স্টেজ যোগ করে। প্লেয়ারের বোতাম দিয়ে তাৎক্ষণিকভাবে চালু/বন্ধ করুন।"
 			}
 		},
 		"miniPlayer": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "স্ক্রল মিনি-প্লেয়ার",
 			"checkbox": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "স্ক্রল করার সময় ভাসমান মিনি-প্লেয়ারে ভিডিও চালু রাখুন"
 			},
 			"select": {
-				"size": "__NEED_TRANSLATE__",
-				"position": "__NEED_TRANSLATE__",
-				"offset": "__NEED_TRANSLATE__",
-				"triggerOffset": "__NEED_TRANSLATE__"
+				"size": "আকার",
+				"position": "অবস্থান",
+				"offset": "স্ক্রিন মার্জিন (px)",
+				"triggerOffset": "প্লেয়ার পেরিয়ে স্ক্রল করলে সক্রিয় করুন (px)"
 			},
 			"tips": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "স্ক্রল করার সময় বর্তমান ভিডিওটি ভাসিয়ে রাখুন। যেকোনো সময় প্লেয়ার থেকেই এটি বন্ধ করুন।"
 			}
 		}
 	},
@@ -147,7 +147,8 @@
 			"title": "মন্তব্যের বিষয়বস্তু",
 			"checkbox": {
 				"autoShowMore": "দীর্ঘ মন্তব্য স্বয়ংক্রিয়ভাবে প্রসারিত করুন",
-				"autoTranslate": "স্বয়ংক্রিয় অনুবাদ"
+				"autoTranslate": "স্বয়ংক্রিয় অনুবাদ",
+				"lineByLineTranslate": "প্রতিটি মূল লাইনের নিচে অনুবাদ দেখান"
 			},
 			"select": {
 				"targetLanguage": "লক্ষ্য ভাষা",
@@ -188,6 +189,12 @@
 			"title": "মন্তব্য",
 			"checkbox": {
 				"showNickname": "মন্তব্যকারীর চ্যানেলের নাম দেখান"
+			}
+		},
+		"rollback": {
+			"title": "রোলব্যাক",
+			"checkbox": {
+				"playerUI": "পুরোনো প্লেয়ার লেআউট ফিরিয়ে আনুন"
 			}
 		}
 	},

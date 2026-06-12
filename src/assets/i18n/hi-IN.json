@@ -85,8 +85,8 @@
 				"bottomRight": "दायां निचला कोना",
 				"topLeft": "बायां ऊपरी कोना",
 				"topRight": "दायां ऊपरी कोना",
-				"bottomCenter": "__NEED_TRANSLATE__",
-				"topCenter": "__NEED_TRANSLATE__"
+				"bottomCenter": "नीचे बीच में",
+				"topCenter": "ऊपर बीच में"
 			},
 			"tips": {
 				"timeTag": "तैरते वीडियो समय टैग",
@@ -108,31 +108,31 @@
 			}
 		},
 		"volumeBooster": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "वॉल्यूम बूस्टर",
 			"checkbox": {
-				"showControl": "__NEED_TRANSLATE__",
-				"enableByDefault": "__NEED_TRANSLATE__"
+				"showControl": "स्पीड स्ट्रिप के पास बूस्टर कंट्रोल दिखाएं",
+				"enableByDefault": "बूस्टर को डिफ़ॉल्ट रूप से चालू करें"
 			},
 			"select": {
-				"multiplier": "__NEED_TRANSLATE__"
+				"multiplier": "बूस्ट स्तर"
 			},
 			"tips": {
-				"control": "__NEED_TRANSLATE__"
+				"control": "YouTube के बिल्ट-इन 100% वॉल्यूम से ऊपर एक वास्तविक गेन स्टेज जोड़ता है। इसे तुरंत चालू/बंद करने के लिए प्लेयर के बटन का उपयोग करें।"
 			}
 		},
 		"miniPlayer": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "स्क्रॉल मिनी-प्लेयर",
 			"checkbox": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "स्क्रॉल करते समय फ्लोटिंग मिनी-प्लेयर में चलाते रहें"
 			},
 			"select": {
-				"size": "__NEED_TRANSLATE__",
-				"position": "__NEED_TRANSLATE__",
-				"offset": "__NEED_TRANSLATE__",
-				"triggerOffset": "__NEED_TRANSLATE__"
+				"size": "आकार",
+				"position": "स्थिति",
+				"offset": "स्क्रीन मार्जिन (px)",
+				"triggerOffset": "प्लेयर से आगे स्क्रॉल करने के बाद सक्रिय करें (px)"
 			},
 			"tips": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "स्क्रॉल करते समय मौजूदा वीडियो को फ्लोटिंग रखें। इसे कभी भी प्लेयर से बंद करें।"
 			}
 		}
 	},
@@ -147,7 +147,8 @@
 			"title": "टिप्पणी सामग्री",
 			"checkbox": {
 				"autoShowMore": "लंबी टिप्पणियाँ अपने आप विस्तार करें",
-				"autoTranslate": "स्वतः अनुवाद करें"
+				"autoTranslate": "स्वतः अनुवाद करें",
+				"lineByLineTranslate": "हर मूल पंक्ति के नीचे अनुवाद रखें"
 			},
 			"select": {
 				"targetLanguage": "लक्षित भाषा",
@@ -188,6 +189,12 @@
 			"title": "टिप्पणी",
 			"checkbox": {
 				"showNickname": "टिप्पणीकर्ता का चैनल नाम दिखाएँ"
+			}
+		},
+		"rollback": {
+			"title": "रोलबैक",
+			"checkbox": {
+				"playerUI": "पुराने प्लेयर लेआउट को पुनर्स्थापित करें"
 			}
 		}
 	},

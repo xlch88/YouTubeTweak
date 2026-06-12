@@ -85,8 +85,8 @@
 				"bottomRight": "سجّا ہِٹھّلا کونا",
 				"topLeft": "کھبّا اُپرلا کونا",
 				"topRight": "سجّا اُپرلا کونا",
-				"bottomCenter": "__NEED_TRANSLATE__",
-				"topCenter": "__NEED_TRANSLATE__"
+				"bottomCenter": "وچ ہِٹھّے",
+				"topCenter": "وچ اُتے"
 			},
 			"tips": {
 				"timeTag": "تیرتا ویڈیو ویلہ ٹیگ",
@@ -108,31 +108,31 @@
 			}
 		},
 		"volumeBooster": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "والیوم بوسٹر",
 			"checkbox": {
-				"showControl": "__NEED_TRANSLATE__",
-				"enableByDefault": "__NEED_TRANSLATE__"
+				"showControl": "رفتار پٹی دے نال بوسٹر کنٹرول وکھاؤ",
+				"enableByDefault": "بوسٹر نوں پہلے توں چالو کرو"
 			},
 			"select": {
-				"multiplier": "__NEED_TRANSLATE__"
+				"multiplier": "بوسٹ سطح"
 			},
 			"tips": {
-				"control": "__NEED_TRANSLATE__"
+				"control": "YouTube دے اندرلے 100% والیوم توں اُتے حقیقی گین سٹیج شامل کردا اے۔ پلیئر دے بٹن نال فوراً چالو/بند کرو۔"
 			}
 		},
 		"miniPlayer": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "سکرول منی پلیئر",
 			"checkbox": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "سکرول کردے ویلے تیرن والے منی پلیئر وچ چلدے رہن دیو"
 			},
 			"select": {
-				"size": "__NEED_TRANSLATE__",
-				"position": "__NEED_TRANSLATE__",
-				"offset": "__NEED_TRANSLATE__",
-				"triggerOffset": "__NEED_TRANSLATE__"
+				"size": "سائز",
+				"position": "جگہ",
+				"offset": "سکرین مارجن (px)",
+				"triggerOffset": "پلیئر توں اگے سکرول کرن بعد چالو کرو (px)"
 			},
 			"tips": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "سکرول کردے ویلے موجودہ ویڈیو نوں تیرن دیو۔ پلیئر توں کسے وی ویلے بند کرو۔"
 			}
 		}
 	},
@@ -147,7 +147,8 @@
 			"title": "تبصرے دا مواد",
 			"checkbox": {
 				"autoShowMore": "لمّے تبصرے آپے کھولو",
-				"autoTranslate": "آپے ترجمہ کرو"
+				"autoTranslate": "آپے ترجمہ کرو",
+				"lineByLineTranslate": "ہر اصل لائن دے تھلے ترجمے رکھو"
 			},
 			"select": {
 				"targetLanguage": "مطلوبہ زبان",
@@ -188,6 +189,12 @@
 			"title": "تبصرہ",
 			"checkbox": {
 				"showNickname": "تبصرہ کرن والے دا چینل ناں وکھاؤ"
+			}
+		},
+		"rollback": {
+			"title": "رول بیک",
+			"checkbox": {
+				"playerUI": "پرانا پلیئر لے آؤٹ بحال کرو"
 			}
 		}
 	},

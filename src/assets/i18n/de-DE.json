@@ -85,8 +85,8 @@
 				"bottomRight": "Unten rechts",
 				"topLeft": "Oben links",
 				"topRight": "Oben rechts",
-				"bottomCenter": "__NEED_TRANSLATE__",
-				"topCenter": "__NEED_TRANSLATE__"
+				"bottomCenter": "Unten mittig",
+				"topCenter": "Oben mittig"
 			},
 			"tips": {
 				"timeTag": "Schwebende Videozeit",
@@ -108,31 +108,31 @@
 			}
 		},
 		"volumeBooster": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "Lautstärkeverstärker",
 			"checkbox": {
-				"showControl": "__NEED_TRANSLATE__",
-				"enableByDefault": "__NEED_TRANSLATE__"
+				"showControl": "Booster-Steuerung neben der Geschwindigkeitsleiste anzeigen",
+				"enableByDefault": "Booster standardmäßig aktivieren"
 			},
 			"select": {
-				"multiplier": "__NEED_TRANSLATE__"
+				"multiplier": "Verstärkungsstufe"
 			},
 			"tips": {
-				"control": "__NEED_TRANSLATE__"
+				"control": "Fügt eine echte Verstärkungsstufe oberhalb der integrierten 100-%-Lautstärke von YouTube hinzu. Mit der Schaltfläche im Player kannst du sie sofort umschalten."
 			}
 		},
 		"miniPlayer": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "Scroll-Miniplayer",
 			"checkbox": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "Wiedergabe beim Scrollen in einem schwebenden Miniplayer fortsetzen"
 			},
 			"select": {
-				"size": "__NEED_TRANSLATE__",
-				"position": "__NEED_TRANSLATE__",
-				"offset": "__NEED_TRANSLATE__",
-				"triggerOffset": "__NEED_TRANSLATE__"
+				"size": "Größe",
+				"position": "Position",
+				"offset": "Bildschirmrand (px)",
+				"triggerOffset": "Aktivieren, nachdem über den Player hinaus gescrollt wurde (px)"
 			},
 			"tips": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "Video beim Scrollen schwebend anzeigen. Du kannst es jederzeit im Player schließen."
 			}
 		}
 	},
@@ -147,7 +147,8 @@
 			"title": "Kommentarinhalt",
 			"checkbox": {
 				"autoShowMore": "Lange Kommentare automatisch erweitern",
-				"autoTranslate": "Automatisch übersetzen"
+				"autoTranslate": "Automatisch übersetzen",
+				"lineByLineTranslate": "Übersetzungen unter jede Originalzeile setzen"
 			},
 			"select": {
 				"targetLanguage": "Zielsprache",
@@ -188,6 +189,12 @@
 			"title": "Kommentare",
 			"checkbox": {
 				"showNickname": "Kanalnamen des Kommentators anzeigen"
+			}
+		},
+		"rollback": {
+			"title": "Rollback",
+			"checkbox": {
+				"playerUI": "Altes Player-Layout wiederherstellen"
 			}
 		}
 	},

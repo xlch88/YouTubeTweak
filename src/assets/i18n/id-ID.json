@@ -85,8 +85,8 @@
 				"bottomRight": "Sudut kanan bawah",
 				"topLeft": "Sudut kiri atas",
 				"topRight": "Sudut kanan atas",
-				"bottomCenter": "__NEED_TRANSLATE__",
-				"topCenter": "__NEED_TRANSLATE__"
+				"bottomCenter": "Tengah bawah",
+				"topCenter": "Tengah atas"
 			},
 			"tips": {
 				"timeTag": "Label waktu video mengambang",
@@ -108,31 +108,31 @@
 			}
 		},
 		"volumeBooster": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "Penguat volume",
 			"checkbox": {
-				"showControl": "__NEED_TRANSLATE__",
-				"enableByDefault": "__NEED_TRANSLATE__"
+				"showControl": "Tampilkan kontrol penguat di samping strip kecepatan",
+				"enableByDefault": "Aktifkan penguat secara default"
 			},
 			"select": {
-				"multiplier": "__NEED_TRANSLATE__"
+				"multiplier": "Tingkat penguatan"
 			},
 			"tips": {
-				"control": "__NEED_TRANSLATE__"
+				"control": "Menambahkan tahap gain nyata di atas volume bawaan 100% YouTube. Gunakan tombol di pemutar untuk mengaktifkan/menonaktifkannya seketika."
 			}
 		},
 		"miniPlayer": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "Pemutar mini saat menggulir",
 			"checkbox": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "Tetap putar di pemutar mini mengambang saat menggulir"
 			},
 			"select": {
-				"size": "__NEED_TRANSLATE__",
-				"position": "__NEED_TRANSLATE__",
-				"offset": "__NEED_TRANSLATE__",
-				"triggerOffset": "__NEED_TRANSLATE__"
+				"size": "Ukuran",
+				"position": "Posisi",
+				"offset": "Margin layar (px)",
+				"triggerOffset": "Aktifkan setelah menggulir melewati pemutar (px)"
 			},
 			"tips": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "Apungkan video saat ini saat Anda menggulir. Tutup dari pemutar kapan saja."
 			}
 		}
 	},
@@ -147,7 +147,8 @@
 			"title": "Konten komentar",
 			"checkbox": {
 				"autoShowMore": "Perluas otomatis komentar panjang",
-				"autoTranslate": "Terjemahkan otomatis"
+				"autoTranslate": "Terjemahkan otomatis",
+				"lineByLineTranslate": "Letakkan terjemahan di bawah setiap baris asli"
 			},
 			"select": {
 				"targetLanguage": "Bahasa target",
@@ -188,6 +189,12 @@
 			"title": "Komentar",
 			"checkbox": {
 				"showNickname": "Tampilkan nama kanal pengomentar"
+			}
+		},
+		"rollback": {
+			"title": "Rollback",
+			"checkbox": {
+				"playerUI": "Pulihkan tata letak pemutar lama"
 			}
 		}
 	},

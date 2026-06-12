@@ -85,8 +85,8 @@
 				"bottomRight": "الزاوية السفلية اليمنى",
 				"topLeft": "الزاوية العلوية اليسرى",
 				"topRight": "الزاوية العلوية اليمنى",
-				"bottomCenter": "__NEED_TRANSLATE__",
-				"topCenter": "__NEED_TRANSLATE__"
+				"bottomCenter": "منتصف الأسفل",
+				"topCenter": "منتصف الأعلى"
 			},
 			"tips": {
 				"timeTag": "ملصقات وقت الفيديو العائمة",
@@ -108,31 +108,31 @@
 			}
 		},
 		"volumeBooster": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "معزز الصوت",
 			"checkbox": {
-				"showControl": "__NEED_TRANSLATE__",
-				"enableByDefault": "__NEED_TRANSLATE__"
+				"showControl": "إظهار التحكم بالمعزز بجانب شريط السرعة",
+				"enableByDefault": "تفعيل المعزز افتراضيًا"
 			},
 			"select": {
-				"multiplier": "__NEED_TRANSLATE__"
+				"multiplier": "مستوى التعزيز"
 			},
 			"tips": {
-				"control": "__NEED_TRANSLATE__"
+				"control": "يضيف مرحلة كسب حقيقية فوق مستوى الصوت 100% المدمج في YouTube. استخدم زر المشغل للتبديل فورًا."
 			}
 		},
 		"miniPlayer": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "مشغل مصغر عند التمرير",
 			"checkbox": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "إبقاء التشغيل في مشغل مصغر عائم أثناء التمرير"
 			},
 			"select": {
-				"size": "__NEED_TRANSLATE__",
-				"position": "__NEED_TRANSLATE__",
-				"offset": "__NEED_TRANSLATE__",
-				"triggerOffset": "__NEED_TRANSLATE__"
+				"size": "الحجم",
+				"position": "الموضع",
+				"offset": "هامش الشاشة (px)",
+				"triggerOffset": "التفعيل بعد التمرير متجاوزًا المشغل (px)"
 			},
 			"tips": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "اجعل الفيديو الحالي عائمًا أثناء التمرير. يمكنك إغلاقه من المشغل في أي وقت."
 			}
 		}
 	},
@@ -147,7 +147,8 @@
 			"title": "محتوى التعليق",
 			"checkbox": {
 				"autoShowMore": "توسيع التعليقات الطويلة تلقائياً",
-				"autoTranslate": "ترجمة تلقائية"
+				"autoTranslate": "ترجمة تلقائية",
+				"lineByLineTranslate": "وضع الترجمات تحت كل سطر أصلي"
 			},
 			"select": {
 				"targetLanguage": "اللغة المستهدفة",
@@ -188,6 +189,12 @@
 			"title": "التعليقات",
 			"checkbox": {
 				"showNickname": "إظهار اسم قناة صاحب التعليق"
+			}
+		},
+		"rollback": {
+			"title": "التراجع",
+			"checkbox": {
+				"playerUI": "استعادة تخطيط المشغل القديم"
 			}
 		}
 	},

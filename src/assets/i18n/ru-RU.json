@@ -85,8 +85,8 @@
 				"bottomRight": "Нижний правый угол",
 				"topLeft": "Верхний левый угол",
 				"topRight": "Верхний правый угол",
-				"bottomCenter": "__NEED_TRANSLATE__",
-				"topCenter": "__NEED_TRANSLATE__"
+				"bottomCenter": "Внизу по центру",
+				"topCenter": "Вверху по центру"
 			},
 			"tips": {
 				"timeTag": "Плавающие метки времени видео",
@@ -108,31 +108,31 @@
 			}
 		},
 		"volumeBooster": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "Усилитель громкости",
 			"checkbox": {
-				"showControl": "__NEED_TRANSLATE__",
-				"enableByDefault": "__NEED_TRANSLATE__"
+				"showControl": "Показывать управление усилителем рядом с полосой скорости",
+				"enableByDefault": "Включать усилитель по умолчанию"
 			},
 			"select": {
-				"multiplier": "__NEED_TRANSLATE__"
+				"multiplier": "Уровень усиления"
 			},
 			"tips": {
-				"control": "__NEED_TRANSLATE__"
+				"control": "Добавляет реальный каскад усиления выше встроенных 100% громкости YouTube. Используйте кнопку в плеере, чтобы мгновенно включать или выключать его."
 			}
 		},
 		"miniPlayer": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "Мини-плеер при прокрутке",
 			"checkbox": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "Продолжать воспроизведение в плавающем мини-плеере при прокрутке"
 			},
 			"select": {
-				"size": "__NEED_TRANSLATE__",
-				"position": "__NEED_TRANSLATE__",
-				"offset": "__NEED_TRANSLATE__",
-				"triggerOffset": "__NEED_TRANSLATE__"
+				"size": "Размер",
+				"position": "Позиция",
+				"offset": "Отступ от края экрана (px)",
+				"triggerOffset": "Активировать после прокрутки ниже плеера (px)"
 			},
 			"tips": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "Закрепляет текущее видео поверх страницы при прокрутке. Его можно закрыть из плеера в любой момент."
 			}
 		}
 	},
@@ -147,7 +147,8 @@
 			"title": "Содержимое комментария",
 			"checkbox": {
 				"autoShowMore": "Автоматически раскрывать длинные комментарии",
-				"autoTranslate": "Автоматически переводить"
+				"autoTranslate": "Автоматически переводить",
+				"lineByLineTranslate": "Размещать переводы под каждой исходной строкой"
 			},
 			"select": {
 				"targetLanguage": "Целевой язык",
@@ -188,6 +189,12 @@
 			"title": "Комментарии",
 			"checkbox": {
 				"showNickname": "Показывать название канала автора комментария"
+			}
+		},
+		"rollback": {
+			"title": "Откат",
+			"checkbox": {
+				"playerUI": "Восстановить старую раскладку плеера"
 			}
 		}
 	},

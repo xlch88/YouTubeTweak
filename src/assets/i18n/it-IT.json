@@ -85,8 +85,8 @@
 				"bottomRight": "Angolo in basso a destra",
 				"topLeft": "Angolo in alto a sinistra",
 				"topRight": "Angolo in alto a destra",
-				"bottomCenter": "__NEED_TRANSLATE__",
-				"topCenter": "__NEED_TRANSLATE__"
+				"bottomCenter": "In basso al centro",
+				"topCenter": "In alto al centro"
 			},
 			"tips": {
 				"timeTag": "Etichetta tempo video fluttuante",
@@ -108,31 +108,31 @@
 			}
 		},
 		"volumeBooster": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "Amplificatore volume",
 			"checkbox": {
-				"showControl": "__NEED_TRANSLATE__",
-				"enableByDefault": "__NEED_TRANSLATE__"
+				"showControl": "Mostra il controllo del booster accanto alla barra della velocità",
+				"enableByDefault": "Abilita il booster per impostazione predefinita"
 			},
 			"select": {
-				"multiplier": "__NEED_TRANSLATE__"
+				"multiplier": "Livello di amplificazione"
 			},
 			"tips": {
-				"control": "__NEED_TRANSLATE__"
+				"control": "Aggiunge un vero stadio di guadagno oltre il volume 100% integrato di YouTube. Usa il pulsante nel player per attivarlo o disattivarlo all’istante."
 			}
 		},
 		"miniPlayer": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "Mini player durante lo scorrimento",
 			"checkbox": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "Continua la riproduzione in un mini player flottante durante lo scorrimento"
 			},
 			"select": {
-				"size": "__NEED_TRANSLATE__",
-				"position": "__NEED_TRANSLATE__",
-				"offset": "__NEED_TRANSLATE__",
-				"triggerOffset": "__NEED_TRANSLATE__"
+				"size": "Dimensione",
+				"position": "Posizione",
+				"offset": "Margine schermo (px)",
+				"triggerOffset": "Attiva dopo aver superato il player con lo scorrimento (px)"
 			},
 			"tips": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "Mantieni il video corrente flottante mentre scorri. Puoi chiuderlo dal player in qualsiasi momento."
 			}
 		}
 	},
@@ -147,7 +147,8 @@
 			"title": "Contenuto del commento",
 			"checkbox": {
 				"autoShowMore": "Espandi automaticamente i commenti lunghi",
-				"autoTranslate": "Traduci automaticamente"
+				"autoTranslate": "Traduci automaticamente",
+				"lineByLineTranslate": "Mostra le traduzioni sotto ogni riga originale"
 			},
 			"select": {
 				"targetLanguage": "Lingua di destinazione",
@@ -188,6 +189,12 @@
 			"title": "Commenti",
 			"checkbox": {
 				"showNickname": "Mostra il nome del canale di chi commenta"
+			}
+		},
+		"rollback": {
+			"title": "Ripristino",
+			"checkbox": {
+				"playerUI": "Ripristina il vecchio layout del player"
 			}
 		}
 	},

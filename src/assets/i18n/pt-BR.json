@@ -85,8 +85,8 @@
 				"bottomRight": "Canto inferior direito",
 				"topLeft": "Canto superior esquerdo",
 				"topRight": "Canto superior direito",
-				"bottomCenter": "__NEED_TRANSLATE__",
-				"topCenter": "__NEED_TRANSLATE__"
+				"bottomCenter": "Centro inferior",
+				"topCenter": "Centro superior"
 			},
 			"tips": {
 				"timeTag": "Tempo de vídeo flutuante",
@@ -108,31 +108,31 @@
 			}
 		},
 		"volumeBooster": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "Amplificador de volume",
 			"checkbox": {
-				"showControl": "__NEED_TRANSLATE__",
-				"enableByDefault": "__NEED_TRANSLATE__"
+				"showControl": "Mostrar controle do amplificador ao lado da faixa de velocidade",
+				"enableByDefault": "Ativar amplificador por padrão"
 			},
 			"select": {
-				"multiplier": "__NEED_TRANSLATE__"
+				"multiplier": "Nível de amplificação"
 			},
 			"tips": {
-				"control": "__NEED_TRANSLATE__"
+				"control": "Adiciona um estágio real de ganho acima do volume 100% nativo do YouTube. Use o botão no player para alternar instantaneamente."
 			}
 		},
 		"miniPlayer": {
-			"title": "__NEED_TRANSLATE__",
+			"title": "Mini player ao rolar",
 			"checkbox": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "Manter a reprodução em um mini player flutuante ao rolar"
 			},
 			"select": {
-				"size": "__NEED_TRANSLATE__",
-				"position": "__NEED_TRANSLATE__",
-				"offset": "__NEED_TRANSLATE__",
-				"triggerOffset": "__NEED_TRANSLATE__"
+				"size": "Tamanho",
+				"position": "Posição",
+				"offset": "Margem da tela (px)",
+				"triggerOffset": "Ativar após rolar além do player (px)"
 			},
 			"tips": {
-				"enable": "__NEED_TRANSLATE__"
+				"enable": "Deixe o vídeo atual flutuando enquanto você rola. Feche-o pelo player a qualquer momento."
 			}
 		}
 	},
@@ -147,7 +147,8 @@
 			"title": "Conteúdo do comentário",
 			"checkbox": {
 				"autoShowMore": "Expandir automaticamente comentários longos",
-				"autoTranslate": "Traduzir automaticamente"
+				"autoTranslate": "Traduzir automaticamente",
+				"lineByLineTranslate": "Colocar traduções abaixo de cada linha original"
 			},
 			"select": {
 				"targetLanguage": "Idioma de destino",
@@ -188,6 +189,12 @@
 			"title": "Comentários",
 			"checkbox": {
 				"showNickname": "Mostrar nome do canal de quem comentou"
+			}
+		},
+		"rollback": {
+			"title": "Reversão",
+			"checkbox": {
+				"playerUI": "Restaurar layout antigo do player"
 			}
 		}
 	},
