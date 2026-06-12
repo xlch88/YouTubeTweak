@@ -6,6 +6,30 @@ All release version update records are listed in this file.
 
 If you have questions, bug reports, or feature suggestions, please go to the [GitHub Issues page](https://github.com/xlch88/YouTubeTweak/issues) to submit them.
 
+## [1.1.7] - 2026-06-12
+
+### Updated
+
+- **anti-ad:** Added blocking rules for YouTube shopping timely shelf elements.
+- **player-nonStop:** Improved detection for the "Video paused. Continue watching?" dialog to avoid closing unrelated popups.
+- **memory:** Batched repeated memory persistence writes within 500ms to reduce unnecessary storage updates.
+- **mini-player:** Simplified mini-player size labels in the popup settings.
+- **i18n:** Updated translations for the latest player and rollback settings.
+- **dependencies:** Updated WXT/build tooling and removed legacy browser global shims.
+
+### Added
+
+- **mini-player:** Added a scroll mini-player with size, position, margin, and trigger-offset settings.
+- **volumeBooster:** Added a real volume booster with an in-player control and configurable boost level.
+- **comment-translate:** Added line-by-line translation display for multi-line comments.
+- **player-ui:** Added an option to hide YouTube's mini-player button.
+- **rollback:** Added an option to restore the old YouTube player layout.
+
+### Fixed
+
+- **mini-player:** Improved stacking and layout restoration when entering or leaving mini-player mode.
+- **rollback:** Fixed non-16:9 videos being rendered inside a 16:9 outer shell when the old player layout is enabled.
+
 ## [1.1.5] - 2026-04-11
 
 ### Updated
