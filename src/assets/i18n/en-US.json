@@ -190,6 +190,12 @@
 			"checkbox": {
 				"showNickname": "Show commenter nickname (channel name)"
 			}
+		},
+		"rollback": {
+			"title": "Rollback",
+			"checkbox": {
+				"playerUI": "Restore old player layout"
+			}
 		}
 	},
 	"insights": {

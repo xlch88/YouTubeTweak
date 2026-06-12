@@ -190,6 +190,12 @@
 			"checkbox": {
 				"showNickname": "显示评论者昵称(频道名)"
 			}
+		},
+		"rollback": {
+			"title": "回退",
+			"checkbox": {
+				"playerUI": "回到旧版播放界面布局"
+			}
 		}
 	},
 	"insights": {

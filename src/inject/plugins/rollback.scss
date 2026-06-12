@@ -1,0 +1,44 @@
+body.yttweak-rollback-player-ui-2026-06-12 {
+	/* YouTube watch page: force old compact right-column layout */
+	ytd-watch-flexy[is-two-columns_] {
+		--ytd-watch-flexy-sidebar-width: 402px !important;
+		--ytd-watch-flexy-sidebar-min-width: 300px !important;
+		--ytd-watch-compact-thumbnail-width: 168px !important;
+	}
+
+	/* right column width: old = 402 + 16px padding */
+	ytd-watch-flexy[is-two-columns_] #secondary.ytd-watch-flexy {
+		width: 402px !important;
+		min-width: 300px !important;
+	}
+
+	ytd-watch-flexy[is-two-columns_] #secondary-inner.ytd-watch-flexy,
+	ytd-watch-flexy[is-two-columns_] #related.ytd-watch-flexy,
+	ytd-watch-flexy[is-two-columns_] ytd-watch-next-secondary-results-renderer.ytd-watch-flexy {
+		width: 402px !important;
+	}
+
+	/* yt-lockup-view-model: kill new 62.5% big thumbnail bullshit */
+	ytd-watch-flexy[is-two-columns_] #secondary yt-lockup-view-model .ytLockupViewModelHost {
+		width: 402px !important;
+	}
+
+	ytd-watch-flexy[is-two-columns_] #secondary yt-lockup-view-model .ytLockupViewModelContentImage {
+		width: 168px !important;
+		max-width: 168px !important;
+		flex: 0 0 auto !important;
+		padding-right: 8px !important;
+	}
+
+	ytd-watch-flexy[is-two-columns_] #secondary yt-lockup-view-model .ytThumbnailViewModelHost,
+	ytd-watch-flexy[is-two-columns_] #secondary yt-lockup-view-model .ytThumbnailViewModelImage,
+	ytd-watch-flexy[is-two-columns_] #secondary yt-lockup-view-model .ytCoreImageHost,
+	ytd-watch-flexy[is-two-columns_] #secondary yt-lockup-view-model yt-thumbnail-bottom-overlay-view-model {
+		width: 168px !important;
+	}
+
+	ytd-watch-flexy[is-two-columns_] #secondary yt-lockup-view-model .ytLockupViewModelMetadata {
+		flex: 1 1 0% !important;
+		min-width: 0 !important;
+	}
+}

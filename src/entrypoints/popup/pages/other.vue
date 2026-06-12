@@ -68,6 +68,16 @@
 				</label>
 			</div>
 		</div>
+
+		<div class="card">
+			<div class="card-title">{{ $t("other.rollback.title") }}</div>
+			<div class="card-body">
+				<label class="form-item">
+					<input type="checkbox" v-model="config['rollback.playerUI']" />
+					<span>{{ $t("other.rollback.checkbox.playerUI") }}</span>
+				</label>
+			</div>
+		</div>
 	</section>
 </template>
 

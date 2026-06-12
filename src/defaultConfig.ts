@@ -67,6 +67,7 @@ export type Config = {
 	"shorts-blocker.enable.index": boolean;
 	"shorts-blocker.enable.watch": boolean;
 	"shorts-blocker.enable.menu": boolean;
+	"rollback.playerUI": boolean;
 
 	"yttweak.enableChromeApiStatusChecker": boolean;
 };
@@ -125,6 +126,7 @@ const config: Config = {
 	"shorts-blocker.enable.index": false,
 	"shorts-blocker.enable.watch": false,
 	"shorts-blocker.enable.menu": false,
+	"rollback.playerUI": false,
 
 	"yttweak.enableChromeApiStatusChecker": true,
 };
