@@ -4,6 +4,7 @@ const logger = createLogger("memory");
 const SAFE_LENGTH = 8100;
 const MAX_TABLE_COUNT = 300;
 const PREFIX = "memory_";
+const STORAGE_WRITE_INTERVAL = 500;
 
 function byteLen(v: any) {
 	return new TextEncoder().encode(JSON.stringify(v)).length;
@@ -17,6 +18,7 @@ type MemoryStorager = {
 	get: (keys?: string | string[]) => any;
 	set: (items: { [key: string]: any }) => Promise<void>;
 };
+type StorageItems = { [key: string]: any };
 type ChannelMemory = {
 	/**
 	 * Speed
@@ -40,6 +42,90 @@ type ChannelMemoryMetadata = {
 		index: number;
 	};
 };
+
+function hasStorageItem(items: StorageItems, key: string) {
+	return Object.prototype.hasOwnProperty.call(items, key);
+}
+
+function applyStorageItem(target: StorageItems, items: StorageItems, key: string) {
+	if (!hasStorageItem(items, key)) return;
+	if (items[key] === undefined) {
+		delete target[key];
+		return;
+	}
+	target[key] = items[key];
+}
+
+function applyStorageItems(target: StorageItems, items: StorageItems, keys?: string[]) {
+	(keys ?? Object.keys(items)).forEach((key) => applyStorageItem(target, items, key));
+}
+
+class DebouncedMemoryStorage implements MemoryStorager {
+	private pendingItems: StorageItems = {};
+	private flushingItems: StorageItems = {};
+	private writeTimer: ReturnType<typeof setTimeout> | undefined;
+
+	constructor(private source: MemoryStorager) {}
+
+	async get(keys?: string | string[]) {
+		const data = await this.source.get(keys);
+		if (typeof keys === "string") {
+			if (hasStorageItem(this.pendingItems, keys)) return this.pendingItems[keys];
+			if (hasStorageItem(this.flushingItems, keys)) return this.flushingItems[keys];
+			if (data && typeof data === "object" && hasStorageItem(data, keys)) return data[keys];
+			return data;
+		}
+
+		const result = data && typeof data === "object" ? { ...data } : {};
+		const overlayKeys = Array.isArray(keys) ? keys : undefined;
+		applyStorageItems(result, this.flushingItems, overlayKeys);
+		applyStorageItems(result, this.pendingItems, overlayKeys);
+		return result;
+	}
+
+	async set(items: StorageItems) {
+		Object.assign(this.pendingItems, items);
+		if (!this.writeTimer) {
+			this.writeTimer = setTimeout(() => {
+				this.flush();
+			}, STORAGE_WRITE_INTERVAL);
+		}
+	}
+
+	private async flush() {
+		this.writeTimer = undefined;
+		const items = this.pendingItems;
+		this.pendingItems = {};
+		if (Object.keys(items).length === 0) return;
+
+		Object.assign(this.flushingItems, items);
+		try {
+			await this.source.set(items);
+		} catch (e) {
+			logger.warn("save memory error:", e);
+		} finally {
+			Object.keys(items).forEach((key) => {
+				if (this.flushingItems[key] === items[key]) delete this.flushingItems[key];
+			});
+		}
+	}
+}
+
+export function createDebouncedMemoryStorage(source: MemoryStorager): MemoryStorager {
+	return new DebouncedMemoryStorage(source);
+}
+
+let mutationQueue = Promise.resolve() as Promise<void>;
+
+function enqueueMemoryMutation<T>(task: () => Promise<T>): Promise<T> {
+	const run = mutationQueue.then(task, task);
+	mutationQueue = run.then(
+		() => undefined,
+		() => undefined,
+	);
+	return run;
+}
+
 /**
  * This module is designed to store information for each YouTube channel,
  * such as playback speed, video quality, etc.
@@ -59,7 +145,7 @@ type ChannelMemoryMetadata = {
  * while adhering to the storage limitations.
  */
 export default {
-	storage: browser?.storage?.sync as MemoryStorager,
+	storage: createDebouncedMemoryStorage(browser?.storage?.sync as MemoryStorager),
 	cleanChannelId(channelId: string) {
 		if (channelId.startsWith("@")) channelId = channelId.slice(1);
 		if (channelId === "") channelId = "_DEFAULT_";
@@ -75,71 +161,73 @@ export default {
 	 * @returns A promise that resolves to true if the value was set successfully, or false if not.
 	 */
 	async set<K extends keyof ChannelMemory>(channelId: string, key: K, value?: ChannelMemory[K]) {
-		channelId = this.cleanChannelId(channelId);
+		return enqueueMemoryMutation(async () => {
+			channelId = this.cleanChannelId(channelId);
 
-		const s = `${channelId}${key}${value}`;
-		if (/[,@:=;]/.test(s)) throw new Error("Invalid characters in id/key/value");
+			const s = `${channelId}${key}${value}`;
+			if (/[,@:=;]/.test(s)) throw new Error("Invalid characters in id/key/value");
 
-		if (!isSafeLength(s)) {
-			throw new Error("Data exceeds safe length");
-		}
-
-		const dataIndex = parseInt(await this.storage.get("memoryI")) || 0;
-		const findResult = await this.get(channelId, "__meta__");
-
-		let oldEntries = {};
-		if (findResult) {
-			const { tableIndex, tableContent, entries, raw } = findResult;
-			if (`${entries[key]}` === `${value}`) {
-				logger.debug("No change needed for", channelId, key, value);
-				return true; // No change needed
+			if (!isSafeLength(s)) {
+				throw new Error("Data exceeds safe length");
 			}
 
-			let newEntries = { ...entries };
-			if (value === undefined) {
-				delete newEntries[key];
-			} else {
-				newEntries[key] = value;
+			const dataIndex = parseInt(await this.storage.get("memoryI")) || 0;
+			const findResult = await this.get(channelId, "__meta__");
+
+			let oldEntries = {};
+			if (findResult) {
+				const { tableIndex, tableContent, entries, raw } = findResult;
+				if (`${entries[key]}` === `${value}`) {
+					logger.debug("No change needed for", channelId, key, value);
+					return true; // No change needed
+				}
+
+				let newEntries = { ...entries };
+				if (value === undefined) {
+					delete newEntries[key];
+				} else {
+					newEntries[key] = value;
+				}
+
+				const oldValue = raw;
+				const newValue = this.encode(channelId, newEntries, dataIndex);
+				if (!isSafeLength(newValue)) {
+					throw new Error("New value exceeds safe length");
+				}
+
+				if (byteLen(tableContent) + (byteLen(newValue) - byteLen(oldValue)) < SAFE_LENGTH) {
+					try {
+						await this.storage.set({ [tableIndex]: tableContent.replace(oldValue, newValue), memoryI: dataIndex + 1 });
+						// debugger;
+						logger.debug("Updated in place for", channelId, key, value);
+						return true;
+					} catch (e) {}
+				}
+
+				await this.storage.set({ [tableIndex]: tableContent.replace(oldValue, "") });
+				oldEntries = newEntries;
 			}
 
-			const oldValue = raw;
-			const newValue = this.encode(channelId, newEntries, dataIndex);
-			if (!isSafeLength(newValue)) {
-				throw new Error("New value exceeds safe length");
+			const newValue = this.encode(channelId, { ...oldEntries, [key]: value }, dataIndex);
+			const tables = Object.entries(await this.storage.get()).filter(([name]) => name.startsWith(PREFIX));
+
+			const findInsertTable = tables.filter(([name, content]) => {
+				return isSafeLength(`${content}${newValue}`);
+			});
+			if (findInsertTable.length > 0) {
+				const [tableIndex, tableContent] = findInsertTable[0];
+				await this.storage.set({ [tableIndex]: tableContent + newValue });
+				await this.storage.set({ memoryI: dataIndex + 1 });
+				logger.debug("Inserted new value for", channelId, key, value);
+				return true;
 			}
 
-			if (byteLen(tableContent) + (byteLen(newValue) - byteLen(oldValue)) < SAFE_LENGTH) {
-				try {
-					await this.storage.set({ [tableIndex]: tableContent.replace(oldValue, newValue), memoryI: dataIndex + 1 });
-					// debugger;
-					logger.debug("Updated in place for", channelId, key, value);
-					return true;
-				} catch (e) {}
-			}
-
-			await this.storage.set({ [tableIndex]: tableContent.replace(oldValue, "") });
-			oldEntries = newEntries;
-		}
-
-		const newValue = this.encode(channelId, { ...oldEntries, [key]: value }, dataIndex);
-		const tables = Object.entries(await this.storage.get()).filter(([name]) => name.startsWith(PREFIX));
-
-		const findInsertTable = tables.filter(([name, content]) => {
-			return isSafeLength(`${content}${newValue}`);
-		});
-		if (findInsertTable.length > 0) {
-			const [tableIndex, tableContent] = findInsertTable[0];
-			await this.storage.set({ [tableIndex]: tableContent + newValue });
+			const newTableIndex = PREFIX + (Object.keys(tables).length + 1);
+			await this.storage.set({ [newTableIndex]: newValue });
 			await this.storage.set({ memoryI: dataIndex + 1 });
 			logger.debug("Inserted new value for", channelId, key, value);
 			return true;
-		}
-
-		const newTableIndex = PREFIX + (Object.keys(tables).length + 1);
-		await this.storage.set({ [newTableIndex]: newValue });
-		await this.storage.set({ memoryI: dataIndex + 1 });
-		logger.debug("Inserted new value for", channelId, key, value);
-		return true;
+		});
 	},
 
 	/**
@@ -240,26 +328,29 @@ export default {
 	 * @returns A promise that resolves to true if the value was deleted successfully, or false if not found.
 	 */
 	async del(channelId: string) {
-		channelId = this.cleanChannelId(channelId);
+		return enqueueMemoryMutation(async () => {
+			channelId = this.cleanChannelId(channelId);
 
-		const findResult = await this.get(channelId, "__meta__");
-		if (!findResult) {
-			return false; // Entry not found
-		}
+			const findResult = await this.get(channelId, "__meta__");
+			if (!findResult) {
+				return false; // Entry not found
+			}
 
-		const { tableIndex, tableContent, raw } = findResult;
+			const { tableIndex, tableContent, raw } = findResult;
 
-		const updatedContent = tableContent.replace(raw, "");
-		await this.storage.set({ [tableIndex]: updatedContent });
+			const updatedContent = tableContent.replace(raw, "");
+			await this.storage.set({ [tableIndex]: updatedContent });
 
-		return true;
+			return true;
+		});
 	},
 
 	/**
 	 * Clears all memory tables.
 	 */
 	clear() {
-		this.storage.get().then((data: Record<string, string>) => {
+		return enqueueMemoryMutation(async () => {
+			const data = (await this.storage.get()) as Record<string, string>;
 			const keysToRemove = Object.keys(data).filter((key) => key.startsWith(PREFIX));
 			const itemsToRemove = keysToRemove.reduce(
 				(acc, key) => {
@@ -268,7 +359,7 @@ export default {
 				},
 				{} as Record<string, undefined>,
 			);
-			this.storage.set(itemsToRemove);
+			await this.storage.set(itemsToRemove);
 		});
 	},
 };

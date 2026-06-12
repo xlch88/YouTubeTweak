@@ -1,4 +1,4 @@
-import memory from "@/memory";
+import memory, { createDebouncedMemoryStorage } from "@/memory";
 import { createLogger } from "../logger";
 import wirelessRedstone from "./wirelessRedstone";
 
@@ -10,7 +10,7 @@ export default function isolatedWorld() {
 	logger.log("Initializing isolated world...");
 
 	wirelessRedstone.init("isolated");
-	memory.storage = browser.storage.sync;
+	memory.storage = createDebouncedMemoryStorage(browser.storage.sync);
 
 	Object.assign(wirelessRedstone.handlers, {
 		getConfig(data: Parameters<typeof browser.storage.sync.get>[0], reply: (result: Record<string, any>) => void) {

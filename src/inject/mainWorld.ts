@@ -5,7 +5,7 @@ import wirelessRedstone from "./wirelessRedstone";
 import "./style.scss";
 import fetchHooker from "./fetchHooker";
 import type { Plugin } from "./types";
-import memory from "@/memory";
+import memory, { createDebouncedMemoryStorage } from "@/memory";
 import xmlHttpRequestHooker from "./xmlHttpRequestHooker";
 
 declare global {
@@ -268,7 +268,7 @@ export default async function mainWorld() {
 		}
 
 		wirelessRedstone.init("main");
-		memory.storage = {
+		memory.storage = createDebouncedMemoryStorage({
 			get(key): Promise<any> {
 				return new Promise((resolve) => {
 					wirelessRedstone.send("getConfig", key, (data) => {
@@ -287,7 +287,7 @@ export default async function mainWorld() {
 					});
 				});
 			},
-		};
+		});
 		wirelessRedstone.send("test", { test: "data" }, (replyData) => {
 			logger.info("test ok :", replyData);
 		});
