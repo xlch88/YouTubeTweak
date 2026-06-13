@@ -5,6 +5,8 @@ import { googleTranslate } from "../util/helper";
 import config from "../config";
 import { videoPlayer } from "../mainWorld";
 const logger = createLogger("Translate-timedtext");
+const TIMEDTEXT_TRANSLATE_MAX_TEXT_LENGTH = 38000;
+const textEncoder = new TextEncoder();
 
 type timedtextResponse = {
 	events?: Array<{
@@ -15,6 +17,43 @@ type timedtextResponse = {
 		}>;
 	}>;
 };
+
+async function translateTimedtextItems(texts: string[], srcLang: string, toLang: string) {
+	if (texts.length === 0) return [];
+
+	const batches: string[][] = [];
+	let batch: string[] = [];
+	let batchTextLength = 0;
+
+	for (const text of texts) {
+		const textLength = textEncoder.encode(text).length;
+		if (textLength > TIMEDTEXT_TRANSLATE_MAX_TEXT_LENGTH) {
+			throw new Error(`Single timedtext item exceeds translate text length limit: ${textLength}`);
+		}
+
+		if (batch.length > 0 && batchTextLength + textLength > TIMEDTEXT_TRANSLATE_MAX_TEXT_LENGTH) {
+			batches.push(batch);
+			batch = [];
+			batchTextLength = 0;
+		}
+
+		batch.push(text);
+		batchTextLength += textLength;
+	}
+
+	if (batch.length > 0) {
+		batches.push(batch);
+	}
+
+	const batchResults = await Promise.all(
+		batches.map(async (batch) => {
+			const result = await googleTranslate(batch, srcLang, toLang);
+			return batch.map((source, index) => (typeof result[0][index] === "string" ? result[0][index] : source));
+		}),
+	);
+
+	return batchResults.flat();
+}
 
 export default {
 	"translate.enable.timedtext": {
@@ -78,9 +117,9 @@ export default {
 						}
 					}
 
-					let translateResult;
+					let translatedTexts: string[];
 					try {
-						translateResult = await googleTranslate(Object.values(needTranslateList), srcLang, toLang);
+						translatedTexts = await translateTimedtextItems(Object.values(needTranslateList), srcLang, toLang);
 					} catch (e) {
 						logger.warn("Timedtext translation failed:", e);
 						return data;
@@ -90,19 +129,19 @@ export default {
 						try {
 							if (urlObj.searchParams.get("kind") === "asr") {
 								data.events[i].segs[0].utf8 =
-									translateResult[0][i].replace(/<br\/>/g, "").replace("---", "") +
+									translatedTexts[i].replace(/<br\/>/g, "").replace("---", "") +
 									"\n" +
 									data.events[i].segs.map((v) => v.utf8).join("");
 								data.events[i].segs.length = 1;
 							} else {
 								data.events[i].segs[0].utf8 =
-									translateResult[0][i].replace(/<br\/>/g, "") + "\n" + data.events[i].segs[0].utf8;
+									translatedTexts[i].replace(/<br\/>/g, "") + "\n" + data.events[i].segs[0].utf8;
 							}
 						} catch {
 							debugger;
 						}
 					}
-					logger.debug("Timedtext translation result:", data, needTranslateList, translateResult);
+					logger.debug("Timedtext translation result:", data, needTranslateList, translatedTexts);
 					return data;
 				},
 			});

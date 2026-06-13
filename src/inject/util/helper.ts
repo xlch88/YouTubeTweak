@@ -34,7 +34,7 @@ export function secToMMDD(time: number, forceShowHours = false): string {
 	return hours !== "00" || forceShowHours ? `${hours}:${minutes}:${seconds}` : `${minutes}:${seconds}`;
 }
 
-export function googleTranslate(text: string | string[], srcLang: string = "auto", targetLang: string): Promise<[string, string]> {
+export function googleTranslate(text: string | string[], srcLang: string = "auto", targetLang: string): Promise<[string[], string[]]> {
 	return new Promise((resolve, reject) => {
 		fetch("https://translate-pa.googleapis.com/v1/translateHtml", {
 			headers: {
