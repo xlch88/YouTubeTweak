@@ -1,7 +1,7 @@
 {
 	"name": "youtube-tweak",
 	"private": true,
-	"version": "1.1.7",
+	"version": "1.1.7.1",
 	"type": "module",
 	"scripts": {
 		"dev": "wxt",
@@ -32,6 +32,8 @@
 		"vue-i18n": "^11.1.11"
 	},
 	"overrides": {
+		"esbuild": "0.28.1",
+		"shell-quote": "1.8.4",
 		"tmp": "0.2.7",
 		"uuid": "11.1.1"
 	}
