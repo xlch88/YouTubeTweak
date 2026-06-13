@@ -5,7 +5,7 @@ import { googleTranslate } from "../util/helper";
 import config from "../config";
 import { videoPlayer } from "../mainWorld";
 const logger = createLogger("Translate-timedtext");
-const TIMEDTEXT_TRANSLATE_MAX_TEXT_LENGTH = 38000;
+const TIMEDTEXT_TRANSLATE_MAX_TEXT_LENGTH = 30000;
 const textEncoder = new TextEncoder();
 
 type timedtextResponse = {
