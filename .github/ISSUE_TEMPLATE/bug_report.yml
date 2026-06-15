@@ -1,4 +1,4 @@
-name: Bug report / バグ報告 / Bug 报告
+name: 🚨 Bug report / バグ報告 / Bug 报告
 description: Report a reproducible problem with YouTube Tweak.
 title: "[Bug]: "
 labels: ["bug"]
@@ -6,20 +6,20 @@ body:
     - type: markdown
       attributes:
           value: |
-              Please fill this in English, Japanese, or Chinese.
+              🌐 Please fill this in English, Japanese, or Chinese.
 
-              Do not paste secrets. Redact account names, email addresses, profile paths, tokens, private URLs, cookies, and anything else that should not be public.
+              🔒 Do not paste secrets. Redact account names, email addresses, profile paths, tokens, private URLs, cookies, and anything else that should not be public.
 
-              Please provide enough information to reproduce the bug. If the issue only happens together with another extension, mention that clearly.
+              📝 Please provide enough information to reproduce the bug. If the issue only happens together with another extension, mention that clearly.
 
-              再現できるだけの情報を書いてください。他の拡張機能と同時に使った時だけ起きる問題なら、そのことを明記してください。
+              📝 再現できるだけの情報を書いてください。他の拡張機能と同時に使った時だけ起きる問題なら、そのことを明記してください。
 
-              请写清楚足以复现问题的信息。如果问题只在与其他插件同时使用时出现，也请直接说明。
+              📝 请写清楚足以复现问题的信息。如果问题只在与其他插件同时使用时出现，也请直接说明。
 
     - type: textarea
       id: system-info
       attributes:
-          label: System information
+          label: 🖥️ System information
           description: |
               Chrome users can open `chrome://version/` and paste the relevant fields below. Firefox users can open `about:support` and paste Application Basics, User Agent, OS, build/version info, and extension-related context if relevant.  
               Chrome の場合は `chrome://version/` を開き、関連する項目を貼り付けてください。Firefox の場合は `about:support` を開き、アプリケーション基本情報、User Agent、OS、ビルド/バージョン情報、拡張機能に関係する情報を貼り付けてください。  
@@ -52,7 +52,7 @@ body:
     - type: input
       id: page-url
       attributes:
-          label: Problem page URL
+          label: 🔗 Problem page URL
           description: |
               Paste the exact page URL where the problem happens.  
               問題が発生した正確なページ URL を貼り付けてください。  
@@ -64,7 +64,7 @@ body:
     - type: textarea
       id: what-happened
       attributes:
-          label: What happened?
+          label: ⚠️ What happened?
           description: |
               Describe the broken behavior, expected behavior, and frequency.  
               実際の挙動、期待した挙動、発生頻度を書いてください。  
@@ -81,7 +81,7 @@ body:
     - type: textarea
       id: steps
       attributes:
-          label: Steps to reproduce
+          label: 🔁 Steps to reproduce
           description: |
               Include exact steps, extension settings, YouTube page state, login state if relevant, and timing if needed.  
               手順、拡張機能の設定、YouTube ページの状態、必要ならログイン状態や発生タイミングを書いてください。  
@@ -97,7 +97,7 @@ body:
     - type: textarea
       id: screenshots
       attributes:
-          label: Screenshots or recording
+          label: 📸 Screenshots or recording
           description: |
               Attach screenshots if possible. A short screen recording is helpful for timing-sensitive or UI-related bugs.  
               可能であればスクリーンショットを添付してください。タイミングや UI に関係する問題は短い録画も役立ちます。  
@@ -112,7 +112,7 @@ body:
     - type: textarea
       id: logs
       attributes:
-          label: Console logs
+          label: 🧾 Console logs
           description: |
               Optional. Paste relevant DevTools console errors, background/service-worker logs, or extension errors. Redact secrets.  
               任意項目です。関連する DevTools コンソールエラー、バックグラウンド/service worker ログ、拡張機能エラーがあれば貼り付けてください。秘密情報は伏せてください。  
@@ -128,25 +128,25 @@ body:
     - type: checkboxes
       id: required-checks
       attributes:
-          label: Required confirmations
+          label: ✅ Required confirmations
           description: |
               Please confirm the following before submitting. / 送信前に以下を確認してください。 / 提交前请确认以下内容。
 
-              - I understand that bugs caused by using this extension together with other extensions may not be prioritized, but may still be fixed.
-                他の拡張機能との併用が原因のバグは優先対応されない場合がありますが、修正を試す可能性はあることを理解しています。
+              - I understand that bugs caused by using this extension together with other extensions may not be prioritized, but may still be fixed.  
+                他の拡張機能との併用が原因のバグは優先対応されない場合がありますが、修正を試す可能性はあることを理解しています。  
                 我知晓此插件与其他插件共用导致的 bug 可能不会被优先处理，但仍然可能会尝试修复。
 
-              - I have tested with all other extensions disabled and only this extension loaded.
-                他の拡張機能をすべて無効にし、この拡張機能だけを読み込んで試しました。
+              - I have tested with all other extensions disabled and only this extension loaded.  
+                他の拡張機能をすべて無効にし、この拡張機能だけを読み込んで試しました。  
                 我已经确认尝试关闭所有其他插件，仅加载这一个插件进行尝试。
 
-              - If I am able to fix this bug, a PR is welcome instead of only opening an issue; normal users can simply acknowledge this.
-                自分で修正できる場合は issue だけでなく PR も歓迎されることを理解しています。一般ユーザーは確認だけで問題ありません。
+              - If I am able to fix this bug, a PR is welcome instead of only opening an issue; normal users can simply acknowledge this.  
+                自分で修正できる場合は issue だけでなく PR も歓迎されることを理解しています。一般ユーザーは確認だけで問題ありません。  
                 如果我有能力，可以尝试修复此 bug 并提交 PR，而不是只发起 issue；普通用户确认即可。
           options:
-              - label: Other-extension conflict policy / 他の拡張機能との競合について / 其他插件冲突处理
+              - label: 🧩 Other-extension conflict policy / 他の拡張機能との競合について / 其他插件冲突处理
                 required: true
-              - label: Tested with only this extension enabled / この拡張機能のみで確認済み / 已仅加载此插件测试
+              - label: 🧪 Tested with only this extension enabled / この拡張機能のみで確認済み / 已仅加载此插件测试
                 required: true
-              - label: PRs are welcome / PR 歓迎 / 欢迎提交 PR
+              - label: 🛠️ PRs are welcome / PR 歓迎 / 欢迎提交 PR
                 required: true

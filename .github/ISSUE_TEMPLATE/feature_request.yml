@@ -1,4 +1,4 @@
-name: Feature request / 機能リクエスト / 新功能请求
+name: ✨ Feature request / 機能リクエスト / 新功能请求
 description: Suggest a new feature or improvement for YouTube Tweak.
 title: "[Feature]: "
 labels: ["enhancement"]
@@ -6,16 +6,16 @@ body:
     - type: markdown
       attributes:
           value: |
-              Please fill this in English, Japanese, or Chinese.
+              🌐 Please fill this in English, Japanese, or Chinese.
 
-              Please describe the exact page, workflow, and result you want. Specific details make the request easier to evaluate and implement.  
-              対象ページ、操作の流れ、ほしい結果を具体的に書いてください。具体的な情報があるほど検討しやすくなります。  
-              请尽量具体说明页面、操作流程和想要的效果。信息越明确，越容易判断和实现。
+              💡 Please describe the exact page, workflow, and result you want. Specific details make the request easier to evaluate and implement.  
+              💡 対象ページ、操作の流れ、ほしい結果を具体的に書いてください。具体的な情報があるほど検討しやすくなります。  
+              💡 请尽量具体说明页面、操作流程和想要的效果。信息越明确，越容易判断和实现。
 
     - type: input
       id: related-page
       attributes:
-          label: Related page URL
+          label: 🔗 Related page URL
           description: |
               Give one concrete URL example where this feature should work.  
               この機能を使いたい具体的な URL 例を書いてください。  
@@ -27,7 +27,7 @@ body:
     - type: textarea
       id: feature-details
       attributes:
-          label: Feature details
+          label: 🧩 Feature details
           description: |
               Include where the control should appear, what it should do, whether it needs settings, default behavior, edge cases, and what should not be changed.  
               表示場所、動作内容、設定項目の必要性、デフォルト動作、例外ケース、変更してほしくない部分を書いてください。  
@@ -54,7 +54,7 @@ body:
     - type: textarea
       id: reason
       attributes:
-          label: Why do you need this?
+          label: 💡 Why do you need this?
           description: |
               Explain the real workflow, annoyance, or missing behavior this would fix.  
               実際の利用場面、困っている点、または不足している動作を書いてください。  
@@ -69,7 +69,7 @@ body:
     - type: textarea
       id: alternatives
       attributes:
-          label: Alternatives tried
+          label: 🔄 Alternatives tried
           description: |
               Optional. Mention settings, scripts, other extensions, or manual workarounds you already tried.  
               任意項目です。試した設定、スクリプト、他の拡張機能、手動回避策があれば書いてください。  
