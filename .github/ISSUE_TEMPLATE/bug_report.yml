@@ -10,10 +10,8 @@ body:
 
               🔒 Do not paste secrets. Redact account names, email addresses, profile paths, tokens, private URLs, cookies, and anything else that should not be public.
 
-              📝 Please provide enough information to reproduce the bug. If the issue only happens together with another extension, mention that clearly.
-
-              📝 再現できるだけの情報を書いてください。他の拡張機能と同時に使った時だけ起きる問題なら、そのことを明記してください。
-
+              📝 Please provide enough information to reproduce the bug. If the issue only happens together with another extension, mention that clearly.  
+              📝 再現できるだけの情報を書いてください。他の拡張機能と同時に使った時だけ起きる問題なら、そのことを明記してください。  
               📝 请写清楚足以复现问题的信息。如果问题只在与其他插件同时使用时出现，也请直接说明。
 
     - type: textarea
