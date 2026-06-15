@@ -1,0 +1,154 @@
+name: Bug report / バグ報告 / Bug 报告
+description: Report a reproducible problem with YouTube Tweak.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please fill this in English, Japanese, or Chinese.
+
+        Do not paste secrets. Redact account names, email addresses, profile paths, tokens, private URLs, cookies, and anything else that should not be public.
+
+        Please provide enough information to reproduce the bug. If the issue only happens together with another extension, mention that clearly.
+
+        再現できるだけの情報を書いてください。他の拡張機能と同時に使った時だけ起きる問題なら、そのことを明記してください。
+
+        请写清楚足以复现问题的信息。如果问题只在与其他插件同时使用时出现，也请直接说明。
+
+  - type: textarea
+    id: system-info
+    attributes:
+      label: System information
+      description: |
+        Chrome users can open `chrome://version/` and paste the relevant fields below. Firefox users can open `about:support` and paste Application Basics, User Agent, OS, build/version info, and extension-related context if relevant.
+
+        Chrome の場合は `chrome://version/` を開き、関連する項目を貼り付けてください。Firefox の場合は `about:support` を開き、アプリケーション基本情報、User Agent、OS、ビルド/バージョン情報、拡張機能に関係する情報を貼り付けてください。
+
+        Chrome 用户请打开 `chrome://version/` 并粘贴相关字段。Firefox 用户请打开 `about:support`，粘贴应用程序基本信息、User Agent、OS、构建/版本信息，以及和扩展相关的内容。
+
+        Redact local usernames, profile paths, private command-line flags, tokens, emails, and account identifiers.
+        ローカルユーザー名、プロファイルパス、非公開の起動フラグ、トークン、メール、アカウント識別子は伏せてください。
+        请脱敏本地用户名、配置文件路径、私有启动参数、token、邮箱和账号标识。
+      placeholder: |
+        Browser / ブラウザ / 浏览器:
+        Google Chrome 149.0.7827.104 (Official Build) (64-bit) (cohort: Control)
+
+        Revision / リビジョン / 修订版本:
+        2a7ea099bbc21597cd8b76519bdae9144cbd9573-refs/branch-heads/7827@{#2562}
+
+        OS / OS / 操作系统:
+        Windows 11 Version 25H2 (Build 26200.8655)
+
+        JavaScript / JavaScript / JavaScript:
+        V8 14.9.207.27
+
+        User agent / ユーザー エージェント / 用户代理:
+        Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36
+
+        Command line / コマンドライン / 命令行:
+        "C:\Program Files\Google\Chrome\Application\chrome.exe" --profile-directory=Default --disable-features=ExtensionManifestV2Unsupported,ExtensionManifestV2Disabled --flag-switches-begin --enable-features=AIPromptAPI,AIPromptAPIMultimodalInput,OnDeviceModelPerformanceParams --flag-switches-end --origin-trial-disabled-features=CanvasTextNg|WebAssemblyCustomDescriptors --flag-switches-begin --flag-switches-end
+    validations:
+      required: true
+
+  - type: input
+    id: page-url
+    attributes:
+      label: Problem page URL
+      description: |
+        Paste the exact page URL where the problem happens.
+        問題が発生した正確なページ URL を貼り付けてください。
+        请填写发生问题的准确页面 URL。
+      placeholder: "Example / 例 / 示例: https://www.youtube.com/watch?v=xxxxxxxxxxx"
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: |
+        Describe the broken behavior, expected behavior, and frequency.
+        実際の挙動、期待した挙動、発生頻度を書いてください。
+        请说明实际问题、预期行为和发生频率。
+      placeholder: |
+        Broken behavior / 実際の挙動 / 实际问题:
+
+        Expected behavior / 期待した挙動 / 预期行为:
+
+        Frequency / 発生頻度 / 发生频率:
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: |
+        Include exact steps, extension settings, YouTube page state, login state if relevant, and timing if needed.
+        手順、拡張機能の設定、YouTube ページの状態、必要ならログイン状態や発生タイミングを書いてください。
+        请提供具体步骤、扩展设置、YouTube 页面状态；如相关，也请写明登录状态和触发时机。
+      placeholder: |
+        1. Open ... / 開く ... / 打开 ...
+        2. Enable or disable ... / 有効または無効にする ... / 启用或关闭 ...
+        3. Click, scroll, or play ... / クリック、スクロール、再生する ... / 点击、滚动或播放 ...
+        4. See ... / ... が発生する / 出现 ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots or recording
+      description: |
+        Attach screenshots if possible. A short screen recording is helpful for timing-sensitive or UI-related bugs.
+        可能であればスクリーンショットを添付してください。タイミングや UI に関係する問題は短い録画も役立ちます。
+        如果可以，请附上截图；如果问题和时机或界面有关，短录屏会更有帮助。
+      placeholder: |
+        Drag screenshots or recordings here, or write `No screenshot`.
+        スクリーンショットや録画をここに添付するか、`スクリーンショットなし` と書いてください。
+        请把截图或录屏拖到这里，或填写 `无截图`。
+    validations:
+      required: false
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Console logs
+      description: |
+        Optional. Paste relevant DevTools console errors, background/service-worker logs, or extension errors. Redact secrets.
+        任意項目です。関連する DevTools コンソールエラー、バックグラウンド/service worker ログ、拡張機能エラーがあれば貼り付けてください。秘密情報は伏せてください。
+        可选。请粘贴相关 DevTools 控制台错误、后台/service worker 日志或扩展错误，并注意脱敏。
+      placeholder: |
+        Paste logs here.
+        ログをここに貼り付けてください。
+        请在这里粘贴日志。
+      render: text
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: required-checks
+    attributes:
+      label: Required confirmations
+      description: |
+        Please confirm the following before submitting. / 送信前に以下を確認してください。 / 提交前请确认以下内容。
+
+        - I understand that bugs caused by using this extension together with other extensions may not be prioritized, but may still be fixed.
+          他の拡張機能との併用が原因のバグは優先対応されない場合がありますが、修正を試す可能性はあることを理解しています。
+          我知晓此插件与其他插件共用导致的 bug 可能不会被优先处理，但仍然可能会尝试修复。
+
+        - I have tested with all other extensions disabled and only this extension loaded.
+          他の拡張機能をすべて無効にし、この拡張機能だけを読み込んで試しました。
+          我已经确认尝试关闭所有其他插件，仅加载这一个插件进行尝试。
+
+        - If I am able to fix this bug, a PR is welcome instead of only opening an issue; normal users can simply acknowledge this.
+          自分で修正できる場合は issue だけでなく PR も歓迎されることを理解しています。一般ユーザーは確認だけで問題ありません。
+          如果我有能力，可以尝试修复此 bug 并提交 PR，而不是只发起 issue；普通用户确认即可。
+      options:
+        - label: Other-extension conflict policy / 他の拡張機能との競合について / 其他插件冲突处理
+          required: true
+        - label: Tested with only this extension enabled / この拡張機能のみで確認済み / 已仅加载此插件测试
+          required: true
+        - label: PRs are welcome / PR 歓迎 / 欢迎提交 PR
+          required: true

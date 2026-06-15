@@ -1,0 +1,86 @@
+name: Feature request / 機能リクエスト / 新功能请求
+description: Suggest a new feature or improvement for YouTube Tweak.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please fill this in English, Japanese, or Chinese.
+
+        Please describe the exact page, workflow, and result you want. Specific details make the request easier to evaluate and implement.
+
+        対象ページ、操作の流れ、ほしい結果を具体的に書いてください。具体的な情報があるほど検討しやすくなります。
+
+        请尽量具体说明页面、操作流程和想要的效果。信息越明确，越容易判断和实现。
+
+  - type: input
+    id: related-page
+    attributes:
+      label: Related page URL
+      description: |
+        Give one concrete URL example where this feature should work.
+        この機能を使いたい具体的な URL 例を書いてください。
+        请给出一个希望此功能生效的具体 URL 示例。
+      placeholder: "Example / 例 / 示例: https://www.youtube.com/watch?v=xxxxxxxxxxx"
+    validations:
+      required: true
+
+  - type: textarea
+    id: feature-details
+    attributes:
+      label: Feature details
+      description: |
+        Include where the control should appear, what it should do, whether it needs settings, default behavior, edge cases, and what should not be changed.
+
+        表示場所、動作内容、設定項目の必要性、デフォルト動作、例外ケース、変更してほしくない部分を書いてください。
+
+        请说明控件出现位置、具体行为、是否需要设置项、默认行为、边界情况，以及不希望被改动的内容。
+      placeholder: |
+        Where should it appear?
+        表示場所:
+        出现位置:
+
+        What should it do?
+        動作内容:
+        具体行为:
+
+        Does it need a setting? What should the default be?
+        設定項目は必要ですか？デフォルトは何ですか？
+        是否需要设置项？默认值是什么？
+
+        Edge cases or pages that should be excluded:
+        対象外にしたいケースやページ:
+        需要排除的边界情况或页面:
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: Why do you need this?
+      description: |
+        Explain the real workflow, annoyance, or missing behavior this would fix.
+        実際の利用場面、困っている点、または不足している動作を書いてください。
+        请说明真实使用场景、当前不便之处，或这个功能要补上的行为。
+      placeholder: |
+        This would help because ...
+        これが必要な理由は ...
+        我需要这个功能是因为 ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives tried
+      description: |
+        Optional. Mention settings, scripts, other extensions, or manual workarounds you already tried.
+        任意項目です。試した設定、スクリプト、他の拡張機能、手動回避策があれば書いてください。
+        可选。可以写已经尝试过的设置、脚本、其他扩展或手动绕过方法。
+      placeholder: |
+        Tried alternatives:
+        試した代替手段:
+        已尝试的替代方案:
+    validations:
+      required: false
