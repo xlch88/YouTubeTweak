@@ -1,0 +1,705 @@
+{
+	"schemaVersion": 1,
+	"sources": {
+		"en": "CHANGELOG.md",
+		"zh-CN": "docs-i18n/CHANGELOG_CN.md"
+	},
+	"releases": [
+		{
+			"version": "1.1.7",
+			"date": "2026-06-12",
+			"changes": {
+				"en": {
+					"updated": [
+						{
+							"scope": "anti-ad",
+							"text": "Added blocking rules for YouTube shopping timely shelf elements."
+						},
+						{
+							"scope": "player-nonStop",
+							"text": "Improved detection for the \"Video paused. Continue watching?\" dialog to avoid closing unrelated popups."
+						},
+						{
+							"scope": "memory",
+							"text": "Batched repeated memory persistence writes within 500ms to reduce unnecessary storage updates."
+						},
+						{
+							"scope": "mini-player",
+							"text": "Simplified mini-player size labels in the popup settings."
+						},
+						{
+							"scope": "i18n",
+							"text": "Updated translations for the latest player and rollback settings."
+						},
+						{
+							"scope": "dependencies",
+							"text": "Updated WXT/build tooling and removed legacy browser global shims."
+						}
+					],
+					"added": [
+						{
+							"scope": "mini-player",
+							"text": "Added a scroll mini-player with size, position, margin, and trigger-offset settings."
+						},
+						{
+							"scope": "volumeBooster",
+							"text": "Added a real volume booster with an in-player control and configurable boost level."
+						},
+						{
+							"scope": "comment-translate",
+							"text": "Added line-by-line translation display for multi-line comments."
+						},
+						{
+							"scope": "player-ui",
+							"text": "Added an option to hide YouTube's mini-player button."
+						},
+						{
+							"scope": "rollback",
+							"text": "Added an option to restore the old YouTube player layout."
+						}
+					],
+					"fixed": [
+						{
+							"scope": "mini-player",
+							"text": "Improved stacking and layout restoration when entering or leaving mini-player mode."
+						},
+						{
+							"scope": "rollback",
+							"text": "Fixed non-16:9 videos being rendered inside a 16:9 outer shell when the old player layout is enabled."
+						}
+					]
+				},
+				"zh-CN": {
+					"updated": [
+						{
+							"scope": "广告屏蔽",
+							"text": "新增 YouTube 购物推荐栏相关屏蔽规则。"
+						},
+						{
+							"scope": "禁用暂停",
+							"text": "改进“视频已暂停，继续播放？”弹窗识别，避免误关其他弹窗。"
+						},
+						{
+							"scope": "记忆存储",
+							"text": "将 500ms 内的重复写入合并处理，减少不必要的存储更新。"
+						},
+						{
+							"scope": "迷你播放器",
+							"text": "简化弹出窗口中迷你播放器的尺寸显示。"
+						},
+						{
+							"scope": "i18n",
+							"text": "更新新版播放器与回退设置相关翻译。"
+						},
+						{
+							"scope": "依赖",
+							"text": "更新 WXT/构建工具，移除旧版浏览器全局变量兼容代码。"
+						}
+					],
+					"added": [
+						{
+							"scope": "迷你播放器",
+							"text": "新增滚动迷你播放器，支持设置尺寸、位置、屏幕边距与触发距离。"
+						},
+						{
+							"scope": "音量增强器",
+							"text": "新增真实音量增强功能，支持播放器内控制与自定义增强级别。"
+						},
+						{
+							"scope": "评论翻译",
+							"text": "新增多行评论逐行显示译文的选项。"
+						},
+						{
+							"scope": "播放器界面",
+							"text": "新增隐藏 YouTube 迷你播放器按钮的选项。"
+						},
+						{
+							"scope": "回退",
+							"text": "新增回到旧版 YouTube 播放界面布局的选项。"
+						}
+					],
+					"fixed": [
+						{
+							"scope": "迷你播放器",
+							"text": "改进进入/退出迷你播放器模式时的层级与布局恢复。"
+						},
+						{
+							"scope": "回退",
+							"text": "修复开启旧版播放界面布局后，非 16:9 视频被塞进 16:9 外壳里显示的问题。"
+						}
+					]
+				}
+			}
+		},
+		{
+			"version": "1.1.5",
+			"date": "2026-04-11",
+			"changes": {
+				"en": {
+					"updated": [
+						{
+							"scope": "anti-ad",
+							"text": "Added two new blocking rules."
+						}
+					],
+					"added": [
+						{
+							"scope": "player-nonStop",
+							"text": "Prevents automatic pausing after playing for a while (the \"Video paused. Continue watching?\" prompt)."
+						}
+					],
+					"fixed": [
+						{
+							"scope": "comment-translate",
+							"text": "Fixed an issue where translated content was not updated after changing the sort order."
+						}
+					]
+				},
+				"zh-CN": {
+					"updated": [
+						{
+							"scope": "广告屏蔽",
+							"text": "添加了两个新的屏蔽规则。"
+						}
+					],
+					"added": [
+						{
+							"scope": "禁用暂停",
+							"text": "防止播放一段时间后自动暂停（“视频已暂停。继续观看？”提示）。"
+						}
+					],
+					"fixed": [
+						{
+							"scope": "评论翻译",
+							"text": "修复了切换评论排序后翻译内容未更新的问题。"
+						}
+					]
+				}
+			}
+		},
+		{
+			"version": "1.1.4",
+			"date": "2025-12-03",
+			"changes": {
+				"en": {
+					"fixed": [
+						{
+							"scope": "XMLHttpRequest Hooker",
+							"text": "Fixed an issue where the XMLHttpRequest Hooker would not initialize properly."
+						}
+					]
+				},
+				"zh-CN": {
+					"fixed": [
+						{
+							"scope": "XMLHttpRequest Hooker",
+							"text": "修复了XMLHttpRequest Hooker无法正常初始化的问题。"
+						}
+					]
+				}
+			}
+		},
+		{
+			"version": "1.1.3",
+			"date": "2025-12-03",
+			"changes": {
+				"en": {
+					"updated": [
+						{
+							"scope": "Popup Window",
+							"text": "Added a \"Translation\" page; moved the previous \"Comments\" features to other locations."
+						}
+					],
+					"added": [
+						{
+							"scope": "Popup Window",
+							"text": "Added a warning on the \"General\" page to remind users some features may affect normal page behavior."
+						},
+						{
+							"scope": "bilingual-subtitles",
+							"text": "When enabled, automatically uses Google-translated captions and displays the translation above the original line."
+						}
+					],
+					"fixed": [
+						{
+							"scope": "comment-translate",
+							"text": "Fixed translation display glitches when switching comment sort order."
+						}
+					]
+				},
+				"zh-CN": {
+					"updated": [
+						{
+							"scope": "弹出窗口",
+							"text": "对布局做了一些修改。新增“翻译”页面，将旧的“评论”页面相关功能移到了其他位置。"
+						}
+					],
+					"added": [
+						{
+							"scope": "弹出窗口",
+							"text": "在\"通用\"页面中添加警告提示，提醒用户某些功能可能会影响页面的正常运行。"
+						},
+						{
+							"scope": "双语字幕",
+							"text": "开启后自动使用google翻译字幕内容，并在原字幕上方显示翻译内容。"
+						}
+					],
+					"fixed": [
+						{
+							"scope": "评论翻译",
+							"text": "修复切换评论排序时翻译内容显示异常的问题。"
+						}
+					]
+				}
+			}
+		},
+		{
+			"version": "1.1.2",
+			"date": "2025-11-26",
+			"changes": {
+				"en": {
+					"added": [
+						{
+							"scope": "comment-translate",
+							"text": "Added an option to never translate selected languages."
+						}
+					],
+					"fixed": [
+						{
+							"scope": "comment-translate",
+							"text": "Fixed an issue where the selected target language setting did not take effect."
+						},
+						{
+							"scope": "comment-translate",
+							"text": "Removed the extra expand/collapse button that appeared when showing translated content."
+						}
+					]
+				},
+				"zh-CN": {
+					"added": [
+						{
+							"scope": "评论翻译",
+							"text": "新增“始终不翻译以下语言”选项。"
+						}
+					],
+					"fixed": [
+						{
+							"scope": "评论翻译",
+							"text": "修复目标语言设置不生效的问题。"
+						},
+						{
+							"scope": "评论翻译",
+							"text": "修复展示翻译内容时出现多余展开/折叠按钮的问题。"
+						}
+					]
+				}
+			}
+		},
+		{
+			"version": "1.1.1",
+			"date": "2025-11-25",
+			"changes": {
+				"en": {
+					"fixed": [
+						{
+							"scope": "player-speedButton",
+							"text": "Fix an issue where some playback-speed buttons failed to appear."
+						}
+					]
+				},
+				"zh-CN": {
+					"fixed": [
+						{
+							"scope": "播放速度按钮",
+							"text": "修复某些播放速度按钮未显示的问题。"
+						}
+					]
+				}
+			}
+		},
+		{
+			"version": "1.1.0",
+			"date": "2025-11-24",
+			"changes": {
+				"en": {
+					"updated": [
+						{
+							"scope": "player-speedButton",
+							"text": "Added more speed options."
+						}
+					],
+					"added": [
+						{
+							"scope": "player-time-tag",
+							"text": "Floating video time tag now supports custom font size, position, and offset."
+						},
+						{
+							"scope": "video-progress-bar",
+							"text": "Added an option to customize the progress bar height."
+						},
+						{
+							"scope": "i18n",
+							"text": "Added Arabic (ar-SA) translation."
+						},
+						{
+							"scope": "i18n",
+							"text": "Added Bengali (bn-BD) translation."
+						},
+						{
+							"scope": "i18n",
+							"text": "Added German (de-DE) translation."
+						},
+						{
+							"scope": "i18n",
+							"text": "Added Spanish (es-ES) translation."
+						},
+						{
+							"scope": "i18n",
+							"text": "Added Persian (fa-IR) translation."
+						},
+						{
+							"scope": "i18n",
+							"text": "Added Hindi (hi-IN) translation."
+						},
+						{
+							"scope": "i18n",
+							"text": "Added Indonesian (id-ID) translation."
+						},
+						{
+							"scope": "i18n",
+							"text": "Added Italian (it-IT) translation."
+						},
+						{
+							"scope": "i18n",
+							"text": "Added Korean (ko-KR) translation."
+						},
+						{
+							"scope": "i18n",
+							"text": "Added Marathi (mr-IN) translation."
+						},
+						{
+							"scope": "i18n",
+							"text": "Added Malay (ms-MY) translation."
+						},
+						{
+							"scope": "i18n",
+							"text": "Added Punjabi (pa-PK) translation."
+						},
+						{
+							"scope": "i18n",
+							"text": "Added Portuguese (pt-BR) translation."
+						},
+						{
+							"scope": "i18n",
+							"text": "Added Russian (ru-RU) translation."
+						},
+						{
+							"scope": "i18n",
+							"text": "Added Tamil (ta-IN) translation."
+						},
+						{
+							"scope": "i18n",
+							"text": "Added Telugu (te-IN) translation."
+						},
+						{
+							"scope": "i18n",
+							"text": "Added Thai (th-TH) translation."
+						},
+						{
+							"scope": "i18n",
+							"text": "Added Turkish (tr-TR) translation."
+						},
+						{
+							"scope": "i18n",
+							"text": "Added Ukrainian (uk-UA) translation."
+						},
+						{
+							"scope": "i18n",
+							"text": "Added Vietnamese (vi-VN) translation."
+						}
+					]
+				},
+				"zh-CN": {
+					"updated": [
+						{
+							"scope": "播放速度按钮",
+							"text": "提供了更多可选速度。"
+						}
+					],
+					"added": [
+						{
+							"scope": "播放器时间标签",
+							"text": "悬浮时间标签支持自定义字体大小、位置与偏移距离。"
+						},
+						{
+							"scope": "视频进度条",
+							"text": "新增自定义进度条高度的选项。"
+						},
+						{
+							"scope": "i18n",
+							"text": "新增阿拉伯语（ar-SA）翻译。"
+						},
+						{
+							"scope": "i18n",
+							"text": "新增孟加拉语（bn-BD）翻译。"
+						},
+						{
+							"scope": "i18n",
+							"text": "新增德语（de-DE）翻译。"
+						},
+						{
+							"scope": "i18n",
+							"text": "新增西班牙语（es-ES）翻译。"
+						},
+						{
+							"scope": "i18n",
+							"text": "新增波斯语（fa-IR）翻译。"
+						},
+						{
+							"scope": "i18n",
+							"text": "新增印地语（hi-IN）翻译。"
+						},
+						{
+							"scope": "i18n",
+							"text": "新增印尼语（id-ID）翻译。"
+						},
+						{
+							"scope": "i18n",
+							"text": "新增意大利语（it-IT）翻译。"
+						},
+						{
+							"scope": "i18n",
+							"text": "新增韩语（ko-KR）翻译。"
+						},
+						{
+							"scope": "i18n",
+							"text": "新增马拉地语（mr-IN）翻译。"
+						},
+						{
+							"scope": "i18n",
+							"text": "新增马来语（ms-MY）翻译。"
+						},
+						{
+							"scope": "i18n",
+							"text": "新增旁遮普语（pa-PK）翻译。"
+						},
+						{
+							"scope": "i18n",
+							"text": "新增葡萄牙语（pt-BR）翻译。"
+						},
+						{
+							"scope": "i18n",
+							"text": "新增俄语（ru-RU）翻译。"
+						},
+						{
+							"scope": "i18n",
+							"text": "新增泰米尔语（ta-IN）翻译。"
+						},
+						{
+							"scope": "i18n",
+							"text": "新增泰卢固语（te-IN）翻译。"
+						},
+						{
+							"scope": "i18n",
+							"text": "新增泰语（th-TH）翻译。"
+						},
+						{
+							"scope": "i18n",
+							"text": "新增土耳其语（tr-TR）翻译。"
+						},
+						{
+							"scope": "i18n",
+							"text": "新增乌克兰语（uk-UA）翻译。"
+						},
+						{
+							"scope": "i18n",
+							"text": "新增越南语（vi-VN）翻译。"
+						}
+					]
+				}
+			}
+		},
+		{
+			"version": "1.0.9",
+			"date": "2025-11-22",
+			"changes": {
+				"en": {
+					"fixed": [
+						{
+							"scope": "player-ui",
+							"text": "Fixed the floating time tag issue in live mode."
+						},
+						{
+							"scope": "comment-translate",
+							"text": "Similar languages (e.g., en_US, en_UK) will not be translated repeatedly."
+						}
+					],
+					"added": [
+						{
+							"scope": "Update",
+							"text": "Click version number in popup to check for updates."
+						},
+						{
+							"scope": "comment-translate",
+							"text": "Added target language selection option for comment translation feature."
+						},
+						{
+							"scope": "comment-translate",
+							"text": "Added a button to manually trigger the translation."
+						},
+						{
+							"scope": "player-function-buttons",
+							"text": "Added two new function buttons: Mirror Video and Rotate Video."
+						}
+					]
+				},
+				"zh-CN": {
+					"fixed": [
+						{
+							"scope": "播放器",
+							"text": "修复时间悬浮标签在直播模式下显示的问题。"
+						},
+						{
+							"scope": "评论翻译",
+							"text": "相似语言（例如 en_US、en_UK）不会被重复翻译。"
+						}
+					],
+					"added": [
+						{
+							"scope": "检查更新",
+							"text": "点击弹出窗口中的版本号以手动检查更新。"
+						},
+						{
+							"scope": "评论翻译",
+							"text": "添加评论翻译功能的目标语言选择选项。"
+						},
+						{
+							"scope": "评论翻译",
+							"text": "添加手动触发翻译的按钮。"
+						},
+						{
+							"scope": "播放器功能按钮",
+							"text": "添加了两个新功能按钮：镜像视频 和 旋转视频。"
+						}
+					]
+				}
+			}
+		},
+		{
+			"version": "1.0.8",
+			"date": "2025-11-14",
+			"changes": {
+				"en": {
+					"updated": [
+						{
+							"scope": "Videos per row",
+							"text": "Increased the maximum value of the `Videos per row` option from `10` to `15`."
+						}
+					],
+					"added": [
+						{
+							"scope": "Video progress bar",
+							"text": "Added an option to always display the progress bar below the video."
+						},
+						{
+							"scope": "Video timestamp",
+							"text": "Added an option to display the `current time/total duration` of the video in the bottom-left corner."
+						}
+					]
+				},
+				"zh-CN": {
+					"updated": [
+						{
+							"scope": "每行视频数量",
+							"text": "将`每行视频数量`选项的最大值从`10`提升至`15`。"
+						}
+					],
+					"added": [
+						{
+							"scope": "视频进度条",
+							"text": "添加始终在视频下方显示进度条"
+						},
+						{
+							"scope": "视频时间",
+							"text": "添加在左下角显示视频`当前时间/长度`"
+						}
+					]
+				}
+			}
+		},
+		{
+			"version": "1.0.7",
+			"date": "2025-11-12",
+			"changes": {
+				"en": {
+					"added": [
+						{
+							"scope": "player-speedButton",
+							"text": "Added more options `(2.25x, 2.5x)` and redesigned the related UI."
+						},
+						{
+							"scope": "shorts-blocker",
+							"text": "When “Hide Shorts on homepage” is checked, it will also hide `Shorts videos in search results`."
+						},
+						{
+							"scope": "anti-ad",
+							"text": "When “Block creator’s product recommendations” is checked, it will hide the `“Recommended Products” floating button` in the `player`."
+						},
+						{
+							"scope": "anti-ad",
+							"text": "When “Block creator’s product recommendations” is checked, it will hide the `Event Tickets section` below the video description."
+						}
+					],
+					"fixed": [
+						{
+							"scope": "comment-nickname",
+							"text": "Fixed the issue where comment usernames displayed abnormal colors in `dark mode`."
+						},
+						{
+							"scope": "shorts-blocker",
+							"text": "Fixed an issue where `Shorts` still appeared in the `recommended videos` on the watch page."
+						},
+						{
+							"scope": "Popup Window",
+							"text": "Fixed an issue where the `popup window` width was abnormal in certain browsers."
+						}
+					]
+				},
+				"zh-CN": {
+					"added": [
+						{
+							"scope": "播放速度按钮",
+							"text": "添加了更多选项 `(2.25x, 2.5x)` 并重写了相关UI。"
+						},
+						{
+							"scope": "隐藏Shorts",
+							"text": "勾选在首页隐藏Shorts后，同时会隐藏`搜索结果中的Shorts视频`。"
+						},
+						{
+							"scope": "广告屏蔽",
+							"text": "勾选“屏蔽频道主商品推荐”后会隐藏`播放器`里的`“推荐商品”悬浮按钮`。"
+						},
+						{
+							"scope": "广告屏蔽",
+							"text": "勾选“屏蔽频道主商品推荐”后会隐藏视频简介下方 `演出门票信息`。"
+						}
+					],
+					"fixed": [
+						{
+							"scope": "显示评论昵称",
+							"text": "修复了在`暗色模式`下评论昵称颜色异常的问题。"
+						},
+						{
+							"scope": "隐藏Shorts",
+							"text": "修复了在播放页面的`推荐视频`里仍然有Shorts的问题。"
+						},
+						{
+							"scope": "弹出窗口",
+							"text": "修复了在某些浏览器下`弹出窗口`宽度异常的问题。"
+						}
+					]
+				}
+			}
+		}
+	]
+}
