@@ -1,5 +1,8 @@
 div.yttweak-speed-buttons {
 	display: none;
+	position: relative;
+	--yttweak-speed-slider-progress: 0%;
+
 	span.yttweak-speed-button {
 		width: 48px;
 		display: none;
@@ -19,7 +22,7 @@ div.yttweak-speed-buttons {
 		}
 
 		&::after {
-			content: attr(speed) "x";
+			content: attr(data-speed-label) "x";
 			position: relative;
 			width: 0;
 			top: -9px;
@@ -39,9 +42,82 @@ div.yttweak-speed-buttons {
 			background: rgba(white, 0.1);
 		}
 	}
-}
-body[yttweak-enable-speed-button] {
-	div.yttweak-speed-buttons {
+
+	.yttweak-speed-slider {
+		display: none;
+		position: absolute;
+		z-index: 1;
+		left: 28px;
+		right: 28px;
+		top: 50%;
+		height: 18px;
+		transform: translateY(-50%);
+		pointer-events: none;
+
+		.yttweak-speed-slider-value {
+			position: absolute;
+			left: var(--yttweak-speed-slider-progress);
+			bottom: 12px;
+			min-width: 34px;
+			padding: 1px 5px;
+			border-radius: 999px;
+			background: rgba(0, 0, 0, 0.48);
+			color: #fff;
+			font-size: 11px;
+			line-height: 16px;
+			text-align: center;
+			transform: translateX(-50%);
+			white-space: nowrap;
+		}
+
+		.yttweak-speed-slider-track {
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 50%;
+			height: 4px;
+			transform: translateY(-50%);
+			border-radius: 999px;
+			background: rgba(255, 255, 255, 0.28);
+			overflow: visible;
+		}
+
+		.yttweak-speed-slider-fill {
+			width: var(--yttweak-speed-slider-progress);
+			height: 100%;
+			border-radius: inherit;
+			background: #fff;
+		}
+
+		.yttweak-speed-slider-thumb {
+			position: absolute;
+			left: var(--yttweak-speed-slider-progress);
+			top: 50%;
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+			background: #fff;
+			transform: translate(-50%, -50%);
+			box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
+		}
+	}
+
+	&.yttweak-speed-slider-active {
+		cursor: ew-resize;
+
+		.yttweak-speed-slider {
+			display: block;
+		}
+	}
+
+	&.yttweak-speed-slider-hide-buttons {
+		span.yttweak-speed-button {
+			visibility: hidden;
+			pointer-events: none;
+		}
+	}
+
+	body[yttweak-enable-speed-button] & {
 		display: flex !important;
 		margin-top: var(--yt-delhi-pill-top-height, 12px);
 		height: var(--yt-delhi-pill-height, 48px);
@@ -54,10 +130,26 @@ body[yttweak-enable-speed-button] {
 		box-sizing: border-box;
 		gap: 4px;
 	}
+
+	body[yttweak-enable-speed-slider] & {
+		cursor: ew-resize;
+
+		span.yttweak-speed-button {
+			cursor: ew-resize;
+
+			&::before {
+				cursor: pointer;
+			}
+		}
+	}
 }
 
 @each $speed in (0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 5, 10) {
-	body[yttweak-enable-speed-button~="#{$speed}"] span.yttweak-speed-button[speed="#{$speed}"] {
-		display: flex;
+	body[yttweak-enable-speed-button~="#{$speed}"] {
+		div.yttweak-speed-buttons {
+			span.yttweak-speed-button[speed="#{$speed}"] {
+				display: flex;
+			}
+		}
 	}
 }

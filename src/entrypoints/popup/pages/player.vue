@@ -49,6 +49,17 @@
 						<span>{{ speed }}x</span>
 					</label>
 				</div>
+				<label class="form-item speed-slider-toggle">
+					<input type="checkbox" v-model="config['player.ui.enableSpeedSlider']" />
+					<span>{{ $t("player.speedButtons.checkbox.enableSlider") }}</span>
+				</label>
+				<p class="speed-slider-tip">{{ $t("player.speedButtons.tips.slider") }}</p>
+				<label v-if="config['player.ui.enableSpeedSlider']" class="form-item form-item-select speed-slider-step">
+					<span>{{ $t("player.speedButtons.select.sliderStep") }}</span>
+					<select class="w-100" v-model.number="config['player.ui.speedSliderStep']">
+						<option v-for="step in [0.1, 0.25, 0.5, 1]" :value="step" :key="step">{{ step }}</option>
+					</select>
+				</label>
 
 				<p>{{ $t("player.speedButtons.tips.save") }}</p>
 				<label class="form-item">
@@ -194,6 +205,21 @@ const progressTagPositions = [
 			width: 100%;
 			text-align: center;
 		}
+	}
+}
+
+.speed-slider {
+	&-toggle {
+		margin-top: 10px;
+	}
+
+	&-tip {
+		margin-top: 4px;
+		margin-bottom: 3px;
+	}
+
+	&-step {
+		padding-top: 0;
 	}
 }
 </style>
