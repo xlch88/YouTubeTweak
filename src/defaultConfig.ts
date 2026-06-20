@@ -58,6 +58,7 @@ export type Config = {
 	"comment.neverTranslateLanguages": string[];
 
 	"translate.enable.timedtext": boolean;
+	"translate.timedtext.mode": "bilingual" | "translationOnly";
 
 	"index.videoPerRow.enable": boolean;
 	"index.videoPerRow.count": 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15;
@@ -117,6 +118,7 @@ const config: Config = {
 	"comment.neverTranslateLanguages": [],
 
 	"translate.enable.timedtext": true,
+	"translate.timedtext.mode": "bilingual",
 
 	"index.videoPerRow.enable": false,
 	"index.videoPerRow.count": 4,

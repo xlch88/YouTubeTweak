@@ -20,7 +20,23 @@
 			</div>
 		</div>
 		<div class="card">
-			<div class="card-title">{{ $t("translate.enable.title") }}</div>
+			<div class="card-title">{{ $t("translate.subtitle.title") }}</div>
+			<div class="card-body">
+				<label class="form-item">
+					<input type="checkbox" v-model="config['translate.enable.timedtext']" />
+					<span>{{ $t("translate.enable.checkbox.timedtext") }}</span>
+				</label>
+				<label class="form-item form-item-select">
+					<span>{{ $t("translate.subtitle.select.mode") }}: </span>
+					<select v-model="config['translate.timedtext.mode']">
+						<option value="bilingual">{{ $t("translate.subtitle.select.option.bilingual") }}</option>
+						<option value="translationOnly">{{ $t("translate.subtitle.select.option.translationOnly") }}</option>
+					</select>
+				</label>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-title">{{ $t("translate.comment.title") }}</div>
 			<div class="card-body">
 				<label class="form-item">
 					<input type="checkbox" v-model="config['comment.autoTranslate']" />
@@ -29,10 +45,6 @@
 				<label class="form-item">
 					<input type="checkbox" v-model="config['comment.lineByLineTranslate']" />
 					<span>{{ $t("comment.context.checkbox.lineByLineTranslate") }}</span>
-				</label>
-				<label class="form-item">
-					<input type="checkbox" v-model="config['translate.enable.timedtext']" />
-					<span>{{ $t("translate.enable.checkbox.timedtext") }}</span>
 				</label>
 			</div>
 		</div>

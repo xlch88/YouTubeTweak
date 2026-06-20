@@ -125,17 +125,24 @@ export default {
 						return data;
 					}
 
+					const isTranslationOnly = config.get("translate.timedtext.mode", "bilingual") === "translationOnly";
+
 					for (const i in data.events) {
 						try {
 							if (urlObj.searchParams.get("kind") === "asr") {
-								data.events[i].segs[0].utf8 =
-									translatedTexts[i].replace(/<br\/>/g, "").replace("---", "") +
-									"\n" +
-									data.events[i].segs.map((v) => v.utf8).join("");
+								const translatedText = translatedTexts[i].replace(/<br\/>/g, "").replace("---", "");
+								data.events[i].segs[0].utf8 = isTranslationOnly
+									? translatedText
+									: translatedText + "\n" + data.events[i].segs.map((v) => v.utf8).join("");
 								data.events[i].segs.length = 1;
 							} else {
-								data.events[i].segs[0].utf8 =
-									translatedTexts[i].replace(/<br\/>/g, "") + "\n" + data.events[i].segs[0].utf8;
+								const translatedText = translatedTexts[i].replace(/<br\/>/g, "");
+								data.events[i].segs[0].utf8 = isTranslationOnly
+									? translatedText.replace("---", "")
+									: translatedText + "\n" + data.events[i].segs[0].utf8;
+								if (isTranslationOnly) {
+									data.events[i].segs.length = 1;
+								}
 							}
 						} catch {
 							debugger;
