@@ -336,12 +336,24 @@
 		"common": {
 			"title": "翻訳設定"
 		},
+		"subtitle": {
+			"title": "字幕翻訳",
+			"select": {
+				"mode": "翻訳方式",
+				"option": {
+					"bilingual": "二言語翻訳",
+					"translationOnly": "翻訳のみ表示"
+				}
+			}
+		},
+		"comment": {
+			"title": "コメント翻訳"
+		},
 		"enable": {
 			"title": "翻訳スイッチ",
 			"checkbox": {
-				"timedtext": "バイリンガル字幕"
+				"timedtext": "字幕翻訳を有効にする"
 			}
 		}
 	}
 }
-

@@ -336,12 +336,24 @@
 		"common": {
 			"title": "การตั้งค่าการแปล"
 		},
+		"subtitle": {
+			"title": "การแปลคำบรรยาย",
+			"select": {
+				"mode": "วิธีแปล",
+				"option": {
+					"bilingual": "แปลสองภาษา",
+					"translationOnly": "แสดงเฉพาะคำแปล"
+				}
+			}
+		},
+		"comment": {
+			"title": "การแปลความคิดเห็น"
+		},
 		"enable": {
 			"title": "สวิตช์การแปล",
 			"checkbox": {
-				"timedtext": "คำบรรยายสองภาษา"
+				"timedtext": "เปิดการแปลคำบรรยาย"
 			}
 		}
 	}
 }
-

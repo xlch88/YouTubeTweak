@@ -336,12 +336,24 @@
 		"common": {
 			"title": "Pengaturan terjemahan"
 		},
+		"subtitle": {
+			"title": "Terjemahan subtitle",
+			"select": {
+				"mode": "Mode terjemahan",
+				"option": {
+					"bilingual": "Terjemahan dwibahasa",
+					"translationOnly": "Tampilkan terjemahan saja"
+				}
+			}
+		},
+		"comment": {
+			"title": "Terjemahan komentar"
+		},
 		"enable": {
 			"title": "Sakelar terjemahan",
 			"checkbox": {
-				"timedtext": "Teks dua bahasa"
+				"timedtext": "Aktifkan terjemahan subtitle"
 			}
 		}
 	}
 }
-

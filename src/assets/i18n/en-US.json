@@ -336,10 +336,23 @@
 		"common": {
 			"title": "Translation settings"
 		},
+		"subtitle": {
+			"title": "Subtitle translation",
+			"select": {
+				"mode": "Translation mode",
+				"option": {
+					"bilingual": "Bilingual translation",
+					"translationOnly": "Translation only"
+				}
+			}
+		},
+		"comment": {
+			"title": "Comment translation"
+		},
 		"enable": {
 			"title": "translation switch",
 			"checkbox": {
-				"timedtext": "bilingual subtitles"
+				"timedtext": "Enable subtitle translation"
 			}
 		}
 	}

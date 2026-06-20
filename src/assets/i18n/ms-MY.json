@@ -336,12 +336,24 @@
 		"common": {
 			"title": "Tetapan terjemahan"
 		},
+		"subtitle": {
+			"title": "Terjemahan sari kata",
+			"select": {
+				"mode": "Kaedah terjemahan",
+				"option": {
+					"bilingual": "Terjemahan dwibahasa",
+					"translationOnly": "Paparkan terjemahan sahaja"
+				}
+			}
+		},
+		"comment": {
+			"title": "Terjemahan komen"
+		},
 		"enable": {
 			"title": "Suis terjemahan",
 			"checkbox": {
-				"timedtext": "Sarikata dwibahasa"
+				"timedtext": "Hidupkan terjemahan sari kata"
 			}
 		}
 	}
 }
-

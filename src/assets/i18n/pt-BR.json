@@ -336,12 +336,24 @@
 		"common": {
 			"title": "Configurações de tradução"
 		},
+		"subtitle": {
+			"title": "Tradução de legendas",
+			"select": {
+				"mode": "Modo de tradução",
+				"option": {
+					"bilingual": "Tradução bilíngue",
+					"translationOnly": "Mostrar apenas tradução"
+				}
+			}
+		},
+		"comment": {
+			"title": "Tradução de comentários"
+		},
 		"enable": {
 			"title": "Interruptor de tradução",
 			"checkbox": {
-				"timedtext": "Legendas bilíngues"
+				"timedtext": "Ativar tradução de legendas"
 			}
 		}
 	}
 }
-

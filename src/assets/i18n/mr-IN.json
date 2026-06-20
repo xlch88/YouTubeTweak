@@ -336,12 +336,24 @@
 		"common": {
 			"title": "भाषांतर सेटिंग्ज"
 		},
+		"subtitle": {
+			"title": "सबटायटल भाषांतर",
+			"select": {
+				"mode": "भाषांतर पद्धत",
+				"option": {
+					"bilingual": "द्विभाषिक भाषांतर",
+					"translationOnly": "फक्त भाषांतर दाखवा"
+				}
+			}
+		},
+		"comment": {
+			"title": "टिप्पणी भाषांतर"
+		},
 		"enable": {
 			"title": "भाषांतर स्विच",
 			"checkbox": {
-				"timedtext": "द्विभाषिक सबटायटल्स"
+				"timedtext": "सबटायटल भाषांतर सुरू करा"
 			}
 		}
 	}
 }
-

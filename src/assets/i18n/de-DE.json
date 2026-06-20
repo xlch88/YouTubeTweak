@@ -336,12 +336,24 @@
 		"common": {
 			"title": "Übersetzungseinstellungen"
 		},
+		"subtitle": {
+			"title": "Untertitelübersetzung",
+			"select": {
+				"mode": "Übersetzungsmodus",
+				"option": {
+					"bilingual": "Zweisprachige Übersetzung",
+					"translationOnly": "Nur Übersetzung anzeigen"
+				}
+			}
+		},
+		"comment": {
+			"title": "Kommentarübersetzung"
+		},
 		"enable": {
 			"title": "Übersetzungsschalter",
 			"checkbox": {
-				"timedtext": "Zweisprachige Untertitel"
+				"timedtext": "Untertitelübersetzung aktivieren"
 			}
 		}
 	}
 }
-

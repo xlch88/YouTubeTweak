@@ -336,12 +336,24 @@
 		"common": {
 			"title": "অনুবাদ সেটিংস"
 		},
+		"subtitle": {
+			"title": "সাবটাইটেল অনুবাদ",
+			"select": {
+				"mode": "অনুবাদ পদ্ধতি",
+				"option": {
+					"bilingual": "দ্বিভাষিক অনুবাদ",
+					"translationOnly": "শুধু অনুবাদ দেখান"
+				}
+			}
+		},
+		"comment": {
+			"title": "মন্তব্য অনুবাদ"
+		},
 		"enable": {
 			"title": "অনুবাদ সুইচ",
 			"checkbox": {
-				"timedtext": "দ্বিভাষিক সাবটাইটেল"
+				"timedtext": "সাবটাইটেল অনুবাদ চালু করুন"
 			}
 		}
 	}
 }
-

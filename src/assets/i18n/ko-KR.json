@@ -336,12 +336,24 @@
 		"common": {
 			"title": "번역 설정"
 		},
+		"subtitle": {
+			"title": "자막 번역",
+			"select": {
+				"mode": "번역 방식",
+				"option": {
+					"bilingual": "이중언어 번역",
+					"translationOnly": "번역문만 표시"
+				}
+			}
+		},
+		"comment": {
+			"title": "댓글 번역"
+		},
 		"enable": {
 			"title": "번역 스위치",
 			"checkbox": {
-				"timedtext": "이중언어 자막"
+				"timedtext": "자막 번역 켜기"
 			}
 		}
 	}
 }
-

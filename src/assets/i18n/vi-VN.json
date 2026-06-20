@@ -336,12 +336,24 @@
 		"common": {
 			"title": "Cài đặt dịch"
 		},
+		"subtitle": {
+			"title": "Dịch phụ đề",
+			"select": {
+				"mode": "Cách dịch",
+				"option": {
+					"bilingual": "Dịch song ngữ",
+					"translationOnly": "Chỉ hiển thị bản dịch"
+				}
+			}
+		},
+		"comment": {
+			"title": "Dịch bình luận"
+		},
 		"enable": {
 			"title": "Công tắc dịch",
 			"checkbox": {
-				"timedtext": "Phụ đề song ngữ"
+				"timedtext": "Bật dịch phụ đề"
 			}
 		}
 	}
 }
-

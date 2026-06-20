@@ -336,10 +336,23 @@
 		"common": {
 			"title": "翻译设定"
 		},
+		"subtitle": {
+			"title": "字幕翻译",
+			"select": {
+				"mode": "翻译方式",
+				"option": {
+					"bilingual": "双语翻译",
+					"translationOnly": "仅显示译文"
+				}
+			}
+		},
+		"comment": {
+			"title": "评论翻译"
+		},
 		"enable": {
 			"title": "翻译开关",
 			"checkbox": {
-				"timedtext": "双语字幕"
+				"timedtext": "开启字幕翻译"
 			}
 		}
 	}

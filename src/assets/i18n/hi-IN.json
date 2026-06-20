@@ -336,12 +336,24 @@
 		"common": {
 			"title": "अनुवाद सेटिंग्स"
 		},
+		"subtitle": {
+			"title": "सबटाइटल अनुवाद",
+			"select": {
+				"mode": "अनुवाद विधि",
+				"option": {
+					"bilingual": "द्विभाषी अनुवाद",
+					"translationOnly": "केवल अनुवाद दिखाएं"
+				}
+			}
+		},
+		"comment": {
+			"title": "टिप्पणी अनुवाद"
+		},
 		"enable": {
 			"title": "अनुवाद स्विच",
 			"checkbox": {
-				"timedtext": "द्विभाषी सबटाइटल"
+				"timedtext": "सबटाइटल अनुवाद चालू करें"
 			}
 		}
 	}
 }
-

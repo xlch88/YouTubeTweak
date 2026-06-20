@@ -336,12 +336,24 @@
 		"common": {
 			"title": "Paramètres de traduction"
 		},
+		"subtitle": {
+			"title": "Traduction des sous-titres",
+			"select": {
+				"mode": "Mode de traduction",
+				"option": {
+					"bilingual": "Traduction bilingue",
+					"translationOnly": "Afficher uniquement la traduction"
+				}
+			}
+		},
+		"comment": {
+			"title": "Traduction des commentaires"
+		},
 		"enable": {
 			"title": "Interrupteur de traduction",
 			"checkbox": {
-				"timedtext": "Sous-titres bilingues"
+				"timedtext": "Activer la traduction des sous-titres"
 			}
 		}
 	}
 }
-

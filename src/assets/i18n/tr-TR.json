@@ -336,12 +336,24 @@
 		"common": {
 			"title": "Çeviri ayarları"
 		},
+		"subtitle": {
+			"title": "Altyazı çevirisi",
+			"select": {
+				"mode": "Çeviri yöntemi",
+				"option": {
+					"bilingual": "Çift dilli çeviri",
+					"translationOnly": "Yalnızca çeviriyi göster"
+				}
+			}
+		},
+		"comment": {
+			"title": "Yorum çevirisi"
+		},
 		"enable": {
 			"title": "Çeviri düğmesi",
 			"checkbox": {
-				"timedtext": "Çift dilli altyazılar"
+				"timedtext": "Altyazı çevirisini aç"
 			}
 		}
 	}
 }
-

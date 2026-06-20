@@ -336,12 +336,24 @@
 		"common": {
 			"title": "تنظیمات ترجمه"
 		},
+		"subtitle": {
+			"title": "ترجمه زیرنویس",
+			"select": {
+				"mode": "روش ترجمه",
+				"option": {
+					"bilingual": "ترجمه دوزبانه",
+					"translationOnly": "فقط نمایش ترجمه"
+				}
+			}
+		},
+		"comment": {
+			"title": "ترجمه نظرات"
+		},
 		"enable": {
 			"title": "کلید فعال‌سازی ترجمه",
 			"checkbox": {
-				"timedtext": "زیرنویس دوزبانه"
+				"timedtext": "فعال کردن ترجمه زیرنویس"
 			}
 		}
 	}
 }
-

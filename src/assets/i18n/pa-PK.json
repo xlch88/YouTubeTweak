@@ -336,12 +336,24 @@
 		"common": {
 			"title": "ترجمہ ترتیبات"
 		},
+		"subtitle": {
+			"title": "سب ٹائٹل ترجمہ",
+			"select": {
+				"mode": "ترجمہ طریقہ",
+				"option": {
+					"bilingual": "دو لسانی ترجمہ",
+					"translationOnly": "صرف ترجمہ دکھاؤ"
+				}
+			}
+		},
+		"comment": {
+			"title": "تبصرہ ترجمہ"
+		},
 		"enable": {
 			"title": "ترجمہ سوئچ",
 			"checkbox": {
-				"timedtext": "دو لسانی سب ٹائٹلز"
+				"timedtext": "سب ٹائٹل ترجمہ چالو کرو"
 			}
 		}
 	}
 }
-
