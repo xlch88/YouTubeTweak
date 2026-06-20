@@ -70,16 +70,26 @@
 						configModalType === 'import' ? $t('general.config.modal.importTips') : $t('general.config.modal.exportTips')
 					"
 				></textarea>
+				<label v-if="configModalType === 'export'" class="config-memory-checkbox">
+					<input type="checkbox" v-model="configModalExportMemory" @change="updateExportConfigValue" />
+					<span>{{ $t("general.config.modal.exportMemory") }}</span>
+				</label>
+				<label v-else-if="importConfigHasMemoryChunk" class="config-memory-checkbox">
+					<input type="checkbox" v-model="configModalImportMemory" />
+					<span>{{ $t("general.config.modal.importMemoryConfirm") }}</span>
+				</label>
 				<div class="buttons">
 					<button class="btn" @click="configModalType = configModalValue = ''">
 						{{ $t("general.config.button.cancel") }}
 					</button>
-					<button class="btn" @click="configModalSubmit()">
+					<button class="btn" :disabled="configModalBusy" @click="configModalSubmit()">
 						{{ configModalType === "import" ? $t("general.config.button.submit") : $t("general.config.button.copy") }}
 					</button>
 				</div>
 			</div>
 		</div>
+
+		<div class="page-toast" v-if="toastMessage">{{ toastMessage }}</div>
 	</section>
 </template>
 
@@ -90,7 +100,7 @@ const config = useConfigStore();
 import { useI18n } from "vue-i18n";
 const { t } = useI18n();
 
-import { inject, ref, computed } from "vue";
+import { inject, ref, computed, watch } from "vue";
 const setTab = inject("setTab") as (v: string) => void;
 
 import { locales, i18n, loadLocaleMessages } from "../util/i18n";
@@ -102,6 +112,18 @@ const APP_INFO = window.__APP_INFO__;
 const warningFetchHooker = computed(() => {
 	return config["other.antiAD.enableVideo"] || config["translate.enable.timedtext"];
 });
+
+const toastMessage = ref("");
+let toastTimer: ReturnType<typeof setTimeout> | undefined;
+
+function showToast(message: string) {
+	toastMessage.value = message;
+	if (toastTimer) clearTimeout(toastTimer);
+	toastTimer = setTimeout(() => {
+		toastMessage.value = "";
+		toastTimer = undefined;
+	}, 1000);
+}
 
 function resetConfig() {
 	if (!confirm(t("general.config.alert.resetConfig"))) return;
@@ -122,34 +144,132 @@ function setLocale(e: Event) {
 
 const configModalType = ref("");
 const configModalValue = ref("");
+const configModalBusy = ref(false);
+const configModalExportMemory = ref(false);
+const configModalImportMemory = ref(false);
+let exportConfigUpdateId = 0;
+const MEMORY_CHUNK_KEY = "memoryChunk";
+const MEMORY_INDEX_KEY = "memoryI";
+const MEMORY_TABLE_PREFIX = "memory_";
+
+type MemoryChunk = Record<string, unknown>;
+
+function isRecord(v: unknown): v is Record<string, unknown> {
+	return !!v && typeof v === "object" && !Array.isArray(v);
+}
+
+const importConfigHasMemoryChunk = computed(() => {
+	if (configModalType.value !== "import") return false;
+	try {
+		const newConfig = JSON.parse(configModalValue.value);
+		return isRecord(newConfig) && Object.prototype.hasOwnProperty.call(newConfig, MEMORY_CHUNK_KEY);
+	} catch (e) {
+		return false;
+	}
+});
+
+watch(configModalValue, () => {
+	if (configModalType.value === "import") {
+		configModalImportMemory.value = false;
+	}
+});
+
+function isMemoryStorageKey(key: string) {
+	return key === MEMORY_INDEX_KEY || key.startsWith(MEMORY_TABLE_PREFIX);
+}
+
+function pickMemoryChunk(items: Record<string, unknown>) {
+	return Object.fromEntries(Object.entries(items).filter(([key]) => isMemoryStorageKey(key))) as MemoryChunk;
+}
+
+async function getMemoryChunk() {
+	const storageItems = (await browser.storage.sync.get()) as Record<string, unknown>;
+	return pickMemoryChunk(storageItems);
+}
+
+async function overwriteMemoryChunk(memoryChunk: unknown) {
+	if (!isRecord(memoryChunk)) throw new Error("Invalid memoryChunk");
+
+	const importedMemoryItems = pickMemoryChunk(memoryChunk);
+	const currentStorageItems = (await browser.storage.sync.get()) as Record<string, unknown>;
+	const currentMemoryKeys = Object.keys(currentStorageItems).filter(isMemoryStorageKey);
+	const importedMemoryKeys = Object.keys(importedMemoryItems);
+	const staleMemoryKeys = currentMemoryKeys.filter((key) => !importedMemoryKeys.includes(key));
+
+	if (importedMemoryKeys.length > 0) {
+		await browser.storage.sync.set(importedMemoryItems);
+	}
+	if (staleMemoryKeys.length > 0) {
+		await browser.storage.sync.remove(staleMemoryKeys);
+	}
+}
+
+async function updateExportConfigValue() {
+	if (configModalType.value !== "export") return;
+
+	const updateId = ++exportConfigUpdateId;
+	const exportMemory = configModalExportMemory.value;
+	const exportConfig = JSON.parse(JSON.stringify(config.$state)) as Record<string, unknown>;
+	configModalBusy.value = exportMemory;
+	try {
+		if (exportMemory) {
+			exportConfig[MEMORY_CHUNK_KEY] = await getMemoryChunk();
+		}
+		if (updateId === exportConfigUpdateId) {
+			configModalValue.value = JSON.stringify(exportConfig, null, 2);
+		}
+	} finally {
+		if (updateId === exportConfigUpdateId) {
+			configModalBusy.value = false;
+		}
+	}
+}
+
 function showConfigModal(type: string) {
+	exportConfigUpdateId++;
 	configModalType.value = type;
+	configModalBusy.value = false;
+	configModalExportMemory.value = false;
+	configModalImportMemory.value = false;
 	configModalValue.value = type === "import" ? "" : JSON.stringify(config.$state, null, 2);
 }
-function configModalSubmit() {
+async function configModalSubmit() {
 	if (configModalType.value === "import") {
+		configModalBusy.value = true;
 		try {
 			const newConfig = JSON.parse(configModalValue.value);
-			config.$patch(newConfig);
+			if (!isRecord(newConfig)) throw new Error("Invalid config");
+
+			const hasMemoryChunk = Object.prototype.hasOwnProperty.call(newConfig, MEMORY_CHUNK_KEY);
+			const memoryChunk = newConfig[MEMORY_CHUNK_KEY];
+			delete newConfig[MEMORY_CHUNK_KEY];
+
+			if (hasMemoryChunk && configModalImportMemory.value) {
+				await overwriteMemoryChunk(memoryChunk);
+			}
+
+			config.$patch(newConfig as any);
 			config.saveStorage();
-			alert(t("general.config.alert.importSuccess"));
+			showToast(t("general.config.alert.importSuccess"));
 
 			configModalType.value = "";
 			configModalValue.value = "";
 		} catch (e) {
-			alert(t("general.config.alert.importError"));
+			showToast(t("general.config.alert.importError"));
+		} finally {
+			configModalBusy.value = false;
 		}
 	} else if (configModalType.value === "export") {
 		navigator.clipboard
 			.writeText(configModalValue.value)
 			.then(() => {
-				alert(t("general.config.alert.copySuccess"));
+				showToast(t("general.config.alert.copySuccess"));
 
 				configModalType.value = "";
 				configModalValue.value = "";
 			})
 			.catch(() => {
-				alert(t("general.config.alert.copyError"));
+				showToast(t("general.config.alert.copyError"));
 			});
 	}
 }
@@ -162,7 +282,7 @@ browser.storage.local.get("waitUpdate").then((data) => {
 });
 async function requestUpdateCheck() {
 	if (!browser?.runtime?.requestUpdateCheck) {
-		alert(t("general.update.alert.unsupportedUpdate"));
+		showToast(t("general.update.alert.unsupportedUpdate"));
 		return;
 	}
 
@@ -177,9 +297,9 @@ async function requestUpdateCheck() {
 	if (result.status === "update_available") {
 		waitUpdate.value = result.version || "";
 	} else if (result.status === "no_update") {
-		alert(t("general.update.alert.noUpdate"));
+		showToast(t("general.update.alert.noUpdate"));
 	} else {
-		alert(t("general.update.alert.busy"));
+		showToast(t("general.update.alert.busy"));
 	}
 }
 function updateNow() {
@@ -254,6 +374,18 @@ function updateNow() {
 			font-size: 11px;
 			resize: none;
 		}
+		.config-memory-checkbox {
+			display: flex;
+			align-items: center;
+			gap: 6px;
+			font-size: 12px;
+			line-height: 1.4;
+			color: white;
+
+			input {
+				flex: 0 0 auto;
+			}
+		}
 		.buttons {
 			display: flex;
 			gap: 10px;
@@ -263,5 +395,23 @@ function updateNow() {
 			}
 		}
 	}
+}
+
+.page-toast {
+	position: fixed;
+	z-index: 10000;
+	left: 50%;
+	bottom: 50px;
+	transform: translateX(-50%);
+	max-width: calc(100% - 100px);
+	width: 100%;
+	padding: 8px 12px;
+	border-radius: 6px;
+	background: rgba(0, 0, 0, 0.72);
+	color: white;
+	font-size: 13px;
+	line-height: 1.4;
+	text-align: center;
+	pointer-events: none;
 }
 </style>
