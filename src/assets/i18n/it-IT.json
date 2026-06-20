@@ -310,7 +310,9 @@
 			},
 			"modal": {
 				"importTips": "Incolla qui le impostazioni che vuoi importare",
-				"exportTips": "Copia le impostazioni qui sotto per importarle in un altro browser o condividerle con altri."
+				"exportTips": "Copia le impostazioni qui sotto per importarle in un altro browser o condividerle con altri.",
+				"exportMemory": "Esporta anche la memoria (velocità per canale, sottotitoli, ecc.)",
+				"importMemoryConfirm": "Confermo l’importazione delle impostazioni di memoria"
 			}
 		},
 		"language": {

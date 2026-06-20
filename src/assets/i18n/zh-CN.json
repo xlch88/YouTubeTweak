@@ -310,7 +310,9 @@
 			},
 			"modal": {
 				"importTips": "在此处粘贴要导入的设置",
-				"exportTips": "将下面的设置复制到其他浏览器或分享给他人"
+				"exportTips": "将下面的设置复制到其他浏览器或分享给他人",
+				"exportMemory": "同时导出记忆（分频道倍速、字幕等）",
+				"importMemoryConfirm": "我确定要导入记忆设定"
 			}
 		},
 		"language": {

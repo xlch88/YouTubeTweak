@@ -310,7 +310,9 @@
 			},
 			"modal": {
 				"importTips": "Tampal tetapan yang anda mahu import di sini",
-				"exportTips": "Salin tetapan di bawah untuk import ke pelayar lain atau kongsikan dengan orang lain."
+				"exportTips": "Salin tetapan di bawah untuk import ke pelayar lain atau kongsikan dengan orang lain.",
+				"exportMemory": "Eksport memori juga (kelajuan mengikut saluran, sari kata, dll.)",
+				"importMemoryConfirm": "Saya mengesahkan import tetapan memori"
 			}
 		},
 		"language": {

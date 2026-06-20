@@ -310,7 +310,9 @@
 			},
 			"modal": {
 				"importTips": "Dán các cài đặt bạn muốn nhập vào đây",
-				"exportTips": "Sao chép các cài đặt bên dưới để nhập vào trình duyệt khác hoặc chia sẻ với người khác."
+				"exportTips": "Sao chép các cài đặt bên dưới để nhập vào trình duyệt khác hoặc chia sẻ với người khác.",
+				"exportMemory": "Xuất cả bộ nhớ (tốc độ theo kênh, phụ đề, v.v.)",
+				"importMemoryConfirm": "Tôi xác nhận nhập cài đặt bộ nhớ"
 			}
 		},
 		"language": {

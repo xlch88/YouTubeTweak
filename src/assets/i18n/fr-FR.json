@@ -310,7 +310,9 @@
 			},
 			"modal": {
 				"importTips": "Coller les configs à importer ici",
-				"exportTips": "Copier les configs ci-dessous dans d'autres navigateurs ou partager aux autres"
+				"exportTips": "Copier les configs ci-dessous dans d'autres navigateurs ou partager aux autres",
+				"exportMemory": "Exporter aussi la mémoire (vitesse par chaîne, sous-titres, etc.)",
+				"importMemoryConfirm": "Je confirme l’importation des paramètres de mémoire"
 			}
 		},
 		"language": {

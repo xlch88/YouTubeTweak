@@ -310,7 +310,9 @@
 			},
 			"modal": {
 				"importTips": "İçe aktarmak istediğiniz ayarları buraya yapıştırın",
-				"exportTips": "Aşağıdaki ayarları kopyalayarak başka bir tarayıcıya aktarabilir veya başkalarıyla paylaşabilirsiniz."
+				"exportTips": "Aşağıdaki ayarları kopyalayarak başka bir tarayıcıya aktarabilir veya başkalarıyla paylaşabilirsiniz.",
+				"exportMemory": "Belleği de dışa aktar (kanala göre hız, altyazılar vb.)",
+				"importMemoryConfirm": "Bellek ayarlarını içe aktarmayı onaylıyorum"
 			}
 		},
 		"language": {

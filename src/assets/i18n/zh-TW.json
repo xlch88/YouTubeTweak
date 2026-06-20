@@ -310,7 +310,9 @@
 			},
 			"modal": {
 				"importTips": "在此處貼上要導入的設定",
-				"exportTips": "將下面的設定複製到其他瀏覽器或分享給他人"
+				"exportTips": "將下面的設定複製到其他瀏覽器或分享給他人",
+				"exportMemory": "同時匯出記憶（分頻道倍速、字幕等）",
+				"importMemoryConfirm": "我確定要匯入記憶設定"
 			}
 		},
 		"language": {

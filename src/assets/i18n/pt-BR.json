@@ -310,7 +310,9 @@
 			},
 			"modal": {
 				"importTips": "Cole aqui as configurações que deseja importar",
-				"exportTips": "Copie as configurações abaixo para importá-las em outro navegador ou compartilhá-las com outras pessoas."
+				"exportTips": "Copie as configurações abaixo para importá-las em outro navegador ou compartilhá-las com outras pessoas.",
+				"exportMemory": "Exportar também a memória (velocidade por canal, legendas etc.)",
+				"importMemoryConfirm": "Confirmo importar as configurações de memória"
 			}
 		},
 		"language": {

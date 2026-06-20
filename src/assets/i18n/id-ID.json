@@ -310,7 +310,9 @@
 			},
 			"modal": {
 				"importTips": "Tempel pengaturan yang ingin Anda impor di sini",
-				"exportTips": "Salin pengaturan di bawah ini untuk mengimpornya ke browser lain atau membagikannya kepada orang lain."
+				"exportTips": "Salin pengaturan di bawah ini untuk mengimpornya ke browser lain atau membagikannya kepada orang lain.",
+				"exportMemory": "Ekspor juga memori (kecepatan per channel, subtitle, dll.)",
+				"importMemoryConfirm": "Saya mengonfirmasi impor pengaturan memori"
 			}
 		},
 		"language": {
