@@ -65,7 +65,7 @@
 						<option value="custom">{{ $t("player.speedButtons.select.sliderWheelStepCustom") }}</option>
 					</select>
 					<span v-else class="speed-slider-step-custom">
-						<input type="number" min="0.01" max="10" step="0.01" v-model.number="config['player.ui.speedSliderStep']" />
+						<input type="number" min="0.0001" max="10" step="0.0001" v-model.number="config['player.ui.speedSliderStep']" />
 						<button type="button" @click="showCustomSpeedSliderStepInput = false">
 							{{ $t("player.speedButtons.select.sliderWheelStepPresets") }}
 						</button>
@@ -196,7 +196,7 @@ const progressTagPositions = [
 	{ value: "top-right", labelKey: "player.ui.position.topRight", arrow: "↗" },
 ];
 
-const speedSliderStepPresets = [0.1, 0.25, 0.5, 1];
+const speedSliderStepPresets = [0.0625, 0.125, 0.25, 0.5, 1];
 const showCustomSpeedSliderStepInput = ref(false);
 const speedSliderWheelStepSelectValue = computed({
 	get() {

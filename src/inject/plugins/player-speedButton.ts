@@ -25,7 +25,7 @@ const DRAG_THRESHOLD = 3;
 const SLIDER_TRACK_SIDE_OFFSET = 28;
 
 function formatSpeed(speed: number) {
-	return String(Number(speed.toFixed(2)));
+	return String(Number(speed.toFixed(4)));
 }
 
 function nearlyEqual(a: number, b: number) {
@@ -55,7 +55,7 @@ function clampSpeed(speed: number) {
 }
 
 function getCurrentPlaybackSpeed() {
-	const speed = Number(videoPlayer.player?.getPlaybackRate?.() ?? videoPlayer.videoStream?.playbackRate ?? lastPlaybackSpeed);
+	const speed = Number(videoPlayer.videoStream?.playbackRate ?? videoPlayer.player?.getPlaybackRate?.() ?? lastPlaybackSpeed);
 	return Number.isFinite(speed) && speed > 0 ? speed : lastPlaybackSpeed;
 }
 
@@ -178,7 +178,7 @@ async function persistPlaybackSpeed(speed: number) {
 }
 
 async function setPlaybackSpeed(speed: number, options: { persist?: boolean; preferredButton?: HTMLSpanElement | null } = {}) {
-	speed = Number(speed.toFixed(2));
+	speed = Number(speed.toFixed(4));
 	lastPlaybackSpeed = speed;
 	videoPlayer.player?.setPlaybackRate(speed);
 	if (videoPlayer.videoStream) videoPlayer.videoStream.playbackRate = speed;
@@ -205,7 +205,7 @@ function getSpeedFromSliderClientX(clientX: number) {
 	const segmentProgress = segmentPosition - segmentIndex;
 	const start = enabledSpeeds[segmentIndex];
 	const end = enabledSpeeds[segmentIndex + 1];
-	return clampSpeed(Number((start + (end - start) * segmentProgress).toFixed(2)));
+	return clampSpeed(Number((start + (end - start) * segmentProgress).toFixed(4)));
 }
 
 function getEventSpeedButton(target: EventTarget | null) {
@@ -243,7 +243,14 @@ function handleSpeedWheel(e: WheelEvent) {
 	} else {
 		const configuredStep = Number(config.get("player.ui.speedSliderStep"));
 		const step = Number.isFinite(configuredStep) && configuredStep > 0 ? configuredStep : 0.25;
-		nextSpeed = clampSpeed(Number((currentSpeed + (e.deltaY < 0 ? step : -step)).toFixed(2)));
+		nextSpeed = clampSpeed(
+			Number(
+				((e.deltaY < 0
+					? Math.floor(currentSpeed / step + 0.000001) + 1
+					: Math.ceil(currentSpeed / step - 0.000001) - 1) * step
+				).toFixed(4),
+			),
+		);
 	}
 	const preferredButton = activeSpeedButton || getEventSpeedButton(e.target) || findFallbackSpeedButton(currentSpeed);
 	showSpeedSlider();
