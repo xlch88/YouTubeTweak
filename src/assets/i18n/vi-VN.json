@@ -37,13 +37,21 @@
 		"speedButtons": {
 			"title": "Nút tốc độ",
 			"checkbox": {
-				"enable": "Hiển thị các nút tốc độ",
+				"enable": "Hiển thị nút/thanh trượt tốc độ",
 				"save": "Ghi nhớ tốc độ phát",
-				"saveByChannel": "Ghi nhớ tốc độ phát theo kênh"
+				"saveByChannel": "Ghi nhớ tốc độ phát theo kênh",
+				"enableSlider": "Bật thanh trượt tốc độ"
 			},
 			"tips": {
 				"enabledButtons": "Các nút đang bật:",
-				"save": "Ghi nhớ tốc độ"
+				"save": "Ghi nhớ tốc độ",
+				"slider": "Khi bật, kéo sang trái hoặc phải để chỉnh tốc độ liên tục; con lăn chuột dùng bước đã chọn."
+			},
+			"select": {
+				"sliderWheelStep": "Bước con lăn chuột",
+				"sliderWheelStepFollowButtons": "Theo các nút tốc độ đã bật",
+				"sliderWheelStepCustom": "Tùy chỉnh",
+				"sliderWheelStepPresets": "Cài sẵn"
 			}
 		},
 		"subtitles": {

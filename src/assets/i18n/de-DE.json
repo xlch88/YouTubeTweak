@@ -37,13 +37,21 @@
 		"speedButtons": {
 			"title": "Geschwindigkeits-Schaltflächen",
 			"checkbox": {
-				"enable": "Geschwindigkeits-Schaltflächen anzeigen",
+				"enable": "Geschwindigkeitsschaltflächen/Regler anzeigen",
 				"save": "Wiedergabegeschwindigkeit merken",
-				"saveByChannel": "Wiedergabegeschwindigkeit pro Kanal merken"
+				"saveByChannel": "Wiedergabegeschwindigkeit pro Kanal merken",
+				"enableSlider": "Geschwindigkeitsregler aktivieren"
 			},
 			"tips": {
 				"enabledButtons": "Aktivierte Schaltflächen:",
-				"save": "Geschwindigkeit merken"
+				"save": "Geschwindigkeit merken",
+				"slider": "Wenn aktiviert, kannst du zum stufenlosen Anpassen nach links oder rechts ziehen; das Mausrad nutzt die gewählte Rad-Schrittweite."
+			},
+			"select": {
+				"sliderWheelStep": "Mausrad-Schrittweite",
+				"sliderWheelStepFollowButtons": "Aktivierten Geschwindigkeitsbuttons folgen",
+				"sliderWheelStepCustom": "Benutzerdefiniert",
+				"sliderWheelStepPresets": "Vorgaben"
 			}
 		},
 		"subtitles": {

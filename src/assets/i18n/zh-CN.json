@@ -37,13 +37,21 @@
 		"speedButtons": {
 			"title": "倍速按钮",
 			"checkbox": {
-				"enable": "显示倍速按钮",
+				"enable": "显示倍速按钮/倍速滑块",
 				"save": "记住播放器速度",
-				"saveByChannel": "为每个频道分别记住播放速度"
+				"saveByChannel": "为每个频道分别记住播放速度",
+				"enableSlider": "启用倍速滑块"
 			},
 			"tips": {
 				"enabledButtons": "启用的按钮：",
-				"save": "记住速度"
+				"save": "记住速度",
+				"slider": "启用后可以按住左右拖拽连续调速；鼠标滚轮使用下面选择的步长。"
+			},
+			"select": {
+				"sliderWheelStep": "鼠标滚轮步长",
+				"sliderWheelStepFollowButtons": "跟随启用的倍速按钮",
+				"sliderWheelStepCustom": "自定义",
+				"sliderWheelStepPresets": "预设"
 			}
 		},
 		"subtitles": {

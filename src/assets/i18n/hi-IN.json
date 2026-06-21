@@ -37,13 +37,21 @@
 		"speedButtons": {
 			"title": "गति बटन",
 			"checkbox": {
-				"enable": "गति बटन दिखाएँ",
+				"enable": "गति बटन/गति स्लाइडर दिखाएँ",
 				"save": "प्लेबैक गति याद रखें",
-				"saveByChannel": "हर चैनल के लिए प्लेबैक गति याद रखें"
+				"saveByChannel": "हर चैनल के लिए प्लेबैक गति याद रखें",
+				"enableSlider": "गति स्लाइडर सक्षम करें"
 			},
 			"tips": {
 				"enabledButtons": "सक्रिय बटन:",
-				"save": "गति याद रखें"
+				"save": "गति याद रखें",
+				"slider": "सक्षम होने पर गति को लगातार बदलने के लिए बाएँ या दाएँ खींचें; माउस व्हील चुने गए व्हील स्टेप का उपयोग करेगा।"
+			},
+			"select": {
+				"sliderWheelStep": "माउस व्हील गति चरण",
+				"sliderWheelStepFollowButtons": "सक्षम गति बटनों का अनुसरण करें",
+				"sliderWheelStepCustom": "कस्टम",
+				"sliderWheelStepPresets": "प्रीसेट"
 			}
 		},
 		"subtitles": {

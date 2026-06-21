@@ -37,13 +37,21 @@
 		"speedButtons": {
 			"title": "ปุ่มความเร็ว",
 			"checkbox": {
-				"enable": "แสดงปุ่มความเร็ว",
+				"enable": "แสดงปุ่ม/แถบเลื่อนความเร็ว",
 				"save": "จำความเร็วการเล่น",
-				"saveByChannel": "จำความเร็วการเล่นแยกตามช่อง"
+				"saveByChannel": "จำความเร็วการเล่นแยกตามช่อง",
+				"enableSlider": "เปิดใช้แถบเลื่อนความเร็ว"
 			},
 			"tips": {
 				"enabledButtons": "ปุ่มที่เปิดใช้:",
-				"save": "จำความเร็ว"
+				"save": "จำความเร็ว",
+				"slider": "เมื่อเปิดใช้ ให้ลากซ้ายหรือขวาเพื่อปรับความเร็วแบบต่อเนื่อง; ล้อเมาส์จะใช้ช่วงที่เลือกไว้"
+			},
+			"select": {
+				"sliderWheelStep": "ช่วงล้อเมาส์",
+				"sliderWheelStepFollowButtons": "ตามปุ่มความเร็วที่เปิดใช้",
+				"sliderWheelStepCustom": "กำหนดเอง",
+				"sliderWheelStepPresets": "ค่าที่ตั้งไว้"
 			}
 		},
 		"subtitles": {

@@ -37,13 +37,21 @@
 		"speedButtons": {
 			"title": "أزرار السرعة",
 			"checkbox": {
-				"enable": "إظهار أزرار السرعة",
+				"enable": "إظهار أزرار السرعة/شريط تمرير السرعة",
 				"save": "تذكر سرعة التشغيل",
-				"saveByChannel": "تذكر سرعة التشغيل لكل قناة على حدة"
+				"saveByChannel": "تذكر سرعة التشغيل لكل قناة على حدة",
+				"enableSlider": "تفعيل شريط تمرير السرعة"
 			},
 			"tips": {
 				"enabledButtons": "الأزرار المفعلة:",
-				"save": "تذكر السرعة"
+				"save": "تذكر السرعة",
+				"slider": "بعد التفعيل يمكنك السحب يمينًا ويسارًا لضبط السرعة بشكل مستمر؛ وتستخدم عجلة الفأرة خطوة العجلة المحددة."
+			},
+			"select": {
+				"sliderWheelStep": "خطوة عجلة الفأرة للسرعة",
+				"sliderWheelStepFollowButtons": "اتبع أزرار السرعة المفعلة",
+				"sliderWheelStepCustom": "مخصص",
+				"sliderWheelStepPresets": "القيم المسبقة"
 			}
 		},
 		"subtitles": {

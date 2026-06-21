@@ -37,13 +37,21 @@
 		"speedButtons": {
 			"title": "رفتار دے بٹن",
 			"checkbox": {
-				"enable": "رفتار دے بٹن وکھاؤ",
+				"enable": "رفتار بٹن/رفتار سلائیڈر دکھاؤ",
 				"save": "پلے بیک رفتار یاد رکھو",
-				"saveByChannel": "ہر چینل لئی الگ رفتار یاد رکھو"
+				"saveByChannel": "ہر چینل لئی الگ رفتار یاد رکھو",
+				"enableSlider": "رفتار سلائیڈر چالو کرو"
 			},
 			"tips": {
 				"enabledButtons": "فعال بٹن:",
-				"save": "رفتار یاد رکھو"
+				"save": "رفتار یاد رکھو",
+				"slider": "فعال کرنے کے بعد رفتار کو مسلسل بدلنے کے لیے بائیں یا دائیں گھسیٹیں؛ ماؤس وہیل منتخب کردہ قدم استعمال کرے گا۔"
+			},
+			"select": {
+				"sliderWheelStep": "ماؤس وہیل رفتار قدم",
+				"sliderWheelStepFollowButtons": "فعال رفتار بٹنوں کی پیروی کریں",
+				"sliderWheelStepCustom": "حسب ضرورت",
+				"sliderWheelStepPresets": "پری سیٹ"
 			}
 		},
 		"subtitles": {

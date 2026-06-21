@@ -37,13 +37,21 @@
 		"speedButtons": {
 			"title": "Butang kelajuan",
 			"checkbox": {
-				"enable": "Tunjukkan butang kelajuan",
+				"enable": "Tunjukkan butang/peluncur kelajuan",
 				"save": "Ingat kelajuan main balik",
-				"saveByChannel": "Ingat kelajuan main balik mengikut saluran"
+				"saveByChannel": "Ingat kelajuan main balik mengikut saluran",
+				"enableSlider": "Dayakan peluncur kelajuan"
 			},
 			"tips": {
 				"enabledButtons": "Butang diaktifkan:",
-				"save": "Ingat kelajuan"
+				"save": "Ingat kelajuan",
+				"slider": "Apabila diaktifkan, seret ke kiri atau kanan untuk melaras kelajuan secara berterusan; roda tetikus menggunakan langkah yang dipilih."
+			},
+			"select": {
+				"sliderWheelStep": "Langkah roda tetikus",
+				"sliderWheelStepFollowButtons": "Ikut butang kelajuan aktif",
+				"sliderWheelStepCustom": "Tersuai",
+				"sliderWheelStepPresets": "Pratetap"
 			}
 		},
 		"subtitles": {

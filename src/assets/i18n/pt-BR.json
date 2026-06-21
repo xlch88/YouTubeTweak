@@ -37,13 +37,21 @@
 		"speedButtons": {
 			"title": "Botões de velocidade",
 			"checkbox": {
-				"enable": "Mostrar botões de velocidade",
+				"enable": "Mostrar botões/controle deslizante de velocidade",
 				"save": "Lembrar velocidade de reprodução",
-				"saveByChannel": "Lembrar velocidade de reprodução por canal"
+				"saveByChannel": "Lembrar velocidade de reprodução por canal",
+				"enableSlider": "Ativar controle deslizante de velocidade"
 			},
 			"tips": {
 				"enabledButtons": "Botões ativados:",
-				"save": "Lembrar velocidade"
+				"save": "Lembrar velocidade",
+				"slider": "Quando ativado, arraste para a esquerda ou direita para ajustar a velocidade continuamente; a roda do mouse usa o passo selecionado."
+			},
+			"select": {
+				"sliderWheelStep": "Passo da roda do mouse",
+				"sliderWheelStepFollowButtons": "Seguir botões de velocidade ativos",
+				"sliderWheelStepCustom": "Personalizado",
+				"sliderWheelStepPresets": "Predefinições"
 			}
 		},
 		"subtitles": {

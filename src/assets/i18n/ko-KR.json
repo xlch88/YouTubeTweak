@@ -37,13 +37,21 @@
 		"speedButtons": {
 			"title": "재생 속도 버튼",
 			"checkbox": {
-				"enable": "재생 속도 버튼 표시",
+				"enable": "속도 버튼/속도 슬라이더 표시",
 				"save": "재생 속도 기억",
-				"saveByChannel": "채널별 재생 속도 기억"
+				"saveByChannel": "채널별 재생 속도 기억",
+				"enableSlider": "속도 슬라이더 사용"
 			},
 			"tips": {
 				"enabledButtons": "사용 중인 버튼:",
-				"save": "속도 기억"
+				"save": "속도 기억",
+				"slider": "활성화하면 좌우로 드래그해 속도를 연속으로 조절할 수 있으며, 마우스 휠은 선택한 휠 단계를 사용합니다."
+			},
+			"select": {
+				"sliderWheelStep": "마우스 휠 단계",
+				"sliderWheelStepFollowButtons": "활성화된 속도 버튼 따르기",
+				"sliderWheelStepCustom": "사용자 지정",
+				"sliderWheelStepPresets": "프리셋"
 			}
 		},
 		"subtitles": {

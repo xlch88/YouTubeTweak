@@ -37,13 +37,21 @@
 		"speedButtons": {
 			"title": "Hız düğmeleri",
 			"checkbox": {
-				"enable": "Hız düğmelerini göster",
+				"enable": "Hız düğmelerini/kaydırıcısını göster",
 				"save": "Oynatma hızını hatırla",
-				"saveByChannel": "Kanal başına oynatma hızını hatırla"
+				"saveByChannel": "Kanal başına oynatma hızını hatırla",
+				"enableSlider": "Hız kaydırıcısını etkinleştir"
 			},
 			"tips": {
 				"enabledButtons": "Etkin düğmeler:",
-				"save": "Hızı hatırla"
+				"save": "Hızı hatırla",
+				"slider": "Etkinleştirildiğinde hızı sürekli ayarlamak için sola veya sağa sürükleyin; fare tekerleği seçilen adımı kullanır."
+			},
+			"select": {
+				"sliderWheelStep": "Fare tekerleği adımı",
+				"sliderWheelStepFollowButtons": "Etkin hız düğmelerini izle",
+				"sliderWheelStepCustom": "Özel",
+				"sliderWheelStepPresets": "Ön ayarlar"
 			}
 		},
 		"subtitles": {

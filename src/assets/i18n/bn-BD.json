@@ -37,13 +37,21 @@
 		"speedButtons": {
 			"title": "গতি বোতাম",
 			"checkbox": {
-				"enable": "গতি বোতাম দেখান",
+				"enable": "গতি বোতাম/গতি স্লাইডার দেখান",
 				"save": "প্লেব্যাক গতি মনে রাখুন",
-				"saveByChannel": "প্রতিটি চ্যানেলের জন্য আলাদা প্লেব্যাক গতি মনে রাখুন"
+				"saveByChannel": "প্রতিটি চ্যানেলের জন্য আলাদা প্লেব্যাক গতি মনে রাখুন",
+				"enableSlider": "গতি স্লাইডার চালু করুন"
 			},
 			"tips": {
 				"enabledButtons": "সক্রিয় বোতাম:",
-				"save": "গতি মনে রাখুন"
+				"save": "গতি মনে রাখুন",
+				"slider": "চালু করলে বাম বা ডানে টেনে ধারাবাহিকভাবে গতি বদলাতে পারবেন; মাউস হুইল নির্বাচিত হুইল ধাপ ব্যবহার করবে।"
+			},
+			"select": {
+				"sliderWheelStep": "মাউস হুইল গতির ধাপ",
+				"sliderWheelStepFollowButtons": "সক্রিয় গতি বোতাম অনুসরণ করুন",
+				"sliderWheelStepCustom": "কাস্টম",
+				"sliderWheelStepPresets": "প্রিসেট"
 			}
 		},
 		"subtitles": {

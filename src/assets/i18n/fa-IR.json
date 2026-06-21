@@ -37,13 +37,21 @@
 		"speedButtons": {
 			"title": "دکمه‌های سرعت",
 			"checkbox": {
-				"enable": "نمایش دکمه‌های سرعت",
+				"enable": "نمایش دکمه‌های سرعت/نوار لغزنده سرعت",
 				"save": "سرعت پخش را به خاطر بسپار",
-				"saveByChannel": "سرعت پخش را برای هر کانال به خاطر بسپار"
+				"saveByChannel": "سرعت پخش را برای هر کانال به خاطر بسپار",
+				"enableSlider": "فعال کردن نوار لغزنده سرعت"
 			},
 			"tips": {
 				"enabledButtons": "دکمه‌های فعال:",
-				"save": "سرعت را ذخیره کن"
+				"save": "سرعت را ذخیره کن",
+				"slider": "پس از فعال‌سازی، برای تنظیم پیوسته سرعت به چپ یا راست بکشید؛ چرخ ماوس از گام انتخاب‌شده استفاده می‌کند."
+			},
+			"select": {
+				"sliderWheelStep": "گام چرخ ماوس برای سرعت",
+				"sliderWheelStepFollowButtons": "پیروی از دکمه‌های سرعت فعال",
+				"sliderWheelStepCustom": "سفارشی",
+				"sliderWheelStepPresets": "پیش‌فرض‌ها"
 			}
 		},
 		"subtitles": {

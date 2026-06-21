@@ -37,13 +37,21 @@
 		"speedButtons": {
 			"title": "再生速度ボタン",
 			"checkbox": {
-				"enable": "再生速度ボタンを表示する",
+				"enable": "再生速度ボタン/スライダーを表示する",
 				"save": "再生速度を記憶する",
-				"saveByChannel": "チャンネルごとに再生速度を記憶する"
+				"saveByChannel": "チャンネルごとに再生速度を記憶する",
+				"enableSlider": "再生速度スライダーを有効にする"
 			},
 			"tips": {
 				"enabledButtons": "有効になったボタン",
-				"save": "再生速度を記憶する"
+				"save": "再生速度を記憶する",
+				"slider": "有効にすると、左右にドラッグして連続的に速度を調整できます。マウスホイールは選択した刻み幅を使います。"
+			},
+			"select": {
+				"sliderWheelStep": "マウスホイールの刻み幅",
+				"sliderWheelStepFollowButtons": "有効な速度ボタンに合わせる",
+				"sliderWheelStepCustom": "カスタム",
+				"sliderWheelStepPresets": "プリセット"
 			}
 		},
 		"subtitles": {

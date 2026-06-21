@@ -37,13 +37,21 @@
 		"speedButtons": {
 			"title": "Tombol kecepatan",
 			"checkbox": {
-				"enable": "Tampilkan tombol kecepatan",
+				"enable": "Tampilkan tombol/slider kecepatan",
 				"save": "Ingat kecepatan pemutaran",
-				"saveByChannel": "Ingat kecepatan pemutaran per kanal"
+				"saveByChannel": "Ingat kecepatan pemutaran per kanal",
+				"enableSlider": "Aktifkan slider kecepatan"
 			},
 			"tips": {
 				"enabledButtons": "Tombol yang diaktifkan:",
-				"save": "Ingat kecepatan"
+				"save": "Ingat kecepatan",
+				"slider": "Saat diaktifkan, seret ke kiri atau kanan untuk mengatur kecepatan secara kontinu; roda mouse memakai langkah yang dipilih."
+			},
+			"select": {
+				"sliderWheelStep": "Langkah roda mouse",
+				"sliderWheelStepFollowButtons": "Ikuti tombol kecepatan aktif",
+				"sliderWheelStepCustom": "Kustom",
+				"sliderWheelStepPresets": "Preset"
 			}
 		},
 		"subtitles": {

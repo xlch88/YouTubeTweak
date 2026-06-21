@@ -37,13 +37,21 @@
 		"speedButtons": {
 			"title": "Botones de velocidad",
 			"checkbox": {
-				"enable": "Mostrar botones de velocidad",
+				"enable": "Mostrar botones/deslizador de velocidad",
 				"save": "Recordar velocidad de reproducción",
-				"saveByChannel": "Recordar la velocidad por canal"
+				"saveByChannel": "Recordar la velocidad por canal",
+				"enableSlider": "Activar deslizador de velocidad"
 			},
 			"tips": {
 				"enabledButtons": "Botones activados:",
-				"save": "Recordar velocidad"
+				"save": "Recordar velocidad",
+				"slider": "Al activarlo, arrastra a izquierda o derecha para ajustar la velocidad de forma continua; la rueda del ratón usa el paso seleccionado."
+			},
+			"select": {
+				"sliderWheelStep": "Paso de la rueda del ratón",
+				"sliderWheelStepFollowButtons": "Seguir botones de velocidad activados",
+				"sliderWheelStepCustom": "Personalizado",
+				"sliderWheelStepPresets": "Preajustes"
 			}
 		},
 		"subtitles": {

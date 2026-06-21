@@ -37,13 +37,21 @@
 		"speedButtons": {
 			"title": "गती बटणे",
 			"checkbox": {
-				"enable": "गती बटणे दाखवा",
+				"enable": "वेग बटणे/वेग स्लायडर दाखवा",
 				"save": "प्लेबॅक गती लक्षात ठेवा",
-				"saveByChannel": "प्रत्येक चॅनेलसाठी प्लेबॅक गती लक्षात ठेवा"
+				"saveByChannel": "प्रत्येक चॅनेलसाठी प्लेबॅक गती लक्षात ठेवा",
+				"enableSlider": "वेग स्लायडर सक्षम करा"
 			},
 			"tips": {
 				"enabledButtons": "सक्रिय बटणे:",
-				"save": "गती लक्षात ठेवा"
+				"save": "गती लक्षात ठेवा",
+				"slider": "सक्षम केल्यावर वेग सतत बदलण्यासाठी डावीकडे किंवा उजवीकडे ड्रॅग करा; माउस व्हील निवडलेला व्हील स्टेप वापरेल."
+			},
+			"select": {
+				"sliderWheelStep": "माउस व्हील वेग स्टेप",
+				"sliderWheelStepFollowButtons": "सक्षम वेग बटणे अनुसरा",
+				"sliderWheelStepCustom": "सानुकूल",
+				"sliderWheelStepPresets": "प्रीसेट"
 			}
 		},
 		"subtitles": {

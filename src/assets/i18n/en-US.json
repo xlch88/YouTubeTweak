@@ -37,13 +37,21 @@
 		"speedButtons": {
 			"title": "Speed buttons",
 			"checkbox": {
-				"enable": "Show speed buttons",
+				"enable": "Show speed buttons/speed slider",
 				"save": "Remember playback speed",
-				"saveByChannel": "Remember playback speed per channel"
+				"saveByChannel": "Remember playback speed per channel",
+				"enableSlider": "Enable speed slider"
 			},
 			"tips": {
 				"enabledButtons": "Enabled buttons:",
-				"save": "Remember speed"
+				"save": "Remember speed",
+				"slider": "When enabled, drag left or right for continuous speed; the mouse wheel uses the selected wheel step."
+			},
+			"select": {
+				"sliderWheelStep": "Mouse wheel step",
+				"sliderWheelStepFollowButtons": "Follow enabled speed buttons",
+				"sliderWheelStepCustom": "Custom",
+				"sliderWheelStepPresets": "Presets"
 			}
 		},
 		"subtitles": {

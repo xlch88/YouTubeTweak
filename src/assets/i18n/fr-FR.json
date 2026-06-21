@@ -37,13 +37,21 @@
 		"speedButtons": {
 			"title": "Vitesse",
 			"checkbox": {
-				"enable": "Afficher les boutons de vitesse",
+				"enable": "Afficher les boutons/le curseur de vitesse",
 				"save": "Sauvegarder la vitesse du player",
-				"saveByChannel": "Sauvegarder les vitesses pour chaque chaîne"
+				"saveByChannel": "Sauvegarder les vitesses pour chaque chaîne",
+				"enableSlider": "Activer le curseur de vitesse"
 			},
 			"tips": {
 				"enabledButtons": "Boutons activés :",
-				"save": "Sauvegarder la vitesse"
+				"save": "Sauvegarder la vitesse",
+				"slider": "Une fois activé, faites glisser vers la gauche ou la droite pour régler la vitesse en continu ; la molette utilise le pas sélectionné."
+			},
+			"select": {
+				"sliderWheelStep": "Pas de la molette",
+				"sliderWheelStepFollowButtons": "Suivre les boutons de vitesse activés",
+				"sliderWheelStepCustom": "Personnalisé",
+				"sliderWheelStepPresets": "Préréglages"
 			}
 		},
 		"subtitles": {

@@ -37,13 +37,21 @@
 		"speedButtons": {
 			"title": "Pulsanti velocità",
 			"checkbox": {
-				"enable": "Mostra i pulsanti di velocità",
+				"enable": "Mostra pulsanti/cursore velocità",
 				"save": "Ricorda velocità di riproduzione",
-				"saveByChannel": "Ricorda velocità di riproduzione per canale"
+				"saveByChannel": "Ricorda velocità di riproduzione per canale",
+				"enableSlider": "Abilita cursore velocità"
 			},
 			"tips": {
 				"enabledButtons": "Pulsanti abilitati:",
-				"save": "Ricorda velocità"
+				"save": "Ricorda velocità",
+				"slider": "Quando è attivo, trascina a sinistra o a destra per regolare la velocità in modo continuo; la rotellina usa il passo selezionato."
+			},
+			"select": {
+				"sliderWheelStep": "Passo della rotellina",
+				"sliderWheelStepFollowButtons": "Segui i pulsanti velocità attivi",
+				"sliderWheelStepCustom": "Personalizzato",
+				"sliderWheelStepPresets": "Predefiniti"
 			}
 		},
 		"subtitles": {
