@@ -1,7 +1,7 @@
 import config from "../config";
 import { metadata, videoPlayer } from "../mainWorld";
 import { createLogger } from "../../logger";
-import { getChannelId } from "../util/helper";
+import { getChannelId, touchPlayer } from "../util/helper";
 
 import type { Plugin } from "../types";
 import memory from "@/memory";
@@ -217,6 +217,7 @@ function handleSpeedWheel(e: WheelEvent) {
 
 	e.preventDefault();
 	e.stopPropagation();
+	touchPlayer();
 
 	const enabledSpeeds = getEnabledSpeeds();
 	const currentSpeed = clampSpeed(getCurrentPlaybackSpeed());
@@ -252,6 +253,7 @@ function handleSpeedWheel(e: WheelEvent) {
 function handleSpeedPointerDown(e: PointerEvent) {
 	if (!isSpeedSliderEnabled() || e.button !== 0) return;
 
+	touchPlayer();
 	isDraggingSpeedSlider = true;
 	hasDraggedSpeedSlider = false;
 	dragStartX = e.clientX;
@@ -275,6 +277,7 @@ function handleDocumentPointerMove(e: PointerEvent) {
 	hasDraggedSpeedSlider = true;
 	e.preventDefault();
 	e.stopPropagation();
+	touchPlayer();
 	showSpeedSlider(true);
 	void setPlaybackSpeed(speed, { persist: true, preferredButton: activeSpeedButton || findFallbackSpeedButton(speed) });
 }
@@ -282,6 +285,7 @@ function handleDocumentPointerMove(e: PointerEvent) {
 function handleDocumentPointerUp(e: PointerEvent) {
 	if (!isDraggingSpeedSlider) return;
 
+	touchPlayer();
 	const clickedSpeedButton = !hasDraggedSpeedSlider ? dragStartSpeedButton : null;
 	suppressNextSpeedClick = hasDraggedSpeedSlider || !!clickedSpeedButton;
 	isDraggingSpeedSlider = false;
@@ -392,6 +396,7 @@ export default {
 							suppressNextSpeedClick = false;
 							return;
 						}
+						touchPlayer();
 						await setPlaybackSpeed(speed, { persist: true, preferredButton: speedButton });
 					};
 					speedButtons.push(speedButton);

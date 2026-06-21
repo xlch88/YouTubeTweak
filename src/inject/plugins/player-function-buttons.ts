@@ -2,6 +2,7 @@ import config from "../config";
 import { createLogger } from "../../logger";
 import type { Plugin } from "../types";
 import { videoPlayer } from "../mainWorld";
+import { touchPlayer } from "../util/helper";
 
 let enableFunctionCount = 0;
 
@@ -71,6 +72,7 @@ export default {
 				yttBtnRotate.title = "Rotate Video";
 				yttBtnRotate.setAttribute("text", `${rotation}`);
 				yttBtnRotate.onclick = () => {
+					touchPlayer();
 					rotation = (rotation + 90) % 360;
 					yttBtnRotate?.setAttribute("text", `${rotation}`);
 					updatePlayerTransformStyle();
@@ -98,6 +100,7 @@ export default {
 				yttBtnMirror.title = "Mirror Video";
 				yttBtnMirror.setAttribute("text", `➡`);
 				yttBtnMirror.onclick = () => {
+					touchPlayer();
 					isMirror = !isMirror;
 					yttBtnMirror?.setAttribute("text", isMirror ? `⬅` : `➡`);
 					updatePlayerTransformStyle();

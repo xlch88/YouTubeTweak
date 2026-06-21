@@ -1,5 +1,7 @@
 import { videoPlayer } from "../mainWorld";
 
+let touchPlayerMoveIndex = 0;
+
 export function bodyClass(className: string) {
 	return {
 		enable: () => {
@@ -57,4 +59,36 @@ export function googleTranslate(text: string | string[], srcLang: string = "auto
 				reject(error);
 			});
 	});
+}
+
+export function touchPlayer() {
+	const player = videoPlayer.player;
+	if (!player) return false;
+
+	const rect = player.getBoundingClientRect();
+	if (rect.width <= 2 || rect.height <= 2) return false;
+
+	touchPlayerMoveIndex = (touchPlayerMoveIndex + 1) % 4;
+	const clientX = Math.min(
+		Math.max(Math.round(rect.left + rect.width / 2) + (touchPlayerMoveIndex % 2 === 0 ? -1 : 1), Math.ceil(rect.left + 1)),
+		Math.floor(rect.right - 1),
+	);
+	const clientY = Math.min(
+		Math.max(Math.round(rect.top + rect.height * 0.35) + (touchPlayerMoveIndex < 2 ? -1 : 1), Math.ceil(rect.top + 1)),
+		Math.floor(rect.bottom - 1),
+	);
+
+	player.dispatchEvent(
+		new MouseEvent("mousemove", {
+			bubbles: true,
+			cancelable: false,
+			composed: true,
+			view: window,
+			clientX,
+			clientY,
+			button: 0,
+			buttons: 0,
+		}),
+	);
+	return true;
 }

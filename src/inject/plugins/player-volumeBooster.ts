@@ -2,6 +2,7 @@ import config from "../config";
 import { videoPlayer } from "../mainWorld";
 import { createLogger } from "../../logger";
 import { createBox, updateFuncBtnStatus, yttBtnBox } from "./player-function-buttons";
+import { touchPlayer } from "../util/helper";
 
 import type { Plugin } from "../types";
 
@@ -283,6 +284,7 @@ function mountBoosterButton() {
 		boosterButton.onclick = (event) => {
 			event.preventDefault();
 			event.stopPropagation();
+			touchPlayer();
 
 			const nextState = !config.get("player.settings.volumeBooster");
 			void setBoosterEnabled(nextState);
@@ -290,6 +292,7 @@ function mountBoosterButton() {
 		boosterButton.onwheel = (event) => {
 			event.preventDefault();
 			event.stopPropagation();
+			touchPlayer();
 			if (!event.deltaY) {
 				return;
 			}
