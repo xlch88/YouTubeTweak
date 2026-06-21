@@ -55,10 +55,21 @@
 				</label>
 				<p class="speed-slider-tip">{{ $t("player.speedButtons.tips.slider") }}</p>
 				<label v-if="config['player.ui.enableSpeedSlider']" class="form-item form-item-select speed-slider-step">
-					<span>{{ $t("player.speedButtons.select.sliderStep") }}</span>
-					<select class="w-100" v-model.number="config['player.ui.speedSliderStep']">
-						<option v-for="step in [0.1, 0.25, 0.5, 1]" :value="step" :key="step">{{ step }}</option>
+					<span>{{ $t("player.speedButtons.select.sliderWheelStep") }}</span>
+					<select v-if="!showCustomSpeedSliderStepInput" class="w-100" v-model="speedSliderWheelStepSelectValue">
+						<option value="speedButtons">{{ $t("player.speedButtons.select.sliderWheelStepFollowButtons") }}</option>
+						<option v-if="speedSliderWheelStepSelectValue === 'currentCustom'" value="currentCustom">
+							{{ config["player.ui.speedSliderStep"] }}
+						</option>
+						<option v-for="step in speedSliderStepPresets" :value="String(step)" :key="step">{{ step }}</option>
+						<option value="custom">{{ $t("player.speedButtons.select.sliderWheelStepCustom") }}</option>
 					</select>
+					<span v-else class="speed-slider-step-custom">
+						<input type="number" min="0.01" max="10" step="0.01" v-model.number="config['player.ui.speedSliderStep']" />
+						<button type="button" @click="showCustomSpeedSliderStepInput = false">
+							{{ $t("player.speedButtons.select.sliderWheelStepPresets") }}
+						</button>
+					</span>
 				</label>
 
 				<p>{{ $t("player.speedButtons.tips.save") }}</p>
@@ -170,6 +181,7 @@
 </template>
 
 <script setup lang="ts">
+import { computed, ref } from "vue";
 import MiniPlayerSettingsCard from "../components/player/MiniPlayerSettingsCard.vue";
 import VolumeBoosterSettingsCard from "../components/player/VolumeBoosterSettingsCard.vue";
 import useConfigStore from "../util/config";
@@ -183,6 +195,31 @@ const progressTagPositions = [
 	{ value: "top-left", labelKey: "player.ui.position.topLeft", arrow: "↖" },
 	{ value: "top-right", labelKey: "player.ui.position.topRight", arrow: "↗" },
 ];
+
+const speedSliderStepPresets = [0.1, 0.25, 0.5, 1];
+const showCustomSpeedSliderStepInput = ref(false);
+const speedSliderWheelStepSelectValue = computed({
+	get() {
+		if (config["player.ui.speedSliderWheelMode"] === "speedButtons") return "speedButtons";
+		return speedSliderStepPresets.includes(Number(config["player.ui.speedSliderStep"]))
+			? String(config["player.ui.speedSliderStep"])
+			: "currentCustom";
+	},
+	set(value) {
+		if (value === "currentCustom") return;
+		if (value === "speedButtons") {
+			config["player.ui.speedSliderWheelMode"] = "speedButtons";
+			showCustomSpeedSliderStepInput.value = false;
+			return;
+		}
+
+		config["player.ui.speedSliderWheelMode"] = "custom";
+		showCustomSpeedSliderStepInput.value = value === "custom";
+		if (value !== "custom") {
+			config["player.ui.speedSliderStep"] = Number(value);
+		}
+	},
+});
 </script>
 
 <style lang="scss" scoped>
@@ -220,6 +257,15 @@ const progressTagPositions = [
 
 	&-step {
 		padding-top: 0;
+
+		&-custom {
+			display: flex;
+			gap: 6px;
+
+			input {
+				width: 90px;
+			}
+		}
 	}
 }
 </style>

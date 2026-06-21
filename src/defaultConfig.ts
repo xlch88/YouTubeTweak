@@ -16,7 +16,8 @@ type MiniPlayerPosition = "top-left" | "top-center" | "top-right" | "bottom-left
 export type Config = {
 	"player.ui.enableSpeedButtons": boolean;
 	"player.ui.enableSpeedSlider": boolean;
-	"player.ui.speedSliderStep": 0.1 | 0.25 | 0.5 | 1;
+	"player.ui.speedSliderWheelMode": "speedButtons" | "custom";
+	"player.ui.speedSliderStep": number;
 	"player.ui.speedButtons": Array<0.25 | 0.5 | 0.75 | 1 | 1.25 | 1.5 | 1.75 | 2 | 2.25 | 2.5 | 2.75 | 3 | 5 | 10>;
 	"player.ui.enableVolumeBooster": boolean;
 	"player.ui.hideButton.autoplay": boolean;
@@ -78,6 +79,7 @@ export type Config = {
 const config: Config = {
 	"player.ui.enableSpeedButtons": true,
 	"player.ui.enableSpeedSlider": false,
+	"player.ui.speedSliderWheelMode": "speedButtons",
 	"player.ui.speedSliderStep": 0.25,
 	"player.ui.speedButtons": [0.5, 1, 1.5, 2],
 	"player.ui.enableVolumeBooster": true,

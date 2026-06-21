@@ -3,6 +3,35 @@ div.yttweak-speed-buttons {
 	position: relative;
 	--yttweak-speed-slider-progress: 0%;
 
+	.yttweak-speed-button-track {
+		display: flex;
+		align-items: center;
+		position: relative;
+		height: 100%;
+		gap: 4px;
+		cursor: pointer;
+
+		body[yttweak-enable-speed-slider] & {
+			&::before,
+			&::after {
+				content: "";
+				position: absolute;
+				left: 0;
+				right: 0;
+				height: calc((100% - 20px) / 2);
+				cursor: ew-resize;
+			}
+
+			&::before {
+				top: 0;
+			}
+
+			&::after {
+				bottom: 0;
+			}
+		}
+	}
+
 	span.yttweak-speed-button {
 		width: 48px;
 		display: none;
@@ -128,19 +157,10 @@ div.yttweak-speed-buttons {
 		padding: 4px 4px;
 		margin-right: 10px;
 		box-sizing: border-box;
-		gap: 4px;
 	}
 
 	body[yttweak-enable-speed-slider] & {
 		cursor: ew-resize;
-
-		span.yttweak-speed-button {
-			cursor: ew-resize;
-
-			&::before {
-				cursor: pointer;
-			}
-		}
 	}
 }
 

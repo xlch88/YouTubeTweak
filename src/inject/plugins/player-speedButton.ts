@@ -54,13 +54,6 @@ function clampSpeed(speed: number) {
 	return Math.min(Math.max(speed, enabledSpeeds[0]), enabledSpeeds[enabledSpeeds.length - 1]);
 }
 
-function snapSpeed(speed: number) {
-	const enabledSpeeds = getEnabledSpeeds();
-	const step = config.get("player.ui.speedSliderStep");
-	const baseSpeed = enabledSpeeds[0] ?? 0;
-	return clampSpeed(Number((baseSpeed + Math.round((speed - baseSpeed) / step) * step).toFixed(2)));
-}
-
 function getCurrentPlaybackSpeed() {
 	const speed = Number(videoPlayer.player?.getPlaybackRate?.() ?? videoPlayer.videoStream?.playbackRate ?? lastPlaybackSpeed);
 	return Number.isFinite(speed) && speed > 0 ? speed : lastPlaybackSpeed;
@@ -225,9 +218,32 @@ function handleSpeedWheel(e: WheelEvent) {
 	e.preventDefault();
 	e.stopPropagation();
 
-	const step = config.get("player.ui.speedSliderStep");
+	const enabledSpeeds = getEnabledSpeeds();
 	const currentSpeed = clampSpeed(getCurrentPlaybackSpeed());
-	const nextSpeed = snapSpeed(currentSpeed + (e.deltaY < 0 ? step : -step));
+	let nextSpeed = currentSpeed;
+	if (config.get("player.ui.speedSliderWheelMode") === "speedButtons") {
+		if (e.deltaY < 0) {
+			nextSpeed = enabledSpeeds[enabledSpeeds.length - 1];
+			for (const speed of enabledSpeeds) {
+				if (speed > currentSpeed + 0.001) {
+					nextSpeed = speed;
+					break;
+				}
+			}
+		} else {
+			nextSpeed = enabledSpeeds[0];
+			for (let i = enabledSpeeds.length - 1; i >= 0; i--) {
+				if (enabledSpeeds[i] < currentSpeed - 0.001) {
+					nextSpeed = enabledSpeeds[i];
+					break;
+				}
+			}
+		}
+	} else {
+		const configuredStep = Number(config.get("player.ui.speedSliderStep"));
+		const step = Number.isFinite(configuredStep) && configuredStep > 0 ? configuredStep : 0.25;
+		nextSpeed = clampSpeed(Number((currentSpeed + (e.deltaY < 0 ? step : -step)).toFixed(2)));
+	}
 	const preferredButton = activeSpeedButton || getEventSpeedButton(e.target) || findFallbackSpeedButton(currentSpeed);
 	showSpeedSlider();
 	void setPlaybackSpeed(nextSpeed, { persist: true, preferredButton });
@@ -241,9 +257,6 @@ function handleSpeedPointerDown(e: PointerEvent) {
 	dragStartX = e.clientX;
 	dragStartSpeedButton = getEventSpeedButton(e.target);
 	updateSliderPosition(getCurrentPlaybackSpeed());
-	try {
-		(e.currentTarget as HTMLDivElement).setPointerCapture(e.pointerId);
-	} catch {}
 }
 
 function handleDocumentPointerMove(e: PointerEvent) {
@@ -254,6 +267,11 @@ function handleDocumentPointerMove(e: PointerEvent) {
 	const speed = getSpeedFromSliderClientX(e.clientX);
 	if (!hasDraggedSpeedSlider && nearlyEqual(speed, currentSpeed)) return;
 
+	if (!hasDraggedSpeedSlider) {
+		try {
+			speedButtonDiv?.setPointerCapture(e.pointerId);
+		} catch {}
+	}
 	hasDraggedSpeedSlider = true;
 	e.preventDefault();
 	e.stopPropagation();
@@ -346,16 +364,19 @@ export default {
 				const speedSliderTrack = document.createElement("div");
 				const speedSliderFill = document.createElement("div");
 				const speedSliderThumb = document.createElement("div");
+				const speedButtonTrack = document.createElement("div");
 				speedSliderValue = document.createElement("div");
 				speedSlider.className = "yttweak-speed-slider";
 				speedSliderTrack.className = "yttweak-speed-slider-track";
 				speedSliderFill.className = "yttweak-speed-slider-fill";
 				speedSliderThumb.className = "yttweak-speed-slider-thumb";
+				speedButtonTrack.className = "yttweak-speed-button-track";
 				speedSliderValue.className = "yttweak-speed-slider-value";
 				speedSliderTrack.append(speedSliderFill, speedSliderThumb);
 				speedSlider.append(speedSliderValue);
 				speedSlider.append(speedSliderTrack);
 				speedButtonDiv.appendChild(speedSlider);
+				speedButtonDiv.appendChild(speedButtonTrack);
 				speedButtonDiv.addEventListener("wheel", handleSpeedWheel, { passive: false });
 				speedButtonDiv.addEventListener("pointerdown", handleSpeedPointerDown);
 				document.addEventListener("pointermove", handleDocumentPointerMove, true);
@@ -374,7 +395,7 @@ export default {
 						await setPlaybackSpeed(speed, { persist: true, preferredButton: speedButton });
 					};
 					speedButtons.push(speedButton);
-					speedButtonDiv.appendChild(speedButton);
+					speedButtonTrack.appendChild(speedButton);
 				}
 			}
 
@@ -391,6 +412,7 @@ export default {
 			const hasUpdate =
 				oldSpeedButtons.join(",") !== newSpeedButtons.join(",") ||
 				oldConfig["player.ui.enableSpeedSlider"] !== newConfig["player.ui.enableSpeedSlider"] ||
+				oldConfig["player.ui.speedSliderWheelMode"] !== newConfig["player.ui.speedSliderWheelMode"] ||
 				oldConfig["player.ui.speedSliderStep"] !== newConfig["player.ui.speedSliderStep"];
 
 			if (hasUpdate) {
