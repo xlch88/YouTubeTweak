@@ -78,7 +78,7 @@ export type Config = {
 
 const config: Config = {
 	"player.ui.enableSpeedButtons": true,
-	"player.ui.enableSpeedSlider": false,
+	"player.ui.enableSpeedSlider": true,
 	"player.ui.speedSliderWheelMode": "speedButtons",
 	"player.ui.speedSliderStep": 0.25,
 	"player.ui.speedButtons": [0.5, 1, 1.5, 2],
