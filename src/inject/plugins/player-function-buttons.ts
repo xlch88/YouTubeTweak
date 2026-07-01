@@ -14,7 +14,16 @@ let yttBtnMirror: HTMLSpanElement | null = null;
 let rotation = 0;
 let isMirror = false;
 
+function ensurePlayerTransformStyle() {
+	if (playerTransformStyle) return;
+
+	playerTransformStyle = document.createElement("style");
+	playerTransformStyle.id = "yttweak-player-transform";
+	document.head.appendChild(playerTransformStyle);
+}
+
 function updatePlayerTransformStyle() {
+	ensurePlayerTransformStyle();
 	if (!playerTransformStyle || !videoPlayer.videoStream || !videoPlayer.player) return;
 
 	let transformStr = `rotate(${rotation}deg)`;
@@ -39,11 +48,7 @@ function updatePlayerTransformStyle() {
 }
 
 export function createBox() {
-	if (!playerTransformStyle) {
-		playerTransformStyle = document.createElement("style");
-		playerTransformStyle.id = "yttweak-player-transform";
-		document.head.appendChild(playerTransformStyle);
-	}
+	ensurePlayerTransformStyle();
 	if (!yttBtnBox) {
 		let leftControls = videoPlayer.player?.querySelector(".ytp-left-controls");
 		if (!leftControls) return;

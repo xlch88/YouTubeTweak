@@ -60,8 +60,6 @@ function getCurrentPlaybackSpeed() {
 }
 
 function findFallbackSpeedButton(speed: number) {
-	if (activeSpeedButton && isEnabledSpeed(getSpeedButtonSpeed(activeSpeedButton))) return activeSpeedButton;
-
 	let fallback = null as HTMLSpanElement | null;
 	for (const button of speedButtons) {
 		const buttonSpeed = getSpeedButtonSpeed(button);
@@ -252,9 +250,8 @@ function handleSpeedWheel(e: WheelEvent) {
 			),
 		);
 	}
-	const preferredButton = activeSpeedButton || getEventSpeedButton(e.target) || findFallbackSpeedButton(currentSpeed);
 	showSpeedSlider();
-	void setPlaybackSpeed(nextSpeed, { persist: true, preferredButton });
+	void setPlaybackSpeed(nextSpeed, { persist: true, preferredButton: findFallbackSpeedButton(nextSpeed) });
 }
 
 function handleSpeedPointerDown(e: PointerEvent) {
@@ -286,7 +283,7 @@ function handleDocumentPointerMove(e: PointerEvent) {
 	e.stopPropagation();
 	touchPlayer();
 	showSpeedSlider(true);
-	void setPlaybackSpeed(speed, { persist: true, preferredButton: activeSpeedButton || findFallbackSpeedButton(speed) });
+	void setPlaybackSpeed(speed, { persist: true, preferredButton: findFallbackSpeedButton(speed) });
 }
 
 function handleDocumentPointerUp(e: PointerEvent) {
