@@ -85,6 +85,16 @@
 		</div>
 		<VolumeBoosterSettingsCard />
 		<div class="card">
+			<div class="card-title">{{ $t("player.videoZoom.title") }}</div>
+			<div class="card-body">
+				<label class="form-item">
+					<input type="checkbox" v-model="config['player.ui.enableVideoZoom']" />
+					<span>{{ $t("player.videoZoom.checkbox.enable") }}</span>
+				</label>
+				<p>{{ $t("player.videoZoom.tips.enable") }}</p>
+			</div>
+		</div>
+		<div class="card">
 			<div class="card-title">{{ $t("player.subtitles.title") }}</div>
 			<div class="card-body">
 				<p>{{ $t("player.subtitles.tips.save") }}</p>

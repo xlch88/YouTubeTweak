@@ -128,6 +128,15 @@
 				"control": "YouTube’un yerleşik %100 sesinin üstüne gerçek bir kazanç aşaması ekler. Anında açıp kapatmak için oynatıcıdaki düğmeyi kullanın."
 			}
 		},
+		"videoZoom": {
+			"title": "Video zoom",
+			"checkbox": {
+				"enable": "Enable mouse wheel video zoom"
+			},
+			"tips": {
+				"enable": "Use the mouse wheel over the video to zoom. After zooming in, drag the video to move the view."
+			}
+		},
 		"miniPlayer": {
 			"title": "Kaydırma mini oynatıcısı",
 			"checkbox": {

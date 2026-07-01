@@ -128,6 +128,15 @@
 				"control": "YouTube 내장 100% 볼륨보다 높은 실제 게인 단계를 추가합니다. 플레이어 안의 버튼으로 즉시 켜거나 끌 수 있습니다."
 			}
 		},
+		"videoZoom": {
+			"title": "Video zoom",
+			"checkbox": {
+				"enable": "Enable mouse wheel video zoom"
+			},
+			"tips": {
+				"enable": "Use the mouse wheel over the video to zoom. After zooming in, drag the video to move the view."
+			}
+		},
 		"miniPlayer": {
 			"title": "스크롤 미니 플레이어",
 			"checkbox": {

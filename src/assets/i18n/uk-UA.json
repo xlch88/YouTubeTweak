@@ -128,6 +128,15 @@
 				"control": "Додає справжній каскад підсилення понад вбудовану гучність YouTube 100%. Використовуйте кнопку в програвачі, щоб миттєво перемикати його."
 			}
 		},
+		"videoZoom": {
+			"title": "Video zoom",
+			"checkbox": {
+				"enable": "Enable mouse wheel video zoom"
+			},
+			"tips": {
+				"enable": "Use the mouse wheel over the video to zoom. After zooming in, drag the video to move the view."
+			}
+		},
 		"miniPlayer": {
 			"title": "Мініпрогравач під час прокручування",
 			"checkbox": {

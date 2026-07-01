@@ -128,6 +128,15 @@
 				"control": "YouTube-ன் உள்ளமைந்த 100% ஒலி அளவைத் தாண்டி உண்மையான gain நிலையை சேர்க்கிறது. அதை உடனே மாற்ற பிளேயரில் உள்ள பொத்தானைப் பயன்படுத்தவும்."
 			}
 		},
+		"videoZoom": {
+			"title": "Video zoom",
+			"checkbox": {
+				"enable": "Enable mouse wheel video zoom"
+			},
+			"tips": {
+				"enable": "Use the mouse wheel over the video to zoom. After zooming in, drag the video to move the view."
+			}
+		},
 		"miniPlayer": {
 			"title": "ஸ்க்ரோல் மினி பிளேயர்",
 			"checkbox": {

@@ -128,6 +128,15 @@
 				"control": "在 YouTube 內建 100% 音量之上加入真正的增益級。可用播放器內按鈕立即切換。"
 			}
 		},
+		"videoZoom": {
+			"title": "畫面縮放",
+			"checkbox": {
+				"enable": "啟用滑鼠滾輪縮放影片畫面"
+			},
+			"tips": {
+				"enable": "在影片畫面上滾動滑鼠滾輪即可縮放。放大後可拖曳移動畫面。"
+			}
+		},
 		"miniPlayer": {
 			"title": "捲動迷你播放器",
 			"checkbox": {

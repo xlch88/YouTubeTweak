@@ -128,6 +128,15 @@
 				"control": "YouTubeలోని అంతర్నిర్మిత 100% వాల్యూమ్‌ కంటే పైగా నిజమైన గెయిన్ దశను జోడిస్తుంది. దాన్ని వెంటనే టోగుల్ చేయడానికి ప్లేయర్‌లోని బటన్‌ను ఉపయోగించండి."
 			}
 		},
+		"videoZoom": {
+			"title": "Video zoom",
+			"checkbox": {
+				"enable": "Enable mouse wheel video zoom"
+			},
+			"tips": {
+				"enable": "Use the mouse wheel over the video to zoom. After zooming in, drag the video to move the view."
+			}
+		},
 		"miniPlayer": {
 			"title": "స్క్రోల్ మినీ ప్లేయర్",
 			"checkbox": {

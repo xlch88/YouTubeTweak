@@ -128,6 +128,15 @@
 				"control": "在 YouTube 内置 100% 音量之上增加真实增益级。可用播放器内按钮即时开关。"
 			}
 		},
+		"videoZoom": {
+			"title": "画面缩放",
+			"checkbox": {
+				"enable": "启用鼠标滚轮缩放视频画面"
+			},
+			"tips": {
+				"enable": "在视频画面上滚动鼠标滚轮即可缩放。放大后可拖拽移动画面。"
+			}
+		},
 		"miniPlayer": {
 			"title": "滚动迷你播放器",
 			"checkbox": {

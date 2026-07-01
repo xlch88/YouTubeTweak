@@ -52,6 +52,7 @@ export type Config = {
 	"player.settings.volumeBoosterMultiplier": number;
 	"player.ui.functionButtons.enableRotateButton": boolean;
 	"player.ui.functionButtons.enableMirrorButton": boolean;
+	"player.ui.enableVideoZoom": boolean;
 
 	"comment.nickname": boolean;
 	"comment.autoShowMore": boolean;
@@ -115,6 +116,7 @@ const config: Config = {
 	"player.settings.volumeBoosterMultiplier": 2,
 	"player.ui.functionButtons.enableRotateButton": false,
 	"player.ui.functionButtons.enableMirrorButton": false,
+	"player.ui.enableVideoZoom": true,
 
 	"comment.nickname": true,
 	"comment.autoShowMore": true,

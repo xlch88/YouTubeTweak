@@ -128,6 +128,15 @@
 				"control": "Adiciona um estágio real de ganho acima do volume 100% nativo do YouTube. Use o botão no player para alternar instantaneamente."
 			}
 		},
+		"videoZoom": {
+			"title": "Video zoom",
+			"checkbox": {
+				"enable": "Enable mouse wheel video zoom"
+			},
+			"tips": {
+				"enable": "Use the mouse wheel over the video to zoom. After zooming in, drag the video to move the view."
+			}
+		},
 		"miniPlayer": {
 			"title": "Mini player ao rolar",
 			"checkbox": {
