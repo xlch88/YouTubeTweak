@@ -213,6 +213,16 @@
 			"checkbox": {
 				"playerUI": "還原舊版播放器版面配置"
 			}
+		},
+		"customCss": {
+			"title": "自訂 CSS",
+			"checkbox": {
+				"enable": "在 YouTube 注入自訂 CSS"
+			},
+			"placeholder": "/* 注入到 YouTube 的 CSS */\nytd-app {\n  --yt-spec-base-background: #111;\n}",
+			"tips": {
+				"inject": "文字框失焦後會儲存，並套用到已開啟的 YouTube 頁面。"
+			}
 		}
 	},
 	"insights": {

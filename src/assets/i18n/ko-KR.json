@@ -213,6 +213,16 @@
 			"checkbox": {
 				"playerUI": "이전 플레이어 레이아웃 복원"
 			}
+		},
+		"customCss": {
+			"title": "Custom CSS",
+			"checkbox": {
+				"enable": "Inject custom CSS on YouTube"
+			},
+			"placeholder": "/* CSS injected into YouTube */\nytd-app {\n  --yt-spec-base-background: #111;\n}",
+			"tips": {
+				"inject": "Applies to youtube.com pages after the textarea loses focus."
+			}
 		}
 	},
 	"insights": {

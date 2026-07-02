@@ -213,6 +213,16 @@
 			"checkbox": {
 				"playerUI": "Restore old player layout"
 			}
+		},
+		"customCss": {
+			"title": "Custom CSS",
+			"checkbox": {
+				"enable": "Inject custom CSS on YouTube"
+			},
+			"placeholder": "/* CSS injected into YouTube */\nytd-app {\n  --yt-spec-base-background: #111;\n}",
+			"tips": {
+				"inject": "Applies to youtube.com pages after the textarea loses focus."
+			}
 		}
 	},
 	"insights": {

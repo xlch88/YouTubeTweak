@@ -213,6 +213,16 @@
 			"checkbox": {
 				"playerUI": "旧プレーヤーレイアウトに戻す"
 			}
+		},
+		"customCss": {
+			"title": "カスタム CSS",
+			"checkbox": {
+				"enable": "YouTube にカスタム CSS を注入"
+			},
+			"placeholder": "/* YouTube に注入する CSS */\nytd-app {\n  --yt-spec-base-background: #111;\n}",
+			"tips": {
+				"inject": "テキストエリアからフォーカスが外れると保存され、開いている YouTube ページに適用されます。"
+			}
 		}
 	},
 	"insights": {
