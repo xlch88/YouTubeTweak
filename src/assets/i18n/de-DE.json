@@ -112,7 +112,8 @@
 			"title": "Funktionsschaltflächen",
 			"checkbox": {
 				"enableRotateButton": "Schaltfläche zum Drehen des Videos aktivieren",
-				"enableMirrorButton": "Schaltfläche zum Spiegeln des Videos aktivieren"
+				"enableMirrorButton": "Schaltfläche zum Spiegeln des Videos aktivieren",
+				"enableScreenshotButton": "Enable video screenshot button"
 			}
 		},
 		"volumeBooster": {

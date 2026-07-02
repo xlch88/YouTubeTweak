@@ -112,7 +112,8 @@
 			"title": "기능 버튼",
 			"checkbox": {
 				"enableRotateButton": "회전 버튼 사용",
-				"enableMirrorButton": "좌우 반전 버튼 사용"
+				"enableMirrorButton": "좌우 반전 버튼 사용",
+				"enableScreenshotButton": "Enable video screenshot button"
 			}
 		},
 		"volumeBooster": {

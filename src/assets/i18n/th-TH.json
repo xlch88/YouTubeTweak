@@ -112,7 +112,8 @@
 			"title": "ปุ่มฟังก์ชัน",
 			"checkbox": {
 				"enableRotateButton": "เปิดปุ่มหมุนวิดีโอ",
-				"enableMirrorButton": "เปิดปุ่มกลับด้านกระจก"
+				"enableMirrorButton": "เปิดปุ่มกลับด้านกระจก",
+				"enableScreenshotButton": "Enable video screenshot button"
 			}
 		},
 		"volumeBooster": {

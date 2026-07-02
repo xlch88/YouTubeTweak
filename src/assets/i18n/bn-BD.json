@@ -112,7 +112,8 @@
 			"title": "ফাংশন বোতাম",
 			"checkbox": {
 				"enableRotateButton": "ভিডিও ঘোরানোর বোতাম সক্রিয় করুন",
-				"enableMirrorButton": "ভিডিও মিরর করার বোতাম সক্রিয় করুন"
+				"enableMirrorButton": "ভিডিও মিরর করার বোতাম সক্রিয় করুন",
+				"enableScreenshotButton": "Enable video screenshot button"
 			}
 		},
 		"volumeBooster": {

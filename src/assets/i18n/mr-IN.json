@@ -112,7 +112,8 @@
 			"title": "फंक्शन बटणे",
 			"checkbox": {
 				"enableRotateButton": "व्हिडिओ फिरविण्याचे बटण सक्षम करा",
-				"enableMirrorButton": "व्हिडिओ मिरर बटण सक्षम करा"
+				"enableMirrorButton": "व्हिडिओ मिरर बटण सक्षम करा",
+				"enableScreenshotButton": "Enable video screenshot button"
 			}
 		},
 		"volumeBooster": {

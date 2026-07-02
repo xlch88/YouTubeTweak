@@ -112,7 +112,8 @@
 			"title": "Pulsanti funzione",
 			"checkbox": {
 				"enableRotateButton": "Abilita pulsante di rotazione video",
-				"enableMirrorButton": "Abilita pulsante specchia video"
+				"enableMirrorButton": "Abilita pulsante specchia video",
+				"enableScreenshotButton": "Enable video screenshot button"
 			}
 		},
 		"volumeBooster": {

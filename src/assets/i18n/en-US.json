@@ -112,7 +112,8 @@
 			"title": "Function Buttons",
 			"checkbox": {
 				"enableRotateButton": "Enable video rotation button",
-				"enableMirrorButton": "Enable video mirror button"
+				"enableMirrorButton": "Enable video mirror button",
+				"enableScreenshotButton": "Enable video screenshot button"
 			}
 		},
 		"volumeBooster": {

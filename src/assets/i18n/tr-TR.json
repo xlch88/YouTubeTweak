@@ -112,7 +112,8 @@
 			"title": "Fonksiyon Düğmeleri",
 			"checkbox": {
 				"enableRotateButton": "Video döndürme düğmesini etkinleştir",
-				"enableMirrorButton": "Video ayna düğmesini etkinleştir"
+				"enableMirrorButton": "Video ayna düğmesini etkinleştir",
+				"enableScreenshotButton": "Enable video screenshot button"
 			}
 		},
 		"volumeBooster": {

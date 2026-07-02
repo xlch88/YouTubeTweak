@@ -112,7 +112,8 @@
 			"title": "أزرار الوظائف",
 			"checkbox": {
 				"enableRotateButton": "تفعيل زر تدوير الفيديو",
-				"enableMirrorButton": "تفعيل زر عكس الفيديو"
+				"enableMirrorButton": "تفعيل زر عكس الفيديو",
+				"enableScreenshotButton": "Enable video screenshot button"
 			}
 		},
 		"volumeBooster": {

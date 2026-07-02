@@ -112,7 +112,8 @@
 			"title": "دکمه‌های عملکردی",
 			"checkbox": {
 				"enableRotateButton": "فعال کردن دکمه چرخش ویدیو",
-				"enableMirrorButton": "فعال کردن دکمه آینه کردن ویدیو"
+				"enableMirrorButton": "فعال کردن دکمه آینه کردن ویدیو",
+				"enableScreenshotButton": "Enable video screenshot button"
 			}
 		},
 		"volumeBooster": {

@@ -112,7 +112,8 @@
 			"title": "Функціональні кнопки",
 			"checkbox": {
 				"enableRotateButton": "Увімкнути кнопку обертання відео",
-				"enableMirrorButton": "Увімкнути кнопку дзеркала відео"
+				"enableMirrorButton": "Увімкнути кнопку дзеркала відео",
+				"enableScreenshotButton": "Enable video screenshot button"
 			}
 		},
 		"volumeBooster": {

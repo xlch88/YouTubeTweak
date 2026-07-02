@@ -112,7 +112,8 @@
 			"title": "فنکشن بٹن",
 			"checkbox": {
 				"enableRotateButton": "ویڈیو گھماؤن والا بٹن فعال کرو",
-				"enableMirrorButton": "ویڈیو دا عکس والا بٹن فعال کرو"
+				"enableMirrorButton": "ویڈیو دا عکس والا بٹن فعال کرو",
+				"enableScreenshotButton": "Enable video screenshot button"
 			}
 		},
 		"volumeBooster": {

@@ -112,7 +112,8 @@
 			"title": "Tombol Fungsi",
 			"checkbox": {
 				"enableRotateButton": "Aktifkan tombol rotasi video",
-				"enableMirrorButton": "Aktifkan tombol mirror video"
+				"enableMirrorButton": "Aktifkan tombol mirror video",
+				"enableScreenshotButton": "Enable video screenshot button"
 			}
 		},
 		"volumeBooster": {

@@ -112,7 +112,8 @@
 			"title": "செயல்பாட்டு பொத்தான்கள்",
 			"checkbox": {
 				"enableRotateButton": "வீடியோ சுழற்சி பொத்தானை இயக்கு",
-				"enableMirrorButton": "வீடியோ கண்ணாடி பொத்தானை இயக்கு"
+				"enableMirrorButton": "வீடியோ கண்ணாடி பொத்தானை இயக்கு",
+				"enableScreenshotButton": "Enable video screenshot button"
 			}
 		},
 		"volumeBooster": {

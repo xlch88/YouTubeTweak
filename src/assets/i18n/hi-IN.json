@@ -112,7 +112,8 @@
 			"title": "फ़ंक्शन बटन",
 			"checkbox": {
 				"enableRotateButton": "वीडियो घुमाने का बटन सक्षम करें",
-				"enableMirrorButton": "वीडियो मिरर करने का बटन सक्षम करें"
+				"enableMirrorButton": "वीडियो मिरर करने का बटन सक्षम करें",
+				"enableScreenshotButton": "Enable video screenshot button"
 			}
 		},
 		"volumeBooster": {

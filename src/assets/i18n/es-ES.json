@@ -112,7 +112,8 @@
 			"title": "Botones de función",
 			"checkbox": {
 				"enableRotateButton": "Habilitar botón de rotación del video",
-				"enableMirrorButton": "Habilitar botón de espejo del video"
+				"enableMirrorButton": "Habilitar botón de espejo del video",
+				"enableScreenshotButton": "Enable video screenshot button"
 			}
 		},
 		"volumeBooster": {

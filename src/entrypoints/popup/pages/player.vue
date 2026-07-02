@@ -119,6 +119,10 @@
 					<input type="checkbox" v-model="config['player.ui.functionButtons.enableMirrorButton']" />
 					<span>{{ $t("player.functionButtons.checkbox.enableMirrorButton") }}</span>
 				</label>
+				<label class="form-item">
+					<input type="checkbox" v-model="config['player.ui.functionButtons.enableScreenshotButton']" />
+					<span>{{ $t("player.functionButtons.checkbox.enableScreenshotButton") }}</span>
+				</label>
 			</div>
 		</div>
 		<div class="card">

@@ -112,7 +112,8 @@
 			"title": "Butang Fungsi",
 			"checkbox": {
 				"enableRotateButton": "Aktifkan butang putar video",
-				"enableMirrorButton": "Aktifkan butang cermin video"
+				"enableMirrorButton": "Aktifkan butang cermin video",
+				"enableScreenshotButton": "Enable video screenshot button"
 			}
 		},
 		"volumeBooster": {

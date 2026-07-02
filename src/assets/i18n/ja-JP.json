@@ -112,7 +112,8 @@
 			"title": "機能ボタン",
 			"checkbox": {
 				"enableRotateButton": "動画の回転ボタンを有効にする",
-				"enableMirrorButton": "動画のミラーボタンを有効にする"
+				"enableMirrorButton": "動画のミラーボタンを有効にする",
+				"enableScreenshotButton": "動画スクリーンショットボタンを有効にする"
 			}
 		},
 		"volumeBooster": {

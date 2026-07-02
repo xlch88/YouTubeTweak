@@ -112,7 +112,8 @@
 			"title": "功能按钮",
 			"checkbox": {
 				"enableRotateButton": "启用旋转视频按钮",
-				"enableMirrorButton": "启用镜像视频按钮"
+				"enableMirrorButton": "启用镜像视频按钮",
+				"enableScreenshotButton": "启用视频截图按钮"
 			}
 		},
 		"volumeBooster": {

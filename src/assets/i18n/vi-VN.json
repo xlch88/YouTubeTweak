@@ -112,7 +112,8 @@
 			"title": "Nút chức năng",
 			"checkbox": {
 				"enableRotateButton": "Bật nút xoay video",
-				"enableMirrorButton": "Bật nút lật gương video"
+				"enableMirrorButton": "Bật nút lật gương video",
+				"enableScreenshotButton": "Enable video screenshot button"
 			}
 		},
 		"volumeBooster": {

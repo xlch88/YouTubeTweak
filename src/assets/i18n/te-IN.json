@@ -112,7 +112,8 @@
 			"title": "ఫంక్షన్ బటన్లు",
 			"checkbox": {
 				"enableRotateButton": "వీడియో రొటేషన్ బటన్ను ప్రారంభించు",
-				"enableMirrorButton": "వీడియో మిర్రర్ బటన్ను ప్రారంభించు"
+				"enableMirrorButton": "వీడియో మిర్రర్ బటన్ను ప్రారంభించు",
+				"enableScreenshotButton": "Enable video screenshot button"
 			}
 		},
 		"volumeBooster": {

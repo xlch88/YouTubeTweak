@@ -48,30 +48,57 @@
 		&:hover {
 			background: rgba(white, 0.1);
 		}
+
+		&.yttweak-function-button-rotate {
+			&::before {
+				background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg width='800px' height='800px' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20.4898 14.9907C19.8414 16.831 18.6124 18.4108 16.9879 19.492C15.3635 20.5732 13.4316 21.0972 11.4835 20.9851C9.5353 20.873 7.67634 20.1308 6.18668 18.8704C4.69703 17.61 3.65738 15.8996 3.22438 13.997C2.79138 12.0944 2.98849 10.1026 3.78602 8.32177C4.58354 6.54091 5.93827 5.06746 7.64608 4.12343C9.35389 3.17941 11.3223 2.81593 13.2546 3.08779C16.5171 3.54676 18.6725 5.91142 21 8M21 8V2M21 8H15' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+			}
+		}
+
+		&.yttweak-function-button-mirror {
+			&::before {
+				background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg width='800px' height='800px' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 12C3 16.2426 3 18.364 4.31802 19.682C5.63604 21 7.75736 21 12 21M12 3C7.75736 3 5.63604 3 4.31802 4.31802C3.50241 5.13363 3.19151 6.25685 3.073 8' stroke='%23fff' stroke-width='1.5' stroke-linecap='round'/%3E%3Cpath d='M11 21H15C17.8284 21 19.2426 21 20.1213 20.1213C21 19.2426 21 17.8284 21 15V9C21 6.17157 21 4.75736 20.1213 3.87868C19.2426 3 17.8284 3 15 3H11' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-dasharray='2.5 3'/%3E%3Cpath d='M12 22L12 2' stroke='%23fff' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+			}
+
+			&::after {
+				font-weight: bolder;
+			}
+		}
+
+		&.yttweak-function-button-screenshot {
+			&::before {
+				background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='3 2.5 18 18' fill='none'%3E%3Cpath d='M4 8.5C4 7.12 5.12 6 6.5 6H8l1.2-1.6c.38-.5.97-.8 1.6-.8h2.4c.63 0 1.22.3 1.6.8L16 6h1.5C18.88 6 20 7.12 20 8.5v8c0 1.38-1.12 2.5-2.5 2.5h-11C5.12 19 4 17.88 4 16.5v-8Z' stroke='%23fff' stroke-width='1.5' stroke-linejoin='round'/%3E%3Ccircle cx='12' cy='12.5' r='3.4' stroke='%23fff' stroke-width='1.5'/%3E%3Cpath d='M17 9h.01' stroke='%23fff' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+			}
+
+			&::after {
+				content: "";
+			}
+		}
 	}
 }
 
-.yttweak-function-button-rotate {
-	&::before {
-		background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg width='800px' height='800px' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20.4898 14.9907C19.8414 16.831 18.6124 18.4108 16.9879 19.492C15.3635 20.5732 13.4316 21.0972 11.4835 20.9851C9.5353 20.873 7.67634 20.1308 6.18668 18.8704C4.69703 17.61 3.65738 15.8996 3.22438 13.997C2.79138 12.0944 2.98849 10.1026 3.78602 8.32177C4.58354 6.54091 5.93827 5.06746 7.64608 4.12343C9.35389 3.17941 11.3223 2.81593 13.2546 3.08779C16.5171 3.54676 18.6725 5.91142 21 8M21 8V2M21 8H15' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+body {
+	&.yttweak-player-enable-rotate-button {
+		.yttweak-player-function-buttons {
+			span.yttweak-function-button-rotate {
+				display: flex;
+			}
+		}
 	}
-}
-.yttweak-function-button-mirror {
-	&::before {
-		background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg width='800px' height='800px' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 12C3 16.2426 3 18.364 4.31802 19.682C5.63604 21 7.75736 21 12 21M12 3C7.75736 3 5.63604 3 4.31802 4.31802C3.50241 5.13363 3.19151 6.25685 3.073 8' stroke='%23fff' stroke-width='1.5' stroke-linecap='round'/%3E%3Cpath d='M11 21H15C17.8284 21 19.2426 21 20.1213 20.1213C21 19.2426 21 17.8284 21 15V9C21 6.17157 21 4.75736 20.1213 3.87868C19.2426 3 17.8284 3 15 3H11' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-dasharray='2.5 3'/%3E%3Cpath d='M12 22L12 2' stroke='%23fff' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
-	}
-	&::after {
-		font-weight: bolder;
-	}
-}
 
-body.yttweak-player-enable-rotate-button {
-	.yttweak-player-function-buttons span.yttweak-function-button-rotate {
-		display: flex;
+	&.yttweak-player-enable-mirror-button {
+		.yttweak-player-function-buttons {
+			span.yttweak-function-button-mirror {
+				display: flex;
+			}
+		}
 	}
-}
-body.yttweak-player-enable-mirror-button {
-	.yttweak-player-function-buttons span.yttweak-function-button-mirror {
-		display: flex;
+
+	&.yttweak-player-enable-screenshot-button {
+		.yttweak-player-function-buttons {
+			span.yttweak-function-button-screenshot {
+				display: flex;
+			}
+		}
 	}
 }

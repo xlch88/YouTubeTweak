@@ -112,7 +112,8 @@
 			"title": "Функциональные кнопки",
 			"checkbox": {
 				"enableRotateButton": "Включить кнопку поворота видео",
-				"enableMirrorButton": "Включить кнопку зеркального отражения видео"
+				"enableMirrorButton": "Включить кнопку зеркального отражения видео",
+				"enableScreenshotButton": "Enable video screenshot button"
 			}
 		},
 		"volumeBooster": {
