@@ -342,7 +342,8 @@
 			"link": {
 				"github": "GitHub",
 				"issue": "문제 제기",
-				"changelog": "변경 로그"
+				"changelog": "변경 로그",
+				"sponsor": "__NEED_TRANSLATE__: 赞助"
 			}
 		},
 		"config": {
@@ -379,6 +380,16 @@
 			"tips": {
 				"title": "⚠ 경고",
 				"fetchHooker": "일부 기능(이중 언어 자막, 동영상 광고 차단 등)은 HTTP 요청 재작성 기능을 사용하여 페이지에 문제가 발생할 수 있습니다. 브라우징 중 문제가 생기면 이 기능을 꺼 보세요."
+			}
+		},
+		"sponsor": {
+			"tips": {
+				"title": "__NEED_TRANSLATE__: 💖 喜欢这个插件的话，考虑赞助一下吧",
+				"description": "__NEED_TRANSLATE__: 每一份赞助都会变成继续修 bug、适配 YouTube 抽风改版、把小功能打磨到顺手的动力。"
+			},
+			"buttons": {
+				"sponsor": "__NEED_TRANSLATE__: 立即赞助",
+				"noThanks": "__NEED_TRANSLATE__: 不，谢谢"
 			}
 		}
 	},

@@ -46,13 +46,19 @@ export default defineStore("config", {
 
 export const configPlugin: PiniaPlugin = ({ store }) => {
 	let isInitial = true;
+	let debounceTimer: ReturnType<typeof setTimeout> | null = null;
+
 	store.$subscribe(() => {
 		if (isInitial) {
 			isInitial = false;
 			return;
 		}
 		logger.debug("update:", store);
-		store.saveStorage();
+		if (debounceTimer) clearTimeout(debounceTimer);
+		debounceTimer = setTimeout(() => {
+			store.saveStorage();
+			debounceTimer = null;
+		}, 300);
 	});
 
 	store.loadStorage(true);

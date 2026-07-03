@@ -368,6 +368,8 @@ export default {
 			if (!speedButtonDiv) {
 				speedButtonDiv = document.createElement("div");
 				speedButtonDiv.className = "yttweak-speed-buttons";
+				speedButtonDiv.setAttribute("role", "group");
+				speedButtonDiv.setAttribute("aria-label", "Playback speed controls");
 				const speedSlider = document.createElement("div");
 				const speedSliderTrack = document.createElement("div");
 				const speedSliderFill = document.createElement("div");
@@ -394,6 +396,8 @@ export default {
 					const speedButton = document.createElement("span");
 					speedButton.className = `yttweak-speed-button`;
 					speedButton.setAttribute("speed", `${speed}`);
+					speedButton.setAttribute("role", "button");
+					speedButton.setAttribute("aria-label", `Set playback speed to ${formatSpeed(speed)}x`);
 					speedButton.dataset.speedLabel = formatSpeed(speed);
 					speedButton.onclick = async () => {
 						if (suppressNextSpeedClick) {

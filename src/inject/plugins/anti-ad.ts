@@ -23,7 +23,6 @@ export default {
 				(config.get("other.antiAD.enableVideo") && !localStorage.getItem("YTTweak-plugin-AntiVideoAD"))
 			) {
 				logger.info("plugin status change. need to reload page !!!");
-				debugger;
 
 				config.get("other.antiAD.enableVideo")
 					? localStorage.setItem("YTTweak-plugin-AntiVideoAD", "1")

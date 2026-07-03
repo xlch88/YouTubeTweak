@@ -10,6 +10,8 @@ export default {
 	onUpdate: null as null | ((data: any) => void),
 	skipUpdateEvent: false,
 
+	debounceTimer: null as ReturnType<typeof setTimeout> | null,
+
 	init() {
 		return new Promise((resolve) => {
 			wirelessRedstone.handlers.configUpdate = (data: {
@@ -57,7 +59,11 @@ export default {
 		logger.log(`set setting : ${key} ->`, value);
 		if (key) this.config[key] = value;
 
-		this.skipUpdateEvent = true;
-		wirelessRedstone.send("setConfig", { settings: this.config });
+		if (this.debounceTimer) clearTimeout(this.debounceTimer);
+		this.debounceTimer = setTimeout(() => {
+			this.skipUpdateEvent = true;
+			wirelessRedstone.send("setConfig", { settings: this.config });
+			this.debounceTimer = null;
+		}, 300);
 	},
 };

@@ -31,29 +31,30 @@ const pluginsDocumentStart = Object.values(
 	import.meta.glob("./plugins_before/*.{js,ts}", { eager: true }) as Record<string, { default: Function }>,
 ).map((m) => m.default);
 
-export const videoPlayer = {
+export const videoPlayer: {
+	box: null;
+	player: null | (HTMLDivElement & {
+		isHookedYouTubeTweak?: boolean;
+		getAvailableQualityLevels: () => string[];
+		getPlaybackRate: () => number;
+		setPlaybackQuality: (quality: string) => void;
+		setPlaybackQualityRange: (quality: string) => void;
+		setPlaybackRate: (playbackRate: number) => void;
+		isSubtitlesOn: () => boolean;
+		playVideo: () => void;
+		toggleSubtitles: () => void;
+		toggleSubtitlesOn: () => void;
+		[key: string]: any;
+	});
+	controls: null | HTMLDivElement;
+	videoStream: null | HTMLVideoElement;
+	playerApi: null;
+} = {
 	box: null,
-	/**
-	 * YouTube player element with API
-	 */
-	player: null as
-		| null
-		| (HTMLDivElement & {
-				isHookedYouTubeTweak?: boolean;
-				getAvailableQualityLevels: () => string[];
-				getPlaybackRate: () => number;
-				setPlaybackQuality: (quality: string) => void;
-				setPlaybackQualityRange: (quality: string) => void;
-				setPlaybackRate: (playbackRate: number) => void;
-				isSubtitlesOn: () => boolean;
-				playVideo: () => void;
-				toggleSubtitles: () => void;
-				toggleSubtitlesOn: () => void;
-				[key: string]: any;
-		  }),
-	controls: null as null | HTMLDivElement,
-	videoStream: null as null | HTMLVideoElement,
-	playerApi: null as null,
+	player: null,
+	controls: null,
+	videoStream: null,
+	playerApi: null,
 };
 export const metadata = {
 	video: null as null | Record<string, any>,
@@ -122,7 +123,6 @@ const YouTubeTweakApp = {
 
 						if (plugins[key]?.options?.reloadOnToggle) {
 							logger.info("plugin status change. need to reload page !!!");
-							debugger;
 							window.location.reload();
 							return;
 						}
@@ -146,109 +146,112 @@ const YouTubeTweakApp = {
 		};
 	},
 	initElementCatcher() {
-		setInterval(() => {
-			// catch video player
-			let player: typeof videoPlayer.player, controls: typeof videoPlayer.controls, videoStream: typeof videoPlayer.videoStream;
-			if ((player = document.querySelector("ytd-player #movie_player"))) {
-				if (player.getAttribute("yttweak") === "hooked") return;
+		const catchPlayer = () => {
+			const player = document.querySelector<HTMLDivElement>("ytd-player #movie_player");
+			if (!player || player.getAttribute("yttweak") === "hooked") return;
 
-				if ((controls = player.querySelector(".ytp-left-controls"))) {
-					controls = controls.parentElement as HTMLDivElement;
+			const controls = player.querySelector<HTMLDivElement>(".ytp-left-controls")?.parentElement as HTMLDivElement | undefined;
+			if (!controls) return;
 
-					if ((videoStream = player.querySelector(".video-stream"))) {
-						player.isHookedYouTubeTweak = true;
-						player.setAttribute("yttweak", "hooked");
+			const videoStream = player.querySelector<HTMLVideoElement>(".video-stream");
+			if (!videoStream) return;
 
-						videoPlayer.player = player;
-						videoPlayer.controls = controls;
-						videoPlayer.videoStream = videoStream;
+			player.setAttribute("yttweak", "hooked");
+			videoPlayer.player = player as any;
+			videoPlayer.player!.isHookedYouTubeTweak = true;
+			videoPlayer.controls = controls;
+			videoPlayer.videoStream = videoStream;
 
-						function onVideoSrcChange(oldValue: string | null, newValue: string) {
-							if (new URL(window.location.href).pathname !== "/watch") {
-								metadata.video = null;
-								metadata.videoNext = null;
-							} else {
-								metadata.video = videoPlayer.player?.getPlayerResponse() || null;
-								metadata.videoNext = videoPlayer.player?.getWatchNextResponse() || null;
-							}
+			function onVideoSrcChange(oldValue: string | null, newValue: string) {
+				if (new URL(window.location.href).pathname !== "/watch") {
+					metadata.video = null;
+					metadata.videoNext = null;
+				} else {
+					metadata.video = videoPlayer.player?.getPlayerResponse() || null;
+					metadata.videoNext = videoPlayer.player?.getWatchNextResponse() || null;
+				}
 
-							logger.debug("video src changed", {
-								oldValue,
-								newValue,
-							});
-							Object.entries(plugins).forEach((p) => p[1].videoSrcChange?.(oldValue, newValue));
-						}
+				logger.debug("video src changed", {
+					oldValue,
+					newValue,
+				});
+				Object.entries(plugins).forEach((p) => p[1].videoSrcChange?.(oldValue, newValue));
+			}
 
-						let observer = new MutationObserver((mutationList) => {
-							mutationList.forEach((mutation) => {
-								if (mutation.type !== "attributes" || mutation.attributeName !== "src") return;
+			const srcObserver = new MutationObserver((mutationList) => {
+				mutationList.forEach((mutation) => {
+					if (mutation.type !== "attributes" || mutation.attributeName !== "src") return;
 
-								const handler = () => {
-									videoStream?.removeEventListener("canplay", handler);
-									onVideoSrcChange(
-										mutation.oldValue as string,
-										(mutation.target as HTMLVideoElement).getAttribute("src") as string,
-									);
-								};
-								videoStream?.addEventListener("canplay", handler, { once: true });
-							});
-						});
-						observer.observe(videoPlayer.videoStream, { attributes: true, attributeOldValue: true, attributeFilter: ["src"] });
+					const handler = () => {
+						videoStream?.removeEventListener("canplay", handler);
+						onVideoSrcChange(
+							mutation.oldValue as string,
+							(mutation.target as HTMLVideoElement).getAttribute("src") as string,
+						);
+					};
+					videoStream?.addEventListener("canplay", handler, { once: true });
+				});
+			});
+			srcObserver.observe(videoPlayer.videoStream, { attributes: true, attributeOldValue: true, attributeFilter: ["src"] });
 
-						Object.values(plugins).map((p) => {
-							try {
-								p.initPlayer?.();
-							} catch (e) {
-								logger.error("plugin error:", e);
-							}
-						});
-						onVideoSrcChange(null, videoStream.src);
+			Object.values(plugins).map((p) => {
+				try {
+					p.initPlayer?.();
+				} catch (e) {
+					logger.error("plugin error:", e);
+				}
+			});
+			onVideoSrcChange(null, videoStream.src);
+		};
+
+		const catchComments = () => {
+			for (const commentEl of document.querySelectorAll<HTMLDivElement>("ytd-comments:not([yttweak])")) {
+				commentEl.setAttribute("yttweak", "hooked");
+
+				const commentUpdateListener: Record<string, (mutations: MutationRecord[]) => void> = {};
+				const commentWatcher = new MutationObserver((mutations) => {
+					Object.values(commentUpdateListener).forEach((v) => v(mutations));
+				});
+				commentWatcher.observe(commentEl, {
+					subtree: true,
+					childList: true,
+				});
+				logger.debug("new comment:", commentEl);
+
+				const commentParentWatcher = new MutationObserver(() => {
+					if (!document.body.contains(commentEl)) {
+						logger.debug("comment removed:", commentEl);
+						commentWatcher.disconnect();
+						commentParentWatcher.disconnect();
+						const empty: Record<string, (mutations: MutationRecord[]) => void> = {};
+						Object.assign(commentUpdateListener, empty);
 					}
-				}
+				});
+				commentParentWatcher.observe(commentEl.parentElement as Node, {
+					subtree: false,
+					childList: true,
+				});
+
+				Object.entries(plugins).map((p) => {
+					try {
+						p[1].initComments?.(commentEl, (func) => {
+							commentUpdateListener[p[0]] = func;
+						});
+					} catch (e) {
+						logger.error("plugin error:", e);
+					}
+				});
 			}
+		};
 
-			// catch comments
-			let queryComments;
-			if ((queryComments = document.querySelectorAll("ytd-comments"))) {
-				for (const commentEl of queryComments as NodeListOf<HTMLDivElement>) {
-					if (commentEl.getAttribute("yttweak") === "hooked") continue;
-					commentEl.setAttribute("yttweak", "hooked");
+		catchPlayer();
+		catchComments();
 
-					let commentUpdateListener: Record<string, (mutations: MutationRecord[]) => void> = {};
-					const commentWatcher = new MutationObserver((mutations) => {
-						Object.values(commentUpdateListener).forEach((v) => v(mutations));
-					});
-					commentWatcher.observe(commentEl, {
-						subtree: true,
-						childList: true,
-					});
-					logger.debug("new comment:", commentEl);
-
-					const commentParentWatcher = new MutationObserver((mutations) => {
-						if (!document.body.contains(commentEl)) {
-							logger.debug("comment removed:", commentEl);
-							commentWatcher.disconnect();
-							commentParentWatcher.disconnect();
-							commentUpdateListener = {};
-						}
-					});
-					commentWatcher.observe(commentEl.parentElement as Node, {
-						subtree: false,
-						childList: true,
-					});
-
-					Object.entries(plugins).map((p) => {
-						try {
-							p[1].initComments?.(commentEl, (func) => {
-								commentUpdateListener[p[0]] = func;
-							});
-						} catch (e) {
-							logger.error("plugin error:", e);
-						}
-					});
-				}
-			}
-		}, 300);
+		const domObserver = new MutationObserver(() => {
+			catchPlayer();
+			catchComments();
+		});
+		domObserver.observe(document.documentElement, { childList: true, subtree: true });
 	},
 };
 
@@ -297,7 +300,6 @@ export default async function mainWorld() {
 			if (!fetchHookerIsEnabled) {
 				logger.warn("fetchHooker is not enabled, but has hooks! Enable it now.");
 				localStorage.setItem("YTTweak-EnableFetchHooker", "1");
-				debugger;
 				location.reload();
 				return;
 			}
@@ -332,7 +334,6 @@ export default async function mainWorld() {
 			if (fetchHookerIsEnabled) {
 				logger.warn("fetchHooker is enabled, but has no hooks!");
 				localStorage.removeItem("YTTweak-EnableFetchHooker");
-				debugger;
 				location.reload();
 			}
 		}
@@ -341,7 +342,6 @@ export default async function mainWorld() {
 			if (!xmlHttpRequestHookerIsEnabled) {
 				logger.warn("xmlHttpRequestHooker is not enabled, but has hooks! Enable it now.");
 				localStorage.setItem("YTTweak-EnableXMLHttpRequestHooker", "1");
-				debugger;
 				location.reload();
 				return;
 			}
@@ -349,7 +349,6 @@ export default async function mainWorld() {
 			if (xmlHttpRequestHookerIsEnabled) {
 				logger.warn("xmlHttpRequestHooker is enabled, but has no hooks!");
 				localStorage.removeItem("YTTweak-EnableXMLHttpRequestHooker");
-				debugger;
 				location.reload();
 				return;
 			}

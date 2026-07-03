@@ -342,7 +342,8 @@
 			"link": {
 				"github": "GitHub",
 				"issue": "সমস্যা",
-				"changelog": "চেঞ্জলগ"
+				"changelog": "চেঞ্জলগ",
+				"sponsor": "__NEED_TRANSLATE__: 赞助"
 			}
 		},
 		"config": {
@@ -379,6 +380,16 @@
 			"tips": {
 				"title": "⚠ সতর্কতা",
 				"fetchHooker": "কিছু ফিচার (যেমন দ্বিভাষিক সাবটাইটেল, ভিডিও বিজ্ঞাপন ব্লক) HTTP রিকোয়েস্ট পুনর্লিখন ব্যবহার করে, যা পেজে সমস্যা করতে পারে। ব্রাউজ করার সময় সমস্যা হলে দয়া করে এই ফিচারটি বন্ধ করে দেখুন।"
+			}
+		},
+		"sponsor": {
+			"tips": {
+				"title": "__NEED_TRANSLATE__: 💖 喜欢这个插件的话，考虑赞助一下吧",
+				"description": "__NEED_TRANSLATE__: 每一份赞助都会变成继续修 bug、适配 YouTube 抽风改版、把小功能打磨到顺手的动力。"
+			},
+			"buttons": {
+				"sponsor": "__NEED_TRANSLATE__: 立即赞助",
+				"noThanks": "__NEED_TRANSLATE__: 不，谢谢"
 			}
 		}
 	},

@@ -1,16 +1,44 @@
 <template>
 	<template v-if="action === 'popup'">
-		<header>
+		<header :class="{ 'search-active': showSearch }">
 			<a class="item logo" target="_blank" href="https://github.com/xlch88/YouTubeTweak">
 				<img src="@/assets/img/logo.svg" alt="logo" />
 				<span><small>YouTube</small>Tweak</span>
 			</a>
-			<button v-for="key in Object.keys(tabs)" :key="key" class="item" :class="{ active: tab === key }" @click="tabClick(key)">
+			<button
+				v-for="key in Object.keys(tabs)"
+				:key="key"
+				class="item"
+				:class="{ active: tab === key }"
+				@click="tabClick(key)"
+				:aria-label="$t(`tabs.${key}.title`)"
+			>
 				<span>{{ $t(`tabs.${key}.title`) }}</span>
+			</button>
+			<button
+				class="item search-toggle"
+				:class="{ active: showSearch }"
+				@click="toggleSearch"
+				:aria-label="$t('common.search')"
+				:title="$t('common.search')"
+			>
+				<span aria-hidden="true">{{ showSearch ? "✕" : "🔍" }}</span>
 			</button>
 		</header>
 
-		<main>
+		<div v-if="showSearch" class="search-bar">
+			<input
+				ref="searchInput"
+				type="search"
+				v-model="searchQuery"
+				:placeholder="$t('common.searchPlaceholder')"
+				aria-controls="settings-content"
+				autocomplete="off"
+				spellcheck="false"
+			/>
+		</div>
+
+		<main id="settings-content" :class="{ 'search-has-query': searchQuery.length > 0 }">
 			<transition name="slide-fade" mode="out-in">
 				<component :is="tabs[tab]" />
 			</transition>
@@ -21,7 +49,7 @@
 
 <script setup lang="ts">
 import useConfigStore from "./util/config";
-import { ref, provide, defineAsyncComponent } from "vue";
+import { ref, provide, defineAsyncComponent, nextTick, watch, computed } from "vue";
 import Installed from "./pages/installed.vue";
 import type { Component } from "vue";
 
@@ -58,6 +86,76 @@ if (!(window === window.top && browser?.extension?.getViews({ type: "popup" })?.
 provide("setTab", (v: string) => {
 	tab.value = v;
 });
+
+const showSearch = ref(false);
+const searchQuery = ref("");
+const searchInput = ref<HTMLInputElement | null>(null);
+
+function toggleSearch() {
+	showSearch.value = !showSearch.value;
+	if (!showSearch.value) {
+		searchQuery.value = "";
+	} else {
+		nextTick(() => {
+			searchInput.value?.focus();
+		});
+	}
+}
+
+provide("searchQuery", computed(() => searchQuery.value.toLowerCase().trim()));
+
+function applySearchFilter() {
+	const query = searchQuery.value.toLowerCase().trim();
+	const cards = document.querySelectorAll<HTMLElement>("#settings-content .card");
+	for (const card of cards) {
+		if (!query) {
+			card.classList.remove("search-match");
+			continue;
+		}
+		const text = card.textContent?.toLowerCase() || "";
+		card.classList.toggle("search-match", text.includes(query));
+	}
+}
+
+watch(searchQuery, (value) => {
+	if (value && !showSearch.value) {
+		showSearch.value = true;
+		nextTick(() => {
+			searchInput.value?.focus();
+		});
+	}
+	nextTick(() => applySearchFilter());
+});
+
+watch(tab, () => {
+	nextTick(() => applySearchFilter());
+});
+
+const searchObserver = new MutationObserver(() => applySearchFilter());
+
+watch(showSearch, (val) => {
+	if (val) {
+		nextTick(() => {
+			const main = document.getElementById("settings-content");
+			if (main) {
+				searchObserver.observe(main, { childList: true, subtree: true });
+			}
+		});
+	} else {
+		searchObserver.disconnect();
+	}
+});
+
+document.addEventListener("keydown", (e) => {
+	if ((e.ctrlKey || e.metaKey) && e.key === "f" && window === window.top) {
+		const popupWindows = browser?.extension?.getViews?.({ type: "popup" });
+		if (popupWindows?.includes(window)) {
+			e.preventDefault();
+			showSearch.value = true;
+			nextTick(() => searchInput.value?.focus());
+		}
+	}
+});
 </script>
 
 <style lang="scss">
@@ -86,11 +184,47 @@ main {
 		transform: translateY(0);
 		opacity: 1;
 	}
-
-	//background: #000;
-	//width: 100px;
-	//height: 100px;
 }
+
+.search-bar {
+	position: fixed;
+	z-index: 9998;
+	top: 40px;
+	width: 100%;
+	padding: 6px 10px;
+	background: #fff;
+	border-bottom: 1px solid #eee;
+	box-shadow: 0 2px 6px rgba(#000, 0.08);
+
+	input {
+		width: 100%;
+		height: 28px;
+		padding: 4px 8px;
+		border: 1px solid #d0d5dd;
+		border-radius: 6px;
+		font-size: 13px;
+		outline: none;
+		transition: border-color 0.2s;
+
+		&:focus {
+			border-color: #409eff;
+			box-shadow: 0 0 0 2px rgba(64, 158, 255, 0.2);
+		}
+
+		&::placeholder {
+			color: #9ca3af;
+		}
+	}
+}
+
+.search-has-query {
+	.card {
+		&:not(.search-match) {
+			display: none;
+		}
+	}
+}
+
 header {
 	position: fixed;
 	z-index: 9999;
@@ -105,6 +239,10 @@ header {
 	box-shadow: 0 0 10px rgba(#000, 0.3);
 	background: #fff;
 	padding: 0 10px;
+
+	&.search-active ~ main {
+		margin-top: 80px;
+	}
 
 	.item {
 		appearance: none;
@@ -147,6 +285,8 @@ header {
 			background: #fff;
 			cursor: help;
 			color: #000;
+			flex: 0 0 auto;
+			padding-right: 5px;
 
 			img {
 				width: 30px;
@@ -172,6 +312,12 @@ header {
 			&:hover {
 				color: #8f5bff;
 			}
+		}
+
+		&.search-toggle {
+			flex: 0 0 32px;
+			font-size: 14px;
+			padding: 0;
 		}
 	}
 }

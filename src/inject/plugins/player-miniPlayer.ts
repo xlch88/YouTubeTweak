@@ -311,6 +311,7 @@ function ensureCloseButton() {
 		closeButton.type = "button";
 		closeButton.className = "yttweak-mini-player-close";
 		closeButton.setAttribute("aria-label", "Dismiss floating player");
+		closeButton.setAttribute("role", "button");
 		closeButton.title = "Dismiss floating player";
 		const iconWrapper = document.createElement("span");
 		iconWrapper.setAttribute("aria-hidden", "true");
@@ -327,6 +328,10 @@ function ensureCloseButton() {
 	if (closeButton.parentElement !== player) {
 		closeButton.remove();
 		player.appendChild(closeButton);
+	}
+
+	if (player && !player.hasAttribute("aria-label")) {
+		player.setAttribute("aria-label", "Floating video player");
 	}
 }
 

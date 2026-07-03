@@ -342,7 +342,8 @@
 			"link": {
 				"github": "源碼倉庫",
 				"issue": "問題反饋",
-				"changelog": "更新日誌"
+				"changelog": "更新日誌",
+				"sponsor": "__NEED_TRANSLATE__: 赞助"
 			}
 		},
 		"config": {
@@ -379,6 +380,16 @@
 			"tips": {
 				"title": "⚠ 警告",
 				"fetchHooker": "部分功能（如雙語字幕、屏蔽影片廣告）使用了 HTTP 請求重寫功能，可能會造成頁面異常！如果瀏覽時遇到問題，請嘗試關閉此功能。"
+			}
+		},
+		"sponsor": {
+			"tips": {
+				"title": "__NEED_TRANSLATE__: 💖 喜欢这个插件的话，考虑赞助一下吧",
+				"description": "__NEED_TRANSLATE__: 每一份赞助都会变成继续修 bug、适配 YouTube 抽风改版、把小功能打磨到顺手的动力。"
+			},
+			"buttons": {
+				"sponsor": "__NEED_TRANSLATE__: 立即赞助",
+				"noThanks": "__NEED_TRANSLATE__: 不，谢谢"
 			}
 		}
 	},

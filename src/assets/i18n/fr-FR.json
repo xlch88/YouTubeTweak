@@ -342,7 +342,8 @@
 			"link": {
 				"github": "Github",
 				"issue": "Issues",
-				"changelog": "Changelog"
+				"changelog": "Changelog",
+				"sponsor": "__NEED_TRANSLATE__: 赞助"
 			}
 		},
 		"config": {
@@ -379,6 +380,16 @@
 			"tips": {
 				"title": "⚠ Avertissement",
 				"fetchHooker": "Certaines fonctions (sous-titres bilingues, blocage des publicités vidéo, etc.) utilisent la réécriture des requêtes HTTP et peuvent provoquer des problèmes sur la page. Si vous rencontrez des problèmes en naviguant, essayez de désactiver cette fonction."
+			}
+		},
+		"sponsor": {
+			"tips": {
+				"title": "__NEED_TRANSLATE__: 💖 喜欢这个插件的话，考虑赞助一下吧",
+				"description": "__NEED_TRANSLATE__: 每一份赞助都会变成继续修 bug、适配 YouTube 抽风改版、把小功能打磨到顺手的动力。"
+			},
+			"buttons": {
+				"sponsor": "__NEED_TRANSLATE__: 立即赞助",
+				"noThanks": "__NEED_TRANSLATE__: 不，谢谢"
 			}
 		}
 	},

@@ -145,7 +145,6 @@ export default {
 								}
 							}
 						} catch {
-							debugger;
 						}
 					}
 					logger.debug("Timedtext translation result:", data, needTranslateList, translatedTexts);
