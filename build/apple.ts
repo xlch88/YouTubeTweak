@@ -28,6 +28,9 @@ const macDerivedDataPath = "apple-app/DerivedData";
 const iosAppPath = "apple-app/Build/Products/Debug-iphoneos/YouTweak.app";
 const macProductDir = "apple-app/Build/Products";
 const bundleId = "com.yttweak.appleapp";
+const safariExtensionBundleId = `${bundleId}.Extension`;
+const launchServicesRegisterPath =
+	"/System/Library/Frameworks/CoreServices.framework/Versions/Current/Frameworks/LaunchServices.framework/Versions/Current/Support/lsregister";
 const deviceIdCachePath = "apple-app/.ios-device-id";
 const env = {
 	...process.env,
@@ -41,11 +44,18 @@ const packageVersion = (() => {
 		return "0.0.0";
 	}
 })();
-const packageBuildNumber = (() => {
-	const match = packageVersion.match(/^(\d+)\.(\d+)\.(\d+)(?:\.(\d+))?/);
-	if (!match) return packageVersion.replace(/\D/g, "") || "1";
-	return String(Number(match[1]) * 1000 + Number(match[2]) * 100 + Number(match[3]) * 10 + Number(match[4] || 0));
-})();
+const packageVersionMatch = packageVersion.match(/^(\d+)\.(\d+)\.(\d+)(?:\.(\d+))?/);
+const packageMarketingVersion = packageVersionMatch
+	? `${packageVersionMatch[1]}.${packageVersionMatch[2]}.${packageVersionMatch[3]}${packageVersionMatch[4] || ""}`
+	: packageVersion;
+const packageBuildNumber = packageVersionMatch
+	? String(
+			Number(packageVersionMatch[1]) * 1000 +
+				Number(packageVersionMatch[2]) * 100 +
+				Number(packageVersionMatch[3]) * 10 +
+				Number(packageVersionMatch[4] || 0),
+		)
+	: packageVersion.replace(/\D/g, "") || "1";
 
 function abs(relativePath: string) {
 	return path.join(root, relativePath);
@@ -127,7 +137,7 @@ function xcodeBuildMetadataArgs() {
 	const commitId = readOutput("git", ["rev-parse", "--short=7", "HEAD"]) || "unknown";
 	const repositoryUrl = normalizeGitRemoteUrl(readOutput("git", ["config", "--get", "remote.origin.url"])) || githubRepositoryUrl;
 	return [
-		`MARKETING_VERSION=${packageVersion}`,
+		`MARKETING_VERSION=${packageMarketingVersion}`,
 		`CURRENT_PROJECT_VERSION=${packageBuildNumber}`,
 		`YTTWEAK_BUILD_DATE=${new Intl.DateTimeFormat("sv-SE", {
 			timeZone: "Asia/Shanghai",
@@ -183,7 +193,7 @@ function relaunchInGuiSession(platform: "ios" | "mac", args: string[]) {
 function readSecret(prompt: string) {
 	if (!process.stdin.isTTY) {
 		console.error("Remote signing setup needs an interactive terminal for its one-time password prompt.");
-		console.error("Run npm run dev:mac once from the VS Code Remote terminal.");
+		console.error(`Run npm run ${command} once from the VS Code Remote terminal.`);
 		process.exit(1);
 	}
 
@@ -244,7 +254,7 @@ function canUseCodeSigningIdentity(identity: string) {
 	}
 }
 
-async function prepareRemoteMacSigning() {
+async function prepareRemoteAppleSigning() {
 	const identity = readOutput("security", ["find-identity", "-v", "-p", "codesigning"]).match(
 		/^\s*\d+\)\s+([0-9A-F]{40})\s+"Apple Development:/m,
 	)?.[1];
@@ -330,7 +340,16 @@ function runXcodeBuildWithProvisioningRetry(args: string[]) {
 	console.error("Xcode failed while packaging a provisioning profile. Cleaning iOS build products and retrying once...");
 	console.error("");
 
-	const cleanResult = runForResult("xcodebuild", [...args.filter((arg) => arg !== "build"), "clean"]);
+	const cleanArgs: string[] = [];
+	for (let index = 0; index < args.length; index += 1) {
+		if (args[index] === "build" || args[index] === "archive") continue;
+		if (args[index] === "-archivePath") {
+			index += 1;
+			continue;
+		}
+		cleanArgs.push(args[index]);
+	}
+	const cleanResult = runForResult("xcodebuild", [...cleanArgs, "clean"]);
 	if (cleanResult.status !== 0) {
 		explainAppleDeviceError(cleanResult);
 		process.exit(cleanResult.status || 1);
@@ -639,25 +658,71 @@ function iosBuildArgs(configuration: Configuration, destination: string, extraAr
 	];
 }
 
+function newAppleArchivePath() {
+	const archiveTimestamp = new Intl.DateTimeFormat("sv-SE", {
+		timeZone: "Asia/Shanghai",
+		year: "numeric",
+		month: "2-digit",
+		day: "2-digit",
+		hour: "2-digit",
+		minute: "2-digit",
+		second: "2-digit",
+		hour12: false,
+	})
+		.format(new Date())
+		.replaceAll(":", ".");
+	return path.join(
+		homedir(),
+		"Library/Developer/Xcode/Archives",
+		archiveTimestamp.slice(0, 10),
+		`YouTweak ${archiveTimestamp}.xcarchive`,
+	);
+}
+
 async function buildIOS(configuration: Configuration) {
 	relaunchInGuiSession("ios", [`build:ios${configuration === "Debug" ? ":debug" : ""}`]);
+	await prepareRemoteAppleSigning();
 	await runIcons();
-	runXcodeBuildWithProvisioningRetry(
-		iosBuildArgs(
-			configuration,
-			configuration === "Debug" ? "platform=iOS" : "generic/platform=iOS",
-			configuration === "Debug" ? ["-allowProvisioningDeviceRegistration", "ENABLE_DEBUG_DYLIB=NO"] : [],
-		),
-	);
+	if (configuration === "Debug") {
+		runXcodeBuildWithProvisioningRetry(
+			iosBuildArgs(configuration, "platform=iOS", ["-allowProvisioningDeviceRegistration", "ENABLE_DEBUG_DYLIB=NO"]),
+		);
+		verifyIOSAppBundle(abs(iosAppPath));
+		return;
+	}
+
+	const archivePath = newAppleArchivePath();
+	await mkdir(path.dirname(archivePath), { recursive: true });
+	runXcodeBuildWithProvisioningRetry([
+		...iosBuildArgs(configuration, "generic/platform=iOS").slice(0, -1),
+		"-archivePath",
+		archivePath,
+		"archive",
+	]);
+	verifyIOSAppBundle(path.join(archivePath, "Products/Applications/YouTweak.app"));
+	const archiveDSYMsPath = path.join(archivePath, "dSYMs");
+	await mkdir(archiveDSYMsPath, { recursive: true });
+	for (const dSYMName of ["YouTweak.app.dSYM", "YouTweakExtension.appex.dSYM"]) {
+		const sourcePath = abs(path.join("apple-app/Build/Products/Release-iphoneos", dSYMName));
+		if (!existsSync(sourcePath)) {
+			throw new Error(`Missing generated iOS dSYM: ${sourcePath}`);
+		}
+		run("/usr/bin/ditto", [sourcePath, path.join(archiveDSYMsPath, dSYMName)]);
+	}
+	verifyIOSArchiveDSYMs(archivePath);
+	console.log(`Created Xcode archive: ${archivePath}`);
+	run("/usr/bin/open", ["-a", "Xcode", archivePath]);
 }
 
 async function devIOS() {
 	relaunchInGuiSession("ios", ["dev:ios"]);
 	const deviceId = chooseDeviceId();
+	await prepareRemoteAppleSigning();
 	await runIcons();
 	runXcodeBuildWithProvisioningRetry(
 		iosBuildArgs("Debug", `id=${deviceId}`, ["-allowProvisioningDeviceRegistration", "ENABLE_DEBUG_DYLIB=NO"]),
 	);
+	verifyIOSAppBundle(abs(iosAppPath));
 	run("xcrun", ["devicectl", "device", "install", "app", "--device", deviceId, iosAppPath]);
 
 	const launchArgs = ["devicectl", "device", "process", "launch", "--device", deviceId, "--terminate-existing"];
@@ -691,11 +756,59 @@ function macBuildArgs(configuration: Configuration, destination = "platform=macO
 	];
 }
 
-function verifyMacAppSignature(appPath: string) {
+function verifyAppleAppSignature(appPath: string) {
 	return spawnSync("/usr/bin/codesign", ["--verify", "--deep", "--strict", "--verbose=4", appPath], {
 		env,
 		encoding: "utf8",
 	});
+}
+
+function verifyIOSAppBundle(appPath: string) {
+	const extensionPath = path.join(appPath, "PlugIns/YouTweakExtension.appex");
+	if (!existsSync(extensionPath)) {
+		throw new Error(`Missing Safari extension after iOS build: ${extensionPath}`);
+	}
+
+	const verification = verifyAppleAppSignature(appPath);
+	if (verification.status !== 0) {
+		if (verification.stdout) process.stdout.write(verification.stdout);
+		if (verification.stderr) process.stderr.write(verification.stderr);
+		throw new Error(`iOS app signature is invalid: ${appPath}`);
+	}
+	console.log(`Verified iOS app signature: ${appPath}`);
+}
+
+function readMachOUUIDs(filePath: string) {
+	const uuids = [...readOutput("/usr/bin/dwarfdump", ["--uuid", filePath], "pipe").matchAll(/UUID: ([0-9A-F-]{36})/gi)].map((match) =>
+		match[1].toUpperCase(),
+	);
+	if (uuids.length === 0) {
+		throw new Error(`Could not read Mach-O UUIDs from ${filePath}`);
+	}
+	return uuids;
+}
+
+function verifyIOSArchiveDSYMs(archivePath: string) {
+	const appPath = path.join(archivePath, "Products/Applications/YouTweak.app");
+	for (const [executablePath, dSYMPath] of [
+		[path.join(appPath, "YouTweak"), path.join(archivePath, "dSYMs/YouTweak.app.dSYM")],
+		[
+			path.join(appPath, "PlugIns/YouTweakExtension.appex/YouTweakExtension"),
+			path.join(archivePath, "dSYMs/YouTweakExtension.appex.dSYM"),
+		],
+	]) {
+		if (!existsSync(dSYMPath)) {
+			throw new Error(`Missing dSYM after iOS archive: ${dSYMPath}`);
+		}
+
+		const executableUUIDs = readMachOUUIDs(executablePath);
+		const dSYMUUIDs = readMachOUUIDs(dSYMPath);
+		const missingUUIDs = executableUUIDs.filter((uuid) => !dSYMUUIDs.includes(uuid));
+		if (missingUUIDs.length > 0) {
+			throw new Error(`dSYM UUID mismatch for ${executablePath}: missing ${missingUUIDs.join(", ")}`);
+		}
+		console.log(`Verified iOS archive dSYM: ${dSYMPath}`);
+	}
 }
 
 function ensureMacAppSignature(appPath: string, identity: string) {
@@ -704,7 +817,7 @@ function ensureMacAppSignature(appPath: string, identity: string) {
 		throw new Error(`Missing Safari extension after macOS build: ${extensionPath}`);
 	}
 
-	const initialVerification = verifyMacAppSignature(appPath);
+	const initialVerification = verifyAppleAppSignature(appPath);
 	if (initialVerification.status === 0) {
 		console.log(`Verified macOS app signature: ${appPath}`);
 		return;
@@ -726,13 +839,78 @@ function ensureMacAppSignature(appPath: string, identity: string) {
 		}
 	}
 
-	const finalVerification = verifyMacAppSignature(appPath);
+	const finalVerification = verifyAppleAppSignature(appPath);
 	if (finalVerification.status !== 0) {
 		if (finalVerification.stdout) process.stdout.write(finalVerification.stdout);
 		if (finalVerification.stderr) process.stderr.write(finalVerification.stderr);
 		throw new Error(`macOS app signature is still invalid after re-signing: ${appPath}`);
 	}
 	console.log(`Re-signed and verified macOS app: ${appPath}`);
+}
+
+function unregisterConflictingMacAppCopies(appPath: string) {
+	const currentAppPath = path.resolve(appPath);
+	const currentExtensionPath = path.join(currentAppPath, "Contents/PlugIns/YouTweakExtension.appex");
+	const launchServicesDump = spawnSync(launchServicesRegisterPath, ["-dump"], {
+		env,
+		encoding: "utf8",
+		maxBuffer: 64 * 1024 * 1024,
+	});
+	if (launchServicesDump.error) throw launchServicesDump.error;
+	if (launchServicesDump.status !== 0) {
+		if (launchServicesDump.stdout) process.stdout.write(launchServicesDump.stdout);
+		if (launchServicesDump.stderr) process.stderr.write(launchServicesDump.stderr);
+		throw new Error("Could not inspect Launch Services registrations.");
+	}
+
+	const conflictingAppPaths = new Set<string>();
+	for (const record of launchServicesDump.stdout.split(/^-{20,}\s*$/m)) {
+		if (record.match(/^identifier:\s+(\S+)\s*$/m)?.[1] !== bundleId) continue;
+
+		const registeredPath = record.match(/^path:\s+(.+?)\s+\(0x[0-9a-f]+\)\s*$/im)?.[1];
+		if (!registeredPath) continue;
+
+		const resolvedPath = path.resolve(registeredPath);
+		if (resolvedPath !== currentAppPath) conflictingAppPaths.add(resolvedPath);
+	}
+
+	for (const registeredPath of conflictingAppPaths) {
+		run(launchServicesRegisterPath, ["-u", registeredPath]);
+	}
+
+	const registeredExtensions = readOutput("/usr/bin/pluginkit", ["-m", "-A", "-D", "-v", "-i", safariExtensionBundleId], "pipe");
+	for (const line of registeredExtensions.split(/\r?\n/)) {
+		const registeredPath = line.match(/\t(\/.+\.appex)\s*$/)?.[1];
+		if (!registeredPath || path.resolve(registeredPath) === currentExtensionPath) continue;
+
+		const result = runForResult("/usr/bin/pluginkit", ["-r", registeredPath]);
+		if (result.status !== 0) {
+			console.warn(`Could not remove stale Safari extension registration: ${registeredPath}`);
+		}
+	}
+}
+
+function waitForMacExtensionRegistration(extensionPath: string) {
+	const expectedPath = path.resolve(extensionPath);
+	let registeredPaths: string[] = [];
+
+	for (let attempt = 0; attempt < 50; attempt += 1) {
+		registeredPaths = readOutput("/usr/bin/pluginkit", ["-m", "-A", "-D", "-v", "-i", safariExtensionBundleId], "pipe")
+			.split(/\r?\n/)
+			.flatMap((line) => {
+				const registeredPath = line.match(/\t(\/.+\.appex)\s*$/)?.[1];
+				return registeredPath ? [path.resolve(registeredPath)] : [];
+			});
+		if (registeredPaths.length === 1 && registeredPaths[0] === expectedPath) {
+			console.log(`Safari extension registration is ready: ${extensionPath}`);
+			return;
+		}
+		spawnSync("sleep", ["0.1"]);
+	}
+
+	throw new Error(
+		`Safari extension registration did not settle on ${extensionPath}; registered paths: ${registeredPaths.join(", ") || "none"}`,
+	);
 }
 
 function stopMacAppIfRunning(configuration: Configuration) {
@@ -766,7 +944,7 @@ function stopMacAppIfRunning(configuration: Configuration) {
 
 async function buildMac(configuration: Configuration) {
 	relaunchInGuiSession("mac", [`build:mac${configuration === "Debug" ? ":debug" : ""}`]);
-	const signingIdentity = await prepareRemoteMacSigning();
+	const signingIdentity = await prepareRemoteAppleSigning();
 	await runIcons();
 	fixXcodeScriptModes();
 	if (configuration === "Debug") {
@@ -775,24 +953,7 @@ async function buildMac(configuration: Configuration) {
 		return;
 	}
 
-	const archiveTimestamp = new Intl.DateTimeFormat("sv-SE", {
-		timeZone: "Asia/Shanghai",
-		year: "numeric",
-		month: "2-digit",
-		day: "2-digit",
-		hour: "2-digit",
-		minute: "2-digit",
-		second: "2-digit",
-		hour12: false,
-	})
-		.format(new Date())
-		.replaceAll(":", ".");
-	const archivePath = path.join(
-		homedir(),
-		"Library/Developer/Xcode/Archives",
-		archiveTimestamp.slice(0, 10),
-		`YouTweak ${archiveTimestamp}.xcarchive`,
-	);
+	const archivePath = newAppleArchivePath();
 	await mkdir(path.dirname(archivePath), { recursive: true });
 	run(
 		"xcodebuild",
@@ -801,21 +962,22 @@ async function buildMac(configuration: Configuration) {
 	);
 	ensureMacAppSignature(path.join(archivePath, "Products/Applications/YouTweak.app"), signingIdentity);
 	console.log(`Created Xcode archive: ${archivePath}`);
+	run("/usr/bin/open", ["-a", "Xcode", archivePath]);
 }
 
 async function devMac() {
 	relaunchInGuiSession("mac", ["dev:mac"]);
-	const signingIdentity = await prepareRemoteMacSigning();
+	const signingIdentity = await prepareRemoteAppleSigning();
+	const macAppPath = `${macProductDir}/Debug/YouTweak.app`;
+	unregisterConflictingMacAppCopies(abs(macAppPath));
 	await runIcons();
 	fixXcodeScriptModes();
 	run("xcodebuild", macBuildArgs("Debug"), true);
-	ensureMacAppSignature(abs(`${macProductDir}/Debug/YouTweak.app`), signingIdentity);
-	const macAppPath = `${macProductDir}/Debug/YouTweak.app`;
-	run(
-		"/System/Library/Frameworks/CoreServices.framework/Versions/Current/Frameworks/LaunchServices.framework/Versions/Current/Support/lsregister",
-		["-f", "-R", "-trusted", macAppPath],
-	);
+	ensureMacAppSignature(abs(macAppPath), signingIdentity);
+	unregisterConflictingMacAppCopies(abs(macAppPath));
+	run(launchServicesRegisterPath, ["-f", "-R", "-trusted", macAppPath]);
 	run("/usr/bin/pluginkit", ["-a", `${macAppPath}/Contents/PlugIns/YouTweakExtension.appex`]);
+	waitForMacExtensionRegistration(`${macAppPath}/Contents/PlugIns/YouTweakExtension.appex`);
 	stopMacAppIfRunning("Debug");
 	run("/usr/bin/open", ["-n", "-W", macAppPath], true);
 }
