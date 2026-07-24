@@ -280,7 +280,7 @@
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = YouTubeTweak/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = YouTubeTweak;
+				INFOPLIST_KEY_CFBundleDisplayName = YouTweak;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -315,7 +315,7 @@
 				DEVELOPMENT_TEAM = 3XVDQP2MS6;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = YouTubeTweak/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = YouTubeTweak;
+				INFOPLIST_KEY_CFBundleDisplayName = YouTweak;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (

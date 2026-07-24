@@ -3,8 +3,8 @@
 		"name": "YouTube Tweak - YouTube強化拡張機能、快適な視聴体験を実現",
 		"name_edge": "YouTubeTweak: YouTube強化拡張機能",
 		"description": "画質ロック、再生速度ボタン、コメントのニックネーム表示、自動翻訳、不要な要素の非表示など、YouTubeの体験を徹底強化！",
-		"name_apple": "YouTube Tweak",
-		"description_apple": "画質ロック、速度ボタン、コメント機能、不要な要素の非表示で YouTube を快適に。"
+		"name_apple": "YouTweak",
+		"description_apple": "画質ロック、速度ボタン、コメント機能、不要な要素の非表示で動画サイトを快適に。"
 	},
 	"tabs": {
 		"player": {

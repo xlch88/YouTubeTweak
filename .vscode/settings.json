@@ -1,4 +1,11 @@
 {
+	"workbench.colorCustomizations": {
+		"window.activeBorder": "#00ff88",
+		"window.inactiveBorder": "#00ff88",
+		"titleBar.activeBackground": "#00682d",
+		"titleBar.inactiveBackground": "#00682d",
+		"titleBar.border": "#009f45"
+	},
 	"editor.formatOnSave": true,
 	"i18n-ally.localesPaths": ["src/assets/i18n"],
 	"i18n-ally.keystyle": "nested",
@@ -11,12 +18,7 @@
 	"swift.swiftEnvironmentVariables": {
 		"DEVELOPER_DIR": "/Applications/Xcode.app/Contents/Developer"
 	},
-	"swift.sourcekit-lsp.serverArguments": [
-		"--default-workspace-type",
-		"buildServer",
-		"-Xswiftc",
-		"-parse-as-library"
-	],
+	"swift.sourcekit-lsp.serverArguments": ["--default-workspace-type", "buildServer", "-Xswiftc", "-parse-as-library"],
 	"files.eol": "\r\n",
 	"[json]": {
 		"editor.insertSpaces": false,

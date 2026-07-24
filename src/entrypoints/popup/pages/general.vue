@@ -38,8 +38,8 @@
 				<DocsHelpLink anchor="general-about" />
 			</div>
 			<div class="card-body about">
-				<img src="@/assets/img/logo.svg" alt="logo" />
-				<p class="title">YouTube Tweak</p>
+				<img :src="APP_LOGO" alt="logo" />
+				<p class="title">{{ APP_BRANDING.displayName }}</p>
 				<p class="version">
 					<span :title="$t('general.update.tips.2')" @click="requestUpdateCheck()">
 						v{{ APP_INFO.version }}<br />
@@ -223,6 +223,8 @@ import {
 	compareVersions,
 	markChangelogVersionRead,
 } from "@/util/versionNotice";
+import appleLogo from "@/assets/img/logo_apple.svg";
+import logo from "@/assets/img/logo.svg";
 import DocsHelpLink from "../components/DocsHelpLink.vue";
 import useConfigStore from "../util/config";
 const config = useConfigStore();
@@ -238,6 +240,8 @@ const language = locales;
 const locale = ref(i18n.global.locale as string);
 
 const APP_INFO = window.__APP_INFO__;
+const APP_BRANDING = __APP_BRANDING__;
+const APP_LOGO = APP_BRANDING.isSafari ? appleLogo : logo;
 const sponsorCard = ref<HTMLElement>();
 const sponsorCardVisible = ref(false);
 

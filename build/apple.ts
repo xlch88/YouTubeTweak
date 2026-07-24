@@ -246,6 +246,7 @@ const bodySize = 824;
 const bodyOffset = Math.round((canvasSize - bodySize) / 2);
 const macLogoSize = 620;
 const iosLogoSize = Math.round((canvasSize * macLogoSize) / bodySize);
+const appleLogoPath = "src/assets/img/logo_apple.svg";
 const outputSizes = [16, 32, 64, 128, 256, 512, 1024];
 const macAppIconEntries = [
 	{ filename: "mac-16.png", idiom: "mac", size: "16x16", scale: "1x", pixels: 16 },
@@ -281,12 +282,10 @@ const iosAppIconEntries = [
 ];
 const iconVariants = [
 	{
-		sourceDir: ".output/safari-mv2/icons",
 		outputDir: ".output/apple-app-icons/safari-mv2/icons",
 		appIconSetDir: "apple-app/YouTubeTweak/Assets.xcassets/AppIcon.appiconset",
 	},
 	{
-		sourceDir: ".output/safari-mv2-dev/icons",
 		outputDir: ".output/apple-app-icons/safari-mv2-dev/icons",
 		appIconSetDir: "apple-app/YouTubeTweak/Assets.xcassets/AppIconDebug.appiconset",
 	},
@@ -381,10 +380,9 @@ async function writeAppIconSet(variant: (typeof iconVariants)[number], macMaster
 }
 
 async function writeIconVariant(variant: (typeof iconVariants)[number]) {
-	const sourcePath = abs(path.join(variant.sourceDir, "1024.png"));
 	const outputDir = abs(variant.outputDir);
-	const macMaster = await makeMasterIcon(sourcePath, { r: 0, g: 0, b: 0, alpha: 0 }, macLogoSize, true);
-	const iosMaster = await makeMasterIcon(sourcePath, { r: 255, g: 255, b: 255, alpha: 1 }, iosLogoSize);
+	const macMaster = await makeMasterIcon(abs(appleLogoPath), { r: 0, g: 0, b: 0, alpha: 0 }, macLogoSize, true);
+	const iosMaster = await makeMasterIcon(abs(appleLogoPath), { r: 255, g: 255, b: 255, alpha: 1 }, iosLogoSize);
 	await mkdir(outputDir, { recursive: true });
 	await Promise.all(
 		outputSizes.map((size) =>
@@ -396,7 +394,7 @@ async function writeIconVariant(variant: (typeof iconVariants)[number]) {
 	);
 	await writeAppIconSet(variant, macMaster, iosMaster);
 	console.log(
-		`generated ${variant.outputDir} from ${variant.sourceDir} (body ${bodySize}/${canvasSize}, mac logo ${macLogoSize}/${canvasSize}, ios logo ${iosLogoSize}/${canvasSize})`,
+		`generated ${variant.outputDir} from ${appleLogoPath} (body ${bodySize}/${canvasSize}, mac logo ${macLogoSize}/${canvasSize}, ios logo ${iosLogoSize}/${canvasSize})`,
 	);
 }
 
@@ -623,6 +621,7 @@ function watchPaths() {
 	return [
 		"package.json",
 		"build/apple.ts",
+		appleLogoPath,
 		"apple-app/YouTubeTweak/YouTubeTweakExtensionApp.swift",
 		"apple-app/YouTubeTweak/Info.plist",
 		"apple-app/YouTubeTweak/LaunchScreen.storyboard",

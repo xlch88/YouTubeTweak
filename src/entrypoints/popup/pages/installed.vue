@@ -1,8 +1,8 @@
 <template>
 	<section id="page-installed" :class="`${installedHint}-user-agent`">
 		<div class="installed">
-			<img src="@/assets/img/logo.svg" alt="logo" />
-			<p class="title">YouTube Tweak</p>
+			<img :src="APP_LOGO" alt="logo" />
+			<p class="title">{{ APP_BRANDING.displayName }}</p>
 			<p class="version">
 				v{{ APP_INFO.version }}<br /><span>Build at {{ APP_INFO.build }}</span>
 			</p>
@@ -100,9 +100,13 @@
 </template>
 
 <script setup lang="ts">
+import appleLogo from "@/assets/img/logo_apple.svg";
+import logo from "@/assets/img/logo.svg";
 import { markChangelogVersionRead } from "@/util/versionNotice";
 
 const APP_INFO = window.__APP_INFO__;
+const APP_BRANDING = __APP_BRANDING__;
+const APP_LOGO = APP_BRANDING.isSafari ? appleLogo : logo;
 const installedHint = (() => {
 	const isIPad = /iPad/.test(navigator.userAgent) || (/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1);
 

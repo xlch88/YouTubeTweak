@@ -9,6 +9,7 @@ import { configPlugin } from "./util/config";
 
 declare global {
 	const __APP_INFO__: { version: string; build: string; commit: { id: string; url: string } };
+	const __APP_BRANDING__: { isSafari: boolean; displayName: string; compactName: string };
 	interface Window {
 		__APP_INFO__: typeof __APP_INFO__;
 		browser: typeof browser;
@@ -19,6 +20,7 @@ window.__APP_INFO__ = {
 	...__APP_INFO__,
 	version: browser.runtime.getManifest().version,
 };
+document.title = __APP_BRANDING__.compactName;
 
 const app = createApp(App);
 const pinia = createPinia();

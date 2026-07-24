@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 31 20" aria-hidden="true">
+    <defs>
+        <linearGradient id="youtubeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ff7ba8" />
+            <stop offset="100%" stop-color="#ff2525" />
+        </linearGradient>
+        <linearGradient id="youtubeTweakGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#d232ed" />
+            <stop offset="100%" stop-color="#ff7191" />
+        </linearGradient>
+    </defs>
+    <g transform="translate(1,0.952381) scale(1,0.952381)">
+        <path d="M0 5.2H29V16.3C29 18.34 27.34 20 25.3 20H3.7C1.66 20 0 18.34 0 16.3V5.2Z" fill="url(#youtubeGradient)" />
+        <g transform="translate(0,-1)">
+            <path d="M2.2 1.25L26.7 0.05C27.7 0 28.55 0.72 28.72 1.7L29 5L0 6.2L0.05 4.35C-0.18 2.8 0.83 1.38 2.2 1.25Z" fill="url(#youtubeGradient)" />
+            <path d="M5.6 1.08L9.5 0.89L5.75 5.91L1.85 6.1L5.6 1.08ZM13.5 0.69L17.4 0.5L13.65 5.51L9.75 5.71L13.5 0.69ZM21.4 0.3L25.3 0.11L21.55 5.12L17.65 5.32L21.4 0.3Z" fill="white" opacity="0.3" />
+        </g>
+        <rect x="5" y="17" width="19" height="1" rx="0.5" fill="white" opacity="0.35" />
+        <circle cx="20.5" cy="17.5" r="1" fill="white" opacity="0.8" />
+
+        <g transform="translate(10,5.5) scale(0.375)">
+            <path d="M19.43 12.98C19.47 12.66 19.5 12.33 19.5 12S19.47 11.34 19.43 11.02L21.54 9.37C21.73 9.22 21.78 8.95 21.66 8.73L19.66 5.27C19.54 5.05 19.29 4.96 19.06 5.05L16.57 6.05C16.05 5.65 15.49 5.32 14.88 5.07L14.5 2.42C14.47 2.18 14.25 2 14 2H10C9.75 2 9.54 2.18 9.5 2.42L9.12 5.07C8.51 5.32 7.94 5.66 7.43 6.05L4.94 5.05C4.71 4.97 4.46 5.05 4.34 5.27L2.34 8.73C2.21 8.95 2.27 9.22 2.46 9.37L4.57 11.02C4.53 11.34 4.5 11.68 4.5 12S4.53 12.66 4.57 12.98L2.46 14.63C2.27 14.78 2.22 15.05 2.34 15.27L4.34 18.73C4.46 18.95 4.71 19.04 4.94 18.95L7.43 17.95C7.95 18.35 8.51 18.68 9.12 18.93L9.5 21.58C9.54 21.82 9.75 22 10 22H14C14.25 22 14.46 21.82 14.5 21.58L14.88 18.93C15.49 18.68 16.05 18.35 16.57 17.95L19.06 18.95C19.29 19.04 19.54 18.95 19.66 18.73L21.66 15.27C21.78 15.05 21.73 14.78 21.54 14.63L19.43 12.98Z" fill="white" />
+            <circle cx="12" cy="12" r="3.2" fill="url(#youtubeTweakGradient)" />
+        </g>
+    </g>
+</svg>

@@ -11,7 +11,7 @@ export default {
 				container.id = "__yt_tweak_update_notice";
 
 				const tips = document.createElement("p");
-				tips.textContent = "YouTubeTweak is update!\nPlease reload the page.";
+				tips.textContent = `${__APP_BRANDING__.compactName} is update!\nPlease reload the page.`;
 
 				const button = document.createElement("button");
 				button.textContent = "Reload Now";

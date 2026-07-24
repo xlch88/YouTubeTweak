@@ -56,7 +56,7 @@ function sanitizeFileName(value: string) {
 			.replace(/[<>:"/\\|?*\x00-\x1f]/g, " ")
 			.replace(/\s+/g, " ")
 			.trim()
-			.slice(0, 120) || "youtube-video"
+			.slice(0, 120) || (__APP_BRANDING__.isSafari ? "video" : "youtube-video")
 	);
 }
 
@@ -83,7 +83,7 @@ function getScreenshotFileName(video: HTMLVideoElement) {
 function prepareScreenshotWindowDocument(screenshotWindow: Window) {
 	const screenshotDocument = screenshotWindow.document;
 	screenshotWindow.stop();
-	screenshotDocument.title = "YouTube screenshot - Ctrl+S to save";
+	screenshotDocument.title = __APP_BRANDING__.isSafari ? "Video screenshot - Ctrl+S to save" : "YouTube screenshot - Ctrl+S to save";
 
 	const head = screenshotDocument.head || screenshotDocument.documentElement.appendChild(screenshotDocument.createElement("head"));
 	const body = screenshotDocument.body || screenshotDocument.documentElement.appendChild(screenshotDocument.createElement("body"));

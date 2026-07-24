@@ -360,7 +360,7 @@ private struct MacInstallView: View {
             ExtensionIconView(size: 132, cornerRadius: 24)
 
             VStack(alignment: .leading, spacing: 18) {
-                Text("YouTubeTweak")
+                Text("YouTweak")
                     .font(.system(size: 30, weight: .semibold))
 
                 VStack(alignment: .leading, spacing: 8) {
@@ -466,7 +466,7 @@ private struct IOSInstallView: View {
 
     private var installContent: some View {
         VStack(alignment: .leading, spacing: 18) {
-            Text("YouTubeTweak")
+            Text("YouTweak")
                 .font(.system(size: 30, weight: .semibold))
 
             VStack(alignment: .leading, spacing: 8) {
@@ -709,7 +709,7 @@ private struct WindowConfigurator: NSViewRepresentable {
         guard let window else { return }
 
         let contentSize = NSSize(width: 760, height: 420)
-        window.title = "YouTubeTweak"
+        window.title = "YouTweak"
         window.contentMinSize = contentSize
         window.contentMaxSize = contentSize
         window.setContentSize(contentSize)
@@ -809,7 +809,7 @@ private struct FooterLinksView: View {
 
 private struct BuildInfoFooterView: View {
     private var title: String {
-        "YouTubeTweak V\(appVersion) (\(buildNumber))\nBuild at \(appBuildDate) · \(appCommitID)"
+        "YouTweak V\(appVersion) (\(buildNumber))\nBuild at \(appBuildDate) · \(appCommitID)"
     }
 
     var body: some View {

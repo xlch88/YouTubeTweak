@@ -2,8 +2,9 @@
 	<template v-if="action === 'popup'">
 		<header>
 			<a class="item logo" target="_blank" href="https://github.com/xlch88/YouTubeTweak">
-				<img src="@/assets/img/logo.svg" alt="logo" />
-				<span><small>YouTube</small>Tweak</span>
+				<img :src="APP_LOGO" alt="logo" />
+				<span v-if="APP_BRANDING.isSafari"><small>You</small>Tweak</span>
+				<span v-else><small>YouTube</small>Tweak</span>
 			</a>
 			<button v-for="key in Object.keys(tabs)" :key="key" class="item" :class="{ active: tab === key }" @click="tabClick(key)">
 				<span>{{ $t(`tabs.${key}.title`) }}</span>
@@ -21,10 +22,14 @@
 
 <script setup lang="ts">
 import useConfigStore from "./util/config";
+import appleLogo from "@/assets/img/logo_apple.svg";
+import logo from "@/assets/img/logo.svg";
 import { ref, provide, defineAsyncComponent } from "vue";
 import Installed from "./pages/installed.vue";
 import type { Component } from "vue";
 
+const APP_BRANDING = __APP_BRANDING__;
+const APP_LOGO = APP_BRANDING.isSafari ? appleLogo : logo;
 const tabs: Record<string, Component> = {
 	player: defineAsyncComponent(() => import("./pages/player.vue")),
 	translate: defineAsyncComponent(() => import("./pages/translate.vue")),
