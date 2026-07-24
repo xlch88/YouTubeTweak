@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA0000000000000000000001 /* YouTubeTweakExtensionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000011 /* YouTubeTweakExtensionApp.swift */; };
+		AA0000000000000000000001 /* YouTweakExtensionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000011 /* YouTweakExtensionApp.swift */; };
 		AA000000000000000000000A /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000025 /* SafariWebExtensionHandler.swift */; };
-		BB0000000000000000000007 /* YouTubeTweakExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000024 /* YouTubeTweakExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BB0000000000000000000007 /* YouTweakExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000024 /* YouTweakExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EE0000000000000000000001 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = EE0000000000000000000010 /* assets */; };
 		FF0000000000000000000001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF0000000000000000000010 /* Assets.xcassets */; };
 		FF0000000000000000000002 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF0000000000000000000011 /* LaunchScreen.storyboard */; platformFilter = ios; };
@@ -21,7 +21,7 @@
 			containerPortal = AA0000000000000000000030 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = AA0000000000000000000050;
-			remoteInfo = YouTubeTweakExtension;
+			remoteInfo = YouTweakExtension;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -32,7 +32,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				BB0000000000000000000007 /* YouTubeTweakExtension.appex in Embed App Extensions */,
+				BB0000000000000000000007 /* YouTweakExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -41,14 +41,14 @@
 
 /* Begin PBXFileReference section */
 		19DEA3F62FFA96CC00A2435B /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = .gitignore; sourceTree = "<group>"; };
-		AA0000000000000000000010 /* YouTubeTweak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YouTubeTweak.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA0000000000000000000011 /* YouTubeTweakExtensionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeTweakExtensionApp.swift; sourceTree = "<group>"; };
+		AA0000000000000000000010 /* YouTweak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YouTweak.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA0000000000000000000011 /* YouTweakExtensionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTweakExtensionApp.swift; sourceTree = "<group>"; };
 		AA0000000000000000000012 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA0000000000000000000020 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AA0000000000000000000024 /* YouTubeTweakExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = YouTubeTweakExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA0000000000000000000024 /* YouTweakExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = YouTweakExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA0000000000000000000025 /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
-		CC0000000000000000000011 /* YouTubeTweak.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YouTubeTweak.entitlements; sourceTree = "<group>"; };
-		CC0000000000000000000012 /* YouTubeTweakExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YouTubeTweakExtension.entitlements; sourceTree = "<group>"; };
+		CC0000000000000000000011 /* YouTweak.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YouTweak.entitlements; sourceTree = "<group>"; };
+		CC0000000000000000000012 /* YouTweakExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YouTweakExtension.entitlements; sourceTree = "<group>"; };
 		DD0000000000000000000011 /* ../.output */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ../.output; sourceTree = SOURCE_ROOT; };
 		EE0000000000000000000010 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		FF0000000000000000000010 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -77,41 +77,41 @@
 			isa = PBXGroup;
 			children = (
 				19DEA3F62FFA96CC00A2435B /* .gitignore */,
-				AA0000000000000000000032 /* YouTubeTweak */,
-				AA0000000000000000000033 /* YouTubeTweakExtension */,
+				AA0000000000000000000032 /* YouTweak */,
+				AA0000000000000000000033 /* YouTweakExtension */,
 				AA0000000000000000000034 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		AA0000000000000000000032 /* YouTubeTweak */ = {
+		AA0000000000000000000032 /* YouTweak */ = {
 			isa = PBXGroup;
 			children = (
-				AA0000000000000000000011 /* YouTubeTweakExtensionApp.swift */,
+				AA0000000000000000000011 /* YouTweakExtensionApp.swift */,
 				AA0000000000000000000012 /* Info.plist */,
 				FF0000000000000000000011 /* LaunchScreen.storyboard */,
 				FF0000000000000000000010 /* Assets.xcassets */,
 				EE0000000000000000000010 /* assets */,
-				CC0000000000000000000011 /* YouTubeTweak.entitlements */,
+				CC0000000000000000000011 /* YouTweak.entitlements */,
 			);
-			path = YouTubeTweak;
+			path = YouTweak;
 			sourceTree = "<group>";
 		};
-		AA0000000000000000000033 /* YouTubeTweakExtension */ = {
+		AA0000000000000000000033 /* YouTweakExtension */ = {
 			isa = PBXGroup;
 			children = (
 				AA0000000000000000000020 /* Info.plist */,
-				CC0000000000000000000012 /* YouTubeTweakExtension.entitlements */,
+				CC0000000000000000000012 /* YouTweakExtension.entitlements */,
 				DD0000000000000000000011 /* ../.output */,
 				AA0000000000000000000025 /* SafariWebExtensionHandler.swift */,
 			);
-			path = YouTubeTweakExtension;
+			path = YouTweakExtension;
 			sourceTree = "<group>";
 		};
 		AA0000000000000000000034 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AA0000000000000000000010 /* YouTubeTweak.app */,
-				AA0000000000000000000024 /* YouTubeTweakExtension.appex */,
+				AA0000000000000000000010 /* YouTweak.app */,
+				AA0000000000000000000024 /* YouTweakExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -119,9 +119,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AA0000000000000000000040 /* YouTubeTweak */ = {
+		AA0000000000000000000040 /* YouTweak */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AA0000000000000000000060 /* Build configuration list for PBXNativeTarget "YouTubeTweak" */;
+			buildConfigurationList = AA0000000000000000000060 /* Build configuration list for PBXNativeTarget "YouTweak" */;
 			buildPhases = (
 				AA0000000000000000000041 /* Sources */,
 				AA0000000000000000000008 /* Frameworks */,
@@ -133,14 +133,14 @@
 			dependencies = (
 				BB000000000000000000000B /* PBXTargetDependency */,
 			);
-			name = YouTubeTweak;
-			productName = YouTubeTweak;
-			productReference = AA0000000000000000000010 /* YouTubeTweak.app */;
+			name = YouTweak;
+			productName = YouTweak;
+			productReference = AA0000000000000000000010 /* YouTweak.app */;
 			productType = "com.apple.product-type.application";
 		};
-		AA0000000000000000000050 /* YouTubeTweakExtension */ = {
+		AA0000000000000000000050 /* YouTweakExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AA0000000000000000000070 /* Build configuration list for PBXNativeTarget "YouTubeTweakExtension" */;
+			buildConfigurationList = AA0000000000000000000070 /* Build configuration list for PBXNativeTarget "YouTweakExtension" */;
 			buildPhases = (
 				AA0000000000000000000051 /* Sources */,
 				AA0000000000000000000009 /* Frameworks */,
@@ -151,9 +151,9 @@
 			);
 			dependencies = (
 			);
-			name = YouTubeTweakExtension;
-			productName = YouTubeTweakExtension;
-			productReference = AA0000000000000000000024 /* YouTubeTweakExtension.appex */;
+			name = YouTweakExtension;
+			productName = YouTweakExtension;
+			productReference = AA0000000000000000000024 /* YouTweakExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -174,7 +174,7 @@
 					};
 				};
 			};
-			buildConfigurationList = AA0000000000000000000080 /* Build configuration list for PBXProject "YouTubeTweakExtension" */;
+			buildConfigurationList = AA0000000000000000000080 /* Build configuration list for PBXProject "YouTweakExtension" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -187,8 +187,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AA0000000000000000000040 /* YouTubeTweak */,
-				AA0000000000000000000050 /* YouTubeTweakExtension */,
+				AA0000000000000000000040 /* YouTweak */,
+				AA0000000000000000000050 /* YouTweakExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -242,7 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA0000000000000000000001 /* YouTubeTweakExtensionApp.swift in Sources */,
+				AA0000000000000000000001 /* YouTweakExtensionApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,7 +259,7 @@
 /* Begin PBXTargetDependency section */
 		BB000000000000000000000B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AA0000000000000000000050 /* YouTubeTweakExtension */;
+			target = AA0000000000000000000050 /* YouTweakExtension */;
 			targetProxy = BB0000000000000000000008 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -270,7 +270,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconDebug;
 				CODE_SIGN_ENTITLEMENTS = "";
-				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = YouTubeTweak/YouTubeTweak.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = YouTweak/YouTweak.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -279,7 +279,7 @@
 				DEVELOPMENT_TEAM = 3XVDQP2MS6;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = YouTubeTweak/Info.plist;
+				INFOPLIST_FILE = YouTweak/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = YouTweak;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
@@ -307,14 +307,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "";
-				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = YouTubeTweak/YouTubeTweak.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = YouTweak/YouTweak.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1109;
 				DEVELOPMENT_TEAM = 3XVDQP2MS6;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = YouTubeTweak/Info.plist;
+				INFOPLIST_FILE = YouTweak/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = YouTweak;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
@@ -341,7 +341,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "";
-				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = YouTubeTweakExtension/YouTubeTweakExtension.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = YouTweakExtension/YouTweakExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1109;
@@ -350,7 +350,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = YouTubeTweakExtension/Info.plist;
+				INFOPLIST_FILE = YouTweakExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -375,14 +375,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "";
-				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = YouTubeTweakExtension/YouTubeTweakExtension.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = YouTweakExtension/YouTweakExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1109;
 				DEVELOPMENT_TEAM = 3XVDQP2MS6;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = YouTubeTweakExtension/Info.plist;
+				INFOPLIST_FILE = YouTweakExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -540,7 +540,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AA0000000000000000000060 /* Build configuration list for PBXNativeTarget "YouTubeTweak" */ = {
+		AA0000000000000000000060 /* Build configuration list for PBXNativeTarget "YouTweak" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AA0000000000000000000061 /* Debug */,
@@ -549,7 +549,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AA0000000000000000000070 /* Build configuration list for PBXNativeTarget "YouTubeTweakExtension" */ = {
+		AA0000000000000000000070 /* Build configuration list for PBXNativeTarget "YouTweakExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AA0000000000000000000071 /* Debug */,
@@ -558,7 +558,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AA0000000000000000000080 /* Build configuration list for PBXProject "YouTubeTweakExtension" */ = {
+		AA0000000000000000000080 /* Build configuration list for PBXProject "YouTweakExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AA0000000000000000000081 /* Debug */,

@@ -23,7 +23,7 @@
 		"build:ios:debug": "tsx build/apple.ts build:ios:debug",
 		"build:mac:debug": "tsx build/apple.ts build:mac:debug",
 		"apple:icons": "tsx build/apple.ts icons",
-		"apple:open:xcode": "open apple-app/YouTubeTweakExtension.xcodeproj",
+		"apple:open:xcode": "open apple-app/YouTweakExtension.xcodeproj",
 		"apple:build-server": "tsx build/apple.ts build-server",
 		"apple:clean": "rm -rf apple-app/Build apple-app/DerivedData apple-app/DerivedData-iOS",
 		"postinstall": "wxt prepare"

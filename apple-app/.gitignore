@@ -5,7 +5,7 @@ DerivedData/
 DerivedData-iOS/
 buildServer.json
 .compile
-YouTubeTweakExtension/dist/
+YouTweakExtension/dist/
 **/xcuserdata/
 **/*.xcuserstate
-YouTubeTweak/Assets.xcassets/**/*.png
+YouTweak/Assets.xcassets/**/*.png

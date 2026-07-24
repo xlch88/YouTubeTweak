@@ -2,20 +2,20 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "Run YouTubeTweak macOS",
+			"name": "Run YouTweak macOS",
 			"type": "swift",
 			"request": "launch",
-			"program": "${workspaceFolder}/apple-app/Build/Products/Debug/YouTubeTweak.app/Contents/MacOS/YouTubeTweak",
+			"program": "${workspaceFolder}/apple-app/Build/Products/Debug/YouTweak.app/Contents/MacOS/YouTweak",
 			"cwd": "${workspaceFolder}/apple-app",
 			"args": [],
 			"env": {},
 			"preLaunchTask": "Build macOS Debug"
 		},
 		{
-			"name": "Attach to YouTubeTweak",
+			"name": "Attach to YouTweak",
 			"type": "swift",
 			"request": "attach",
-			"program": "${workspaceFolder}/apple-app/Build/Products/Debug/YouTubeTweak.app/Contents/MacOS/YouTubeTweak",
+			"program": "${workspaceFolder}/apple-app/Build/Products/Debug/YouTweak.app/Contents/MacOS/YouTweak",
 			"waitFor": false
 		}
 	]

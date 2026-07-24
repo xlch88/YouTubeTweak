@@ -21,11 +21,11 @@ type Device = {
 const root = process.cwd();
 const command = process.argv[2] || "help";
 const githubRepositoryUrl = "https://github.com/xlch88/YouTubeTweak";
-const project = "apple-app/YouTubeTweakExtension.xcodeproj";
-const scheme = "YouTubeTweak";
+const project = "apple-app/YouTweakExtension.xcodeproj";
+const scheme = "YouTweak";
 const iosDerivedDataPath = "apple-app/DerivedData-iOS";
 const macDerivedDataPath = "apple-app/DerivedData";
-const iosAppPath = "apple-app/Build/Products/Debug-iphoneos/YouTubeTweak.app";
+const iosAppPath = "apple-app/Build/Products/Debug-iphoneos/YouTweak.app";
 const macProductDir = "apple-app/Build/Products";
 const bundleId = "com.yttweak.appleapp";
 const deviceIdCachePath = "apple-app/.ios-device-id";
@@ -42,9 +42,9 @@ const packageVersion = (() => {
 	}
 })();
 const packageBuildNumber = (() => {
-	const match = packageVersion.match(/^(\d+)\.(\d+)\.(\d+)/);
+	const match = packageVersion.match(/^(\d+)\.(\d+)\.(\d+)(?:\.(\d+))?/);
 	if (!match) return packageVersion.replace(/\D/g, "") || "1";
-	return String(Number(match[1]) * 1000 + Number(match[2]) * 100 + Number(match[3]));
+	return String(Number(match[1]) * 1000 + Number(match[2]) * 100 + Number(match[3]) * 10 + Number(match[4] || 0));
 })();
 
 function abs(relativePath: string) {
@@ -410,11 +410,11 @@ const iosAppIconEntries = [
 const iconVariants = [
 	{
 		outputDir: ".output/apple-app-icons/safari-mv2/icons",
-		appIconSetDir: "apple-app/YouTubeTweak/Assets.xcassets/AppIcon.appiconset",
+		appIconSetDir: "apple-app/YouTweak/Assets.xcassets/AppIcon.appiconset",
 	},
 	{
 		outputDir: ".output/apple-app-icons/safari-mv2-dev/icons",
-		appIconSetDir: "apple-app/YouTubeTweak/Assets.xcassets/AppIconDebug.appiconset",
+		appIconSetDir: "apple-app/YouTweak/Assets.xcassets/AppIconDebug.appiconset",
 	},
 ];
 
@@ -699,7 +699,7 @@ function verifyMacAppSignature(appPath: string) {
 }
 
 function ensureMacAppSignature(appPath: string, identity: string) {
-	const extensionPath = path.join(appPath, "Contents/PlugIns/YouTubeTweakExtension.appex");
+	const extensionPath = path.join(appPath, "Contents/PlugIns/YouTweakExtension.appex");
 	if (!existsSync(extensionPath)) {
 		throw new Error(`Missing Safari extension after macOS build: ${extensionPath}`);
 	}
@@ -736,9 +736,9 @@ function ensureMacAppSignature(appPath: string, identity: string) {
 }
 
 function stopMacAppIfRunning(configuration: Configuration) {
-	const relativeAppExecutablePath = `${macProductDir}/${configuration}/YouTubeTweak.app/Contents/MacOS/YouTubeTweak`;
+	const relativeAppExecutablePath = `${macProductDir}/${configuration}/YouTweak.app/Contents/MacOS/YouTweak`;
 	const absoluteAppExecutablePath = abs(relativeAppExecutablePath);
-	const pgrepResult = spawnSync("pgrep", ["-x", "YouTubeTweak"], { env, encoding: "utf8" });
+	const pgrepResult = spawnSync("pgrep", ["-x", "YouTweak"], { env, encoding: "utf8" });
 	if (pgrepResult.status !== 0 || !pgrepResult.stdout) return;
 
 	let stopped = false;
@@ -771,7 +771,7 @@ async function buildMac(configuration: Configuration) {
 	fixXcodeScriptModes();
 	if (configuration === "Debug") {
 		run("xcodebuild", macBuildArgs(configuration), true);
-		ensureMacAppSignature(abs(`${macProductDir}/${configuration}/YouTubeTweak.app`), signingIdentity);
+		ensureMacAppSignature(abs(`${macProductDir}/${configuration}/YouTweak.app`), signingIdentity);
 		return;
 	}
 
@@ -799,7 +799,7 @@ async function buildMac(configuration: Configuration) {
 		[...macBuildArgs(configuration, "generic/platform=macOS").slice(0, -1), "-archivePath", archivePath, "archive"],
 		true,
 	);
-	ensureMacAppSignature(path.join(archivePath, "Products/Applications/YouTubeTweak.app"), signingIdentity);
+	ensureMacAppSignature(path.join(archivePath, "Products/Applications/YouTweak.app"), signingIdentity);
 	console.log(`Created Xcode archive: ${archivePath}`);
 }
 
@@ -809,13 +809,13 @@ async function devMac() {
 	await runIcons();
 	fixXcodeScriptModes();
 	run("xcodebuild", macBuildArgs("Debug"), true);
-	ensureMacAppSignature(abs(`${macProductDir}/Debug/YouTubeTweak.app`), signingIdentity);
-	const macAppPath = `${macProductDir}/Debug/YouTubeTweak.app`;
+	ensureMacAppSignature(abs(`${macProductDir}/Debug/YouTweak.app`), signingIdentity);
+	const macAppPath = `${macProductDir}/Debug/YouTweak.app`;
 	run(
 		"/System/Library/Frameworks/CoreServices.framework/Versions/Current/Frameworks/LaunchServices.framework/Versions/Current/Support/lsregister",
 		["-f", "-R", "-trusted", macAppPath],
 	);
-	run("/usr/bin/pluginkit", ["-a", `${macAppPath}/Contents/PlugIns/YouTubeTweakExtension.appex`]);
+	run("/usr/bin/pluginkit", ["-a", `${macAppPath}/Contents/PlugIns/YouTweakExtension.appex`]);
 	stopMacAppIfRunning("Debug");
 	run("/usr/bin/open", ["-n", "-W", macAppPath], true);
 }
@@ -825,15 +825,15 @@ function watchPaths() {
 		"package.json",
 		"build/apple.ts",
 		appleLogoPath,
-		"apple-app/YouTubeTweak/YouTubeTweakExtensionApp.swift",
-		"apple-app/YouTubeTweak/Info.plist",
-		"apple-app/YouTubeTweak/LaunchScreen.storyboard",
-		"apple-app/YouTubeTweak/YouTubeTweak.entitlements",
-		"apple-app/YouTubeTweak/assets/i18n",
-		"apple-app/YouTubeTweakExtension/Info.plist",
-		"apple-app/YouTubeTweakExtension/SafariWebExtensionHandler.swift",
-		"apple-app/YouTubeTweakExtension/YouTubeTweakExtension.entitlements",
-		"apple-app/YouTubeTweakExtension.xcodeproj/project.pbxproj",
+		"apple-app/YouTweak/YouTweakExtensionApp.swift",
+		"apple-app/YouTweak/Info.plist",
+		"apple-app/YouTweak/LaunchScreen.storyboard",
+		"apple-app/YouTweak/YouTweak.entitlements",
+		"apple-app/YouTweak/assets/i18n",
+		"apple-app/YouTweakExtension/Info.plist",
+		"apple-app/YouTweakExtension/SafariWebExtensionHandler.swift",
+		"apple-app/YouTweakExtension/YouTweakExtension.entitlements",
+		"apple-app/YouTweakExtension.xcodeproj/project.pbxproj",
 		".output/safari-mv2",
 		".output/safari-mv2-dev",
 	].filter(existsSync);

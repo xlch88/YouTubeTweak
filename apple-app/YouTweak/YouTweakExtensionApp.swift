@@ -50,7 +50,7 @@ private func bundleBuildInfoValue(_ key: String, fallback: String) -> String {
 
 private enum AppDebugLog {
     static func write(_ message: String) {
-        let line = "[YouTubeTweak] \(message)"
+        let line = "[YouTweak] \(message)"
         if let data = "\(line)\n".data(using: .utf8) {
             FileHandle.standardError.write(data)
         }
@@ -160,14 +160,14 @@ private enum L10n {
 }
 
 @main
-struct YouTubeTweakExtensionApp: App {
+struct YouTweakExtensionApp: App {
     #if os(macOS)
     @NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     #endif
 
     var body: some Scene {
         WindowGroup {
-            YouTubeTweakHomeView()
+            YouTweakHomeView()
         }
     }
 }
@@ -204,7 +204,7 @@ private final class AppDelegate: NSObject, NSApplicationDelegate {
 }
 #endif
 
-private struct YouTubeTweakHomeView: View {
+private struct YouTweakHomeView: View {
     @State private var statusText: String?
     @State private var isOpeningSafari = false
     #if DEBUG
@@ -633,7 +633,7 @@ private enum ExtensionIconSource {
 
     private static var bundledExtensionIconURL: URL? {
         guard let plugInsURL = Bundle.main.builtInPlugInsURL else { return nil }
-        let extensionURL = plugInsURL.appendingPathComponent("YouTubeTweakExtension.appex")
+        let extensionURL = plugInsURL.appendingPathComponent("YouTweakExtension.appex")
         guard let iconsDirectory = Bundle(url: extensionURL)?
             .resourceURL?
             .appendingPathComponent("icons", isDirectory: true)

@@ -10,7 +10,7 @@
 
 <img src="../../img/help/ios-steps/enable-2.png" alt="Enable-Step-2" width=400/>
 
-ステップ 3、`YouTube Tweak` 拡張機能を有効状態に設定します
+ステップ 3、`YouTweak` 拡張機能を有効状態に設定します
 
 <img src="../../img/help/ios-steps/enable-3.png" alt="Enable-Step-3" width=400/>
 
@@ -19,7 +19,7 @@
 # YouTube サイトで拡張機能を使用、設定する
 
 [YouTube.com](https://www.youtube.com) を開き、その後アドレスバーの拡張機能アイコンをクリックします。  
-`YouTube Tweak` をクリックします。YouTube へのアクセスをまだ許可していない場合、アイコンは灰色で感嘆符付きで表示されます。
+`YouTweak` をクリックします。YouTube へのアクセスをまだ許可していない場合、アイコンは灰色で感嘆符付きで表示されます。
 
 <img src="../../img/help/ios-steps/setting-1-2.png" alt="Setting-Step-1-2" width=400/>
 

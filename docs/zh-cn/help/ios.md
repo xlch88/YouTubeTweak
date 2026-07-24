@@ -10,7 +10,7 @@
 
 <img src="../../img/help/ios-steps/enable-2.png" alt="Enable-Step-2" width=400/>
 
-第三步，将 `YouTube Tweak` 扩展设置为启用状态
+第三步，将 `YouTweak` 扩展设置为启用状态
 
 <img src="../../img/help/ios-steps/enable-3.png" alt="Enable-Step-3" width=400/>
 
@@ -19,7 +19,7 @@
 # 在YouTube网站使用并配置扩展
 
 打开 [YouTube.com](https://www.youtube.com)，之后点击地址栏的扩展图标。  
-点击 `YouTube Tweak`。在您未授权访问YouTube时，图标为灰色并带有感叹号。
+点击 `YouTweak`。在您未授权访问YouTube时，图标为灰色并带有感叹号。
 
 <img src="../../img/help/ios-steps/setting-1-2.png" alt="Setting-Step-1-2" width=400/>
 

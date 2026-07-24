@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AA0000000000000000000040"
-               BuildableName = "YouTubeTweak.app"
-               BlueprintName = "YouTubeTweak"
-               ReferencedContainer = "container:YouTubeTweakExtension.xcodeproj">
+               BuildableName = "YouTweak.app"
+               BlueprintName = "YouTweak"
+               ReferencedContainer = "container:YouTweakExtension.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AA0000000000000000000040"
-            BuildableName = "YouTubeTweak.app"
-            BlueprintName = "YouTubeTweak"
-            ReferencedContainer = "container:YouTubeTweakExtension.xcodeproj">
+            BuildableName = "YouTweak.app"
+            BlueprintName = "YouTweak"
+            ReferencedContainer = "container:YouTweakExtension.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AA0000000000000000000040"
-            BuildableName = "YouTubeTweak.app"
-            BlueprintName = "YouTubeTweak"
-            ReferencedContainer = "container:YouTubeTweakExtension.xcodeproj">
+            BuildableName = "YouTweak.app"
+            BlueprintName = "YouTweak"
+            ReferencedContainer = "container:YouTweakExtension.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

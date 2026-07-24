@@ -10,7 +10,7 @@ Step 2, click `Manage Extensions`
 
 <img src="../../img/help/ios-steps/enable-2.png" alt="Enable-Step-2" width=400/>
 
-Step 3, set the `YouTube Tweak` extension to enabled
+Step 3, set the `YouTweak` extension to enabled
 
 <img src="../../img/help/ios-steps/enable-3.png" alt="Enable-Step-3" width=400/>
 
@@ -19,7 +19,7 @@ Step 3, set the `YouTube Tweak` extension to enabled
 # Use and Configure the Extension on the YouTube Website
 
 Open [YouTube.com](https://www.youtube.com), then click the extension icon in the address bar.  
-Click `YouTube Tweak`. When you have not granted access to YouTube, the icon is gray and has an exclamation mark.
+Click `YouTweak`. When you have not granted access to YouTube, the icon is gray and has an exclamation mark.
 
 <img src="../../img/help/ios-steps/setting-1-2.png" alt="Setting-Step-1-2" width=400/>
 

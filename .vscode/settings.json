@@ -33,13 +33,13 @@
 		"apple-app/Build": true,
 		"apple-app/DerivedData": true,
 		"apple-app/DerivedData-iOS": true,
-		"apple-app/YouTubeTweakExtension/dist": true
+		"apple-app/YouTweakExtension/dist": true
 	},
 	"search.exclude": {
 		"apple-app/Build": true,
 		"apple-app/DerivedData": true,
 		"apple-app/DerivedData-iOS": true,
-		"apple-app/YouTubeTweakExtension/dist": true,
+		"apple-app/YouTweakExtension/dist": true,
 		".output/safari-mv2/chunks": true,
 		".output/safari-mv2-dev/chunks": true
 	},
