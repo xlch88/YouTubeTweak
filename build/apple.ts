@@ -1,6 +1,7 @@
 import { execFileSync, spawn, spawnSync } from "node:child_process";
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { mkdir, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
 import path from "node:path";
 import process from "node:process";
 import sharp from "sharp";
@@ -101,6 +102,12 @@ function explainAppleDeviceError(result: ReturnType<typeof spawnSync>) {
 		console.error("Run as the macOS user signed in to Xcode and check Xcode > Settings > Accounts.");
 		console.error("");
 	}
+	if (/errSecInternalComponent/i.test(text)) {
+		console.error("");
+		console.error("Xcode could not use the signing private key from this security session.");
+		console.error("Run the command again in an interactive terminal so the one-time remote signing setup can repair access.");
+		console.error("");
+	}
 }
 
 function normalizeGitRemoteUrl(remoteUrl: string) {
@@ -171,6 +178,126 @@ function relaunchInGuiSession(platform: "ios" | "mac", args: string[]) {
 	const result = spawnSync(commandName, commandArgs, { cwd: root, env, stdio: "inherit" });
 	if (result.error) throw result.error;
 	process.exit(result.status || 0);
+}
+
+function readSecret(prompt: string) {
+	if (!process.stdin.isTTY) {
+		console.error("Remote signing setup needs an interactive terminal for its one-time password prompt.");
+		console.error("Run npm run dev:mac once from the VS Code Remote terminal.");
+		process.exit(1);
+	}
+
+	return new Promise<string>((resolve, reject) => {
+		const wasPaused = process.stdin.isPaused();
+		const wasRaw = process.stdin.isRaw;
+		let value = "";
+
+		process.stdout.write(prompt);
+		process.stdin.setRawMode(true);
+		process.stdin.resume();
+
+		function finish(error?: Error) {
+			process.stdin.off("data", onData);
+			process.stdin.setRawMode(wasRaw);
+			if (wasPaused) process.stdin.pause();
+			process.stdout.write("\n");
+			if (error) reject(error);
+			else resolve(value);
+		}
+
+		function onData(chunk: Buffer | string) {
+			for (const character of chunk.toString()) {
+				if (character === "\r" || character === "\n") {
+					finish();
+					return;
+				}
+				if (character === "\u0003") {
+					finish(new Error("Remote signing setup cancelled."));
+					return;
+				}
+				if (character === "\u007f" || character === "\b") {
+					value = [...value].slice(0, -1).join("");
+					continue;
+				}
+				if (character >= " ") value += character;
+			}
+		}
+
+		process.stdin.on("data", onData);
+	});
+}
+
+function canUseCodeSigningIdentity(identity: string) {
+	const probeDir = mkdtempSync(path.join(tmpdir(), "yttweak-codesign-"));
+	const probePath = path.join(probeDir, "probe");
+
+	try {
+		copyFileSync("/usr/bin/true", probePath);
+		return (
+			spawnSync("/usr/bin/codesign", ["--force", "--sign", identity, "--timestamp=none", probePath], {
+				env,
+				stdio: "ignore",
+			}).status === 0
+		);
+	} finally {
+		rmSync(probeDir, { force: true, recursive: true });
+	}
+}
+
+async function prepareRemoteMacSigning() {
+	const identity = readOutput("security", ["find-identity", "-v", "-p", "codesigning"]).match(
+		/^\s*\d+\)\s+([0-9A-F]{40})\s+"Apple Development:/m,
+	)?.[1];
+	if (!identity) {
+		console.error("No valid Apple Development signing identity was found.");
+		console.error("Check Xcode > Settings > Accounts and create or download the development certificate first.");
+		process.exit(1);
+	}
+	if (canUseCodeSigningIdentity(identity)) return identity;
+
+	console.log("");
+	console.log("This security session cannot use the Apple Development private key yet.");
+	console.log("Enter the macOS login password once to enable password-free signing for subsequent VS Code Remote builds.");
+
+	let password = "";
+	try {
+		password = await readSecret("macOS login password: ");
+		const keychainPath = path.join(
+			process.env.MAC_DEV_HOME || process.env.IOS_DEV_HOME || process.env.HOME || `/Users/${process.env.USER}`,
+			"Library/Keychains/login.keychain-db",
+		);
+
+		for (const args of [
+			["unlock-keychain", keychainPath],
+			["set-key-partition-list", "-S", "apple-tool:,apple:,codesign:", "-s", keychainPath],
+		]) {
+			const result = spawnSync("security", args, {
+				env,
+				input: `${password}\n`,
+				encoding: "utf8",
+			});
+			if (result.status === 0) continue;
+			if (result.stdout) process.stdout.write(result.stdout);
+			if (result.stderr) process.stderr.write(result.stderr);
+			throw new Error(`security ${args[0]} failed.`);
+		}
+
+		const settingsResult = spawnSync("security", ["set-keychain-settings", keychainPath], { env, encoding: "utf8" });
+		if (settingsResult.status !== 0) {
+			if (settingsResult.stdout) process.stdout.write(settingsResult.stdout);
+			if (settingsResult.stderr) process.stderr.write(settingsResult.stderr);
+			throw new Error("Could not disable the login keychain timeout.");
+		}
+	} finally {
+		password = "";
+	}
+
+	if (!canUseCodeSigningIdentity(identity)) {
+		throw new Error("The signing key is still unavailable after remote signing setup.");
+	}
+	console.log("Remote signing is configured; subsequent builds in this login session will not ask for a password.");
+	console.log("");
+	return identity;
 }
 
 function fixXcodeScriptModes() {
@@ -564,6 +691,51 @@ function macBuildArgs(configuration: Configuration) {
 	];
 }
 
+function verifyMacAppSignature(appPath: string) {
+	return spawnSync("/usr/bin/codesign", ["--verify", "--deep", "--strict", "--verbose=4", appPath], {
+		env,
+		encoding: "utf8",
+	});
+}
+
+function ensureMacAppSignature(configuration: Configuration, identity: string) {
+	const appPath = abs(`${macProductDir}/${configuration}/YouTubeTweak.app`);
+	const extensionPath = path.join(appPath, "Contents/PlugIns/YouTubeTweakExtension.appex");
+	if (!existsSync(extensionPath)) {
+		throw new Error(`Missing Safari extension after macOS build: ${extensionPath}`);
+	}
+
+	const initialVerification = verifyMacAppSignature(appPath);
+	if (initialVerification.status === 0) {
+		console.log(`Verified macOS app signature: ${appPath}`);
+		return;
+	}
+
+	console.warn("Xcode left the macOS app with a stale signature after copying updated Safari extension resources.");
+	console.warn("Re-signing the embedded extension first, then the containing app...");
+	for (const bundlePath of [extensionPath, appPath]) {
+		run("/usr/bin/codesign", [
+			"--force",
+			"--sign",
+			identity,
+			"--timestamp=none",
+			"--preserve-metadata=identifier,entitlements,flags,runtime",
+			bundlePath,
+		]);
+		if (bundlePath === extensionPath) {
+			run("/usr/bin/codesign", ["--verify", "--strict", "--verbose=4", extensionPath]);
+		}
+	}
+
+	const finalVerification = verifyMacAppSignature(appPath);
+	if (finalVerification.status !== 0) {
+		if (finalVerification.stdout) process.stdout.write(finalVerification.stdout);
+		if (finalVerification.stderr) process.stderr.write(finalVerification.stderr);
+		throw new Error(`macOS app signature is still invalid after re-signing: ${appPath}`);
+	}
+	console.log(`Re-signed and verified macOS app: ${appPath}`);
+}
+
 function stopMacAppIfRunning(configuration: Configuration) {
 	const relativeAppExecutablePath = `${macProductDir}/${configuration}/YouTubeTweak.app/Contents/MacOS/YouTubeTweak`;
 	const absoluteAppExecutablePath = abs(relativeAppExecutablePath);
@@ -595,23 +767,25 @@ function stopMacAppIfRunning(configuration: Configuration) {
 
 async function buildMac(configuration: Configuration) {
 	relaunchInGuiSession("mac", [`build:mac${configuration === "Debug" ? ":debug" : ""}`]);
+	const signingIdentity = await prepareRemoteMacSigning();
 	await runIcons();
 	fixXcodeScriptModes();
 	run("xcodebuild", macBuildArgs(configuration), true);
+	ensureMacAppSignature(configuration, signingIdentity);
 }
 
 async function devMac() {
 	relaunchInGuiSession("mac", ["dev:mac"]);
+	const signingIdentity = await prepareRemoteMacSigning();
 	await runIcons();
 	fixXcodeScriptModes();
 	run("xcodebuild", macBuildArgs("Debug"), true);
+	ensureMacAppSignature("Debug", signingIdentity);
 	const macAppPath = `${macProductDir}/Debug/YouTubeTweak.app`;
-	run("/System/Library/Frameworks/CoreServices.framework/Versions/Current/Frameworks/LaunchServices.framework/Versions/Current/Support/lsregister", [
-		"-f",
-		"-R",
-		"-trusted",
-		macAppPath,
-	]);
+	run(
+		"/System/Library/Frameworks/CoreServices.framework/Versions/Current/Frameworks/LaunchServices.framework/Versions/Current/Support/lsregister",
+		["-f", "-R", "-trusted", macAppPath],
+	);
 	run("/usr/bin/pluginkit", ["-a", `${macAppPath}/Contents/PlugIns/YouTubeTweakExtension.appex`]);
 	stopMacAppIfRunning("Debug");
 	run("/usr/bin/open", ["-n", "-W", macAppPath], true);
