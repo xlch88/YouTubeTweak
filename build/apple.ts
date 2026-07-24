@@ -1,7 +1,7 @@
 import { execFileSync, spawn, spawnSync } from "node:child_process";
 import { copyFileSync, existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { mkdir, writeFile } from "node:fs/promises";
-import { tmpdir } from "node:os";
+import { homedir, tmpdir } from "node:os";
 import path from "node:path";
 import process from "node:process";
 import sharp from "sharp";
@@ -673,7 +673,7 @@ async function devIOS() {
 	}
 }
 
-function macBuildArgs(configuration: Configuration) {
+function macBuildArgs(configuration: Configuration, destination = "platform=macOS") {
 	return [
 		"-project",
 		project,
@@ -682,7 +682,7 @@ function macBuildArgs(configuration: Configuration) {
 		"-configuration",
 		configuration,
 		"-destination",
-		"platform=macOS",
+		destination,
 		"-derivedDataPath",
 		macDerivedDataPath,
 		"-allowProvisioningUpdates",
@@ -698,8 +698,7 @@ function verifyMacAppSignature(appPath: string) {
 	});
 }
 
-function ensureMacAppSignature(configuration: Configuration, identity: string) {
-	const appPath = abs(`${macProductDir}/${configuration}/YouTubeTweak.app`);
+function ensureMacAppSignature(appPath: string, identity: string) {
 	const extensionPath = path.join(appPath, "Contents/PlugIns/YouTubeTweakExtension.appex");
 	if (!existsSync(extensionPath)) {
 		throw new Error(`Missing Safari extension after macOS build: ${extensionPath}`);
@@ -770,8 +769,38 @@ async function buildMac(configuration: Configuration) {
 	const signingIdentity = await prepareRemoteMacSigning();
 	await runIcons();
 	fixXcodeScriptModes();
-	run("xcodebuild", macBuildArgs(configuration), true);
-	ensureMacAppSignature(configuration, signingIdentity);
+	if (configuration === "Debug") {
+		run("xcodebuild", macBuildArgs(configuration), true);
+		ensureMacAppSignature(abs(`${macProductDir}/${configuration}/YouTubeTweak.app`), signingIdentity);
+		return;
+	}
+
+	const archiveTimestamp = new Intl.DateTimeFormat("sv-SE", {
+		timeZone: "Asia/Shanghai",
+		year: "numeric",
+		month: "2-digit",
+		day: "2-digit",
+		hour: "2-digit",
+		minute: "2-digit",
+		second: "2-digit",
+		hour12: false,
+	})
+		.format(new Date())
+		.replaceAll(":", ".");
+	const archivePath = path.join(
+		homedir(),
+		"Library/Developer/Xcode/Archives",
+		archiveTimestamp.slice(0, 10),
+		`YouTweak ${archiveTimestamp}.xcarchive`,
+	);
+	await mkdir(path.dirname(archivePath), { recursive: true });
+	run(
+		"xcodebuild",
+		[...macBuildArgs(configuration, "generic/platform=macOS").slice(0, -1), "-archivePath", archivePath, "archive"],
+		true,
+	);
+	ensureMacAppSignature(path.join(archivePath, "Products/Applications/YouTubeTweak.app"), signingIdentity);
+	console.log(`Created Xcode archive: ${archivePath}`);
 }
 
 async function devMac() {
@@ -780,7 +809,7 @@ async function devMac() {
 	await runIcons();
 	fixXcodeScriptModes();
 	run("xcodebuild", macBuildArgs("Debug"), true);
-	ensureMacAppSignature("Debug", signingIdentity);
+	ensureMacAppSignature(abs(`${macProductDir}/Debug/YouTubeTweak.app`), signingIdentity);
 	const macAppPath = `${macProductDir}/Debug/YouTubeTweak.app`;
 	run(
 		"/System/Library/Frameworks/CoreServices.framework/Versions/Current/Frameworks/LaunchServices.framework/Versions/Current/Support/lsregister",
