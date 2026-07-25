@@ -862,6 +862,7 @@ setInterval(() => {
 			segmentJobs.map((job) => escapeTextForTranslate(job.source)),
 			"auto",
 			doing[0].targetLang,
+			false,
 		)
 			.then(([translations, detectedLanguages]) => {
 				const detectedLanguageByTask = new Map<TranslateTask, string>();

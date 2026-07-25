@@ -89,13 +89,81 @@ export function getImageSrcset(image: HTMLImageElement | undefined) {
 	return image?.srcset || image?.getAttribute("srcset") || image?.getAttribute("data-srcset") || "";
 }
 
-export async function googleTranslate(text: string | string[], srcLang: string, targetLang: string): Promise<[string[], string[]]> {
+type GoogleTranslateQueueItem = {
+	texts: string[];
+	resolve: (result: [string[], string[]]) => void;
+	reject: (reason?: unknown) => void;
+};
+
+const GOOGLE_TRANSLATE_MAX_TEXT_LENGTH = 30000;
+const googleTranslateQueue = new Map<string, GoogleTranslateQueueItem[]>();
+const googleTranslateTextEncoder = new TextEncoder();
+
+export async function googleTranslate(
+	text: string | string[],
+	srcLang: string,
+	targetLang: string,
+	queue = true,
+): Promise<[string[], string[]]> {
+	const texts = typeof text === "string" ? [text] : [...text];
+	if (queue) {
+		return new Promise<[string[], string[]]>((resolve, reject) => {
+			const key = JSON.stringify([srcLang, targetLang]);
+			const queued = googleTranslateQueue.get(key);
+			if (queued) {
+				queued.push({ texts, resolve, reject });
+				return;
+			}
+
+			const items: GoogleTranslateQueueItem[] = [{ texts, resolve, reject }];
+			googleTranslateQueue.set(key, items);
+			setTimeout(async () => {
+				googleTranslateQueue.delete(key);
+				try {
+					const batches: string[][] = [];
+					let batch: string[] = [];
+					let batchTextLength = 0;
+					items
+						.flatMap((item) => item.texts)
+						.forEach((text) => {
+							const textLength = googleTranslateTextEncoder.encode(text).length;
+							if (textLength > GOOGLE_TRANSLATE_MAX_TEXT_LENGTH) {
+								throw new Error(`Single translate item exceeds text length limit: ${textLength}`);
+							}
+							if (batch.length > 0 && batchTextLength + textLength > GOOGLE_TRANSLATE_MAX_TEXT_LENGTH) {
+								batches.push(batch);
+								batch = [];
+								batchTextLength = 0;
+							}
+							batch.push(text);
+							batchTextLength += textLength;
+						});
+					if (batch.length > 0) batches.push(batch);
+
+					const results = await Promise.all(
+						batches.map((texts) => googleTranslate(texts, srcLang, targetLang, false)),
+					);
+					const translations = results.flatMap(([batchTranslations]) => batchTranslations);
+					const detectedLanguages = results.flatMap(([, batchDetectedLanguages]) => batchDetectedLanguages);
+					let offset = 0;
+					items.forEach((item) => {
+						const end = offset + item.texts.length;
+						item.resolve([translations.slice(offset, end), detectedLanguages.slice(offset, end)]);
+						offset = end;
+					});
+				} catch (error) {
+					items.forEach((item) => item.reject(error));
+				}
+			}, 500);
+		});
+	}
+
 	const response = await fetch("https://translate-pa.googleapis.com/v1/translateHtml", {
 		headers: {
 			"content-type": "application/json+protobuf",
 			"x-goog-api-key": "AIzaSyATBXajvzQLTDHEQbcpq0Ihe0vWDHmO520",
 		},
-		body: JSON.stringify([[typeof text === "string" ? [text] : text, srcLang, targetLang], "te_lib"]),
+		body: JSON.stringify([[texts, srcLang, targetLang], "te_lib"]),
 		method: "POST",
 	});
 	const data = await response.json();
