@@ -4,9 +4,11 @@
 
 [中文](/docs/zh-cn/FUNCTIONS.md) | [English](/FUNCTIONS.md) | [日本語](/docs/ja/FUNCTIONS.md)
 
-YouTube Tweak is a browser extension for enhancing the YouTube web experience. This document follows the category order in the extension popup panel and focuses on what each feature does, what happens after it is enabled, which scenarios it fits, and which limitations to note.
+YouTube Tweak is a browser extension for enhancing the YouTube web experience and is displayed as YouTweak in the Safari version. This document follows the category order in the extension popup panel and focuses on what each feature does, what happens after it is enabled, which scenarios it fits, and which limitations to note.
 
 This extension mainly takes effect on the desktop YouTube website. Some features only apply on video watch pages, the homepage, search pages, comment areas, or Shorts-related areas. The exact scope is explained in the corresponding feature sections.
+
+The question mark button beside a setting opens the corresponding section of this document directly. The default states mentioned in this document are the preset values used after resetting settings; existing settings do not change automatically after an upgrade.
 
 <a name="player"></a>
 
@@ -21,6 +23,8 @@ These features enhance the viewing experience on video watch pages and mainly af
 <a name="player-quality-auto-switch"></a>
 
 ### Automatically Switch Video Quality
+
+Default: `Off; target quality 1080p` | Version: `v1.0.1 (2025-06-09)`
 
 After enabling this, the extension will try to switch the video quality to your selected resolution every time you enter or switch videos.
 
@@ -49,6 +53,8 @@ Notes:
 
 ### Show Speed Buttons and Speed Slider
 
+Default: `On; show 0.5x, 1x, 1.5x, and 2x; speed slider on; mouse wheel follows button steps` | Version: `v1.0.0 (2025-05-19)`
+
 After enabling this, custom speed buttons will appear in the player control bar. You can click the buttons directly to change playback speed without opening YouTube's original settings menu.
 
 Suitable use cases:
@@ -73,6 +79,8 @@ Notes:
 <a name="player-speed-button-save"></a>
 
 ### Remember Playback Speed
+
+Default: `On; remember by channel on` | Version: `v1.0.1 (2025-06-09)`
 
 After enabling this, the extension will remember the playback speed you used and automatically restore it in later videos.
 
@@ -100,6 +108,8 @@ Notes:
 <a name="player-volume-booster-gain"></a>
 
 ### Add Real Volume Gain in the Player
+
+Default: `Show control on; volume boost off; boost level 2x` | Version: `v1.1.7 (2026-06-12)`
 
 After enabling this, the extension can raise the sound above YouTube's built-in 100% volume and show a volume booster button in the player.
 
@@ -134,6 +144,8 @@ Notes:
 
 ### Zoom the Video with the Mouse Wheel
 
+Default: `On` | Version: `v1.1.8 (2026-07-03)`
+
 After enabling this, you can scroll the mouse wheel over the video image to zoom in or out. After zooming in, you can drag the image to move the viewing area.
 
 Suitable use cases:
@@ -152,6 +164,7 @@ Notes:
 
 - The maximum zoom is 4x.
 - Video zoom will not trigger when the mouse is over player buttons, the control bar, links, input boxes, or similar areas.
+- When the video is at its original size, only the area in the center of the video where the zoom hint appears captures the mouse wheel; the rest of the page can still scroll normally.
 - This feature only affects the current video image and does not change the video source file.
 
 <a name="player-subtitle"></a>
@@ -161,6 +174,8 @@ Notes:
 <a name="player-subtitle-save-status"></a>
 
 ### Remember Subtitle Enabled State
+
+Default: `On; remember by channel on` | Version: `v1.0.4 (2025-08-31)`
 
 After enabling this, the extension will record whether you turned subtitles on and try to restore the subtitle state in later videos.
 
@@ -185,9 +200,13 @@ Notes:
 
 ## Function Buttons
 
+The rotate, mirror, and screenshot buttons can be enabled independently.
+
 <a name="player-function-buttons-rotate"></a>
 
 ### Rotate Video Button
+
+Default: `Off` | Version: `v1.0.9 (2025-11-22)`
 
 After enabling this, a rotate button will appear in the player. Each click rotates the video image by 90 degrees.
 
@@ -205,6 +224,8 @@ Notes:
 
 ### Mirror Video Button
 
+Default: `Off` | Version: `v1.0.9 (2025-11-22)`
+
 After enabling this, a mirror button will appear in the player. Clicking it flips the video image horizontally, and clicking again restores it.
 
 Suitable use cases:
@@ -220,6 +241,8 @@ Notes:
 <a name="player-function-buttons-screenshot"></a>
 
 ### Video Screenshot Button
+
+Default: `Off` | Version: `v1.1.8 (2026-07-03)`
 
 After enabling this, a screenshot button will appear in the player. Clicking it captures the current video frame and opens the image in a new window.
 
@@ -246,6 +269,8 @@ Notes:
 <a name="player-button-display-native"></a>
 
 ### Control Native Player Button Display
+
+Default: `Mini player, picture-in-picture, theater mode, and cast buttons hidden; all others automatic` | Version: `v1.0.0 (2025-05-19)`
 
 This feature controls the display mode of some native buttons in the YouTube player, making the player control bar cleaner.
 
@@ -285,6 +310,8 @@ Notes:
 
 ### Float the Video While Scrolling
 
+Default: `Off; 480×270; bottom-right; margin 16px; trigger distance 48px` | Version: `v1.1.7 (2026-06-12)`
+
 After enabling this, when you scroll down and leave the player on a video watch page, the current video becomes a floating mini player, making it easier to browse comments or recommendations while watching.
 
 Suitable use cases:
@@ -316,6 +343,8 @@ Notes:
 
 ### Translucent End-Screen Recommendations
 
+Default: `On` | Version: `v1.0.0 (2025-05-19)`
+
 After enabling this, recommended videos, author entries, and other elements overlaid on the video at the end will become translucent to reduce obstruction.
 
 Suitable use cases:
@@ -331,6 +360,8 @@ Notes:
 <a name="player-ui-progress-bar"></a>
 
 ### Progress Bar Below the Video
+
+Default: `On; height 2px` | Version: `v1.0.8 (2025-11-14)`
 
 After enabling this, when the YouTube player control bar auto-hides, a simple progress bar appears at the bottom of the video.
 
@@ -352,6 +383,8 @@ Notes:
 <a name="player-ui-time-tag"></a>
 
 ### Corner Video Time
+
+Default: `On; font size 12; bottom-left; margin 5px` | Version: `v1.0.8 (2025-11-14)`
 
 After enabling this, when the player control bar auto-hides, the corner of the player shows the current playback time and total duration.
 
@@ -380,6 +413,8 @@ Notes:
 
 ### Use True 100% Volume at Maximum Volume
 
+Default: `On` | Version: `v1.0.0 (2025-05-19)`
+
 After enabling this, when YouTube's volume bar is at 100%, the extension ensures the video element itself is also at a true full-volume state.
 
 Suitable use cases:
@@ -396,6 +431,8 @@ Notes:
 <a name="player-other-nonstop"></a>
 
 ### Disable Automatic Video Pause
+
+Default: `On` | Version: `v1.1.5 (2026-04-11)`
 
 After enabling this, the extension will try to prevent YouTube's automatic pause prompt after long playback and automatically handle dialogs such as "Video paused. Continue playing?" when detected.
 
@@ -423,6 +460,8 @@ These features are used to translate video list titles, watch page text, subtitl
 
 ### Translation Target Language
 
+Default: `Follow YouTube language` | Version: `v1.0.9 (2025-11-22)`
+
 This setting determines which language video lists, watch pages, subtitles, and comments are translated into.
 
 Configurable options:
@@ -439,7 +478,9 @@ Notes:
 
 ### Always Never Translate Languages
 
-This setting is used to avoid automatically translating comments in certain languages.
+Default: `Empty list` | Version: `v1.1.2 (2025-11-26)`
+
+This setting is used to avoid automatically translating content in certain languages and applies to video list titles, watch page titles, descriptions, summaries, subtitles, and comments.
 
 Suitable use cases:
 
@@ -448,8 +489,9 @@ Suitable use cases:
 
 Notes:
 
-- This setting mainly affects automatic comment translation.
+- Language detection ignores regional differences within the same language. For example, after selecting English, content in other regional varieties of English is also skipped.
 - When a comment is identified as a language that does not need translation, the extension keeps a manual translation button only when "Show a manual translation button for comments that do not need automatic translation" is enabled.
+- Video lists, watch page text, and subtitles do not provide a manual translation action; matching excluded languages retain the original text directly.
 
 <a name="translate-global"></a>
 
@@ -458,6 +500,8 @@ Notes:
 <a name="translate-global-video-list-title"></a>
 
 ### Translate Video List Titles
+
+Default: `On` | Version: `v1.2.1 (2026-07-21)`
 
 After enabling this, the extension displays translations below the original titles in video lists, allowing you to understand video content directly while browsing without first opening the watch page.
 
@@ -475,7 +519,7 @@ Scope:
 
 Notes:
 
-- This option is disabled by default and does not depend on the subtitle translation or comment translation options.
+- This feature does not depend on the subtitle translation or comment translation options.
 - Translations use the "Translation Target Language" setting. When "Follow YouTube language" is selected, the current YouTube page language is used.
 - Original titles are retained, while translations appear below them with a dashed underline to distinguish them.
 - If a title is already in the target language, the translation is identical to the original, or translation fails, the extension does not display a duplicate translation.
@@ -489,6 +533,8 @@ Notes:
 
 ### Translate Watch Page Video Title
 
+Default: `On` | Version: `v1.2.1 (2026-07-21)`
+
 After enabling this, regular video watch pages display a title translation below the original title while retaining the original title.
 
 Suitable use cases:
@@ -498,7 +544,7 @@ Suitable use cases:
 
 Notes:
 
-- This option is disabled by default and only applies to regular video watch pages.
+- This feature only applies to regular video watch pages.
 - Translations use the "Translation Target Language" setting and do not depend on the description, summary, subtitle, or comment translation options.
 - If the title is already in the target language, the translation is identical to the original, or translation fails, the page retains the original title.
 - Enabling or disabling this feature automatically refreshes the current YouTube page.
@@ -506,6 +552,8 @@ Notes:
 <a name="translate-watch-video-description"></a>
 
 ### Translate Video Description
+
+Default: `On` | Version: `v1.2.1 (2026-07-21)`
 
 After enabling this, regular video watch pages display a translated description near the original description. The corresponding translation remains visible whether the description is collapsed or expanded.
 
@@ -516,7 +564,7 @@ Suitable use cases:
 
 Notes:
 
-- This option is disabled by default and only applies to regular video watch pages.
+- This feature only applies to regular video watch pages.
 - Translations use the "Translation Target Language" setting and do not depend on the title, summary, subtitle, or comment translation options.
 - The original description is retained, while the translation appears in an area with a dashed border. Links, images, and other content that cannot be translated directly remain unchanged.
 - If the description contains no translatable text or translation fails, the page retains the original description.
@@ -525,6 +573,8 @@ Notes:
 <a name="translate-watch-video-summary"></a>
 
 ### Translate Video Summary
+
+Default: `On` | Version: `v1.2.1 (2026-07-21)`
 
 After enabling this, if YouTube provides a video summary on a regular video watch page, the extension displays a translated summary near the original summary. The appropriate translation is shown whether the summary is collapsed or expanded.
 
@@ -535,7 +585,7 @@ Suitable use cases:
 
 Notes:
 
-- This option is disabled by default and only applies to regular video watch pages where YouTube provides a summary.
+- This feature only applies to regular video watch pages where YouTube provides a summary.
 - The extension only translates existing summaries and does not automatically generate summaries for videos without one.
 - Translations use the "Translation Target Language" setting and do not depend on the title, description, subtitle, or comment translation options.
 - If the summary is already in the target language, the translation is identical to the original, or translation fails, the page retains the original summary.
@@ -548,6 +598,8 @@ Notes:
 <a name="translate-subtitle-enable"></a>
 
 ### Enable Subtitle Translation
+
+Default: `On; bilingual translation` | Version: `v1.1.3 (2025-12-03)`
 
 After enabling this, the extension translates subtitle content when YouTube loads subtitles and displays the translation in the player subtitles.
 
@@ -582,6 +634,8 @@ Notes:
 
 ### Translate Comment Content
 
+Default: `On` | Version: `v1.0.0 (2025-05-19)`
+
 After enabling this, the extension automatically translates comments in the comment area and displays the translation near the original comment.
 
 Suitable use cases:
@@ -600,6 +654,7 @@ Configurable options:
 Notes:
 
 - If a comment is empty or contains only symbols, the extension shows a manual translation button. Comments identified as not needing translation only show it when "Show a manual translation button for comments that do not need automatic translation" is enabled.
+- Translations preserve emoji, images, links, and text styling from the original comment wherever possible; video timestamp links in the translation remain clickable and jump to the corresponding time.
 - After comment sorting, loading more comments, or YouTube dynamically refreshing the comment area, the extension continues processing newly appearing comments.
 - If the translation service is unavailable, comments remain unchanged.
 
@@ -607,15 +662,17 @@ Notes:
 
 ### Show a Manual Translation Button for Comments That Do Not Need Automatic Translation
 
+Default: `On` | Version: `v1.2.1 (2026-07-21)`
+
 When enabled, comments whose detected language matches the translation target language or the "Always never translate languages" setting keep a manual translation button.
 
 When disabled, those comments show neither an automatic translation nor the manual translation button. Comments that need translation continue to be translated automatically.
 
-This option is enabled by default to preserve the existing behavior.
-
 <a name="translate-comment-line-by-line"></a>
 
 ### Show Translation Line by Line Below the Original Text
+
+Default: `On` | Version: `v1.1.7 (2026-06-12)`
 
 After enabling this, for comments containing multiple lines, the extension tries to place each translated line below the corresponding original line instead of stacking the whole translated paragraph at the end of the comment.
 
@@ -642,6 +699,8 @@ These features are used to adjust YouTube page layout, comment display, ad distr
 <a name="other-home-video-per-row"></a>
 
 ### Lock the Number of Recommended Videos per Row on the Home Page
+
+Default: `Off; 4 per row` | Version: `v1.0.0 (2025-05-19)`
 
 After enabling this, you can fix how many recommended videos are shown per row on the YouTube home page.
 
@@ -670,6 +729,8 @@ Notes:
 
 ### Show Commenter Nicknames
 
+Default: `On` | Version: `v1.0.0 (2025-05-19)`
+
 After enabling this, the extension tries to display the commenter's channel name and show the original account name as auxiliary information.
 
 Suitable use cases:
@@ -686,6 +747,8 @@ Notes:
 <a name="other-comment-auto-more"></a>
 
 ### Automatically Expand Long Comments
+
+Default: `On` | Version: `v1.0.0 (2025-05-19)`
 
 After enabling this, long comments are automatically expanded, and the "Show more" and "Show less" buttons in comments are hidden.
 
@@ -707,6 +770,8 @@ Notes:
 
 ### Block Image and Text Ads
 
+Default: `Off` | Version: `v1.0.0 (2025-05-19)`
+
 After enabling this, the extension hides image/text ads, ad slots, some Premium promotions, and page ad modules on YouTube pages.
 
 Suitable use cases:
@@ -722,6 +787,8 @@ Notes:
 <a name="other-anti-ad-video"></a>
 
 ### Video Ad Blocking (Discontinued)
+
+Default: `Unavailable` | Version: `v1.0.0 (2025-05-19)`
 
 The current version has discontinued the extension's built-in video ad blocking feature. Its entry in the settings panel appears as an unavailable option with a strikethrough and can no longer be enabled.
 
@@ -739,6 +806,8 @@ Notes:
 
 ### Block Creator Product Recommendations
 
+Default: `Off` | Version: `v1.0.0 (2025-05-19)`
+
 After enabling this, the extension hides creator product recommendations, shopping recommendation shelves, ticket recommendations, and some product recommendation entries in the player.
 
 Suitable use cases:
@@ -755,9 +824,13 @@ Notes:
 
 ## Shorts
 
+The three Shorts blocking options work independently.
+
 <a name="other-shorts-home-search"></a>
 
 ### Block Shorts on the Home Page and in Search Results
+
+Default: `Off` | Version: `v1.0.1 (2025-06-09)`
 
 After enabling this, Shorts sections in home page recommendations are hidden, and Shorts sections in search results are hidden together.
 
@@ -775,6 +848,8 @@ Notes:
 
 ### Block Shorts Recommendations on Video Watch Pages
 
+Default: `Off` | Version: `v1.0.1 (2025-06-09)`
+
 After enabling this, Shorts recommendations in the video watch page sidebar, description area, or related recommendation area are hidden.
 
 Suitable use cases:
@@ -785,6 +860,8 @@ Suitable use cases:
 <a name="other-shorts-menu"></a>
 
 ### Block Shorts in the Sidebar
+
+Default: `Off` | Version: `v1.0.1 (2025-06-09)`
 
 After enabling this, Shorts entries in the YouTube sidebar, mini sidebar, and mobile web bottom navigation are hidden.
 
@@ -805,6 +882,8 @@ Notes:
 <a name="other-rollback-player-layout"></a>
 
 ### Return to the Old Watch Page Layout
+
+Default: `Off` | Version: `v1.1.7 (2026-06-12)`
 
 After enabling this, the extension adjusts part of the YouTube watch page layout closer to the old style, such as restoring a narrower right recommendation column and smaller recommendation thumbnails.
 
@@ -827,6 +906,8 @@ Notes:
 
 ### Disguise Premium Logo
 
+Default: `Off` | Version: `v1.2.0 (2026-07-18)`
+
 After enabling this, the regular YouTube logo in the upper-left corner is displayed as the YouTube Premium logo.
 
 Suitable use cases:
@@ -843,6 +924,8 @@ Notes:
 <a name="other-appearance-logo-country-code"></a>
 
 ### Modify Logo Country/Region Label
+
+Default: `Empty` | Version: `v1.2.1 (2026-07-21)`
 
 After you enter text, the label next to the YouTube logo that originally displays the country or region is replaced with your text. Clearing the field restores YouTube's default display.
 
@@ -869,6 +952,8 @@ Notes:
 <a name="other-custom-css-inject"></a>
 
 ### Inject Custom CSS into YouTube
+
+Default: `Off; style content empty` | Version: `v1.1.8 (2026-07-03)`
 
 After enabling this, you can apply CSS styles you write to YouTube pages to adjust colors, hide elements, or modify layout details.
 
@@ -903,7 +988,11 @@ These features are used for the extension's own language, settings, updates, abo
 
 ### View Extension Information and Project Entries
 
-The General page shows the extension name, version number, build time, and entries for the project home page, changelog, and issue feedback.
+Default: `Always shown` | Version: `v1.0.0 (2025-05-19)`
+
+The General page shows the extension name, version number, build time, and the commit corresponding to the current version. It also provides entries for the project home page, changelog, issue feedback, and sponsorship. The Safari version uses the YouTweak name and corresponding icon, while other versions display YouTube Tweak.
+
+Clicking the sponsorship entry displays a sponsorship prompt card, which can also be closed directly.
 
 Suitable use cases:
 
@@ -914,6 +1003,8 @@ Suitable use cases:
 <a name="general-about-check-update"></a>
 
 ### Manually Check for Updates
+
+Default: `Click the version number to trigger manually` | Version: `v1.0.9 (2025-11-22)`
 
 Click the version number to manually check whether the extension has a new version.
 
@@ -929,6 +1020,8 @@ Notes:
 <a name="general-language-switch"></a>
 
 ### Switch Extension Display Language
+
+Default: `Follow browser language; use English when unsupported` | Version: `v1.0.1 (2025-06-09)`
 
 You can switch the extension popup panel language on the General page.
 
@@ -950,6 +1043,8 @@ Notes:
 
 ### Disable Update Notifications
 
+Default: `Off` | Version: `v1.2.1 (2026-07-21)`
+
 After enabling this, the extension no longer uses the `new` badge on the extension icon to remind you to read new version notes, and clicking the extension icon no longer automatically opens the changelog because of unread notes.
 
 Suitable use cases:
@@ -959,13 +1054,16 @@ Suitable use cases:
 
 Notes:
 
-- This option is disabled by default, which means unread new version notes are shown by default.
+- When this option is disabled, reminders for unread new version notes are shown.
+- The unread badge compares the first three parts of the version number; an update that changes only the fourth revision part does not display the `new` badge again.
 - This option only disables new version note notifications. It does not prevent the browser from checking for, downloading, or installing extension updates.
 - After disabling notifications, you can still manually view the changelog under "About" or click the version number to manually check for updates.
 
 <a name="general-update-notice-version"></a>
 
 ### Available Update Prompt
+
+Default: `Shown automatically when a new version is detected` | Version: `v1.0.1 (2025-06-09)`
 
 When the browser detects an installable new version of the extension, the General page displays an update prompt.
 
@@ -984,6 +1082,8 @@ Notes:
 
 ### YouTube Page Reload Required Prompt
 
+Default: `Detected and shown automatically` | Version: `v1.0.1 (2025-06-09)`
+
 After the extension updates, already opened YouTube pages may still be using the old state. At this point, a prompt may appear on the page asking you to reload it.
 
 Suitable use cases:
@@ -993,12 +1093,15 @@ Suitable use cases:
 
 Notes:
 
+- There is no separate option in the settings panel.
 - Click the reload button in the prompt to refresh the current page.
 - After reloading, the page uses the new extension state.
 
 <a name="general-update-notice-compatibility"></a>
 
 ### Compatibility Warning
+
+Default: `Shown when subtitle translation or Disguise Premium Logo is enabled` | Version: `v1.1.3 (2025-12-03)`
 
 When subtitle translation or Disguise Premium Logo is enabled, the General page displays a warning prompt.
 
@@ -1019,6 +1122,8 @@ Recommendation:
 
 ### Export Settings
 
+Default: `Export regular settings only; memory excluded` | Version: `v1.0.1 (2025-06-09)`
+
 You can export the current extension settings as text for backup, migration to another browser, or sharing with other users.
 
 Configurable options:
@@ -1034,6 +1139,8 @@ Notes:
 
 ### Import Settings
 
+Default: `Import regular settings only; memory requires separate confirmation` | Version: `v1.0.1 (2025-06-09)`
+
 You can paste previously exported settings text to restore settings to the current browser.
 
 Notes:
@@ -1045,6 +1152,8 @@ Notes:
 <a name="general-config-reset"></a>
 
 ### Reset Settings
+
+Default: `Restore regular settings; retain per-channel memory` | Version: `v1.0.0 (2025-05-19)`
 
 You can restore extension settings to their default values.
 
@@ -1062,7 +1171,9 @@ Notes:
 
 ### First Installation Prompt
 
-After the extension is installed for the first time, a welcome page opens, indicating that the extension has been installed successfully and guiding the user to click the extension icon in the browser's top-right corner to start using it.
+Default: `Open automatically after first installation` | Version: `v1.0.0 (2025-05-19)`
+
+After the extension is installed for the first time, a welcome page opens, indicating that the extension has been installed successfully and guiding the user to click the browser's extension icon to start using it. The page adjusts the position and style of the arrow and extension icon hint for Safari, Chrome, Firefox, Edge, or other browsers.
 
 Suitable use cases:
 
