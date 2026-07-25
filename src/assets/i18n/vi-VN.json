@@ -6,6 +6,12 @@
 		"name_apple": "YouTweak",
 		"description_apple": "Nâng cấp các trang web video với khóa chất lượng, nút tốc độ, công cụ bình luận và trang gọn hơn."
 	},
+	"reloadNotice": {
+		"chromeApiOffline": "$APP_NAME$ đã được cập nhật. Tải lại trang này để áp dụng bản cập nhật.",
+		"onToggle": "Tải lại YouTube để áp dụng cài đặt này.",
+		"currentPage": "Tải lại trang này",
+		"allYouTubePages": "Tải lại tất cả trang YouTube"
+	},
 	"tabs": {
 		"player": {
 			"title": "Trình phát"

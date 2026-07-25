@@ -6,6 +6,12 @@
 		"name_apple": "YouTweak",
 		"description_apple": "Migliora i siti di video con qualità bloccata, pulsanti velocità, commenti e pagine più pulite."
 	},
+	"reloadNotice": {
+		"chromeApiOffline": "$APP_NAME$ è stato aggiornato. Ricarica questa pagina per applicare l'aggiornamento.",
+		"onToggle": "Ricarica YouTube per applicare questa impostazione.",
+		"currentPage": "Ricarica questa pagina",
+		"allYouTubePages": "Ricarica tutte le pagine di YouTube"
+	},
 	"tabs": {
 		"player": {
 			"title": "Player"

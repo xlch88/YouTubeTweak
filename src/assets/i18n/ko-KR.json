@@ -6,6 +6,12 @@
 		"name_apple": "YouTweak",
 		"description_apple": "화질 고정, 속도 버튼, 댓글 도구, 방해 요소 숨기기로 동영상 웹사이트를 더 편하게."
 	},
+	"reloadNotice": {
+		"chromeApiOffline": "$APP_NAME$이(가) 업데이트되었습니다. 업데이트를 적용하려면 이 페이지를 새로고침하세요.",
+		"onToggle": "이 설정을 적용하려면 YouTube 페이지를 새로고침하세요.",
+		"currentPage": "이 페이지 새로고침",
+		"allYouTubePages": "모든 YouTube 페이지 새로고침"
+	},
 	"tabs": {
 		"player": {
 			"title": "플레이어"

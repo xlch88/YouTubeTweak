@@ -7,6 +7,7 @@ import fetchHooker from "./fetchHooker";
 import type { Plugin } from "./types";
 import memory, { createDebouncedMemoryStorage } from "@/memory";
 import xmlHttpRequestHooker from "./xmlHttpRequestHooker";
+import { showReloadNotice } from "./util/reloadNotice";
 
 declare global {
 	interface Window {
@@ -109,6 +110,7 @@ const YouTubeTweakApp = {
 
 			const oldConfig = data.settings.oldValue;
 			const newConfig = data.settings.newValue;
+			let needsReload = false;
 
 			for (const [key, value] of Object.entries(newConfig)) {
 				if (oldConfig[key] !== value) {
@@ -122,9 +124,7 @@ const YouTubeTweakApp = {
 
 						if (plugins[key]?.options?.reloadOnToggle) {
 							logger.info("plugin status change. need to reload page !!!");
-							debugger;
-							window.location.reload();
-							return;
+							needsReload = true;
 						}
 					}
 				}
@@ -143,6 +143,8 @@ const YouTubeTweakApp = {
 					logger.error("plugin error:", e);
 				}
 			});
+
+			if (needsReload) showReloadNotice("reloadOnToggle");
 		};
 	},
 	initElementCatcher() {

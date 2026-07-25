@@ -6,6 +6,12 @@
 		"name_apple": "YouTweak",
 		"description_apple": "Video sitelerini kalite kilidi, hız düğmeleri, yorum araçları ve daha temiz sayfalarla geliştir."
 	},
+	"reloadNotice": {
+		"chromeApiOffline": "$APP_NAME$ güncellendi. Güncellemeyi uygulamak için bu sayfayı yeniden yükleyin.",
+		"onToggle": "Bu ayarı uygulamak için YouTube sayfasını yeniden yükleyin.",
+		"currentPage": "Bu sayfayı yeniden yükle",
+		"allYouTubePages": "Tüm YouTube sayfalarını yeniden yükle"
+	},
 	"tabs": {
 		"player": {
 			"title": "Oynatıcı"

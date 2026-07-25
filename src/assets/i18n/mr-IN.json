@@ -6,6 +6,12 @@
 		"name_apple": "YouTweak",
 		"description_apple": "क्वालिटी लॉक, स्पीड बटणे, टिप्पणी साधने आणि स्वच्छ पेजेससह व्हिडिओ वेबसाइट सुधारा."
 	},
+	"reloadNotice": {
+		"chromeApiOffline": "$APP_NAME$ अपडेट झाले आहे. अपडेट लागू करण्यासाठी हे पृष्ठ रीलोड करा.",
+		"onToggle": "हे सेटिंग लागू करण्यासाठी YouTube पृष्ठ रीलोड करा.",
+		"currentPage": "हे पृष्ठ रीलोड करा",
+		"allYouTubePages": "सर्व YouTube पृष्ठे रीलोड करा"
+	},
 	"tabs": {
 		"player": {
 			"title": "प्लेअर"

@@ -36,6 +36,23 @@ export default defineWxtModule({
 						manifest_description: {
 							message: extDescription,
 						},
+						reload_notice_chrome_api_offline: {
+							message: localeData.reloadNotice.chromeApiOffline,
+							placeholders: {
+								app_name: {
+									content: "$1",
+								},
+							},
+						},
+						reload_notice_on_toggle: {
+							message: localeData.reloadNotice.onToggle,
+						},
+						reload_notice_current_page: {
+							message: localeData.reloadNotice.currentPage,
+						},
+						reload_notice_all_youtube_pages: {
+							message: localeData.reloadNotice.allYouTubePages,
+						},
 					},
 					null,
 					2,

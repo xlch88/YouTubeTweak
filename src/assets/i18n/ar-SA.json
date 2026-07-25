@@ -6,6 +6,12 @@
 		"name_apple": "YouTweak",
 		"description_apple": "تحسين مواقع الفيديو: جودة ثابتة، أزرار سرعة، أدوات تعليقات، وصفحات أنظف."
 	},
+	"reloadNotice": {
+		"chromeApiOffline": "تم تحديث $APP_NAME$. أعد تحميل هذه الصفحة لتطبيق التحديث.",
+		"onToggle": "أعد تحميل صفحة YouTube لتطبيق هذا الإعداد.",
+		"currentPage": "إعادة تحميل هذه الصفحة",
+		"allYouTubePages": "إعادة تحميل جميع صفحات YouTube"
+	},
 	"tabs": {
 		"player": {
 			"title": "المشغل"

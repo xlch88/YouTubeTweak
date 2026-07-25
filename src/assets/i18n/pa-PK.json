@@ -6,6 +6,12 @@
 		"name_apple": "YouTweak",
 		"description_apple": "کوالٹی لاک، رفتار بٹن، تبصرہ ٹولز تے صاف صفحیاں نال ویڈیو ویب سائٹ نوں بہتر بناؤ۔"
 	},
+	"reloadNotice": {
+		"chromeApiOffline": "$APP_NAME$ اپ ڈیٹ ہو گیا ہے۔ اپ ڈیٹ لاگو کرن لئی ایہہ صفحہ دوبارہ لوڈ کرو۔",
+		"onToggle": "ایہہ سیٹنگ لاگو کرن لئی YouTube صفحہ دوبارہ لوڈ کرو۔",
+		"currentPage": "ایہہ صفحہ دوبارہ لوڈ کرو",
+		"allYouTubePages": "سارے YouTube صفحے دوبارہ لوڈ کرو"
+	},
 	"tabs": {
 		"player": {
 			"title": "پلیئر"

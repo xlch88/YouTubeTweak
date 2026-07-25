@@ -1,5 +1,6 @@
-import wirelessRedstone from "../wirelessRedstone";
-import { isDEV } from "../../logger";
+import wirelessRedstone from "@/inject/wirelessRedstone";
+import { isDEV } from "@/logger";
+import { showReloadNotice } from "@/inject/util/reloadNotice";
 
 import type { Plugin } from "../types";
 
@@ -7,19 +8,7 @@ export default {
 	"yttweak.enableChromeApiStatusChecker": {
 		enable() {
 			wirelessRedstone.handlers.chromeApiOffline = () => {
-				const container = document.createElement("div");
-				container.id = "__yt_tweak_update_notice";
-
-				const tips = document.createElement("p");
-				tips.textContent = `${__APP_BRANDING__.compactName} is update!\nPlease reload the page.`;
-
-				const button = document.createElement("button");
-				button.textContent = "Reload Now";
-				button.onclick = () => location.reload();
-
-				container.appendChild(tips);
-				container.appendChild(button);
-				document.body.appendChild(container);
+				showReloadNotice("chromeApiOffline");
 
 				// mode === "development" only
 				if (isDEV) {
@@ -27,6 +16,9 @@ export default {
 				}
 			};
 			wirelessRedstone.send("enableChromeApiStatusChecker", true);
+		},
+		disable() {
+			wirelessRedstone.send("enableChromeApiStatusChecker", false);
 		},
 	},
 } as Record<string, Plugin>;

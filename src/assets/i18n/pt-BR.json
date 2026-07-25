@@ -6,6 +6,12 @@
 		"name_apple": "YouTweak",
 		"description_apple": "Melhore sites de vídeo com trava de qualidade, botões de velocidade, comentários e páginas mais limpas."
 	},
+	"reloadNotice": {
+		"chromeApiOffline": "$APP_NAME$ foi atualizado. Recarregue esta página para aplicar a atualização.",
+		"onToggle": "Recarregue o YouTube para aplicar esta configuração.",
+		"currentPage": "Recarregar esta página",
+		"allYouTubePages": "Recarregar todas as páginas do YouTube"
+	},
 	"tabs": {
 		"player": {
 			"title": "Reprodutor"

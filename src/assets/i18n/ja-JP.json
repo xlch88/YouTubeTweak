@@ -6,6 +6,12 @@
 		"name_apple": "YouTweak",
 		"description_apple": "画質ロック、速度ボタン、コメント機能、不要な要素の非表示で動画サイトを快適に。"
 	},
+	"reloadNotice": {
+		"chromeApiOffline": "$APP_NAME$ が更新されました。更新を適用するには、このページを再読み込みしてください。",
+		"onToggle": "この設定を適用するには、YouTube ページを再読み込みしてください。",
+		"currentPage": "このページを再読み込み",
+		"allYouTubePages": "すべての YouTube ページを再読み込み"
+	},
 	"tabs": {
 		"player": {
 			"title": "プレイヤー"

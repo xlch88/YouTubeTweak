@@ -6,6 +6,12 @@
 		"name_apple": "YouTweak",
 		"description_apple": "ปรับปรุงเว็บไซต์วิดีโอด้วยล็อกคุณภาพ ปุ่มความเร็ว เครื่องมือคอมเมนต์ และหน้าที่สะอาดขึ้น"
 	},
+	"reloadNotice": {
+		"chromeApiOffline": "$APP_NAME$ ได้รับการอัปเดตแล้ว โปรดโหลดหน้านี้ใหม่เพื่อใช้การอัปเดต",
+		"onToggle": "โหลดหน้า YouTube ใหม่เพื่อใช้การตั้งค่านี้",
+		"currentPage": "โหลดหน้านี้ใหม่",
+		"allYouTubePages": "โหลดหน้า YouTube ทั้งหมดใหม่"
+	},
 	"tabs": {
 		"player": {
 			"title": "เครื่องเล่น"

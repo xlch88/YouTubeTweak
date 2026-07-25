@@ -6,6 +6,12 @@
 		"name_apple": "YouTweak",
 		"description_apple": "Tingkatkan situs video dengan kunci kualitas, tombol kecepatan, alat komentar, dan halaman lebih bersih."
 	},
+	"reloadNotice": {
+		"chromeApiOffline": "$APP_NAME$ telah diperbarui. Muat ulang halaman ini untuk menerapkan pembaruan.",
+		"onToggle": "Muat ulang YouTube untuk menerapkan setelan ini.",
+		"currentPage": "Muat ulang halaman ini",
+		"allYouTubePages": "Muat ulang semua halaman YouTube"
+	},
 	"tabs": {
 		"player": {
 			"title": "Pemutar"

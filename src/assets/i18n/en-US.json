@@ -6,6 +6,12 @@
 		"name_apple": "YouTweak",
 		"description_apple": "Enhance video websites with quality lock, speed buttons, comment tools, and cleaner pages."
 	},
+	"reloadNotice": {
+		"chromeApiOffline": "$APP_NAME$ has been updated. Reload this page to apply the update.",
+		"onToggle": "Reload YouTube to apply this setting.",
+		"currentPage": "Reload this page",
+		"allYouTubePages": "Reload all YouTube pages"
+	},
 	"tabs": {
 		"player": {
 			"title": "Player"

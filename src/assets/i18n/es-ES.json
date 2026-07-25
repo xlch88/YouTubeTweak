@@ -6,6 +6,12 @@
 		"name_apple": "YouTweak",
 		"description_apple": "Mejora los sitios de vídeo con bloqueo de calidad, botones de velocidad, comentarios y menos distracciones."
 	},
+	"reloadNotice": {
+		"chromeApiOffline": "$APP_NAME$ se ha actualizado. Recarga esta página para aplicar la actualización.",
+		"onToggle": "Recarga YouTube para aplicar este ajuste.",
+		"currentPage": "Recargar esta página",
+		"allYouTubePages": "Recargar todas las páginas de YouTube"
+	},
 	"tabs": {
 		"player": {
 			"title": "Reproductor"

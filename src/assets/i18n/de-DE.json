@@ -6,6 +6,12 @@
 		"name_apple": "YouTweak",
 		"description_apple": "Video-Websites verbessern: Qualität sperren, Tempo-Tasten, Kommentar-Tools und weniger Ablenkung."
 	},
+	"reloadNotice": {
+		"chromeApiOffline": "$APP_NAME$ wurde aktualisiert. Lade diese Seite neu, um das Update anzuwenden.",
+		"onToggle": "Lade YouTube neu, um diese Einstellung anzuwenden.",
+		"currentPage": "Diese Seite neu laden",
+		"allYouTubePages": "Alle YouTube-Seiten neu laden"
+	},
 	"tabs": {
 		"player": {
 			"title": "Player"

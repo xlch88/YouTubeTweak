@@ -6,6 +6,12 @@
 		"name_apple": "YouTweak",
 		"description_apple": "কোয়ালিটি লক, স্পিড বোতাম, মন্তব্য টুল ও কম বিভ্রান্তিসহ ভিডিও ওয়েবসাইট উন্নত করুন।"
 	},
+	"reloadNotice": {
+		"chromeApiOffline": "$APP_NAME$ আপডেট হয়েছে। আপডেটটি প্রয়োগ করতে এই পৃষ্ঠাটি রিলোড করুন।",
+		"onToggle": "এই সেটিংটি প্রয়োগ করতে YouTube পৃষ্ঠাটি রিলোড করুন।",
+		"currentPage": "এই পৃষ্ঠাটি রিলোড করুন",
+		"allYouTubePages": "সব YouTube পৃষ্ঠা রিলোড করুন"
+	},
 	"tabs": {
 		"player": {
 			"title": "প্লেয়ার"

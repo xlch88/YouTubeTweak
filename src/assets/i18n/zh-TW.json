@@ -6,6 +6,12 @@
 		"name_apple": "YouTweak",
 		"description_apple": "增強影音網站：鎖定畫質、倍速按鈕、留言工具、隱藏干擾元素。"
 	},
+	"reloadNotice": {
+		"chromeApiOffline": "$APP_NAME$ 已更新，請重新整理目前頁面以套用更新。",
+		"onToggle": "此設定需要重新整理 YouTube 頁面後才能生效。",
+		"currentPage": "重新整理目前頁面",
+		"allYouTubePages": "重新整理所有 YouTube 頁面"
+	},
 	"tabs": {
 		"player": {
 			"title": "播放器"

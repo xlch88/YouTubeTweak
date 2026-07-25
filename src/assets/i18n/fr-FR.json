@@ -6,6 +6,12 @@
 		"name_apple": "YouTweak",
 		"description_apple": "Améliore les sites vidéo avec qualité verrouillée, boutons de vitesse, commentaires et pages plus propres."
 	},
+	"reloadNotice": {
+		"chromeApiOffline": "$APP_NAME$ a été mis à jour. Rechargez cette page pour appliquer la mise à jour.",
+		"onToggle": "Rechargez YouTube pour appliquer ce paramètre.",
+		"currentPage": "Recharger cette page",
+		"allYouTubePages": "Recharger toutes les pages YouTube"
+	},
 	"tabs": {
 		"player": {
 			"title": "Lecteur"

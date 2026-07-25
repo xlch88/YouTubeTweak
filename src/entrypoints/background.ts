@@ -1,6 +1,14 @@
 import { defineBackground } from "wxt/utils/define-background";
 import { READ_CHANGELOG_VERSION_STORAGE_KEY, syncVersionNoticeBadge } from "@/util/versionNotice";
 
+function reloadAllYouTubeTabs() {
+	return browser.tabs
+		.query({ url: "*://*.youtube.com/*", discarded: false })
+		.then((tabs) =>
+			Promise.allSettled(tabs.filter((tab) => typeof tab.id === "number").map((tab) => browser.tabs.reload(tab.id as number))),
+		);
+}
+
 export default defineBackground({
 	persistent: false,
 	main() {
@@ -29,11 +37,7 @@ export default defineBackground({
 							if (!result.needReloadTabs) return;
 
 							browser.storage.local.set({ needReloadTabs: false }).catch(() => {});
-							browser.tabs.query({ url: "*://*.youtube.com/*", discarded: false }).then((cb) => {
-								cb.forEach((tab) => {
-									if (tab.id) browser.tabs.reload(tab.id).catch(() => {});
-								});
-							});
+							reloadAllYouTubeTabs();
 						})
 						.catch((e) => {
 							console.error("Error getting needReloadTabs:", e);
@@ -42,6 +46,11 @@ export default defineBackground({
 			}
 
 			console.log(details);
+		});
+
+		browser.runtime.onMessage.addListener((message) => {
+			if (message?.type !== "reloadAllYouTubeTabs") return;
+			return reloadAllYouTubeTabs().then(() => true);
 		});
 
 		browser.runtime.onUpdateAvailable.addListener((details) => {

@@ -6,6 +6,12 @@
 		"name_apple": "YouTweak",
 		"description_apple": "Tingkatkan laman web video dengan kunci kualiti, butang kelajuan, alat komen dan halaman lebih bersih."
 	},
+	"reloadNotice": {
+		"chromeApiOffline": "$APP_NAME$ telah dikemas kini. Muat semula halaman ini untuk menggunakan kemas kini.",
+		"onToggle": "Muat semula YouTube untuk menggunakan tetapan ini.",
+		"currentPage": "Muat semula halaman ini",
+		"allYouTubePages": "Muat semula semua halaman YouTube"
+	},
 	"tabs": {
 		"player": {
 			"title": "Pemain"

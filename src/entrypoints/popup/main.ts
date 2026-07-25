@@ -21,6 +21,7 @@ window.__APP_INFO__ = {
 	version: browser.runtime.getManifest().version,
 };
 document.title = __APP_BRANDING__.compactName;
+document.documentElement.classList.toggle("apple-branding", __APP_BRANDING__.isSafari);
 
 const app = createApp(App);
 const pinia = createPinia();
