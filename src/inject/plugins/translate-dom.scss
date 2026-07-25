@@ -129,3 +129,49 @@ ytd-playlist-panel-video-renderer #meta {
 		font-weight: normal;
 	}
 }
+
+// fix DeArrow
+a.yttweak-video-list-title-translated,
+ytd-playlist-panel-video-renderer h4.yttweak-video-list-title-translated {
+	flex-wrap: wrap;
+	span[style*="display: none"] + .yttweak-video-list-title-translate {
+		display: none;
+	}
+	.yttweak-video-list-title-translate {
+		order: 10;
+		width: 100%;
+	}
+}
+
+yt-lockup-view-model .ytLockupViewModelMetadata .ytLockupMetadataViewModelTextContainer,
+ytm-shorts-lockup-view-model .shortsLockupViewModelHostOutsideMetadata {
+	&:has(.cbShowOriginal):hover h3 a {
+		.ytAttributedStringHost {
+			width: 100%;
+			max-width: calc(100% - 25px);
+		}
+	}
+}
+ytd-playlist-panel-video-renderer #wc-endpoint #meta {
+	&:has(.cbShowOriginal):hover h4 {
+		#video-title {
+			width: 100%;
+			max-width: calc(100% - 25px);
+		}
+	}
+}
+
+.ytp-modern-videowall-still
+	.ytp-modern-videowall-still-info
+	.ytp-modern-videowall-still-info-content
+	.yttweak-video-list-title-translated:has(.cbShowOriginal) {
+	&:hover {
+		.ytp-modern-videowall-still-info-title {
+			width: 100%;
+			max-width: calc(100% - 25px);
+		}
+	}
+	span[style*="display: none"] + .yttweak-video-list-title-translate {
+		display: none;
+	}
+}

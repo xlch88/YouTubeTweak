@@ -20,9 +20,8 @@ const VIDEO_LIST_TITLE_SELECTOR = [
 	"ytm-shorts-lockup-view-model .shortsLockupViewModelHostOutsideMetadata h3.shortsLockupViewModelHostMetadataTitle a span.ytAttributedStringWhiteSpacePreWrap",
 	".ytp-modern-videowall-still .ytp-modern-videowall-still-info .ytp-modern-videowall-still-info-title",
 	"ytd-playlist-panel-video-renderer #meta span#video-title",
-]
-	.map((selector) => `${selector}:not([data-yttweak-translation-hooked])`)
-	.join(",");
+].join(",");
+const observedVideoListTitles = new WeakSet<HTMLElement>();
 let descriptionNavigating = false;
 
 async function translatePlainText(source: string, targetLanguage: string) {
@@ -33,9 +32,10 @@ async function translatePlainText(source: string, targetLanguage: string) {
 }
 
 async function translateTextElement(element: HTMLElement, translationClass: string) {
-	const source = element.innerText.trim();
+	const source = element.textContent?.trim() ?? "";
+	const currentTranslation = element.nextElementSibling;
 	if (!source) {
-		element.parentElement?.querySelector(`:scope > .${translationClass}`)?.remove();
+		if (currentTranslation?.classList.contains(translationClass)) currentTranslation.remove();
 		delete element.dataset.yttweakTranslation;
 		return;
 	}
@@ -44,11 +44,11 @@ async function translateTextElement(element: HTMLElement, translationClass: stri
 	if (element.dataset.yttweakTranslation === key) return;
 
 	element.dataset.yttweakTranslation = key;
-	element.parentElement?.querySelector(`:scope > .${translationClass}`)?.remove();
+	if (currentTranslation?.classList.contains(translationClass)) currentTranslation.remove();
 
 	try {
 		const translatedText = await translatePlainText(source, targetLanguage);
-		if (element.dataset.yttweakTranslation !== key || element.innerText.trim() !== source || !element.isConnected || !translatedText)
+		if (element.dataset.yttweakTranslation !== key || element.textContent?.trim() !== source || !element.isConnected || !translatedText)
 			return;
 
 		const translation = document.createElement("span");
@@ -71,7 +71,10 @@ async function translateVideoTitle(metadata: HTMLElement) {
 
 function initVideoListTitles() {
 	document.querySelectorAll<HTMLElement>(VIDEO_LIST_TITLE_SELECTOR).forEach((title) => {
+		if (observedVideoListTitles.has(title)) return;
+		observedVideoListTitles.add(title);
 		title.dataset.yttweakTranslationHooked = "true";
+		delete title.dataset.yttweakTranslation;
 		const update = async () => {
 			await translateTextElement(title, "yttweak-video-list-title-translate");
 			const translated = Boolean(title.parentElement?.querySelector(":scope > .yttweak-video-list-title-translate"));
@@ -164,7 +167,8 @@ async function createRichTextTranslation(source: HTMLElement, targetLanguage: st
 	let changed = false;
 	segments.forEach(([node, segment], index) => {
 		const translatedText = translatedHtmlToText(translations[index] ?? "").trim();
-		if (!translatedText || translatedText === segment.source || shouldSkipAutoTranslation(detectedLanguages[index], targetLanguage)) return;
+		if (!translatedText || translatedText === segment.source || shouldSkipAutoTranslation(detectedLanguages[index], targetLanguage))
+			return;
 
 		node.data = segment.leading + translatedText + segment.trailing;
 		changed = true;
