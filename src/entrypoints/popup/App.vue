@@ -11,7 +11,7 @@
 			</button>
 		</header>
 
-		<main>
+		<main ref="mainElement">
 			<transition name="slide-fade" mode="out-in">
 				<component :is="tabs[tab]" />
 			</transition>
@@ -24,7 +24,7 @@
 import useConfigStore from "./util/config";
 import appleLogo from "@/assets/img/logo_apple.svg";
 import logo from "@/assets/img/logo.svg";
-import { ref, provide, defineAsyncComponent } from "vue";
+import { ref, provide, defineAsyncComponent, watch } from "vue";
 import Installed from "./pages/installed.vue";
 import type { Component } from "vue";
 
@@ -38,7 +38,13 @@ const tabs: Record<string, Component> = {
 	general: defineAsyncComponent(() => import("./pages/general.vue")),
 };
 
+const mainElement = ref<HTMLElement | null>(null);
 const tab = ref(localStorage.getItem("tab") || "player");
+watch(tab, () => {
+	setTimeout(() => {
+		if (mainElement.value) mainElement.value.scrollTop = 0;
+	}, 100);
+});
 function tabClick(key: string) {
 	tab.value = key;
 	localStorage.setItem("tab", key);
