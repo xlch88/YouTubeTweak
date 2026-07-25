@@ -124,8 +124,6 @@ export default {
 						topbar.desktopTopbarRenderer.countryCode = logoCountryCode;
 					}
 
-					debugger;
-
 					return data;
 				},
 			});
