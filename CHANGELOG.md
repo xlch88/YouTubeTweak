@@ -6,6 +6,23 @@ All release version update records are listed in this file.
 
 If you have questions, bug reports, or feature suggestions, please go to the [GitHub Issues page](https://github.com/xlch88/YouTubeTweak/issues) to submit them.
 
+## [1.2.2] - 2026-07-25
+
+### Updated
+
+- **Comment translation:** Improved processing efficiency when translating multiple items at once and updated the manual translation button icon.
+
+### Added
+
+- **Comment translation:** Added the "Show a Manual Translation Button for Comments That Do Not Need Automatic Translation" option, allowing you to hide the manual translation action for comments in the target language or languages set to "Always Never Translate."
+
+### Fixed
+
+- **Page translation:** Fixed translation display issues for watch page titles and playlist titles, and improved compatibility with DeArrow.
+- **Translation settings:** Fixed "Always Never Translate Languages" not applying consistently to automatic translation of comments, page content, and subtitles.
+- **Update notifications:** Fixed patch versions being misidentified as feature updates, causing incorrect `new` badge display and inaccurate changelog version ranges.
+- **Video zoom:** Fixed dragging a zoomed video potentially triggering other player actions.
+
 ## [1.2.1] - 2026-07-21
 
 ### Updated

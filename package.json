@@ -1,7 +1,7 @@
 {
 	"name": "youtube-tweak",
 	"private": true,
-	"version": "1.2.1.4",
+	"version": "1.2.2",
 	"type": "module",
 	"scripts": {
 		"dev": "wxt",
