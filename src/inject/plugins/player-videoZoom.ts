@@ -269,7 +269,7 @@ function stopDragging() {
 }
 
 function startDragging(event: MouseEvent) {
-	if (isDragging || !config.get("player.ui.enableVideoZoom") || event.button !== 0 || shouldIgnoreMouseEvent(event)) return;
+	if (!config.get("player.ui.enableVideoZoom") || event.button !== 0 || shouldIgnoreMouseEvent(event)) return;
 
 	if (zoom <= MIN_ZOOM) {
 		if (isEventInVideoTriggerArea(event)) {
@@ -279,6 +279,11 @@ function startDragging(event: MouseEvent) {
 		}
 		return;
 	}
+
+	event.preventDefault();
+	event.stopPropagation();
+	event.stopImmediatePropagation();
+	if (isDragging) return;
 
 	touchPlayer();
 	isDragging = true;
@@ -296,7 +301,7 @@ function startDragging(event: MouseEvent) {
 }
 
 function handlePointerMove(event: MouseEvent | PointerEvent) {
-	if (!isDragging) return;
+	if (!isDragging || !event.isTrusted) return;
 
 	const nextOffsetX = dragStartOffsetX + event.clientX - dragStartX;
 	const nextOffsetY = dragStartOffsetY + event.clientY - dragStartY;
