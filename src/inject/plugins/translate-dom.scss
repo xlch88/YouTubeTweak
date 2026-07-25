@@ -132,7 +132,8 @@ ytd-playlist-panel-video-renderer #meta {
 
 // fix DeArrow
 a.yttweak-video-list-title-translated,
-ytd-playlist-panel-video-renderer h4.yttweak-video-list-title-translated {
+ytd-playlist-panel-video-renderer h4.yttweak-video-list-title-translated,
+.ytp-modern-videowall-still-info-content .yttweak-video-list-title-translated {
 	flex-wrap: wrap;
 	span[style*="display: none"] + .yttweak-video-list-title-translate {
 		display: none;
@@ -155,6 +156,14 @@ ytm-shorts-lockup-view-model .shortsLockupViewModelHostOutsideMetadata {
 ytd-playlist-panel-video-renderer #wc-endpoint #meta {
 	&:has(.cbShowOriginal):hover h4 {
 		#video-title {
+			width: 100%;
+			max-width: calc(100% - 25px);
+		}
+	}
+}
+.ytp-modern-videowall-still-info-content {
+	&:has(.cbShowOriginal):hover .yttweak-video-list-title-translated {
+		.ytp-modern-videowall-still-info-title {
 			width: 100%;
 			max-width: calc(100% - 25px);
 		}
