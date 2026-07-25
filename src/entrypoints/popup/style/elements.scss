@@ -1,8 +1,8 @@
 .tips {
 	background: #4caf50;
-	margin: 10px;
-	border-radius: 5px;
-	padding: 15px;
+	margin: 10px 4px 10px 10px;
+	border-radius: 9px;
+	padding: 12px;
 	gap: 5px;
 	display: flex;
 	flex-wrap: wrap;
@@ -11,6 +11,7 @@
 	&.tips-warning {
 		background: #ffbb54;
 		color: black;
+
 		p {
 			margin: 0;
 		}
@@ -30,13 +31,13 @@
 
 .card {
 	background: #fff;
-	margin: 10px;
-	margin-right: 2px;
-	border-radius: 5px;
-	padding: 10px;
+	margin: 10px 4px 10px 10px;
+	border: 1px solid #e5e6ed;
+	border-radius: 10px;
+	padding: 12px;
 	box-shadow:
-		0 2px 2px 0 rgba(65, 69, 88, 0.1),
-		0 3px 2px 0 rgba(0, 0, 0, 0.07);
+		0 1px 2px rgba(37, 39, 51, 0.04),
+		0 5px 16px rgba(37, 39, 51, 0.06);
 
 	// fuck ios safari
 	@supports (-webkit-touch-callout: none) {
@@ -49,13 +50,14 @@
 		display: flex;
 		align-items: center;
 		gap: 6px;
-		font-weight: bold;
-		border-bottom: 1px solid #eee;
+		color: #343542;
+		font-weight: 650;
+		border-bottom: 1px solid #ebebf0;
 		background: rgb(249, 250, 253);
-		margin: -10px -10px 10px -10px;
-		padding: 10px;
+		margin: -12px -12px 11px;
+		padding: 10px 12px;
 		font-size: 13px;
-		border-radius: 5px 5px 0 0;
+		border-radius: 9px 9px 0 0;
 
 		.docs-help-link {
 			margin-left: 0;
@@ -69,21 +71,34 @@
 			}
 		}
 	}
+
 	.card-body {
 		p {
-			color: #7e8299;
+			color: #737789;
 			margin-bottom: 0;
 			margin-top: 10px;
+			line-height: 1.5;
 		}
 	}
 }
+
 .form-item {
 	display: flex;
 	align-items: center;
 	gap: 6px;
+	min-height: 28px;
+	padding: 4px 2px;
+	border-radius: 6px;
+	color: #414352;
+	line-height: 1.35;
+	transition: background-color 0.15s;
 
 	.docs-help-link {
 		margin-left: 0;
+	}
+
+	&:hover {
+		background: rgba(#000, 0.035);
 	}
 
 	&:hover input[type="checkbox"]:not(:checked):not(:focus):not(:disabled) {
@@ -100,6 +115,7 @@
 
 	&.form-item-select {
 		padding-top: 5px;
+		padding-bottom: 5px;
 		justify-content: flex-start;
 
 		span {
@@ -117,6 +133,7 @@
 		}
 	}
 }
+
 .form-item-group {
 	display: flex;
 	flex-direction: row;
@@ -149,7 +166,7 @@
 	border: 1px solid #b8beca;
 	border-radius: 50%;
 	background: white;
-	color: #8a8f98;
+	color: #777b89;
 	font-size: 12px;
 	font-weight: 700;
 	line-height: 1;
@@ -158,7 +175,7 @@
 	pointer-events: none;
 	transition:
 		opacity 0.15s,
-		background 0.15s,
+		background-color 0.15s,
 		color 0.15s,
 		border-color 0.15s;
 

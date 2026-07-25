@@ -73,23 +73,23 @@ provide("setTab", (v: string) => {
 
 <style lang="scss">
 main {
-	margin-top: 40px;
-	height: 100%;
+	margin-top: 44px;
+	height: calc(100vh - 44px);
 	width: 100%;
-	overflow-y: scroll;
+	overflow-y: auto;
 	overflow-x: hidden;
 	scrollbar-gutter: stable;
 
 	.slide-fade-enter-active,
 	.slide-fade-leave-active {
 		transition:
-			transform 0.1s cubic-bezier(1, 0.5, 0.8, 1),
-			opacity 0.1s cubic-bezier(1, 0.5, 0.8, 1);
+			transform 0.14s ease,
+			opacity 0.14s ease;
 	}
 
 	.slide-fade-enter-from,
 	.slide-fade-leave-to {
-		transform: translateY(-10px);
+		transform: translateY(-6px);
 		opacity: 0;
 	}
 
@@ -98,75 +98,88 @@ main {
 		transform: translateY(0);
 		opacity: 1;
 	}
-
-	//background: #000;
-	//width: 100px;
-	//height: 100px;
 }
+
 header {
 	position: fixed;
 	z-index: 9999;
-	height: 40px;
+	height: 44px;
 	width: 100%;
 	top: 0;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
+	gap: 2px;
 	justify-content: space-between;
 	align-items: center;
-	box-shadow: 0 0 10px rgba(#000, 0.3);
+	border-bottom: 1px solid #e8e8ef;
+	box-shadow: 0 2px 12px rgba(40, 42, 54, 0.08);
 	background: #fff;
-	padding: 0 10px;
+	padding: 0 8px;
 
 	.item {
 		appearance: none;
-		padding: 5px 0;
+		padding: 5px 2px;
 		height: 100%;
 		line-height: 30px;
 		text-align: center;
 		border: none;
 		background: none;
+		color: #55586a;
 		cursor: pointer;
 		word-break: keep-all;
 		white-space: nowrap;
 		font-size: 12px;
-		transition: color 0.3s;
+		font-weight: 500;
+		transition: color 0.18s;
 		flex: 1;
 
 		&:is(button) > span {
 			background: transparent;
-			padding: 3px 6px;
+			padding: 4px 7px;
 			border-radius: 500px;
-			transition: background 0.3s;
+			transition:
+				background-color 0.18s,
+				box-shadow 0.18s;
 		}
 
 		&.active {
 			color: #d739e3;
+
 			> span {
 				background: rgba(215, 57, 227, 0.2);
 			}
 		}
+
 		&:hover {
 			color: #c15fc7;
+
 			&.active {
 				color: #c320d0;
 			}
 		}
 
+		&:focus-visible {
+			outline: 2px solid rgba(215, 57, 227, 0.4);
+			outline-offset: -3px;
+			border-radius: 7px;
+		}
+
 		&.logo {
 			display: flex;
 			align-items: center;
-			background: #fff;
-			cursor: help;
-			color: #000;
+			background: transparent;
+			color: #252631;
+			cursor: pointer;
 
 			img {
-				width: 30px;
-				height: 30px;
+				width: 28px;
+				height: 28px;
 				margin-right: 5px;
 			}
+
 			span {
-				font-weight: bolder;
+				font-weight: 700;
 				font-size: 15px;
 				line-height: 12px;
 				font-family: "Trebuchet MS", serif;
@@ -177,7 +190,7 @@ header {
 				small {
 					font-size: 7px;
 					line-height: 7px;
-					color: rgba(0, 0, 0, 0.5);
+					color: #8a8c98;
 				}
 			}
 

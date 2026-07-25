@@ -74,7 +74,7 @@
 					</select>
 					<span v-else class="speed-slider-step-custom">
 						<input type="number" min="0.0001" max="10" step="0.0001" v-model.number="config['player.ui.speedSliderStep']" />
-						<button type="button" @click="showCustomSpeedSliderStepInput = false">
+						<button class="btn" type="button" @click="showCustomSpeedSliderStepInput = false">
 							{{ $t("player.speedButtons.select.sliderWheelStepPresets") }}
 						</button>
 					</span>
@@ -319,11 +319,10 @@ const speedSliderWheelStepSelectValue = computed({
 	}
 
 	&-step {
-		padding-top: 0;
-
 		&-custom {
 			display: flex;
 			gap: 6px;
+			justify-content: flex-end;
 
 			input {
 				width: 90px;
