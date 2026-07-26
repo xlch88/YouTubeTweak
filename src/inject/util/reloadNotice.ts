@@ -1,4 +1,6 @@
 import wirelessRedstone from "@/inject/wirelessRedstone";
+import logoUrl from "@/assets/img/logo.svg?url";
+import appleLogoUrl from "@/assets/img/logo_apple.svg?url";
 
 type ReloadNoticeType = "chromeApiOffline" | "reloadOnToggle";
 
@@ -22,9 +24,9 @@ export function showReloadNotice(type: ReloadNoticeType) {
 			container.setAttribute("aria-live", "polite");
 			container.setAttribute("aria-atomic", "true");
 			container.setAttribute("aria-labelledby", "__yt_tweak_reload_notice_message");
+			container.style.setProperty("--yttweak-notice-logo", `url("${__APP_BRANDING__.isSafari ? appleLogoUrl : logoUrl}")`);
 			document.body.appendChild(container);
 		}
-		container.toggleAttribute("data-apple-branding", __APP_BRANDING__.isSafari);
 		container.dataset.noticeType = type;
 
 		const tips = document.createElement("p");

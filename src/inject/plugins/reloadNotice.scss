@@ -52,12 +52,8 @@
 		align-self: center;
 		width: 54px;
 		height: 42px;
-		background: url("../assets/img/logo.svg") center / contain no-repeat;
+		background: var(--yttweak-notice-logo) center / contain no-repeat;
 		filter: drop-shadow(0 7px 13px var(--yttweak-notice-accent-glow));
-	}
-
-	&[data-apple-branding]::before {
-		background-image: url("../assets/img/logo_apple.svg");
 	}
 
 	&::after {
