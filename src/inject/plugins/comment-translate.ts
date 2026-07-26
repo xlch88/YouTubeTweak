@@ -824,7 +824,6 @@ function handleTranslate(v: HTMLElement) {
 		};
 
 		if (commentContent.plainText.trim() === "" || /^[\d\p{P}\p{Z}\p{C}]*$/u.test(commentContent.plainText)) {
-			appendTranslateButton(task);
 			return;
 		}
 
@@ -855,10 +854,7 @@ setInterval(() => {
 		});
 
 		const segmentJobs = doing.flatMap((task) => createTranslateJobs(task, translatedSegmentsByTask.get(task) ?? []));
-		if (segmentJobs.length === 0) {
-			doing.forEach((task) => appendTranslateButton(task));
-			return;
-		}
+		if (segmentJobs.length === 0) return;
 
 		googleTranslate(
 			segmentJobs.map((job) => escapeTextForTranslate(job.source)),
@@ -882,10 +878,7 @@ setInterval(() => {
 
 				doing.forEach((task) => {
 					const result = translatedSegmentsByTask.get(task);
-					if (!result) {
-						appendTranslateButton(task);
-						return;
-					}
+					if (!result) return;
 					const detectedLang = detectedLanguageByTask.get(task) || "auto";
 
 					const shouldSkipAuto = task.mode === "auto" && shouldSkipAutoTranslation(detectedLang, task.targetLang);
