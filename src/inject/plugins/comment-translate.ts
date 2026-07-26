@@ -11,7 +11,9 @@ import {
 	getImageSrcset,
 	getTargetLanguage,
 	googleTranslate,
+	isTargetLanguage,
 	shouldSkipAutoTranslation,
+	translatedHtmlToText,
 	type TextSegment,
 } from "../util/translate";
 
@@ -889,7 +891,14 @@ setInterval(() => {
 					const shouldSkipAuto = task.mode === "auto" && shouldSkipAutoTranslation(detectedLang, task.targetLang);
 
 					if (shouldSkipAuto) {
-						if (config.get("comment.showManualTranslateButtonForSkippedLanguages", true)) {
+						if (
+							!isTargetLanguage(detectedLang, task.targetLang) &&
+							config.get("comment.showManualTranslateButtonForSkippedLanguages", true) &&
+							result.some(
+								(translatedSegment, index) =>
+									translatedHtmlToText(translatedSegment) !== task.textSegments[index]?.source,
+							)
+						) {
 							appendTranslateButton(task, result);
 						}
 						return;
