@@ -51,7 +51,8 @@
 				"enable": "Afficher les boutons/le curseur de vitesse",
 				"save": "Sauvegarder la vitesse du player",
 				"saveByChannel": "Sauvegarder les vitesses pour chaque chaîne",
-				"enableSlider": "Activer le curseur de vitesse"
+				"enableSlider": "Activer le curseur de vitesse",
+				"collapse": "Replier les boutons de vitesse"
 			},
 			"tips": {
 				"enabledButtons": "Boutons activés :",
@@ -63,6 +64,13 @@
 				"sliderWheelStepFollowButtons": "Suivre les boutons de vitesse activés",
 				"sliderWheelStepCustom": "Personnalisé",
 				"sliderWheelStepPresets": "Préréglages"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "Ne jamais replier",
+				"always": "Toujours replier",
+				"auto": "Replier automatiquement"
 			}
 		},
 		"subtitles": {
@@ -129,7 +137,8 @@
 			"checkbox": {
 				"enableRotateButton": "Activer le bouton de rotation de la vidéo",
 				"enableMirrorButton": "Activer le bouton de miroir de la vidéo",
-				"enableScreenshotButton": "Enable video screenshot button"
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "Replier les boutons de fonction"
 			}
 		},
 		"volumeBooster": {

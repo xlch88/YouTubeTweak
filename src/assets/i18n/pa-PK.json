@@ -51,7 +51,8 @@
 				"enable": "رفتار بٹن/رفتار سلائیڈر دکھاؤ",
 				"save": "پلے بیک رفتار یاد رکھو",
 				"saveByChannel": "ہر چینل لئی الگ رفتار یاد رکھو",
-				"enableSlider": "رفتار سلائیڈر چالو کرو"
+				"enableSlider": "رفتار سلائیڈر چالو کرو",
+				"collapse": "رفتار دے بٹن سمیٹو"
 			},
 			"tips": {
 				"enabledButtons": "فعال بٹن:",
@@ -63,6 +64,13 @@
 				"sliderWheelStepFollowButtons": "فعال رفتار بٹنوں کی پیروی کریں",
 				"sliderWheelStepCustom": "حسب ضرورت",
 				"sliderWheelStepPresets": "پری سیٹ"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "کدے نہ سمیٹو",
+				"always": "ہمیشہ سمیٹو",
+				"auto": "آپے سمیٹو"
 			}
 		},
 		"subtitles": {
@@ -129,7 +137,8 @@
 			"checkbox": {
 				"enableRotateButton": "ویڈیو گھماؤن والا بٹن فعال کرو",
 				"enableMirrorButton": "ویڈیو دا عکس والا بٹن فعال کرو",
-				"enableScreenshotButton": "Enable video screenshot button"
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "فنکشن بٹن سمیٹو"
 			}
 		},
 		"volumeBooster": {

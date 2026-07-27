@@ -51,7 +51,8 @@
 				"enable": "显示倍速按钮/倍速滑块",
 				"save": "记住播放器速度",
 				"saveByChannel": "为每个频道分别记住播放速度",
-				"enableSlider": "启用倍速滑块"
+				"enableSlider": "启用倍速滑块",
+				"collapse": "折叠倍速按钮"
 			},
 			"tips": {
 				"enabledButtons": "启用的按钮：",
@@ -63,6 +64,13 @@
 				"sliderWheelStepFollowButtons": "跟随启用的倍速按钮",
 				"sliderWheelStepCustom": "自定义",
 				"sliderWheelStepPresets": "预设"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "始终不折叠",
+				"always": "始终折叠",
+				"auto": "自动折叠"
 			}
 		},
 		"subtitles": {
@@ -129,7 +137,8 @@
 			"checkbox": {
 				"enableRotateButton": "启用旋转视频按钮",
 				"enableMirrorButton": "启用镜像视频按钮",
-				"enableScreenshotButton": "启用视频截图按钮"
+				"enableScreenshotButton": "启用视频截图按钮",
+				"collapse": "折叠功能按钮"
 			}
 		},
 		"volumeBooster": {

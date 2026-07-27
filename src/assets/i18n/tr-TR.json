@@ -51,7 +51,8 @@
 				"enable": "Hız düğmelerini/kaydırıcısını göster",
 				"save": "Oynatma hızını hatırla",
 				"saveByChannel": "Kanal başına oynatma hızını hatırla",
-				"enableSlider": "Hız kaydırıcısını etkinleştir"
+				"enableSlider": "Hız kaydırıcısını etkinleştir",
+				"collapse": "Hız düğmelerini daralt"
 			},
 			"tips": {
 				"enabledButtons": "Etkin düğmeler:",
@@ -63,6 +64,13 @@
 				"sliderWheelStepFollowButtons": "Etkin hız düğmelerini izle",
 				"sliderWheelStepCustom": "Özel",
 				"sliderWheelStepPresets": "Ön ayarlar"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "Hiçbir zaman daraltma",
+				"always": "Her zaman daralt",
+				"auto": "Otomatik daralt"
 			}
 		},
 		"subtitles": {
@@ -129,7 +137,8 @@
 			"checkbox": {
 				"enableRotateButton": "Video döndürme düğmesini etkinleştir",
 				"enableMirrorButton": "Video ayna düğmesini etkinleştir",
-				"enableScreenshotButton": "Enable video screenshot button"
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "Fonksiyon düğmelerini daralt"
 			}
 		},
 		"volumeBooster": {

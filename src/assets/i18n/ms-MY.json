@@ -51,7 +51,8 @@
 				"enable": "Tunjukkan butang/peluncur kelajuan",
 				"save": "Ingat kelajuan main balik",
 				"saveByChannel": "Ingat kelajuan main balik mengikut saluran",
-				"enableSlider": "Dayakan peluncur kelajuan"
+				"enableSlider": "Dayakan peluncur kelajuan",
+				"collapse": "Lipat butang kelajuan"
 			},
 			"tips": {
 				"enabledButtons": "Butang diaktifkan:",
@@ -63,6 +64,13 @@
 				"sliderWheelStepFollowButtons": "Ikut butang kelajuan aktif",
 				"sliderWheelStepCustom": "Tersuai",
 				"sliderWheelStepPresets": "Pratetap"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "Jangan lipat",
+				"always": "Sentiasa lipat",
+				"auto": "Lipat secara automatik"
 			}
 		},
 		"subtitles": {
@@ -129,7 +137,8 @@
 			"checkbox": {
 				"enableRotateButton": "Aktifkan butang putar video",
 				"enableMirrorButton": "Aktifkan butang cermin video",
-				"enableScreenshotButton": "Enable video screenshot button"
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "Lipat butang fungsi"
 			}
 		},
 		"volumeBooster": {

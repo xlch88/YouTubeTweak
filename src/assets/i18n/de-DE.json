@@ -51,7 +51,8 @@
 				"enable": "Geschwindigkeitsschaltflächen/Regler anzeigen",
 				"save": "Wiedergabegeschwindigkeit merken",
 				"saveByChannel": "Wiedergabegeschwindigkeit pro Kanal merken",
-				"enableSlider": "Geschwindigkeitsregler aktivieren"
+				"enableSlider": "Geschwindigkeitsregler aktivieren",
+				"collapse": "Geschwindigkeits-Schaltflächen einklappen"
 			},
 			"tips": {
 				"enabledButtons": "Aktivierte Schaltflächen:",
@@ -63,6 +64,13 @@
 				"sliderWheelStepFollowButtons": "Aktivierten Geschwindigkeitsbuttons folgen",
 				"sliderWheelStepCustom": "Benutzerdefiniert",
 				"sliderWheelStepPresets": "Vorgaben"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "Nie einklappen",
+				"always": "Immer einklappen",
+				"auto": "Automatisch einklappen"
 			}
 		},
 		"subtitles": {
@@ -129,7 +137,8 @@
 			"checkbox": {
 				"enableRotateButton": "Schaltfläche zum Drehen des Videos aktivieren",
 				"enableMirrorButton": "Schaltfläche zum Spiegeln des Videos aktivieren",
-				"enableScreenshotButton": "Enable video screenshot button"
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "Funktionsschaltflächen einklappen"
 			}
 		},
 		"volumeBooster": {

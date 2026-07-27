@@ -51,7 +51,8 @@
 				"enable": "Показывать кнопки/ползунок скорости",
 				"save": "Запоминать скорость воспроизведения",
 				"saveByChannel": "Запоминать скорость воспроизведения для каждого канала",
-				"enableSlider": "Включить ползунок скорости"
+				"enableSlider": "Включить ползунок скорости",
+				"collapse": "Свернуть кнопки скорости"
 			},
 			"tips": {
 				"enabledButtons": "Включенные кнопки:",
@@ -63,6 +64,13 @@
 				"sliderWheelStepFollowButtons": "Следовать включенным кнопкам скорости",
 				"sliderWheelStepCustom": "Пользовательский",
 				"sliderWheelStepPresets": "Предустановки"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "Никогда не сворачивать",
+				"always": "Всегда сворачивать",
+				"auto": "Сворачивать автоматически"
 			}
 		},
 		"subtitles": {
@@ -129,7 +137,8 @@
 			"checkbox": {
 				"enableRotateButton": "Включить кнопку поворота видео",
 				"enableMirrorButton": "Включить кнопку зеркального отражения видео",
-				"enableScreenshotButton": "Enable video screenshot button"
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "Свернуть функциональные кнопки"
 			}
 		},
 		"volumeBooster": {

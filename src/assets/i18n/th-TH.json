@@ -51,7 +51,8 @@
 				"enable": "แสดงปุ่ม/แถบเลื่อนความเร็ว",
 				"save": "จำความเร็วการเล่น",
 				"saveByChannel": "จำความเร็วการเล่นแยกตามช่อง",
-				"enableSlider": "เปิดใช้แถบเลื่อนความเร็ว"
+				"enableSlider": "เปิดใช้แถบเลื่อนความเร็ว",
+				"collapse": "ยุบปุ่มความเร็ว"
 			},
 			"tips": {
 				"enabledButtons": "ปุ่มที่เปิดใช้:",
@@ -63,6 +64,13 @@
 				"sliderWheelStepFollowButtons": "ตามปุ่มความเร็วที่เปิดใช้",
 				"sliderWheelStepCustom": "กำหนดเอง",
 				"sliderWheelStepPresets": "ค่าที่ตั้งไว้"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "ไม่ยุบเลย",
+				"always": "ยุบเสมอ",
+				"auto": "ยุบอัตโนมัติ"
 			}
 		},
 		"subtitles": {
@@ -129,7 +137,8 @@
 			"checkbox": {
 				"enableRotateButton": "เปิดปุ่มหมุนวิดีโอ",
 				"enableMirrorButton": "เปิดปุ่มกลับด้านกระจก",
-				"enableScreenshotButton": "Enable video screenshot button"
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "ยุบปุ่มฟังก์ชัน"
 			}
 		},
 		"volumeBooster": {

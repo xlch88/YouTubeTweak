@@ -51,7 +51,8 @@
 				"enable": "顯示倍速按鈕/倍速滑桿",
 				"save": "記住播放速度",
 				"saveByChannel": "為每個頻道分別記住播放速度",
-				"enableSlider": "啟用倍速滑桿"
+				"enableSlider": "啟用倍速滑桿",
+				"collapse": "摺疊倍速按鈕"
 			},
 			"tips": {
 				"enabledButtons": "啟用的按鈕：",
@@ -63,6 +64,13 @@
 				"sliderWheelStepFollowButtons": "跟隨啟用的倍速按鈕",
 				"sliderWheelStepCustom": "自訂",
 				"sliderWheelStepPresets": "預設"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "始終不摺疊",
+				"always": "始終摺疊",
+				"auto": "自動摺疊"
 			}
 		},
 		"subtitles": {
@@ -129,7 +137,8 @@
 			"checkbox": {
 				"enableRotateButton": "啟用旋轉影片按鈕",
 				"enableMirrorButton": "啟用鏡像影片按鈕",
-				"enableScreenshotButton": "啟用影片截圖按鈕"
+				"enableScreenshotButton": "啟用影片截圖按鈕",
+				"collapse": "摺疊功能按鈕"
 			}
 		},
 		"volumeBooster": {

@@ -78,6 +78,38 @@
 }
 
 body {
+	&.yttweak-player-collapse-function-buttons {
+		.yttweak-player-function-buttons {
+			span {
+				width: 0;
+				min-width: 0;
+				opacity: 0;
+				transform: scale(0.72);
+				pointer-events: none;
+				transition:
+					width 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+					opacity 140ms ease,
+					transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+
+				&.yttweak-function-button-collapse-anchor {
+					width: 48px;
+					opacity: 1;
+					transform: scale(1);
+					pointer-events: auto;
+				}
+			}
+
+			&:hover {
+				span {
+					width: 48px;
+					opacity: 1;
+					transform: scale(1);
+					pointer-events: auto;
+				}
+			}
+		}
+	}
+
 	&.yttweak-player-enable-rotate-button {
 		.yttweak-player-function-buttons {
 			span.yttweak-function-button-rotate {
@@ -98,6 +130,28 @@ body {
 		.yttweak-player-function-buttons {
 			span.yttweak-function-button-screenshot {
 				display: flex;
+			}
+		}
+	}
+
+	.yttweak-player-function-buttons {
+		&.yttweak-measure-function-buttons-collapsed {
+			span {
+				width: 0;
+				min-width: 0;
+				transition: none;
+
+				&.yttweak-function-button-collapse-anchor {
+					width: 48px;
+				}
+			}
+		}
+
+		&.yttweak-measure-function-buttons-expanded {
+			span {
+				width: 48px;
+				min-width: 0;
+				transition: none;
 			}
 		}
 	}

@@ -3,6 +3,7 @@ import { createLogger } from "../../logger";
 import type { Plugin } from "../types";
 import { videoPlayer } from "../mainWorld";
 import { touchPlayer } from "../util/helper";
+import { shouldCollapsePlayerControls } from "../util/playerControlCollapse";
 
 const logger = createLogger("player-function-buttons");
 
@@ -13,6 +14,7 @@ export let yttBtnBox: HTMLDivElement | null = null;
 let yttBtnRotate: HTMLSpanElement | null = null;
 let yttBtnMirror: HTMLSpanElement | null = null;
 let yttBtnScreenshot: HTMLSpanElement | null = null;
+let functionButtonResizeObserver: ResizeObserver | null = null;
 
 let rotation = 0;
 let isMirror = false;
@@ -249,9 +251,28 @@ export function createBox() {
 	}
 }
 
+export function updateFunctionButtonCollapseAnchor() {
+	if (!yttBtnBox) return;
+
+	const buttons = Array.from(yttBtnBox.querySelectorAll<HTMLSpanElement>(":scope > span"));
+	const firstVisibleButton = buttons.find((button) => getComputedStyle(button).display !== "none");
+	buttons.forEach((button) => {
+		button.classList.toggle("yttweak-function-button-collapse-anchor", button === firstVisibleButton);
+	});
+}
+
+function applyFunctionButtonCollapseState() {
+	document.body.classList.toggle(
+		"yttweak-player-collapse-function-buttons",
+		shouldCollapsePlayerControls(config.get("player.ui.functionButtons.collapseButtons")),
+	);
+	updateFunctionButtonCollapseAnchor();
+}
+
 export function updateFuncBtnStatus(enable = true) {
 	enable ? enableFunctionCount++ : enableFunctionCount--;
 	if (yttBtnBox) yttBtnBox.style.display = enableFunctionCount <= 0 ? "none" : "flex";
+	applyFunctionButtonCollapseState();
 }
 
 export default {
@@ -271,6 +292,7 @@ export default {
 					updatePlayerTransformStyle();
 				};
 				yttBtnBox?.appendChild(yttBtnRotate);
+				updateFunctionButtonCollapseAnchor();
 			}
 		},
 		enable() {
@@ -299,6 +321,7 @@ export default {
 					updatePlayerTransformStyle();
 				};
 				yttBtnBox?.appendChild(yttBtnMirror);
+				updateFunctionButtonCollapseAnchor();
 			}
 		},
 		enable() {
@@ -326,6 +349,7 @@ export default {
 					downloadCurrentVideoFrame();
 				};
 				yttBtnBox?.appendChild(yttBtnScreenshot);
+				updateFunctionButtonCollapseAnchor();
 			}
 		},
 		enable() {
@@ -335,6 +359,35 @@ export default {
 		disable() {
 			document.body.classList.remove("yttweak-player-enable-screenshot-button");
 			updateFuncBtnStatus(false);
+		},
+	},
+	"player.ui.functionButtons.collapseButtons": {
+		setup() {
+			window.addEventListener("resize", applyFunctionButtonCollapseState);
+		},
+		initPlayer() {
+			functionButtonResizeObserver?.disconnect();
+			if (videoPlayer.controls) {
+				functionButtonResizeObserver = new ResizeObserver(applyFunctionButtonCollapseState);
+				functionButtonResizeObserver.observe(videoPlayer.controls);
+			}
+			applyFunctionButtonCollapseState();
+		},
+		videoSrcChange() {
+			applyFunctionButtonCollapseState();
+		},
+		configUpdate(oldConfig, newConfig) {
+			const hasUpdate =
+				oldConfig["player.ui.functionButtons.collapseButtons"] !==
+					newConfig["player.ui.functionButtons.collapseButtons"] ||
+				oldConfig["player.ui.collapseSpeedButtons"] !== newConfig["player.ui.collapseSpeedButtons"] ||
+				oldConfig["player.ui.speedButtons"]?.join(",") !== newConfig["player.ui.speedButtons"]?.join(",") ||
+				oldConfig["player.ui.enableSpeedButtons"] !== newConfig["player.ui.enableSpeedButtons"];
+
+			if (hasUpdate) {
+				applyFunctionButtonCollapseState();
+			}
+			return false;
 		},
 	},
 } as Record<string, Plugin>;

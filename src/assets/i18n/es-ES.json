@@ -51,7 +51,8 @@
 				"enable": "Mostrar botones/deslizador de velocidad",
 				"save": "Recordar velocidad de reproducción",
 				"saveByChannel": "Recordar la velocidad por canal",
-				"enableSlider": "Activar deslizador de velocidad"
+				"enableSlider": "Activar deslizador de velocidad",
+				"collapse": "Contraer botones de velocidad"
 			},
 			"tips": {
 				"enabledButtons": "Botones activados:",
@@ -63,6 +64,13 @@
 				"sliderWheelStepFollowButtons": "Seguir botones de velocidad activados",
 				"sliderWheelStepCustom": "Personalizado",
 				"sliderWheelStepPresets": "Preajustes"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "No contraer nunca",
+				"always": "Contraer siempre",
+				"auto": "Contraer automáticamente"
 			}
 		},
 		"subtitles": {
@@ -129,7 +137,8 @@
 			"checkbox": {
 				"enableRotateButton": "Habilitar botón de rotación del video",
 				"enableMirrorButton": "Habilitar botón de espejo del video",
-				"enableScreenshotButton": "Enable video screenshot button"
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "Contraer botones de función"
 			}
 		},
 		"volumeBooster": {

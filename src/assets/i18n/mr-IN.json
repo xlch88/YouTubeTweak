@@ -51,7 +51,8 @@
 				"enable": "वेग बटणे/वेग स्लायडर दाखवा",
 				"save": "प्लेबॅक गती लक्षात ठेवा",
 				"saveByChannel": "प्रत्येक चॅनेलसाठी प्लेबॅक गती लक्षात ठेवा",
-				"enableSlider": "वेग स्लायडर सक्षम करा"
+				"enableSlider": "वेग स्लायडर सक्षम करा",
+				"collapse": "गती बटणे संकुचित करा"
 			},
 			"tips": {
 				"enabledButtons": "सक्रिय बटणे:",
@@ -63,6 +64,13 @@
 				"sliderWheelStepFollowButtons": "सक्षम वेग बटणे अनुसरा",
 				"sliderWheelStepCustom": "सानुकूल",
 				"sliderWheelStepPresets": "प्रीसेट"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "कधीही संकुचित करू नका",
+				"always": "नेहमी संकुचित करा",
+				"auto": "स्वयंचलितपणे संकुचित करा"
 			}
 		},
 		"subtitles": {
@@ -129,7 +137,8 @@
 			"checkbox": {
 				"enableRotateButton": "व्हिडिओ फिरविण्याचे बटण सक्षम करा",
 				"enableMirrorButton": "व्हिडिओ मिरर बटण सक्षम करा",
-				"enableScreenshotButton": "Enable video screenshot button"
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "फंक्शन बटणे संकुचित करा"
 			}
 		},
 		"volumeBooster": {

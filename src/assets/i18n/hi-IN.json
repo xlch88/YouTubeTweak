@@ -51,7 +51,8 @@
 				"enable": "गति बटन/गति स्लाइडर दिखाएँ",
 				"save": "प्लेबैक गति याद रखें",
 				"saveByChannel": "हर चैनल के लिए प्लेबैक गति याद रखें",
-				"enableSlider": "गति स्लाइडर सक्षम करें"
+				"enableSlider": "गति स्लाइडर सक्षम करें",
+				"collapse": "गति बटन समेटें"
 			},
 			"tips": {
 				"enabledButtons": "सक्रिय बटन:",
@@ -63,6 +64,13 @@
 				"sliderWheelStepFollowButtons": "सक्षम गति बटनों का अनुसरण करें",
 				"sliderWheelStepCustom": "कस्टम",
 				"sliderWheelStepPresets": "प्रीसेट"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "कभी न समेटें",
+				"always": "हमेशा समेटें",
+				"auto": "अपने आप समेटें"
 			}
 		},
 		"subtitles": {
@@ -129,7 +137,8 @@
 			"checkbox": {
 				"enableRotateButton": "वीडियो घुमाने का बटन सक्षम करें",
 				"enableMirrorButton": "वीडियो मिरर करने का बटन सक्षम करें",
-				"enableScreenshotButton": "Enable video screenshot button"
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "फ़ंक्शन बटन समेटें"
 			}
 		},
 		"volumeBooster": {

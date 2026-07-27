@@ -1,7 +1,12 @@
 import config from "../config";
 import { videoPlayer } from "../mainWorld";
 import { createLogger } from "../../logger";
-import { createBox, updateFuncBtnStatus, yttBtnBox } from "./player-function-buttons";
+import {
+	createBox,
+	updateFunctionButtonCollapseAnchor,
+	updateFuncBtnStatus,
+	yttBtnBox,
+} from "./player-function-buttons";
 import { touchPlayer } from "../util/helper";
 
 import type { Plugin } from "../types";
@@ -304,6 +309,7 @@ function mountBoosterButton() {
 		yttBtnBox.appendChild(boosterButton);
 	}
 
+	updateFunctionButtonCollapseAnchor();
 	updateButtonState();
 }
 

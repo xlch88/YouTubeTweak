@@ -51,7 +51,8 @@
 				"enable": "إظهار أزرار السرعة/شريط تمرير السرعة",
 				"save": "تذكر سرعة التشغيل",
 				"saveByChannel": "تذكر سرعة التشغيل لكل قناة على حدة",
-				"enableSlider": "تفعيل شريط تمرير السرعة"
+				"enableSlider": "تفعيل شريط تمرير السرعة",
+				"collapse": "طي أزرار السرعة"
 			},
 			"tips": {
 				"enabledButtons": "الأزرار المفعلة:",
@@ -63,6 +64,13 @@
 				"sliderWheelStepFollowButtons": "اتبع أزرار السرعة المفعلة",
 				"sliderWheelStepCustom": "مخصص",
 				"sliderWheelStepPresets": "القيم المسبقة"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "عدم الطي مطلقًا",
+				"always": "الطي دائمًا",
+				"auto": "طي تلقائي"
 			}
 		},
 		"subtitles": {
@@ -129,7 +137,8 @@
 			"checkbox": {
 				"enableRotateButton": "تفعيل زر تدوير الفيديو",
 				"enableMirrorButton": "تفعيل زر عكس الفيديو",
-				"enableScreenshotButton": "Enable video screenshot button"
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "طي أزرار الوظائف"
 			}
 		},
 		"volumeBooster": {

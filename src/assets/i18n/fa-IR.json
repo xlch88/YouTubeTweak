@@ -51,7 +51,8 @@
 				"enable": "نمایش دکمه‌های سرعت/نوار لغزنده سرعت",
 				"save": "سرعت پخش را به خاطر بسپار",
 				"saveByChannel": "سرعت پخش را برای هر کانال به خاطر بسپار",
-				"enableSlider": "فعال کردن نوار لغزنده سرعت"
+				"enableSlider": "فعال کردن نوار لغزنده سرعت",
+				"collapse": "جمع کردن دکمه‌های سرعت"
 			},
 			"tips": {
 				"enabledButtons": "دکمه‌های فعال:",
@@ -63,6 +64,13 @@
 				"sliderWheelStepFollowButtons": "پیروی از دکمه‌های سرعت فعال",
 				"sliderWheelStepCustom": "سفارشی",
 				"sliderWheelStepPresets": "پیش‌فرض‌ها"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "هرگز جمع نشود",
+				"always": "همیشه جمع شود",
+				"auto": "جمع شدن خودکار"
 			}
 		},
 		"subtitles": {
@@ -129,7 +137,8 @@
 			"checkbox": {
 				"enableRotateButton": "فعال کردن دکمه چرخش ویدیو",
 				"enableMirrorButton": "فعال کردن دکمه آینه کردن ویدیو",
-				"enableScreenshotButton": "Enable video screenshot button"
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "جمع کردن دکمه‌های عملکردی"
 			}
 		},
 		"volumeBooster": {

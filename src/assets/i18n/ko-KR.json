@@ -51,7 +51,8 @@
 				"enable": "속도 버튼/속도 슬라이더 표시",
 				"save": "재생 속도 기억",
 				"saveByChannel": "채널별 재생 속도 기억",
-				"enableSlider": "속도 슬라이더 사용"
+				"enableSlider": "속도 슬라이더 사용",
+				"collapse": "재생 속도 버튼 접기"
 			},
 			"tips": {
 				"enabledButtons": "사용 중인 버튼:",
@@ -63,6 +64,13 @@
 				"sliderWheelStepFollowButtons": "활성화된 속도 버튼 따르기",
 				"sliderWheelStepCustom": "사용자 지정",
 				"sliderWheelStepPresets": "프리셋"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "접지 않음",
+				"always": "항상 접기",
+				"auto": "자동으로 접기"
 			}
 		},
 		"subtitles": {
@@ -129,7 +137,8 @@
 			"checkbox": {
 				"enableRotateButton": "회전 버튼 사용",
 				"enableMirrorButton": "좌우 반전 버튼 사용",
-				"enableScreenshotButton": "Enable video screenshot button"
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "기능 버튼 접기"
 			}
 		},
 		"volumeBooster": {

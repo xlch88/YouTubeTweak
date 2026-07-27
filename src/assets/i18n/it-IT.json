@@ -51,7 +51,8 @@
 				"enable": "Mostra pulsanti/cursore velocità",
 				"save": "Ricorda velocità di riproduzione",
 				"saveByChannel": "Ricorda velocità di riproduzione per canale",
-				"enableSlider": "Abilita cursore velocità"
+				"enableSlider": "Abilita cursore velocità",
+				"collapse": "Comprimi i pulsanti di velocità"
 			},
 			"tips": {
 				"enabledButtons": "Pulsanti abilitati:",
@@ -63,6 +64,13 @@
 				"sliderWheelStepFollowButtons": "Segui i pulsanti velocità attivi",
 				"sliderWheelStepCustom": "Personalizzato",
 				"sliderWheelStepPresets": "Predefiniti"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "Non comprimere mai",
+				"always": "Comprimi sempre",
+				"auto": "Comprimi automaticamente"
 			}
 		},
 		"subtitles": {
@@ -129,7 +137,8 @@
 			"checkbox": {
 				"enableRotateButton": "Abilita pulsante di rotazione video",
 				"enableMirrorButton": "Abilita pulsante specchia video",
-				"enableScreenshotButton": "Enable video screenshot button"
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "Comprimi i pulsanti funzione"
 			}
 		},
 		"volumeBooster": {

@@ -51,7 +51,8 @@
 				"enable": "வேக பொத்தான்கள்/வேக ஸ்லைடரை காட்டு",
 				"save": "பிளேபேக் வேகத்தை நினைவில் வை",
 				"saveByChannel": "ஒவ்வொரு சேனலுக்கும் பிளேபேக் வேகத்தை நினைவில் வை",
-				"enableSlider": "வேக ஸ்லைடரை இயக்கு"
+				"enableSlider": "வேக ஸ்லைடரை இயக்கு",
+				"collapse": "வேக பொத்தான்களைச் சுருக்கு"
 			},
 			"tips": {
 				"enabledButtons": "இயக்கப்பட்ட பொத்தான்கள்:",
@@ -63,6 +64,13 @@
 				"sliderWheelStepFollowButtons": "இயக்கப்பட்ட வேக பொத்தான்களைப் பின்பற்று",
 				"sliderWheelStepCustom": "தனிப்பயன்",
 				"sliderWheelStepPresets": "முன்னமைவுகள்"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "ஒருபோதும் சுருக்க வேண்டாம்",
+				"always": "எப்போதும் சுருக்கு",
+				"auto": "தானாகச் சுருக்கு"
 			}
 		},
 		"subtitles": {
@@ -129,7 +137,8 @@
 			"checkbox": {
 				"enableRotateButton": "வீடியோ சுழற்சி பொத்தானை இயக்கு",
 				"enableMirrorButton": "வீடியோ கண்ணாடி பொத்தானை இயக்கு",
-				"enableScreenshotButton": "Enable video screenshot button"
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "செயல்பாட்டு பொத்தான்களைச் சுருக்கு"
 			}
 		},
 		"volumeBooster": {

@@ -51,7 +51,8 @@
 				"enable": "Show speed buttons/speed slider",
 				"save": "Remember playback speed",
 				"saveByChannel": "Remember playback speed per channel",
-				"enableSlider": "Enable speed slider"
+				"enableSlider": "Enable speed slider",
+				"collapse": "Collapse speed buttons"
 			},
 			"tips": {
 				"enabledButtons": "Enabled buttons:",
@@ -63,6 +64,13 @@
 				"sliderWheelStepFollowButtons": "Follow enabled speed buttons",
 				"sliderWheelStepCustom": "Custom",
 				"sliderWheelStepPresets": "Presets"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "Never collapse",
+				"always": "Always collapse",
+				"auto": "Auto collapse"
 			}
 		},
 		"subtitles": {
@@ -129,7 +137,8 @@
 			"checkbox": {
 				"enableRotateButton": "Enable video rotation button",
 				"enableMirrorButton": "Enable video mirror button",
-				"enableScreenshotButton": "Enable video screenshot button"
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "Collapse function buttons"
 			}
 		},
 		"volumeBooster": {

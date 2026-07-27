@@ -51,7 +51,8 @@
 				"enable": "Tampilkan tombol/slider kecepatan",
 				"save": "Ingat kecepatan pemutaran",
 				"saveByChannel": "Ingat kecepatan pemutaran per kanal",
-				"enableSlider": "Aktifkan slider kecepatan"
+				"enableSlider": "Aktifkan slider kecepatan",
+				"collapse": "Ciutkan tombol kecepatan"
 			},
 			"tips": {
 				"enabledButtons": "Tombol yang diaktifkan:",
@@ -63,6 +64,13 @@
 				"sliderWheelStepFollowButtons": "Ikuti tombol kecepatan aktif",
 				"sliderWheelStepCustom": "Kustom",
 				"sliderWheelStepPresets": "Preset"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "Jangan pernah ciutkan",
+				"always": "Selalu ciutkan",
+				"auto": "Ciutkan otomatis"
 			}
 		},
 		"subtitles": {
@@ -129,7 +137,8 @@
 			"checkbox": {
 				"enableRotateButton": "Aktifkan tombol rotasi video",
 				"enableMirrorButton": "Aktifkan tombol mirror video",
-				"enableScreenshotButton": "Enable video screenshot button"
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "Ciutkan tombol fungsi"
 			}
 		},
 		"volumeBooster": {

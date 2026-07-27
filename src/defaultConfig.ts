@@ -13,9 +13,11 @@ enum VideoQuality {
 type MiniPlayerSize = "360x203" | "420x236" | "480x270" | "560x315" | "640x360" | "720x405";
 type MiniPlayerPosition = "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right";
 export type PlayerHideButtonMode = "auto" | "hide" | "show";
+export type PlayerButtonCollapseMode = "never" | "always" | "auto";
 
 export type Config = {
 	"player.ui.enableSpeedButtons": boolean;
+	"player.ui.collapseSpeedButtons": PlayerButtonCollapseMode;
 	"player.ui.enableSpeedSlider": boolean;
 	"player.ui.speedSliderWheelMode": "speedButtons" | "custom";
 	"player.ui.speedSliderStep": number;
@@ -54,6 +56,7 @@ export type Config = {
 	"player.ui.functionButtons.enableRotateButton": boolean;
 	"player.ui.functionButtons.enableMirrorButton": boolean;
 	"player.ui.functionButtons.enableScreenshotButton": boolean;
+	"player.ui.functionButtons.collapseButtons": PlayerButtonCollapseMode;
 	"player.ui.enableVideoZoom": boolean;
 
 	"comment.nickname": boolean;
@@ -90,6 +93,7 @@ export type Config = {
 
 const config: Config = {
 	"player.ui.enableSpeedButtons": true,
+	"player.ui.collapseSpeedButtons": "auto",
 	"player.ui.enableSpeedSlider": true,
 	"player.ui.speedSliderWheelMode": "speedButtons",
 	"player.ui.speedSliderStep": 0.25,
@@ -128,6 +132,7 @@ const config: Config = {
 	"player.ui.functionButtons.enableRotateButton": false,
 	"player.ui.functionButtons.enableMirrorButton": false,
 	"player.ui.functionButtons.enableScreenshotButton": false,
+	"player.ui.functionButtons.collapseButtons": "auto",
 	"player.ui.enableVideoZoom": true,
 
 	"comment.nickname": true,

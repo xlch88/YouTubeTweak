@@ -2,6 +2,7 @@ import config from "../config";
 import { metadata, videoPlayer } from "../mainWorld";
 import { createLogger } from "../../logger";
 import { getChannelId, touchPlayer } from "../util/helper";
+import { shouldCollapsePlayerControls } from "../util/playerControlCollapse";
 
 import type { Plugin } from "../types";
 import memory from "@/memory";
@@ -19,6 +20,7 @@ let hasDraggedSpeedSlider = false;
 let dragStartX = 0;
 let dragStartSpeedButton: HTMLSpanElement | null = null;
 let suppressNextSpeedClick = false;
+let speedButtonResizeObserver: ResizeObserver | null = null;
 
 const SLIDER_DISPLAY_MS = 500;
 const DRAG_THRESHOLD = 3;
@@ -78,7 +80,7 @@ function updateSpeedButtonState(speed: number, preferredButton?: HTMLSpanElement
 	});
 	const nextActiveButton =
 		exactButton ||
-		(isSpeedSliderEnabled() || preferredButton
+		(isSpeedSliderEnabled() || document.body.hasAttribute("yttweak-collapse-speed-buttons") || preferredButton
 			? preferredButton && isEnabledSpeed(getSpeedButtonSpeed(preferredButton))
 				? preferredButton
 				: findFallbackSpeedButton(speed)
@@ -157,6 +159,15 @@ function applySpeedButtonConfigState() {
 	} else {
 		document.body.removeAttribute("yttweak-enable-speed-slider");
 		hideSpeedSlider();
+	}
+
+	if (
+		config.get("player.ui.enableSpeedButtons") &&
+		shouldCollapsePlayerControls(config.get("player.ui.collapseSpeedButtons"))
+	) {
+		document.body.setAttribute("yttweak-collapse-speed-buttons", "");
+	} else {
+		document.body.removeAttribute("yttweak-collapse-speed-buttons");
 	}
 
 	updateSliderPosition(lastPlaybackSpeed);
@@ -356,12 +367,16 @@ function mountSpeedButtonStrip() {
 
 export default {
 	"player.ui.enableSpeedButtons": {
+		setup() {
+			window.addEventListener("resize", applySpeedButtonConfigState);
+		},
 		enable() {
 			applySpeedButtonConfigState();
 		},
 		disable() {
 			document.body.removeAttribute("yttweak-enable-speed-button");
 			document.body.removeAttribute("yttweak-enable-speed-slider");
+			document.body.removeAttribute("yttweak-collapse-speed-buttons");
 			hideSpeedSlider();
 		},
 		initPlayer() {
@@ -409,10 +424,16 @@ export default {
 			}
 
 			mountSpeedButtonStrip();
+			speedButtonResizeObserver?.disconnect();
+			if (videoPlayer.controls) {
+				speedButtonResizeObserver = new ResizeObserver(applySpeedButtonConfigState);
+				speedButtonResizeObserver.observe(videoPlayer.controls);
+			}
 			applySpeedButtonConfigState();
 			setMemorySpeed();
 		},
 		videoSrcChange(oldValue, newValue) {
+			applySpeedButtonConfigState();
 			setMemorySpeed();
 		},
 		configUpdate(oldConfig, newConfig) {
@@ -420,9 +441,19 @@ export default {
 			const newSpeedButtons = newConfig["player.ui.speedButtons"] ?? config.get("player.ui.speedButtons");
 			const hasUpdate =
 				oldSpeedButtons.join(",") !== newSpeedButtons.join(",") ||
+				oldConfig["player.ui.collapseSpeedButtons"] !== newConfig["player.ui.collapseSpeedButtons"] ||
 				oldConfig["player.ui.enableSpeedSlider"] !== newConfig["player.ui.enableSpeedSlider"] ||
 				oldConfig["player.ui.speedSliderWheelMode"] !== newConfig["player.ui.speedSliderWheelMode"] ||
-				oldConfig["player.ui.speedSliderStep"] !== newConfig["player.ui.speedSliderStep"];
+				oldConfig["player.ui.speedSliderStep"] !== newConfig["player.ui.speedSliderStep"] ||
+				oldConfig["player.ui.functionButtons.collapseButtons"] !==
+					newConfig["player.ui.functionButtons.collapseButtons"] ||
+				oldConfig["player.ui.functionButtons.enableRotateButton"] !==
+					newConfig["player.ui.functionButtons.enableRotateButton"] ||
+				oldConfig["player.ui.functionButtons.enableMirrorButton"] !==
+					newConfig["player.ui.functionButtons.enableMirrorButton"] ||
+				oldConfig["player.ui.functionButtons.enableScreenshotButton"] !==
+					newConfig["player.ui.functionButtons.enableScreenshotButton"] ||
+				oldConfig["player.ui.enableVolumeBooster"] !== newConfig["player.ui.enableVolumeBooster"];
 
 			if (hasUpdate) {
 				applySpeedButtonConfigState();

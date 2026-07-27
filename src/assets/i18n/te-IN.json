@@ -51,7 +51,8 @@
 				"enable": "వేగ బటన్లు/వేగ స్లైడర్‌ను చూపు",
 				"save": "ప్లేబ్యాక్ వేగాన్ని గుర్తుంచుకో",
 				"saveByChannel": "ప్రతి ఛానెల్‌కు ప్లేబ్యాక్ వేగాన్ని గుర్తుంచుకో",
-				"enableSlider": "వేగ స్లైడర్‌ను ప్రారంభించు"
+				"enableSlider": "వేగ స్లైడర్‌ను ప్రారంభించు",
+				"collapse": "వేగం బటన్‌లను కుదించు"
 			},
 			"tips": {
 				"enabledButtons": "సక్రియ బటన్లు:",
@@ -63,6 +64,13 @@
 				"sliderWheelStepFollowButtons": "ప్రారంభించిన వేగ బటన్లను అనుసరించు",
 				"sliderWheelStepCustom": "అనుకూలం",
 				"sliderWheelStepPresets": "ప్రీసెట్లు"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "ఎప్పుడూ కుదించవద్దు",
+				"always": "ఎల్లప్పుడూ కుదించు",
+				"auto": "స్వయంచాలకంగా కుదించు"
 			}
 		},
 		"subtitles": {
@@ -129,7 +137,8 @@
 			"checkbox": {
 				"enableRotateButton": "వీడియో రొటేషన్ బటన్ను ప్రారంభించు",
 				"enableMirrorButton": "వీడియో మిర్రర్ బటన్ను ప్రారంభించు",
-				"enableScreenshotButton": "Enable video screenshot button"
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "ఫంక్షన్ బటన్‌లను కుదించు"
 			}
 		},
 		"volumeBooster": {

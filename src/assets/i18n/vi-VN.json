@@ -51,7 +51,8 @@
 				"enable": "Hiển thị nút/thanh trượt tốc độ",
 				"save": "Ghi nhớ tốc độ phát",
 				"saveByChannel": "Ghi nhớ tốc độ phát theo kênh",
-				"enableSlider": "Bật thanh trượt tốc độ"
+				"enableSlider": "Bật thanh trượt tốc độ",
+				"collapse": "Thu gọn các nút tốc độ"
 			},
 			"tips": {
 				"enabledButtons": "Các nút đang bật:",
@@ -63,6 +64,13 @@
 				"sliderWheelStepFollowButtons": "Theo các nút tốc độ đã bật",
 				"sliderWheelStepCustom": "Tùy chỉnh",
 				"sliderWheelStepPresets": "Cài sẵn"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "Không bao giờ thu gọn",
+				"always": "Luôn thu gọn",
+				"auto": "Tự động thu gọn"
 			}
 		},
 		"subtitles": {
@@ -129,7 +137,8 @@
 			"checkbox": {
 				"enableRotateButton": "Bật nút xoay video",
 				"enableMirrorButton": "Bật nút lật gương video",
-				"enableScreenshotButton": "Enable video screenshot button"
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "Thu gọn các nút chức năng"
 			}
 		},
 		"volumeBooster": {

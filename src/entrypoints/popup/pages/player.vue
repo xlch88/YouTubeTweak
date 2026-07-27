@@ -57,6 +57,14 @@
 						<span>{{ speed }}x</span>
 					</label>
 				</div>
+				<label class="form-item form-item-select speed-buttons-collapse-mode">
+					<span>{{ $t("player.speedButtons.checkbox.collapse") }}</span>
+					<select class="w-100" v-model="config['player.ui.collapseSpeedButtons']">
+						<option value="never">{{ $t("player.buttonCollapse.option.never") }}</option>
+						<option value="always">{{ $t("player.buttonCollapse.option.always") }}</option>
+						<option value="auto">{{ $t("player.buttonCollapse.option.auto") }}</option>
+					</select>
+				</label>
 				<label class="form-item speed-slider-toggle">
 					<input type="checkbox" v-model="config['player.ui.enableSpeedSlider']" />
 					<span>{{ $t("player.speedButtons.checkbox.enableSlider") }}</span>
@@ -92,7 +100,6 @@
 				</label>
 			</div>
 		</div>
-		<VolumeBoosterSettingsCard />
 		<div class="card">
 			<div class="card-title">
 				<span>{{ $t("player.videoZoom.title") }}</span>
@@ -145,6 +152,15 @@
 					<input type="checkbox" v-model="config['player.ui.functionButtons.enableScreenshotButton']" />
 					<span>{{ $t("player.functionButtons.checkbox.enableScreenshotButton") }}</span>
 					<DocsHelpLink anchor="player-function-buttons-screenshot" />
+				</label>
+				<VolumeBoosterSettings />
+				<label class="form-item form-item-select function-buttons-collapse-mode">
+					<span>{{ $t("player.functionButtons.checkbox.collapse") }}</span>
+					<select class="w-100" v-model="config['player.ui.functionButtons.collapseButtons']">
+						<option value="never">{{ $t("player.buttonCollapse.option.never") }}</option>
+						<option value="always">{{ $t("player.buttonCollapse.option.always") }}</option>
+						<option value="auto">{{ $t("player.buttonCollapse.option.auto") }}</option>
+					</select>
 				</label>
 			</div>
 		</div>
@@ -240,7 +256,7 @@
 import { computed, ref } from "vue";
 import DocsHelpLink from "../components/DocsHelpLink.vue";
 import MiniPlayerSettingsCard from "../components/player/MiniPlayerSettingsCard.vue";
-import VolumeBoosterSettingsCard from "../components/player/VolumeBoosterSettingsCard.vue";
+import VolumeBoosterSettings from "../components/player/VolumeBoosterSettings.vue";
 import useConfigStore from "../util/config";
 import type { PlayerHideButtonMode } from "@/defaultConfig";
 const config = useConfigStore() as {
@@ -306,6 +322,14 @@ const speedSliderWheelStepSelectValue = computed({
 			text-align: center;
 		}
 	}
+}
+
+.speed-buttons-collapse-mode {
+	margin-top: 10px;
+}
+
+.function-buttons-collapse-mode {
+	margin-top: 6px;
 }
 
 .speed-slider {

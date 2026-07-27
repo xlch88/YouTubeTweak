@@ -162,6 +162,76 @@ div.yttweak-speed-buttons {
 	body[yttweak-enable-speed-slider] & {
 		cursor: ew-resize;
 	}
+
+	body[yttweak-collapse-speed-buttons] & {
+		.yttweak-speed-button-track {
+			gap: 0;
+			transition: gap 180ms ease;
+		}
+
+		span.yttweak-speed-button {
+			width: 0;
+			min-width: 0;
+			opacity: 0;
+			transform: scale(0.72);
+			pointer-events: none;
+			transition:
+				width 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+				opacity 140ms ease,
+				transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+
+			&.yttweak-speed-button-active {
+				width: 48px;
+				opacity: 1;
+				transform: scale(1);
+				pointer-events: auto;
+			}
+		}
+
+		&:hover,
+		&.yttweak-speed-slider-active {
+			.yttweak-speed-button-track {
+				gap: 4px;
+			}
+
+			span.yttweak-speed-button {
+				width: 48px;
+				opacity: 1;
+				transform: scale(1);
+				pointer-events: auto;
+			}
+		}
+	}
+
+	&.yttweak-measure-speed-buttons-collapsed {
+		.yttweak-speed-button-track {
+			gap: 0;
+			transition: none;
+		}
+
+		span.yttweak-speed-button {
+			width: 0;
+			min-width: 0;
+			transition: none;
+
+			&.yttweak-speed-button-active {
+				width: 48px;
+			}
+		}
+	}
+
+	&.yttweak-measure-speed-buttons-expanded {
+		.yttweak-speed-button-track {
+			gap: 4px;
+			transition: none;
+		}
+
+		span.yttweak-speed-button {
+			width: 48px;
+			min-width: 0;
+			transition: none;
+		}
+	}
 }
 
 @each $speed in (0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 5, 10) {

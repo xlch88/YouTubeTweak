@@ -51,7 +51,8 @@
 				"enable": "再生速度ボタン/スライダーを表示する",
 				"save": "再生速度を記憶する",
 				"saveByChannel": "チャンネルごとに再生速度を記憶する",
-				"enableSlider": "再生速度スライダーを有効にする"
+				"enableSlider": "再生速度スライダーを有効にする",
+				"collapse": "再生速度ボタンを折りたたむ"
 			},
 			"tips": {
 				"enabledButtons": "有効になったボタン",
@@ -63,6 +64,13 @@
 				"sliderWheelStepFollowButtons": "有効な速度ボタンに合わせる",
 				"sliderWheelStepCustom": "カスタム",
 				"sliderWheelStepPresets": "プリセット"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "常に折りたたまない",
+				"always": "常に折りたたむ",
+				"auto": "自動で折りたたむ"
 			}
 		},
 		"subtitles": {
@@ -129,7 +137,8 @@
 			"checkbox": {
 				"enableRotateButton": "動画の回転ボタンを有効にする",
 				"enableMirrorButton": "動画のミラーボタンを有効にする",
-				"enableScreenshotButton": "動画スクリーンショットボタンを有効にする"
+				"enableScreenshotButton": "動画スクリーンショットボタンを有効にする",
+				"collapse": "機能ボタンを折りたたむ"
 			}
 		},
 		"volumeBooster": {

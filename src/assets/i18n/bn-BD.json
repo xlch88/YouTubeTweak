@@ -51,7 +51,8 @@
 				"enable": "গতি বোতাম/গতি স্লাইডার দেখান",
 				"save": "প্লেব্যাক গতি মনে রাখুন",
 				"saveByChannel": "প্রতিটি চ্যানেলের জন্য আলাদা প্লেব্যাক গতি মনে রাখুন",
-				"enableSlider": "গতি স্লাইডার চালু করুন"
+				"enableSlider": "গতি স্লাইডার চালু করুন",
+				"collapse": "গতি বোতামগুলো ভাঁজ করুন"
 			},
 			"tips": {
 				"enabledButtons": "সক্রিয় বোতাম:",
@@ -63,6 +64,13 @@
 				"sliderWheelStepFollowButtons": "সক্রিয় গতি বোতাম অনুসরণ করুন",
 				"sliderWheelStepCustom": "কাস্টম",
 				"sliderWheelStepPresets": "প্রিসেট"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "কখনো ভাঁজ করবেন না",
+				"always": "সবসময় ভাঁজ করুন",
+				"auto": "স্বয়ংক্রিয়ভাবে ভাঁজ করুন"
 			}
 		},
 		"subtitles": {
@@ -129,7 +137,8 @@
 			"checkbox": {
 				"enableRotateButton": "ভিডিও ঘোরানোর বোতাম সক্রিয় করুন",
 				"enableMirrorButton": "ভিডিও মিরর করার বোতাম সক্রিয় করুন",
-				"enableScreenshotButton": "Enable video screenshot button"
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "ফাংশন বোতামগুলো ভাঁজ করুন"
 			}
 		},
 		"volumeBooster": {
