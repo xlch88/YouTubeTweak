@@ -87,7 +87,7 @@
 						</button>
 					</span>
 				</label>
-
+				<hr />
 				<p>{{ $t("player.speedButtons.tips.save") }}</p>
 				<label class="form-item">
 					<input type="checkbox" v-model="config['player.settings.saveSpeed']" />
@@ -203,6 +203,7 @@
 					<span>{{ $t("player.ui.checkbox.hideCeElement") }}</span>
 					<DocsHelpLink anchor="player-ui-ending-overlay" />
 				</label>
+				<hr />
 				<p>{{ $t("player.ui.tips.progress") }}</p>
 				<label class="form-item">
 					<input type="checkbox" v-model="config['player.ui.progress.enable']" />
@@ -213,6 +214,7 @@
 					<span>{{ $t("player.ui.checkbox.progressHeight") }}</span>
 					<input type="number" min="1" max="20" style="width: 70px" v-model.number="config['player.ui.progress.height']" />
 				</label>
+				<hr />
 				<p>{{ $t("player.ui.tips.timeTag") }}</p>
 				<label class="form-item">
 					<input type="checkbox" v-model="config['player.ui.progress.enableTag']" />
