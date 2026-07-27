@@ -138,6 +138,14 @@
 				<DocsHelpLink anchor="player-function-buttons" />
 			</div>
 			<div class="card-body">
+				<label class="form-item form-item-select function-buttons-collapse-mode">
+					<span>{{ $t("player.functionButtons.checkbox.collapse") }}</span>
+					<select class="w-100" v-model="config['player.ui.functionButtons.collapseButtons']">
+						<option value="never">{{ $t("player.buttonCollapse.option.never") }}</option>
+						<option value="always">{{ $t("player.buttonCollapse.option.always") }}</option>
+						<option value="auto">{{ $t("player.buttonCollapse.option.auto") }}</option>
+					</select>
+				</label>
 				<label class="form-item">
 					<input type="checkbox" v-model="config['player.ui.functionButtons.enableRotateButton']" />
 					<span>{{ $t("player.functionButtons.checkbox.enableRotateButton") }}</span>
@@ -153,18 +161,12 @@
 					<span>{{ $t("player.functionButtons.checkbox.enableScreenshotButton") }}</span>
 					<DocsHelpLink anchor="player-function-buttons-screenshot" />
 				</label>
+				<hr />
 				<VolumeBoosterSettings />
+				<hr />
 				<label class="form-item">
 					<input type="checkbox" v-model="config['player.ui.inPageFullscreen']" />
 					<span>{{ $t("player.functionButtons.checkbox.inPageFullscreen") }}</span>
-				</label>
-				<label class="form-item form-item-select function-buttons-collapse-mode">
-					<span>{{ $t("player.functionButtons.checkbox.collapse") }}</span>
-					<select class="w-100" v-model="config['player.ui.functionButtons.collapseButtons']">
-						<option value="never">{{ $t("player.buttonCollapse.option.never") }}</option>
-						<option value="always">{{ $t("player.buttonCollapse.option.always") }}</option>
-						<option value="auto">{{ $t("player.buttonCollapse.option.auto") }}</option>
-					</select>
 				</label>
 			</div>
 		</div>
@@ -332,8 +334,10 @@ const speedSliderWheelStepSelectValue = computed({
 	margin-top: 10px;
 }
 
-.function-buttons-collapse-mode {
-	margin-top: 6px;
+.function-buttons {
+	&-collapse-mode {
+		margin-top: 6px;
+	}
 }
 
 .speed-slider {

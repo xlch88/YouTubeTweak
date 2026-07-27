@@ -45,10 +45,6 @@ function formatMultiplier(value: number) {
 
 <style lang="scss" scoped>
 .volume-booster-settings {
-	margin-top: 8px;
-	padding-top: 8px;
-	border-top: 1px solid #ebebf0;
-
 	&-title {
 		color: #343542;
 		font-weight: 650;
