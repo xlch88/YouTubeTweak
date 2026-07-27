@@ -138,7 +138,8 @@
 				"enableRotateButton": "啟用旋轉影片按鈕",
 				"enableMirrorButton": "啟用鏡像影片按鈕",
 				"enableScreenshotButton": "啟用影片截圖按鈕",
-				"collapse": "摺疊功能按鈕"
+				"collapse": "摺疊功能按鈕",
+				"inPageFullscreen": "顯示頁內全螢幕按鈕"
 			}
 		},
 		"volumeBooster": {

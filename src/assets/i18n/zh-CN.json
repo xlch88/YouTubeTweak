@@ -138,7 +138,8 @@
 				"enableRotateButton": "启用旋转视频按钮",
 				"enableMirrorButton": "启用镜像视频按钮",
 				"enableScreenshotButton": "启用视频截图按钮",
-				"collapse": "折叠功能按钮"
+				"collapse": "折叠功能按钮",
+				"inPageFullscreen": "显示页内全屏按钮"
 			}
 		},
 		"volumeBooster": {

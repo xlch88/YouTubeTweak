@@ -23,6 +23,7 @@ export type Config = {
 	"player.ui.speedSliderStep": number;
 	"player.ui.speedButtons": Array<0.25 | 0.5 | 0.75 | 1 | 1.25 | 1.5 | 1.75 | 2 | 2.25 | 2.5 | 2.75 | 3 | 5 | 10>;
 	"player.ui.enableVolumeBooster": boolean;
+	"player.ui.inPageFullscreen": boolean;
 	"player.ui.hideButton.autoplay": PlayerHideButtonMode;
 	"player.ui.hideButton.subtitles": PlayerHideButtonMode;
 	"player.ui.hideButton.settings": PlayerHideButtonMode;
@@ -99,6 +100,7 @@ const config: Config = {
 	"player.ui.speedSliderStep": 0.25,
 	"player.ui.speedButtons": [0.5, 1, 1.5, 2],
 	"player.ui.enableVolumeBooster": true,
+	"player.ui.inPageFullscreen": false,
 	"player.ui.hideButton.autoplay": "auto",
 	"player.ui.hideButton.subtitles": "auto",
 	"player.ui.hideButton.settings": "auto",

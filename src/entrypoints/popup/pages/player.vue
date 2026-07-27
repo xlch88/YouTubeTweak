@@ -154,6 +154,10 @@
 					<DocsHelpLink anchor="player-function-buttons-screenshot" />
 				</label>
 				<VolumeBoosterSettings />
+				<label class="form-item">
+					<input type="checkbox" v-model="config['player.ui.inPageFullscreen']" />
+					<span>{{ $t("player.functionButtons.checkbox.inPageFullscreen") }}</span>
+				</label>
 				<label class="form-item form-item-select function-buttons-collapse-mode">
 					<span>{{ $t("player.functionButtons.checkbox.collapse") }}</span>
 					<select class="w-100" v-model="config['player.ui.functionButtons.collapseButtons']">

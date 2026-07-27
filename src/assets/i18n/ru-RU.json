@@ -138,7 +138,8 @@
 				"enableRotateButton": "Включить кнопку поворота видео",
 				"enableMirrorButton": "Включить кнопку зеркального отражения видео",
 				"enableScreenshotButton": "Enable video screenshot button",
-				"collapse": "Свернуть функциональные кнопки"
+				"collapse": "Свернуть функциональные кнопки",
+				"inPageFullscreen": "Показывать кнопку полноэкранного режима внутри страницы"
 			}
 		},
 		"volumeBooster": {

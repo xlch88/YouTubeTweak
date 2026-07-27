@@ -138,7 +138,8 @@
 				"enableRotateButton": "تفعيل زر تدوير الفيديو",
 				"enableMirrorButton": "تفعيل زر عكس الفيديو",
 				"enableScreenshotButton": "Enable video screenshot button",
-				"collapse": "طي أزرار الوظائف"
+				"collapse": "طي أزرار الوظائف",
+				"inPageFullscreen": "إظهار زر ملء الشاشة داخل الصفحة"
 			}
 		},
 		"volumeBooster": {

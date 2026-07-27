@@ -138,7 +138,8 @@
 				"enableRotateButton": "ویڈیو گھماؤن والا بٹن فعال کرو",
 				"enableMirrorButton": "ویڈیو دا عکس والا بٹن فعال کرو",
 				"enableScreenshotButton": "Enable video screenshot button",
-				"collapse": "فنکشن بٹن سمیٹو"
+				"collapse": "فنکشن بٹن سمیٹو",
+				"inPageFullscreen": "صفحے وچ پوری سکرین دا بٹن وکھاؤ"
 			}
 		},
 		"volumeBooster": {

@@ -138,7 +138,8 @@
 				"enableRotateButton": "व्हिडिओ फिरविण्याचे बटण सक्षम करा",
 				"enableMirrorButton": "व्हिडिओ मिरर बटण सक्षम करा",
 				"enableScreenshotButton": "Enable video screenshot button",
-				"collapse": "फंक्शन बटणे संकुचित करा"
+				"collapse": "फंक्शन बटणे संकुचित करा",
+				"inPageFullscreen": "पृष्ठामधील पूर्णस्क्रीन बटण दाखवा"
 			}
 		},
 		"volumeBooster": {

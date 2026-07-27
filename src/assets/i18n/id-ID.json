@@ -138,7 +138,8 @@
 				"enableRotateButton": "Aktifkan tombol rotasi video",
 				"enableMirrorButton": "Aktifkan tombol mirror video",
 				"enableScreenshotButton": "Enable video screenshot button",
-				"collapse": "Ciutkan tombol fungsi"
+				"collapse": "Ciutkan tombol fungsi",
+				"inPageFullscreen": "Tampilkan tombol layar penuh dalam halaman"
 			}
 		},
 		"volumeBooster": {

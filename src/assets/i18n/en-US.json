@@ -138,7 +138,8 @@
 				"enableRotateButton": "Enable video rotation button",
 				"enableMirrorButton": "Enable video mirror button",
 				"enableScreenshotButton": "Enable video screenshot button",
-				"collapse": "Collapse function buttons"
+				"collapse": "Collapse function buttons",
+				"inPageFullscreen": "Show in-page fullscreen button"
 			}
 		},
 		"volumeBooster": {

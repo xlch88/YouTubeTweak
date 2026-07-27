@@ -138,7 +138,8 @@
 				"enableRotateButton": "वीडियो घुमाने का बटन सक्षम करें",
 				"enableMirrorButton": "वीडियो मिरर करने का बटन सक्षम करें",
 				"enableScreenshotButton": "Enable video screenshot button",
-				"collapse": "फ़ंक्शन बटन समेटें"
+				"collapse": "फ़ंक्शन बटन समेटें",
+				"inPageFullscreen": "पेज के अंदर फ़ुलस्क्रीन बटन दिखाएँ"
 			}
 		},
 		"volumeBooster": {

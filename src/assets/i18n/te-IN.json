@@ -138,7 +138,8 @@
 				"enableRotateButton": "వీడియో రొటేషన్ బటన్ను ప్రారంభించు",
 				"enableMirrorButton": "వీడియో మిర్రర్ బటన్ను ప్రారంభించు",
 				"enableScreenshotButton": "Enable video screenshot button",
-				"collapse": "ఫంక్షన్ బటన్‌లను కుదించు"
+				"collapse": "ఫంక్షన్ బటన్‌లను కుదించు",
+				"inPageFullscreen": "పేజీలో పూర్తి స్క్రీన్ బటన్‌ను చూపించండి"
 			}
 		},
 		"volumeBooster": {

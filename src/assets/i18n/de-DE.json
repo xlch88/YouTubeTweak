@@ -138,7 +138,8 @@
 				"enableRotateButton": "Schaltfläche zum Drehen des Videos aktivieren",
 				"enableMirrorButton": "Schaltfläche zum Spiegeln des Videos aktivieren",
 				"enableScreenshotButton": "Enable video screenshot button",
-				"collapse": "Funktionsschaltflächen einklappen"
+				"collapse": "Funktionsschaltflächen einklappen",
+				"inPageFullscreen": "Schaltfläche für Vollbild innerhalb der Seite anzeigen"
 			}
 		},
 		"volumeBooster": {

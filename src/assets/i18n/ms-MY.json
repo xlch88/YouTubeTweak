@@ -138,7 +138,8 @@
 				"enableRotateButton": "Aktifkan butang putar video",
 				"enableMirrorButton": "Aktifkan butang cermin video",
 				"enableScreenshotButton": "Enable video screenshot button",
-				"collapse": "Lipat butang fungsi"
+				"collapse": "Lipat butang fungsi",
+				"inPageFullscreen": "Tunjukkan butang skrin penuh dalam halaman"
 			}
 		},
 		"volumeBooster": {

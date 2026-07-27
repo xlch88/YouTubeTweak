@@ -1,0 +1,65 @@
+body.yttweak-show-in-page-fullscreen-button {
+	#movie_player {
+		.yttweak-in-page-fullscreen-button {
+			display: inline-flex !important;
+		}
+	}
+}
+
+.yttweak-in-page-fullscreen-button {
+	display: none !important;
+	align-items: center;
+	justify-content: center;
+
+	&-icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 24px;
+		height: 20px;
+		box-sizing: border-box;
+		border: 2px solid rgba(white, 0.92);
+		border-radius: 2px;
+		transition:
+			border-color 120ms ease,
+			background-color 120ms ease;
+
+		svg {
+			flex: 0 0 16px !important;
+			width: 16px !important;
+			height: 16px !important;
+			padding: 0 !important;
+			margin: 0 !important;
+
+			path {
+				fill: currentColor !important;
+			}
+		}
+	}
+
+	&.yttweak-in-page-fullscreen-active {
+		color: #3ea6ff;
+
+		.yttweak-in-page-fullscreen-button-icon {
+			border-color: currentColor;
+			background: rgba(#3ea6ff, 0.16);
+		}
+	}
+}
+
+body.yttweak-player-in-page-fullscreen {
+	#masthead-container {
+		display: none !important;
+	}
+
+	ytd-page-manager {
+		margin-top: 0 !important;
+	}
+
+	ytd-watch-flexy[theater]:not([hidden]) {
+		#full-bleed-container {
+			height: 100dvh !important;
+			max-height: 100dvh !important;
+		}
+	}
+}

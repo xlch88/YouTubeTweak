@@ -138,7 +138,8 @@
 				"enableRotateButton": "فعال کردن دکمه چرخش ویدیو",
 				"enableMirrorButton": "فعال کردن دکمه آینه کردن ویدیو",
 				"enableScreenshotButton": "Enable video screenshot button",
-				"collapse": "جمع کردن دکمه‌های عملکردی"
+				"collapse": "جمع کردن دکمه‌های عملکردی",
+				"inPageFullscreen": "نمایش دکمه تمام‌صفحه درون صفحه"
 			}
 		},
 		"volumeBooster": {

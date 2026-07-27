@@ -138,7 +138,8 @@
 				"enableRotateButton": "회전 버튼 사용",
 				"enableMirrorButton": "좌우 반전 버튼 사용",
 				"enableScreenshotButton": "Enable video screenshot button",
-				"collapse": "기능 버튼 접기"
+				"collapse": "기능 버튼 접기",
+				"inPageFullscreen": "페이지 내 전체 화면 버튼 표시"
 			}
 		},
 		"volumeBooster": {

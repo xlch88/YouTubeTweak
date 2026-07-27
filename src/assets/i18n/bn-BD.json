@@ -138,7 +138,8 @@
 				"enableRotateButton": "ভিডিও ঘোরানোর বোতাম সক্রিয় করুন",
 				"enableMirrorButton": "ভিডিও মিরর করার বোতাম সক্রিয় করুন",
 				"enableScreenshotButton": "Enable video screenshot button",
-				"collapse": "ফাংশন বোতামগুলো ভাঁজ করুন"
+				"collapse": "ফাংশন বোতামগুলো ভাঁজ করুন",
+				"inPageFullscreen": "পৃষ্ঠার মধ্যে পূর্ণস্ক্রিন বোতাম দেখান"
 			}
 		},
 		"volumeBooster": {

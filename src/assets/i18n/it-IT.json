@@ -138,7 +138,8 @@
 				"enableRotateButton": "Abilita pulsante di rotazione video",
 				"enableMirrorButton": "Abilita pulsante specchia video",
 				"enableScreenshotButton": "Enable video screenshot button",
-				"collapse": "Comprimi i pulsanti funzione"
+				"collapse": "Comprimi i pulsanti funzione",
+				"inPageFullscreen": "Mostra il pulsante schermo intero nella pagina"
 			}
 		},
 		"volumeBooster": {

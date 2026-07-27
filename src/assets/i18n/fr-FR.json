@@ -138,7 +138,8 @@
 				"enableRotateButton": "Activer le bouton de rotation de la vidéo",
 				"enableMirrorButton": "Activer le bouton de miroir de la vidéo",
 				"enableScreenshotButton": "Enable video screenshot button",
-				"collapse": "Replier les boutons de fonction"
+				"collapse": "Replier les boutons de fonction",
+				"inPageFullscreen": "Afficher le bouton de plein écran dans la page"
 			}
 		},
 		"volumeBooster": {

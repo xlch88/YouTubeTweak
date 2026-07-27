@@ -138,7 +138,8 @@
 				"enableRotateButton": "Bật nút xoay video",
 				"enableMirrorButton": "Bật nút lật gương video",
 				"enableScreenshotButton": "Enable video screenshot button",
-				"collapse": "Thu gọn các nút chức năng"
+				"collapse": "Thu gọn các nút chức năng",
+				"inPageFullscreen": "Hiện nút toàn màn hình trong trang"
 			}
 		},
 		"volumeBooster": {
