@@ -250,6 +250,23 @@
 			"checkbox": {
 				"premiumLogo": "Premium ロゴに偽装"
 			},
+			"networkSpeed": {
+				"title": "リアルタイムネットワーク速度",
+				"label": "リアルタイムネットワーク速度の表示位置",
+				"option": {
+					"off": "オフ",
+					"controls": "コントロールバーのみ",
+					"both": "動画の右下とコントロールバー"
+				},
+				"unit": {
+					"label": "速度単位",
+					"option": {
+						"mb": "MB/s 固定",
+						"auto": "KB/s | MB/s 自動"
+					}
+				},
+				"trackPageTraffic": "ページのデータ使用量を計測"
+			},
 			"logoCountryCode": "ロゴの国コードを変更"
 		},
 		"customCss": {

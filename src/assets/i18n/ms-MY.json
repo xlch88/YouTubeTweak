@@ -250,6 +250,23 @@
 			"checkbox": {
 				"premiumLogo": "Samarkan sebagai logo Premium"
 			},
+			"networkSpeed": {
+				"title": "Kelajuan rangkaian masa nyata",
+				"label": "Kedudukan kelajuan rangkaian masa nyata",
+				"option": {
+					"off": "Mati",
+					"controls": "Bar kawalan sahaja",
+					"both": "Bahagian bawah kanan video dan bar kawalan"
+				},
+				"unit": {
+					"label": "Unit kelajuan",
+					"option": {
+						"mb": "MB/s tetap",
+						"auto": "KB/s | MB/s automatik"
+					}
+				},
+				"trackPageTraffic": "Kira penggunaan data halaman"
+			},
 			"logoCountryCode": "Ubah kod negara logo"
 		},
 		"customCss": {

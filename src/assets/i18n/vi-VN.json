@@ -250,6 +250,23 @@
 			"checkbox": {
 				"premiumLogo": "Ngụy trang thành logo Premium"
 			},
+			"networkSpeed": {
+				"title": "Tốc độ mạng theo thời gian thực",
+				"label": "Vị trí tốc độ mạng theo thời gian thực",
+				"option": {
+					"off": "Tắt",
+					"controls": "Chỉ trên thanh điều khiển",
+					"both": "Góc dưới bên phải video và thanh điều khiển"
+				},
+				"unit": {
+					"label": "Đơn vị tốc độ",
+					"option": {
+						"mb": "MB/s cố định",
+						"auto": "KB/s | MB/s tự động"
+					}
+				},
+				"trackPageTraffic": "Thống kê mức sử dụng dữ liệu của trang"
+			},
 			"logoCountryCode": "Thay đổi mã quốc gia của logo"
 		},
 		"customCss": {

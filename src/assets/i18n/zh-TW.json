@@ -250,6 +250,23 @@
 			"checkbox": {
 				"premiumLogo": "偽裝 Premium logo"
 			},
+			"networkSpeed": {
+				"title": "即時網路速度",
+				"label": "即時網路速度顯示位置",
+				"option": {
+					"off": "關閉",
+					"controls": "僅顯示於控制列",
+					"both": "影片右下角和控制列"
+				},
+				"unit": {
+					"label": "速率單位",
+					"option": {
+						"mb": "固定 MB/s",
+						"auto": "自動 KB/s | MB/s"
+					}
+				},
+				"trackPageTraffic": "統計頁面使用流量"
+			},
 			"logoCountryCode": "修改 Logo 國家代碼"
 		},
 		"customCss": {

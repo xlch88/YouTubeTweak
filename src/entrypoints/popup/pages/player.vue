@@ -235,6 +235,27 @@
 						</option>
 					</select>
 				</label>
+				<hr />
+				<p>{{ $t("other.appearance.networkSpeed.title") }}</p>
+				<label class="form-item form-item-select">
+					<span>{{ $t("other.appearance.networkSpeed.label") }}</span>
+					<select class="w-100" v-model="config['other.playerNetworkSpeed.mode']">
+						<option value="off">{{ $t("other.appearance.networkSpeed.option.off") }}</option>
+						<option value="controls">{{ $t("other.appearance.networkSpeed.option.controls") }}</option>
+						<option value="both">{{ $t("other.appearance.networkSpeed.option.both") }}</option>
+					</select>
+				</label>
+				<label class="form-item form-item-select">
+					<span>{{ $t("other.appearance.networkSpeed.unit.label") }}</span>
+					<select class="w-100" v-model="config['other.playerNetworkSpeed.unit']">
+						<option value="mb">{{ $t("other.appearance.networkSpeed.unit.option.mb") }}</option>
+						<option value="auto">{{ $t("other.appearance.networkSpeed.unit.option.auto") }}</option>
+					</select>
+				</label>
+				<label class="form-item">
+					<input type="checkbox" v-model="config['other.playerNetworkSpeed.trackPageTraffic']" />
+					<span>{{ $t("other.appearance.networkSpeed.trackPageTraffic") }}</span>
+				</label>
 			</div>
 		</div>
 		<div class="card">

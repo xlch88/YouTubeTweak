@@ -1,0 +1,42 @@
+.yttweak-player-network-speed {
+	flex: 0 0 auto;
+	min-width: 80px;
+	color: #fff;
+	font-family: "Courier New", "Cascadia Mono", ui-monospace, monospace;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1;
+	text-align: right;
+	font-variant-numeric: tabular-nums;
+	text-shadow:
+		0 0 3px black,
+		0 0 3px black,
+		0 0 3px black;
+}
+
+.yttweak-player-network-speed-overlay {
+	align-self: flex-end;
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.yttweak-player-network-speed-controls {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	margin-right: 10px;
+}
+
+#movie_player.ytp-autohide {
+	.yttweak-player-network-speed-overlay {
+		opacity: 1 !important;
+	}
+}
+
+body.yttweak-mini-player-mode {
+	#movie_player.yttweak-mini-player-active:not(.ytp-fullscreen) {
+		.yttweak-player-network-speed-overlay {
+			opacity: 0 !important;
+		}
+	}
+}

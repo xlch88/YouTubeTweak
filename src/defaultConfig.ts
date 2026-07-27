@@ -14,6 +14,8 @@ type MiniPlayerSize = "360x203" | "420x236" | "480x270" | "560x315" | "640x360" 
 type MiniPlayerPosition = "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right";
 export type PlayerHideButtonMode = "auto" | "hide" | "show";
 export type PlayerButtonCollapseMode = "never" | "always" | "auto";
+export type PlayerNetworkSpeedMode = "off" | "controls" | "both";
+export type PlayerNetworkSpeedUnit = "mb" | "auto";
 
 export type Config = {
 	"player.ui.enableSpeedButtons": boolean;
@@ -77,6 +79,9 @@ export type Config = {
 
 	"index.videoPerRow.enable": boolean;
 	"index.videoPerRow.count": 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15;
+	"other.playerNetworkSpeed.mode": PlayerNetworkSpeedMode;
+	"other.playerNetworkSpeed.unit": PlayerNetworkSpeedUnit;
+	"other.playerNetworkSpeed.trackPageTraffic": boolean;
 	"other.premiumLogo.enable": boolean;
 	"other.logoCountryCode": string;
 	"other.antiAD.enable": boolean;
@@ -154,6 +159,9 @@ const config: Config = {
 
 	"index.videoPerRow.enable": false,
 	"index.videoPerRow.count": 4,
+	"other.playerNetworkSpeed.mode": "both",
+	"other.playerNetworkSpeed.unit": "mb",
+	"other.playerNetworkSpeed.trackPageTraffic": false,
 	"other.premiumLogo.enable": false,
 	"other.logoCountryCode": "",
 	"other.antiAD.enable": false,
@@ -193,6 +201,16 @@ export function normalizeConfig(rawConfig: Partial<Config> | Record<string, unkn
 	if (typeof normalizedConfig["other.logoCountryCode"] !== "string") {
 		normalizedConfig["other.logoCountryCode"] = "";
 	}
+	if (!["off", "controls", "both"].includes(String(normalizedConfig["other.playerNetworkSpeed.mode"]))) {
+		normalizedConfig["other.playerNetworkSpeed.mode"] = normalizedConfig["other.playerNetworkSpeed.enable"] === false ? "off" : "both";
+	}
+	if (!["mb", "auto"].includes(String(normalizedConfig["other.playerNetworkSpeed.unit"]))) {
+		normalizedConfig["other.playerNetworkSpeed.unit"] = "mb";
+	}
+	if (typeof normalizedConfig["other.playerNetworkSpeed.trackPageTraffic"] !== "boolean") {
+		normalizedConfig["other.playerNetworkSpeed.trackPageTraffic"] = false;
+	}
+	delete normalizedConfig["other.playerNetworkSpeed.enable"];
 
 	if (typeof normalizedConfig["other.antiAD.enableVideo"] !== undefined) {
 		delete normalizedConfig["other.antiAD.enableVideo"];

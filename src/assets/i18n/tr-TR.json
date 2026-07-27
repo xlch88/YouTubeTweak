@@ -250,6 +250,23 @@
 			"checkbox": {
 				"premiumLogo": "Premium logosunu taklit et"
 			},
+			"networkSpeed": {
+				"title": "Gerçek zamanlı ağ hızı",
+				"label": "Gerçek zamanlı ağ hızı konumu",
+				"option": {
+					"off": "Kapalı",
+					"controls": "Yalnızca kontrol çubuğu",
+					"both": "Videonun sağ alt köşesi ve kontrol çubuğu"
+				},
+				"unit": {
+					"label": "Hız birimi",
+					"option": {
+						"mb": "Sabit MB/s",
+						"auto": "Otomatik KB/s | MB/s"
+					}
+				},
+				"trackPageTraffic": "Sayfanın veri kullanımını hesapla"
+			},
 			"logoCountryCode": "Logo ülke kodunu değiştir"
 		},
 		"customCss": {

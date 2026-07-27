@@ -250,6 +250,23 @@
 			"checkbox": {
 				"premiumLogo": "Simular el logo de Premium"
 			},
+			"networkSpeed": {
+				"title": "Velocidad de red en tiempo real",
+				"label": "Posición de la velocidad de red en tiempo real",
+				"option": {
+					"off": "Desactivado",
+					"controls": "Solo en la barra de controles",
+					"both": "Esquina inferior derecha del vídeo y barra de controles"
+				},
+				"unit": {
+					"label": "Unidad de velocidad",
+					"option": {
+						"mb": "MB/s fijo",
+						"auto": "KB/s | MB/s automático"
+					}
+				},
+				"trackPageTraffic": "Registrar el uso de datos de la página"
+			},
 			"logoCountryCode": "Modificar el código de país del logo"
 		},
 		"customCss": {

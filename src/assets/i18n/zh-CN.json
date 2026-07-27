@@ -250,6 +250,23 @@
 			"checkbox": {
 				"premiumLogo": "伪装 Premium logo"
 			},
+			"networkSpeed": {
+				"title": "实时网络速度",
+				"label": "实时网络速度显示位置",
+				"option": {
+					"off": "关闭",
+					"controls": "仅显示在控制条",
+					"both": "视频右下角和控制条"
+				},
+				"unit": {
+					"label": "速率单位",
+					"option": {
+						"mb": "固定 MB/s",
+						"auto": "自动 KB/s | MB/s"
+					}
+				},
+				"trackPageTraffic": "统计页面使用流量"
+			},
 			"logoCountryCode": "修改 Logo 国家代码"
 		},
 		"customCss": {

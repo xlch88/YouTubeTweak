@@ -453,7 +453,10 @@ export default {
 					newConfig["player.ui.functionButtons.enableMirrorButton"] ||
 				oldConfig["player.ui.functionButtons.enableScreenshotButton"] !==
 					newConfig["player.ui.functionButtons.enableScreenshotButton"] ||
-				oldConfig["player.ui.enableVolumeBooster"] !== newConfig["player.ui.enableVolumeBooster"];
+				oldConfig["player.ui.enableVolumeBooster"] !== newConfig["player.ui.enableVolumeBooster"] ||
+				oldConfig["other.playerNetworkSpeed.mode"] !== newConfig["other.playerNetworkSpeed.mode"] ||
+				oldConfig["other.playerNetworkSpeed.trackPageTraffic"] !==
+					newConfig["other.playerNetworkSpeed.trackPageTraffic"];
 
 			if (hasUpdate) {
 				applySpeedButtonConfigState();

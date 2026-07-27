@@ -250,6 +250,23 @@
 			"checkbox": {
 				"premiumLogo": "Premium 로고로 위장"
 			},
+			"networkSpeed": {
+				"title": "실시간 네트워크 속도",
+				"label": "실시간 네트워크 속도 표시 위치",
+				"option": {
+					"off": "끄기",
+					"controls": "컨트롤 바에만 표시",
+					"both": "동영상 오른쪽 하단 및 컨트롤 바"
+				},
+				"unit": {
+					"label": "속도 단위",
+					"option": {
+						"mb": "고정 MB/s",
+						"auto": "자동 KB/s | MB/s"
+					}
+				},
+				"trackPageTraffic": "페이지 데이터 사용량 집계"
+			},
 			"logoCountryCode": "로고 국가 코드 변경"
 		},
 		"customCss": {

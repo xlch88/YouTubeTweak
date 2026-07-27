@@ -1,5 +1,6 @@
 import memory, { createDebouncedMemoryStorage } from "@/memory";
 import { createLogger } from "../logger";
+import initPlayerNetworkSpeedBridge from "./plugins_isolatedWorld/player-network-speed";
 import wirelessRedstone from "./wirelessRedstone";
 
 const logger = createLogger("IsolatedWorld");
@@ -9,6 +10,7 @@ export default function isolatedWorld() {
 
 	logger.log("Initializing isolated world...");
 
+	initPlayerNetworkSpeedBridge();
 	wirelessRedstone.init("isolated");
 	memory.storage = createDebouncedMemoryStorage(browser.storage.sync);
 	const reloadNoticeMessages = {

@@ -382,7 +382,10 @@ export default {
 					newConfig["player.ui.functionButtons.collapseButtons"] ||
 				oldConfig["player.ui.collapseSpeedButtons"] !== newConfig["player.ui.collapseSpeedButtons"] ||
 				oldConfig["player.ui.speedButtons"]?.join(",") !== newConfig["player.ui.speedButtons"]?.join(",") ||
-				oldConfig["player.ui.enableSpeedButtons"] !== newConfig["player.ui.enableSpeedButtons"];
+				oldConfig["player.ui.enableSpeedButtons"] !== newConfig["player.ui.enableSpeedButtons"] ||
+				oldConfig["other.playerNetworkSpeed.mode"] !== newConfig["other.playerNetworkSpeed.mode"] ||
+				oldConfig["other.playerNetworkSpeed.trackPageTraffic"] !==
+					newConfig["other.playerNetworkSpeed.trackPageTraffic"];
 
 			if (hasUpdate) {
 				applyFunctionButtonCollapseState();

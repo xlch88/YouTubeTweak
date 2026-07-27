@@ -250,6 +250,23 @@
 			"checkbox": {
 				"premiumLogo": "محاكاة شعار Premium"
 			},
+			"networkSpeed": {
+				"title": "سرعة الشبكة في الوقت الفعلي",
+				"label": "موضع سرعة الشبكة في الوقت الفعلي",
+				"option": {
+					"off": "إيقاف",
+					"controls": "شريط التحكم فقط",
+					"both": "أسفل يمين الفيديو وشريط التحكم"
+				},
+				"unit": {
+					"label": "وحدة السرعة",
+					"option": {
+						"mb": "ثابت MB/s",
+						"auto": "تلقائي KB/s | MB/s"
+					}
+				},
+				"trackPageTraffic": "تتبّع استهلاك بيانات الصفحة"
+			},
 			"logoCountryCode": "تعديل رمز بلد الشعار"
 		},
 		"customCss": {

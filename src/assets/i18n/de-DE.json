@@ -250,6 +250,23 @@
 			"checkbox": {
 				"premiumLogo": "Premium-Logo vortäuschen"
 			},
+			"networkSpeed": {
+				"title": "Echtzeit-Netzwerkgeschwindigkeit",
+				"label": "Position der Echtzeit-Netzwerkgeschwindigkeit",
+				"option": {
+					"off": "Aus",
+					"controls": "Nur Steuerleiste",
+					"both": "Unten rechts im Video und in der Steuerleiste"
+				},
+				"unit": {
+					"label": "Geschwindigkeitseinheit",
+					"option": {
+						"mb": "Fest MB/s",
+						"auto": "Automatisch KB/s | MB/s"
+					}
+				},
+				"trackPageTraffic": "Seitendatenverbrauch erfassen"
+			},
 			"logoCountryCode": "Ländercode des Logos ändern"
 		},
 		"customCss": {

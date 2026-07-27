@@ -250,6 +250,23 @@
 			"checkbox": {
 				"premiumLogo": "Disguise as the Premium logo"
 			},
+			"networkSpeed": {
+				"title": "Real-time network speed",
+				"label": "Real-time network speed position",
+				"option": {
+					"off": "Off",
+					"controls": "Control bar only",
+					"both": "Video bottom-right and control bar"
+				},
+				"unit": {
+					"label": "Speed unit",
+					"option": {
+						"mb": "Fixed MB/s",
+						"auto": "Automatic KB/s | MB/s"
+					}
+				},
+				"trackPageTraffic": "Track page data usage"
+			},
 			"logoCountryCode": "Modify logo country code"
 		},
 		"customCss": {

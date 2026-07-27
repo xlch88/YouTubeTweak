@@ -250,6 +250,23 @@
 			"checkbox": {
 				"premiumLogo": "نمایش لوگو به‌شکل Premium"
 			},
+			"networkSpeed": {
+				"title": "سرعت لحظه‌ای شبکه",
+				"label": "موقعیت سرعت لحظه‌ای شبکه",
+				"option": {
+					"off": "خاموش",
+					"controls": "فقط نوار کنترل",
+					"both": "پایین سمت راست ویدیو و نوار کنترل"
+				},
+				"unit": {
+					"label": "واحد سرعت",
+					"option": {
+						"mb": "MB/s ثابت",
+						"auto": "KB/s | MB/s خودکار"
+					}
+				},
+				"trackPageTraffic": "محاسبه مصرف داده صفحه"
+			},
 			"logoCountryCode": "تغییر کد کشور لوگو"
 		},
 		"customCss": {

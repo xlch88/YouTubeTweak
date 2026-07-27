@@ -47,7 +47,15 @@ export function shouldCollapsePlayerControls(mode: PlayerButtonCollapseMode) {
 					: getOuterWidth(element)),
 			0,
 		);
-		const requiredWidth = leftControlsWidth + getOuterWidth(speedButtons) + getOuterWidth(rightControls);
+		const requiredWidth =
+			leftControlsWidth +
+			getOuterWidth(speedButtons) +
+			(config.get("other.playerNetworkSpeed.mode") === "off"
+				? 0
+				: config.get("other.playerNetworkSpeed.trackPageTraffic")
+					? 170
+					: 105) +
+			getOuterWidth(rightControls);
 		return requiredWidth >= controls.getBoundingClientRect().width;
 	} finally {
 		speedButtons?.classList.remove(speedMeasureClass);

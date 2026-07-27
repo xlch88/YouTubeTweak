@@ -250,6 +250,23 @@
 			"checkbox": {
 				"premiumLogo": "Premium लोगो के रूप में दिखाएँ"
 			},
+			"networkSpeed": {
+				"title": "रीयल-टाइम नेटवर्क गति",
+				"label": "रीयल-टाइम नेटवर्क गति की स्थिति",
+				"option": {
+					"off": "बंद",
+					"controls": "केवल कंट्रोल बार में",
+					"both": "वीडियो के नीचे दाईं ओर और कंट्रोल बार में"
+				},
+				"unit": {
+					"label": "गति इकाई",
+					"option": {
+						"mb": "निश्चित MB/s",
+						"auto": "स्वचालित KB/s | MB/s"
+					}
+				},
+				"trackPageTraffic": "पेज डेटा उपयोग की गणना करें"
+			},
 			"logoCountryCode": "लोगो का देश कोड बदलें"
 		},
 		"customCss": {

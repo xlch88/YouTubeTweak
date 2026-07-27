@@ -250,6 +250,23 @@
 			"checkbox": {
 				"premiumLogo": "Premium لوگو دے روپ وچ دکھاؤ"
 			},
+			"networkSpeed": {
+				"title": "ریئل ٹائم نیٹ ورک سپیڈ",
+				"label": "ریئل ٹائم نیٹ ورک سپیڈ دی جگہ",
+				"option": {
+					"off": "بند",
+					"controls": "صرف کنٹرول بار وچ",
+					"both": "ویڈیو دے تھلے سجے پاسے تے کنٹرول بار وچ"
+				},
+				"unit": {
+					"label": "سپیڈ دی اکائی",
+					"option": {
+						"mb": "مقررہ MB/s",
+						"auto": "خودکار KB/s | MB/s"
+					}
+				},
+				"trackPageTraffic": "صفحے دی ڈیٹا ورتوں گنو"
+			},
 			"logoCountryCode": "لوگو دا ملک کوڈ بدلو"
 		},
 		"customCss": {

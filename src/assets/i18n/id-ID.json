@@ -250,6 +250,23 @@
 			"checkbox": {
 				"premiumLogo": "Samarkan sebagai logo Premium"
 			},
+			"networkSpeed": {
+				"title": "Kecepatan jaringan real-time",
+				"label": "Posisi kecepatan jaringan real-time",
+				"option": {
+					"off": "Nonaktif",
+					"controls": "Hanya di bilah kontrol",
+					"both": "Kanan bawah video dan bilah kontrol"
+				},
+				"unit": {
+					"label": "Satuan kecepatan",
+					"option": {
+						"mb": "MB/s tetap",
+						"auto": "KB/s | MB/s otomatis"
+					}
+				},
+				"trackPageTraffic": "Hitung penggunaan data halaman"
+			},
 			"logoCountryCode": "Ubah kode negara logo"
 		},
 		"customCss": {
