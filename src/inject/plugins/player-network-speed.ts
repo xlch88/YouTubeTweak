@@ -2,7 +2,6 @@ import type { Config, PlayerNetworkSpeedMode, PlayerNetworkSpeedUnit } from "@/d
 import config from "../config";
 import { videoPlayer } from "../mainWorld";
 import type { Plugin } from "../types";
-import wirelessRedstone from "../wirelessRedstone";
 
 const OVERLAY_WIDGET_ID = "yttweak-player-network-speed";
 const CONTROLS_WIDGET_ID = "yttweak-player-network-speed-controls";
@@ -10,16 +9,17 @@ const CONTROLS_WIDGET_ID = "yttweak-player-network-speed-controls";
 let overlayElement = document.getElementById(OVERLAY_WIDGET_ID) as HTMLDivElement | null;
 let controlsElement = document.getElementById(CONTROLS_WIDGET_ID) as HTMLDivElement | null;
 let interval: number | undefined;
+let pageBytes = 0;
 let lastUpdatedAt = performance.now();
 let currentText = "0.00 MB/s";
 let mode: PlayerNetworkSpeedMode | undefined;
 let unit: PlayerNetworkSpeedUnit = "mb";
 let trackPageTraffic = false;
-let updating = false;
+let videoId: string | null = null;
 
 function mountOverlay() {
 	const container = videoPlayer.player?.querySelector(".ytp-overlay-bottom-right .ytp-overlay-inline-container");
-	if (!container) return false;
+	if (!container) return;
 
 	if (!overlayElement) {
 		overlayElement = document.createElement("div");
@@ -35,13 +35,12 @@ function mountOverlay() {
 	} else if (container.firstElementChild !== overlayElement) {
 		container.prepend(overlayElement);
 	}
-	return true;
 }
 
 function mountControls() {
 	const controls = videoPlayer.controls;
 	const rightControls = controls?.querySelector(":scope > .ytp-right-controls");
-	if (!controls || !rightControls) return false;
+	if (!controls || !rightControls) return;
 
 	if (!controlsElement) {
 		controlsElement = document.createElement("div");
@@ -53,26 +52,24 @@ function mountControls() {
 	const speedButtons = controls.querySelector<HTMLElement>(":scope > .yttweak-speed-buttons");
 	const anchor = speedButtons && getComputedStyle(speedButtons).display !== "none" ? speedButtons : rightControls;
 	if (controlsElement.nextElementSibling !== anchor) controls.insertBefore(controlsElement, anchor);
-	return true;
 }
 
 function mount() {
-	let mounted = false;
 	if (mode === "both") {
-		mounted = mountOverlay();
+		mountOverlay();
 	} else {
 		overlayElement?.remove();
 	}
 
-	if (mode !== "off") {
-		mounted = mountControls() || mounted;
+	if (mode === "controls" || mode === "both") {
+		mountControls();
 	} else {
 		controlsElement?.remove();
 	}
-	return mounted;
 }
 
 function updateText(text: string) {
+	if (text === currentText) return;
 	currentText = text;
 	if (overlayElement) overlayElement.textContent = text;
 	if (controlsElement) controlsElement.textContent = text;
@@ -82,8 +79,44 @@ function isEnabled() {
 	return mode !== undefined && mode !== "off";
 }
 
-function formatSpeed(bytes: number, elapsed: number) {
-	const bytesPerSecond = (bytes * 1000) / Math.max(elapsed, 1);
+function readNetworkActivity() {
+	const player = videoPlayer.player;
+	if (typeof player?.getStatsForNerds !== "function") return { bytes: 0, latestBytes: 0 };
+
+	let stats: Record<string, unknown> | undefined;
+	try {
+		stats = player.getStatsForNerds(0);
+	} catch {}
+	if (!stats || typeof stats !== "object") {
+		try {
+			stats = player.getStatsForNerds();
+		} catch {}
+	}
+	if (!stats || typeof stats !== "object") return { bytes: 0, latestBytes: 0 };
+
+	let bytes = 0;
+	if (Array.isArray(stats.network_activity_samples)) {
+		for (const value of stats.network_activity_samples) {
+			if (typeof value === "number" && Number.isFinite(value) && value > 0) bytes += value;
+		}
+	}
+
+	const latestKilobytes = Number.parseFloat(String(stats.network_activity_bytes ?? "").replaceAll(",", ""));
+	return {
+		bytes,
+		latestBytes: Number.isFinite(latestKilobytes) && latestKilobytes > 0 ? latestKilobytes * 1024 : 0,
+	};
+}
+
+function resetNetworkStats() {
+	readNetworkActivity();
+	videoId = location.pathname === "/watch" ? new URLSearchParams(location.search).get("v") : null;
+	pageBytes = 0;
+	lastUpdatedAt = performance.now();
+	updateText(trackPageTraffic ? `${formatSpeed(0)} ${formatTraffic(0)}` : formatSpeed(0));
+}
+
+function formatSpeed(bytesPerSecond: number) {
 	if (unit === "auto" && bytesPerSecond < 1024 * 1024) {
 		return `${(bytesPerSecond / 1024).toFixed(2)} KB/s`;
 	}
@@ -97,32 +130,21 @@ function formatTraffic(bytes: number) {
 }
 
 function update() {
-	if (!isEnabled() || updating || !mount()) return;
-	updating = true;
+	if (!isEnabled()) return;
 
-	wirelessRedstone.send(
-		"getYoutubeNetworkBytes",
-		{
-			videoId: location.pathname === "/watch" ? new URLSearchParams(location.search).get("v") : null,
-			trackPageTraffic,
-		},
-		(result: { supported: boolean; bytes: number; pageBytes: number }) => {
-			const now = performance.now();
-			updating = false;
-			if (!isEnabled()) {
-				wirelessRedstone.send("disableYoutubeNetworkSpeed", null);
-				return;
-			}
+	const now = performance.now();
+	const currentVideoId = location.pathname === "/watch" ? new URLSearchParams(location.search).get("v") : null;
+	if (currentVideoId !== videoId) {
+		resetNetworkStats();
+		return;
+	}
 
-			if (result?.supported) {
-				const speed = formatSpeed(result.bytes || 0, now - lastUpdatedAt);
-				updateText(trackPageTraffic ? `${speed} ${formatTraffic(result.pageBytes || 0)}` : speed);
-			} else {
-				updateText("N/A");
-			}
-			lastUpdatedAt = now;
-		},
-	);
+	const { bytes, latestBytes } = readNetworkActivity();
+	const bytesPerSecond = Math.max((bytes * 1000) / Math.max(now - lastUpdatedAt, 1), latestBytes * 4);
+	lastUpdatedAt = now;
+	if (trackPageTraffic) pageBytes += bytes || latestBytes;
+	const speed = formatSpeed(bytesPerSecond);
+	updateText(trackPageTraffic ? `${speed} ${formatTraffic(pageBytes)}` : speed);
 }
 
 function setMode(value: PlayerNetworkSpeedMode) {
@@ -130,24 +152,26 @@ function setMode(value: PlayerNetworkSpeedMode) {
 	mode = value;
 
 	if (mode === "off") {
+		window.removeEventListener("yt-navigate-start", resetNetworkStats);
 		if (interval !== undefined) window.clearInterval(interval);
 		interval = undefined;
 		overlayElement?.remove();
 		controlsElement?.remove();
-		wirelessRedstone.send("disableYoutubeNetworkSpeed", null);
 		return;
 	}
 
 	mount();
 	if (interval !== undefined) return;
-	lastUpdatedAt = performance.now();
-	update();
+	window.addEventListener("yt-navigate-start", resetNetworkStats);
+	resetNetworkStats();
 	interval = window.setInterval(update, 1000);
 }
 
 function syncSettings() {
 	unit = config.get("other.playerNetworkSpeed.unit", "mb");
-	trackPageTraffic = config.get("other.playerNetworkSpeed.trackPageTraffic", false);
+	const nextTrackPageTraffic = config.get("other.playerNetworkSpeed.trackPageTraffic", false);
+	if (nextTrackPageTraffic !== trackPageTraffic) pageBytes = 0;
+	trackPageTraffic = nextTrackPageTraffic;
 	setMode(config.get("other.playerNetworkSpeed.mode", "both"));
 }
 
@@ -157,7 +181,7 @@ export default {
 			if (window.top === window) syncSettings();
 		},
 		initPlayer() {
-			if (window.top === window) mount();
+			if (window.top === window && isEnabled()) mount();
 		},
 		configUpdate(oldConfig: Partial<Config>, newConfig: Partial<Config>) {
 			if (

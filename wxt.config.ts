@@ -115,7 +115,7 @@ export default defineConfig({
 					: { action: { default_title: appName } }
 				: {}),
 			default_locale: browser === "edge" ? "en" : "zh_CN",
-			permissions: ["storage", "tabs", ...(["chrome", "edge"].includes(browser) ? ["debugger"] : [])],
+			permissions: ["storage", "tabs"],
 			host_permissions: ["*://*.youtube.com/*"],
 			key:
 				browser === "edge"

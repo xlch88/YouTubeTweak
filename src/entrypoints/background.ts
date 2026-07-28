@@ -1,5 +1,4 @@
 import { defineBackground } from "wxt/utils/define-background";
-import initPlayerNetworkSpeedBackground from "@/inject/plugins_isolatedWorld/player-network-speed-background";
 import { READ_CHANGELOG_VERSION_STORAGE_KEY, syncVersionNoticeBadge } from "@/util/versionNotice";
 
 function reloadAllYouTubeTabs() {
@@ -13,7 +12,6 @@ function reloadAllYouTubeTabs() {
 export default defineBackground({
 	persistent: false,
 	main() {
-		initPlayerNetworkSpeedBackground();
 		syncVersionNoticeBadge().catch(() => {});
 
 		browser.runtime.onInstalled.addListener((details) => {
