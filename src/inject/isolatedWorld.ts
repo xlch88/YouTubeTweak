@@ -48,6 +48,31 @@ export default function isolatedWorld() {
 			});
 		},
 	});
+	if (window === window.top) {
+		browser.runtime.onMessage.addListener((message) => {
+			if (
+				![
+					"getInsightsData",
+					"getInsightsVerificationData",
+					"getInsightsRegionsData",
+					"getInsightsFormats",
+					"getInsightsSubtitleUrl",
+				].includes(message?.action)
+			)
+				return;
+
+			return new Promise((resolve) => {
+				const timeout = window.setTimeout(
+					() => resolve({ error: "main-world-timeout" }),
+					message.action === "getInsightsSubtitleUrl" ? 30000 : 15000,
+				);
+				wirelessRedstone.send(message.action, message.captionTrack || null, (data) => {
+					window.clearTimeout(timeout);
+					resolve(data);
+				});
+			});
+		});
+	}
 	browser.storage.onChanged.addListener((changes, areaName) => {
 		if (areaName === "sync" && typeof changes === "object" && changes.settings !== undefined) {
 			wirelessRedstone.send("configUpdate", changes);
