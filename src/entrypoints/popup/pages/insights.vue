@@ -924,6 +924,7 @@ const metadata = computed(() => {
 	const uploadDate = microformat.value.uploadDate;
 	const maxFps = videoFormats.value.reduce((best, format) => Math.max(best, format.fps || 0), 0);
 	const videoCodecs = [...new Set(videoFormats.value.map((format) => codecName(format.mimeType)))];
+    const ownerUsername = microformat.value.ownerProfileUrl?.split("/").filter(Boolean).pop();
 
 	return {
 		date: publishDate && uploadDate && publishDate !== uploadDate ? `${publishDate} (${uploadDate})` : publishDate || uploadDate || "—",
@@ -934,7 +935,7 @@ const metadata = computed(() => {
 		subscriberCount: formatMetric(subscriberCount.value),
 		channelId: videoDetails.value.channelId || microformat.value.externalChannelId || "—",
 		username:
-			microformat.value.ownerProfileUrl?.split("/").filter(Boolean).pop() ||
+			(ownerUsername && decodeURIComponent(ownerUsername)) ||
 			microformat.value.ownerChannelName ||
 			videoDetails.value.author ||
 			"—",
