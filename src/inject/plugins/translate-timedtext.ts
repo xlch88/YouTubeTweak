@@ -1,6 +1,9 @@
 import { createLogger } from "@/logger";
+
 import type { Plugin } from "../types";
+
 import xmlHttpRequestHooker from "../xmlHttpRequestHooker";
+
 import {
 	escapeTextForTranslate,
 	getTargetLanguage,
@@ -8,21 +11,40 @@ import {
 	shouldSkipAutoTranslation,
 	translatedHtmlToText,
 } from "../util/translate";
+
 import config from "../config";
+
 import { videoPlayer } from "../mainWorld";
+
 const logger = createLogger("Translate-timedtext");
 const TIMEDTEXT_TRANSLATE_MAX_TEXT_LENGTH = 30000;
 const textEncoder = new TextEncoder();
 
 type TimedtextResponse = {
+	pens?: Array<{
+		foForeAlpha?: number;
+	}>;
 	wpWinPositions: Array<{
-		rcRows: number;
+		rcRows?: number;
+		apPoint?: number;
+		ahHorPos?: number;
+		avVerPos?: number;
+		ccCols?: number;
 	}>;
 	events?: Array<{
-		dDurationMs: number;
+		dDurationMs?: number;
 		tStartMs: number;
+		id?: number;
+		wWinId?: number;
+		aAppend?: number;
+		wpWinPosId?: number;
+		wsWinStyleId?: number;
 		segs?: Array<{
 			utf8: string;
+			pPenId?: number;
+			tOffsetMs?: number;
+			acAsrConf?: number;
+			isSpeakerChange?: number;
 		}>;
 	}>;
 };
@@ -36,6 +58,7 @@ async function translateTimedtextItems(texts: string[], srcLang: string, targetL
 
 	for (const text of texts) {
 		const textLength = textEncoder.encode(text).length;
+
 		if (textLength > TIMEDTEXT_TRANSLATE_MAX_TEXT_LENGTH) {
 			throw new Error(`Single timedtext item exceeds translate text length limit: ${textLength}`);
 		}
@@ -57,6 +80,7 @@ async function translateTimedtextItems(texts: string[], srcLang: string, targetL
 	const batchResults = await Promise.all(
 		batches.map(async (batch) => {
 			const result = await googleTranslate(batch, srcLang, targetLanguage);
+
 			return batch.map((source, index) => (typeof result[0][index] === "string" ? result[0][index] : source));
 		}),
 	);
@@ -76,10 +100,12 @@ export default {
 		options: {
 			reloadOnToggle: true,
 		},
+
 		enable() {
 			xmlHttpRequestHooker.addHook("translateTimedtext", {
 				match: "/api/timedtext",
 				mutator: true,
+
 				async handler(data: TimedtextResponse, url) {
 					if (!data || typeof data !== "object") {
 						return data;
@@ -101,12 +127,14 @@ export default {
 						const text = Array.isArray(event.segs)
 							? escapeTextForTranslate(event.segs.map((segment) => segment.utf8).join(""))
 							: "";
+
 						return text.trim() ? text : "---";
 					});
 
 					if (srcLang === "ja") {
 						needTranslateList.forEach((text, index) => {
 							const lines = text.split("<br/>");
+
 							if (lines.length >= 2 && /[a-z ]/i.test(lines[lines.length - 1])) {
 								needTranslateList[index] = lines.slice(0, -1).join("<br/>");
 							}
@@ -114,6 +142,7 @@ export default {
 					}
 
 					let translatedTexts: string[];
+
 					try {
 						translatedTexts = await translateTimedtextItems(needTranslateList, srcLang, targetLanguage);
 					} catch (e) {
@@ -122,33 +151,122 @@ export default {
 					}
 
 					const isTranslationOnly = config.get("translate.timedtext.mode", "bilingual") === "translationOnly";
-					const isAsr = urlObj.searchParams.get("kind") === "asr";
 
-					for (const [index, event] of data.events.entries()) {
+					const isAsr = urlObj.searchParams.get("kind") === "asr";
+					const originalEventsLength = data.events.length;
+					const extraEvents: NonNullable<TimedtextResponse["events"]> = [];
+
+					for (let index = 0; index < originalEventsLength; index++) {
+						const event = data.events[index];
+
 						try {
 							if (!event.segs?.[0]) {
 								continue;
 							}
 
-							if (isAsr) {
-								const translatedText = translatedHtmlToText(translatedTexts[index], "").replace("---", "");
-								event.segs[0].utf8 = isTranslationOnly
-									? translatedText
-									: translatedText + "\n" + event.segs.map((v) => v.utf8).join("");
-								event.segs.length = 1;
-							} else {
-								const translatedText = translatedHtmlToText(translatedTexts[index], "");
-								event.segs[0].utf8 = isTranslationOnly
-									? translatedText.replace("---", "")
-									: translatedText + "\n" + event.segs[0].utf8;
-								if (isTranslationOnly) {
-									event.segs.length = 1;
-								}
+							const translatedText = translatedHtmlToText(translatedTexts[index], "").replace("---", "");
+
+							if (!translatedText) {
+								continue;
 							}
+
+							if (isAsr) {
+								const originalText = event.segs.map((segment) => segment.utf8).join("");
+
+								event.segs[0].utf8 = isTranslationOnly ? translatedText : translatedText + "\n" + originalText;
+
+								event.segs.length = 1;
+								continue;
+							}
+
+							const hasPen = event.segs.some((segment) => segment.pPenId !== undefined);
+
+							if (!hasPen) {
+								const originalText = event.segs.map((segment) => segment.utf8).join("");
+
+								event.segs = [
+									{
+										utf8: isTranslationOnly ? translatedText : translatedText + "\n" + originalText,
+									},
+								];
+
+								continue;
+							}
+
+							const sourceSegment = event.segs.find(
+								(segment) => segment.pPenId !== undefined && segment.utf8.replace(/[\s\u200B-\u200D\uFEFF]/g, ""),
+							);
+
+							if (!sourceSegment || data.pens?.[sourceSegment.pPenId!]?.foForeAlpha === 0) {
+								continue;
+							}
+
+							const pPenId = sourceSegment.pPenId;
+
+							if (isTranslationOnly) {
+								event.segs = [
+									{
+										utf8: translatedText,
+										pPenId,
+									},
+								];
+
+								continue;
+							}
+
+							const position = data.wpWinPositions[event.wpWinPosId ?? 0];
+
+							if (!position) {
+								const originalText = event.segs.map((segment) => segment.utf8).join("");
+
+								event.segs = [
+									{
+										utf8: translatedText + "\n" + originalText,
+										pPenId,
+									},
+								];
+
+								continue;
+							}
+
+							const horizontal = position.ahHorPos ?? 50;
+							const vertical = position.avVerPos ?? 50;
+							const wpWinPosId = data.wpWinPositions.length;
+
+							data.wpWinPositions.push({
+								...position,
+								ahHorPos:
+									horizontal <= 25
+										? Math.min(100, horizontal + 20)
+										: horizontal >= 75
+											? Math.max(0, horizontal - 20)
+											: horizontal,
+								avVerPos:
+									horizontal > 25 && horizontal < 75
+										? vertical < 50
+											? Math.min(100, vertical + 10)
+											: Math.max(0, vertical - 10)
+										: vertical,
+							});
+
+							extraEvents.push({
+								tStartMs: event.tStartMs,
+								dDurationMs: event.dDurationMs,
+								wpWinPosId,
+								wsWinStyleId: event.wsWinStyleId,
+								segs: [
+									{
+										utf8: translatedText,
+										pPenId,
+									},
+								],
+							});
 						} catch (e) {
 							logger.error("Error while processing timedtext event:", e, event, translatedTexts[index]);
 						}
 					}
+
+					data.events.push(...extraEvents);
 
 					if ((urlObj.searchParams.get("xoaf") || "5") === "7") {
 						if (data?.wpWinPositions?.[1]?.rcRows === 2) {
@@ -156,12 +274,21 @@ export default {
 						}
 					}
 
+					logger.debug("Timedtext translation completed:", {
+						srcLang,
+						targetLanguage,
+						originalTexts: needTranslateList,
+						translatedTexts,
+						data,
+					});
+
 					return data;
 				},
 			});
 
 			refreshSubtitles();
 		},
+
 		disable() {
 			delete xmlHttpRequestHooker.hooks["translateTimedtext"];
 			refreshSubtitles();

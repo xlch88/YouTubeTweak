@@ -6,6 +6,12 @@ All release version update records are listed in this file.
 
 If you have questions, bug reports, or feature suggestions, please go to the [GitHub Issues page](https://github.com/xlch88/YouTubeTweak/issues) to submit them.
 
+## [2.0.2] - 2026-09-21
+
+### Fixed
+
+- **Subtitle translation:** Fixed an issue where translated subtitles with certain effects displayed abnormally.
+
 ## [2.0.0] - 2026-09-14
 
 ### Updated

@@ -7,6 +7,36 @@
 	},
 	"releases": [
 		{
+			"version": "2.0.2",
+			"date": "2026-09-21",
+			"changes": {
+				"zh-CN": {
+					"fixed": [
+						{
+							"scope": "字幕翻译",
+							"text": "修复某些特效字幕翻译译文显示异常的问题。"
+						}
+					]
+				},
+				"en": {
+					"fixed": [
+						{
+							"scope": "Subtitle translation",
+							"text": "Fixed an issue where translated subtitles with certain effects displayed abnormally."
+						}
+					]
+				},
+				"ja": {
+					"fixed": [
+						{
+							"scope": "字幕翻訳",
+							"text": "特定のエフェクト付き字幕の翻訳が正常に表示されない問題を修正しました。"
+						}
+					]
+				}
+			}
+		},
+		{
 			"version": "2.0.0",
 			"date": "2026-09-14",
 			"changes": {
