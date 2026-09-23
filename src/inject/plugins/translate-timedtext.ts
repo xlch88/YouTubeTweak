@@ -268,7 +268,7 @@ export default {
 
 					data.events.push(...extraEvents);
 
-					if ((urlObj.searchParams.get("xoaf") || "5") === "7") {
+					if (["6", "7"].contains(urlObj.searchParams.get("xoaf") || "5")) {
 						if (data?.wpWinPositions?.[1]?.rcRows === 2) {
 							data.wpWinPositions[1].rcRows = 3;
 						}
