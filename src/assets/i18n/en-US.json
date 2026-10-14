@@ -509,8 +509,8 @@
 			"modal": {
 				"importTips": "Paste the settings you want to import here",
 				"exportTips": "Copy the settings below to import them into another browser or share them with others.",
-				"exportMemory": "Export memory too (per-channel speed, subtitles, etc.)",
-				"importMemoryConfirm": "I confirm importing memory settings"
+				"exportMemory": "Include cloud and local memory (channel speed, subtitles, per-video subtitle language, etc.)",
+				"importMemoryConfirm": "I confirm importing the cloud and local memory included in this backup"
 			}
 		},
 		"language": {

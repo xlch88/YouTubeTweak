@@ -296,6 +296,7 @@ const configModalExportMemory = ref(false);
 const configModalImportMemory = ref(false);
 let exportConfigUpdateId = 0;
 const MEMORY_CHUNK_KEY = "memoryChunk";
+const LOCAL_MEMORY_CHUNK_KEY = "localMemoryChunk";
 const MEMORY_INDEX_KEY = "memoryI";
 const MEMORY_TABLE_PREFIX = "memory_";
 
@@ -309,7 +310,11 @@ const importConfigHasMemoryChunk = computed(() => {
 	if (configModalType.value !== "import") return false;
 	try {
 		const newConfig = JSON.parse(configModalValue.value);
-		return isRecord(newConfig) && Object.prototype.hasOwnProperty.call(newConfig, MEMORY_CHUNK_KEY);
+		return (
+			isRecord(newConfig) &&
+			(Object.prototype.hasOwnProperty.call(newConfig, MEMORY_CHUNK_KEY) ||
+				Object.prototype.hasOwnProperty.call(newConfig, LOCAL_MEMORY_CHUNK_KEY))
+		);
 	} catch (e) {
 		return false;
 	}
@@ -329,25 +334,25 @@ function pickMemoryChunk(items: Record<string, unknown>) {
 	return Object.fromEntries(Object.entries(items).filter(([key]) => isMemoryStorageKey(key))) as MemoryChunk;
 }
 
-async function getMemoryChunk() {
-	const storageItems = (await browser.storage.sync.get()) as Record<string, unknown>;
+async function getMemoryChunk(area: "sync" | "local") {
+	const storageItems = (await browser.storage[area].get()) as Record<string, unknown>;
 	return pickMemoryChunk(storageItems);
 }
 
-async function overwriteMemoryChunk(memoryChunk: unknown) {
+async function overwriteMemoryChunk(memoryChunk: unknown, area: "sync" | "local") {
 	if (!isRecord(memoryChunk)) throw new Error("Invalid memoryChunk");
 
 	const importedMemoryItems = pickMemoryChunk(memoryChunk);
-	const currentStorageItems = (await browser.storage.sync.get()) as Record<string, unknown>;
+	const currentStorageItems = (await browser.storage[area].get()) as Record<string, unknown>;
 	const currentMemoryKeys = Object.keys(currentStorageItems).filter(isMemoryStorageKey);
 	const importedMemoryKeys = Object.keys(importedMemoryItems);
 	const staleMemoryKeys = currentMemoryKeys.filter((key) => !importedMemoryKeys.includes(key));
 
 	if (importedMemoryKeys.length > 0) {
-		await browser.storage.sync.set(importedMemoryItems);
+		await browser.storage[area].set(importedMemoryItems);
 	}
 	if (staleMemoryKeys.length > 0) {
-		await browser.storage.sync.remove(staleMemoryKeys);
+		await browser.storage[area].remove(staleMemoryKeys);
 	}
 }
 
@@ -360,7 +365,8 @@ async function updateExportConfigValue() {
 	configModalBusy.value = exportMemory;
 	try {
 		if (exportMemory) {
-			exportConfig[MEMORY_CHUNK_KEY] = await getMemoryChunk();
+			exportConfig[MEMORY_CHUNK_KEY] = await getMemoryChunk("sync");
+			exportConfig[LOCAL_MEMORY_CHUNK_KEY] = await getMemoryChunk("local");
 		}
 		if (updateId === exportConfigUpdateId) {
 			configModalValue.value = JSON.stringify(exportConfig, null, 2);
@@ -389,10 +395,16 @@ async function configModalSubmit() {
 
 			const hasMemoryChunk = Object.prototype.hasOwnProperty.call(newConfig, MEMORY_CHUNK_KEY);
 			const memoryChunk = newConfig[MEMORY_CHUNK_KEY];
+			const hasLocalMemoryChunk = Object.prototype.hasOwnProperty.call(newConfig, LOCAL_MEMORY_CHUNK_KEY);
+			const localMemoryChunk = newConfig[LOCAL_MEMORY_CHUNK_KEY];
 			delete newConfig[MEMORY_CHUNK_KEY];
+			delete newConfig[LOCAL_MEMORY_CHUNK_KEY];
 
-			if (hasMemoryChunk && configModalImportMemory.value) {
-				await overwriteMemoryChunk(memoryChunk);
+			if (configModalImportMemory.value) {
+				if (hasMemoryChunk && !isRecord(memoryChunk)) throw new Error("Invalid memoryChunk");
+				if (hasLocalMemoryChunk && !isRecord(localMemoryChunk)) throw new Error("Invalid localMemoryChunk");
+				if (hasMemoryChunk) await overwriteMemoryChunk(memoryChunk, "sync");
+				if (hasLocalMemoryChunk) await overwriteMemoryChunk(localMemoryChunk, "local");
 			}
 
 			config.$patch(newConfig as any);

@@ -509,8 +509,8 @@
 			"modal": {
 				"importTips": "在此處貼上要導入的設定",
 				"exportTips": "將下面的設定複製到其他瀏覽器或分享給他人",
-				"exportMemory": "同時匯出記憶（分頻道倍速、字幕等）",
-				"importMemoryConfirm": "我確定要匯入記憶設定"
+				"exportMemory": "同時匯出雲端與本機記憶（頻道倍速、字幕、單影片字幕語言等）",
+				"importMemoryConfirm": "我確定要匯入備份中的雲端與本機記憶設定"
 			}
 		},
 		"language": {
