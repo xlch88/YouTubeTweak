@@ -31,40 +31,29 @@
 
 .card {
 	background: #fff;
-	margin: 10px 8px 10px 10px;
-	border: 1px solid #e7e4ec;
-	border-radius: 12px;
-	padding: 12px;
-	box-shadow: 0 2px 6px rgba(44, 30, 56, 0.035);
+	margin: 10px;
+	border: 1px solid #e4e7ec;
+	border-radius: 8px;
+	padding: 0;
+	box-shadow:
+		0 2px 8px rgba(32, 38, 52, 0.06),
+		0 1px 2px rgba(32, 38, 52, 0.03);
 
-	@supports (-webkit-touch-callout: none) {
-		@media (hover: none) and (pointer: coarse) and (max-width: 932px) {
-			margin-right: 10px;
-		}
-	}
-
-	.card-title {
+	> .card-title {
 		display: flex;
 		align-items: center;
-		gap: 6px;
-		color: #343542;
-		font-weight: 650;
-		font-size: 14px;
+		gap: 8px;
+		min-height: 40px;
+		color: #303541;
+		font-weight: 600;
+		font-size: 13px;
 		line-height: 1.5;
-		margin: 0 0 9px;
-		padding: 0;
+		margin: 0;
+		padding: 9px 14px;
 		border: 0;
-		border-radius: 0;
-		background: none;
-
-		&::before {
-			content: "";
-			width: 3px;
-			height: 14px;
-			flex: 0 0 auto;
-			border-radius: 3px;
-			background: var(--settings-accent);
-		}
+		border-bottom: 1px solid transparent;
+		border-radius: 7px 7px 0 0;
+		background: #f7f8fa;
 
 		> span {
 			min-width: 0;
@@ -75,30 +64,48 @@
 			margin-left: 0;
 		}
 
-		&:hover > .docs-help-link {
+		&:hover > .docs-help-link,
+		&:focus-within > .docs-help-link {
 			opacity: 1;
 			pointer-events: auto;
 		}
 	}
 
-	.card-body {
+	> .card-body {
+		padding: 6px 14px 12px;
+
 		p {
-			color: #737789;
+			color: #737987;
 			margin: 5px 0 8px;
 			font-size: 12px;
 			line-height: 1.6;
 		}
 
 		.settings-label {
-			color: #777080;
+			color: #676e7b;
 			font-weight: 600;
 			font-size: 12px;
 			margin: 2px 0 5px;
 		}
 	}
 
-	&.settings-card-details:not([open]) > .card-title {
-		margin-bottom: 0;
+	&.settings-card-details {
+		> .card-title {
+			&:focus-visible {
+				outline-offset: -2px;
+			}
+			&::after {
+				border-color: #858d9a;
+			}
+		}
+
+		&:not([open]) > .card-title {
+			border-radius: 7px;
+		}
+
+		&[open] > .card-title {
+			border-bottom-color: #eceef2;
+		}
 	}
 }
 
