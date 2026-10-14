@@ -10,6 +10,8 @@ const qualityList = ["highres", "hd2160", "hd1440", "hd1080", "hd720", "large", 
 let pageUrl = window.location.href;
 
 async function setQuality() {
+	if (!config.get("player.settings.lockQuality")) return;
+
 	const qualityLevels = videoPlayer.player?.getAvailableQualityLevels() || [];
 	logger.info("available quality levels:", qualityLevels);
 
