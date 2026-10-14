@@ -1,80 +1,88 @@
-import { createLogger } from "@/logger";
 import memory from "@/memory";
 import config from "../config";
 import type { Plugin } from "../types";
 import { videoPlayer } from "../mainWorld";
 import { getChannelId } from "../util/helper";
 
-const logger = createLogger("player-subtitle");
-let setSubtitleTimeout: null | number = null;
+let restoreTimer: number | undefined;
+let revision = 0;
 
-async function setPlayerSubtitleStatus() {
-	if (!config.get("player.settings.saveSubtitleStatusByChannel") || !config.get("player.settings.saveSubtitleStatus")) {
-		return;
-	}
+async function restoreSubtitleStatus() {
+	const player = videoPlayer.player;
+	const videoId = new URL(location.href).searchParams.get("v");
+	const currentRevision = revision;
+	if (!player || !videoId) return;
+	const channelId = getChannelId();
+	const globalStatus = config.get("player.settings.saveSubtitleStatus") ? await memory.get("", "c") : null;
+	const channelStatus = config.get("player.settings.saveSubtitleStatusByChannel") && channelId ? await memory.get(channelId, "c") : null;
+	if (currentRevision !== revision || videoPlayer.player !== player || player.getVideoData?.().video_id !== videoId) return;
+	const status = channelStatus ?? globalStatus;
+	if (status === "1" && !player.isSubtitlesOn()) player.toggleSubtitlesOn();
+	if (status === "0" && player.isSubtitlesOn()) player.toggleSubtitles();
+}
 
-	const channelId = getChannelId() || "";
-	if (!channelId || !videoPlayer.player) {
-		return;
-	}
-
-	let isOn = null;
-	const memoryDefaultIsOn = !config.get("player.settings.saveSubtitleStatus") ? null : await memory.get("", "c");
-	const memoryIsOn = !config.get("player.settings.saveSubtitleStatusByChannel") ? null : await memory.get(channelId, "c");
-
-	if (memoryIsOn !== null) {
-		isOn = memoryIsOn === "1";
-		logger.info(`Set subtitle status (channel ${channelId}):`, isOn);
-	} else if (memoryDefaultIsOn !== null) {
-		isOn = memoryDefaultIsOn === "1";
-		logger.info(`Set subtitle status (default):`, isOn);
-	}
-
-	if (isOn) {
-		if (!videoPlayer.player.isSubtitlesOn()) videoPlayer.player.toggleSubtitlesOn();
-	} else {
-		if (videoPlayer.player.isSubtitlesOn()) videoPlayer.player.toggleSubtitles();
-	}
+function rememberSubtitleToggle(event: Event) {
+	if (!event.isTrusted) return;
+	const player = videoPlayer.player;
+	const videoId = new URL(location.href).searchParams.get("v");
+	if (!player || !videoId || player.getVideoData?.().video_id !== videoId || player.classList.contains("ad-showing")) return;
+	const channelId = getChannelId();
+	const wasOn = player.isSubtitlesOn();
+	window.clearTimeout(restoreTimer);
+	revision++;
+	window.setTimeout(() => {
+		if (
+			videoPlayer.player !== player ||
+			new URL(location.href).searchParams.get("v") !== videoId ||
+			player.getVideoData?.().video_id !== videoId
+		)
+			return;
+		const isOn = player.isSubtitlesOn();
+		if (wasOn === isOn) return;
+		if (config.get("player.settings.saveSubtitleStatusByChannel") && channelId) void memory.set(channelId, "c", isOn ? "1" : "0");
+		if (config.get("player.settings.saveSubtitleStatus")) void memory.set("", "c", isOn ? "1" : "0");
+	}, 0);
 }
 
 export default {
 	"player.settings.saveSubtitleStatusByChannel": {
-		enable() {
-			// setPlayerSubtitleStatus();
-			// xmlHttpRequestHooker.init();
-			// xmlHttpRequestHooker.addHook("subtitle", {
-			// 	match: "/api/timedtext",
-			// 	handler(result, url, responseClone) {
-			// 		// logger.debug("Subtitle API called", url, result, responseClone);
-			// 		setTimeout(() => {
-			// 			setPlayerSubtitleStatus();
-			// 		}, 300);
-			// 	},
-			// });
-		},
-		initPlayer() {
-			const subtitlesButton = videoPlayer.player?.querySelector("button.ytp-subtitles-button");
-			if (subtitlesButton) {
-				// setPlayerSubtitleStatus();
-				subtitlesButton.addEventListener("click", async () => {
-					const channelId = getChannelId() || "";
-					const isOn = !!videoPlayer.player?.isSubtitlesOn();
-					if (config.get("player.settings.saveSubtitleStatusByChannel")) {
-						logger.info(`Memory subtitle status: ${channelId} ->`, isOn);
-						await memory.set(channelId, "c", isOn ? "1" : "0");
-					}
-
-					if (config.get("player.settings.saveSubtitleStatus")) {
-						await memory.set("", "c", isOn ? "1" : "0");
-					}
-				});
-			}
+		setup() {
+			document.addEventListener("yt-navigate-start", () => {
+				window.clearTimeout(restoreTimer);
+				revision++;
+			});
+			document.addEventListener(
+				"keydown",
+				(event) => {
+					if (event.key.toLowerCase() !== "c" || event.repeat || event.ctrlKey || event.metaKey || event.altKey) return;
+					if (
+						!(event.target instanceof Element) ||
+						event.target.closest("input, textarea, select, [contenteditable]:not([contenteditable='false']), [role='textbox']")
+					)
+						return;
+					rememberSubtitleToggle(event);
+				},
+				true,
+			);
+			document.addEventListener(
+				"click",
+				(event) => {
+					if (
+						!(event.target instanceof Element) ||
+						!event.target.closest(
+							"#movie_player .ytp-subtitles-button, #movie_player .ytp-settings-menu [role='menuitemradio']",
+						)
+					)
+						return;
+					rememberSubtitleToggle(event);
+				},
+				true,
+			);
 		},
 		videoSrcChange() {
-			if (setSubtitleTimeout) clearTimeout(setSubtitleTimeout);
-			setSubtitleTimeout = window.setTimeout(() => {
-				setPlayerSubtitleStatus();
-			}, 300);
+			window.clearTimeout(restoreTimer);
+			revision++;
+			restoreTimer = window.setTimeout(restoreSubtitleStatus, 300);
 		},
 	},
-} as Record<string, Plugin>;
+} satisfies Record<string, Plugin>;
