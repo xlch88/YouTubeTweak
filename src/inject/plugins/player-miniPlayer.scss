@@ -38,7 +38,7 @@ body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-
 	height: auto !important;
 	aspect-ratio: var(--yttweak-mini-player-aspect-ratio, 16 / 9) !important;
 	background: #000 !important;
-	border-radius: 18px !important;
+	border-radius: 10px !important;
 	box-shadow:
 		0 24px 64px rgba(0, 0, 0, 0.36),
 		0 8px 24px rgba(0, 0, 0, 0.28);
@@ -52,6 +52,72 @@ body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-
 		opacity 120ms ease-out,
 		box-shadow 120ms ease-out,
 		border-radius 120ms ease-out;
+
+	.html5-main-video {
+		cursor: grab;
+	}
+	.ytp-caption-window-container {
+		width: var(--yttweak-mini-player-caption-width) !important;
+		height: var(--yttweak-mini-player-caption-height) !important;
+		top: 0 !important;
+		left: 0 !important;
+		right: auto !important;
+		bottom: auto !important;
+		transform: scale(var(--yttweak-mini-player-caption-scale, 1)) !important;
+		transform-origin: top left !important;
+		z-index: 40;
+	}
+	&[data-yttweak-mini-player-caption-minimum] .caption-window {
+		max-width: calc(100% - 24px) !important;
+		left: 50% !important;
+		right: auto !important;
+		margin-left: 0 !important;
+		transform: translateX(-50%) !important;
+		.ytp-caption-segment {
+			overflow-wrap: anywhere;
+			max-width: 100%;
+		}
+	}
+	&.yttweak-mini-player-dragging {
+		user-select: none;
+		cursor: grabbing;
+		.html5-main-video {
+			cursor: grabbing;
+		}
+	}
+	.yttweak-mini-player-resize {
+		display: block;
+		position: absolute;
+		z-index: 2200;
+		width: 18px;
+		height: 18px;
+		touch-action: none;
+		pointer-events: auto;
+		&[data-corner="top-left"] {
+			top: 0;
+			left: 0;
+			cursor: nwse-resize;
+		}
+		&[data-corner="top-right"] {
+			top: 0;
+			right: 0;
+			cursor: nesw-resize;
+		}
+		&[data-corner="bottom-left"] {
+			bottom: 0;
+			left: 0;
+			cursor: nesw-resize;
+		}
+		&[data-corner="bottom-right"] {
+			bottom: 0;
+			right: 0;
+			cursor: nwse-resize;
+		}
+	}
+}
+
+.yttweak-mini-player-resize {
+	display: none;
 }
 
 body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-fullscreen)::before {
@@ -95,17 +161,8 @@ body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-
 body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-fullscreen) .ytp-chrome-top,
 body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-fullscreen) .ytp-chrome-bottom,
 body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-fullscreen) .ytp-caption-window-container {
-	opacity: 1 !important;
 	filter: none !important;
 	mix-blend-mode: normal !important;
-}
-
-body.yttweak-mini-player-mode
-	#movie_player.yttweak-mini-player-active:not(.ytp-fullscreen)
-	.ytp-caption-window-container
-	> .caption-window {
-	left: var(--yttweak-mini-player-caption-window-left, 10%) !important;
-	width: var(--yttweak-mini-player-caption-window-width, 80%) !important;
 }
 
 body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-fullscreen) .ytp-chrome-bottom {
@@ -137,8 +194,6 @@ body.yttweak-mini-player-mode.yttweak-player-progress-enable
 
 body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active[data-yttweak-mini-player-density="compact"] .ytp-right-controls,
 body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active[data-yttweak-mini-player-density="cozy"] .ytp-right-controls,
-body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active[data-yttweak-mini-player-density="compact"] .caption-window,
-body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active[data-yttweak-mini-player-density="cozy"] .caption-window,
 body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active[data-yttweak-mini-player-density="compact"] .videowall-endscreen,
 body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active[data-yttweak-mini-player-density="cozy"] .videowall-endscreen,
 body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active[data-yttweak-mini-player-density="compact"] .ytp-subtitles-button,

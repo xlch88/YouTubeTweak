@@ -10,7 +10,7 @@ enum VideoQuality {
 	tiny = "144p",
 }
 
-type MiniPlayerSize = "360x203" | "420x236" | "480x270" | "560x315" | "640x360" | "720x405";
+type MiniPlayerSize = `${number}x${number}`;
 type MiniPlayerPosition = "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right";
 export type PlayerHideButtonMode = "auto" | "hide" | "show";
 export type PlayerButtonCollapseMode = "never" | "always" | "auto";
@@ -44,7 +44,7 @@ export type Config = {
 	"player.miniPlayer.enable": boolean;
 	"player.miniPlayer.size": MiniPlayerSize;
 	"player.miniPlayer.position": MiniPlayerPosition;
-	"player.miniPlayer.offset": number;
+	"player.miniPlayer.offset": number | { x: number; y: number };
 	"player.miniPlayer.triggerOffset": number;
 	"player.settings.maxVolume": boolean;
 	"player.settings.lockQuality": boolean;
@@ -187,6 +187,19 @@ const config: Config = {
 
 export function normalizeConfig(rawConfig: Partial<Config> | Record<string, unknown>) {
 	const normalizedConfig = { ...rawConfig } as Record<string, unknown>;
+	if ("player.miniPlayer.offset" in normalizedConfig) {
+		const offset = normalizedConfig["player.miniPlayer.offset"];
+		if (typeof offset === "number" && Number.isFinite(offset)) {
+			normalizedConfig["player.miniPlayer.offset"] = Math.max(0, Math.min(96, offset));
+		} else if (offset && typeof offset === "object" && "x" in offset && "y" in offset) {
+			normalizedConfig["player.miniPlayer.offset"] = {
+				x: typeof offset.x === "number" && Number.isFinite(offset.x) ? Math.max(0, Math.round(offset.x)) : 16,
+				y: typeof offset.y === "number" && Number.isFinite(offset.y) ? Math.max(0, Math.round(offset.y)) : 16,
+			};
+		} else {
+			normalizedConfig["player.miniPlayer.offset"] = 16;
+		}
+	}
 	if ("player.settings.subtitleLanguages" in normalizedConfig) {
 		const languages = normalizedConfig["player.settings.subtitleLanguages"];
 		normalizedConfig["player.settings.subtitleLanguages"] = Array.isArray(languages)

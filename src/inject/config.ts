@@ -55,8 +55,10 @@ export default {
 	},
 	set<K extends keyof Config>(key: K, value: Config[K]) {
 		logger.log(`set setting : ${key} ->`, value);
-		if (key) this.config[key] = value;
-
+		this.setMany({ [key]: value });
+	},
+	setMany(values: Partial<Config>) {
+		Object.assign(this.config, values);
 		this.skipUpdateEvent = true;
 		wirelessRedstone.send("setConfig", { settings: this.config });
 	},

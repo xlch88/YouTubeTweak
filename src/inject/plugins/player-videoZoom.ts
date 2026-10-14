@@ -269,6 +269,7 @@ function stopDragging() {
 }
 
 function startDragging(event: MouseEvent) {
+	if (videoPlayer.player?.classList.contains("yttweak-mini-player-active")) return;
 	if (!config.get("player.ui.enableVideoZoom") || event.button !== 0 || shouldIgnoreMouseEvent(event)) return;
 
 	if (zoom <= MIN_ZOOM) {

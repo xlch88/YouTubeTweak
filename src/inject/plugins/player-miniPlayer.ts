@@ -36,8 +36,32 @@ let updateFrame = 0;
 let globalListenersBound = false;
 let anchorBottomScrollY: number | null = null;
 let lastLayoutSignature = "";
+let captionLayoutWidth = 0;
+let captionFontSize = 0;
+const captionObserver = new MutationObserver(() => {
+	const segment = currentPinnedPlayer?.querySelector<HTMLElement>(".ytp-caption-segment");
+	if (isMiniPlayerActive && segment && parseFloat(getComputedStyle(segment).fontSize) !== captionFontSize) {
+		applyMiniPlayerLayout(gesture?.rect);
+	}
+});
 let stackRootElements: HTMLElement[] = [];
 let layoutStyleSnapshots: LayoutStyleSnapshot[] = [];
+type MiniPlayerRect = { left: number; top: number; width: number; height: number };
+type ResizeCorner = "top-left" | "top-right" | "bottom-left" | "bottom-right";
+let gesture: {
+	player: HTMLDivElement;
+	pointerId: number;
+	mode: "move" | ResizeCorner;
+	startX: number;
+	startY: number;
+	start: MiniPlayerRect;
+	rect: MiniPlayerRect;
+	moved: boolean;
+	signature: string;
+} | null = null;
+let gestureFrame = 0;
+let suppressClickUntil = 0;
+const boundPlayers = new WeakSet<HTMLElement>();
 
 type LayoutStyleProperty = (typeof LAYOUT_STYLE_PROPERTIES)[number];
 type LayoutStyleSnapshot = {
@@ -76,6 +100,7 @@ function clampTrigger(value: number) {
 }
 
 function parseSizePreset(sizePreset: string) {
+	if (typeof sizePreset !== "string") return parseSizePreset(DEFAULT_SIZE);
 	const [width, height] = sizePreset.split("x").map((value) => Number(value));
 	if (!Number.isFinite(width) || !Number.isFinite(height) || width <= 0 || height <= 0) {
 		return parseSizePreset(DEFAULT_SIZE);
@@ -180,6 +205,7 @@ function clearPlayerLayout(player: HTMLDivElement | null) {
 
 	player.classList.remove("yttweak-mini-player-active");
 	player.removeAttribute("data-yttweak-mini-player-density");
+	player.removeAttribute("data-yttweak-mini-player-caption-minimum");
 	player.style.removeProperty("--yttweak-mini-player-width");
 	player.style.removeProperty("--yttweak-mini-player-height");
 	player.style.removeProperty("--yttweak-mini-player-left");
@@ -292,11 +318,12 @@ function scheduleNativeLayoutRefresh(player: HTMLElement | null) {
 
 function getLayoutSignature() {
 	return [
-		window.innerWidth,
-		window.innerHeight,
+		document.documentElement.clientWidth,
+		document.documentElement.clientHeight,
 		config.get("player.miniPlayer.size", DEFAULT_SIZE),
 		config.get("player.miniPlayer.position", "bottom-right"),
-		config.get("player.miniPlayer.offset", DEFAULT_OFFSET),
+		JSON.stringify(config.get("player.miniPlayer.offset", DEFAULT_OFFSET)),
+		getMiniPlayerAspectRatio(),
 	].join(":");
 }
 
@@ -330,19 +357,24 @@ function ensureCloseButton() {
 	}
 }
 
-function applyMiniPlayerLayout() {
+function applyMiniPlayerLayout(preview?: MiniPlayerRect) {
 	const player = currentPinnedPlayer || videoPlayer.player;
 	if (!player) {
 		return;
 	}
 
 	const { width: maxWidth, height: maxHeight } = parseSizePreset(config.get("player.miniPlayer.size", DEFAULT_SIZE));
-	const offset = clampOffset(Number(config.get("player.miniPlayer.offset", DEFAULT_OFFSET)));
+	const offset = config.get("player.miniPlayer.offset", DEFAULT_OFFSET);
+	const legacyOffset = typeof offset === "number";
+	const x = legacyOffset ? clampOffset(offset) : Math.max(0, Number(offset?.x) || 0);
+	const y = legacyOffset ? clampOffset(offset) : Math.max(0, Number(offset?.y) || 0);
 	const position = config.get("player.miniPlayer.position", "bottom-right") as MiniPlayerPosition;
 	const aspectRatio = getMiniPlayerAspectRatio();
+	const viewportWidth = document.documentElement.clientWidth;
+	const viewportHeight = document.documentElement.clientHeight;
 
-	const boundedWidth = Math.max(260, Math.min(maxWidth, window.innerWidth - offset * 2));
-	const boundedHeight = Math.max(146, Math.min(maxHeight, window.innerHeight - offset * 2));
+	const boundedWidth = Math.max(1, Math.min(maxWidth, viewportWidth - (legacyOffset ? x * 2 : 0)));
+	const boundedHeight = Math.max(1, Math.min(maxHeight, viewportHeight - (legacyOffset ? y * 2 : 0)));
 
 	let width = boundedWidth;
 	let height = width / aspectRatio;
@@ -352,27 +384,31 @@ function applyMiniPlayerLayout() {
 		width = height * aspectRatio;
 	}
 
-	width = Math.round(width);
-	height = Math.round(height);
+	width = preview?.width ?? Math.max(1, Math.floor(width));
+	height = preview?.height ?? width / aspectRatio;
 
 	let left = "auto";
 	let right = "auto";
 	let top = "auto";
 	let bottom = "auto";
 
-	if (position.startsWith("top")) {
-		const mastheadHeight = document.querySelector("#masthead-container")?.getBoundingClientRect().height || 0;
-		top = `${Math.round(offset + mastheadHeight)}px`;
+	if (preview) {
+		left = `${preview.left}px`;
+		top = `${preview.top}px`;
 	} else {
-		bottom = `${offset}px`;
-	}
-
-	if (position.endsWith("left")) {
-		left = `${offset}px`;
-	} else if (position.endsWith("right")) {
-		right = `${offset}px`;
-	} else {
-		left = `${Math.max(offset, Math.round((window.innerWidth - width) / 2))}px`;
+		if (position.startsWith("top")) {
+			const mastheadHeight = legacyOffset ? document.querySelector("#masthead-container")?.getBoundingClientRect().height || 0 : 0;
+			top = `${Math.min(Math.max(0, viewportHeight - height), Math.round(y + mastheadHeight))}px`;
+		} else {
+			bottom = `${Math.min(y, Math.max(0, viewportHeight - height))}px`;
+		}
+		if (position.endsWith("left")) {
+			left = `${Math.min(x, Math.max(0, viewportWidth - width))}px`;
+		} else if (position.endsWith("right")) {
+			right = `${Math.min(x, Math.max(0, viewportWidth - width))}px`;
+		} else {
+			left = `${Math.max(0, Math.round((viewportWidth - width) / 2))}px`;
+		}
 	}
 
 	player.style.setProperty("--yttweak-mini-player-width", `${width}px`);
@@ -382,6 +418,10 @@ function applyMiniPlayerLayout() {
 	player.style.setProperty("--yttweak-mini-player-top", top);
 	player.style.setProperty("--yttweak-mini-player-bottom", bottom);
 	player.dataset.yttweakMiniPlayerDensity = width < 420 ? "compact" : width < 520 ? "cozy" : "full";
+	const captionSegment = player.querySelector<HTMLElement>(".ytp-caption-segment");
+	captionFontSize = captionSegment ? parseFloat(getComputedStyle(captionSegment).fontSize) : 0;
+	const captionScale = Math.max(width / (captionLayoutWidth || width), captionFontSize > 0 ? 14 / captionFontSize : 0);
+	player.toggleAttribute("data-yttweak-mini-player-caption-minimum", captionScale > width / (captionLayoutWidth || width));
 
 	const style = ensureMiniPlayerStyle();
 	style.textContent = `
@@ -389,11 +429,151 @@ function applyMiniPlayerLayout() {
 			--yttweak-mini-player-width: ${width}px;
 			--yttweak-mini-player-height: ${height}px;
 			--yttweak-mini-player-aspect-ratio: ${aspectRatio};
-			--yttweak-mini-player-caption-window-left: ${Math.round(width * 0.1)}px;
-			--yttweak-mini-player-caption-window-width: ${Math.round(width * 0.8)}px;
+			--yttweak-mini-player-caption-width: ${width / captionScale}px;
+			--yttweak-mini-player-caption-height: ${height / captionScale}px;
+			--yttweak-mini-player-caption-scale: ${captionScale};
 		}
 	`;
 	lastLayoutSignature = getLayoutSignature();
+}
+
+function finishGesture(save: boolean) {
+	if (!gesture) return;
+	const completed = gesture;
+	gesture = null;
+	window.cancelAnimationFrame(gestureFrame);
+	gestureFrame = 0;
+	completed.player.classList.remove("yttweak-mini-player-dragging");
+	if (completed.player.hasPointerCapture(completed.pointerId)) completed.player.releasePointerCapture(completed.pointerId);
+	if (completed.moved) suppressClickUntil = performance.now() + 300;
+	if (save && completed.moved && isMiniPlayerActive && currentPinnedPlayer === completed.player && isEligibleToFloat()) {
+		const { left, top, width, height } = completed.rect;
+		const viewportWidth = document.documentElement.clientWidth;
+		const viewportHeight = document.documentElement.clientHeight;
+		const horizontal = left + width / 2 < viewportWidth / 2 ? "left" : "right";
+		const vertical = top + height / 2 < viewportHeight / 2 ? "top" : "bottom";
+		config.setMany({
+			"player.miniPlayer.position": `${vertical}-${horizontal}`,
+			"player.miniPlayer.offset": {
+				x: Math.max(0, Math.round(horizontal === "left" ? left : viewportWidth - left - width)),
+				y: Math.max(0, Math.round(vertical === "top" ? top : viewportHeight - top - height)),
+			},
+			...(completed.mode === "move" ? {} : { "player.miniPlayer.size": `${Math.round(width)}x${Math.ceil(height)}` as const }),
+		});
+		applyBodyClasses(config.get("player.miniPlayer.position", "bottom-right"));
+	}
+	if (isMiniPlayerActive) applyMiniPlayerLayout();
+}
+
+function moveGesture(event: PointerEvent, released = false) {
+	if (!gesture || event.pointerId !== gesture.pointerId) return;
+	if ((!released && !(event.buttons & 1)) || gesture.signature !== getLayoutSignature()) {
+		finishGesture(false);
+		return;
+	}
+	const dx = event.clientX - gesture.startX;
+	const dy = event.clientY - gesture.startY;
+	if (!gesture.moved && Math.max(Math.abs(dx), Math.abs(dy)) < 4) return;
+	gesture.moved = true;
+	gesture.player.classList.add("yttweak-mini-player-dragging");
+	if (!released && !gesture.player.hasPointerCapture(event.pointerId)) gesture.player.setPointerCapture(event.pointerId);
+	event.preventDefault();
+	event.stopPropagation();
+	const start = gesture.start;
+	const viewportWidth = document.documentElement.clientWidth;
+	const viewportHeight = document.documentElement.clientHeight;
+	if (gesture.mode === "move") {
+		gesture.rect = {
+			...start,
+			left: Math.max(0, Math.min(viewportWidth - start.width, start.left + dx)),
+			top: Math.max(0, Math.min(viewportHeight - start.height, start.top + dy)),
+		};
+	} else {
+		const west = gesture.mode.endsWith("left");
+		const north = gesture.mode.startsWith("top");
+		const ratio = start.width / start.height;
+		const anchorX = west ? start.left + start.width : start.left;
+		const anchorY = north ? start.top + start.height : start.top;
+		const maxWidth = Math.min(west ? anchorX : viewportWidth - anchorX, (north ? anchorY : viewportHeight - anchorY) * ratio);
+		const delta = ((west ? -dx : dx) + (north ? -dy : dy) / ratio) / (1 + 1 / (ratio * ratio));
+		const width = Math.min(maxWidth, Math.max(Math.min(260, maxWidth), start.width + delta));
+		const height = width / ratio;
+		gesture.rect = { left: west ? anchorX - width : anchorX, top: north ? anchorY - height : anchorY, width, height };
+	}
+	if (!gestureFrame) {
+		gestureFrame = window.requestAnimationFrame(() => {
+			gestureFrame = 0;
+			if (gesture) applyMiniPlayerLayout(gesture.rect);
+		});
+	}
+}
+
+function ensureDragControls() {
+	const player = videoPlayer.player;
+	if (!player) return;
+	if (!player.querySelector(".yttweak-mini-player-resize")) {
+		for (const corner of ["top-left", "top-right", "bottom-left", "bottom-right"]) {
+			const handle = document.createElement("div");
+			handle.className = "yttweak-mini-player-resize";
+			handle.dataset.corner = corner;
+			player.appendChild(handle);
+		}
+	}
+	if (boundPlayers.has(player)) return;
+	boundPlayers.add(player);
+	// YouTube replaces player.addEventListener with its player API event bridge.
+	EventTarget.prototype.addEventListener.call(
+		player,
+		"pointerdown",
+		((event: PointerEvent) => {
+			if (!isMiniPlayerActive || gesture || event.button !== 0 || !event.isPrimary || !(event.target instanceof Element)) return;
+			const handle = event.target.closest<HTMLElement>(".yttweak-mini-player-resize");
+			if (
+				!handle &&
+				(event.pointerType !== "mouse" ||
+					event.target.closest(
+						"button, a, input, select, textarea, [role='button'], [role='slider'], [role^='menuitem'], .ytp-chrome-bottom, .ytp-chrome-top, .ytp-popup, .caption-window",
+					))
+			)
+				return;
+			const rect = player.getBoundingClientRect();
+			gesture = {
+				player,
+				pointerId: event.pointerId,
+				mode: (handle?.dataset.corner as ResizeCorner) || "move",
+				startX: event.clientX,
+				startY: event.clientY,
+				start: { left: rect.left, top: rect.top, width: rect.width, height: rect.height },
+				rect: { left: rect.left, top: rect.top, width: rect.width, height: rect.height },
+				moved: false,
+				signature: getLayoutSignature(),
+			};
+			if (handle) {
+				event.preventDefault();
+				event.stopPropagation();
+			}
+		}) as EventListener,
+		true,
+	);
+	EventTarget.prototype.addEventListener.call(player, "lostpointercapture", ((event: PointerEvent) => {
+		if (gesture?.player === player && gesture.pointerId === event.pointerId) finishGesture(false);
+	}) as EventListener);
+	for (const type of ["click", "dblclick"]) {
+		EventTarget.prototype.addEventListener.call(
+			player,
+			type,
+			(event: Event) => {
+				if (
+					performance.now() < suppressClickUntil ||
+					(event.target instanceof Element && event.target.closest(".yttweak-mini-player-resize"))
+				) {
+					event.preventDefault();
+					event.stopImmediatePropagation();
+				}
+			},
+			true,
+		);
+	}
 }
 
 function activateMiniPlayer() {
@@ -403,10 +583,14 @@ function activateMiniPlayer() {
 	}
 
 	const playerRect = player.getBoundingClientRect();
+	captionLayoutWidth = playerRect.width;
+	const captionContainer = player.querySelector(".ytp-caption-window-container");
+	if (captionContainer) captionObserver.observe(captionContainer, { childList: true, subtree: true, attributes: true, attributeFilter: ["style"] });
 	anchorBottomScrollY = window.scrollY + playerRect.bottom;
 	captureLayoutStyles(player);
 	currentPinnedPlayer = player;
 	ensureCloseButton();
+	ensureDragControls();
 	applyMiniPlayerLayout();
 
 	preserveViewportPosition(() => {
@@ -418,6 +602,8 @@ function activateMiniPlayer() {
 }
 
 function deactivateMiniPlayer() {
+	captionObserver.disconnect();
+	finishGesture(false);
 	const player = currentPinnedPlayer || videoPlayer.player;
 	const wasMiniPlayerActive = isMiniPlayerActive || currentPinnedPlayer !== null || layoutStyleSnapshots.length > 0;
 
@@ -440,6 +626,7 @@ function deactivateMiniPlayer() {
 
 function updateMiniPlayerState() {
 	updateFrame = 0;
+	if (gesture && gesture.signature !== getLayoutSignature()) finishGesture(false);
 
 	if (currentPinnedPlayer && currentPinnedPlayer !== videoPlayer.player) {
 		deactivateMiniPlayer();
@@ -483,6 +670,37 @@ function bindGlobalListeners() {
 	}
 
 	globalListenersBound = true;
+	window.addEventListener("pointermove", (event) => moveGesture(event), { capture: true, passive: false });
+	window.addEventListener(
+		"pointerup",
+		(event) => {
+			if (!gesture || gesture.pointerId !== event.pointerId) return;
+			// Flush the final pointer position even when no animation frame has run yet.
+			moveGesture(event, true);
+			finishGesture(true);
+		},
+		true,
+	);
+	window.addEventListener(
+		"pointercancel",
+		(event) => {
+			if (gesture?.pointerId === event.pointerId) finishGesture(false);
+		},
+		true,
+	);
+	window.addEventListener("blur", () => finishGesture(false));
+	document.addEventListener("yt-navigate-start", () => finishGesture(false));
+	document.addEventListener(
+		"keydown",
+		(event) => {
+			if (event.key === "Escape" && gesture) {
+				event.preventDefault();
+				event.stopImmediatePropagation();
+				finishGesture(false);
+			}
+		},
+		true,
+	);
 	window.addEventListener("scroll", scheduleMiniPlayerUpdate, { passive: true });
 	window.addEventListener("resize", scheduleMiniPlayerUpdate);
 	document.addEventListener("fullscreenchange", scheduleMiniPlayerUpdate);
@@ -524,6 +742,7 @@ export default {
 			return false;
 		},
 		videoSrcChange() {
+			finishGesture(false);
 			isMiniPlayerDismissed = false;
 			scheduleMiniPlayerUpdate();
 		},

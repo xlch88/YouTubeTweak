@@ -21,6 +21,9 @@
 				<label class="form-item form-item-select">
 					<span>{{ $t("player.miniPlayer.select.size") }}</span>
 					<select class="w-100" v-model="config['player.miniPlayer.size']">
+						<option v-if="!sizeOptions.includes(config['player.miniPlayer.size'])" :value="config['player.miniPlayer.size']">
+							{{ config["player.miniPlayer.size"].replace("x", "×") }}
+						</option>
 						<option v-for="option in sizeOptions" :key="option" :value="option">
 							{{ option.replace("x", "×") }}
 						</option>
@@ -36,10 +39,23 @@
 					</select>
 				</label>
 
-				<label class="form-item form-item-select">
+				<div class="form-item mini-player-offsets">
 					<span>{{ $t("player.miniPlayer.select.offset") }}</span>
-					<input type="number" min="0" max="96" v-model.number="config['player.miniPlayer.offset']" />
-				</label>
+					<div class="offset-inputs">
+						<label v-for="axis in ['x', 'y'] as const" :key="axis">
+							<span>{{ axis.toUpperCase() }}</span>
+							<input
+								type="number"
+								min="0"
+								step="1"
+								:value="offset[axis]"
+								:aria-label="`${$t('player.miniPlayer.select.offset')} ${axis.toUpperCase()} (px)`"
+								@change="setOffset(axis, ($event.target as HTMLInputElement).value)"
+							/>
+						</label>
+						<span>px</span>
+					</div>
+				</div>
 
 				<label class="form-item form-item-select">
 					<span>{{ $t("player.miniPlayer.select.triggerOffset") }}</span>
@@ -51,11 +67,21 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
 import DocsHelpLink from "../DocsHelpLink.vue";
 import SettingsCard from "../SettingsCard.vue";
 import useConfigStore from "../../util/config";
 
 const config = useConfigStore();
+const offset = computed(() => {
+	const value = config["player.miniPlayer.offset"];
+	return typeof value === "number" ? { x: value, y: value } : value;
+});
+
+function setOffset(axis: "x" | "y", value: string) {
+	if (!value.trim() || !Number.isFinite(Number(value))) return;
+	config["player.miniPlayer.offset"] = { ...offset.value, [axis]: Math.max(0, Math.round(Number(value))) };
+}
 
 const sizeOptions = ["360x203", "420x236", "480x270", "560x315", "640x360", "720x405"];
 
@@ -68,3 +94,25 @@ const positionOptions = [
 	{ value: "top-left", labelKey: "player.ui.position.topLeft", arrow: "↖" },
 ];
 </script>
+
+<style lang="scss" scoped>
+.mini-player-offsets {
+	flex-wrap: wrap;
+	.offset-inputs {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		margin-left: auto;
+		color: #737987;
+		label {
+			display: flex;
+			align-items: center;
+			gap: 4px;
+		}
+		input {
+			width: 62px;
+			min-width: 0;
+		}
+	}
+}
+</style>
