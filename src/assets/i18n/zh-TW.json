@@ -261,6 +261,7 @@
 		},
 		"comment": {
 			"title": "留言",
+			"blockedUsers": "隱藏留言使用者",
 			"checkbox": {
 				"showNickname": "顯示留言者暱稱 (頻道名稱)"
 			}

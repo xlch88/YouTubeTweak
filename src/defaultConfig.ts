@@ -66,6 +66,7 @@ export type Config = {
 	"player.ui.enableVideoZoom": boolean;
 
 	"comment.nickname": boolean;
+	"comment.blockedUsers": string;
 	"comment.autoShowMore": boolean;
 	"comment.autoTranslate": boolean;
 	"comment.showManualTranslateButtonForSkippedLanguages": boolean;
@@ -149,6 +150,7 @@ const config: Config = {
 	"player.ui.enableVideoZoom": true,
 
 	"comment.nickname": true,
+	"comment.blockedUsers": "",
 	"comment.autoShowMore": true,
 	"comment.autoTranslate": true,
 	"comment.showManualTranslateButtonForSkippedLanguages": true,
@@ -197,6 +199,9 @@ export function normalizeConfig(rawConfig: Partial<Config> | Record<string, unkn
 					),
 				]
 			: [];
+	}
+	if ("comment.blockedUsers" in normalizedConfig && typeof normalizedConfig["comment.blockedUsers"] !== "string") {
+		normalizedConfig["comment.blockedUsers"] = "";
 	}
 	for (const key of [
 		"player.ui.hideButton.autoplay",

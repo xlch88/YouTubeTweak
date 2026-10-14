@@ -261,6 +261,7 @@
 		},
 		"comment": {
 			"title": "Comment",
+			"blockedUsers": "Hidden commenters",
 			"checkbox": {
 				"showNickname": "Show commenter nickname (channel name)"
 			}

@@ -38,6 +38,15 @@
 					<span>{{ $t("comment.context.checkbox.autoShowMore") }}</span>
 					<DocsHelpLink anchor="other-comment-auto-more" />
 				</label>
+				<label class="blocked-comment-users">
+					<span>{{ $t("other.comment.blockedUsers") }}</span>
+					<textarea
+						v-model="config['comment.blockedUsers']"
+						rows="5"
+						spellcheck="false"
+						:placeholder="'@username1\n@username2'"
+					></textarea>
+				</label>
 			</div>
 		</SettingsCard>
 
@@ -255,6 +264,21 @@ function saveCustomCss() {
 </script>
 
 <style lang="scss" scoped>
+.blocked-comment-users {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	margin-top: 8px;
+
+	textarea {
+		box-sizing: border-box;
+		width: 100%;
+		min-height: 100px;
+		padding: 8px;
+		resize: vertical;
+	}
+}
+
 .custom-css-editor {
 	width: 100%;
 	min-height: 140px;

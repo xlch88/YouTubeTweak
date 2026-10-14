@@ -261,6 +261,7 @@
 		},
 		"comment": {
 			"title": "评论",
+			"blockedUsers": "屏蔽评论用户",
 			"checkbox": {
 				"showNickname": "显示评论者昵称(频道名)"
 			}
