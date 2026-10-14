@@ -120,6 +120,11 @@ function syncButtonVisibility() {
 export default {
 	"player.ui.inPageFullscreen": {
 		setup() {
+			window.addEventListener("keydown", (event) => {
+				if (event.key === "Escape" && document.body.classList.contains(BODY_ACTIVE_CLASS)) {
+					setInPageFullscreen(false);
+				}
+			});
 			window.addEventListener("yt-navigate-start", () => {
 				cancelPendingLayoutRefresh();
 				document.body.classList.remove(BODY_ACTIVE_CLASS);
