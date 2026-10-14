@@ -29,7 +29,12 @@ function ensurePlayerTransformStyle() {
 
 function updatePlayerTransformStyle() {
 	ensurePlayerTransformStyle();
-	if (!playerTransformStyle || !videoPlayer.videoStream || !videoPlayer.player) return;
+	if (!playerTransformStyle) return;
+	if (rotation === 0 && !isMirror) {
+		playerTransformStyle.textContent = "";
+		return;
+	}
+	if (!videoPlayer.videoStream || !videoPlayer.player) return;
 
 	let transformStr = `rotate(${rotation}deg)`;
 
@@ -301,6 +306,9 @@ export default {
 		},
 		disable() {
 			document.body.classList.remove("yttweak-player-enable-rotate-button");
+			rotation = 0;
+			yttBtnRotate?.setAttribute("text", "0");
+			updatePlayerTransformStyle();
 			updateFuncBtnStatus(false);
 		},
 	},
@@ -330,6 +338,9 @@ export default {
 		},
 		disable() {
 			document.body.classList.remove("yttweak-player-enable-mirror-button");
+			isMirror = false;
+			yttBtnMirror?.setAttribute("text", "➡");
+			updatePlayerTransformStyle();
 			updateFuncBtnStatus(false);
 		},
 	},
