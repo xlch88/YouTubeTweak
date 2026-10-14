@@ -28,26 +28,55 @@ const MIN_PROGRESS_HEIGHT = 1;
 const MAX_PROGRESS_HEIGHT = 20;
 
 let videoProgressTimer: number | null = null;
-function registerVideoProgressTimer() {
-	if (videoProgressTimer) {
-		clearInterval(videoProgressTimer);
+
+function updateVideoProgress() {
+	const player = videoPlayer.player;
+	if (!player?.isConnected) return;
+
+	if (!progress) {
+		progress = document.createElement("div");
+		progress.className = "yttweak-player-progress";
+		progressPercent = document.createElement("div");
+		progressPercent.className = "yttweak-player-progress-percent";
+		progress.appendChild(progressPercent);
+		updateProgressStyle();
 	}
-	videoProgressTimer = window.setInterval(() => {
-		if (videoPlayer?.player) {
-			const duration = videoPlayer.videoStream?.duration || 0;
-			const currentTime = videoPlayer.videoStream?.currentTime || 0;
-			const percent = (currentTime / duration) * 100;
-			if (progress) {
-				progressPercent.style.width = `${percent}%`;
-			}
-			if (progressTag) {
-				let t = document.querySelector("#movie_player .ytp-live")
-					? `${secToMMDD(currentTime, currentTime > 3600)}`
-					: `${secToMMDD(currentTime, duration > 3600)}/${secToMMDD(duration)}`;
-				if (progressTag.innerText !== t) progressTag.innerText = t;
-			}
+	if (!progressTag) {
+		progressTag = document.createElement("div");
+		progressTag.className = "yttweak-player-progress-tag";
+		updateProgressTagStyle();
+	}
+	if (progress.parentElement !== player) player.appendChild(progress);
+	if (progressTag.parentElement !== player) player.appendChild(progressTag);
+
+	// Playback controls use the player API; cached video elements can outlive the active stream.
+	let duration = NaN;
+	let currentTime = NaN;
+	try {
+		duration = player.getDuration?.() ?? NaN;
+		currentTime = player.getCurrentTime?.() ?? NaN;
+	} catch {
+		// The player API may not be ready while YouTube is rebuilding the player.
+	}
+	if (!Number.isFinite(duration) || duration <= 0 || !Number.isFinite(currentTime)) {
+		const video = player.querySelector<HTMLVideoElement>("video.html5-main-video, video.video-stream");
+		if (video && video.readyState > 0) {
+			duration = video.duration;
+			currentTime = video.currentTime;
 		}
-	}, 300);
+	}
+	duration = Number.isFinite(duration) && duration > 0 ? duration : 0;
+	currentTime = Number.isFinite(currentTime) && currentTime >= 0 ? currentTime : 0;
+	progressPercent.style.width = `${duration > 0 ? Math.min((currentTime / duration) * 100, 100) : 0}%`;
+	const text = player.querySelector(".ytp-live")
+		? secToMMDD(currentTime, currentTime > 3600)
+		: `${secToMMDD(currentTime, duration > 3600)}/${secToMMDD(duration)}`;
+	if (progressTag.innerText !== text) progressTag.innerText = text;
+}
+
+function registerVideoProgressTimer() {
+	if (videoProgressTimer === null) videoProgressTimer = window.setInterval(updateVideoProgress, 300);
+	updateVideoProgress();
 }
 
 function updateProgressStyle() {
@@ -107,24 +136,11 @@ export default {
 	},
 	"player.ui.hideCeElement": bodyClass("yttweak-hide-ce_element"),
 	"player.ui.progress.enable": {
-		videoSrcChange() {
-			registerVideoProgressTimer();
-		},
-		initPlayer() {
-			if (!progress) {
-				progress = document.createElement("div");
-				progress.className = "yttweak-player-progress";
-
-				progressPercent = document.createElement("div");
-				progressPercent.className = "yttweak-player-progress-percent";
-				progress.appendChild(progressPercent);
-
-				videoPlayer.player?.appendChild(progress);
-				updateProgressStyle();
-			}
-		},
+		videoSrcChange: registerVideoProgressTimer,
+		initPlayer: registerVideoProgressTimer,
 		enable() {
 			document.body.classList.add("yttweak-player-progress-enable");
+			registerVideoProgressTimer();
 			updateProgressStyle();
 		},
 		disable() {
@@ -141,20 +157,11 @@ export default {
 		},
 	},
 	"player.ui.progress.enableTag": {
-		videoSrcChange() {
-			registerVideoProgressTimer();
-		},
-		initPlayer() {
-			if (!progressTag) {
-				progressTag = document.createElement("div");
-				progressTag.className = "yttweak-player-progress-tag";
-				progressTag.innerText = "00:00/00:00";
-				videoPlayer.player?.appendChild(progressTag);
-				updateProgressTagStyle();
-			}
-		},
+		videoSrcChange: registerVideoProgressTimer,
+		initPlayer: registerVideoProgressTimer,
 		enable() {
 			document.body.classList.add("yttweak-player-progress-enable-tag");
+			registerVideoProgressTimer();
 			updateProgressTagStyle();
 		},
 		disable() {
