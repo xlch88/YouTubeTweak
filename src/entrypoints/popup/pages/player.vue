@@ -161,6 +161,7 @@
 				<label class="form-item">
 					<input type="checkbox" v-model="config['player.settings.saveSubtitleLanguageByVideo']" />
 					<span>{{ $t("player.subtitles.checkbox.saveLanguageByVideo") }}</span>
+					<DocsHelpLink anchor="player-subtitle-save-language" />
 				</label>
 				<SubtitleLanguages />
 			</div>

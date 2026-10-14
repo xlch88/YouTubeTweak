@@ -39,7 +39,10 @@
 					<DocsHelpLink anchor="other-comment-auto-more" />
 				</label>
 				<label class="blocked-comment-users">
-					<span>{{ $t("other.comment.blockedUsers") }}</span>
+					<span class="form-item">
+						<span>{{ $t("other.comment.blockedUsers") }}</span>
+						<DocsHelpLink anchor="other-comment-blocked-users" />
+					</span>
 					<textarea
 						v-model="config['comment.blockedUsers']"
 						rows="5"

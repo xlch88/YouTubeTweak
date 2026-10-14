@@ -6,6 +6,26 @@ All release version update records are listed in this file.
 
 If you have questions, bug reports, or feature suggestions, please go to the [GitHub Issues page](https://github.com/xlch88/YouTubeTweak/issues) to submit them.
 
+## [2.0.3] - 2026-10-14
+
+### Updated
+
+- **Settings UI:** Further refined the card styling.
+- **Mini player:** Drag the video to move it, or drag any of the four corners to resize it proportionally.
+
+### Added
+
+- **Subtitle language priorities:** Choose which languages to prioritize for subtitles.
+- **Subtitle language memory:** Save the manually selected subtitle language separately for each video.
+- **Comment blocking:** Add @usernames to the block list to automatically hide comments from those users.
+- **Settings backup:** Settings import and export can now back up and restore both cloud-synced memory and local per-video subtitle language memory.
+
+### Fixed
+
+- **Subtitle state memory:** Fixed subtitle state changes made with the C key or player settings not being remembered. Global and per-channel memory can work independently, and automatic restoration no longer overrides manual actions.
+- **Mini player:** Fixed controls staying visible while floating and subtitles being hidden at smaller player sizes, and restored automatic control visibility.
+- **Player UI:** Fixed the progress bar below the video stopping updates and the floating video time remaining at `00:00` in certain situations.
+
 ## [2.0.2] - 2026-09-21
 
 ### Fixed

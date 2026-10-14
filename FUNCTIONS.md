@@ -85,7 +85,7 @@ Notes:
 
 ### Start Music Videos at 1×
 
-Default: `Off` | Version: v2.0.0 (2026-09-14)
+Default: `Off` | Version: `v2.0.0 (2026-09-14)`
 
 When a video loads and YouTube identifies its category as music, this option starts playback at 1× instead of restoring a saved global or channel speed. It also works when speed memory is turned off.
 
@@ -207,9 +207,51 @@ Configurable options:
 
 Notes:
 
-- Automatic subtitle state restoration requires both "Remember subtitle enabled state" and "Remember subtitle enabled state separately for each channel" to be enabled.
+- Global and per-channel memory can be enabled independently. When both are enabled, the current channel's memory takes priority, with global memory used as a fallback.
+- Clicking the player's subtitle button, turning subtitles on or off in the player settings, or successfully toggling subtitles with YouTube's C key records the new state. Automatic restoration does not overwrite remembered manual choices.
 - If a video has no subtitles, the extension cannot force-generate YouTube subtitles.
 - Per-channel memory requires the extension to identify the channel that owns the current video.
+
+<a name="player-subtitle-save-language"></a>
+
+### Remember the Manually Selected Subtitle Language for Each Video
+
+Default: `Off` | Version: `v2.0.3 (2026-10-14)`
+
+When enabled, manually clicking YouTube's player settings and selecting a different subtitle language on a normal video watch page saves that choice for the video. This is useful when you revisit a video and want to keep using particular subtitles without affecting other videos.
+
+Notes:
+
+- Only manual subtitle changes in the player settings menu are recorded, not automatic selections or restorations made by the extension. Simply turning subtitles on or off does not save a language.
+- Authored and auto-generated subtitles are distinguished. If you manually choose YouTube's auto-translate option, the target language is also remembered.
+- On your next visit, the language is restored only if subtitles are already on. Restoring a language will not turn subtitles on; their on/off state remains controlled by YouTube and "Remember subtitle on/off status".
+- The video's remembered language takes priority over "Preferred subtitle languages" below. If the original subtitles or translation target are no longer available, the priority list is tried instead.
+- These per-video memories are stored only in the extension's local storage in the current browser, without browser cloud sync. To migrate them, check "Also export memory" when exporting settings.
+- Turning this option off stops recording and restoring languages but does not delete existing memories.
+
+<a name="player-subtitle-priority"></a>
+
+### Preferred Subtitle Languages
+
+Default: `Empty list` | Version: `v2.0.3 (2026-10-14)`
+
+Set the order in which subtitle languages are selected on normal video watch pages. For example, after adding Chinese, English, and Japanese in that order, the extension first looks for Chinese subtitles, then English if Chinese is unavailable, and finally Japanese.
+
+Configurable options:
+
+- Add language: choose a language from the drop-down list. Names are displayed as "name in the current interface language (native name)", for example, "English (English)". Base languages and their regional variants appear in the same group.
+- Subtitle type: each language offers separate choices for authored subtitles and subtitles marked "Auto-generated". Both can be added and ordered independently. "Auto-generated" means subtitles recognized from speech by YouTube, not subtitles translated from another language.
+- Priority order: drag the handle on the left of an entry or click the move-up and move-down buttons. Entries higher in the list take priority.
+- Remove language: click the remove button on the right of an entry to stop automatically selecting it.
+
+Notes:
+
+- Candidate languages come from the extension's built-in language list, not the current video's subtitles. Adding a language does not mean that the video provides it.
+- Selecting a base language tries that language and its regional variants; selecting a specific variant narrows the match. Authored and auto-generated subtitles are not interchangeable and must be added separately.
+- Languages are selected only when subtitles are on. This does not change the subtitle on/off state or automatically enable YouTube auto-translate.
+- If the current video has a usable remembered manual language choice, that memory is restored first. The priority list is used only when no usable memory exists.
+- If no subtitles match, YouTube's existing selection is retained. After you manually change subtitles in the current video, the extension will not override the choice with the priority list.
+- This feature selects subtitle languages independently of the subtitle translation toggle in the "Translation" category.
 
 <a name="player-function-buttons"></a>
 
@@ -281,7 +323,7 @@ Notes:
 
 ### In-Page Fullscreen Button
 
-Default: `Off` | Version: v2.0.0 (2026-09-14)
+Default: `Off` | Version: `v2.0.0 (2026-09-14)`
 
 Shows an additional button beside YouTube's fullscreen button on normal video watch pages. Click it to fill the browser page with the video while keeping the browser tabs and toolbar available; click it again to leave this view.
 
@@ -354,6 +396,7 @@ Usage:
 - Move the mouse to the middle area of the video image and scroll up to zoom in.
 - After zooming in, scroll down to zoom out until the original size is restored.
 - After zooming in, hold the left mouse button and drag to move the image.
+- In the scrolling mini player, dragging moves the entire floating player instead of panning the zoomed image.
 
 Notes:
 
@@ -382,10 +425,17 @@ Suitable use cases:
 
 Configurable options:
 
-- Size: you can select 360×203, 420×236, 480×270, 560×315, 640×360, or 720×405.
+- Size: you can select 360×203, 420×236, 480×270, 560×315, 640×360, or 720×405. Custom dimensions set by dragging also appear here.
 - Position: you can select bottom-right, bottom-center, bottom-left, top-right, top-center, or top-left.
-- Screen margin: sets the distance between the mini player and the screen edge.
-- Activate after scrolling past the player: sets how many pixels away from the original player before entering mini player mode.
+- Screen margin: set horizontal X and vertical Y distances separately, in pixels, measured from the edges of the page's visible area at the selected corner. Centered positions remain horizontally centered.
+- Activate after scrolling past the player: set how many pixels past the original player to scroll before entering mini player mode, from 0 to 400 pixels.
+
+Dragging:
+
+- Hold and drag an unobstructed area of the video to move the entire mini player. Player buttons, menus, and the control bar retain their own interactions.
+- Drag any of the four corners to resize while preserving the video's aspect ratio. The size is limited by the page's visible area, with a minimum width of 260 pixels when enough space is available.
+- When you release the mouse, the corner is selected according to whether the player's center is in the top-left, top-right, bottom-left, or bottom-right region of the page's visible area, and the X and Y margins are saved. Resizing also saves the dimensions.
+- Dragging only previews changes; settings are saved on release. Press Esc to cancel the current drag and restore the previous layout.
 
 Notes:
 
@@ -394,7 +444,8 @@ Notes:
 - The mini player has a close button. After clicking it, floating will be disabled for the current scroll; when you scroll back near the player or switch videos, triggering will be allowed again.
 - When the screen is too small, the actual display size is automatically reduced to avoid exceeding the screen.
 - While floating, the extension's speed buttons, function button group, and corner video time are hidden.
-- When the actual display width is below 520 pixels, subtitles and some native control buttons are also hidden; this includes the 480×270 and smaller presets. To view subtitles during floating playback, choose a larger size and ensure the screen can accommodate sufficient display width.
+- When the actual display width is below 520 pixels, some native control buttons are hidden, but subtitles remain visible. The control bar follows YouTube's automatic visibility behavior instead of staying visible while floating.
+- Subtitles scale down with the player while retaining a readable font size of at least approximately 14 pixels, and long content wraps. Leaving mini player mode restores the original subtitle display without changing YouTube's subtitle font-size preference.
 
 <a name="player-ui"></a>
 
@@ -470,7 +521,7 @@ Notes:
 
 ### Real-Time Network Speed
 
-Default: `Bottom-right of the video and control bar; fixed MB/s; page traffic total off` | Version: v2.0.0 (2026-09-14)
+Default: `Bottom-right of the video and control bar; fixed MB/s; page traffic total off` | Version: `v2.0.0 (2026-09-14)`
 
 Shows the current player transfer speed so you can tell when the video is loading data. These settings are under Player → UI.
 
@@ -831,6 +882,22 @@ Notes:
 - This feature mainly affects the comment area.
 - After enabling this, long comments are expanded by default, and the manual collapse entry is hidden.
 
+<a name="other-comment-blocked-users"></a>
+
+### Hide Comments from Selected Users
+
+Default: `Empty list` | Version: `v2.0.3 (2026-10-14)`
+
+Enter accounts you do not want to see in the "Hidden commenters" text box to hide their comments in YouTube comment sections. This is useful for reducing disruptions from particular accounts.
+
+Usage and limitations:
+
+- Enter one account handle starting with @ per line, such as @example. Use the handle, not a display name or channel URL.
+- Matching is case-insensitive. Leading and trailing spaces and blank lines are ignored; entries without a leading @ or containing whitespace have no effect.
+- Hiding a top-level comment also hides its replies. Hiding a reply's author hides only the corresponding reply.
+- Both existing and subsequently loaded comments are processed. Removing an account from the list also restores its affected comments that are already loaded.
+- This only affects YouTube comments whose authors can be identified in the current browser. It does not block accounts, report users, or delete comments on your YouTube account, and does not filter video recommendations or live chat.
+
 <a name="other-anti-ad"></a>
 
 ## Ad Blocking
@@ -1057,7 +1124,7 @@ These features show the current video's information, media formats, viewing rest
 
 ### View Video Information
 
-Default: `Read current video information when Insights opens` | Version: v2.0.0 (2026-09-14)
+Default: `Read current video information when Insights opens` | Version: `v2.0.0 (2026-09-14)`
 
 The top of the page shows the video thumbnail, title, channel, and subscriber count. Below it are the view count, like count, video length in seconds, subscriber count, and detailed information, allowing you to quickly check the current video's basic information.
 
@@ -1081,7 +1148,7 @@ If a prompt requires confirmation on the page, return to YouTube and click "I un
 
 ### View Video Formats and Playback Specifications
 
-Default: `Group collapsed; fetch additional media formats when expanded` | Version: v2.0.0 (2026-09-14)
+Default: `Group collapsed; fetch additional media formats when expanded` | Version: `v2.0.0 (2026-09-14)`
 
 Lists the retrieved video resolutions and their formats, ordered from highest to lowest resolution. Multiple formats at the same resolution are combined into an expandable group, while a single format is shown directly, making it easier to compare codecs, frame rates, and bitrates at the same quality.
 
@@ -1108,7 +1175,7 @@ The first time you expand Video Quality or Audio Formats, additional formats are
 
 ### View Audio Specifications
 
-Default: `Group collapsed; fetch additional media formats when expanded` | Version: v2.0.0 (2026-09-14)
+Default: `Group collapsed; fetch additional media formats when expanded` | Version: `v2.0.0 (2026-09-14)`
 
 Lists the retrieved audio formats, ordered from highest to lowest bitrate. Multiple formats using the same codec are combined into an expandable group, while a single format is shown directly, making it easier to compare audio codecs and sound specifications.
 
@@ -1122,7 +1189,7 @@ In addition to the codec, bitrate, media size, and format number, entries may sh
 
 ### View Subtitle Languages and Types
 
-Default: `Shown when subtitle information is available; group collapsed` | Version: v2.0.0 (2026-09-14)
+Default: `Shown when subtitle information is available; group collapsed` | Version: `v2.0.0 (2026-09-14)`
 
 Lists subtitle languages in a compact multi-column layout, with the language code, whether the subtitles are automatically generated from speech, and whether they support YouTube automatic translation, making it easier to check which subtitles the video provides.
 
@@ -1136,7 +1203,7 @@ Lists subtitle languages in a compact multi-column layout, with the language cod
 
 ### View Audio Tracks and the Default Audio Version
 
-Default: `Shown when audio track information is available; group collapsed` | Version: v2.0.0 (2026-09-14)
+Default: `Shown when audio track information is available; group collapsed` | Version: `v2.0.0 (2026-09-14)`
 
 Lists the retrieved audio track names, default track marker, and the codecs and number of formats for each track, making it easier to check whether a video provides different languages or audio versions.
 
@@ -1150,7 +1217,7 @@ If complete track names cannot be retrieved, only a number, the default track, a
 
 ### View Available and Unavailable Regions
 
-Default: `Group and region lists collapsed` | Version: v2.0.0 (2026-09-14)
+Default: `Group and region lists collapsed` | Version: `v2.0.0 (2026-09-14)`
 
 Use this section to check the video's availability in different countries or regions. When regional restrictions apply, "Available regions" and "Unavailable regions" appear side by side within the same panel, separated by a vertical divider, with their respective counts. The two columns can be expanded or collapsed independently; each has a limited height when expanded and uses a vertical scrollbar if there are many entries.
 
@@ -1164,7 +1231,7 @@ The lists show region names and codes. "No restrictions" appears when the video 
 
 ### View Playback Restrictions and Available Capabilities
 
-Default: `Collapsed; expanded or collapsed state remembered` | Version: v2.0.0 (2026-09-14)
+Default: `Collapsed; expanded or collapsed state remembered` | Version: `v2.0.0 (2026-09-14)`
 
 The "Restrictions" panel has a red icon and groups the video's viewing restrictions and available capabilities. A check mark means the item is true, a cross means it is false, and "?" means it has not been confirmed; a loading state appears while information is being read. Colors also distinguish favorable states from restrictions, so a check mark does not necessarily mean there are no restrictions: for example, a check mark for "Age restriction" means an age restriction exists.
 
@@ -1203,7 +1270,7 @@ These markers help explain the information currently available; they do not bypa
 
 ### Select Languages and Query in Batches
 
-Default: `Manual start; language selector collapsed; first 10 remaining languages selected by popularity; up to 10 languages initially; 10 per subsequent batch` | Version: v2.0.0 (2026-09-14)
+Default: `Manual start; language selector collapsed; first 10 remaining languages selected by popularity; up to 10 languages initially; 10 per subsequent batch` | Version: `v2.0.0 (2026-09-14)`
 
 This panel is last on the Insights page and lets you compare the thumbnails, titles, and descriptions YouTube displays in different languages. The selection and loading controls are below the results; queries start only when you click the loading button.
 
@@ -1222,7 +1289,7 @@ Languages are ordered by estimated internet users, with regional variants last. 
 
 ### View Thumbnails, Titles, and Descriptions
 
-Default: `Shown after results are available; descriptions collapsed` | Version: v2.0.0 (2026-09-14)
+Default: `Shown after results are available; descriptions collapsed` | Version: `v2.0.0 (2026-09-14)`
 
 Results have separate "Thumbnails" and "Titles and descriptions" sections. Each groups identical content and lists the languages it includes, making it easier to find content differences between languages.
 
@@ -1234,7 +1301,7 @@ Query progress shows the number of languages checked and the number of grouped v
 
 ### Reuse Local Query Results
 
-Default: `Stored locally in this browser per video; valid for 60 minutes; checked and cleaned when the popup opens` | Version: v2.0.0 (2026-09-14)
+Default: `Stored locally in this browser per video; valid for 60 minutes; checked and cleaned when the popup opens` | Version: `v2.0.0 (2026-09-14)`
 
 Successful query results are cached automatically and can be restored directly when the popup reopens, reducing repeated queries. If the current video has valid cached results when the popup opens, all of its still-valid language results are renewed for the validity period stated above; entries for other videos are not renewed, and expired results are not restored to a valid state.
 
@@ -1399,12 +1466,13 @@ You can export the current extension settings as text for backup, migration to a
 
 Configurable options:
 
-- Also export memory: exports memory data such as per-channel speed and subtitle state.
+- Also export memory: backs up cloud-synced global and per-channel playback speeds and subtitle on/off states, together with locally stored per-video subtitle language memories.
 
 Notes:
 
-- If "Also export memory" is not checked, only normal settings are exported.
+- The memory option covers both cloud-synced memory and local per-video memory. Neither is exported when it is unchecked.
 - The exported content is copied to the clipboard; if copying fails, you can manually select and copy the text.
+- Local interface data such as card expansion states and Insights query caches are not included in this backup.
 
 <a name="general-config-import"></a>
 
@@ -1417,14 +1485,16 @@ You can paste previously exported settings text to restore settings to the curre
 Notes:
 
 - Import failure usually means the text format is incorrect or the content is incomplete.
-- If the imported content contains memory data, the panel will require extra confirmation on whether to import that memory.
-- Importing memory may overwrite existing per-channel speed, subtitle, and other memories in the current browser.
+- If the imported content includes cloud-synced or local per-video memory, the panel requires separate confirmation to import it. Without confirmation, only regular settings are imported.
+- After confirmation, each memory category included in the backup replaces the corresponding current memory entirely rather than merging with it. If an included category is empty, its current memory is cleared.
+- Memory categories absent from the backup remain unchanged. For example, importing an older backup without local memory does not clear existing per-video subtitle language memories.
+- Imported per-video subtitle language memories remain local to the current browser and are not moved to cloud sync.
 
 <a name="general-config-reset"></a>
 
 ### Reset Settings
 
-Default: `Restore regular settings; retain per-channel memory` | Version: `v1.0.0 (2025-05-19)`
+Default: `Restore regular settings; retain existing memory` | Version: `v1.0.0 (2025-05-19)`
 
 You can restore extension settings to their default values.
 
@@ -1432,7 +1502,7 @@ Notes:
 
 - A confirmation prompt appears before reset.
 - After reset, the panel returns to the "Player" page.
-- Resetting normal settings does not specifically clear per-channel memory. If you need to migrate or overwrite memory, use the memory options in import/export.
+- Resetting regular settings does not clear cloud-synced or local per-video memory. To migrate or replace memory, use the memory options in import/export.
 
 <a name="general-installed"></a>
 

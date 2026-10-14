@@ -38,6 +38,7 @@
 					</template>
 				</template>
 			</select>
+			<DocsHelpLink anchor="player-subtitle-priority" />
 		</label>
 		<ol v-if="config['player.settings.subtitleLanguages'].length" @dragend="clearDrag">
 			<li
@@ -115,6 +116,7 @@ import { useI18n } from "vue-i18n";
 import useConfigStore from "../../util/config";
 import { languages } from "../../util/languages";
 import { INSIGHTS_LANGUAGES } from "../../util/insightsLanguages";
+import DocsHelpLink from "../DocsHelpLink.vue";
 
 const config = useConfigStore();
 const { locale, t } = useI18n();
