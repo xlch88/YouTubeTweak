@@ -158,6 +158,11 @@
 					<input type="checkbox" v-model="config['player.settings.saveSubtitleStatusByChannel']" />
 					<span>{{ $t("player.subtitles.checkbox.saveByChannel") }}</span>
 				</label>
+				<label class="form-item">
+					<input type="checkbox" v-model="config['player.settings.saveSubtitleLanguageByVideo']" />
+					<span>{{ $t("player.subtitles.checkbox.saveLanguageByVideo") }}</span>
+				</label>
+				<SubtitleLanguages />
 			</div>
 		</SettingsCard>
 		<SettingsCard card-id="player-function-buttons">
@@ -344,6 +349,7 @@ import DocsHelpLink from "../components/DocsHelpLink.vue";
 import SettingsCard from "../components/SettingsCard.vue";
 import MiniPlayerSettingsCard from "../components/player/MiniPlayerSettingsCard.vue";
 import VolumeBoosterSettings from "../components/player/VolumeBoosterSettings.vue";
+import SubtitleLanguages from "../components/player/SubtitleLanguages.vue";
 import useConfigStore from "../util/config";
 import type { PlayerHideButtonMode } from "@/defaultConfig";
 const config = useConfigStore() as {

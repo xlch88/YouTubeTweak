@@ -19,6 +19,24 @@ export default function isolatedWorld() {
 	};
 
 	Object.assign(wirelessRedstone.handlers, {
+		getVideoSubtitleMemory(videoId: string, reply: (result: string | null) => void) {
+			browser.runtime
+				.sendMessage({ type: "getVideoSubtitleMemory", videoId })
+				.then(reply)
+				.catch((error) => {
+					logger.error("Failed to read video subtitle memory:", error);
+					reply(null);
+				});
+		},
+		setVideoSubtitleMemory(data: { videoId: string; value: string }, reply: (result: boolean) => void) {
+			browser.runtime
+				.sendMessage({ type: "setVideoSubtitleMemory", videoId: data.videoId, value: data.value })
+				.then(reply)
+				.catch((error) => {
+					logger.error("Failed to save video subtitle memory:", error);
+					reply(false);
+				});
+		},
 		getConfig(data: Parameters<typeof browser.storage.sync.get>[0], reply: (result: Record<string, any>) => void) {
 			browser.storage.sync.get(data).then((result) => {
 				reply(result);

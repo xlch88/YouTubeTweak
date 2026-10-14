@@ -54,6 +54,8 @@ export type Config = {
 	"player.settings.keepMusicVideosAtNormalSpeed": boolean;
 	"player.settings.saveSubtitleStatus": boolean;
 	"player.settings.saveSubtitleStatusByChannel": boolean;
+	"player.settings.saveSubtitleLanguageByVideo": boolean;
+	"player.settings.subtitleLanguages": string[];
 	"player.settings.nonStop": boolean;
 	"player.settings.volumeBooster": boolean;
 	"player.settings.volumeBoosterMultiplier": number;
@@ -135,6 +137,8 @@ const config: Config = {
 	"player.settings.keepMusicVideosAtNormalSpeed": false,
 	"player.settings.saveSubtitleStatus": true,
 	"player.settings.saveSubtitleStatusByChannel": true,
+	"player.settings.saveSubtitleLanguageByVideo": false,
+	"player.settings.subtitleLanguages": [],
 	"player.settings.nonStop": true,
 	"player.settings.volumeBooster": false,
 	"player.settings.volumeBoosterMultiplier": 2,
@@ -181,6 +185,19 @@ const config: Config = {
 
 export function normalizeConfig(rawConfig: Partial<Config> | Record<string, unknown>) {
 	const normalizedConfig = { ...rawConfig } as Record<string, unknown>;
+	if ("player.settings.subtitleLanguages" in normalizedConfig) {
+		const languages = normalizedConfig["player.settings.subtitleLanguages"];
+		normalizedConfig["player.settings.subtitleLanguages"] = Array.isArray(languages)
+			? [
+					...new Set(
+						languages.filter(
+							(language): language is string =>
+								typeof language === "string" && /^[a-z]{2,3}(?:-[a-z0-9]{2,8})*(?::asr)?$/i.test(language),
+						),
+					),
+				]
+			: [];
+	}
 	for (const key of [
 		"player.ui.hideButton.autoplay",
 		"player.ui.hideButton.subtitles",

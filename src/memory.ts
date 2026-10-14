@@ -29,6 +29,8 @@ type ChannelMemory = {
 	 * Subtitle is ON or OFF
 	 */
 	c: "0" | "1";
+	/** URI-encoded caption identity, stored under video_<videoId>. */
+	l: string;
 };
 type ChannelMemoryMetadata = {
 	__meta__: {
@@ -144,7 +146,7 @@ function enqueueMemoryMutation<T>(task: () => Promise<T>): Promise<T> {
  * This structure ensures efficient storage and retrieval of channel-specific data
  * while adhering to the storage limitations.
  */
-export default {
+const memory = {
 	storage: createDebouncedMemoryStorage(browser?.storage?.sync as MemoryStorager),
 	cleanChannelId(channelId: string) {
 		if (channelId.startsWith("@")) channelId = channelId.slice(1);
@@ -361,5 +363,24 @@ export default {
 			);
 			await this.storage.set(itemsToRemove);
 		});
+	},
+};
+
+export default memory;
+
+// Reuse the chunk format, but keep per-video data out of sync storage.
+export const videoMemory = {
+	...memory,
+	storage: {
+		async get(keys?: string | string[]) {
+			const data = await browser.storage.local.get(keys);
+			return typeof keys === "string" ? data[keys] : data;
+		},
+		async set(items: StorageItems) {
+			const removed = Object.keys(items).filter((key) => items[key] === undefined);
+			const updated = Object.fromEntries(Object.entries(items).filter(([, value]) => value !== undefined));
+			if (Object.keys(updated).length) await browser.storage.local.set(updated);
+			if (removed.length) await browser.storage.local.remove(removed);
+		},
 	},
 };

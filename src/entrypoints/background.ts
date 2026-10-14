@@ -1,5 +1,6 @@
 import { defineBackground } from "wxt/utils/define-background";
 import { READ_CHANGELOG_VERSION_STORAGE_KEY, syncVersionNoticeBadge } from "@/util/versionNotice";
+import { videoMemory } from "@/memory";
 
 function reloadAllYouTubeTabs() {
 	return browser.tabs
@@ -49,6 +50,12 @@ export default defineBackground({
 		});
 
 		browser.runtime.onMessage.addListener((message) => {
+			if (["getVideoSubtitleMemory", "setVideoSubtitleMemory"].includes(message?.type)) {
+				if (typeof message.videoId !== "string" || !/^[A-Za-z0-9_-]{11}$/.test(message.videoId)) return Promise.resolve(null);
+				if (message.type === "getVideoSubtitleMemory") return videoMemory.get(`video_${message.videoId}`, "l");
+				if (typeof message.value !== "string") return Promise.resolve(false);
+				return videoMemory.set(`video_${message.videoId}`, "l", message.value);
+			}
 			if (message?.type !== "reloadAllYouTubeTabs") return;
 			return reloadAllYouTubeTabs().then(() => true);
 		});
