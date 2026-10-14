@@ -41,7 +41,14 @@ You can view features of this extension on the extension store — or simply ins
 | Firefox           | [YouTube Tweak for Firefox](https://addons.mozilla.org/firefox/addon/youtube-tweak/)                                   |
 | Chrome (Chromium) | [YouTube Tweak for Chrome](https://chromewebstore.google.com/detail/malfbchbmmlhkjjbepjodfkmnbngckoi)                  |
 | Microsoft Edge    | [YouTube Tweak for Microsoft Edge](https://microsoftedge.microsoft.com/addons/detail/eebgfpfoggpnfolkknkdkbjkbejdoedg) |
+| Safari (Mac)      | [YouTweak on the App Store](https://apps.apple.com/us/app/youtweak/id6788401713) |
+| Safari (iPad)     | [YouTweak on the App Store](https://apps.apple.com/us/app/youtweak/id6788401713) |
 | Orion (iOS)       | Incomplete                                                                                                             |
+
+The Safari version is available as **YouTweak** for Mac and iPad. After installation, open YouTweak and follow the instructions to enable the Safari extension and allow access to YouTube. On iPad, see the [Safari setup guide](/docs/en/help/ios.md#safari-enable). The extension works on the YouTube website in Safari, not inside the YouTube app.
+
+> [!NOTE]
+> Due to Apple's App Store review process and other release requirements, updates for Mac and iPad may arrive later than updates for other browsers.
 
 ## 🚀 Links
 

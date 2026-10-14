@@ -41,7 +41,14 @@ YouTube Tweak
 | Firefox           | [YouTube Tweak for Firefox](https://addons.mozilla.org/firefox/addon/youtube-tweak/)                                   |
 | Chrome (Chromium) | [YouTube Tweak for Chrome](https://chromewebstore.google.com/detail/malfbchbmmlhkjjbepjodfkmnbngckoi)                  |
 | Microsoft Edge    | [YouTube Tweak for Microsoft Edge](https://microsoftedge.microsoft.com/addons/detail/eebgfpfoggpnfolkknkdkbjkbejdoedg) |
+| Safari (Mac)      | [App Store で YouTweak を入手](https://apps.apple.com/us/app/youtweak/id6788401713) |
+| Safari (iPad)     | [App Store で YouTweak を入手](https://apps.apple.com/us/app/youtweak/id6788401713) |
 | Orion (iOS)       | Incomplete                                                                                                             |
+
+Safari 版は **YouTweak** という名前で公開されており、Mac と iPad に対応しています。インストール後、YouTweak を開き、案内に従って Safari 拡張機能を有効にし、YouTube へのアクセスを許可してください。iPad では [Safari の有効化ガイド](/docs/ja/help/ios.md#safari-enable)も参照できます。この拡張機能は Safari 内の YouTube ウェブサイトで動作し、YouTube アプリ内では動作しません。
+
+> [!NOTE]
+> Apple App Store の審査手続きやその他の公開要件により、Mac・iPad 版のアップデートは他のブラウザー版より遅れる場合があります。
 
 ## 🚀 関連リンク
 

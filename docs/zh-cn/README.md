@@ -41,7 +41,14 @@ YouTube Tweak
 | Firefox           | [YouTube Tweak for Firefox](https://addons.mozilla.org/firefox/addon/youtube-tweak/)                                   |
 | Chrome (Chromium) | [YouTube Tweak for Chrome](https://chromewebstore.google.com/detail/malfbchbmmlhkjjbepjodfkmnbngckoi)                  |
 | Microsoft Edge    | [YouTube Tweak for Microsoft Edge](https://microsoftedge.microsoft.com/addons/detail/eebgfpfoggpnfolkknkdkbjkbejdoedg) |
+| Safari (Mac)      | [在 App Store 下载 YouTweak](https://apps.apple.com/us/app/youtweak/id6788401713) |
+| Safari (iPad)     | [在 App Store 下载 YouTweak](https://apps.apple.com/us/app/youtweak/id6788401713) |
 | Orion (iOS)       | Incomplete                                                                                                             |
+
+Safari 版以 **YouTweak** 名称上架，支持 Mac 和 iPad。安装后，请打开 YouTweak，按指引启用 Safari 扩展并允许访问 YouTube；iPad 用户也可查看 [Safari 启用指引](/docs/zh-cn/help/ios.md#safari-enable)。扩展用于 Safari 中的 YouTube 网页版，不作用于 YouTube App。
+
+> [!NOTE]
+> 受 Apple App Store 审核流程及其他发布要求影响，Mac 和 iPad 版的更新可能会晚于其他浏览器版本，请耐心等待。
 
 ## 🚀 相关链接
 
