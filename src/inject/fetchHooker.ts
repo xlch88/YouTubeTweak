@@ -81,11 +81,5 @@ export default {
 			configurable: false,
 			enumerable: true,
 		});
-
-		Object.defineProperty(HTMLIFrameElement.prototype, "contentWindow", {
-			get() {
-				return window;
-			},
-		});
 	},
 };
