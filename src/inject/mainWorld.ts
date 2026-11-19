@@ -5,7 +5,6 @@ import wirelessRedstone from "./wirelessRedstone";
 import "./style.scss";
 import fetchHooker from "./fetchHooker";
 import type { Plugin } from "./types";
-import memory, { createDebouncedMemoryStorage } from "@/memory";
 import xmlHttpRequestHooker from "./xmlHttpRequestHooker";
 import { showReloadNotice } from "./util/reloadNotice";
 import { getInsightsLanguageVersion } from "./util/insightsLanguageVersions";
@@ -502,26 +501,6 @@ export default async function mainWorld() {
 
 			reply({ formats, error: errors.length ? errors.join("; ") : null });
 		};
-		memory.storage = createDebouncedMemoryStorage({
-			get(key): Promise<any> {
-				return new Promise((resolve) => {
-					wirelessRedstone.send("getConfig", key, (data) => {
-						if (typeof key === "string") {
-							return resolve(data[key]);
-						}
-
-						resolve(data);
-					});
-				});
-			},
-			set(items) {
-				return new Promise((resolve) => {
-					wirelessRedstone.send("setConfig", items, (data) => {
-						resolve(data);
-					});
-				});
-			},
-		});
 		wirelessRedstone.send("test", { test: "data" }, (replyData) => {
 			logger.info("test ok :", replyData);
 		});

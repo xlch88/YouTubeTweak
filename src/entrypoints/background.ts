@@ -1,6 +1,6 @@
 import { defineBackground } from "wxt/utils/define-background";
 import { READ_CHANGELOG_VERSION_STORAGE_KEY, syncVersionNoticeBadge } from "@/util/versionNotice";
-import { videoMemory } from "@/memory";
+import { createMemoryService, type MemoryReply } from "@/memory";
 
 function reloadAllYouTubeTabs() {
 	return browser.tabs
@@ -13,6 +13,8 @@ function reloadAllYouTubeTabs() {
 export default defineBackground({
 	persistent: false,
 	main() {
+		const memory = createMemoryService(browser.storage);
+		browser.storage.onChanged.addListener((_changes, area) => memory.invalidate(area));
 		syncVersionNoticeBadge().catch(() => {});
 
 		browser.runtime.onInstalled.addListener((details) => {
@@ -49,15 +51,49 @@ export default defineBackground({
 			console.log(details);
 		});
 
-		browser.runtime.onMessage.addListener((message) => {
+		browser.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+			if (message?.type === "memoryRequest") {
+				// WXT exposes the native API: keep the response channel open even without Promise-listener support.
+				memory.handle(message.request).then(
+					(value) => sendResponse({ ok: true, value } satisfies MemoryReply),
+					(error) => sendResponse({ ok: false, error: String(error) } satisfies MemoryReply),
+				);
+				return true;
+			}
 			if (["getVideoSubtitleMemory", "setVideoSubtitleMemory"].includes(message?.type)) {
-				if (typeof message.videoId !== "string" || !/^[A-Za-z0-9_-]{11}$/.test(message.videoId)) return Promise.resolve(null);
-				if (message.type === "getVideoSubtitleMemory") return videoMemory.get(`video_${message.videoId}`, "l");
-				if (typeof message.value !== "string") return Promise.resolve(false);
-				return videoMemory.set(`video_${message.videoId}`, "l", message.value);
+				if (typeof message.videoId !== "string" || !/^[A-Za-z0-9_-]{11}$/.test(message.videoId)) {
+					sendResponse(null);
+					return;
+				}
+				if (message.type === "setVideoSubtitleMemory" && typeof message.value !== "string") {
+					sendResponse(false);
+					return;
+				}
+				memory
+					.handle(
+						message.type === "getVideoSubtitleMemory"
+							? { action: "get", area: "local", channelId: `video_${message.videoId}`, key: "l" }
+							: {
+									action: "set",
+									area: "local",
+									changes: [{ channelId: `video_${message.videoId}`, key: "l", value: message.value }],
+								},
+					)
+					.then(sendResponse, (error) => {
+						console.error("Video subtitle memory request failed:", error);
+						sendResponse(message.type === "getVideoSubtitleMemory" ? null : false);
+					});
+				return true;
 			}
 			if (message?.type !== "reloadAllYouTubeTabs") return;
-			return reloadAllYouTubeTabs().then(() => true);
+			reloadAllYouTubeTabs().then(
+				() => sendResponse(true),
+				(error) => {
+					console.error("Failed to reload YouTube tabs:", error);
+					sendResponse(false);
+				},
+			);
+			return true;
 		});
 
 		browser.runtime.onUpdateAvailable.addListener((details) => {

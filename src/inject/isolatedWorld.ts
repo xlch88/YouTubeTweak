@@ -1,4 +1,4 @@
-import memory, { createDebouncedMemoryStorage } from "@/memory";
+import { isMemoryReply, type MemoryRequest, type MemoryReply } from "@/memory";
 import { createLogger } from "../logger";
 import wirelessRedstone from "./wirelessRedstone";
 
@@ -10,7 +10,6 @@ export default function isolatedWorld() {
 	logger.log("Initializing isolated world...");
 
 	wirelessRedstone.init("isolated");
-	memory.storage = createDebouncedMemoryStorage(browser.storage.sync);
 	const reloadNoticeMessages = {
 		chromeApiOffline: browser.i18n.getMessage("reload_notice_chrome_api_offline", __APP_BRANDING__.compactName),
 		reloadOnToggle: browser.i18n.getMessage("reload_notice_on_toggle"),
@@ -19,6 +18,22 @@ export default function isolatedWorld() {
 	};
 
 	Object.assign(wirelessRedstone.handlers, {
+		async memoryRequest(request: MemoryRequest, reply: (result: MemoryReply) => void) {
+			try {
+				if (!["get", "set", "delete"].includes(request?.action)) throw new Error("Invalid page memory operation");
+				const result: unknown = await browser.runtime.sendMessage({ type: "memoryRequest", request });
+				if (!isMemoryReply(result))
+					throw new Error("Missing or invalid memory response from background; reload the extension and YouTube page.");
+				if (!result.ok) {
+					result.message = browser.i18n.getMessage(
+						/quota/i.test(result.error) ? "memory_notice_quota" : "memory_notice_save_failed",
+					);
+				}
+				reply(result);
+			} catch (error) {
+				reply({ ok: false, error: String(error), message: browser.i18n.getMessage("memory_notice_save_failed") });
+			}
+		},
 		getVideoSubtitleMemory(videoId: string, reply: (result: string | null) => void) {
 			browser.runtime
 				.sendMessage({ type: "getVideoSubtitleMemory", videoId })

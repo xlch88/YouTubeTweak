@@ -1,4 +1,4 @@
-import wirelessRedstone from "../wirelessRedstone";
+import memory from "../memory";
 import config from "../config";
 import { videoPlayer } from "../mainWorld";
 import type { Plugin } from "../types";
@@ -38,9 +38,7 @@ function selectPreferredSubtitle(reset = false) {
 	const videoId = new URL(location.href).searchParams.get("v");
 	if (location.pathname !== "/watch" || !videoId || appliedVideoId === videoId) return;
 	let attempts = 0;
-	const saved = config.get("player.settings.saveSubtitleLanguageByVideo")
-		? new Promise<string | null>((resolve) => wirelessRedstone.send("getVideoSubtitleMemory", videoId, resolve))
-		: null;
+	const saved = config.get("player.settings.saveSubtitleLanguageByVideo") ? memory.get(`video_${videoId}`, "l", "local") : null;
 
 	const apply = async () => {
 		const savedValue = saved ? await saved : null;
@@ -142,7 +140,10 @@ export default {
 						if (after && after !== before && player.isSubtitlesOn()) {
 							appliedVideoId = videoId;
 							if (config.get("player.settings.saveSubtitleLanguageByVideo"))
-								wirelessRedstone.send("setVideoSubtitleMemory", { videoId, value: encodeURIComponent(after) });
+								void memory.setMany(
+									[{ channelId: `video_${videoId}`, key: "l", value: encodeURIComponent(after) }],
+									"local",
+								);
 						} else selectPreferredSubtitle();
 					}, 0);
 				},

@@ -68,5 +68,6 @@ export default {
 				detail: JSON.stringify(detail),
 			}),
 		);
+		return cbId;
 	},
 };

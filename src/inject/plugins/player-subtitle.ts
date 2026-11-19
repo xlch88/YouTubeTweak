@@ -1,4 +1,5 @@
-import memory from "@/memory";
+import memory from "../memory";
+import type { MemoryChange } from "@/memory";
 import config from "../config";
 import type { Plugin } from "../types";
 import { videoPlayer } from "../mainWorld";
@@ -39,8 +40,11 @@ function rememberSubtitleToggle(event: Event) {
 			return;
 		const isOn = player.isSubtitlesOn();
 		if (wasOn === isOn) return;
-		if (config.get("player.settings.saveSubtitleStatusByChannel") && channelId) void memory.set(channelId, "c", isOn ? "1" : "0");
-		if (config.get("player.settings.saveSubtitleStatus")) void memory.set("", "c", isOn ? "1" : "0");
+		const changes: MemoryChange[] = [];
+		if (config.get("player.settings.saveSubtitleStatusByChannel") && channelId)
+			changes.push({ channelId, key: "c", value: isOn ? "1" : "0" });
+		if (config.get("player.settings.saveSubtitleStatus")) changes.push({ channelId: "", key: "c", value: isOn ? "1" : "0" });
+		void memory.setMany(changes);
 	}, 0);
 }
 

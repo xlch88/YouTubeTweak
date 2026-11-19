@@ -6,6 +6,10 @@
 		"name_apple": "YouTweak",
 		"description_apple": "画質ロック、速度ボタン、コメント機能、不要な要素の非表示で動画サイトを快適に。"
 	},
+	"memoryNotice": {
+		"saveFailed": "__NEED_TRANSLATE__: YouTubeTweak 无法完成记忆读写，请重试操作。",
+		"quota": "__NEED_TRANSLATE__: YouTubeTweak 记忆保存失败：同步存储容量或写入次数已达到限制，请稍后重试；若持续出现，请先导出配置备份。"
+	},
 	"reloadNotice": {
 		"chromeApiOffline": "$APP_NAME$ が更新されました。更新を適用するには、このページを再読み込みしてください。",
 		"onToggle": "この設定を適用するには、YouTube ページを再読み込みしてください。",

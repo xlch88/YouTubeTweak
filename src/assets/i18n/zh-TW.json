@@ -6,6 +6,10 @@
 		"name_apple": "YouTweak",
 		"description_apple": "增強影音網站：鎖定畫質、倍速按鈕、留言工具、隱藏干擾元素。"
 	},
+	"memoryNotice": {
+		"saveFailed": "YouTubeTweak 無法完成記憶讀寫，請重試操作。",
+		"quota": "YouTubeTweak 記憶儲存失敗：同步儲存容量或寫入次數已達限制，請稍後重試；若持續出現，請先匯出設定備份。"
+	},
 	"reloadNotice": {
 		"chromeApiOffline": "$APP_NAME$ 已更新，請重新整理目前頁面以套用更新。",
 		"onToggle": "此設定需要重新整理 YouTube 頁面後才能生效。",

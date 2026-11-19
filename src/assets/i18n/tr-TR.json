@@ -6,6 +6,10 @@
 		"name_apple": "YouTweak",
 		"description_apple": "Video sitelerini kalite kilidi, hız düğmeleri, yorum araçları ve daha temiz sayfalarla geliştir."
 	},
+	"memoryNotice": {
+		"saveFailed": "__NEED_TRANSLATE__: YouTubeTweak 无法完成记忆读写，请重试操作。",
+		"quota": "__NEED_TRANSLATE__: YouTubeTweak 记忆保存失败：同步存储容量或写入次数已达到限制，请稍后重试；若持续出现，请先导出配置备份。"
+	},
 	"reloadNotice": {
 		"chromeApiOffline": "$APP_NAME$ güncellendi. Güncellemeyi uygulamak için bu sayfayı yeniden yükleyin.",
 		"onToggle": "Bu ayarı uygulamak için YouTube sayfasını yeniden yükleyin.",

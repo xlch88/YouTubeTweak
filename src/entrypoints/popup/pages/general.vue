@@ -144,10 +144,15 @@
 						<button class="btn" @click="configModalType = configModalValue = ''">
 							{{ $t("general.config.button.cancel") }}
 						</button>
-						<button class="btn" :disabled="configModalBusy" @click="configModalSubmit()">
+						<button
+							class="btn"
+							:disabled="configModalBusy || (configModalType === 'export' && !!configModalError)"
+							@click="configModalSubmit()"
+						>
 							{{ configModalType === "import" ? $t("general.config.button.submit") : $t("general.config.button.copy") }}
 						</button>
 					</div>
+					<p v-if="configModalError" role="alert">{{ configModalError }}</p>
 				</div>
 			</div>
 		</transition>
@@ -217,12 +222,8 @@
 </template>
 
 <script setup lang="ts">
-import {
-	CHANGELOG_URL,
-	READ_CHANGELOG_VERSION_STORAGE_KEY,
-	compareVersions,
-	markChangelogVersionRead,
-} from "@/util/versionNotice";
+import { isMemoryReply } from "@/memory";
+import { CHANGELOG_URL, READ_CHANGELOG_VERSION_STORAGE_KEY, compareVersions, markChangelogVersionRead } from "@/util/versionNotice";
 import appleLogo from "@/assets/img/logo_apple.svg";
 import logo from "@/assets/img/logo.svg";
 import DocsHelpLink from "../components/DocsHelpLink.vue";
@@ -292,15 +293,12 @@ async function showSponsorCard() {
 const configModalType = ref("");
 const configModalValue = ref("");
 const configModalBusy = ref(false);
+const configModalError = ref("");
 const configModalExportMemory = ref(false);
 const configModalImportMemory = ref(false);
 let exportConfigUpdateId = 0;
 const MEMORY_CHUNK_KEY = "memoryChunk";
 const LOCAL_MEMORY_CHUNK_KEY = "localMemoryChunk";
-const MEMORY_INDEX_KEY = "memoryI";
-const MEMORY_TABLE_PREFIX = "memory_";
-
-type MemoryChunk = Record<string, unknown>;
 
 function isRecord(v: unknown): v is Record<string, unknown> {
 	return !!v && typeof v === "object" && !Array.isArray(v);
@@ -326,36 +324,6 @@ watch(configModalValue, () => {
 	}
 });
 
-function isMemoryStorageKey(key: string) {
-	return key === MEMORY_INDEX_KEY || key.startsWith(MEMORY_TABLE_PREFIX);
-}
-
-function pickMemoryChunk(items: Record<string, unknown>) {
-	return Object.fromEntries(Object.entries(items).filter(([key]) => isMemoryStorageKey(key))) as MemoryChunk;
-}
-
-async function getMemoryChunk(area: "sync" | "local") {
-	const storageItems = (await browser.storage[area].get()) as Record<string, unknown>;
-	return pickMemoryChunk(storageItems);
-}
-
-async function overwriteMemoryChunk(memoryChunk: unknown, area: "sync" | "local") {
-	if (!isRecord(memoryChunk)) throw new Error("Invalid memoryChunk");
-
-	const importedMemoryItems = pickMemoryChunk(memoryChunk);
-	const currentStorageItems = (await browser.storage[area].get()) as Record<string, unknown>;
-	const currentMemoryKeys = Object.keys(currentStorageItems).filter(isMemoryStorageKey);
-	const importedMemoryKeys = Object.keys(importedMemoryItems);
-	const staleMemoryKeys = currentMemoryKeys.filter((key) => !importedMemoryKeys.includes(key));
-
-	if (importedMemoryKeys.length > 0) {
-		await browser.storage[area].set(importedMemoryItems);
-	}
-	if (staleMemoryKeys.length > 0) {
-		await browser.storage[area].remove(staleMemoryKeys);
-	}
-}
-
 async function updateExportConfigValue() {
 	if (configModalType.value !== "export") return;
 
@@ -363,14 +331,19 @@ async function updateExportConfigValue() {
 	const exportMemory = configModalExportMemory.value;
 	const exportConfig = JSON.parse(JSON.stringify(config.$state)) as Record<string, unknown>;
 	configModalBusy.value = exportMemory;
+	configModalError.value = "";
 	try {
 		if (exportMemory) {
-			exportConfig[MEMORY_CHUNK_KEY] = await getMemoryChunk("sync");
-			exportConfig[LOCAL_MEMORY_CHUNK_KEY] = await getMemoryChunk("local");
+			const reply: unknown = await browser.runtime.sendMessage({ type: "memoryRequest", request: { action: "export" } });
+			if (!isMemoryReply(reply)) throw new Error("Missing or invalid memory response from background");
+			if (!reply.ok) throw new Error(reply.error);
+			Object.assign(exportConfig, reply.value);
 		}
 		if (updateId === exportConfigUpdateId) {
 			configModalValue.value = JSON.stringify(exportConfig, null, 2);
 		}
+	} catch {
+		if (updateId === exportConfigUpdateId) configModalError.value = t("memoryNotice.saveFailed");
 	} finally {
 		if (updateId === exportConfigUpdateId) {
 			configModalBusy.value = false;
@@ -382,6 +355,7 @@ function showConfigModal(type: string) {
 	exportConfigUpdateId++;
 	configModalType.value = type;
 	configModalBusy.value = false;
+	configModalError.value = "";
 	configModalExportMemory.value = false;
 	configModalImportMemory.value = false;
 	configModalValue.value = type === "import" ? "" : JSON.stringify(config.$state, null, 2);
@@ -389,6 +363,7 @@ function showConfigModal(type: string) {
 async function configModalSubmit() {
 	if (configModalType.value === "import") {
 		configModalBusy.value = true;
+		configModalError.value = "";
 		try {
 			const newConfig = JSON.parse(configModalValue.value);
 			if (!isRecord(newConfig)) throw new Error("Invalid config");
@@ -403,18 +378,26 @@ async function configModalSubmit() {
 			if (configModalImportMemory.value) {
 				if (hasMemoryChunk && !isRecord(memoryChunk)) throw new Error("Invalid memoryChunk");
 				if (hasLocalMemoryChunk && !isRecord(localMemoryChunk)) throw new Error("Invalid localMemoryChunk");
-				if (hasMemoryChunk) await overwriteMemoryChunk(memoryChunk, "sync");
-				if (hasLocalMemoryChunk) await overwriteMemoryChunk(localMemoryChunk, "local");
 			}
+			const reply: unknown = await browser.runtime.sendMessage({
+				type: "memoryRequest",
+				request: {
+					action: "import",
+					settings: { ...JSON.parse(JSON.stringify(config.$state)), ...newConfig },
+					...(configModalImportMemory.value && hasMemoryChunk ? { memoryChunk } : {}),
+					...(configModalImportMemory.value && hasLocalMemoryChunk ? { localMemoryChunk } : {}),
+				},
+			});
+			if (!isMemoryReply(reply)) throw new Error("Missing or invalid memory response from background");
+			if (!reply.ok) throw new Error(reply.error);
 
 			config.$patch(newConfig as any);
-			config.saveStorage();
 			showToast(t("general.config.alert.importSuccess"));
 
 			configModalType.value = "";
 			configModalValue.value = "";
 		} catch (e) {
-			showToast(t("general.config.alert.importError"));
+			configModalError.value = t(/quota/i.test(String(e)) ? "memoryNotice.quota" : "general.config.alert.importError");
 		} finally {
 			configModalBusy.value = false;
 		}
@@ -549,9 +532,7 @@ async function showChangelog(mode: ChangelogMode) {
 	const requestId = ++changelogRequestId;
 	const data = await browser.storage.local.get(READ_CHANGELOG_VERSION_STORAGE_KEY);
 	const fromVersion =
-		mode === "unread" && typeof data[READ_CHANGELOG_VERSION_STORAGE_KEY] === "string"
-			? data[READ_CHANGELOG_VERSION_STORAGE_KEY]
-			: "";
+		mode === "unread" && typeof data[READ_CHANGELOG_VERSION_STORAGE_KEY] === "string" ? data[READ_CHANGELOG_VERSION_STORAGE_KEY] : "";
 	changelogMode.value = mode;
 	changelogFromVersion.value = fromVersion;
 	changelogModalVisible.value = true;

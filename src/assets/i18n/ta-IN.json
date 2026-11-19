@@ -6,6 +6,10 @@
 		"name_apple": "YouTweak",
 		"description_apple": "தர பூட்டு, வேக பொத்தான்கள், கருத்து கருவிகள், சுத்தமான பக்கங்களுடன் வீடியோ இணையதளங்களை மேம்படுத்துங்கள்."
 	},
+	"memoryNotice": {
+		"saveFailed": "__NEED_TRANSLATE__: YouTubeTweak 无法完成记忆读写，请重试操作。",
+		"quota": "__NEED_TRANSLATE__: YouTubeTweak 记忆保存失败：同步存储容量或写入次数已达到限制，请稍后重试；若持续出现，请先导出配置备份。"
+	},
 	"reloadNotice": {
 		"chromeApiOffline": "$APP_NAME$ புதுப்பிக்கப்பட்டது. புதுப்பிப்பைப் பயன்படுத்த இந்தப் பக்கத்தை மீண்டும் ஏற்றவும்.",
 		"onToggle": "இந்த அமைப்பைப் பயன்படுத்த YouTube பக்கத்தை மீண்டும் ஏற்றவும்.",

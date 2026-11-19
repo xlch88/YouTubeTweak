@@ -4,6 +4,7 @@ import fs from "fs";
 export default defineWxtModule({
 	setup(wxt) {
 		wxt.hooks.hook("build:before", () => {
+			const fallbackLocale = JSON.parse(fs.readFileSync("src/assets/i18n/en-US.json", "utf-8"));
 			// fs.rmSync("./public/_locales", { recursive: true, force: true });
 
 			for (const file of fs.readdirSync("src/assets/i18n").filter((file) => file.endsWith(".json"))) {
@@ -16,6 +17,14 @@ export default defineWxtModule({
 
 				const dir = `./public/_locales/${name}`;
 				const localeData = JSON.parse(fs.readFileSync(`src/assets/i18n/${file}`, "utf-8"));
+				const memoryNotice = {
+					...fallbackLocale.memoryNotice,
+					...Object.fromEntries(
+						Object.entries(localeData.memoryNotice ?? {}).filter(
+							([, value]) => typeof value === "string" && value && !value.startsWith("__NEED_TRANSLATE__"),
+						),
+					),
+				};
 
 				const messagesJsonFile = `${dir}/messages.json`;
 				const extName =
@@ -35,6 +44,12 @@ export default defineWxtModule({
 						},
 						manifest_description: {
 							message: extDescription,
+						},
+						memory_notice_save_failed: {
+							message: memoryNotice.saveFailed,
+						},
+						memory_notice_quota: {
+							message: memoryNotice.quota,
 						},
 						reload_notice_chrome_api_offline: {
 							message: localeData.reloadNotice.chromeApiOffline,

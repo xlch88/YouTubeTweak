@@ -6,6 +6,10 @@
 		"name_apple": "YouTweak",
 		"description_apple": "Enhance video websites with quality lock, speed buttons, comment tools, and cleaner pages."
 	},
+	"memoryNotice": {
+		"saveFailed": "YouTubeTweak could not read or save memory. Please try the operation again.",
+		"quota": "YouTubeTweak could not save memory: sync storage or write limits were reached. Try again later; if this persists, export your settings as a backup."
+	},
 	"reloadNotice": {
 		"chromeApiOffline": "$APP_NAME$ has been updated. Reload this page to apply the update.",
 		"onToggle": "Reload YouTube to apply this setting.",

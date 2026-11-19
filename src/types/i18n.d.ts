@@ -4,6 +4,8 @@ declare module "wxt/browser" {
 	interface WxtI18n {
 		getMessage(
 			messageName:
+				| "memory_notice_save_failed"
+				| "memory_notice_quota"
 				| "reload_notice_chrome_api_offline"
 				| "reload_notice_on_toggle"
 				| "reload_notice_current_page"

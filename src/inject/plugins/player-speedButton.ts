@@ -5,7 +5,8 @@ import { getChannelId, touchPlayer } from "../util/helper";
 import { shouldCollapsePlayerControls } from "../util/playerControlCollapse";
 
 import type { Plugin } from "../types";
-import memory from "@/memory";
+import memory from "../memory";
+import type { MemoryChange } from "@/memory";
 
 const logger = createLogger("player-speedButton");
 
@@ -21,6 +22,9 @@ let dragStartX = 0;
 let dragStartSpeedButton: HTMLSpanElement | null = null;
 let suppressNextSpeedClick = false;
 let speedButtonResizeObserver: ResizeObserver | null = null;
+let speedMemoryTimer: ReturnType<typeof setTimeout> | undefined;
+let pendingSpeedMemory: MemoryChange[] = [];
+let speedRevision = 0;
 
 const SLIDER_DISPLAY_MS = 500;
 const DRAG_THRESHOLD = 3;
@@ -209,19 +213,32 @@ function applySpeedButtonConfigState() {
 	updateSpeedButtonState(lastPlaybackSpeed);
 }
 
-async function persistPlaybackSpeed(speed: number) {
+function flushPlaybackSpeed() {
+	clearTimeout(speedMemoryTimer);
+	speedMemoryTimer = undefined;
+	const changes = pendingSpeedMemory;
+	pendingSpeedMemory = [];
+	if (changes.length) void memory.setMany(changes);
+}
+
+function persistPlaybackSpeed(speed: number, delay = 0) {
+	clearTimeout(speedMemoryTimer);
+	pendingSpeedMemory = [];
 	if (config.get("player.settings.saveSpeed")) {
-		await memory.set("", "s", speed);
+		pendingSpeedMemory.push({ channelId: "", key: "s", value: speed });
 	}
 	if (config.get("player.settings.saveSpeedByChannel")) {
 		const channelId = getChannelId();
 		if (channelId) {
-			await memory.set(channelId, "s", speed);
+			pendingSpeedMemory.push({ channelId, key: "s", value: speed });
 		}
 	}
+	if (delay) speedMemoryTimer = setTimeout(flushPlaybackSpeed, delay);
+	else flushPlaybackSpeed();
 }
 
 async function setPlaybackSpeed(speed: number, options: { persist?: boolean; preferredButton?: HTMLSpanElement | null } = {}) {
+	speedRevision++;
 	speed = Number(speed.toFixed(4));
 	lastPlaybackSpeed = speed;
 	videoPlayer.player?.setPlaybackRate(speed);
@@ -232,7 +249,7 @@ async function setPlaybackSpeed(speed: number, options: { persist?: boolean; pre
 	updateSliderPosition(speed);
 
 	if (options.persist) {
-		await persistPlaybackSpeed(speed);
+		persistPlaybackSpeed(speed);
 	}
 }
 
@@ -289,19 +306,20 @@ function handleSpeedWheel(e: WheelEvent) {
 		const step = Number.isFinite(configuredStep) && configuredStep > 0 ? configuredStep : 0.25;
 		nextSpeed = clampSpeed(
 			Number(
-				((e.deltaY < 0
-					? Math.floor(currentSpeed / step + 0.000001) + 1
-					: Math.ceil(currentSpeed / step - 0.000001) - 1) * step
+				(
+					(e.deltaY < 0 ? Math.floor(currentSpeed / step + 0.000001) + 1 : Math.ceil(currentSpeed / step - 0.000001) - 1) * step
 				).toFixed(4),
 			),
 		);
 	}
 	showSpeedSlider();
-	void setPlaybackSpeed(nextSpeed, { persist: true, preferredButton: findFallbackSpeedButton(nextSpeed) });
+	void setPlaybackSpeed(nextSpeed, { preferredButton: findFallbackSpeedButton(nextSpeed) });
+	persistPlaybackSpeed(nextSpeed, 250);
 }
 
 function handleSpeedPointerDown(e: PointerEvent) {
 	if (!isSpeedSliderEnabled() || e.button !== 0) return;
+	flushPlaybackSpeed();
 
 	touchPlayer();
 	isDraggingSpeedSlider = true;
@@ -329,14 +347,15 @@ function handleDocumentPointerMove(e: PointerEvent) {
 	e.stopPropagation();
 	touchPlayer();
 	showSpeedSlider(true);
-	void setPlaybackSpeed(speed, { persist: true, preferredButton: findFallbackSpeedButton(speed) });
+	void setPlaybackSpeed(speed, { preferredButton: findFallbackSpeedButton(speed) });
 }
 
 function handleDocumentPointerUp(e: PointerEvent) {
 	if (!isDraggingSpeedSlider) return;
 
 	touchPlayer();
-	const clickedSpeedButton = !hasDraggedSpeedSlider ? dragStartSpeedButton : null;
+	const clickedSpeedButton = !hasDraggedSpeedSlider && e.type !== "pointercancel" ? dragStartSpeedButton : null;
+	if (hasDraggedSpeedSlider) persistPlaybackSpeed(lastPlaybackSpeed);
 	suppressNextSpeedClick = hasDraggedSpeedSlider || !!clickedSpeedButton;
 	isDraggingSpeedSlider = false;
 	hasDraggedSpeedSlider = false;
@@ -355,6 +374,7 @@ function handleDocumentPointerUp(e: PointerEvent) {
 }
 
 async function setMemorySpeed() {
+	const revision = ++speedRevision;
 	if (config.get("player.settings.keepMusicVideosAtNormalSpeed") && isMusicVideo()) {
 		await setPlaybackSpeed(1);
 		return;
@@ -388,14 +408,8 @@ async function setMemorySpeed() {
 		}
 	}
 	if (!speed) return;
-	if (new URL(location.href).searchParams.get("v") !== videoId) return;
+	if (revision !== speedRevision || new URL(location.href).searchParams.get("v") !== videoId) return;
 	speed = Number(speed);
-
-	if (config.get("player.settings.saveSpeedByChannel")) {
-		await memory.set(channelId, "s", speed);
-	}
-
-	if (new URL(location.href).searchParams.get("v") !== videoId) return;
 	await setPlaybackSpeed(speed);
 }
 
@@ -414,6 +428,14 @@ export default {
 	"player.ui.enableSpeedButtons": {
 		setup() {
 			window.addEventListener("resize", applySpeedButtonConfigState);
+			window.addEventListener("pagehide", flushPlaybackSpeed);
+			document.addEventListener("yt-navigate-start", () => {
+				speedRevision++;
+				flushPlaybackSpeed();
+				isDraggingSpeedSlider = false;
+				hasDraggedSpeedSlider = false;
+				dragStartSpeedButton = null;
+			});
 		},
 		enable() {
 			applySpeedButtonConfigState();
@@ -449,6 +471,7 @@ export default {
 				speedButtonDiv.addEventListener("pointerdown", handleSpeedPointerDown);
 				document.addEventListener("pointermove", handleDocumentPointerMove, true);
 				document.addEventListener("pointerup", handleDocumentPointerUp, true);
+				document.addEventListener("pointercancel", handleDocumentPointerUp, true);
 
 				for (let speed of [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 5, 10]) {
 					const speedButton = document.createElement("span");
@@ -490,18 +513,14 @@ export default {
 				oldConfig["player.ui.enableSpeedSlider"] !== newConfig["player.ui.enableSpeedSlider"] ||
 				oldConfig["player.ui.speedSliderWheelMode"] !== newConfig["player.ui.speedSliderWheelMode"] ||
 				oldConfig["player.ui.speedSliderStep"] !== newConfig["player.ui.speedSliderStep"] ||
-				oldConfig["player.ui.functionButtons.collapseButtons"] !==
-					newConfig["player.ui.functionButtons.collapseButtons"] ||
-				oldConfig["player.ui.functionButtons.enableRotateButton"] !==
-					newConfig["player.ui.functionButtons.enableRotateButton"] ||
-				oldConfig["player.ui.functionButtons.enableMirrorButton"] !==
-					newConfig["player.ui.functionButtons.enableMirrorButton"] ||
+				oldConfig["player.ui.functionButtons.collapseButtons"] !== newConfig["player.ui.functionButtons.collapseButtons"] ||
+				oldConfig["player.ui.functionButtons.enableRotateButton"] !== newConfig["player.ui.functionButtons.enableRotateButton"] ||
+				oldConfig["player.ui.functionButtons.enableMirrorButton"] !== newConfig["player.ui.functionButtons.enableMirrorButton"] ||
 				oldConfig["player.ui.functionButtons.enableScreenshotButton"] !==
 					newConfig["player.ui.functionButtons.enableScreenshotButton"] ||
 				oldConfig["player.ui.enableVolumeBooster"] !== newConfig["player.ui.enableVolumeBooster"] ||
 				oldConfig["other.playerNetworkSpeed.mode"] !== newConfig["other.playerNetworkSpeed.mode"] ||
-				oldConfig["other.playerNetworkSpeed.trackPageTraffic"] !==
-					newConfig["other.playerNetworkSpeed.trackPageTraffic"];
+				oldConfig["other.playerNetworkSpeed.trackPageTraffic"] !== newConfig["other.playerNetworkSpeed.trackPageTraffic"];
 
 			if (hasUpdate) {
 				applySpeedButtonConfigState();
