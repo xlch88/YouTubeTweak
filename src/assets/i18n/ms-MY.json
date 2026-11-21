@@ -7,8 +7,8 @@
 		"description_apple": "Tingkatkan laman web video dengan kunci kualiti, butang kelajuan, alat komen dan halaman lebih bersih."
 	},
 	"memoryNotice": {
-		"saveFailed": "__NEED_TRANSLATE__: YouTubeTweak 无法完成记忆读写，请重试操作。",
-		"quota": "__NEED_TRANSLATE__: YouTubeTweak 记忆保存失败：同步存储容量或写入次数已达到限制，请稍后重试；若持续出现，请先导出配置备份。"
+		"saveFailed": "YouTubeTweak tidak dapat membaca atau menyimpan memori. Sila cuba lagi.",
+		"quota": "Gagal menyimpan memori YouTubeTweak: had storan penyegerakan atau bilangan penulisan telah dicapai. Sila cuba lagi kemudian; jika masalah berterusan, eksport tetapan sebagai sandaran terlebih dahulu."
 	},
 	"reloadNotice": {
 		"chromeApiOffline": "$APP_NAME$ telah dikemas kini. Muat semula halaman ini untuk menggunakan kemas kini.",

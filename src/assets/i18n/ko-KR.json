@@ -7,8 +7,8 @@
 		"description_apple": "화질 고정, 속도 버튼, 댓글 도구, 방해 요소 숨기기로 동영상 웹사이트를 더 편하게."
 	},
 	"memoryNotice": {
-		"saveFailed": "__NEED_TRANSLATE__: YouTubeTweak 无法完成记忆读写，请重试操作。",
-		"quota": "__NEED_TRANSLATE__: YouTubeTweak 记忆保存失败：同步存储容量或写入次数已达到限制，请稍后重试；若持续出现，请先导出配置备份。"
+		"saveFailed": "YouTubeTweak에서 메모리를 읽거나 저장하지 못했습니다. 다시 시도하세요.",
+		"quota": "YouTubeTweak 메모리 저장에 실패했습니다. 동기화 저장 공간 또는 쓰기 횟수 제한에 도달했습니다. 잠시 후 다시 시도하고, 문제가 계속되면 먼저 설정을 내보내 백업하세요."
 	},
 	"reloadNotice": {
 		"chromeApiOffline": "$APP_NAME$이(가) 업데이트되었습니다. 업데이트를 적용하려면 이 페이지를 새로고침하세요.",

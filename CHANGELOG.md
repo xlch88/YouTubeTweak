@@ -6,6 +6,20 @@ All release version update records are listed in this file.
 
 If you have questions, bug reports, or feature suggestions, please go to the [GitHub Issues page](https://github.com/xlch88/YouTubeTweak/issues) to submit them.
 
+## [2.0.4] - 2026-11-21
+
+### Updated
+
+- **Memory storage:** Improved read/write stability for playback speed, subtitle state, and per-video subtitle language memory to reduce conflicts across multiple tabs. Dragging the speed slider or adjusting speed with the scroll wheel now saves after releasing or pausing, restoring global speed no longer overwrites per-channel memory, and an error notice appears at the bottom-right corner of the page if saving fails.
+- **Settings backup:** Displays an error message in the modal and disables copying if exporting memory fails. Validates settings, memory data, and cloud sync storage limits before importing, reporting errors directly without affecting existing settings.
+
+### Fixed
+
+- **Live chat:** Fixed an issue where YouTube live chat controls malfunctioned in certain scenarios.
+- **In-page fullscreen:** Fixed an issue where pressing Esc did not exit in-page fullscreen.
+- **Automatic video quality:** Fixed an issue where video quality still switched in some cases when automatic video quality switching was disabled.
+- **Player function buttons:** Fixed an issue where turning off Rotate Video or Mirror Video did not automatically reset video orientation or mirroring.
+
 ## [2.0.3] - 2026-10-14
 
 ### Updated

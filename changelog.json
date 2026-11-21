@@ -7,6 +7,102 @@
 	},
 	"releases": [
 		{
+			"version": "2.0.4",
+			"date": "2026-11-21",
+			"changes": {
+				"zh-CN": {
+					"updated": [
+						{
+							"scope": "记忆存储",
+							"text": "优化播放速度、字幕状态和单视频字幕语言记忆的读写稳定性，减少多标签页操作冲突；拖动倍速滑块或滚轮调速改为松手或停顿后保存，自动恢复通用倍速不再覆盖分频道记忆，保存失败时会在页面右下角显示错误提示。"
+						},
+						{
+							"scope": "设置备份",
+							"text": "导出记忆失败时在弹窗中显示错误提示并禁止复制；导入前统一校验配置、记忆数据与云同步容量限制，异常时直接提示而不影响现有设置。"
+						}
+					],
+					"fixed": [
+						{
+							"scope": "直播聊天",
+							"text": "修复部分场景下 YouTube 直播聊天控件异常的问题。"
+						},
+						{
+							"scope": "页内全屏",
+							"text": "修复按 Esc 键无法退出页内全屏的问题。"
+						},
+						{
+							"scope": "自动切换画质",
+							"text": "修复关闭自动切换视频画质开关后，部分情况下仍会触发画质切换的问题。"
+						},
+						{
+							"scope": "播放器功能按钮",
+							"text": "修复关闭旋转视频或镜像视频开关后，画面未自动恢复正常方向或取消镜像的问题。"
+						}
+					]
+				},
+				"en": {
+					"updated": [
+						{
+							"scope": "Memory storage",
+							"text": "Improved read/write stability for playback speed, subtitle state, and per-video subtitle language memory to reduce conflicts across multiple tabs. Dragging the speed slider or adjusting speed with the scroll wheel now saves after releasing or pausing, restoring global speed no longer overwrites per-channel memory, and an error notice appears at the bottom-right corner of the page if saving fails."
+						},
+						{
+							"scope": "Settings backup",
+							"text": "Displays an error message in the modal and disables copying if exporting memory fails. Validates settings, memory data, and cloud sync storage limits before importing, reporting errors directly without affecting existing settings."
+						}
+					],
+					"fixed": [
+						{
+							"scope": "Live chat",
+							"text": "Fixed an issue where YouTube live chat controls malfunctioned in certain scenarios."
+						},
+						{
+							"scope": "In-page fullscreen",
+							"text": "Fixed an issue where pressing Esc did not exit in-page fullscreen."
+						},
+						{
+							"scope": "Automatic video quality",
+							"text": "Fixed an issue where video quality still switched in some cases when automatic video quality switching was disabled."
+						},
+						{
+							"scope": "Player function buttons",
+							"text": "Fixed an issue where turning off Rotate Video or Mirror Video did not automatically reset video orientation or mirroring."
+						}
+					]
+				},
+				"ja": {
+					"updated": [
+						{
+							"scope": "記憶ストレージ",
+							"text": "再生速度、字幕状態、動画別字幕言語の記憶における読み書きの安定性を改善し、複数タブ操作時の競合を軽減しました。倍速スライダーのドラッグやホイール操作による速度変更は操作完了後や停止後に保存されるようになり、共通の再生速度を自動復元してもチャンネル別の記憶を上書きしません。保存に失敗した場合はページ右下にエラー通知を表示します。"
+						},
+						{
+							"scope": "設定のバックアップ",
+							"text": "記憶データのエクスポートに失敗した際、ダイアログ内にエラーを表示してコピーを無効化するようにしました。インポート前に設定、記憶データ、クラウド同期の容量制限をまとめて検証し、異常時は既存設定に影響を与えずにエラーを表示します。"
+						}
+					],
+					"fixed": [
+						{
+							"scope": "ライブチャット",
+							"text": "一部の状況で YouTube ライブチャットの操作部品が正常に動作しない問題を修正しました。"
+						},
+						{
+							"scope": "ページ内全画面",
+							"text": "Esc キーでページ内全画面を終了できない問題を修正しました。"
+						},
+						{
+							"scope": "動画画質の自動切り替え",
+							"text": "動画画質の自動切り替えを無効にしている場合でも、一部の状況で画質が切り替わる問題を修正しました。"
+						},
+						{
+							"scope": "プレーヤー機能ボタン",
+							"text": "動画回転または動画ミラーのスイッチを無効にした際、映像の向きや反転が自動的に元に戻らない問題を修正しました。"
+						}
+					]
+				}
+			}
+		},
+		{
 			"version": "2.0.3",
 			"date": "2026-10-14",
 			"changes": {

@@ -7,8 +7,8 @@
 		"description_apple": "Tingkatkan situs video dengan kunci kualitas, tombol kecepatan, alat komentar, dan halaman lebih bersih."
 	},
 	"memoryNotice": {
-		"saveFailed": "__NEED_TRANSLATE__: YouTubeTweak 无法完成记忆读写，请重试操作。",
-		"quota": "__NEED_TRANSLATE__: YouTubeTweak 记忆保存失败：同步存储容量或写入次数已达到限制，请稍后重试；若持续出现，请先导出配置备份。"
+		"saveFailed": "YouTubeTweak gagal membaca atau menyimpan memori. Silakan coba lagi.",
+		"quota": "Gagal menyimpan memori YouTubeTweak: kapasitas penyimpanan sinkronisasi atau batas penulisan telah tercapai. Silakan coba lagi nanti; jika masalah berlanjut, ekspor pengaturan sebagai cadangan terlebih dahulu."
 	},
 	"reloadNotice": {
 		"chromeApiOffline": "$APP_NAME$ telah diperbarui. Muat ulang halaman ini untuk menerapkan pembaruan.",

@@ -7,8 +7,8 @@
 		"description_apple": "Video-Websites verbessern: Qualität sperren, Tempo-Tasten, Kommentar-Tools und weniger Ablenkung."
 	},
 	"memoryNotice": {
-		"saveFailed": "__NEED_TRANSLATE__: YouTubeTweak 无法完成记忆读写，请重试操作。",
-		"quota": "__NEED_TRANSLATE__: YouTubeTweak 记忆保存失败：同步存储容量或写入次数已达到限制，请稍后重试；若持续出现，请先导出配置备份。"
+		"saveFailed": "YouTubeTweak konnte den Speicher nicht lesen oder speichern. Bitte erneut versuchen.",
+		"quota": "YouTubeTweak konnte den Speicher nicht speichern: Das Limit für den Synchronisierungsspeicher oder die Schreibvorgänge wurde erreicht. Bitte später erneut versuchen; falls das Problem weiterhin besteht, zuerst die Einstellungen als Backup exportieren."
 	},
 	"reloadNotice": {
 		"chromeApiOffline": "$APP_NAME$ wurde aktualisiert. Lade diese Seite neu, um das Update anzuwenden.",

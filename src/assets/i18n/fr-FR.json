@@ -7,8 +7,8 @@
 		"description_apple": "Améliore les sites vidéo avec qualité verrouillée, boutons de vitesse, commentaires et pages plus propres."
 	},
 	"memoryNotice": {
-		"saveFailed": "__NEED_TRANSLATE__: YouTubeTweak 无法完成记忆读写，请重试操作。",
-		"quota": "__NEED_TRANSLATE__: YouTubeTweak 记忆保存失败：同步存储容量或写入次数已达到限制，请稍后重试；若持续出现，请先导出配置备份。"
+		"saveFailed": "YouTubeTweak n’a pas pu lire ou enregistrer la mémoire. Veuillez réessayer.",
+		"quota": "Échec de l’enregistrement de la mémoire de YouTubeTweak : la limite de stockage synchronisé ou d’écritures a été atteinte. Veuillez réessayer plus tard ; si le problème persiste, exportez d’abord vos paramètres en tant que sauvegarde."
 	},
 	"reloadNotice": {
 		"chromeApiOffline": "$APP_NAME$ a été mis à jour. Rechargez cette page pour appliquer la mise à jour.",

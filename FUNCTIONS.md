@@ -76,10 +76,12 @@ Configurable options:
 
 Notes:
 
-- When both global memory and per-channel memory are enabled, per-channel memory has priority.
+- When both global memory and per-channel memory are enabled, per-channel memory has priority; restoring global memory does not automatically overwrite the current channel's per-channel memory.
 - Speeds set through YouTube's own menu or keyboard shortcuts are not saved in this memory.
+- Dragging the speed slider saves the speed when you release the mouse; adjusting with the mouse wheel saves after a short pause or when leaving the page.
 - Restoring either global or per-channel speed memory requires the extension to identify the channel that owns the current video.
 - Memory data can be exported together with settings from the general settings.
+- If saving memory fails (for example, because browser sync storage capacity or write limits were reached), a dismissible error notice appears at the bottom-right corner of the YouTube page; if this persists, export your settings as a backup first.
 
 <a name="player-speed-button-music"></a>
 
@@ -115,7 +117,7 @@ Configurable options:
 
 - Show speed buttons/speed slider: controls whether the extension's speed entry is shown in the player.
 - Enabled buttons: select the highlighted speed choices you want to show: 0.25x, 0.5x, 0.75x, 1x, 1.25x, 1.5x, 1.75x, 2x, 2.25x, 2.5x, 2.75x, 3x, 5x, or 10x.
-- Collapse speed buttons: choose never, always, or automatically when the player control bar runs out of space.
+- Collapse speed buttons: choose never, always, or automatically when the player control bar runs out of space. When collapsed, only the active speed button is shown; hovering over it or dragging the slider expands all buttons automatically.
 - Enable speed slider: after enabling this, you can hold and drag left or right on the speed area to adjust speed continuously.
 - Mouse wheel step: wheel speed adjustment can follow the enabled speed buttons, or use 0.0625, 0.125, 0.25, 0.5, 1, or a custom step.
 
@@ -211,6 +213,7 @@ Notes:
 - Clicking the player's subtitle button, turning subtitles on or off in the player settings, or successfully toggling subtitles with YouTube's C key records the new state. Automatic restoration does not overwrite remembered manual choices.
 - If a video has no subtitles, the extension cannot force-generate YouTube subtitles.
 - Per-channel memory requires the extension to identify the channel that owns the current video.
+- If saving memory fails (for example, because browser sync storage capacity or write limits were reached), a dismissible error notice appears at the bottom-right corner of the YouTube page; if this persists, export your settings as a backup first.
 
 <a name="player-subtitle-save-language"></a>
 
@@ -228,6 +231,7 @@ Notes:
 - The video's remembered language takes priority over "Preferred subtitle languages" below. If the original subtitles or translation target are no longer available, the priority list is tried instead.
 - These per-video memories are stored only in the extension's local storage in the current browser, without browser cloud sync. To migrate them, check "Also export memory" when exporting settings.
 - Turning this option off stops recording and restoring languages but does not delete existing memories.
+- If saving memory fails, a dismissible error notice appears at the bottom-right corner of the YouTube page.
 
 <a name="player-subtitle-priority"></a>
 
@@ -241,7 +245,7 @@ Configurable options:
 
 - Add language: choose a language from the drop-down list. Names are displayed as "name in the current interface language (native name)", for example, "English (English)". Base languages and their regional variants appear in the same group.
 - Subtitle type: each language offers separate choices for authored subtitles and subtitles marked "Auto-generated". Both can be added and ordered independently. "Auto-generated" means subtitles recognized from speech by YouTube, not subtitles translated from another language.
-- Priority order: drag the handle on the left of an entry or click the move-up and move-down buttons. Entries higher in the list take priority.
+- Priority order: drag the handle on the left of an entry (or press the Up/Down arrow keys while it is focused), or click the move-up and move-down buttons. Entries higher in the list take priority.
 - Remove language: click the remove button on the right of an entry to stop automatically selecting it.
 
 Notes:
@@ -257,7 +261,7 @@ Notes:
 
 ## Function Buttons
 
-The rotate, mirror, screenshot, and in-page fullscreen buttons can be enabled independently. For the function button group, choose never collapse, always collapse, or automatic collapsing when the player control bar runs out of space. Automatic collapsing is the default; the separate in-page fullscreen button is not part of this group.
+The rotate, mirror, screenshot, and in-page fullscreen buttons can be enabled independently. For the function button group (which also includes the volume booster button), choose never collapse, always collapse, or automatic collapsing when the player control bar runs out of space. Automatic collapsing is the default; when collapsed, only the first visible button is shown, and hovering over the button group expands the rest. The separate in-page fullscreen button is not part of this group.
 
 <a name="player-function-buttons-rotate"></a>
 
@@ -276,6 +280,7 @@ Notes:
 
 - Rotation only affects the display effect on the current page and does not modify the video itself.
 - When rotated by 90 or 270 degrees, the extension will try to scale the image to fit the player area.
+- Turning this toggle off automatically resets the rotation angle to 0 degrees and restores the normal video orientation.
 
 <a name="player-function-buttons-mirror"></a>
 
@@ -294,6 +299,7 @@ Notes:
 
 - Mirroring only affects the display effect and does not change the video file.
 - Mirroring can be used together with rotation.
+- Turning this toggle off automatically cancels the current horizontal flip and restores the normal video image.
 
 <a name="player-function-buttons-screenshot"></a>
 
@@ -325,11 +331,11 @@ Notes:
 
 Default: `Off` | Version: `v2.0.0 (2026-09-14)`
 
-Shows an additional button beside YouTube's fullscreen button on normal video watch pages. Click it to fill the browser page with the video while keeping the browser tabs and toolbar available; click it again to leave this view.
+Shows an additional button beside YouTube's fullscreen button on normal video watch pages. Click it to fill the browser page with the video while keeping the browser tabs and toolbar available; click the button again or press Esc to leave this view.
 
-This is useful when you want a larger video without entering system fullscreen. Changing pages or turning off this setting exits in-page fullscreen.
+This is useful when you want a larger video without entering system fullscreen. Changing pages or turning off this setting also exits in-page fullscreen.
 
-Entering in-page fullscreen also switches to theater mode. Clicking the button again or turning off the setting returns to the normal layout, even if theater mode was already active before entering; the previous theater mode is not retained.
+Entering in-page fullscreen also switches to theater mode. Pressing Esc, clicking the button again, or turning off the setting returns to the normal layout, even if theater mode was already active before entering; the previous theater mode is not retained.
 
 <a name="player-button-display"></a>
 
@@ -403,6 +409,7 @@ Notes:
 - The maximum zoom is 4x.
 - Video zoom will not trigger when the mouse is over player buttons, the control bar, links, input boxes, or similar areas.
 - When the video is at its original size, only the area in the center of the video where the zoom hint appears captures the mouse wheel; the rest of the page can still scroll normally.
+- Turning this toggle off or switching videos automatically restores the original video size.
 - This feature only affects the current video image and does not change the video source file.
 
 <a name="player-mini-player"></a>
@@ -440,11 +447,11 @@ Dragging:
 Notes:
 
 - This feature only takes effect on normal video watch pages.
-- It will not enter mini player mode during full-screen playback or picture-in-picture playback.
+- It will not stay in floating mini player mode during full-screen playback, picture-in-picture playback, or after the video has ended.
 - The mini player has a close button. After clicking it, floating will be disabled for the current scroll; when you scroll back near the player or switch videos, triggering will be allowed again.
 - When the screen is too small, the actual display size is automatically reduced to avoid exceeding the screen.
-- While floating, the extension's speed buttons, function button group, and corner video time are hidden.
-- When the actual display width is below 520 pixels, some native control buttons are hidden, but subtitles remain visible. The control bar follows YouTube's automatic visibility behavior instead of staying visible while floating.
+- While floating, the extension's speed buttons, function button group, and corner video time, as well as YouTube's native progress bar, ad overlays, and end-screen recommendations, are hidden. If "Progress Bar Below the Video" is enabled, a compact progress bar still appears at the bottom of the mini player.
+- When the actual display width is below 520 pixels, right-side native control buttons are hidden; below 420 pixels, only the play and mute buttons remain on the left, while subtitles remain visible. The control bar follows YouTube's automatic visibility behavior instead of staying visible while floating.
 - Subtitles scale down with the player while retaining a readable font size of at least approximately 14 pixels, and long content wraps. Leaving mini player mode restores the original subtitle display without changing YouTube's subtitle font-size preference.
 
 <a name="player-ui"></a>
@@ -734,7 +741,8 @@ Translation mode descriptions:
 
 Notes:
 
-- This feature requires the video itself to have available subtitles.
+- This feature requires the video itself to have available subtitles, and supports regular subtitles, auto-generated subtitles, and styled/positioned subtitles.
+- Subtitles whose language matches "Translation Target Language" or belongs to "Always Never Translate Languages" are automatically skipped.
 - After enabling or disabling subtitle translation, the page prompts you to reload; you can choose to refresh the current page or all YouTube pages.
 - If subtitle content is too long or the translation service fails, the extension keeps the original subtitles.
 - Subtitle translation is a feature that adjusts page loading content. If the page behaves abnormally, you can first disable this feature for troubleshooting.
@@ -776,7 +784,7 @@ Notes:
 
 ### Show a Manual Translation Button for Comments That Do Not Need Automatic Translation
 
-Default: `On` | Version: `v1.2.1 (2026-07-21)`
+Default: `On` | Version: `v1.2.2 (2026-07-25)`
 
 When enabled, a manual translation button appears beside a comment if its language is in "Always never translate languages", differs from the translation target language, and the translation service returns a translation different from the original. The translation appears only after you click the button.
 
@@ -787,6 +795,7 @@ Notes:
 - This feature depends on "Translate comment content" being enabled.
 - Comments in the target language do not show this button. Blank comments and comments containing only numbers or punctuation are skipped, and the button is also absent when the translation is identical to the original.
 - When disabled, excluded comments show neither an automatic translation nor the manual translation button; comments that need normal translation continue to be translated automatically.
+- After enabling or disabling this feature, the page prompts you to reload; you can choose to refresh the current page or all YouTube pages.
 
 <a name="translate-comment-line-by-line"></a>
 
@@ -805,6 +814,7 @@ Notes:
 
 - This feature depends on "Translate comment content" being enabled.
 - Line-by-line display is only obvious when the comment itself contains line breaks; normal single-line comments still show translation in the normal way.
+- After enabling or disabling this feature, the page prompts you to reload; you can choose to refresh the current page or all YouTube pages.
 
 <a name="other"></a>
 
@@ -860,7 +870,7 @@ Suitable use cases:
 
 Notes:
 
-- After enabling or disabling this, you may need to refresh the YouTube page.
+- After enabling or disabling this feature, the page prompts you to reload; you can choose to refresh the current page or all YouTube pages.
 - This feature needs to access the commenter's channel page to read the name, so loading speed depends on the network and YouTube page response.
 - If channel information cannot be read, comment display stays unchanged from YouTube's original display.
 
@@ -1323,7 +1333,7 @@ These features are used for the extension's own language, settings, updates, abo
 
 Default: `Always shown` | Version: `v1.0.0 (2025-05-19)`
 
-The General page shows the extension name, version number, build time, and the commit corresponding to the current version. It also provides entries for the project home page, changelog, and issue feedback. The Safari version uses the YouTweak name and corresponding icon, while other versions display YouTube Tweak.
+The General page shows the extension name, version number, build time, and the commit corresponding to the current version. It also provides entries for the project home page, changelog, and issue feedback. Clicking "Changelog" opens the built-in changelog view directly inside the popup, with a link to the full changelog page in the corresponding language. The Safari version uses the YouTweak name and corresponding icon, while other versions display YouTube Tweak.
 
 Suitable use cases:
 
@@ -1471,6 +1481,7 @@ Configurable options:
 Notes:
 
 - The memory option covers both cloud-synced memory and local per-video memory. Neither is exported when it is unchecked.
+- When "Also export memory" is checked, if reading memory fails, the export dialog displays an error message and temporarily disables the copy button to prevent copying an incomplete backup.
 - The exported content is copied to the clipboard; if copying fails, you can manually select and copy the text.
 - Local interface data such as card expansion states and Insights query caches are not included in this backup.
 
@@ -1484,7 +1495,7 @@ You can paste previously exported settings text to restore settings to the curre
 
 Notes:
 
-- Import failure usually means the text format is incorrect or the content is incomplete.
+- Before importing, the settings text, memory format, and browser sync storage capacity are validated together. If the format is incorrect, the content is incomplete, the memory data is invalid, or the sync storage limit would be exceeded, the import dialog displays an error message directly without partially overwriting existing settings.
 - If the imported content includes cloud-synced or local per-video memory, the panel requires separate confirmation to import it. Without confirmation, only regular settings are imported.
 - After confirmation, each memory category included in the backup replaces the corresponding current memory entirely rather than merging with it. If an included category is empty, its current memory is cleared.
 - Memory categories absent from the backup remain unchanged. For example, importing an older backup without local memory does not clear existing per-video subtitle language memories.

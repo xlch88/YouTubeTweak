@@ -7,8 +7,8 @@
 		"description_apple": "Nâng cấp các trang web video với khóa chất lượng, nút tốc độ, công cụ bình luận và trang gọn hơn."
 	},
 	"memoryNotice": {
-		"saveFailed": "__NEED_TRANSLATE__: YouTubeTweak 无法完成记忆读写，请重试操作。",
-		"quota": "__NEED_TRANSLATE__: YouTubeTweak 记忆保存失败：同步存储容量或写入次数已达到限制，请稍后重试；若持续出现，请先导出配置备份。"
+		"saveFailed": "YouTubeTweak không thể đọc hoặc lưu bộ nhớ, vui lòng thử lại.",
+		"quota": "Lưu bộ nhớ YouTubeTweak thất bại: đã đạt giới hạn dung lượng lưu trữ đồng bộ hoặc số lần ghi. Vui lòng thử lại sau; nếu sự cố vẫn tiếp diễn, hãy xuất cài đặt để sao lưu trước."
 	},
 	"reloadNotice": {
 		"chromeApiOffline": "$APP_NAME$ đã được cập nhật. Tải lại trang này để áp dụng bản cập nhật.",
