@@ -13,6 +13,7 @@
 		"build:firefox": "vue-tsc --noEmit && wxt zip -b firefox",
 		"build:safari": "vue-tsc --noEmit && wxt zip -b safari",
 		"build:all": "npm i && vue-tsc --noEmit && wxt build && tsx build/chrome-crx3.ts && wxt zip -b edge && wxt zip -b firefox",
+		"pushstore": "tsx build/publish-stores.ts",
 		"compile": "vue-tsc --noEmit",
 		"dev:ios": "tsx build/apple.ts dev:ios",
 		"dev:ios:watch": "tsx build/apple.ts dev:ios:watch",

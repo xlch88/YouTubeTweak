@@ -169,6 +169,7 @@ Assets:
 11. 不要修改构建产物。
 12. 不要生成额外无关文件，除了发布 Release notes 所需的临时文件。
 13. 创建 Release 前必须检查临时 markdown 文件，确认第一行是英文 changelog 的最新版本标题，并且 `## [版本号] - 日期` 形式的版本标题只出现一次；如果不满足，必须停止执行并修正临时文件，不能创建 Release。
+14. Release 发布成功后，在最终回复中提醒用户：如需将新版本上传并提交审核至 Chrome、Edge 和 Firefox 扩展商店，可执行 `npm run pushstore`。
 
 ## 推荐执行逻辑
 

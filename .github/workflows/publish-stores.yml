@@ -1,0 +1,92 @@
+# Required GitHub Repository Secrets:
+# - CHROME_PUBLISHER_ID
+# - CHROME_SERVICE_ACCOUNT_JSON  (full JSON contents of the Google Cloud service account key)
+# - CHROME_PRIVATE_KEY_PEM       (contents of .secret/chrome-web-store.pem for signing the CRX)
+# - EDGE_PRODUCT_ID
+# - EDGE_CLIENT_ID
+# - EDGE_API_KEY                 (expires every 72 days; rotate in Microsoft Partner Center)
+# - FIREFOX_JWT_ISSUER
+# - FIREFOX_JWT_SECRET
+# Optional:
+# - CHROME_EXTENSION_ID          (defaults to malfbchbmmlhkjjbepjodfkmnbngckoi)
+# - FIREFOX_EXTENSION_ID         (defaults to youtubetweak@dark495.me)
+
+name: Publish to Browser Stores
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      stores:
+        description: "Comma-separated stores to publish (chrome,edge,firefox)"
+        required: false
+        default: "chrome,edge,firefox"
+        type: string
+      draft:
+        description: "Upload packages as drafts without submitting for review"
+        required: false
+        default: false
+        type: boolean
+      dry_run:
+        description: "Validate credentials and artifacts only (no upload)"
+        required: false
+        default: false
+        type: boolean
+
+concurrency:
+  group: publish-stores
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck and build store packages
+        env:
+          CHROME_PRIVATE_KEY_PEM: ${{ secrets.CHROME_PRIVATE_KEY_PEM }}
+        run: |
+          npx vue-tsc --noEmit
+          npx wxt build
+          mkdir -p .secret
+          printf '%s\n' "$CHROME_PRIVATE_KEY_PEM" > .secret/chrome-web-store.pem
+          npx tsx build/chrome-crx3.ts
+          rm -rf .secret
+          npx wxt zip -b edge
+          npx wxt zip -b firefox
+
+      - name: Publish to extension stores
+        env:
+          CHROME_PUBLISHER_ID: ${{ secrets.CHROME_PUBLISHER_ID }}
+          CHROME_EXTENSION_ID: ${{ secrets.CHROME_EXTENSION_ID }}
+          CHROME_SERVICE_ACCOUNT_JSON: ${{ secrets.CHROME_SERVICE_ACCOUNT_JSON }}
+          EDGE_PRODUCT_ID: ${{ secrets.EDGE_PRODUCT_ID }}
+          EDGE_CLIENT_ID: ${{ secrets.EDGE_CLIENT_ID }}
+          EDGE_API_KEY: ${{ secrets.EDGE_API_KEY }}
+          FIREFOX_EXTENSION_ID: ${{ secrets.FIREFOX_EXTENSION_ID }}
+          FIREFOX_JWT_ISSUER: ${{ secrets.FIREFOX_JWT_ISSUER }}
+          FIREFOX_JWT_SECRET: ${{ secrets.FIREFOX_JWT_SECRET }}
+        run: |
+          args=()
+          if [ -n "${{ inputs.stores }}" ]; then
+            args+=("--only=${{ inputs.stores }}")
+          fi
+          if [ "${{ inputs.draft }}" = "true" ]; then
+            args+=("--draft")
+          fi
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            args+=("--dry-run")
+          fi
+          npm run pushstore -- "${args[@]}"
