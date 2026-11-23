@@ -1,8 +1,5 @@
 import type { MemoryChange, MemoryFields, MemoryReply, MemoryRequest } from "@/memory";
-import { createLogger } from "@/logger";
 import wirelessRedstone from "./wirelessRedstone";
-
-const logger = createLogger("memory");
 
 function requestMemory(request: MemoryRequest): Promise<unknown> {
 	return new Promise((resolve, reject) => {
@@ -14,8 +11,13 @@ function requestMemory(request: MemoryRequest): Promise<unknown> {
 			clearTimeout(timer);
 			if (reply?.ok) resolve(reply.value);
 			else {
-				logger.error("Memory request failed:", reply);
-				reject(new Error(reply?.message || (!reply?.ok && reply?.error) || "Memory request failed"));
+				console.error("[YTTweak] Memory request failed:", reply);
+				const detail = !reply?.ok && reply?.error ? reply.error.replace(/^Error:\s*/, "") : "";
+				const message =
+					reply?.message && detail && reply.message !== detail
+						? `${reply.message} (${detail})`
+						: reply?.message || detail || "Memory request failed";
+				reject(new Error(message));
 			}
 		});
 	});
@@ -26,7 +28,7 @@ export default {
 		try {
 			return (await requestMemory({ action: "get", area, channelId, key })) as MemoryFields[K] | null;
 		} catch (error) {
-			logger.error("Failed to read memory:", error);
+			console.error("[YTTweak] Failed to read memory:", error);
 			return null;
 		}
 	},
@@ -36,7 +38,7 @@ export default {
 			await requestMemory({ action: "set", area, changes });
 			return true;
 		} catch (error) {
-			logger.error("Failed to save memory:", error);
+			console.error("[YTTweak] Failed to save memory:", error);
 			let notice = document.getElementById("yttweak-memory-error");
 			if (!notice) {
 				notice = document.createElement("div");

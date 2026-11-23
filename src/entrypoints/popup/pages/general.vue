@@ -342,8 +342,12 @@ async function updateExportConfigValue() {
 		if (updateId === exportConfigUpdateId) {
 			configModalValue.value = JSON.stringify(exportConfig, null, 2);
 		}
-	} catch {
-		if (updateId === exportConfigUpdateId) configModalError.value = t("memoryNotice.saveFailed");
+	} catch (e) {
+		console.error("Failed to export memory:", e);
+		const detail = (e instanceof Error ? e.message : String(e)).replace(/^Error:\s*/, "");
+		if (updateId === exportConfigUpdateId) {
+			configModalError.value = detail ? `${t("memoryNotice.saveFailed")} (${detail})` : t("memoryNotice.saveFailed");
+		}
 	} finally {
 		if (updateId === exportConfigUpdateId) {
 			configModalBusy.value = false;
@@ -397,7 +401,10 @@ async function configModalSubmit() {
 			configModalType.value = "";
 			configModalValue.value = "";
 		} catch (e) {
-			configModalError.value = t(/quota/i.test(String(e)) ? "memoryNotice.quota" : "general.config.alert.importError");
+			console.error("Failed to import config:", e);
+			const detail = (e instanceof Error ? e.message : String(e)).replace(/^Error:\s*/, "");
+			const base = t(/quota/i.test(detail) ? "memoryNotice.quota" : "general.config.alert.importError");
+			configModalError.value = detail ? `${base} (${detail})` : base;
 		} finally {
 			configModalBusy.value = false;
 		}

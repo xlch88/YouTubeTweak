@@ -25,13 +25,19 @@ export default function isolatedWorld() {
 				if (!isMemoryReply(result))
 					throw new Error("Missing or invalid memory response from background; reload the extension and YouTube page.");
 				if (!result.ok) {
+					console.error("[YTTweak] Memory request failed:", request.action, result.error);
 					result.message = browser.i18n.getMessage(
 						/quota/i.test(result.error) ? "memory_notice_quota" : "memory_notice_save_failed",
 					);
 				}
 				reply(result);
 			} catch (error) {
-				reply({ ok: false, error: String(error), message: browser.i18n.getMessage("memory_notice_save_failed") });
+				console.error("[YTTweak] Memory request failed:", request?.action, error);
+				reply({
+					ok: false,
+					error: error instanceof Error ? error.message : String(error),
+					message: browser.i18n.getMessage("memory_notice_save_failed"),
+				});
 			}
 		},
 		getVideoSubtitleMemory(videoId: string, reply: (result: string | null) => void) {

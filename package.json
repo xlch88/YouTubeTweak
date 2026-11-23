@@ -15,6 +15,7 @@
 		"build:all": "npm i && vue-tsc --noEmit && wxt build && tsx build/chrome-crx3.ts && wxt zip -b edge && wxt zip -b firefox",
 		"pushstore": "tsx build/publish-stores.ts",
 		"compile": "vue-tsc --noEmit",
+		"test": "tsx --test \"test/**/*.test.ts\"",
 		"dev:ios": "tsx build/apple.ts dev:ios",
 		"dev:ios:watch": "tsx build/apple.ts dev:ios:watch",
 		"dev:mac": "tsx build/apple.ts dev:mac",

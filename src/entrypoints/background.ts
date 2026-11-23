@@ -56,7 +56,10 @@ export default defineBackground({
 				// WXT exposes the native API: keep the response channel open even without Promise-listener support.
 				memory.handle(message.request).then(
 					(value) => sendResponse({ ok: true, value } satisfies MemoryReply),
-					(error) => sendResponse({ ok: false, error: String(error) } satisfies MemoryReply),
+					(error) => {
+						console.error("Memory request failed:", error);
+						sendResponse({ ok: false, error: error instanceof Error ? error.message : String(error) } satisfies MemoryReply);
+					},
 				);
 				return true;
 			}

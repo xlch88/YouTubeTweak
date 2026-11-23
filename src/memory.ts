@@ -65,40 +65,138 @@ function validateField(key: string, value: unknown) {
 	}
 }
 
-type MemoryEntry = { table: string; raw: string; fields: Record<string, string> };
+type MemoryEntry = { table: string; raw: string; index: number; fields: Record<string, string> };
+
+function encodeEntry(id: string, index: number, fields: Record<string, string>) {
+	return `@${id}!${index}:${Object.entries(fields)
+		.map(([k, v]) => `${k}=${v}`)
+		.join(",")};`;
+}
+
+function packMemory(base: StorageItems, entries: Map<string, MemoryEntry>, nextIndex: number) {
+	const items: StorageItems = Object.fromEntries(Object.entries(base).filter(([key]) => !isMemoryStorageKey(key)));
+	const packedEntries = new Map<string, MemoryEntry>();
+	let tableIndex = 1;
+	let table = "memory_1";
+	let content = "";
+	for (const [id, entry] of entries) {
+		if (!Object.keys(entry.fields).length) continue;
+		const raw = encodeEntry(id, entry.index, entry.fields);
+		if (content && storageBytes(table, content + raw) >= TABLE_LIMIT) {
+			items[table] = content;
+			table = `memory_${++tableIndex}`;
+			content = "";
+		}
+		if (storageBytes(table, content + raw) >= TABLE_LIMIT) throw new Error("Memory entry quota exceeded");
+		content += raw;
+		packedEntries.set(id, { table, raw, index: entry.index, fields: entry.fields });
+	}
+	if (content) items[table] = content;
+	if (nextIndex > 0) items.memoryI = nextIndex;
+	return { items, entries: packedEntries };
+}
 
 // Preserve the existing @channel!order:key=value; format and all explicit preferences.
-function parseMemory(items: StorageItems, area: Area) {
+function parseMemory(items: StorageItems, area: Area, strict = false) {
 	const entries = new Map<string, MemoryEntry>();
+	const fieldIndexes = new Map<string, Record<string, number>>();
 	let nextIndex = 0;
+	let repaired = false;
 	if (items.memoryI !== undefined) {
-		if (!Number.isSafeInteger(items.memoryI) || Number(items.memoryI) < 0) throw new Error("Invalid memory index");
-		nextIndex = Number(items.memoryI);
+		if (!Number.isSafeInteger(items.memoryI) || Number(items.memoryI) < 0) {
+			if (strict) throw new Error("Invalid memory index");
+			repaired = true;
+			console.warn(`Ignored invalid memoryI in ${area}:`, items.memoryI);
+		} else {
+			nextIndex = Number(items.memoryI);
+		}
 	}
-	for (const [table, content] of Object.entries(items)) {
-		if (!table.startsWith("memory_")) continue;
-		if (!/^memory_[1-9]\d*$/.test(table) || typeof content !== "string") throw new Error("Invalid memory table");
-		if (area === "sync" && storageBytes(table, content) > 8192) throw new Error("Memory item quota exceeded");
+	const memoryTables = Object.entries(items)
+		.filter(([table]) => table.startsWith("memory_"))
+		.sort(([a], [b]) => {
+			const numA = /^memory_[1-9]\d*$/.test(a) ? Number(a.slice(7)) : Number.MAX_SAFE_INTEGER;
+			const numB = /^memory_[1-9]\d*$/.test(b) ? Number(b.slice(7)) : Number.MAX_SAFE_INTEGER;
+			return numA - numB || a.localeCompare(b);
+		});
+	for (const [table, content] of memoryTables) {
+		if (!/^memory_[1-9]\d*$/.test(table) || typeof content !== "string") {
+			if (strict) throw new Error("Invalid memory table");
+			repaired = true;
+			console.warn(`Skipped invalid memory table in ${area}:`, table);
+			continue;
+		}
+		if (area === "sync" && storageBytes(table, content) > 8192) {
+			if (strict) throw new Error("Memory item quota exceeded");
+			repaired = true;
+			console.warn(`Memory table ${table} in ${area} exceeded 8192 bytes and will be repacked`);
+		}
 		let offset = 0;
 		for (const match of content.matchAll(/@([^!@,:;=]+)!(\d+):([^;]*);/g)) {
-			if (match.index !== offset || entries.has(match[1])) throw new Error("Invalid or duplicate memory entry");
-			offset += match[0].length;
+			if (match.index !== offset) {
+				if (strict) throw new Error("Invalid memory entry");
+				repaired = true;
+				console.warn(`Skipped malformed memory fragment in ${area}.${table}:`, content.slice(offset, match.index));
+			}
+			offset = match.index + match[0].length;
 			const index = Number(match[2]);
-			if (!Number.isSafeInteger(index) || index >= Number.MAX_SAFE_INTEGER) throw new Error("Invalid memory index");
+			if (!Number.isSafeInteger(index) || index >= Number.MAX_SAFE_INTEGER) {
+				if (strict) throw new Error("Invalid memory index");
+				repaired = true;
+				console.warn(`Skipped memory entry with invalid index in ${area}.${table}:`, match[0]);
+				continue;
+			}
 			nextIndex = Math.max(nextIndex, index + 1);
 			const fields: Record<string, string> = {};
 			for (const field of match[3] ? match[3].split(",") : []) {
 				const pair = field.split("=");
-				if (pair.length !== 2 || Object.hasOwn(fields, pair[0])) throw new Error("Invalid memory field");
-				validateField(pair[0], pair[1]);
-				if (area === "sync" ? pair[0] === "l" : pair[0] !== "l") throw new Error("Invalid memory storage area");
-				fields[pair[0]] = pair[1];
+				try {
+					if (pair.length !== 2 || Object.hasOwn(fields, pair[0])) throw new Error("Invalid memory field");
+					validateField(pair[0], pair[1]);
+					if (area === "sync" ? pair[0] === "l" : pair[0] !== "l") throw new Error("Invalid memory storage area");
+					fields[pair[0]] = pair[1];
+				} catch (error) {
+					if (strict) throw error;
+					repaired = true;
+					console.warn(`Skipped invalid memory field "${field}" for "${match[1]}" in ${area}.${table}:`, error);
+				}
 			}
-			entries.set(match[1], { table, raw: match[0], fields });
+			if (!strict && !Object.keys(fields).length) {
+				repaired = true;
+				continue;
+			}
+			const existing = entries.get(match[1]);
+			if (existing) {
+				repaired = true;
+				console.warn(`Merged duplicate memory entry for "${match[1]}" (${existing.index} & ${index}) in ${area}`);
+				let indexes = fieldIndexes.get(match[1]);
+				if (!indexes) {
+					indexes = Object.fromEntries(Object.keys(existing.fields).map((key) => [key, existing.index]));
+					fieldIndexes.set(match[1], indexes);
+				}
+				const mergedFields = { ...existing.fields };
+				for (const [key, value] of Object.entries(fields)) {
+					if (index >= (indexes[key] ?? -1)) {
+						mergedFields[key] = value;
+						indexes[key] = index;
+					}
+				}
+				entries.set(match[1], {
+					table: index >= existing.index ? table : existing.table,
+					raw: index >= existing.index ? match[0] : existing.raw,
+					index: Math.max(existing.index, index),
+					fields: mergedFields,
+				});
+			} else {
+				entries.set(match[1], { table, raw: match[0], index, fields });
+			}
 		}
-		if (offset !== content.length) throw new Error("Invalid memory table content");
+		if (offset !== content.length) {
+			if (strict) throw new Error("Invalid memory table content");
+			repaired = true;
+			console.warn(`Skipped trailing malformed memory fragment in ${area}.${table}:`, content.slice(offset));
+		}
 	}
-	return { entries, nextIndex };
+	return { entries, nextIndex, repaired };
 }
 
 function validateCapacity(items: StorageItems, area: Area) {
@@ -115,7 +213,8 @@ function validateCapacity(items: StorageItems, area: Area) {
 /** One service in the background owns reads, writes, imports and deletion for every tab. */
 export function createMemoryService(storage: Record<Area, StorageArea>) {
 	let queue: Promise<unknown> = Promise.resolve();
-	const cache: Partial<Record<Area, { items: StorageItems; entries: Map<string, MemoryEntry>; nextIndex: number }>> = {};
+	const cache: Partial<Record<Area, { items: StorageItems; entries: Map<string, MemoryEntry>; nextIndex: number; repaired: boolean }>> =
+		{};
 	const revisions = { sync: 0, local: 0 };
 
 	async function load(area: Area) {
@@ -176,8 +275,11 @@ export function createMemoryService(storage: Record<Area, StorageArea>) {
 				if (chunk !== undefined) {
 					if (!chunk || typeof chunk !== "object" || Array.isArray(chunk)) throw new Error("Invalid memory chunk");
 					if (Object.keys(chunk).some((key) => !isMemoryStorageKey(key))) throw new Error("Invalid memory storage key");
-					parseMemory(chunk as StorageItems, area);
-					after = { ...Object.fromEntries(Object.entries(before).filter(([key]) => !isMemoryStorageKey(key))), ...chunk };
+					const parsed = parseMemory(chunk as StorageItems, area, true);
+					const nonMemoryBefore = Object.fromEntries(Object.entries(before).filter(([key]) => !isMemoryStorageKey(key)));
+					after = parsed.repaired
+						? packMemory(nonMemoryBefore, parsed.entries, parsed.nextIndex).items
+						: { ...nonMemoryBefore, ...chunk };
 				}
 				if (area === "sync" && request.settings !== undefined) {
 					if (!request.settings || typeof request.settings !== "object" || Array.isArray(request.settings))
@@ -203,8 +305,9 @@ export function createMemoryService(storage: Record<Area, StorageArea>) {
 			const value = state.entries.get(cleanChannelId(request.channelId))?.fields[request.key];
 			return value === undefined ? null : request.key === "s" ? Number(value) : value;
 		}
-		const after = { ...state.items };
-		const entries = new Map(state.entries);
+		const packed = state.repaired ? packMemory(state.items, state.entries, state.nextIndex) : null;
+		const after = packed ? packed.items : { ...state.items };
+		const entries = packed ? packed.entries : new Map(state.entries);
 		let nextIndex = state.nextIndex;
 		if (request.action === "delete") {
 			const entry = entries.get(cleanChannelId(request.channelId));
@@ -225,9 +328,7 @@ export function createMemoryService(storage: Record<Area, StorageArea>) {
 				entries.delete(id);
 				if (!Object.keys(fields).length) continue;
 				if (!Number.isSafeInteger(nextIndex) || nextIndex >= Number.MAX_SAFE_INTEGER) throw new Error("Memory index exhausted");
-				const raw = `@${id}!${nextIndex}:${Object.entries(fields)
-					.map(([k, v]) => `${k}=${v}`)
-					.join(",")};`;
+				const raw = encodeEntry(id, nextIndex, fields);
 				if (storageBytes("memory_1", raw) >= TABLE_LIMIT) throw new Error("Memory entry quota exceeded");
 				let table = old?.table;
 				if (!table || storageBytes(table, String(after[table]) + raw) >= TABLE_LIMIT) {
@@ -241,7 +342,7 @@ export function createMemoryService(storage: Record<Area, StorageArea>) {
 					table = `memory_${index}`;
 				}
 				after[table] = String(after[table] ?? "") + raw;
-				entries.set(id, { table, raw, fields });
+				entries.set(id, { table, raw, index: nextIndex, fields });
 				nextIndex++;
 			}
 			if (nextIndex !== state.nextIndex) after.memoryI = nextIndex;
