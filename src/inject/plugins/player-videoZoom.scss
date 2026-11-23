@@ -45,23 +45,25 @@ body.yttweak-player-video-zoom-enabled {
 				transition: none;
 			}
 		}
+	}
+}
 
-		&.yttweak-video-zoom-zoomed {
-			overflow: hidden;
+#movie_player {
+	&.yttweak-video-zoom-zoomed {
+		overflow: hidden;
 
-			.html5-video-container {
-				will-change: transform;
-			}
-
-			.html5-main-video {
-				cursor: grab;
-			}
+		.html5-video-container {
+			will-change: transform;
 		}
 
-		&.yttweak-video-zoom-dragging {
-			.html5-main-video {
-				cursor: grabbing;
-			}
+		.html5-main-video {
+			cursor: grab;
+		}
+	}
+
+	&.yttweak-video-zoom-dragging {
+		.html5-main-video {
+			cursor: grabbing;
 		}
 	}
 }

@@ -119,14 +119,13 @@ function applyVideoZoom() {
 	const videoContainer = getVideoContainer();
 	if (!player) return;
 
-	const enabled = config.get("player.ui.enableVideoZoom");
-	player.classList.toggle(ZOOMED_CLASS, enabled && zoom > MIN_ZOOM);
-	player.classList.toggle(DRAGGING_CLASS, enabled && isDragging);
+	player.classList.toggle(ZOOMED_CLASS, zoom > MIN_ZOOM);
+	player.classList.toggle(DRAGGING_CLASS, zoom > MIN_ZOOM && isDragging);
 	updateTriggerArea();
 
 	if (!videoContainer) return;
 
-	if (!enabled || zoom <= MIN_ZOOM) {
+	if (zoom <= MIN_ZOOM) {
 		videoContainer.style.removeProperty("transform");
 		videoContainer.style.removeProperty("transform-origin");
 		return;
@@ -177,7 +176,7 @@ function updateTriggerArea(event?: MouseEvent) {
 	triggerArea.style.height = `${rect.height.toFixed(1)}px`;
 }
 
-function resetVideoZoom() {
+export function resetVideoZoom() {
 	if (isDragging) stopDragging();
 	zoom = MIN_ZOOM;
 	offsetX = 0;
@@ -188,6 +187,23 @@ function resetVideoZoom() {
 	triggerClickHiddenUntil = 0;
 	pageScrollReleaseLockedUntil = 0;
 	applyVideoZoom();
+	return zoom;
+}
+
+export function adjustVideoZoom(direction: 1 | -1, step = 0.25) {
+	bindMouseListeners();
+	touchPlayer();
+	const nextZoom = clampZoom(zoom + direction * step);
+	if (nextZoom <= MIN_ZOOM) {
+		return resetVideoZoom();
+	}
+	const ratio = nextZoom / zoom;
+	offsetX *= ratio;
+	offsetY *= ratio;
+	zoom = nextZoom;
+	clampOffsets();
+	applyVideoZoom();
+	return zoom;
 }
 
 function shouldIgnoreMouseEvent(event: MouseEvent) {
@@ -270,9 +286,10 @@ function stopDragging() {
 
 function startDragging(event: MouseEvent) {
 	if (videoPlayer.player?.classList.contains("yttweak-mini-player-active")) return;
-	if (!config.get("player.ui.enableVideoZoom") || event.button !== 0 || shouldIgnoreMouseEvent(event)) return;
+	if (event.button !== 0 || shouldIgnoreMouseEvent(event)) return;
 
 	if (zoom <= MIN_ZOOM) {
+		if (!config.get("player.ui.enableVideoZoom")) return;
 		if (isEventInVideoTriggerArea(event)) {
 			triggerClickHiddenUntil = performance.now() + TRIGGER_CLICK_HIDE_MS;
 			videoPlayer.player?.classList.remove(TRIGGER_READY_CLASS);

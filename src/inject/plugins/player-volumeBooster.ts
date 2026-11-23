@@ -274,6 +274,20 @@ function stepBoosterMultiplier(direction: 1 | -1) {
 	setBoosterMultiplier(currentMultiplier - MULTIPLIER_STEP);
 }
 
+export async function toggleVolumeBooster() {
+	const nextState = !config.get("player.settings.volumeBooster");
+	await setBoosterEnabled(nextState);
+	return { enabled: nextState, multiplier: getConfiguredMultiplier() };
+}
+
+export function adjustVolumeBooster(direction: 1 | -1) {
+	stepBoosterMultiplier(direction);
+	return {
+		enabled: Boolean(config.get("player.settings.volumeBooster")),
+		multiplier: getConfiguredMultiplier(),
+	};
+}
+
 function mountBoosterButton() {
 	createBox();
 

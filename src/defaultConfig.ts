@@ -1,3 +1,5 @@
+import { normalizeShortcutItems, type KeyboardShortcutItem } from "./util/shortcuts";
+
 enum VideoQuality {
 	highres = "8K (4320p)",
 	hd2160 = "4K (2160p)",
@@ -96,6 +98,8 @@ export type Config = {
 	"rollback.playerUI": boolean;
 	"other.customCss.enable": boolean;
 	"other.customCss.value": string;
+	"other.shortcuts.enable": boolean;
+	"other.shortcuts.items": KeyboardShortcutItem[];
 
 	"yttweak.enableChromeApiStatusChecker": boolean;
 	"yttweak.disableUpdateNotice": boolean;
@@ -180,6 +184,8 @@ const config: Config = {
 	"rollback.playerUI": false,
 	"other.customCss.enable": false,
 	"other.customCss.value": "",
+	"other.shortcuts.enable": true,
+	"other.shortcuts.items": [],
 
 	"yttweak.enableChromeApiStatusChecker": true,
 	"yttweak.disableUpdateNotice": false,
@@ -234,6 +240,12 @@ export function normalizeConfig(rawConfig: Partial<Config> | Record<string, unkn
 	}
 	if (typeof normalizedConfig["other.customCss.value"] !== "string") {
 		normalizedConfig["other.customCss.value"] = "";
+	}
+	if ("other.shortcuts.enable" in normalizedConfig && typeof normalizedConfig["other.shortcuts.enable"] !== "boolean") {
+		normalizedConfig["other.shortcuts.enable"] = true;
+	}
+	if ("other.shortcuts.items" in normalizedConfig) {
+		normalizedConfig["other.shortcuts.items"] = normalizeShortcutItems(normalizedConfig["other.shortcuts.items"]);
 	}
 	if (typeof normalizedConfig["other.logoCountryCode"] !== "string") {
 		normalizedConfig["other.logoCountryCode"] = "";

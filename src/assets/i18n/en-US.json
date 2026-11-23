@@ -292,6 +292,166 @@
 			"tips": {
 				"inject": "Applies to youtube.com pages after the textarea loses focus."
 			}
+		},
+		"shortcuts": {
+			"title": "Keyboard shortcuts",
+			"checkbox": {
+				"enable": "Enable custom keyboard shortcuts"
+			},
+			"button": {
+				"add": "Add shortcut",
+				"cancel": "Cancel",
+				"save": "Save changes",
+				"confirmAdd": "Add",
+				"clearAll": "Clear all",
+				"confirmClearAll": "Confirm clear?"
+			},
+			"preset": {
+				"button": "Presets",
+				"title": "Recommended presets",
+				"speedControl": "Speed controls",
+				"viewTools": "View tools",
+				"playbackLoop": "Seek & loop",
+				"applied": "Added {count} preset shortcuts",
+				"alreadyAdded": "All keys in this preset already exist"
+			},
+			"editor": {
+				"addTitle": "New shortcut",
+				"editTitle": "Edit shortcut",
+				"keyLabel": "Shortcut key",
+				"actionLabel": "Action",
+				"clickToRecord": "Click here and press a key",
+				"pressKey": "Press a key… (Esc to cancel)",
+				"clearKey": "Clear key",
+				"selectActionTitle": "Select action",
+				"back": "Back",
+				"delete": "Delete",
+				"searchPlaceholder": "Search actions…",
+				"noMatch": "No matching actions"
+			},
+			"notice": {
+				"duplicate": "This key duplicates existing shortcut \"{action}\".",
+				"nativeOverlap": "Overlaps with YouTube's built-in shortcut ({native}) and will override it when active."
+			},
+			"list": {
+				"toggle": "Toggle shortcut",
+				"edit": "Edit",
+				"editKey": "Click to change shortcut key",
+				"remove": "Remove",
+				"conflict": "Duplicate",
+				"conflictTitle": "Another enabled shortcut uses the same key"
+			},
+			"empty": {
+				"title": "No shortcuts yet",
+				"description": "Control playback speed, PiP, screenshots, and view transforms from your keyboard.",
+				"quickPreset": "Load speed preset (D / S / R / A)"
+			},
+			"tips": {
+				"inputSafe": "Single-key shortcuts are automatically ignored while typing in search or comment inputs."
+			},
+			"param": {
+				"speedStep": "Speed step",
+				"speed": "Target speed",
+				"seconds": "Seek seconds",
+				"volume": "Volume value",
+				"quality": "Target quality",
+				"qualityAuto": "Auto",
+				"followSpeedButtons": "Follow speed buttons",
+				"followSpeedButtonsShort": "Follow buttons"
+			},
+			"groups": {
+				"all": "All",
+				"speed": "Speed",
+				"playback": "Playback",
+				"audio": "Audio",
+				"view": "View",
+				"subtitleQuality": "Subs & quality",
+				"page": "Page"
+			},
+			"actions": {
+				"speed": {
+					"up": "Speed up",
+					"down": "Slow down",
+					"toggle": "Toggle target speed",
+					"set": "Set playback speed",
+					"hold": "Hold for temporary speed"
+				},
+				"playback": {
+					"togglePlay": "Play / Pause",
+					"seekForward": "Seek forward",
+					"seekBackward": "Seek backward",
+					"frameNext": "Next frame",
+					"framePrev": "Previous frame",
+					"restart": "Restart video",
+					"toggleLoop": "Toggle video loop",
+					"jumpToLive": "Jump to live edge",
+					"prevVideo": "Previous video",
+					"nextVideo": "Next video"
+				},
+				"audio": {
+					"toggleMute": "Mute / Unmute",
+					"volumeUp": "Volume up",
+					"volumeDown": "Volume down",
+					"setVolume": "Set volume",
+					"boosterToggle": "Toggle volume booster",
+					"boosterUp": "Increase volume boost",
+					"boosterDown": "Decrease volume boost"
+				},
+				"view": {
+					"toggleInPageFullscreen": "Toggle in-page fullscreen",
+					"toggleFullscreen": "Toggle fullscreen",
+					"toggleTheater": "Toggle theater mode",
+					"togglePip": "Toggle picture-in-picture",
+					"toggleMiniPlayer": "Toggle mini player",
+					"rotateCW": "Rotate video 90° clockwise",
+					"rotateCCW": "Rotate video 90° counterclockwise",
+					"toggleMirror": "Toggle horizontal mirror",
+					"zoomIn": "Zoom in video",
+					"zoomOut": "Zoom out video",
+					"zoomReset": "Reset video zoom",
+					"resetTransform": "Reset all video transforms",
+					"screenshot": "Take video screenshot",
+					"toggleControls": "Hide / Show player controls"
+				},
+				"subtitle": {
+					"toggle": "Toggle subtitles",
+					"cycleTrack": "Cycle subtitle language"
+				},
+				"quality": {
+					"set": "Set video quality",
+					"up": "Increase video quality",
+					"down": "Decrease video quality"
+				},
+				"page": {
+					"copyUrlWithTime": "Copy video URL at current time",
+					"copyUrl": "Copy video URL",
+					"toggleComments": "Scroll to comments / Back to top",
+					"openThumbnail": "Open full-resolution thumbnail"
+				}
+			},
+			"native": {
+				"togglePlay": "Play/Pause",
+				"seekBackward10": "Seek back 10s",
+				"seekForward10": "Seek forward 10s",
+				"mute": "Mute",
+				"fullscreen": "Fullscreen",
+				"theater": "Theater mode",
+				"miniPlayer": "Mini player",
+				"subtitles": "Subtitles",
+				"seekBackward5": "Seek back 5s",
+				"seekForward5": "Seek forward 5s",
+				"volumeUp": "Volume up",
+				"volumeDown": "Volume down",
+				"framePrev": "Previous frame",
+				"frameNext": "Next frame",
+				"speedDown": "Slow down",
+				"speedUp": "Speed up",
+				"nextVideo": "Next video",
+				"prevVideo": "Previous video",
+				"search": "Focus search",
+				"seekStart": "Jump to start",
+				"seekEnd": "Jump to end"
+			}
 		}
 	},
 	"insights": {

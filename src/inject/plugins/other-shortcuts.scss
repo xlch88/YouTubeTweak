@@ -1,0 +1,68 @@
+.yttweak-shortcut-osd {
+	position: fixed !important;
+	inset: auto auto 36px 50% !important;
+	z-index: 2147483647 !important;
+	display: inline-flex !important;
+	align-items: center;
+	gap: 10px;
+	width: max-content;
+	height: auto;
+	margin: 0 !important;
+	padding: 12px 22px;
+	overflow: visible;
+	border: 1px solid rgba(255, 255, 255, 0.16);
+	border-radius: 999px;
+	background: rgba(18, 20, 28, 0.86);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	box-shadow: 0 12px 32px rgba(0, 0, 0, 0.38);
+	color: #ffffff;
+	font-family: system-ui, -apple-system, Roboto, Arial, sans-serif;
+	font-size: 20px;
+	font-weight: 650;
+	line-height: 1.2;
+	letter-spacing: 0.01em;
+	white-space: nowrap;
+	pointer-events: none;
+	user-select: none;
+	opacity: 0;
+	transform: translate(-50%, 10px) scale(0.95);
+	transition:
+		opacity 140ms ease,
+		transform 160ms cubic-bezier(0.22, 1, 0.36, 1);
+
+	&[popover]:not(:popover-open) {
+		display: none !important;
+	}
+
+	&.yttweak-shortcut-osd-visible {
+		opacity: 1;
+		transform: translate(-50%, 0) scale(1);
+	}
+
+	.yttweak-shortcut-osd-tag {
+		padding: 3px 9px;
+		border-radius: 999px;
+		background: rgba(194, 113, 255, 0.26);
+		color: #e8c9ff;
+		font-size: 13px;
+		font-weight: 700;
+		letter-spacing: 0.05em;
+	}
+
+	.yttweak-shortcut-osd-text {
+		font-variant-numeric: tabular-nums;
+	}
+}
+
+#movie_player.yttweak-shortcuts-hide-controls {
+	.ytp-chrome-top,
+	.ytp-chrome-bottom,
+	.ytp-gradient-top,
+	.ytp-gradient-bottom,
+	.ytp-ce-element,
+	.ytp-iv-video-content {
+		opacity: 0 !important;
+		pointer-events: none !important;
+	}
+}

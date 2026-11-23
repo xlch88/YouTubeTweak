@@ -82,6 +82,13 @@ function setInPageFullscreen(active: boolean) {
 	});
 }
 
+export function toggleInPageFullscreen() {
+	if (!isWatchPage()) return null;
+	const nextState = !document.body.classList.contains(BODY_ACTIVE_CLASS);
+	setInPageFullscreen(nextState);
+	return nextState;
+}
+
 function mountInPageFullscreenButton() {
 	const fullscreenButton = videoPlayer.player?.querySelector<HTMLButtonElement>(".ytp-right-controls .ytp-fullscreen-button");
 	const fullscreenIcon = fullscreenButton?.querySelector<SVGElement>("svg");

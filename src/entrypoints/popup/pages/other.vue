@@ -142,6 +142,8 @@
 			</div>
 		</SettingsCard>
 
+		<KeyboardShortcutsCard />
+
 		<SettingsCard card-id="other-custom-css">
 			<template #title>
 				<span>{{ $t("other.customCss.title") }}</span>
@@ -176,6 +178,7 @@ import { CodeJar } from "codejar";
 import Prism from "prismjs/components/prism-core";
 import "prismjs/components/prism-css";
 import DocsHelpLink from "../components/DocsHelpLink.vue";
+import KeyboardShortcutsCard from "../components/other/KeyboardShortcutsCard.vue";
 import SettingsCard from "../components/SettingsCard.vue";
 import useConfigStore from "../util/config";
 const config = useConfigStore();

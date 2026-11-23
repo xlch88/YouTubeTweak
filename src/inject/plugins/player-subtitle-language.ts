@@ -3,7 +3,51 @@ import config from "../config";
 import { videoPlayer } from "../mainWorld";
 import type { Plugin } from "../types";
 
-type CaptionTrack = { languageCode: string; kind?: string; vss_id?: string; translationLanguage?: { languageCode?: string } };
+type CaptionTrack = {
+	languageCode: string;
+	displayName?: string;
+	languageName?: string;
+	name?: string;
+	kind?: string;
+	vss_id?: string;
+	translationLanguage?: { languageCode?: string };
+};
+
+export function cycleSubtitleTrack() {
+	const player = videoPlayer.player;
+	if (!player || typeof player.getOption !== "function" || typeof player.setOption !== "function") return null;
+
+	const tracks: CaptionTrack[] = player.getOption("captions", "tracklist", { includeAsr: true }) || [];
+	if (!tracks.length) return { label: "", hasTracks: false };
+
+	window.clearTimeout(retryTimer);
+	selectionRevision++;
+
+	const isOn = Boolean(player.isSubtitlesOn?.());
+	if (!isOn) {
+		player.toggleSubtitlesOn?.();
+	}
+
+	const current = player.getOption("captions", "track") as CaptionTrack | undefined;
+	const currentId = captionIdentity(current);
+	const currentIndex = tracks.findIndex((track) => captionIdentity(track) === currentId);
+	const nextTrack = tracks[(currentIndex + 1) % tracks.length];
+	player.setOption("captions", "track", nextTrack);
+
+	const videoId = new URL(location.href).searchParams.get("v");
+	if (videoId) {
+		appliedVideoId = videoId;
+		if (config.get("player.settings.saveSubtitleLanguageByVideo")) {
+			const nextIdentity = captionIdentity(nextTrack);
+			if (nextIdentity) {
+				void memory.setMany([{ channelId: `video_${videoId}`, key: "l", value: encodeURIComponent(nextIdentity) }], "local");
+			}
+		}
+	}
+
+	const label = nextTrack.displayName || nextTrack.languageName || nextTrack.name || nextTrack.languageCode;
+	return { label, hasTracks: true };
+}
 let appliedVideoId = "";
 let retryTimer: number | undefined;
 let selectionRevision = 0;

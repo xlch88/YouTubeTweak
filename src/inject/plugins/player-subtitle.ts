@@ -22,12 +22,35 @@ async function restoreSubtitleStatus() {
 	if (status === "0" && player.isSubtitlesOn()) player.toggleSubtitles();
 }
 
+function persistSubtitleStatus(isOn: boolean) {
+	const channelId = getChannelId();
+	const changes: MemoryChange[] = [];
+	if (config.get("player.settings.saveSubtitleStatusByChannel") && channelId)
+		changes.push({ channelId, key: "c", value: isOn ? "1" : "0" });
+	if (config.get("player.settings.saveSubtitleStatus")) changes.push({ channelId: "", key: "c", value: isOn ? "1" : "0" });
+	if (changes.length) void memory.setMany(changes);
+}
+
+export function toggleSubtitlesWithMemory() {
+	const player = videoPlayer.player;
+	if (!player) return null;
+	const wasOn = Boolean(player.isSubtitlesOn?.());
+	window.clearTimeout(restoreTimer);
+	revision++;
+	if (wasOn) player.toggleSubtitles?.();
+	else player.toggleSubtitlesOn?.();
+	const isOn = Boolean(player.isSubtitlesOn?.());
+	if (isOn !== wasOn && !player.classList.contains("ad-showing")) {
+		persistSubtitleStatus(isOn);
+	}
+	return isOn;
+}
+
 function rememberSubtitleToggle(event: Event) {
 	if (!event.isTrusted) return;
 	const player = videoPlayer.player;
 	const videoId = new URL(location.href).searchParams.get("v");
 	if (!player || !videoId || player.getVideoData?.().video_id !== videoId || player.classList.contains("ad-showing")) return;
-	const channelId = getChannelId();
 	const wasOn = player.isSubtitlesOn();
 	window.clearTimeout(restoreTimer);
 	revision++;
@@ -40,11 +63,7 @@ function rememberSubtitleToggle(event: Event) {
 			return;
 		const isOn = player.isSubtitlesOn();
 		if (wasOn === isOn) return;
-		const changes: MemoryChange[] = [];
-		if (config.get("player.settings.saveSubtitleStatusByChannel") && channelId)
-			changes.push({ channelId, key: "c", value: isOn ? "1" : "0" });
-		if (config.get("player.settings.saveSubtitleStatus")) changes.push({ channelId: "", key: "c", value: isOn ? "1" : "0" });
-		void memory.setMany(changes);
+		persistSubtitleStatus(isOn);
 	}, 0);
 }
 

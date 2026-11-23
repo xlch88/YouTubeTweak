@@ -95,7 +95,7 @@ function clampSpeed(speed: number) {
 	return Math.min(Math.max(speed, enabledSpeeds[0]), enabledSpeeds[enabledSpeeds.length - 1]);
 }
 
-function getCurrentPlaybackSpeed() {
+export function getCurrentPlaybackSpeed() {
 	const speed = Number(videoPlayer.videoStream?.playbackRate ?? videoPlayer.player?.getPlaybackRate?.() ?? lastPlaybackSpeed);
 	return Number.isFinite(speed) && speed > 0 ? speed : lastPlaybackSpeed;
 }
@@ -237,9 +237,12 @@ function persistPlaybackSpeed(speed: number, delay = 0) {
 	else flushPlaybackSpeed();
 }
 
-async function setPlaybackSpeed(speed: number, options: { persist?: boolean; preferredButton?: HTMLSpanElement | null } = {}) {
+async function setPlaybackSpeed(
+	speed: number,
+	options: { persist?: boolean; persistDelay?: number; preferredButton?: HTMLSpanElement | null } = {},
+) {
 	speedRevision++;
-	speed = Number(speed.toFixed(4));
+	speed = Number(Math.min(Math.max(speed, 0.1), 16).toFixed(4));
 	lastPlaybackSpeed = speed;
 	videoPlayer.player?.setPlaybackRate(speed);
 	if (videoPlayer.videoStream) videoPlayer.videoStream.playbackRate = speed;
@@ -249,8 +252,51 @@ async function setPlaybackSpeed(speed: number, options: { persist?: boolean; pre
 	updateSliderPosition(speed);
 
 	if (options.persist) {
-		persistPlaybackSpeed(speed);
+		persistPlaybackSpeed(speed, options.persistDelay ?? 0);
 	}
+	return speed;
+}
+
+export function applyPlaybackSpeed(speed: number, options: { persist?: boolean; persistDelay?: number } = {}) {
+	return setPlaybackSpeed(speed, {
+		...options,
+		preferredButton: findFallbackSpeedButton(speed),
+	});
+}
+
+export async function stepPlaybackSpeed(direction: 1 | -1, step: number | "buttons") {
+	const currentSpeed = getCurrentPlaybackSpeed();
+	let nextSpeed = currentSpeed;
+
+	if (step === "buttons") {
+		const enabledSpeeds = getEnabledSpeeds();
+		if (enabledSpeeds.length >= 2) {
+			if (direction > 0) {
+				nextSpeed = enabledSpeeds[enabledSpeeds.length - 1];
+				for (const speed of enabledSpeeds) {
+					if (speed > currentSpeed + 0.001) {
+						nextSpeed = speed;
+						break;
+					}
+				}
+			} else {
+				nextSpeed = enabledSpeeds[0];
+				for (let i = enabledSpeeds.length - 1; i >= 0; i--) {
+					if (enabledSpeeds[i] < currentSpeed - 0.001) {
+						nextSpeed = enabledSpeeds[i];
+						break;
+					}
+				}
+			}
+		} else {
+			nextSpeed = currentSpeed + direction * 0.25;
+		}
+	} else {
+		const safeStep = Number.isFinite(step) && step > 0 ? step : 0.25;
+		nextSpeed = currentSpeed + direction * safeStep;
+	}
+
+	return applyPlaybackSpeed(nextSpeed, { persist: true, persistDelay: 250 });
 }
 
 function getSpeedFromSliderClientX(clientX: number) {

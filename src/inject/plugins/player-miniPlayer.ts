@@ -61,6 +61,7 @@ let gesture: {
 } | null = null;
 let gestureFrame = 0;
 let suppressClickUntil = 0;
+let skipPreserveScrollUntil = 0;
 const boundPlayers = new WeakSet<HTMLElement>();
 
 type LayoutStyleProperty = (typeof LAYOUT_STYLE_PROPERTIES)[number];
@@ -143,6 +144,10 @@ function getViewportAnchorElement() {
 }
 
 function preserveViewportPosition(callback: () => void) {
+	if (performance.now() < skipPreserveScrollUntil) {
+		callback();
+		return;
+	}
 	const anchorElement = getViewportAnchorElement();
 	const anchorTop = anchorElement?.getBoundingClientRect().top ?? null;
 	const scrollLeft = window.scrollX;
@@ -715,6 +720,14 @@ function initPlayer() {
 	videoPlayer.videoStream?.addEventListener("ended", scheduleMiniPlayerUpdate);
 	videoPlayer.videoStream?.addEventListener("play", scheduleMiniPlayerUpdate);
 	scheduleMiniPlayerUpdate();
+}
+
+export function dismissScrollingMiniPlayer(skipPreserveScroll = false) {
+	if (skipPreserveScroll) skipPreserveScrollUntil = performance.now() + 900;
+	if (!isMiniPlayerActive) return false;
+	isMiniPlayerDismissed = true;
+	deactivateMiniPlayer();
+	return true;
 }
 
 export default {

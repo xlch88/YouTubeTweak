@@ -292,6 +292,166 @@
 			"tips": {
 				"inject": "文本框失焦后会保存，并应用到已打开的 YouTube 页面。"
 			}
+		},
+		"shortcuts": {
+			"title": "键盘快捷键",
+			"checkbox": {
+				"enable": "启用自定义键盘快捷键"
+			},
+			"button": {
+				"add": "添加快捷键",
+				"cancel": "取消",
+				"save": "保存修改",
+				"confirmAdd": "添加",
+				"clearAll": "清空全部",
+				"confirmClearAll": "确认清空？"
+			},
+			"preset": {
+				"button": "预设",
+				"title": "推荐快捷方案",
+				"speedControl": "倍速控制",
+				"viewTools": "画面工具",
+				"playbackLoop": "进度与循环",
+				"applied": "已添加 {count} 条预设快捷键",
+				"alreadyAdded": "该预设中的快捷键按键均已存在"
+			},
+			"editor": {
+				"addTitle": "新增快捷键",
+				"editTitle": "编辑快捷键",
+				"keyLabel": "快捷键",
+				"actionLabel": "触发功能",
+				"clickToRecord": "点击此处并按下快捷键",
+				"pressKey": "请按下快捷键…（Esc 取消）",
+				"clearKey": "清除按键",
+				"selectActionTitle": "选择触发功能",
+				"back": "返回",
+				"delete": "删除",
+				"searchPlaceholder": "搜索功能…",
+				"noMatch": "没有找到匹配的功能"
+			},
+			"notice": {
+				"duplicate": "此按键与已有快捷键「{action}」重复。",
+				"nativeOverlap": "此按键与 YouTube 原生快捷键（{native}）重叠，生效时将覆盖原生行为。"
+			},
+			"list": {
+				"toggle": "启用或禁用此快捷键",
+				"edit": "编辑",
+				"editKey": "点击修改快捷键",
+				"remove": "删除",
+				"conflict": "重复",
+				"conflictTitle": "存在相同按键的其他已启用快捷键"
+			},
+			"empty": {
+				"title": "还没有配置快捷键",
+				"description": "用顺手的按键快速控制倍速、画中画、截图与画面变换。",
+				"quickPreset": "一键载入倍速方案（D / S / R / A）"
+			},
+			"tips": {
+				"inputSafe": "在搜索框、评论框等输入区域打字时会自动避让单键快捷键。"
+			},
+			"param": {
+				"speedStep": "调速步长",
+				"speed": "目标倍速",
+				"seconds": "跳转秒数",
+				"volume": "音量数值",
+				"quality": "目标画质",
+				"qualityAuto": "自动",
+				"followSpeedButtons": "跟随倍速按钮",
+				"followSpeedButtonsShort": "跟随按钮"
+			},
+			"groups": {
+				"all": "全部",
+				"speed": "倍速",
+				"playback": "进度",
+				"audio": "音量",
+				"view": "画面",
+				"subtitleQuality": "字幕画质",
+				"page": "页面"
+			},
+			"actions": {
+				"speed": {
+					"up": "加快播放速度",
+					"down": "减慢播放速度",
+					"toggle": "切换指定倍速",
+					"set": "设为固定倍速",
+					"hold": "按住临时倍速"
+				},
+				"playback": {
+					"togglePlay": "播放 / 暂停",
+					"seekForward": "快进指定秒数",
+					"seekBackward": "快退指定秒数",
+					"frameNext": "下一帧",
+					"framePrev": "上一帧",
+					"restart": "从头播放",
+					"toggleLoop": "开关单视频循环",
+					"jumpToLive": "直播跳回最新进度",
+					"prevVideo": "上一个视频",
+					"nextVideo": "下一个视频"
+				},
+				"audio": {
+					"toggleMute": "静音 / 取消静音",
+					"volumeUp": "增加音量",
+					"volumeDown": "降低音量",
+					"setVolume": "设为指定音量",
+					"boosterToggle": "开关音量增强",
+					"boosterUp": "提高音量增强倍率",
+					"boosterDown": "降低音量增强倍率"
+				},
+				"view": {
+					"toggleInPageFullscreen": "开关网页全屏",
+					"toggleFullscreen": "开关系统全屏",
+					"toggleTheater": "开关剧场模式",
+					"togglePip": "开关画中画",
+					"toggleMiniPlayer": "开关迷你播放器",
+					"rotateCW": "顺时针旋转 90°",
+					"rotateCCW": "逆时针旋转 90°",
+					"toggleMirror": "开关水平镜像翻转",
+					"zoomIn": "放大视频画面",
+					"zoomOut": "缩小视频画面",
+					"zoomReset": "重置视频缩放",
+					"resetTransform": "重置全部画面变换",
+					"screenshot": "截取当前视频画面",
+					"toggleControls": "隐藏 / 显示播放器控制栏"
+				},
+				"subtitle": {
+					"toggle": "开关字幕",
+					"cycleTrack": "循环切换字幕语言"
+				},
+				"quality": {
+					"set": "切换到指定画质",
+					"up": "提高一档画质",
+					"down": "降低一档画质"
+				},
+				"page": {
+					"copyUrlWithTime": "复制带当前时间的视频链接",
+					"copyUrl": "复制视频链接",
+					"toggleComments": "滚动到评论区 / 返回顶部",
+					"openThumbnail": "新标签页打开封面原图"
+				}
+			},
+			"native": {
+				"togglePlay": "播放/暂停",
+				"seekBackward10": "快退 10 秒",
+				"seekForward10": "快进 10 秒",
+				"mute": "静音",
+				"fullscreen": "全屏",
+				"theater": "剧场模式",
+				"miniPlayer": "迷你播放器",
+				"subtitles": "字幕",
+				"seekBackward5": "快退 5 秒",
+				"seekForward5": "快进 5 秒",
+				"volumeUp": "增加音量",
+				"volumeDown": "降低音量",
+				"framePrev": "上一帧",
+				"frameNext": "下一帧",
+				"speedDown": "减速",
+				"speedUp": "加速",
+				"nextVideo": "下一个视频",
+				"prevVideo": "上一个视频",
+				"search": "聚焦搜索框",
+				"seekStart": "跳到开头",
+				"seekEnd": "跳到结尾"
+			}
 		}
 	},
 	"insights": {

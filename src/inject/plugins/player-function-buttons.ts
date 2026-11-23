@@ -209,7 +209,7 @@ function downloadCurrentVideoFrame() {
 	const video = videoPlayer.videoStream;
 	if (!video || video.readyState < HTMLMediaElement.HAVE_CURRENT_DATA || !video.videoWidth || !video.videoHeight) {
 		logger.warn("Video frame is not ready for screenshot.");
-		return;
+		return false;
 	}
 
 	const canvas = document.createElement("canvas");
@@ -219,11 +219,11 @@ function downloadCurrentVideoFrame() {
 	const context = canvas.getContext("2d");
 	if (!context) {
 		logger.warn("Canvas 2D context is not available.");
-		return;
+		return false;
 	}
 
 	const screenshotWindow = openScreenshotWindow();
-	if (!screenshotWindow) return;
+	if (!screenshotWindow) return false;
 
 	try {
 		context.drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -236,10 +236,40 @@ function downloadCurrentVideoFrame() {
 
 			showScreenshotBlob(screenshotWindow, blob, getScreenshotFileName(video));
 		}, "image/png");
+		return true;
 	} catch (error) {
 		logger.error("Failed to capture video screenshot:", error);
 		showScreenshotWindowMessage(screenshotWindow, "Failed to generate screenshot.");
+		return false;
 	}
+}
+
+export function rotateVideo(deltaDegrees: 90 | -90 = 90) {
+	touchPlayer();
+	rotation = (rotation + deltaDegrees + 360) % 360;
+	yttBtnRotate?.setAttribute("text", `${rotation}`);
+	updatePlayerTransformStyle();
+	return rotation;
+}
+
+export function toggleMirrorVideo() {
+	touchPlayer();
+	isMirror = !isMirror;
+	yttBtnMirror?.setAttribute("text", isMirror ? `⬅` : `➡`);
+	updatePlayerTransformStyle();
+	return isMirror;
+}
+
+export function resetVideoRotationAndMirror() {
+	rotation = 0;
+	isMirror = false;
+	yttBtnRotate?.setAttribute("text", "0");
+	yttBtnMirror?.setAttribute("text", "➡");
+	updatePlayerTransformStyle();
+}
+
+export function captureVideoScreenshot() {
+	return downloadCurrentVideoFrame();
 }
 
 export function createBox() {
@@ -291,10 +321,7 @@ export default {
 				yttBtnRotate.title = "Rotate Video";
 				yttBtnRotate.setAttribute("text", `${rotation}`);
 				yttBtnRotate.onclick = () => {
-					touchPlayer();
-					rotation = (rotation + 90) % 360;
-					yttBtnRotate?.setAttribute("text", `${rotation}`);
-					updatePlayerTransformStyle();
+					rotateVideo(90);
 				};
 				yttBtnBox?.appendChild(yttBtnRotate);
 				updateFunctionButtonCollapseAnchor();
@@ -323,10 +350,7 @@ export default {
 				yttBtnMirror.title = "Mirror Video";
 				yttBtnMirror.setAttribute("text", `➡`);
 				yttBtnMirror.onclick = () => {
-					touchPlayer();
-					isMirror = !isMirror;
-					yttBtnMirror?.setAttribute("text", isMirror ? `⬅` : `➡`);
-					updatePlayerTransformStyle();
+					toggleMirrorVideo();
 				};
 				yttBtnBox?.appendChild(yttBtnMirror);
 				updateFunctionButtonCollapseAnchor();
