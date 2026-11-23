@@ -292,6 +292,166 @@
 			"tips": {
 				"inject": "Applies to youtube.com pages after the textarea loses focus."
 			}
+		},
+		"shortcuts": {
+			"title": "Raccourcis clavier",
+			"checkbox": {
+				"enable": "Activer les raccourcis clavier personnalisés"
+			},
+			"button": {
+				"add": "Ajouter un raccourci",
+				"cancel": "Annuler",
+				"save": "Enregistrer",
+				"confirmAdd": "Ajouter",
+				"clearAll": "Tout effacer",
+				"confirmClearAll": "Confirmer ?"
+			},
+			"preset": {
+				"button": "Préréglages",
+				"title": "Préréglages recommandés",
+				"speedControl": "Contrôle de vitesse",
+				"viewTools": "Outils d'affichage",
+				"playbackLoop": "Navigation et boucle",
+				"applied": "{count} raccourcis prédéfinis ajoutés",
+				"alreadyAdded": "Toutes les touches de ce préréglage existent déjà"
+			},
+			"editor": {
+				"addTitle": "Nouveau raccourci",
+				"editTitle": "Modifier le raccourci",
+				"keyLabel": "Touche",
+				"actionLabel": "Action",
+				"clickToRecord": "Cliquez ici puis appuyez sur une touche",
+				"pressKey": "Appuyez sur une touche… (Esc pour annuler)",
+				"clearKey": "Effacer la touche",
+				"selectActionTitle": "Choisir une action",
+				"back": "Retour",
+				"delete": "Supprimer",
+				"searchPlaceholder": "Rechercher une action…",
+				"noMatch": "Aucune action correspondante"
+			},
+			"notice": {
+				"duplicate": "Cette touche est déjà utilisée par « {action} ».",
+				"nativeOverlap": "Chevauche le raccourci natif YouTube ({native}) et le remplacera lorsqu'il est actif."
+			},
+			"list": {
+				"toggle": "Activer ou désactiver ce raccourci",
+				"edit": "Modifier",
+				"editKey": "Cliquer pour modifier la touche",
+				"remove": "Supprimer",
+				"conflict": "Doublon",
+				"conflictTitle": "Un autre raccourci actif utilise la même touche"
+			},
+			"empty": {
+				"title": "Aucun raccourci",
+				"description": "Contrôlez la vitesse, l'image dans l'image, les captures et les transformations vidéo au clavier.",
+				"quickPreset": "Charger le préréglage vitesse (D / S / R / A)"
+			},
+			"tips": {
+				"inputSafe": "Les raccourcis à touche unique sont ignorés lors de la saisie dans la recherche ou les commentaires."
+			},
+			"param": {
+				"speedStep": "Pas de vitesse",
+				"speed": "Vitesse cible",
+				"seconds": "Secondes de saut",
+				"volume": "Volume",
+				"quality": "Qualité cible",
+				"qualityAuto": "Auto",
+				"followSpeedButtons": "Suivre les boutons de vitesse",
+				"followSpeedButtonsShort": "Selon boutons"
+			},
+			"groups": {
+				"all": "Tout",
+				"speed": "Vitesse",
+				"playback": "Lecture",
+				"audio": "Audio",
+				"view": "Affichage",
+				"subtitleQuality": "ST & qualité",
+				"page": "Page"
+			},
+			"actions": {
+				"speed": {
+					"up": "Augmenter la vitesse",
+					"down": "Réduire la vitesse",
+					"toggle": "Basculer vers la vitesse cible",
+					"set": "Définir la vitesse de lecture",
+					"hold": "Maintenir pour vitesse temporaire"
+				},
+				"playback": {
+					"togglePlay": "Lecture / Pause",
+					"seekForward": "Avancer",
+					"seekBackward": "Reculer",
+					"frameNext": "Image suivante",
+					"framePrev": "Image précédente",
+					"restart": "Redémarrer la vidéo",
+					"toggleLoop": "Activer/désactiver la lecture en boucle",
+					"jumpToLive": "Aller au direct",
+					"prevVideo": "Vidéo précédente",
+					"nextVideo": "Vidéo suivante"
+				},
+				"audio": {
+					"toggleMute": "Couper / Rétablir le son",
+					"volumeUp": "Augmenter le volume",
+					"volumeDown": "Baisser le volume",
+					"setVolume": "Définir le volume",
+					"boosterToggle": "Basculer l'amplificateur de volume",
+					"boosterUp": "Augmenter l'amplification",
+					"boosterDown": "Réduire l'amplification"
+				},
+				"view": {
+					"toggleInPageFullscreen": "Basculer le plein écran dans la page",
+					"toggleFullscreen": "Basculer le plein écran",
+					"toggleTheater": "Basculer le mode cinéma",
+					"togglePip": "Basculer l'image dans l'image",
+					"toggleMiniPlayer": "Basculer le mini-lecteur",
+					"rotateCW": "Pivoter de 90° sens horaire",
+					"rotateCCW": "Pivoter de 90° sens antihoraire",
+					"toggleMirror": "Basculer le miroir horizontal",
+					"zoomIn": "Zoomer la vidéo",
+					"zoomOut": "Dézoomer la vidéo",
+					"zoomReset": "Réinitialiser le zoom vidéo",
+					"resetTransform": "Réinitialiser toutes les transformations",
+					"screenshot": "Prendre une capture d'écran",
+					"toggleControls": "Masquer / Afficher les contrôles du lecteur"
+				},
+				"subtitle": {
+					"toggle": "Activer / Désactiver les sous-titres",
+					"cycleTrack": "Changer la langue des sous-titres"
+				},
+				"quality": {
+					"set": "Définir la qualité vidéo",
+					"up": "Augmenter la qualité vidéo",
+					"down": "Réduire la qualité vidéo"
+				},
+				"page": {
+					"copyUrlWithTime": "Copier l'URL de la vidéo au temps actuel",
+					"copyUrl": "Copier l'URL de la vidéo",
+					"toggleComments": "Aller aux commentaires / Haut de page",
+					"openThumbnail": "Ouvrir la miniature en pleine résolution"
+				}
+			},
+			"native": {
+				"togglePlay": "Lecture/Pause",
+				"seekBackward10": "Reculer de 10 s",
+				"seekForward10": "Avancer de 10 s",
+				"mute": "Muet",
+				"fullscreen": "Plein écran",
+				"theater": "Mode cinéma",
+				"miniPlayer": "Mini-lecteur",
+				"subtitles": "Sous-titres",
+				"seekBackward5": "Reculer de 5 s",
+				"seekForward5": "Avancer de 5 s",
+				"volumeUp": "Augmenter le volume",
+				"volumeDown": "Baisser le volume",
+				"framePrev": "Image précédente",
+				"frameNext": "Image suivante",
+				"speedDown": "Ralentir",
+				"speedUp": "Accélérer",
+				"nextVideo": "Vidéo suivante",
+				"prevVideo": "Vidéo précédente",
+				"search": "Focus sur la recherche",
+				"seekStart": "Aller au début",
+				"seekEnd": "Aller à la fin"
+			}
 		}
 	},
 	"insights": {

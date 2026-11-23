@@ -292,6 +292,166 @@
 			"tips": {
 				"inject": "Applies to youtube.com pages after the textarea loses focus."
 			}
+		},
+		"shortcuts": {
+			"title": "میانبرهای صفحه‌کلید",
+			"checkbox": {
+				"enable": "فعال کردن میانبرهای صفحه‌کلید سفارشی"
+			},
+			"button": {
+				"add": "افزودن میانبر",
+				"cancel": "لغو",
+				"save": "ذخیره تغییرات",
+				"confirmAdd": "افزودن",
+				"clearAll": "پاک کردن همه",
+				"confirmClearAll": "تایید پاک‌سازی؟"
+			},
+			"preset": {
+				"button": "پیش‌تنظیم‌ها",
+				"title": "پیش‌تنظیم‌های پیشنهادی",
+				"speedControl": "کنترل سرعت",
+				"viewTools": "ابزارهای نمایش",
+				"playbackLoop": "جستجو و تکرار",
+				"applied": "{count} میانبر پیش‌تنظیم افزوده شد",
+				"alreadyAdded": "همه کلیدهای این پیش‌تنظیم از قبل وجود دارند"
+			},
+			"editor": {
+				"addTitle": "میانبر جدید",
+				"editTitle": "ویرایش میانبر",
+				"keyLabel": "کلید میانبر",
+				"actionLabel": "عملکرد",
+				"clickToRecord": "اینجا کلیک کنید و کلیدی را فشار دهید",
+				"pressKey": "کلیدی را فشار دهید… (Esc برای لغو)",
+				"clearKey": "پاک کردن کلید",
+				"selectActionTitle": "انتخاب عملکرد",
+				"back": "بازگشت",
+				"delete": "حذف",
+				"searchPlaceholder": "جستجوی عملکرد…",
+				"noMatch": "عملکرد مطابقی یافت نشد"
+			},
+			"notice": {
+				"duplicate": "این کلید با میانبر موجود «{action}» تکراری است.",
+				"nativeOverlap": "با میانبر اصلی YouTube ({native}) هم‌پوشانی دارد و هنگام فعال بودن جایگزین آن می‌شود."
+			},
+			"list": {
+				"toggle": "فعال یا غیرفعال کردن میانبر",
+				"edit": "ویرایش",
+				"editKey": "برای تغییر کلید کلیک کنید",
+				"remove": "حذف",
+				"conflict": "تکراری",
+				"conflictTitle": "میانبر فعال دیگری از همین کلید استفاده می‌کند"
+			},
+			"empty": {
+				"title": "هنوز میانبری تنظیم نشده است",
+				"description": "سرعت پخش، تصویر در تصویر، عکس‌گرفتن و تغییر نمای ویدیو را با صفحه‌کلید کنترل کنید.",
+				"quickPreset": "بارگذاری پیش‌تنظیم سرعت (D / S / R / A)"
+			},
+			"tips": {
+				"inputSafe": "میانبرهای تک‌کلیدی هنگام تایپ در کادر جستجو یا دیدگاه‌ها به‌صورت خودکار نادیده گرفته می‌شوند."
+			},
+			"param": {
+				"speedStep": "گام سرعت",
+				"speed": "سرعت هدف",
+				"seconds": "ثانیه جابه‌جایی",
+				"volume": "مقدار صدا",
+				"quality": "کیفیت هدف",
+				"qualityAuto": "خودکار",
+				"followSpeedButtons": "پیروی از دکمه‌های سرعت",
+				"followSpeedButtonsShort": "مطابق دکمه‌ها"
+			},
+			"groups": {
+				"all": "همه",
+				"speed": "سرعت",
+				"playback": "پخش",
+				"audio": "صدا",
+				"view": "نمایش",
+				"subtitleQuality": "زیرنویس و کیفیت",
+				"page": "صفحه"
+			},
+			"actions": {
+				"speed": {
+					"up": "افزایش سرعت پخش",
+					"down": "کاهش سرعت پخش",
+					"toggle": "تغییر وضعیت سرعت هدف",
+					"set": "تنظیم سرعت پخش",
+					"hold": "نگه داشتن برای سرعت موقت"
+				},
+				"playback": {
+					"togglePlay": "پخش / مکث",
+					"seekForward": "جلو بردن",
+					"seekBackward": "عقب بردن",
+					"frameNext": "فریم بعدی",
+					"framePrev": "فریم قبلی",
+					"restart": "شروع مجدد ویدیو",
+					"toggleLoop": "تغییر وضعیت تکرار ویدیو",
+					"jumpToLive": "رفتن به لحظه زنده",
+					"prevVideo": "ویدیوی قبلی",
+					"nextVideo": "ویدیوی بعدی"
+				},
+				"audio": {
+					"toggleMute": "بی‌صدا / باصدا",
+					"volumeUp": "افزایش صدا",
+					"volumeDown": "کاهش صدا",
+					"setVolume": "تنظیم بلندی صدا",
+					"boosterToggle": "تغییر وضعیت تقویت‌کننده صدا",
+					"boosterUp": "افزایش تقویت صدا",
+					"boosterDown": "کاهش تقویت صدا"
+				},
+				"view": {
+					"toggleInPageFullscreen": "تمام‌صفحه درون صفحه",
+					"toggleFullscreen": "تمام‌صفحه",
+					"toggleTheater": "حالت سینما",
+					"togglePip": "تصویر در تصویر",
+					"toggleMiniPlayer": "پخش‌کننده کوچک",
+					"rotateCW": "چرخش 90° ساعت‌گرد ویدیو",
+					"rotateCCW": "چرخش 90° پادساعت‌گرد ویدیو",
+					"toggleMirror": "آینه کردن افقی ویدیو",
+					"zoomIn": "بزرگ‌نمایی ویدیو",
+					"zoomOut": "کوچک‌نمایی ویدیو",
+					"zoomReset": "بازنشانی بزرگ‌نمایی ویدیو",
+					"resetTransform": "بازنشانی همه تغییرنماهای ویدیو",
+					"screenshot": "گرفتن اسکرین‌شات از ویدیو",
+					"toggleControls": "مخفی / نمایش کنترل‌های پخش‌کننده"
+				},
+				"subtitle": {
+					"toggle": "فعال / غیرفعال کردن زیرنویس",
+					"cycleTrack": "تغییر زبان زیرنویس"
+				},
+				"quality": {
+					"set": "تنظیم کیفیت ویدیو",
+					"up": "افزایش کیفیت ویدیو",
+					"down": "کاهش کیفیت ویدیو"
+				},
+				"page": {
+					"copyUrlWithTime": "کپی لینک ویدیو با زمان فعلی",
+					"copyUrl": "کپی لینک ویدیو",
+					"toggleComments": "رفتن به دیدگاه‌ها / بازگشت به بالا",
+					"openThumbnail": "باز کردن تصویر بندانگشتی با کیفیت کامل"
+				}
+			},
+			"native": {
+				"togglePlay": "پخش/مکث",
+				"seekBackward10": "10 ثانیه عقب",
+				"seekForward10": "10 ثانیه جلو",
+				"mute": "بی‌صدا",
+				"fullscreen": "تمام‌صفحه",
+				"theater": "حالت سینما",
+				"miniPlayer": "پخش‌کننده کوچک",
+				"subtitles": "زیرنویس",
+				"seekBackward5": "5 ثانیه عقب",
+				"seekForward5": "5 ثانیه جلو",
+				"volumeUp": "افزایش صدا",
+				"volumeDown": "کاهش صدا",
+				"framePrev": "فریم قبلی",
+				"frameNext": "فریم بعدی",
+				"speedDown": "کاهش سرعت",
+				"speedUp": "افزایش سرعت",
+				"nextVideo": "ویدیوی بعدی",
+				"prevVideo": "ویدیوی قبلی",
+				"search": "تمرکز روی جستجو",
+				"seekStart": "رفتن به ابتدا",
+				"seekEnd": "رفتن به انتها"
+			}
 		}
 	},
 	"insights": {

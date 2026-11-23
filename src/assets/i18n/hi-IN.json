@@ -292,6 +292,166 @@
 			"tips": {
 				"inject": "Applies to youtube.com pages after the textarea loses focus."
 			}
+		},
+		"shortcuts": {
+			"title": "कीबोर्ड शॉर्टकट",
+			"checkbox": {
+				"enable": "कस्टम कीबोर्ड शॉर्टकट सक्षम करें"
+			},
+			"button": {
+				"add": "शॉर्टकट जोड़ें",
+				"cancel": "रद्द करें",
+				"save": "बदलाव सहेजें",
+				"confirmAdd": "जोड़ें",
+				"clearAll": "सभी साफ़ करें",
+				"confirmClearAll": "साफ़ करें?"
+			},
+			"preset": {
+				"button": "प्रीसेट",
+				"title": "सुझाए गए प्रीसेट",
+				"speedControl": "गति नियंत्रण",
+				"viewTools": "दृश्य उपकरण",
+				"playbackLoop": "सीक और लूप",
+				"applied": "{count} प्रीसेट शॉर्टकट जोड़े गए",
+				"alreadyAdded": "इस प्रीसेट की सभी कुंजियाँ पहले से मौजूद हैं"
+			},
+			"editor": {
+				"addTitle": "नया शॉर्टकट",
+				"editTitle": "शॉर्टकट संपादित करें",
+				"keyLabel": "शॉर्टकट कुंजी",
+				"actionLabel": "क्रिया",
+				"clickToRecord": "यहाँ क्लिक करें और कुंजी दबाएँ",
+				"pressKey": "कुंजी दबाएँ… (रद्द करने के लिए Esc)",
+				"clearKey": "कुंजी साफ़ करें",
+				"selectActionTitle": "क्रिया चुनें",
+				"back": "वापस",
+				"delete": "हटाएँ",
+				"searchPlaceholder": "क्रिया खोजें…",
+				"noMatch": "कोई मिलती-जुलती क्रिया नहीं मिली"
+			},
+			"notice": {
+				"duplicate": "यह कुंजी मौजूदा शॉर्टकट \"{action}\" की नकल है।",
+				"nativeOverlap": "YouTube के मूल शॉर्टकट ({native}) से टकराती है और सक्रिय होने पर उसे ओवरराइड करेगी।"
+			},
+			"list": {
+				"toggle": "शॉर्टकट चालू या बंद करें",
+				"edit": "संपादित करें",
+				"editKey": "कुंजी बदलने के लिए क्लिक करें",
+				"remove": "हटाएँ",
+				"conflict": "डुप्लिकेट",
+				"conflictTitle": "एक अन्य सक्रिय शॉर्टकट यही कुंजी उपयोग करता है"
+			},
+			"empty": {
+				"title": "अभी कोई शॉर्टकट नहीं",
+				"description": "कीबोर्ड से प्लेबैक गति, PiP, स्क्रीनशॉट और वीडियो रूपांतरण नियंत्रित करें।",
+				"quickPreset": "गति प्रीसेट लोड करें (D / S / R / A)"
+			},
+			"tips": {
+				"inputSafe": "खोज या टिप्पणी बॉक्स में टाइप करते समय सिंगल-की शॉर्टकट अपने-आप अनदेखे हो जाते हैं।"
+			},
+			"param": {
+				"speedStep": "गति चरण",
+				"speed": "लक्ष्य गति",
+				"seconds": "छलांग सेकंड",
+				"volume": "वॉल्यूम मान",
+				"quality": "लक्ष्य गुणवत्ता",
+				"qualityAuto": "ऑटो",
+				"followSpeedButtons": "गति बटनों का अनुसरण करें",
+				"followSpeedButtonsShort": "बटन अनुसार"
+			},
+			"groups": {
+				"all": "सभी",
+				"speed": "गति",
+				"playback": "प्लेबैक",
+				"audio": "ऑडियो",
+				"view": "दृश्य",
+				"subtitleQuality": "उपशीर्षक/गुणवत्ता",
+				"page": "पेज"
+			},
+			"actions": {
+				"speed": {
+					"up": "प्लेबैक गति बढ़ाएँ",
+					"down": "प्लेबैक गति घटाएँ",
+					"toggle": "लक्ष्य गति टॉगल करें",
+					"set": "प्लेबैक गति सेट करें",
+					"hold": "अस्थायी गति के लिए दबाए रखें"
+				},
+				"playback": {
+					"togglePlay": "चलाएँ / रोकें",
+					"seekForward": "आगे बढ़ाएँ",
+					"seekBackward": "पीछे करें",
+					"frameNext": "अगला फ़्रेम",
+					"framePrev": "पिछला फ़्रेम",
+					"restart": "वीडियो फिर से शुरू करें",
+					"toggleLoop": "वीडियो लूप टॉगल करें",
+					"jumpToLive": "लाइव बिंदु पर जाएँ",
+					"prevVideo": "पिछला वीडियो",
+					"nextVideo": "अगला वीडियो"
+				},
+				"audio": {
+					"toggleMute": "म्यूट / अनम्यूट",
+					"volumeUp": "वॉल्यूम बढ़ाएँ",
+					"volumeDown": "वॉल्यूम घटाएँ",
+					"setVolume": "वॉल्यूम सेट करें",
+					"boosterToggle": "वॉल्यूम बूस्टर टॉगल करें",
+					"boosterUp": "वॉल्यूम बूस्ट बढ़ाएँ",
+					"boosterDown": "वॉल्यूम बूस्ट घटाएँ"
+				},
+				"view": {
+					"toggleInPageFullscreen": "पेज के अंदर फ़ुलस्क्रीन टॉगल करें",
+					"toggleFullscreen": "फ़ुलस्क्रीन टॉगल करें",
+					"toggleTheater": "थिएटर मोड टॉगल करें",
+					"togglePip": "पिक्चर-इन-पिक्चर टॉगल करें",
+					"toggleMiniPlayer": "मिनी-प्लेयर टॉगल करें",
+					"rotateCW": "वीडियो 90° दक्षिणावर्त घुमाएँ",
+					"rotateCCW": "वीडियो 90° वामावर्त घुमाएँ",
+					"toggleMirror": "क्षैतिज मिरर टॉगल करें",
+					"zoomIn": "वीडियो ज़ूम इन करें",
+					"zoomOut": "वीडियो ज़ूम आउट करें",
+					"zoomReset": "वीडियो ज़ूम रीसेट करें",
+					"resetTransform": "सभी वीडियो रूपांतरण रीसेट करें",
+					"screenshot": "वीडियो स्क्रीनशॉट लें",
+					"toggleControls": "प्लेयर नियंत्रण छिपाएँ / दिखाएँ"
+				},
+				"subtitle": {
+					"toggle": "उपशीर्षक टॉगल करें",
+					"cycleTrack": "उपशीर्षक भाषा बदलें"
+				},
+				"quality": {
+					"set": "वीडियो गुणवत्ता सेट करें",
+					"up": "वीडियो गुणवत्ता बढ़ाएँ",
+					"down": "वीडियो गुणवत्ता घटाएँ"
+				},
+				"page": {
+					"copyUrlWithTime": "वर्तमान समय के साथ वीडियो URL कॉपी करें",
+					"copyUrl": "वीडियो URL कॉपी करें",
+					"toggleComments": "टिप्पणियों पर जाएँ / शीर्ष पर लौटें",
+					"openThumbnail": "पूर्ण-रिज़ॉल्यूशन थंबनेल खोलें"
+				}
+			},
+			"native": {
+				"togglePlay": "चलाएँ/रोकें",
+				"seekBackward10": "10 सेकंड पीछे",
+				"seekForward10": "10 सेकंड आगे",
+				"mute": "म्यूट",
+				"fullscreen": "फ़ुलस्क्रीन",
+				"theater": "थिएटर मोड",
+				"miniPlayer": "मिनी-प्लेयर",
+				"subtitles": "उपशीर्षक",
+				"seekBackward5": "5 सेकंड पीछे",
+				"seekForward5": "5 सेकंड आगे",
+				"volumeUp": "वॉल्यूम बढ़ाएँ",
+				"volumeDown": "वॉल्यूम घटाएँ",
+				"framePrev": "पिछला फ़्रेम",
+				"frameNext": "अगला फ़्रेम",
+				"speedDown": "धीमा करें",
+				"speedUp": "तेज़ करें",
+				"nextVideo": "अगला वीडियो",
+				"prevVideo": "पिछला वीडियो",
+				"search": "खोज बॉक्स पर फ़ोकस",
+				"seekStart": "शुरुआत पर जाएँ",
+				"seekEnd": "अंत पर जाएँ"
+			}
 		}
 	},
 	"insights": {

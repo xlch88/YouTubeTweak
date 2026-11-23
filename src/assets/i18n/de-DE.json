@@ -292,6 +292,166 @@
 			"tips": {
 				"inject": "Applies to youtube.com pages after the textarea loses focus."
 			}
+		},
+		"shortcuts": {
+			"title": "Tastaturkürzel",
+			"checkbox": {
+				"enable": "Benutzerdefinierte Tastaturkürzel aktivieren"
+			},
+			"button": {
+				"add": "Kürzel hinzufügen",
+				"cancel": "Abbrechen",
+				"save": "Änderungen speichern",
+				"confirmAdd": "Hinzufügen",
+				"clearAll": "Alle löschen",
+				"confirmClearAll": "Löschen bestätigen?"
+			},
+			"preset": {
+				"button": "Vorlagen",
+				"title": "Empfohlene Vorlagen",
+				"speedControl": "Geschwindigkeitssteuerung",
+				"viewTools": "Ansichtswerkzeuge",
+				"playbackLoop": "Springen & Schleife",
+				"applied": "{count} Vorlagen-Kürzel hinzugefügt",
+				"alreadyAdded": "Alle Tasten dieser Vorlage sind bereits vorhanden"
+			},
+			"editor": {
+				"addTitle": "Neues Tastaturkürzel",
+				"editTitle": "Tastaturkürzel bearbeiten",
+				"keyLabel": "Tastenkombination",
+				"actionLabel": "Aktion",
+				"clickToRecord": "Hier klicken und Taste drücken",
+				"pressKey": "Taste drücken… (Esc zum Abbrechen)",
+				"clearKey": "Taste löschen",
+				"selectActionTitle": "Aktion auswählen",
+				"back": "Zurück",
+				"delete": "Löschen",
+				"searchPlaceholder": "Aktionen suchen…",
+				"noMatch": "Keine passenden Aktionen"
+			},
+			"notice": {
+				"duplicate": "Diese Taste wird bereits vom Kürzel „{action}“ verwendet.",
+				"nativeOverlap": "Überschneidet sich mit dem YouTube-Kürzel ({native}) und überschreibt es im aktiven Zustand."
+			},
+			"list": {
+				"toggle": "Kürzel umschalten",
+				"edit": "Bearbeiten",
+				"editKey": "Klicken, um die Taste zu ändern",
+				"remove": "Entfernen",
+				"conflict": "Doppelt",
+				"conflictTitle": "Ein anderes aktives Kürzel verwendet dieselbe Taste"
+			},
+			"empty": {
+				"title": "Noch keine Kürzel",
+				"description": "Steuere Geschwindigkeit, Bild-im-Bild, Screenshots und Videotransformationen direkt per Tastatur.",
+				"quickPreset": "Geschwindigkeitsvorlage laden (D / S / R / A)"
+			},
+			"tips": {
+				"inputSafe": "Einzeltasten-Kürzel werden beim Tippen in Such- oder Kommentarfeldern automatisch ignoriert."
+			},
+			"param": {
+				"speedStep": "Geschwindigkeitsschritt",
+				"speed": "Zielgeschwindigkeit",
+				"seconds": "Sprungsekunden",
+				"volume": "Lautstärke",
+				"quality": "Zielqualität",
+				"qualityAuto": "Auto",
+				"followSpeedButtons": "Geschwindigkeitsschaltflächen folgen",
+				"followSpeedButtonsShort": "Wie Buttons"
+			},
+			"groups": {
+				"all": "Alle",
+				"speed": "Tempo",
+				"playback": "Wiedergabe",
+				"audio": "Audio",
+				"view": "Ansicht",
+				"subtitleQuality": "UT & Qualität",
+				"page": "Seite"
+			},
+			"actions": {
+				"speed": {
+					"up": "Geschwindigkeit erhöhen",
+					"down": "Geschwindigkeit verringern",
+					"toggle": "Zielgeschwindigkeit umschalten",
+					"set": "Wiedergabegeschwindigkeit festlegen",
+					"hold": "Gedrückt halten für temporäre Geschwindigkeit"
+				},
+				"playback": {
+					"togglePlay": "Wiedergabe / Pause",
+					"seekForward": "Vorspulen",
+					"seekBackward": "Zurückspulen",
+					"frameNext": "Nächstes Bild",
+					"framePrev": "Vorheriges Bild",
+					"restart": "Video neu starten",
+					"toggleLoop": "Endlosschleife umschalten",
+					"jumpToLive": "Zum Live-Punkt springen",
+					"prevVideo": "Vorheriges Video",
+					"nextVideo": "Nächstes Video"
+				},
+				"audio": {
+					"toggleMute": "Stummschalten / Ton ein",
+					"volumeUp": "Lautstärke erhöhen",
+					"volumeDown": "Lautstärke verringern",
+					"setVolume": "Lautstärke festlegen",
+					"boosterToggle": "Lautstärkeverstärker umschalten",
+					"boosterUp": "Lautstärkeverstärkung erhöhen",
+					"boosterDown": "Lautstärkeverstärkung verringern"
+				},
+				"view": {
+					"toggleInPageFullscreen": "Vollbild innerhalb der Seite umschalten",
+					"toggleFullscreen": "Vollbild umschalten",
+					"toggleTheater": "Kinomodus umschalten",
+					"togglePip": "Bild-im-Bild umschalten",
+					"toggleMiniPlayer": "Miniplayer umschalten",
+					"rotateCW": "Video um 90° im Uhrzeigersinn drehen",
+					"rotateCCW": "Video um 90° gegen den Uhrzeigersinn drehen",
+					"toggleMirror": "Horizontal spiegeln umschalten",
+					"zoomIn": "Video vergrößern",
+					"zoomOut": "Video verkleinern",
+					"zoomReset": "Video-Zoom zurücksetzen",
+					"resetTransform": "Alle Videotransformationen zurücksetzen",
+					"screenshot": "Video-Screenshot erstellen",
+					"toggleControls": "Player-Steuerelemente aus- / einblenden"
+				},
+				"subtitle": {
+					"toggle": "Untertitel umschalten",
+					"cycleTrack": "Untertitelsprache durchschalten"
+				},
+				"quality": {
+					"set": "Videoqualität festlegen",
+					"up": "Videoqualität erhöhen",
+					"down": "Videoqualität verringern"
+				},
+				"page": {
+					"copyUrlWithTime": "Video-URL mit aktueller Zeit kopieren",
+					"copyUrl": "Video-URL kopieren",
+					"toggleComments": "Zu Kommentaren scrollen / Nach oben",
+					"openThumbnail": "Vorschaubild in voller Auflösung öffnen"
+				}
+			},
+			"native": {
+				"togglePlay": "Wiedergabe/Pause",
+				"seekBackward10": "10 s zurück",
+				"seekForward10": "10 s vor",
+				"mute": "Stumm",
+				"fullscreen": "Vollbild",
+				"theater": "Kinomodus",
+				"miniPlayer": "Miniplayer",
+				"subtitles": "Untertitel",
+				"seekBackward5": "5 s zurück",
+				"seekForward5": "5 s vor",
+				"volumeUp": "Lauter",
+				"volumeDown": "Leiser",
+				"framePrev": "Vorheriges Bild",
+				"frameNext": "Nächstes Bild",
+				"speedDown": "Langsamer",
+				"speedUp": "Schneller",
+				"nextVideo": "Nächstes Video",
+				"prevVideo": "Vorheriges Video",
+				"search": "Suchfeld fokussieren",
+				"seekStart": "Zum Anfang",
+				"seekEnd": "Zum Ende"
+			}
 		}
 	},
 	"insights": {

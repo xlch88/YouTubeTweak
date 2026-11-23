@@ -292,6 +292,166 @@
 			"tips": {
 				"inject": "Applies to youtube.com pages after the textarea loses focus."
 			}
+		},
+		"shortcuts": {
+			"title": "কীবোর্ড শর্টকাট",
+			"checkbox": {
+				"enable": "কাস্টম কীবোর্ড শর্টকাট সক্রিয় করুন"
+			},
+			"button": {
+				"add": "শর্টকাট যোগ করুন",
+				"cancel": "বাতিল",
+				"save": "পরিবর্তন সংরক্ষণ করুন",
+				"confirmAdd": "যোগ করুন",
+				"clearAll": "সব মুছুন",
+				"confirmClearAll": "মুছে ফেলবেন?"
+			},
+			"preset": {
+				"button": "প্রিসেট",
+				"title": "প্রস্তাবিত প্রিসেট",
+				"speedControl": "গতি নিয়ন্ত্রণ",
+				"viewTools": "ভিউ টুলস",
+				"playbackLoop": "সিক ও লুপ",
+				"applied": "{count}টি প্রিসেট শর্টকাট যোগ করা হয়েছে",
+				"alreadyAdded": "এই প্রিসেটের সব কী আগে থেকেই রয়েছে"
+			},
+			"editor": {
+				"addTitle": "নতুন শর্টকাট",
+				"editTitle": "শর্টকাট সম্পাদনা করুন",
+				"keyLabel": "শর্টকাট কী",
+				"actionLabel": "অ্যাকশন",
+				"clickToRecord": "এখানে ক্লিক করে একটি কী চাপুন",
+				"pressKey": "একটি কী চাপুন… (বাতিল করতে Esc)",
+				"clearKey": "কী মুছুন",
+				"selectActionTitle": "অ্যাকশন নির্বাচন করুন",
+				"back": "পিছনে",
+				"delete": "মুছুন",
+				"searchPlaceholder": "অ্যাকশন খুঁজুন…",
+				"noMatch": "কোনো মিল পাওয়া যায়নি"
+			},
+			"notice": {
+				"duplicate": "এই কীটি বিদ্যমান \"{action}\" শর্টকাটের সাথে মিলে গেছে।",
+				"nativeOverlap": "YouTube-এর নিজস্ব শর্টকাটের ({native}) সাথে মিলে গেছে এবং সক্রিয় থাকলে সেটি প্রতিস্থাপন করবে।"
+			},
+			"list": {
+				"toggle": "শর্টকাট চালু বা বন্ধ করুন",
+				"edit": "সম্পাদনা",
+				"editKey": "কী পরিবর্তন করতে ক্লিক করুন",
+				"remove": "সরান",
+				"conflict": "ডুপ্লিকেট",
+				"conflictTitle": "অন্য একটি সক্রিয় শর্টকাট একই কী ব্যবহার করছে"
+			},
+			"empty": {
+				"title": "এখনো কোনো শর্টকাট নেই",
+				"description": "কীবোর্ড থেকেই প্লেব্যাকের গতি, PiP, স্ক্রিনশট এবং ভিডিও রূপান্তর নিয়ন্ত্রণ করুন।",
+				"quickPreset": "গতির প্রিসেট লোড করুন (D / S / R / A)"
+			},
+			"tips": {
+				"inputSafe": "অনুসন্ধান বা মন্তব্য বক্সে টাইপ করার সময় একক-কী শর্টকাট স্বয়ংক্রিয়ভাবে উপেক্ষা করা হয়।"
+			},
+			"param": {
+				"speedStep": "গতির ধাপ",
+				"speed": "লক্ষ্য গতি",
+				"seconds": "জাম্প সেকেন্ড",
+				"volume": "ভলিউমের মান",
+				"quality": "লক্ষ্য মান",
+				"qualityAuto": "স্বয়ংক্রিয়",
+				"followSpeedButtons": "গতি বোতাম অনুসরণ করুন",
+				"followSpeedButtonsShort": "বোতাম অনুযায়ী"
+			},
+			"groups": {
+				"all": "সব",
+				"speed": "গতি",
+				"playback": "প্লেব্যাক",
+				"audio": "অডিও",
+				"view": "দৃশ্য",
+				"subtitleQuality": "সাব ও মান",
+				"page": "পৃষ্ঠা"
+			},
+			"actions": {
+				"speed": {
+					"up": "প্লেব্যাকের গতি বাড়ান",
+					"down": "প্লেব্যাকের গতি কমান",
+					"toggle": "লক্ষ্য গতি টগল করুন",
+					"set": "প্লেব্যাকের গতি নির্ধারণ করুন",
+					"hold": "অস্থায়ী গতির জন্য চেপে ধরে রাখুন"
+				},
+				"playback": {
+					"togglePlay": "চালান / বিরতি",
+					"seekForward": "সামনে এগিয়ে নিন",
+					"seekBackward": "পিছনে নিন",
+					"frameNext": "পরবর্তী ফ্রেম",
+					"framePrev": "পূর্ববর্তী ফ্রেম",
+					"restart": "ভিডিও আবার শুরু করুন",
+					"toggleLoop": "ভিডিও লুপ টগল করুন",
+					"jumpToLive": "লাইভের সর্বশেষ অংশে যান",
+					"prevVideo": "পূর্ববর্তী ভিডিও",
+					"nextVideo": "পরবর্তী ভিডিও"
+				},
+				"audio": {
+					"toggleMute": "নিঃশব্দ / সশব্দ",
+					"volumeUp": "ভলিউম বাড়ান",
+					"volumeDown": "ভলিউম কমান",
+					"setVolume": "ভলিউম নির্ধারণ করুন",
+					"boosterToggle": "ভলিউম বুস্টার টগল করুন",
+					"boosterUp": "ভলিউম বুস্ট বাড়ান",
+					"boosterDown": "ভলিউম বুস্ট কমান"
+				},
+				"view": {
+					"toggleInPageFullscreen": "পৃষ্ঠার মধ্যে পূর্ণস্ক্রিন টগল করুন",
+					"toggleFullscreen": "পূর্ণস্ক্রিন টগল করুন",
+					"toggleTheater": "থিয়েটার মোড টগল করুন",
+					"togglePip": "পিকচার-ইন-পিকচার টগল করুন",
+					"toggleMiniPlayer": "মিনি-প্লেয়ার টগল করুন",
+					"rotateCW": "ভিডিও 90° ঘড়ির কাঁটার দিকে ঘোরান",
+					"rotateCCW": "ভিডিও 90° ঘড়ির কাঁটার বিপরীতে ঘোরান",
+					"toggleMirror": "অনুভূমিক মিরর টগল করুন",
+					"zoomIn": "ভিডিও জুম ইন করুন",
+					"zoomOut": "ভিডিও জুম আউট করুন",
+					"zoomReset": "ভিডিও জুম রিসেট করুন",
+					"resetTransform": "সব ভিডিও রূপান্তর রিসেট করুন",
+					"screenshot": "ভিডিওর স্ক্রিনশট নিন",
+					"toggleControls": "প্লেয়ার কন্ট্রোল লুকান / দেখান"
+				},
+				"subtitle": {
+					"toggle": "সাবটাইটেল টগল করুন",
+					"cycleTrack": "সাবটাইটেল ভাষা পরিবর্তন করুন"
+				},
+				"quality": {
+					"set": "ভিডিও মান নির্ধারণ করুন",
+					"up": "ভিডিও মান বাড়ান",
+					"down": "ভিডিও মান কমান"
+				},
+				"page": {
+					"copyUrlWithTime": "বর্তমান সময়সহ ভিডিও URL কপি করুন",
+					"copyUrl": "ভিডিও URL কপি করুন",
+					"toggleComments": "মন্তব্যে যান / উপরে ফিরুন",
+					"openThumbnail": "পূর্ণ-রেজোলিউশন থাম্বনেইল খুলুন"
+				}
+			},
+			"native": {
+				"togglePlay": "চালান/বিরতি",
+				"seekBackward10": "১০ সেকেন্ড পিছনে",
+				"seekForward10": "১০ সেকেন্ড সামনে",
+				"mute": "নিঃশব্দ",
+				"fullscreen": "পূর্ণস্ক্রিন",
+				"theater": "থিয়েটার মোড",
+				"miniPlayer": "মিনি-প্লেয়ার",
+				"subtitles": "সাবটাইটেল",
+				"seekBackward5": "৫ সেকেন্ড পিছনে",
+				"seekForward5": "৫ সেকেন্ড সামনে",
+				"volumeUp": "ভলিউম বাড়ান",
+				"volumeDown": "ভলিউম কমান",
+				"framePrev": "পূর্ববর্তী ফ্রেম",
+				"frameNext": "পরবর্তী ফ্রেম",
+				"speedDown": "ধীর করুন",
+				"speedUp": "দ্রুত করুন",
+				"nextVideo": "পরবর্তী ভিডিও",
+				"prevVideo": "পূর্ববর্তী ভিডিও",
+				"search": "অনুসন্ধানে ফোকাস",
+				"seekStart": "শুরুতে যান",
+				"seekEnd": "শেষে যান"
+			}
 		}
 	},
 	"insights": {

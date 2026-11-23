@@ -6,6 +6,16 @@ All release version update records are listed in this file.
 
 If you have questions, bug reports, or feature suggestions, please go to the [GitHub Issues page](https://github.com/xlch88/YouTubeTweak/issues) to submit them.
 
+## [2.1.0] - 2026-11-23
+
+### Added
+
+- **Keyboard shortcuts:** Added customizable keyboard shortcuts with free recording of single keys and key combinations covering playback speed, playback controls, volume and booster, video transforms and screenshots, subtitles and quality, and page tools. Supports custom parameters, one-click recommended presets, duplicate key and YouTube native shortcut overlap notices, automatic skipping in text inputs, and a bottom-center on-screen status indicator when triggered.
+
+### Fixed
+
+- **Memory storage:** Fixed an issue where duplicate channel records or malformed fragments in memory data caused reading and writing to fail; duplicate entries are now automatically merged, malformed fragments are skipped, and storage is repaired on subsequent writes. Error notices for failed memory reads, saves, imports, or exports now include specific error details.
+
 ## [2.0.4] - 2026-11-21
 
 ### Updated

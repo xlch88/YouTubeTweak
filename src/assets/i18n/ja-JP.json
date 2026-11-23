@@ -292,6 +292,166 @@
 			"tips": {
 				"inject": "テキストエリアからフォーカスが外れると保存され、開いている YouTube ページに適用されます。"
 			}
+		},
+		"shortcuts": {
+			"title": "キーボードショートカット",
+			"checkbox": {
+				"enable": "カスタムキーボードショートカットを有効にする"
+			},
+			"button": {
+				"add": "ショートカットを追加",
+				"cancel": "キャンセル",
+				"save": "変更を保存",
+				"confirmAdd": "追加",
+				"clearAll": "すべてクリア",
+				"confirmClearAll": "クリアしますか？"
+			},
+			"preset": {
+				"button": "プリセット",
+				"title": "おすすめプリセット",
+				"speedControl": "再生速度コントロール",
+				"viewTools": "画面ツール",
+				"playbackLoop": "シーク・ループ",
+				"applied": "{count} 件のプリセットショートカットを追加しました",
+				"alreadyAdded": "このプリセットのキーはすべて登録済みです"
+			},
+			"editor": {
+				"addTitle": "ショートカットを追加",
+				"editTitle": "ショートカットを編集",
+				"keyLabel": "ショートカットキー",
+				"actionLabel": "実行アクション",
+				"clickToRecord": "ここをクリックしてキーを押してください",
+				"pressKey": "キーを押してください…（Esc でキャンセル）",
+				"clearKey": "キーをクリア",
+				"selectActionTitle": "アクションを選択",
+				"back": "戻る",
+				"delete": "削除",
+				"searchPlaceholder": "アクションを検索…",
+				"noMatch": "一致するアクションが見つかりません"
+			},
+			"notice": {
+				"duplicate": "このキーは既存のショートカット「{action}」と重複しています。",
+				"nativeOverlap": "YouTube 標準ショートカット（{native}）と重複しており、有効時は上書きされます。"
+			},
+			"list": {
+				"toggle": "このショートカットを有効／無効にする",
+				"edit": "編集",
+				"editKey": "クリックしてキーを変更",
+				"remove": "削除",
+				"conflict": "重複",
+				"conflictTitle": "同じキーを使用する他の有効なショートカットがあります"
+			},
+			"empty": {
+				"title": "ショートカットが未設定です",
+				"description": "お好みのキーで再生速度、ピクチャーインピクチャー、スクリーンショット、画面変換をすばやく操作できます。",
+				"quickPreset": "倍速プリセットを読み込む（D / S / R / A）"
+			},
+			"tips": {
+				"inputSafe": "検索欄やコメント欄などの入力中は、単一キーショートカットが自動的に無効化されます。"
+			},
+			"param": {
+				"speedStep": "速度刻み幅",
+				"speed": "目標再生速度",
+				"seconds": "シーク秒数",
+				"volume": "音量値",
+				"quality": "目標画質",
+				"qualityAuto": "自動",
+				"followSpeedButtons": "倍速ボタンに合わせる",
+				"followSpeedButtonsShort": "ボタン準拠"
+			},
+			"groups": {
+				"all": "すべて",
+				"speed": "倍速",
+				"playback": "再生",
+				"audio": "音量",
+				"view": "画面",
+				"subtitleQuality": "字幕・画質",
+				"page": "ページ"
+			},
+			"actions": {
+				"speed": {
+					"up": "再生速度を上げる",
+					"down": "再生速度を下げる",
+					"toggle": "指定倍速を切り替え",
+					"set": "固定倍速に設定",
+					"hold": "長押しで一時倍速"
+				},
+				"playback": {
+					"togglePlay": "再生 / 一時停止",
+					"seekForward": "指定秒数だけ早送り",
+					"seekBackward": "指定秒数だけ巻き戻し",
+					"frameNext": "次のフレーム",
+					"framePrev": "前のフレーム",
+					"restart": "最初から再生",
+					"toggleLoop": "ループ再生を切り替え",
+					"jumpToLive": "ライブの最新位置へ移動",
+					"prevVideo": "前の動画",
+					"nextVideo": "次の動画"
+				},
+				"audio": {
+					"toggleMute": "ミュート / ミュート解除",
+					"volumeUp": "音量を上げる",
+					"volumeDown": "音量を下げる",
+					"setVolume": "指定音量に設定",
+					"boosterToggle": "音量ブースターを切り替え",
+					"boosterUp": "音量ブースター倍率を上げる",
+					"boosterDown": "音量ブースター倍率を下げる"
+				},
+				"view": {
+					"toggleInPageFullscreen": "ページ内全画面を切り替え",
+					"toggleFullscreen": "全画面表示を切り替え",
+					"toggleTheater": "シアターモードを切り替え",
+					"togglePip": "ピクチャーインピクチャーを切り替え",
+					"toggleMiniPlayer": "ミニプレーヤーを切り替え",
+					"rotateCW": "時計回りに 90° 回転",
+					"rotateCCW": "反時計回りに 90° 回転",
+					"toggleMirror": "左右反転を切り替え",
+					"zoomIn": "動画を拡大",
+					"zoomOut": "動画を縮小",
+					"zoomReset": "動画ズームをリセット",
+					"resetTransform": "すべての画面変換をリセット",
+					"screenshot": "動画のスクリーンショットを撮影",
+					"toggleControls": "プレーヤー操作バーを表示 / 非表示"
+				},
+				"subtitle": {
+					"toggle": "字幕を切り替え",
+					"cycleTrack": "字幕言語を順に切り替え"
+				},
+				"quality": {
+					"set": "指定画質に切り替え",
+					"up": "画質を 1 段階上げる",
+					"down": "画質を 1 段階下げる"
+				},
+				"page": {
+					"copyUrlWithTime": "現在時刻付き動画 URL をコピー",
+					"copyUrl": "動画 URL をコピー",
+					"toggleComments": "コメント欄へ移動 / トップへ戻る",
+					"openThumbnail": "高解像度サムネイルを新しいタブで開く"
+				}
+			},
+			"native": {
+				"togglePlay": "再生/一時停止",
+				"seekBackward10": "10 秒戻す",
+				"seekForward10": "10 秒進む",
+				"mute": "ミュート",
+				"fullscreen": "全画面表示",
+				"theater": "シアターモード",
+				"miniPlayer": "ミニプレーヤー",
+				"subtitles": "字幕",
+				"seekBackward5": "5 秒戻す",
+				"seekForward5": "5 秒進む",
+				"volumeUp": "音量を上げる",
+				"volumeDown": "音量を下げる",
+				"framePrev": "前のフレーム",
+				"frameNext": "次のフレーム",
+				"speedDown": "再生速度を下げる",
+				"speedUp": "再生速度を上げる",
+				"nextVideo": "次の動画",
+				"prevVideo": "前の動画",
+				"search": "検索欄にフォーカス",
+				"seekStart": "先頭へ移動",
+				"seekEnd": "末尾へ移動"
+			}
 		}
 	},
 	"insights": {

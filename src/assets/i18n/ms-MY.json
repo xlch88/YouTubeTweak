@@ -292,6 +292,166 @@
 			"tips": {
 				"inject": "Applies to youtube.com pages after the textarea loses focus."
 			}
+		},
+		"shortcuts": {
+			"title": "Pintasan papan kekunci",
+			"checkbox": {
+				"enable": "Aktifkan pintasan papan kekunci tersuai"
+			},
+			"button": {
+				"add": "Tambah pintasan",
+				"cancel": "Batal",
+				"save": "Simpan perubahan",
+				"confirmAdd": "Tambah",
+				"clearAll": "Kosongkan semua",
+				"confirmClearAll": "Sahkan?"
+			},
+			"preset": {
+				"button": "Praset",
+				"title": "Praset disyorkan",
+				"speedControl": "Kawalan kelajuan",
+				"viewTools": "Alat paparan",
+				"playbackLoop": "Lompat & gelung",
+				"applied": "{count} pintasan praset ditambah",
+				"alreadyAdded": "Semua kekunci dalam praset ini sudah wujud"
+			},
+			"editor": {
+				"addTitle": "Pintasan baharu",
+				"editTitle": "Edit pintasan",
+				"keyLabel": "Kekunci pintasan",
+				"actionLabel": "Tindakan",
+				"clickToRecord": "Klik di sini dan tekan kekunci",
+				"pressKey": "Tekan kekunci… (Esc untuk batal)",
+				"clearKey": "Kosongkan kekunci",
+				"selectActionTitle": "Pilih tindakan",
+				"back": "Kembali",
+				"delete": "Padam",
+				"searchPlaceholder": "Cari tindakan…",
+				"noMatch": "Tiada tindakan sepadan"
+			},
+			"notice": {
+				"duplicate": "Kekunci ini bertindih dengan pintasan sedia ada \"{action}\".",
+				"nativeOverlap": "Bertindih dengan pintasan asal YouTube ({native}) dan akan mengatasinya apabila aktif."
+			},
+			"list": {
+				"toggle": "Togol pintasan",
+				"edit": "Edit",
+				"editKey": "Klik untuk tukar kekunci",
+				"remove": "Buang",
+				"conflict": "Pendua",
+				"conflictTitle": "Pintasan aktif lain menggunakan kekunci yang sama"
+			},
+			"empty": {
+				"title": "Tiada pintasan lagi",
+				"description": "Kawal kelajuan main balik, PiP, tangkapan skrin dan transformasi video daripada papan kekunci.",
+				"quickPreset": "Muat praset kelajuan (D / S / R / A)"
+			},
+			"tips": {
+				"inputSafe": "Pintasan satu kekunci diabaikan secara automatik semasa menaip dalam carian atau komen."
+			},
+			"param": {
+				"speedStep": "Langkah kelajuan",
+				"speed": "Kelajuan sasaran",
+				"seconds": "Saat lompatan",
+				"volume": "Nilai volum",
+				"quality": "Kualiti sasaran",
+				"qualityAuto": "Auto",
+				"followSpeedButtons": "Ikut butang kelajuan",
+				"followSpeedButtonsShort": "Ikut butang"
+			},
+			"groups": {
+				"all": "Semua",
+				"speed": "Kelajuan",
+				"playback": "Main balik",
+				"audio": "Audio",
+				"view": "Paparan",
+				"subtitleQuality": "Sarikata & kualiti",
+				"page": "Halaman"
+			},
+			"actions": {
+				"speed": {
+					"up": "Tingkatkan kelajuan",
+					"down": "Perlahankan kelajuan",
+					"toggle": "Togol kelajuan sasaran",
+					"set": "Tetapkan kelajuan main balik",
+					"hold": "Tahan untuk kelajuan sementara"
+				},
+				"playback": {
+					"togglePlay": "Main / Jeda",
+					"seekForward": "Lompat ke hadapan",
+					"seekBackward": "Lompat ke belakang",
+					"frameNext": "Bingkai seterusnya",
+					"framePrev": "Bingkai sebelumnya",
+					"restart": "Mulakan semula video",
+					"toggleLoop": "Togol gelung video",
+					"jumpToLive": "Lompat ke siaran langsung",
+					"prevVideo": "Video sebelumnya",
+					"nextVideo": "Video seterusnya"
+				},
+				"audio": {
+					"toggleMute": "Bisukan / Nyahbisu",
+					"volumeUp": "Tingkatkan volum",
+					"volumeDown": "Kurangkan volum",
+					"setVolume": "Tetapkan volum",
+					"boosterToggle": "Togol penguat volum",
+					"boosterUp": "Tingkatkan penguatan volum",
+					"boosterDown": "Kurangkan penguatan volum"
+				},
+				"view": {
+					"toggleInPageFullscreen": "Togol skrin penuh dalam halaman",
+					"toggleFullscreen": "Togol skrin penuh",
+					"toggleTheater": "Togol mod teater",
+					"togglePip": "Togol gambar dalam gambar",
+					"toggleMiniPlayer": "Togol pemain mini",
+					"rotateCW": "Putar video 90° ikut jam",
+					"rotateCCW": "Putar video 90° lawan jam",
+					"toggleMirror": "Togol cermin mendatar",
+					"zoomIn": "Zum masuk video",
+					"zoomOut": "Zum keluar video",
+					"zoomReset": "Set semula zum video",
+					"resetTransform": "Set semula semua transformasi video",
+					"screenshot": "Ambil tangkapan skrin video",
+					"toggleControls": "Sembunyi / Papar kawalan pemain"
+				},
+				"subtitle": {
+					"toggle": "Togol sarikata",
+					"cycleTrack": "Tukar bahasa sarikata"
+				},
+				"quality": {
+					"set": "Tetapkan kualiti video",
+					"up": "Tingkatkan kualiti video",
+					"down": "Kurangkan kualiti video"
+				},
+				"page": {
+					"copyUrlWithTime": "Salin URL video pada masa semasa",
+					"copyUrl": "Salin URL video",
+					"toggleComments": "Tatal ke komen / Kembali ke atas",
+					"openThumbnail": "Buka imej kecil resolusi penuh"
+				}
+			},
+			"native": {
+				"togglePlay": "Main/Jeda",
+				"seekBackward10": "Undur 10 saat",
+				"seekForward10": "Maju 10 saat",
+				"mute": "Bisu",
+				"fullscreen": "Skrin penuh",
+				"theater": "Mod teater",
+				"miniPlayer": "Pemain mini",
+				"subtitles": "Sarikata",
+				"seekBackward5": "Undur 5 saat",
+				"seekForward5": "Maju 5 saat",
+				"volumeUp": "Naikkan volum",
+				"volumeDown": "Turunkan volum",
+				"framePrev": "Bingkai sebelumnya",
+				"frameNext": "Bingkai seterusnya",
+				"speedDown": "Perlahankan",
+				"speedUp": "Lajukan",
+				"nextVideo": "Video seterusnya",
+				"prevVideo": "Video sebelumnya",
+				"search": "Fokus carian",
+				"seekStart": "Ke permulaan",
+				"seekEnd": "Ke penghujung"
+			}
 		}
 	},
 	"insights": {

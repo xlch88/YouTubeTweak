@@ -292,6 +292,166 @@
 			"tips": {
 				"inject": "Applies to youtube.com pages after the textarea loses focus."
 			}
+		},
+		"shortcuts": {
+			"title": "کی بورڈ شارٹ کٹس",
+			"checkbox": {
+				"enable": "اپنے مرضی دے کی بورڈ شارٹ کٹس فعال کرو"
+			},
+			"button": {
+				"add": "شارٹ کٹ شامل کرو",
+				"cancel": "منسوخ",
+				"save": "تبدیلیاں محفوظ کرو",
+				"confirmAdd": "شامل کرو",
+				"clearAll": "سب صاف کرو",
+				"confirmClearAll": "تصدیق کرو؟"
+			},
+			"preset": {
+				"button": "پری سیٹ",
+				"title": "تجویز کردہ پری سیٹ",
+				"speedControl": "رفتار دا کنٹرول",
+				"viewTools": "ویو ٹولز",
+				"playbackLoop": "اگے پچھے تے لوپ",
+				"applied": "{count} پری سیٹ شارٹ کٹس شامل کیتے گئے",
+				"alreadyAdded": "ایس پری سیٹ دیاں ساریاں کیز پہلاں توں موجود نیں"
+			},
+			"editor": {
+				"addTitle": "نواں شارٹ کٹ",
+				"editTitle": "شارٹ کٹ تبدیل کرو",
+				"keyLabel": "شارٹ کٹ کی",
+				"actionLabel": "عمل",
+				"clickToRecord": "ایتھے کلک کرو تے کوئی کی دباؤ",
+				"pressKey": "کوئی کی دباؤ… (منسوخ لئی Esc)",
+				"clearKey": "کی صاف کرو",
+				"selectActionTitle": "عمل چنو",
+				"back": "واپس",
+				"delete": "مٹاؤ",
+				"searchPlaceholder": "عمل لبھو…",
+				"noMatch": "کوئی ملدا جلدا عمل نہیں لبھیا"
+			},
+			"notice": {
+				"duplicate": "ایہہ کی موجودہ شارٹ کٹ \"{action}\" نال رلدی اے۔",
+				"nativeOverlap": "YouTube دے اصل شارٹ کٹ ({native}) نال رلدی اے تے فعال ہون تے اوہدی تھاں لوے گی۔"
+			},
+			"list": {
+				"toggle": "شارٹ کٹ چالو یا بند کرو",
+				"edit": "ترمیم",
+				"editKey": "کی بدلن لئی کلک کرو",
+				"remove": "ہٹاؤ",
+				"conflict": "ڈپلیکیٹ",
+				"conflictTitle": "اک ہور فعال شارٹ کٹ ایہو کی ورتدا اے"
+			},
+			"empty": {
+				"title": "اجے کوئی شارٹ کٹ نہیں",
+				"description": "کی بورڈ توں پلے بیک دی رفتار، PiP، سکرین شاٹ تے ویڈیو دیاں تبدیلیاں کنٹرول کرو۔",
+				"quickPreset": "رفتار دا پری سیٹ لوڈ کرو (D / S / R / A)"
+			},
+			"tips": {
+				"inputSafe": "سرچ یا کمنٹ باکس وچ لکھدے ویلے اک کی والے شارٹ کٹ اپنے آپ نظر انداز ہو جاندے نیں۔"
+			},
+			"param": {
+				"speedStep": "رفتار دا قدم",
+				"speed": "مطلوبہ رفتار",
+				"seconds": "چھال دے سیکنڈ",
+				"volume": "والیوم دی مقدار",
+				"quality": "مطلوبہ کوالٹی",
+				"qualityAuto": "خودکار",
+				"followSpeedButtons": "رفتار دے بٹناں مطابق",
+				"followSpeedButtonsShort": "بٹناں مطابق"
+			},
+			"groups": {
+				"all": "سارے",
+				"speed": "رفتار",
+				"playback": "پلے بیک",
+				"audio": "آواز",
+				"view": "منظر",
+				"subtitleQuality": "سب ٹائٹل/کوالٹی",
+				"page": "صفحہ"
+			},
+			"actions": {
+				"speed": {
+					"up": "رفتار ودھاؤ",
+					"down": "رفتار گھٹاؤ",
+					"toggle": "مطلوبہ رفتار بدلو",
+					"set": "پلے بیک دی رفتار مقرر کرو",
+					"hold": "عارضی رفتار لئی دبا کے رکھو"
+				},
+				"playback": {
+					"togglePlay": "چلاؤ / روکو",
+					"seekForward": "اگے کرو",
+					"seekBackward": "پچھے کرو",
+					"frameNext": "اگلا فریم",
+					"framePrev": "پچھلا فریم",
+					"restart": "ویڈیو شروع توں چلاؤ",
+					"toggleLoop": "ویڈیو لوپ چالو / بند کرو",
+					"jumpToLive": "لائیو نقطے تے جاؤ",
+					"prevVideo": "پچھلی ویڈیو",
+					"nextVideo": "اگلی ویڈیو"
+				},
+				"audio": {
+					"toggleMute": "آواز بند / چالو",
+					"volumeUp": "والیوم ودھاؤ",
+					"volumeDown": "والیوم گھٹاؤ",
+					"setVolume": "والیوم مقرر کرو",
+					"boosterToggle": "والیوم بوسٹر چالو / بند کرو",
+					"boosterUp": "والیوم بوسٹ ودھاؤ",
+					"boosterDown": "والیوم بوسٹ گھٹاؤ"
+				},
+				"view": {
+					"toggleInPageFullscreen": "صفحے وچ پوری سکرین چالو / بند کرو",
+					"toggleFullscreen": "پوری سکرین چالو / بند کرو",
+					"toggleTheater": "تھیٹر موڈ چالو / بند کرو",
+					"togglePip": "پکچر ان پکچر چالو / بند کرو",
+					"toggleMiniPlayer": "منی پلیئر چالو / بند کرو",
+					"rotateCW": "ویڈیو نوں گھڑی دی سمت 90° گھماؤ",
+					"rotateCCW": "ویڈیو نوں گھڑی دی الٹ سمت 90° گھماؤ",
+					"toggleMirror": "افقی عکس چالو / بند کرو",
+					"zoomIn": "ویڈیو زوم ان کرو",
+					"zoomOut": "ویڈیو زوم آؤٹ کرو",
+					"zoomReset": "ویڈیو زوم ری سیٹ کرو",
+					"resetTransform": "ویڈیو دیاں ساریاں تبدیلیاں ری سیٹ کرو",
+					"screenshot": "ویڈیو دا سکرین شاٹ لوو",
+					"toggleControls": "پلیئر کنٹرول لکاؤ / وکھاؤ"
+				},
+				"subtitle": {
+					"toggle": "سب ٹائٹل چالو / بند کرو",
+					"cycleTrack": "سب ٹائٹل دی زبان بدلو"
+				},
+				"quality": {
+					"set": "ویڈیو کوالٹی مقرر کرو",
+					"up": "ویڈیو کوالٹی ودھاؤ",
+					"down": "ویڈیو کوالٹی گھٹاؤ"
+				},
+				"page": {
+					"copyUrlWithTime": "موجودہ ویلے نال ویڈیو URL کاپی کرو",
+					"copyUrl": "ویڈیو URL کاپی کرو",
+					"toggleComments": "کمنٹس ول جاؤ / اتے واپس جاؤ",
+					"openThumbnail": "پوری ریزولوشن والا تھمب نیل کھولو"
+				}
+			},
+			"native": {
+				"togglePlay": "چلاؤ/روکو",
+				"seekBackward10": "10 سیکنڈ پچھے",
+				"seekForward10": "10 سیکنڈ اگے",
+				"mute": "آواز بند",
+				"fullscreen": "پوری سکرین",
+				"theater": "تھیٹر موڈ",
+				"miniPlayer": "منی پلیئر",
+				"subtitles": "سب ٹائٹل",
+				"seekBackward5": "5 سیکنڈ پچھے",
+				"seekForward5": "5 سیکنڈ اگے",
+				"volumeUp": "والیوم ودھاؤ",
+				"volumeDown": "والیوم گھٹاؤ",
+				"framePrev": "پچھلا فریم",
+				"frameNext": "اگلا فریم",
+				"speedDown": "ہولی کرو",
+				"speedUp": "تیز کرو",
+				"nextVideo": "اگلی ویڈیو",
+				"prevVideo": "پچھلی ویڈیو",
+				"search": "سرچ تے فوکس",
+				"seekStart": "شروع تے جاؤ",
+				"seekEnd": "آخر تے جاؤ"
+			}
 		}
 	},
 	"insights": {

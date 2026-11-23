@@ -292,6 +292,166 @@
 			"tips": {
 				"inject": "Applies to youtube.com pages after the textarea loses focus."
 			}
+		},
+		"shortcuts": {
+			"title": "Phím tắt",
+			"checkbox": {
+				"enable": "Bật phím tắt tùy chỉnh"
+			},
+			"button": {
+				"add": "Thêm phím tắt",
+				"cancel": "Hủy",
+				"save": "Lưu thay đổi",
+				"confirmAdd": "Thêm",
+				"clearAll": "Xóa tất cả",
+				"confirmClearAll": "Xác nhận xóa?"
+			},
+			"preset": {
+				"button": "Bộ mẫu",
+				"title": "Bộ phím tắt gợi ý",
+				"speedControl": "Điều khiển tốc độ",
+				"viewTools": "Công cụ hiển thị",
+				"playbackLoop": "Tua và lặp lại",
+				"applied": "Đã thêm {count} phím tắt mẫu",
+				"alreadyAdded": "Tất cả phím trong bộ mẫu này đã tồn tại"
+			},
+			"editor": {
+				"addTitle": "Phím tắt mới",
+				"editTitle": "Chỉnh sửa phím tắt",
+				"keyLabel": "Phím tắt",
+				"actionLabel": "Hành động",
+				"clickToRecord": "Nhấp vào đây rồi nhấn phím",
+				"pressKey": "Nhấn phím… (Esc để hủy)",
+				"clearKey": "Xóa phím",
+				"selectActionTitle": "Chọn hành động",
+				"back": "Quay lại",
+				"delete": "Xóa",
+				"searchPlaceholder": "Tìm hành động…",
+				"noMatch": "Không có hành động phù hợp"
+			},
+			"notice": {
+				"duplicate": "Phím này trùng với phím tắt \"{action}\" đã có.",
+				"nativeOverlap": "Trùng với phím tắt gốc của YouTube ({native}) và sẽ ghi đè khi đang bật."
+			},
+			"list": {
+				"toggle": "Bật hoặc tắt phím tắt này",
+				"edit": "Sửa",
+				"editKey": "Nhấp để đổi phím tắt",
+				"remove": "Xóa",
+				"conflict": "Trùng lặp",
+				"conflictTitle": "Một phím tắt đang bật khác dùng cùng phím này"
+			},
+			"empty": {
+				"title": "Chưa có phím tắt nào",
+				"description": "Điều khiển tốc độ phát, PiP, chụp ảnh và biến đổi khung hình nhanh bằng bàn phím.",
+				"quickPreset": "Tải bộ phím tốc độ (D / S / R / A)"
+			},
+			"tips": {
+				"inputSafe": "Phím tắt đơn sẽ tự động tạm bỏ qua khi bạn đang nhập trong ô tìm kiếm hoặc bình luận."
+			},
+			"param": {
+				"speedStep": "Bước tốc độ",
+				"speed": "Tốc độ mục tiêu",
+				"seconds": "Số giây tua",
+				"volume": "Mức âm lượng",
+				"quality": "Chất lượng mục tiêu",
+				"qualityAuto": "Tự động",
+				"followSpeedButtons": "Theo nút tốc độ",
+				"followSpeedButtonsShort": "Theo nút"
+			},
+			"groups": {
+				"all": "Tất cả",
+				"speed": "Tốc độ",
+				"playback": "Phát",
+				"audio": "Âm thanh",
+				"view": "Hiển thị",
+				"subtitleQuality": "Phụ đề & CL",
+				"page": "Trang"
+			},
+			"actions": {
+				"speed": {
+					"up": "Tăng tốc độ phát",
+					"down": "Giảm tốc độ phát",
+					"toggle": "Chuyển đổi tốc độ mục tiêu",
+					"set": "Đặt tốc độ cố định",
+					"hold": "Giữ phím để tăng tốc tạm thời"
+				},
+				"playback": {
+					"togglePlay": "Phát / Tạm dừng",
+					"seekForward": "Tua tới",
+					"seekBackward": "Tua lùi",
+					"frameNext": "Khung hình tiếp theo",
+					"framePrev": "Khung hình trước",
+					"restart": "Phát lại từ đầu",
+					"toggleLoop": "Bật / tắt lặp lại video",
+					"jumpToLive": "Nhảy tới thời điểm trực tiếp",
+					"prevVideo": "Video trước",
+					"nextVideo": "Video tiếp theo"
+				},
+				"audio": {
+					"toggleMute": "Tắt tiếng / Bật tiếng",
+					"volumeUp": "Tăng âm lượng",
+					"volumeDown": "Giảm âm lượng",
+					"setVolume": "Đặt mức âm lượng",
+					"boosterToggle": "Bật / tắt bộ tăng âm lượng",
+					"boosterUp": "Tăng mức khuếch đại âm lượng",
+					"boosterDown": "Giảm mức khuếch đại âm lượng"
+				},
+				"view": {
+					"toggleInPageFullscreen": "Bật / tắt toàn màn hình trong trang",
+					"toggleFullscreen": "Bật / tắt toàn màn hình",
+					"toggleTheater": "Bật / tắt chế độ rạp chiếu phim",
+					"togglePip": "Bật / tắt hình trong hình",
+					"toggleMiniPlayer": "Bật / tắt trình phát mini",
+					"rotateCW": "Xoay video 90° theo chiều kim đồng hồ",
+					"rotateCCW": "Xoay video 90° ngược chiều kim đồng hồ",
+					"toggleMirror": "Bật / tắt lật gương ngang",
+					"zoomIn": "Phóng to video",
+					"zoomOut": "Thu nhỏ video",
+					"zoomReset": "Đặt lại thu phóng video",
+					"resetTransform": "Đặt lại toàn bộ biến đổi video",
+					"screenshot": "Chụp ảnh màn hình video",
+					"toggleControls": "Ẩn / Hiện thanh điều khiển trình phát"
+				},
+				"subtitle": {
+					"toggle": "Bật / tắt phụ đề",
+					"cycleTrack": "Chuyển đổi ngôn ngữ phụ đề"
+				},
+				"quality": {
+					"set": "Đặt chất lượng video",
+					"up": "Tăng chất lượng video",
+					"down": "Giảm chất lượng video"
+				},
+				"page": {
+					"copyUrlWithTime": "Sao chép URL video kèm mốc thời gian",
+					"copyUrl": "Sao chép URL video",
+					"toggleComments": "Cuộn tới bình luận / Về đầu trang",
+					"openThumbnail": "Mở ảnh thu nhỏ độ phân giải cao"
+				}
+			},
+			"native": {
+				"togglePlay": "Phát/Tạm dừng",
+				"seekBackward10": "Tua lùi 10 giây",
+				"seekForward10": "Tua tới 10 giây",
+				"mute": "Tắt tiếng",
+				"fullscreen": "Toàn màn hình",
+				"theater": "Chế độ rạp chiếu phim",
+				"miniPlayer": "Trình phát mini",
+				"subtitles": "Phụ đề",
+				"seekBackward5": "Tua lùi 5 giây",
+				"seekForward5": "Tua tới 5 giây",
+				"volumeUp": "Tăng âm lượng",
+				"volumeDown": "Giảm âm lượng",
+				"framePrev": "Khung hình trước",
+				"frameNext": "Khung hình tiếp theo",
+				"speedDown": "Chậm hơn",
+				"speedUp": "Nhanh hơn",
+				"nextVideo": "Video tiếp theo",
+				"prevVideo": "Video trước",
+				"search": "Đặt con trỏ vào ô tìm kiếm",
+				"seekStart": "Về đầu video",
+				"seekEnd": "Đến cuối video"
+			}
 		}
 	},
 	"insights": {

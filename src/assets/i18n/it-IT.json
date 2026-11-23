@@ -292,6 +292,166 @@
 			"tips": {
 				"inject": "Applies to youtube.com pages after the textarea loses focus."
 			}
+		},
+		"shortcuts": {
+			"title": "Scorciatoie da tastiera",
+			"checkbox": {
+				"enable": "Attiva scorciatoie da tastiera personalizzate"
+			},
+			"button": {
+				"add": "Aggiungi scorciatoia",
+				"cancel": "Annulla",
+				"save": "Salva modifiche",
+				"confirmAdd": "Aggiungi",
+				"clearAll": "Cancella tutto",
+				"confirmClearAll": "Confermi?"
+			},
+			"preset": {
+				"button": "Predefiniti",
+				"title": "Predefiniti consigliati",
+				"speedControl": "Controllo velocità",
+				"viewTools": "Strumenti vista",
+				"playbackLoop": "Ricerca e loop",
+				"applied": "Aggiunte {count} scorciatoie predefinite",
+				"alreadyAdded": "Tutti i tasti di questo predefinito esistono già"
+			},
+			"editor": {
+				"addTitle": "Nuova scorciatoia",
+				"editTitle": "Modifica scorciatoia",
+				"keyLabel": "Tasto scorciatoia",
+				"actionLabel": "Azione",
+				"clickToRecord": "Fai clic qui e premi un tasto",
+				"pressKey": "Premi un tasto… (Esc per annullare)",
+				"clearKey": "Cancella tasto",
+				"selectActionTitle": "Seleziona azione",
+				"back": "Indietro",
+				"delete": "Elimina",
+				"searchPlaceholder": "Cerca azioni…",
+				"noMatch": "Nessuna azione trovata"
+			},
+			"notice": {
+				"duplicate": "Questo tasto è già usato dalla scorciatoia «{action}».",
+				"nativeOverlap": "Si sovrappone alla scorciatoia nativa di YouTube ({native}) e la sostituirà quando attiva."
+			},
+			"list": {
+				"toggle": "Attiva o disattiva scorciatoia",
+				"edit": "Modifica",
+				"editKey": "Fai clic per cambiare tasto",
+				"remove": "Rimuovi",
+				"conflict": "Duplicato",
+				"conflictTitle": "Un'altra scorciatoia attiva usa lo stesso tasto"
+			},
+			"empty": {
+				"title": "Nessuna scorciatoia",
+				"description": "Controlla velocità, Picture-in-Picture, screenshot e trasformazioni video dalla tastiera.",
+				"quickPreset": "Carica predefinito velocità (D / S / R / A)"
+			},
+			"tips": {
+				"inputSafe": "Le scorciatoie a tasto singolo vengono ignorate automaticamente mentre scrivi nella ricerca o nei commenti."
+			},
+			"param": {
+				"speedStep": "Passo velocità",
+				"speed": "Velocità target",
+				"seconds": "Secondi di salto",
+				"volume": "Livello volume",
+				"quality": "Qualità target",
+				"qualityAuto": "Auto",
+				"followSpeedButtons": "Segui pulsanti velocità",
+				"followSpeedButtonsShort": "Come pulsanti"
+			},
+			"groups": {
+				"all": "Tutto",
+				"speed": "Velocità",
+				"playback": "Riproduzione",
+				"audio": "Audio",
+				"view": "Vista",
+				"subtitleQuality": "Sott. e qualità",
+				"page": "Pagina"
+			},
+			"actions": {
+				"speed": {
+					"up": "Aumenta velocità",
+					"down": "Riduci velocità",
+					"toggle": "Alterna velocità target",
+					"set": "Imposta velocità di riproduzione",
+					"hold": "Tieni premuto per velocità temporanea"
+				},
+				"playback": {
+					"togglePlay": "Riproduci / Pausa",
+					"seekForward": "Avanti",
+					"seekBackward": "Indietro",
+					"frameNext": "Fotogramma successivo",
+					"framePrev": "Fotogramma precedente",
+					"restart": "Riavvia video",
+					"toggleLoop": "Attiva/disattiva loop video",
+					"jumpToLive": "Vai al punto live",
+					"prevVideo": "Video precedente",
+					"nextVideo": "Video successivo"
+				},
+				"audio": {
+					"toggleMute": "Disattiva / Riattiva audio",
+					"volumeUp": "Alza volume",
+					"volumeDown": "Abbassa volume",
+					"setVolume": "Imposta volume",
+					"boosterToggle": "Attiva/disattiva amplificatore volume",
+					"boosterUp": "Aumenta amplificazione volume",
+					"boosterDown": "Riduci amplificazione volume"
+				},
+				"view": {
+					"toggleInPageFullscreen": "Attiva/disattiva schermo intero nella pagina",
+					"toggleFullscreen": "Attiva/disattiva schermo intero",
+					"toggleTheater": "Attiva/disattiva modalità cinema",
+					"togglePip": "Attiva/disattiva Picture-in-Picture",
+					"toggleMiniPlayer": "Attiva/disattiva mini player",
+					"rotateCW": "Ruota video di 90° in senso orario",
+					"rotateCCW": "Ruota video di 90° in senso antiorario",
+					"toggleMirror": "Attiva/disattiva specchio orizzontale",
+					"zoomIn": "Ingrandisci video",
+					"zoomOut": "Rimpicciolisci video",
+					"zoomReset": "Ripristina zoom video",
+					"resetTransform": "Ripristina tutte le trasformazioni",
+					"screenshot": "Cattura screenshot del video",
+					"toggleControls": "Nascondi / Mostra controlli del player"
+				},
+				"subtitle": {
+					"toggle": "Attiva / Disattiva sottotitoli",
+					"cycleTrack": "Cambia lingua sottotitoli"
+				},
+				"quality": {
+					"set": "Imposta qualità video",
+					"up": "Aumenta qualità video",
+					"down": "Riduci qualità video"
+				},
+				"page": {
+					"copyUrlWithTime": "Copia URL video al tempo corrente",
+					"copyUrl": "Copia URL video",
+					"toggleComments": "Scorri ai commenti / Torna in alto",
+					"openThumbnail": "Apri miniatura a piena risoluzione"
+				}
+			},
+			"native": {
+				"togglePlay": "Riproduci/Pausa",
+				"seekBackward10": "Indietro di 10 s",
+				"seekForward10": "Avanti di 10 s",
+				"mute": "Muto",
+				"fullscreen": "Schermo intero",
+				"theater": "Modalità cinema",
+				"miniPlayer": "Mini player",
+				"subtitles": "Sottotitoli",
+				"seekBackward5": "Indietro di 5 s",
+				"seekForward5": "Avanti di 5 s",
+				"volumeUp": "Alza volume",
+				"volumeDown": "Abbassa volume",
+				"framePrev": "Fotogramma precedente",
+				"frameNext": "Fotogramma successivo",
+				"speedDown": "Più lento",
+				"speedUp": "Più veloce",
+				"nextVideo": "Video successivo",
+				"prevVideo": "Video precedente",
+				"search": "Focus sulla ricerca",
+				"seekStart": "Vai all'inizio",
+				"seekEnd": "Vai alla fine"
+			}
 		}
 	},
 	"insights": {

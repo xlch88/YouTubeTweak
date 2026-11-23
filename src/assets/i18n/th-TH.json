@@ -292,6 +292,166 @@
 			"tips": {
 				"inject": "Applies to youtube.com pages after the textarea loses focus."
 			}
+		},
+		"shortcuts": {
+			"title": "แป้นพิมพ์ลัด",
+			"checkbox": {
+				"enable": "เปิดใช้แป้นพิมพ์ลัดที่กำหนดเอง"
+			},
+			"button": {
+				"add": "เพิ่มแป้นลัด",
+				"cancel": "ยกเลิก",
+				"save": "บันทึกการเปลี่ยนแปลง",
+				"confirmAdd": "เพิ่ม",
+				"clearAll": "ล้างทั้งหมด",
+				"confirmClearAll": "ยืนยันการล้าง?"
+			},
+			"preset": {
+				"button": "พรีเซ็ต",
+				"title": "พรีเซ็ตที่แนะนำ",
+				"speedControl": "ควบคุมความเร็ว",
+				"viewTools": "เครื่องมือมุมมอง",
+				"playbackLoop": "ข้ามเวลาและวนซ้ำ",
+				"applied": "เพิ่มแป้นลัดจากพรีเซ็ต {count} รายการแล้ว",
+				"alreadyAdded": "ปุ่มทั้งหมดในพรีเซ็ตนี้มีอยู่แล้ว"
+			},
+			"editor": {
+				"addTitle": "แป้นลัดใหม่",
+				"editTitle": "แก้ไขแป้นลัด",
+				"keyLabel": "ปุ่มลัด",
+				"actionLabel": "การทำงาน",
+				"clickToRecord": "คลิกที่นี่แล้วกดปุ่ม",
+				"pressKey": "กดปุ่ม… (กด Esc เพื่อยกเลิก)",
+				"clearKey": "ล้างปุ่ม",
+				"selectActionTitle": "เลือกการทำงาน",
+				"back": "กลับ",
+				"delete": "ลบ",
+				"searchPlaceholder": "ค้นหาการทำงาน…",
+				"noMatch": "ไม่พบการทำงานที่ตรงกัน"
+			},
+			"notice": {
+				"duplicate": "ปุ่มนี้ซ้ำกับแป้นลัดที่มีอยู่แล้ว \"{action}\"",
+				"nativeOverlap": "ซ้ำกับแป้นลัดเดิมของ YouTube ({native}) และจะใช้แทนเมื่อเปิดใช้งาน"
+			},
+			"list": {
+				"toggle": "เปิดหรือปิดแป้นลัดนี้",
+				"edit": "แก้ไข",
+				"editKey": "คลิกเพื่อเปลี่ยนปุ่มลัด",
+				"remove": "ลบ",
+				"conflict": "ซ้ำ",
+				"conflictTitle": "มีแป้นลัดอื่นที่เปิดใช้อยู่ใช้ปุ่มเดียวกัน"
+			},
+			"empty": {
+				"title": "ยังไม่มีแป้นลัด",
+				"description": "ควบคุมความเร็วการเล่น ภาพซ้อนภาพ จับภาพหน้าจอ และการปรับภาพวิดีโอได้ทันทีจากแป้นพิมพ์",
+				"quickPreset": "โหลดพรีเซ็ตความเร็ว (D / S / R / A)"
+			},
+			"tips": {
+				"inputSafe": "แป้นลัดปุ่มเดียวจะถูกข้ามโดยอัตโนมัติเมื่อพิมพ์ในช่องค้นหาหรือช่องแสดงความคิดเห็น"
+			},
+			"param": {
+				"speedStep": "ขั้นความเร็ว",
+				"speed": "ความเร็วเป้าหมาย",
+				"seconds": "วินาทีที่ข้าม",
+				"volume": "ระดับเสียง",
+				"quality": "คุณภาพเป้าหมาย",
+				"qualityAuto": "อัตโนมัติ",
+				"followSpeedButtons": "ตามปุ่มความเร็ว",
+				"followSpeedButtonsShort": "ตามปุ่ม"
+			},
+			"groups": {
+				"all": "ทั้งหมด",
+				"speed": "ความเร็ว",
+				"playback": "การเล่น",
+				"audio": "เสียง",
+				"view": "มุมมอง",
+				"subtitleQuality": "คำบรรยาย/คุณภาพ",
+				"page": "หน้าเว็บ"
+			},
+			"actions": {
+				"speed": {
+					"up": "เพิ่มความเร็วการเล่น",
+					"down": "ลดความเร็วการเล่น",
+					"toggle": "สลับความเร็วเป้าหมาย",
+					"set": "ตั้งความเร็วการเล่น",
+					"hold": "กดค้างเพื่อเปลี่ยนความเร็วชั่วคราว"
+				},
+				"playback": {
+					"togglePlay": "เล่น / หยุดชั่วคราว",
+					"seekForward": "กรอไปข้างหน้า",
+					"seekBackward": "กรอย้อนกลับ",
+					"frameNext": "เฟรมถัดไป",
+					"framePrev": "เฟรมก่อนหน้า",
+					"restart": "เริ่มเล่นวิดีโอใหม่",
+					"toggleLoop": "สลับการเล่นวนซ้ำ",
+					"jumpToLive": "ข้ามไปยังจุดถ่ายทอดสดล่าสุด",
+					"prevVideo": "วิดีโอก่อนหน้า",
+					"nextVideo": "วิดีโอถัดไป"
+				},
+				"audio": {
+					"toggleMute": "ปิดเสียง / เปิดเสียง",
+					"volumeUp": "เพิ่มเสียง",
+					"volumeDown": "ลดเสียง",
+					"setVolume": "ตั้งระดับเสียง",
+					"boosterToggle": "สลับตัวเพิ่มเสียง",
+					"boosterUp": "เพิ่มระดับตัวเพิ่มเสียง",
+					"boosterDown": "ลดระดับตัวเพิ่มเสียง"
+				},
+				"view": {
+					"toggleInPageFullscreen": "สลับเต็มหน้าจอภายในหน้า",
+					"toggleFullscreen": "สลับเต็มหน้าจอ",
+					"toggleTheater": "สลับโหมดโรงภาพยนตร์",
+					"togglePip": "สลับภาพซ้อนภาพ",
+					"toggleMiniPlayer": "สลับมินิเพลเยอร์",
+					"rotateCW": "หมุนวิดีโอ 90° ตามเข็มนาฬิกา",
+					"rotateCCW": "หมุนวิดีโอ 90° ทวนเข็มนาฬิกา",
+					"toggleMirror": "สลับกลับด้านกระจกแนวนอน",
+					"zoomIn": "ขยายภาพวิดีโอ",
+					"zoomOut": "ย่อภาพวิดีโอ",
+					"zoomReset": "รีเซ็ตการซูมวิดีโอ",
+					"resetTransform": "รีเซ็ตการปรับภาพทั้งหมด",
+					"screenshot": "จับภาพหน้าจอวิดีโอ",
+					"toggleControls": "ซ่อน / แสดงแถบควบคุมตัวเล่น"
+				},
+				"subtitle": {
+					"toggle": "สลับคำบรรยาย",
+					"cycleTrack": "สลับภาษาคำบรรยาย"
+				},
+				"quality": {
+					"set": "ตั้งคุณภาพวิดีโอ",
+					"up": "เพิ่มคุณภาพวิดีโอ",
+					"down": "ลดคุณภาพวิดีโอ"
+				},
+				"page": {
+					"copyUrlWithTime": "คัดลอก URL วิดีโอพร้อมเวลาปัจจุบัน",
+					"copyUrl": "คัดลอก URL วิดีโอ",
+					"toggleComments": "เลื่อนไปความคิดเห็น / กลับด้านบน",
+					"openThumbnail": "เปิดภาพปกความละเอียดเต็ม"
+				}
+			},
+			"native": {
+				"togglePlay": "เล่น/หยุดชั่วคราว",
+				"seekBackward10": "ย้อนกลับ 10 วิ",
+				"seekForward10": "ไปข้างหน้า 10 วิ",
+				"mute": "ปิดเสียง",
+				"fullscreen": "เต็มหน้าจอ",
+				"theater": "โหมดโรงภาพยนตร์",
+				"miniPlayer": "มินิเพลเยอร์",
+				"subtitles": "คำบรรยาย",
+				"seekBackward5": "ย้อนกลับ 5 วิ",
+				"seekForward5": "ไปข้างหน้า 5 วิ",
+				"volumeUp": "เพิ่มเสียง",
+				"volumeDown": "ลดเสียง",
+				"framePrev": "เฟรมก่อนหน้า",
+				"frameNext": "เฟรมถัดไป",
+				"speedDown": "ช้าลง",
+				"speedUp": "เร็วขึ้น",
+				"nextVideo": "วิดีโอถัดไป",
+				"prevVideo": "วิดีโอก่อนหน้า",
+				"search": "โฟกัสช่องค้นหา",
+				"seekStart": "ไปจุดเริ่มต้น",
+				"seekEnd": "ไปจุดสิ้นสุด"
+			}
 		}
 	},
 	"insights": {

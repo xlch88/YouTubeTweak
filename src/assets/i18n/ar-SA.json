@@ -292,6 +292,166 @@
 			"tips": {
 				"inject": "Applies to youtube.com pages after the textarea loses focus."
 			}
+		},
+		"shortcuts": {
+			"title": "اختصارات لوحة المفاتيح",
+			"checkbox": {
+				"enable": "تفعيل اختصارات لوحة المفاتيح المخصصة"
+			},
+			"button": {
+				"add": "إضافة اختصار",
+				"cancel": "إلغاء",
+				"save": "حفظ التغييرات",
+				"confirmAdd": "إضافة",
+				"clearAll": "مسح الكل",
+				"confirmClearAll": "تأكيد المسح؟"
+			},
+			"preset": {
+				"button": "قوالب",
+				"title": "قوالب مقترحة",
+				"speedControl": "التحكم في السرعة",
+				"viewTools": "أدوات العرض",
+				"playbackLoop": "التقديم والتكرار",
+				"applied": "تمت إضافة {count} اختصارات من القالب",
+				"alreadyAdded": "جميع المفاتيح في هذا القالب موجودة بالفعل"
+			},
+			"editor": {
+				"addTitle": "اختصار جديد",
+				"editTitle": "تعديل الاختصار",
+				"keyLabel": "مفتاح الاختصار",
+				"actionLabel": "الإجراء",
+				"clickToRecord": "انقر هنا ثم اضغط على مفتاح",
+				"pressKey": "اضغط على مفتاح… (Esc للإلغاء)",
+				"clearKey": "مسح المفتاح",
+				"selectActionTitle": "اختر إجراءً",
+				"back": "رجوع",
+				"delete": "حذف",
+				"searchPlaceholder": "ابحث عن إجراء…",
+				"noMatch": "لا توجد إجراءات مطابقة"
+			},
+			"notice": {
+				"duplicate": "هذا المفتاح مكرر مع الاختصار الحالي «{action}».",
+				"nativeOverlap": "يتداخل مع اختصار YouTube الأصلي ({native}) وسيحل محله عند التفعيل."
+			},
+			"list": {
+				"toggle": "تفعيل أو تعطيل الاختصار",
+				"edit": "تعديل",
+				"editKey": "انقر لتغيير المفتاح",
+				"remove": "إزالة",
+				"conflict": "مكرر",
+				"conflictTitle": "يوجد اختصار مفعّل آخر يستخدم المفتاح نفسه"
+			},
+			"empty": {
+				"title": "لا توجد اختصارات بعد",
+				"description": "تحكّم في سرعة التشغيل ووضع صورة داخل صورة واللقطات وتحويلات الفيديو من لوحة المفاتيح.",
+				"quickPreset": "تحميل قالب السرعة (D / S / R / A)"
+			},
+			"tips": {
+				"inputSafe": "يتم تجاهل اختصارات المفتاح الواحد تلقائيًا أثناء الكتابة في البحث أو التعليقات."
+			},
+			"param": {
+				"speedStep": "مقدار تغيّر السرعة",
+				"speed": "السرعة المستهدفة",
+				"seconds": "ثواني التخطي",
+				"volume": "قيمة الصوت",
+				"quality": "الجودة المستهدفة",
+				"qualityAuto": "تلقائي",
+				"followSpeedButtons": "اتباع أزرار السرعة",
+				"followSpeedButtonsShort": "حسب الأزرار"
+			},
+			"groups": {
+				"all": "الكل",
+				"speed": "السرعة",
+				"playback": "التشغيل",
+				"audio": "الصوت",
+				"view": "العرض",
+				"subtitleQuality": "الترجمة والجودة",
+				"page": "الصفحة"
+			},
+			"actions": {
+				"speed": {
+					"up": "زيادة سرعة التشغيل",
+					"down": "تقليل سرعة التشغيل",
+					"toggle": "تبديل السرعة المستهدفة",
+					"set": "تعيين سرعة التشغيل",
+					"hold": "الضغط المطول لسرعة مؤقتة"
+				},
+				"playback": {
+					"togglePlay": "تشغيل / إيقاف مؤقت",
+					"seekForward": "التقديم للأمام",
+					"seekBackward": "الرجوع للخلف",
+					"frameNext": "الإطار التالي",
+					"framePrev": "الإطار السابق",
+					"restart": "إعادة تشغيل الفيديو",
+					"toggleLoop": "تبديل تكرار الفيديو",
+					"jumpToLive": "الانتقال إلى البث المباشر الحالي",
+					"prevVideo": "الفيديو السابق",
+					"nextVideo": "الفيديو التالي"
+				},
+				"audio": {
+					"toggleMute": "كتم / إلغاء كتم الصوت",
+					"volumeUp": "رفع الصوت",
+					"volumeDown": "خفض الصوت",
+					"setVolume": "تعيين مستوى الصوت",
+					"boosterToggle": "تبديل معزز الصوت",
+					"boosterUp": "زيادة تعزيز الصوت",
+					"boosterDown": "تقليل تعزيز الصوت"
+				},
+				"view": {
+					"toggleInPageFullscreen": "تبديل ملء الشاشة داخل الصفحة",
+					"toggleFullscreen": "تبديل ملء الشاشة",
+					"toggleTheater": "تبديل وضع المسرح",
+					"togglePip": "تبديل صورة داخل صورة",
+					"toggleMiniPlayer": "تبديل المشغل المصغر",
+					"rotateCW": "تدوير الفيديو 90° مع عقارب الساعة",
+					"rotateCCW": "تدوير الفيديو 90° عكس عقارب الساعة",
+					"toggleMirror": "تبديل عكس الفيديو أفقيًا",
+					"zoomIn": "تكبير الفيديو",
+					"zoomOut": "تصغير الفيديو",
+					"zoomReset": "إعادة تعيين تكبير الفيديو",
+					"resetTransform": "إعادة تعيين جميع تحويلات الفيديو",
+					"screenshot": "التقاط لقطة شاشة للفيديو",
+					"toggleControls": "إخفاء / إظهار عناصر تحكم المشغل"
+				},
+				"subtitle": {
+					"toggle": "تبديل الترجمة",
+					"cycleTrack": "التبديل بين لغات الترجمة"
+				},
+				"quality": {
+					"set": "تعيين جودة الفيديو",
+					"up": "رفع جودة الفيديو",
+					"down": "خفض جودة الفيديو"
+				},
+				"page": {
+					"copyUrlWithTime": "نسخ رابط الفيديو بالوقت الحالي",
+					"copyUrl": "نسخ رابط الفيديو",
+					"toggleComments": "التمرير إلى التعليقات / العودة للأعلى",
+					"openThumbnail": "فتح الصورة المصغرة بالدقة الكاملة"
+				}
+			},
+			"native": {
+				"togglePlay": "تشغيل/إيقاف مؤقت",
+				"seekBackward10": "الرجوع 10 ثوانٍ",
+				"seekForward10": "التقديم 10 ثوانٍ",
+				"mute": "كتم الصوت",
+				"fullscreen": "ملء الشاشة",
+				"theater": "وضع المسرح",
+				"miniPlayer": "مشغل مصغر",
+				"subtitles": "الترجمة",
+				"seekBackward5": "الرجوع 5 ثوانٍ",
+				"seekForward5": "التقديم 5 ثوانٍ",
+				"volumeUp": "رفع الصوت",
+				"volumeDown": "خفض الصوت",
+				"framePrev": "الإطار السابق",
+				"frameNext": "الإطار التالي",
+				"speedDown": "تبطيء",
+				"speedUp": "تسريع",
+				"nextVideo": "الفيديو التالي",
+				"prevVideo": "الفيديو السابق",
+				"search": "التركيز على البحث",
+				"seekStart": "الانتقال إلى البداية",
+				"seekEnd": "الانتقال إلى النهاية"
+			}
 		}
 	},
 	"insights": {

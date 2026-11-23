@@ -292,6 +292,166 @@
 			"tips": {
 				"inject": "Applies to youtube.com pages after the textarea loses focus."
 			}
+		},
+		"shortcuts": {
+			"title": "키보드 단축키",
+			"checkbox": {
+				"enable": "사용자 지정 키보드 단축키 사용"
+			},
+			"button": {
+				"add": "단축키 추가",
+				"cancel": "취소",
+				"save": "변경 저장",
+				"confirmAdd": "추가",
+				"clearAll": "모두 지우기",
+				"confirmClearAll": "모두 지울까요?"
+			},
+			"preset": {
+				"button": "프리셋",
+				"title": "추천 프리셋",
+				"speedControl": "배속 제어",
+				"viewTools": "화면 도구",
+				"playbackLoop": "탐색 및 반복",
+				"applied": "프리셋 단축키 {count}개를 추가했습니다",
+				"alreadyAdded": "이 프리셋의 모든 키가 이미 등록되어 있습니다"
+			},
+			"editor": {
+				"addTitle": "새 단축키",
+				"editTitle": "단축키 편집",
+				"keyLabel": "단축키",
+				"actionLabel": "동작",
+				"clickToRecord": "여기를 클릭한 후 키를 누르세요",
+				"pressKey": "키를 누르세요… (Esc로 취소)",
+				"clearKey": "키 지우기",
+				"selectActionTitle": "동작 선택",
+				"back": "뒤로",
+				"delete": "삭제",
+				"searchPlaceholder": "동작 검색…",
+				"noMatch": "일치하는 동작이 없습니다"
+			},
+			"notice": {
+				"duplicate": "이 키는 기존 단축키 \"{action}\"과 중복됩니다.",
+				"nativeOverlap": "YouTube 기본 단축키({native})와 겹치며 활성화 시 기본 동작을 덮어씁니다."
+			},
+			"list": {
+				"toggle": "단축키 사용 전환",
+				"edit": "편집",
+				"editKey": "클릭하여 키 변경",
+				"remove": "삭제",
+				"conflict": "중복",
+				"conflictTitle": "같은 키를 사용하는 다른 활성 단축키가 있습니다"
+			},
+			"empty": {
+				"title": "설정된 단축키가 없습니다",
+				"description": "원하는 키로 재생 속도, PIP, 스크린샷, 화면 변환을 빠르게 제어하세요.",
+				"quickPreset": "배속 프리셋 불러오기 (D / S / R / A)"
+			},
+			"tips": {
+				"inputSafe": "검색창이나 댓글 입력란에서 타이핑할 때는 단일 키 단축키가 자동으로 무시됩니다."
+			},
+			"param": {
+				"speedStep": "배속 간격",
+				"speed": "목표 배속",
+				"seconds": "이동 시간(초)",
+				"volume": "볼륨 값",
+				"quality": "목표 화질",
+				"qualityAuto": "자동",
+				"followSpeedButtons": "배속 버튼 따르기",
+				"followSpeedButtonsShort": "버튼 따름"
+			},
+			"groups": {
+				"all": "전체",
+				"speed": "배속",
+				"playback": "재생",
+				"audio": "오디오",
+				"view": "화면",
+				"subtitleQuality": "자막·화질",
+				"page": "페이지"
+			},
+			"actions": {
+				"speed": {
+					"up": "재생 속도 빠르게",
+					"down": "재생 속도 느리게",
+					"toggle": "지정 배속 전환",
+					"set": "고정 배속 설정",
+					"hold": "길게 눌러 임시 배속"
+				},
+				"playback": {
+					"togglePlay": "재생 / 일시정지",
+					"seekForward": "지정 초만큼 앞으로",
+					"seekBackward": "지정 초만큼 뒤로",
+					"frameNext": "다음 프레임",
+					"framePrev": "이전 프레임",
+					"restart": "처음부터 재생",
+					"toggleLoop": "동영상 반복 전환",
+					"jumpToLive": "실시간 최신 위치로 이동",
+					"prevVideo": "이전 동영상",
+					"nextVideo": "다음 동영상"
+				},
+				"audio": {
+					"toggleMute": "음소거 / 해제",
+					"volumeUp": "볼륨 높이기",
+					"volumeDown": "볼륨 낮추기",
+					"setVolume": "볼륨 지정",
+					"boosterToggle": "볼륨 부스터 전환",
+					"boosterUp": "볼륨 부스터 배율 높이기",
+					"boosterDown": "볼륨 부스터 배율 낮추기"
+				},
+				"view": {
+					"toggleInPageFullscreen": "페이지 내 전체 화면 전환",
+					"toggleFullscreen": "전체 화면 전환",
+					"toggleTheater": "영화관 모드 전환",
+					"togglePip": "PIP 모드 전환",
+					"toggleMiniPlayer": "미니 플레이어 전환",
+					"rotateCW": "시계 방향 90° 회전",
+					"rotateCCW": "반시계 방향 90° 회전",
+					"toggleMirror": "좌우 반전 전환",
+					"zoomIn": "동영상 확대",
+					"zoomOut": "동영상 축소",
+					"zoomReset": "동영상 확대/축소 초기화",
+					"resetTransform": "모든 화면 변환 초기화",
+					"screenshot": "동영상 스크린샷 촬영",
+					"toggleControls": "플레이어 컨트롤 숨기기 / 표시"
+				},
+				"subtitle": {
+					"toggle": "자막 켜기 / 끄기",
+					"cycleTrack": "자막 언어 순환 전환"
+				},
+				"quality": {
+					"set": "지정 화질로 변경",
+					"up": "화질 한 단계 높이기",
+					"down": "화질 한 단계 낮추기"
+				},
+				"page": {
+					"copyUrlWithTime": "현재 시간 포함 동영상 URL 복사",
+					"copyUrl": "동영상 URL 복사",
+					"toggleComments": "댓글로 스크롤 / 맨 위로 이동",
+					"openThumbnail": "새 탭에서 원본 썸네일 열기"
+				}
+			},
+			"native": {
+				"togglePlay": "재생/일시정지",
+				"seekBackward10": "10초 뒤로",
+				"seekForward10": "10초 앞으로",
+				"mute": "음소거",
+				"fullscreen": "전체 화면",
+				"theater": "영화관 모드",
+				"miniPlayer": "미니 플레이어",
+				"subtitles": "자막",
+				"seekBackward5": "5초 뒤로",
+				"seekForward5": "5초 앞으로",
+				"volumeUp": "볼륨 높이기",
+				"volumeDown": "볼륨 낮추기",
+				"framePrev": "이전 프레임",
+				"frameNext": "다음 프레임",
+				"speedDown": "속도 느리게",
+				"speedUp": "속도 빠르게",
+				"nextVideo": "다음 동영상",
+				"prevVideo": "이전 동영상",
+				"search": "검색창 포커스",
+				"seekStart": "처음으로 이동",
+				"seekEnd": "끝으로 이동"
+			}
 		}
 	},
 	"insights": {

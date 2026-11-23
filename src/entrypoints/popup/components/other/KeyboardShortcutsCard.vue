@@ -2,23 +2,29 @@
 	<SettingsCard card-id="other-shortcuts">
 		<template #title>
 			<span>{{ $t("other.shortcuts.title") }}</span>
+			<DocsHelpLink anchor="other-shortcuts" />
 			<span v-if="items.length" class="title-count">{{ enabledCount }}/{{ items.length }}</span>
 		</template>
 
 		<div class="card-body shortcuts-workspace">
-			<button
-				type="button"
-				role="switch"
+			<div
 				class="master-toggle-row"
 				:class="{ on: config['other.shortcuts.enable'] }"
-				:aria-checked="config['other.shortcuts.enable']"
 				@click="config['other.shortcuts.enable'] = !config['other.shortcuts.enable']"
 			>
 				<span class="enable-label">{{ $t("other.shortcuts.checkbox.enable") }}</span>
-				<span class="switch-track">
+				<DocsHelpLink anchor="other-shortcuts-custom" />
+				<button
+					type="button"
+					role="switch"
+					class="switch-track"
+					:aria-checked="config['other.shortcuts.enable']"
+					:aria-label="$t('other.shortcuts.checkbox.enable')"
+					@click.stop="config['other.shortcuts.enable'] = !config['other.shortcuts.enable']"
+				>
 					<span class="switch-thumb"></span>
-				</span>
-			</button>
+				</button>
+			</div>
 
 			<div class="workspace-content" :class="{ disabled: !config['other.shortcuts.enable'] }">
 				<div class="action-bar">
@@ -211,6 +217,7 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
+import DocsHelpLink from "../DocsHelpLink.vue";
 import SettingsCard from "../SettingsCard.vue";
 import ShortcutEditorModal from "./ShortcutEditorModal.vue";
 import useConfigStore from "../../util/config";
@@ -469,6 +476,7 @@ onBeforeUnmount(() => {
 	padding-top: 8px !important;
 
 	.master-toggle-row {
+		box-sizing: border-box;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -488,6 +496,20 @@ onBeforeUnmount(() => {
 
 		&:hover {
 			background: var(--sc-surface-soft);
+
+			> :deep(.docs-help-link) {
+				opacity: 1;
+				pointer-events: auto;
+			}
+		}
+
+		&:focus-within > :deep(.docs-help-link) {
+			opacity: 1;
+			pointer-events: auto;
+		}
+
+		> :deep(.docs-help-link) {
+			margin-left: 0;
 		}
 
 		.enable-label {
@@ -499,9 +521,12 @@ onBeforeUnmount(() => {
 			position: relative;
 			width: 32px;
 			height: 19px;
+			padding: 0;
+			border: 0;
 			border-radius: 999px;
 			background: #b6bbc7;
 			flex: 0 0 auto;
+			cursor: pointer;
 			transition: background-color 0.18s ease;
 
 			.switch-thumb {

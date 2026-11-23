@@ -292,6 +292,166 @@
 			"tips": {
 				"inject": "Applies to youtube.com pages after the textarea loses focus."
 			}
+		},
+		"shortcuts": {
+			"title": "Klavye kısayolları",
+			"checkbox": {
+				"enable": "Özel klavye kısayollarını etkinleştir"
+			},
+			"button": {
+				"add": "Kısayol ekle",
+				"cancel": "İptal",
+				"save": "Değişiklikleri kaydet",
+				"confirmAdd": "Ekle",
+				"clearAll": "Tümünü temizle",
+				"confirmClearAll": "Onaylıyor musunuz?"
+			},
+			"preset": {
+				"button": "Hazır ayarlar",
+				"title": "Önerilen hazır ayarlar",
+				"speedControl": "Hız kontrolleri",
+				"viewTools": "Görüntü araçları",
+				"playbackLoop": "İlerleme ve döngü",
+				"applied": "{count} hazır kısayol eklendi",
+				"alreadyAdded": "Bu hazır ayardaki tüm tuşlar zaten ekli"
+			},
+			"editor": {
+				"addTitle": "Yeni kısayol",
+				"editTitle": "Kısayolu düzenle",
+				"keyLabel": "Kısayol tuşu",
+				"actionLabel": "İşlem",
+				"clickToRecord": "Buraya tıklayın ve bir tuşa basın",
+				"pressKey": "Bir tuşa basın… (İptal için Esc)",
+				"clearKey": "Tuşu temizle",
+				"selectActionTitle": "İşlem seç",
+				"back": "Geri",
+				"delete": "Sil",
+				"searchPlaceholder": "İşlem ara…",
+				"noMatch": "Eşleşen işlem bulunamadı"
+			},
+			"notice": {
+				"duplicate": "Bu tuş mevcut \"{action}\" kısayoluyla çakışıyor.",
+				"nativeOverlap": "YouTube yerleşik kısayoluyla ({native}) çakışır ve etkinken onu geçersiz kılar."
+			},
+			"list": {
+				"toggle": "Kısayolu aç veya kapat",
+				"edit": "Düzenle",
+				"editKey": "Tuşu değiştirmek için tıklayın",
+				"remove": "Kaldır",
+				"conflict": "Çakışma",
+				"conflictTitle": "Aynı tuşu kullanan başka bir etkin kısayol var"
+			},
+			"empty": {
+				"title": "Henüz kısayol yok",
+				"description": "Oynatma hızı, pencere içinde pencere, ekran görüntüsü ve video dönüşümlerini klavyeyle kontrol edin.",
+				"quickPreset": "Hız hazır ayarını yükle (D / S / R / A)"
+			},
+			"tips": {
+				"inputSafe": "Arama veya yorum kutularında yazarken tek tuşlu kısayollar otomatik olarak yoksayılır."
+			},
+			"param": {
+				"speedStep": "Hız adımı",
+				"speed": "Hedef hız",
+				"seconds": "Atlama saniyesi",
+				"volume": "Ses seviyesi",
+				"quality": "Hedef kalite",
+				"qualityAuto": "Otomatik",
+				"followSpeedButtons": "Hız düğmelerini takip et",
+				"followSpeedButtonsShort": "Düğmelere göre"
+			},
+			"groups": {
+				"all": "Tümü",
+				"speed": "Hız",
+				"playback": "Oynatma",
+				"audio": "Ses",
+				"view": "Görüntü",
+				"subtitleQuality": "Altyazı/Kalite",
+				"page": "Sayfa"
+			},
+			"actions": {
+				"speed": {
+					"up": "Hızı artır",
+					"down": "Hızı azalt",
+					"toggle": "Hedef hızı değiştir",
+					"set": "Oynatma hızını ayarla",
+					"hold": "Geçici hız için basılı tut"
+				},
+				"playback": {
+					"togglePlay": "Oynat / Duraklat",
+					"seekForward": "İleri sar",
+					"seekBackward": "Geri sar",
+					"frameNext": "Sonraki kare",
+					"framePrev": "Önceki kare",
+					"restart": "Videoyu baştan başlat",
+					"toggleLoop": "Video döngüsünü aç/kapat",
+					"jumpToLive": "Canlı uca atla",
+					"prevVideo": "Önceki video",
+					"nextVideo": "Sonraki video"
+				},
+				"audio": {
+					"toggleMute": "Sesi kapat / aç",
+					"volumeUp": "Sesi artır",
+					"volumeDown": "Sesi azalt",
+					"setVolume": "Ses seviyesini ayarla",
+					"boosterToggle": "Ses yükselticiyi aç/kapat",
+					"boosterUp": "Ses yükseltmeyi artır",
+					"boosterDown": "Ses yükseltmeyi azalt"
+				},
+				"view": {
+					"toggleInPageFullscreen": "Sayfa içi tam ekranı aç/kapat",
+					"toggleFullscreen": "Tam ekranı aç/kapat",
+					"toggleTheater": "Sinema modunu aç/kapat",
+					"togglePip": "Pencere içinde pencereyi aç/kapat",
+					"toggleMiniPlayer": "Mini oynatıcıyı aç/kapat",
+					"rotateCW": "Videoyu saat yönünde 90° döndür",
+					"rotateCCW": "Videoyu saat yönünün tersine 90° döndür",
+					"toggleMirror": "Yatay aynalamayı aç/kapat",
+					"zoomIn": "Videoyu yakınlaştır",
+					"zoomOut": "Videoyu uzaklaştır",
+					"zoomReset": "Video yakınlaştırmasını sıfırla",
+					"resetTransform": "Tüm video dönüşümlerini sıfırla",
+					"screenshot": "Video ekran görüntüsü al",
+					"toggleControls": "Oynatıcı kontrollerini gizle / göster"
+				},
+				"subtitle": {
+					"toggle": "Altyazıları aç/kapat",
+					"cycleTrack": "Altyazı dilini değiştir"
+				},
+				"quality": {
+					"set": "Video kalitesini ayarla",
+					"up": "Video kalitesini artır",
+					"down": "Video kalitesini düşür"
+				},
+				"page": {
+					"copyUrlWithTime": "Geçerli zamanla video URL'sini kopyala",
+					"copyUrl": "Video URL'sini kopyala",
+					"toggleComments": "Yorumlara git / Yukarı dön",
+					"openThumbnail": "Tam çözünürlüklü küçük resmi aç"
+				}
+			},
+			"native": {
+				"togglePlay": "Oynat/Duraklat",
+				"seekBackward10": "10 sn geri",
+				"seekForward10": "10 sn ileri",
+				"mute": "Sessiz",
+				"fullscreen": "Tam ekran",
+				"theater": "Sinema modu",
+				"miniPlayer": "Mini oynatıcı",
+				"subtitles": "Altyazılar",
+				"seekBackward5": "5 sn geri",
+				"seekForward5": "5 sn ileri",
+				"volumeUp": "Sesi artır",
+				"volumeDown": "Sesi azalt",
+				"framePrev": "Önceki kare",
+				"frameNext": "Sonraki kare",
+				"speedDown": "Yavaşlat",
+				"speedUp": "Hızlandır",
+				"nextVideo": "Sonraki video",
+				"prevVideo": "Önceki video",
+				"search": "Aramaya odaklan",
+				"seekStart": "Başa git",
+				"seekEnd": "Sona git"
+			}
 		}
 	},
 	"insights": {

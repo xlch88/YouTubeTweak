@@ -1091,6 +1091,57 @@ Notes:
 - This option can be used independently and does not depend on "Disguise Premium Logo"; both can also take effect at the same time.
 - If YouTube changes its page layout, this label may temporarily be unavailable.
 
+<a name="other-shortcuts"></a>
+
+## Keyboard Shortcuts
+
+<a name="other-shortcuts-custom"></a>
+
+### Custom Keyboard Shortcuts
+
+Default: `On; empty list` | Version: `v2.1.0 (2026-11-23)`
+
+When enabled, you can use custom single keys or key combinations on YouTube pages to quickly control playback, volume, visual transforms, subtitles and quality, and common page actions. Triggering a shortcut briefly displays a status indicator centered at the bottom of the screen.
+
+Suitable use cases:
+
+- You want convenient keys to adjust playback speed, hold for temporary speed boost, or seek forward and backward by custom seconds.
+- You do not want to crowd the player control bar with buttons, yet still want quick keyboard access to screenshots, mirroring, rotation, zooming, or in-page fullscreen.
+- You want to copy a video link with the current timestamp, open the full-resolution thumbnail, or jump between the comments section and the top of the page with a single key.
+
+Configurable options:
+
+- Enable custom keyboard shortcuts: master switch controlling whether all configured shortcuts are active.
+- Add shortcut: opens the editor modal where you click the recording area and press a single key or combination (supports `Ctrl`, `Alt`, `Shift`, `Meta` combined with another key), search or filter by category to choose an action, and configure optional parameters:
+  - Speed step: set a custom step value (0.05× to 5×), or select "Follow speed buttons" to step through your currently enabled speed button presets.
+  - Target speed: supports 0.1× to 16× with quick preset values.
+  - Seek seconds: supports 1 to 3600 seconds with quick options such as 5s, 15s, 30s, and 85s.
+  - Volume value: adjust in steps (1% to 100%) or set directly to a specific volume (0% to 100%).
+  - Target quality: set to Auto or a specific resolution from 144p to 8K.
+- Presets: three built-in preset packs that can be imported with one click (keys that already exist in your list are skipped automatically without overwriting existing bindings):
+  - Speed controls: `D` speed up (+0.25×), `S` slow down (-0.25×), `R` toggle 1×, `A` toggle 2×.
+  - View tools: `W` toggle in-page fullscreen, `P` toggle picture-in-picture, `Shift + S` take video screenshot, `Shift + M` toggle horizontal mirror.
+  - Seek & loop: `[` seek backward 5 seconds, `]` seek forward 85 seconds, `Shift + L` toggle video loop.
+- List management: click the icon on the left of each item to enable or disable it individually, click a row to edit its settings, click the key badge on the right to re-record the key directly, delete individual items, or clear all items with two-step confirmation at the bottom of the list.
+
+Supported action categories:
+
+- Playback speed: speed up, slow down, toggle target speed (press again to return to the previous speed), set fixed playback speed, and hold for temporary speed (automatically restores the original speed when you release the key, switch tabs, or leave the window).
+- Playback controls: play / pause, seek forward, seek backward, next frame, previous frame (automatically pauses when stepping frames), restart video, toggle video loop, jump to live edge, previous video, and next video.
+- Volume & booster: mute / unmute, volume up, volume down, set volume, toggle volume booster, increase volume boost, and decrease volume boost.
+- View & tools: toggle in-page fullscreen, toggle fullscreen, toggle theater mode, toggle picture-in-picture, toggle mini player (exits the extension's scrolling mini player first if active), rotate 90° clockwise, rotate 90° counterclockwise, toggle horizontal mirror, zoom in, zoom out, reset video zoom, reset all video transforms, take video screenshot, and hide / show player controls.
+- Subtitles & quality: toggle subtitles, cycle subtitle language, set video quality, increase video quality, and decrease video quality.
+- Page & tools: copy video URL at current time, copy video URL, scroll to comments / back to top, and open full-resolution thumbnail in a new tab.
+
+Notes:
+
+- Custom shortcuts are automatically skipped while typing in search boxes, comment inputs, or during IME composition, so normal typing is unaffected.
+- Shortcuts invoke each capability directly and do not require turning on the corresponding speed buttons, rotate, mirror, screenshot, video zoom, in-page fullscreen, or volume booster buttons in the player control bar.
+- Press `Esc` while recording to cancel; standalone `Esc` or modifier-only keys cannot be bound as shortcuts.
+- If a recorded key duplicates an existing shortcut or overlaps with a common YouTube built-in shortcut, the editor displays a notice. When multiple enabled shortcuts share the same key, conflicting rows are highlighted in red and the earlier item in the list takes precedence. When overlapping a YouTube built-in shortcut, the custom shortcut takes precedence while enabled.
+- Player-related actions only trigger when an active video player is present on the page. Changes to the master switch or shortcut list take effect immediately without reloading the page.
+- Adjusting playback speed, subtitle state, or subtitle tracks via shortcuts respects your enabled memory settings; "Hold for temporary speed" is temporary only and does not overwrite saved speed memory.
+
 <a name="other-custom-css"></a>
 
 ## Custom CSS

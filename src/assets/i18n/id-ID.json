@@ -292,6 +292,166 @@
 			"tips": {
 				"inject": "Applies to youtube.com pages after the textarea loses focus."
 			}
+		},
+		"shortcuts": {
+			"title": "Pintasan keyboard",
+			"checkbox": {
+				"enable": "Aktifkan pintasan keyboard khusus"
+			},
+			"button": {
+				"add": "Tambah pintasan",
+				"cancel": "Batal",
+				"save": "Simpan perubahan",
+				"confirmAdd": "Tambah",
+				"clearAll": "Hapus semua",
+				"confirmClearAll": "Yakin hapus?"
+			},
+			"preset": {
+				"button": "Preset",
+				"title": "Preset yang direkomendasikan",
+				"speedControl": "Kontrol kecepatan",
+				"viewTools": "Alat tampilan",
+				"playbackLoop": "Lompat & ulang",
+				"applied": "{count} pintasan preset ditambahkan",
+				"alreadyAdded": "Semua tombol di preset ini sudah ada"
+			},
+			"editor": {
+				"addTitle": "Pintasan baru",
+				"editTitle": "Edit pintasan",
+				"keyLabel": "Tombol pintasan",
+				"actionLabel": "Tindakan",
+				"clickToRecord": "Klik di sini lalu tekan tombol",
+				"pressKey": "Tekan tombol… (Esc untuk batal)",
+				"clearKey": "Hapus tombol",
+				"selectActionTitle": "Pilih tindakan",
+				"back": "Kembali",
+				"delete": "Hapus",
+				"searchPlaceholder": "Cari tindakan…",
+				"noMatch": "Tidak ada tindakan yang cocok"
+			},
+			"notice": {
+				"duplicate": "Tombol ini sama dengan pintasan \"{action}\" yang sudah ada.",
+				"nativeOverlap": "Bertumpuk dengan pintasan bawaan YouTube ({native}) dan akan menimpanya saat aktif."
+			},
+			"list": {
+				"toggle": "Aktifkan atau nonaktifkan pintasan",
+				"edit": "Edit",
+				"editKey": "Klik untuk mengubah tombol",
+				"remove": "Hapus",
+				"conflict": "Duplikat",
+				"conflictTitle": "Pintasan aktif lain menggunakan tombol yang sama"
+			},
+			"empty": {
+				"title": "Belum ada pintasan",
+				"description": "Kontrol kecepatan putar, PiP, tangkapan layar, dan transformasi video langsung dari keyboard.",
+				"quickPreset": "Muat preset kecepatan (D / S / R / A)"
+			},
+			"tips": {
+				"inputSafe": "Pintasan satu tombol otomatis diabaikan saat mengetik di kolom pencarian atau komentar."
+			},
+			"param": {
+				"speedStep": "Langkah kecepatan",
+				"speed": "Kecepatan target",
+				"seconds": "Detik lompatan",
+				"volume": "Nilai volume",
+				"quality": "Kualitas target",
+				"qualityAuto": "Otomatis",
+				"followSpeedButtons": "Ikuti tombol kecepatan",
+				"followSpeedButtonsShort": "Ikuti tombol"
+			},
+			"groups": {
+				"all": "Semua",
+				"speed": "Kecepatan",
+				"playback": "Pemutaran",
+				"audio": "Audio",
+				"view": "Tampilan",
+				"subtitleQuality": "Sub & kualitas",
+				"page": "Halaman"
+			},
+			"actions": {
+				"speed": {
+					"up": "Percepat pemutaran",
+					"down": "Perlambat pemutaran",
+					"toggle": "Alihkan kecepatan target",
+					"set": "Atur kecepatan pemutaran",
+					"hold": "Tahan untuk kecepatan sementara"
+				},
+				"playback": {
+					"togglePlay": "Putar / Jeda",
+					"seekForward": "Maju cepat",
+					"seekBackward": "Mundur",
+					"frameNext": "Bingkai berikutnya",
+					"framePrev": "Bingkai sebelumnya",
+					"restart": "Putar ulang video",
+					"toggleLoop": "Alihkan pengulangan video",
+					"jumpToLive": "Lompat ke titik siaran langsung",
+					"prevVideo": "Video sebelumnya",
+					"nextVideo": "Video berikutnya"
+				},
+				"audio": {
+					"toggleMute": "Bisukan / Bunyikan",
+					"volumeUp": "Naikkan volume",
+					"volumeDown": "Turunkan volume",
+					"setVolume": "Atur volume",
+					"boosterToggle": "Alihkan penguat volume",
+					"boosterUp": "Naikkan penguatan volume",
+					"boosterDown": "Turunkan penguatan volume"
+				},
+				"view": {
+					"toggleInPageFullscreen": "Alihkan layar penuh dalam halaman",
+					"toggleFullscreen": "Alihkan layar penuh",
+					"toggleTheater": "Alihkan mode teater",
+					"togglePip": "Alihkan Picture-in-Picture",
+					"toggleMiniPlayer": "Alihkan pemutar mini",
+					"rotateCW": "Putar video 90° searah jarum jam",
+					"rotateCCW": "Putar video 90° berlawanan jarum jam",
+					"toggleMirror": "Alihkan cermin horizontal",
+					"zoomIn": "Perbesar video",
+					"zoomOut": "Perkecil video",
+					"zoomReset": "Reset zoom video",
+					"resetTransform": "Reset semua transformasi video",
+					"screenshot": "Ambil tangkapan layar video",
+					"toggleControls": "Sembunyikan / Tampilkan kontrol pemutar"
+				},
+				"subtitle": {
+					"toggle": "Alihkan subtitle",
+					"cycleTrack": "Ganti bahasa subtitle"
+				},
+				"quality": {
+					"set": "Atur kualitas video",
+					"up": "Naikkan kualitas video",
+					"down": "Turunkan kualitas video"
+				},
+				"page": {
+					"copyUrlWithTime": "Salin URL video di waktu saat ini",
+					"copyUrl": "Salin URL video",
+					"toggleComments": "Gulir ke komentar / Kembali ke atas",
+					"openThumbnail": "Buka thumbnail resolusi penuh"
+				}
+			},
+			"native": {
+				"togglePlay": "Putar/Jeda",
+				"seekBackward10": "Mundur 10 dtk",
+				"seekForward10": "Maju 10 dtk",
+				"mute": "Bisukan",
+				"fullscreen": "Layar penuh",
+				"theater": "Mode teater",
+				"miniPlayer": "Pemutar mini",
+				"subtitles": "Subtitle",
+				"seekBackward5": "Mundur 5 dtk",
+				"seekForward5": "Maju 5 dtk",
+				"volumeUp": "Naikkan volume",
+				"volumeDown": "Turunkan volume",
+				"framePrev": "Bingkai sebelumnya",
+				"frameNext": "Bingkai berikutnya",
+				"speedDown": "Perlambat",
+				"speedUp": "Percepat",
+				"nextVideo": "Video berikutnya",
+				"prevVideo": "Video sebelumnya",
+				"search": "Fokus ke pencarian",
+				"seekStart": "Ke awal",
+				"seekEnd": "Ke akhir"
+			}
 		}
 	},
 	"insights": {

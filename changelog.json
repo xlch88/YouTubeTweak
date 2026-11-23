@@ -7,6 +7,54 @@
 	},
 	"releases": [
 		{
+			"version": "2.1.0",
+			"date": "2026-11-23",
+			"changes": {
+				"zh-CN": {
+					"added": [
+						{
+							"scope": "键盘快捷键",
+							"text": "新增自定义键盘快捷键功能，支持自由录制单键与组合键，覆盖播放速度、播放控制、音量与增强、画面变换与截图、字幕画质及页面工具等常用操作；支持参数自定义、一键载入推荐预设、按键冲突与原生快捷键重叠提醒、输入区域自动避让以及触发时的画面底部状态提示。"
+						}
+					],
+					"fixed": [
+						{
+							"scope": "记忆存储",
+							"text": "修复记忆数据中出现重复频道记录或异常片段时导致读取和写入失败的问题，现会自动合并重复记录、跳过异常片段并在后续写入时整理修复；保存、读取或导入导出记忆失败时会在提示中附带具体错误原因。"
+						}
+					]
+				},
+				"en": {
+					"added": [
+						{
+							"scope": "Keyboard shortcuts",
+							"text": "Added customizable keyboard shortcuts with free recording of single keys and key combinations covering playback speed, playback controls, volume and booster, video transforms and screenshots, subtitles and quality, and page tools. Supports custom parameters, one-click recommended presets, duplicate key and YouTube native shortcut overlap notices, automatic skipping in text inputs, and a bottom-center on-screen status indicator when triggered."
+						}
+					],
+					"fixed": [
+						{
+							"scope": "Memory storage",
+							"text": "Fixed an issue where duplicate channel records or malformed fragments in memory data caused reading and writing to fail; duplicate entries are now automatically merged, malformed fragments are skipped, and storage is repaired on subsequent writes. Error notices for failed memory reads, saves, imports, or exports now include specific error details."
+						}
+					]
+				},
+				"ja": {
+					"added": [
+						{
+							"scope": "キーボードショートカット",
+							"text": "カスタムキーボードショートカット機能を追加しました。単一キーや組み合わせキーを自由に登録でき、再生速度、再生操作、音量・音量ブースター、映像変換・スクリーンショット、字幕・画質、ページツールなどの操作に対応します。パラメータ調整、おすすめプリセットのワンクリック適用、重複キーや YouTube 標準ショートカットとの競合通知、入力欄での自動回避、実行時の画面下部ステータス表示に対応しています。"
+						}
+					],
+					"fixed": [
+						{
+							"scope": "記憶ストレージ",
+							"text": "記憶データ内に重複したチャンネル記録や破損した断片がある場合に読み書きが失敗する問題を修正し、重複記録の自動統合、異常断片のスキップ、次回書き込み時の自動修復を行うようにしました。記憶データの保存・読み込み・インポート・エクスポートに失敗した際は、エラー通知に具体的な原因を表示します。"
+						}
+					]
+				}
+			}
+		},
+		{
 			"version": "2.0.4",
 			"date": "2026-11-21",
 			"changes": {
